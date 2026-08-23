@@ -1,0 +1,16 @@
+{
+  "surfaces": {
+    "grass": {
+      "move_ticks": 6
+    },
+    "dirt": {
+      "move_ticks": 4
+    },
+    "stone": {
+      "move_ticks": 2
+    }
+  },
+  "trail": {
+    "carrier_passes_to_form": 4
+  }
+}

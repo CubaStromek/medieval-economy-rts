@@ -1,0 +1,30 @@
+# Local technical reference (kept unmodified and outside this repository)
+/reference/kam_remake/
+
+# Godot-generated cache and imported resources
+/.godot/
+/game/.godot/
+**/.godot/
+
+# Builds and exports
+/build/
+/builds/
+/dist/
+/export/
+/exports/
+*.pck
+*.zip
+*.dmg
+*.exe
+
+# Original/proprietary game data must remain external
+/original_game_data/
+/original-assets/
+/game/original_game_data/
+/game/external_assets/
+
+# Local editor and OS files
+.DS_Store
+*.tmp
+*.log
+

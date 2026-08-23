@@ -1,0 +1,8 @@
+{
+  "saw_planks": {
+    "building": "sawmill",
+    "inputs": {"log": 1},
+    "outputs": {"plank": 1},
+    "duration_ticks": 60
+  }
+}

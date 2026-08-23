@@ -1,0 +1,23 @@
+{
+  "warehouse": {
+    "display_name": "Warehouse",
+    "color": "4169a1",
+    "footprint": [1, 1],
+    "accepts": ["log", "plank"]
+  },
+  "lumber_hut": {
+    "display_name": "Lumberjack Hut",
+    "color": "8a5a36",
+    "footprint": [1, 1],
+    "enables": ["harvest_tree"],
+    "outputs": ["log"]
+  },
+  "sawmill": {
+    "display_name": "Sawmill",
+    "color": "b46a3c",
+    "footprint": [1, 1],
+    "inputs": ["log"],
+    "outputs": ["plank"],
+    "recipe": "saw_planks"
+  }
+}

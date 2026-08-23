@@ -1,0 +1,13 @@
+{
+  "lumberjack": {
+    "display_name": "Lumberjack",
+    "harvest_ticks": 30,
+    "carry_capacity": 1,
+    "color": "d7a13f"
+  },
+  "carrier": {
+    "display_name": "Carrier",
+    "carry_capacity": 1,
+    "color": "6fa8dc"
+  }
+}
