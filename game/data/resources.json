@@ -1,5 +1,230 @@
 {
-  "log": {"display_name": "Logs", "color": "8b5a2b", "hud_order": 10},
-  "plank": {"display_name": "Planks", "color": "d7aa68", "hud_order": 20},
-  "stone": {"display_name": "Stone", "color": "858b8f", "hud_order": 30}
+  "log": {
+    "display_name": "Logs",
+    "color": "8b5a2b",
+    "hud_order": 10,
+    "category": "materials",
+    "market_price": 1.5136363636,
+    "reference_production_per_minute": 0.7333333333
+  },
+  "plank": {
+    "display_name": "Planks",
+    "color": "d7aa68",
+    "hud_order": 20,
+    "category": "materials",
+    "market_price": 1.0645104895,
+    "reference_production_per_minute": 3.25
+  },
+  "stone": {
+    "display_name": "Stone",
+    "color": "858b8f",
+    "hud_order": 30,
+    "category": "materials",
+    "market_price": 0.3623188406,
+    "reference_production_per_minute": 3.45
+  },
+  "grain": {
+    "display_name": "Grain",
+    "color": "d8b44c",
+    "hud_order": 40,
+    "category": "food",
+    "market_price": 0.8695652174,
+    "reference_production_per_minute": 1.15
+  },
+  "flour": {
+    "display_name": "Flour",
+    "color": "eee1b5",
+    "hud_order": 50,
+    "category": "food",
+    "market_price": 1.6103059581,
+    "reference_production_per_minute": 1.35
+  },
+  "bread": {
+    "display_name": "Bread",
+    "color": "bd773b",
+    "hud_order": 60,
+    "category": "food",
+    "market_price": 1.1622958362,
+    "reference_production_per_minute": 2.8,
+    "food_restore": 1080
+  },
+  "iron_ore": {
+    "display_name": "Iron Ore",
+    "color": "9b765c",
+    "hud_order": 70,
+    "category": "materials",
+    "market_price": 1.1375,
+    "reference_production_per_minute": 1.3333333333
+  },
+  "gold_ore": {
+    "display_name": "Gold Ore",
+    "color": "b89c4a",
+    "hud_order": 80,
+    "category": "materials",
+    "market_price": 1.2375,
+    "reference_production_per_minute": 1.3333333333
+  },
+  "coal": {
+    "display_name": "Coal",
+    "color": "464953",
+    "hud_order": 90,
+    "category": "materials",
+    "market_price": 0.9677419355,
+    "reference_production_per_minute": 1.2916666667
+  },
+  "iron": {
+    "display_name": "Iron",
+    "color": "a9b1bc",
+    "hud_order": 100,
+    "category": "materials",
+    "market_price": 2.6557006511,
+    "reference_production_per_minute": 1.8166666667
+  },
+  "gold": {
+    "display_name": "Gold",
+    "color": "e3c45e",
+    "hud_order": 110,
+    "category": "materials",
+    "market_price": 1.4662573314,
+    "reference_production_per_minute": 2.75
+  },
+  "wine": {
+    "display_name": "Wine",
+    "color": "aa5077",
+    "hud_order": 120,
+    "category": "food",
+    "market_price": 1.1,
+    "reference_production_per_minute": 1.0,
+    "food_restore": 810
+  },
+  "leather": {
+    "display_name": "Leather",
+    "color": "b87950",
+    "hud_order": 130,
+    "category": "military",
+    "market_price": 2.3113641592,
+    "reference_production_per_minute": 2.7
+  },
+  "sausage": {
+    "display_name": "Sausages",
+    "color": "ab6554",
+    "hud_order": 140,
+    "category": "food",
+    "market_price": 1.5292899769,
+    "reference_production_per_minute": 4.25,
+    "food_restore": 1620
+  },
+  "pig": {
+    "display_name": "Pigs",
+    "color": "d49c99",
+    "hud_order": 150,
+    "category": "food",
+    "market_price": 3.8819875776,
+    "reference_production_per_minute": 0.4666666667
+  },
+  "skin": {
+    "display_name": "Raw Skins",
+    "color": "bd9878",
+    "hud_order": 160,
+    "category": "military",
+    "market_price": 3.8819875776,
+    "reference_production_per_minute": 0.4666666667
+  },
+  "wooden_shield": {
+    "display_name": "Wooden Shields",
+    "color": "a88a58",
+    "hud_order": 170,
+    "category": "military",
+    "market_price": 1.7311771562,
+    "reference_production_per_minute": 1.5
+  },
+  "iron_shield": {
+    "display_name": "Iron Shields",
+    "color": "afbac6",
+    "hud_order": 180,
+    "category": "military",
+    "market_price": 4.397636135,
+    "reference_production_per_minute": 1.2916666667
+  },
+  "leather_armour": {
+    "display_name": "Leather Armour",
+    "color": "946849",
+    "hud_order": 190,
+    "category": "military",
+    "market_price": 2.9780308259,
+    "reference_production_per_minute": 1.5
+  },
+  "iron_armour": {
+    "display_name": "Iron Armour",
+    "color": "b6bdc6",
+    "hud_order": 200,
+    "category": "military",
+    "market_price": 4.397636135,
+    "reference_production_per_minute": 1.2916666667
+  },
+  "axe": {
+    "display_name": "Axes",
+    "color": "9aafb9",
+    "hud_order": 210,
+    "category": "military",
+    "market_price": 2.729020979,
+    "reference_production_per_minute": 1.6666666667
+  },
+  "sword": {
+    "display_name": "Swords",
+    "color": "d0d9e1",
+    "hud_order": 220,
+    "category": "military",
+    "market_price": 4.2388272019,
+    "reference_production_per_minute": 1.625
+  },
+  "lance": {
+    "display_name": "Lances",
+    "color": "b5a079",
+    "hud_order": 230,
+    "category": "military",
+    "market_price": 2.729020979,
+    "reference_production_per_minute": 1.6666666667
+  },
+  "pike": {
+    "display_name": "Pikes",
+    "color": "b6c7cf",
+    "hud_order": 240,
+    "category": "military",
+    "market_price": 4.2388272019,
+    "reference_production_per_minute": 1.625
+  },
+  "bow": {
+    "display_name": "Bows",
+    "color": "a77c4b",
+    "hud_order": 250,
+    "category": "military",
+    "market_price": 2.729020979,
+    "reference_production_per_minute": 1.6666666667
+  },
+  "crossbow": {
+    "display_name": "Crossbows",
+    "color": "b39870",
+    "hud_order": 260,
+    "category": "military",
+    "market_price": 4.2388272019,
+    "reference_production_per_minute": 1.625
+  },
+  "horse": {
+    "display_name": "Horses",
+    "color": "a78973",
+    "hud_order": 270,
+    "category": "military",
+    "market_price": 5.2173913043,
+    "reference_production_per_minute": 0.575
+  },
+  "fish": {
+    "display_name": "Fish",
+    "color": "8aaebd",
+    "hud_order": 280,
+    "category": "food",
+    "market_price": 1.2295081967,
+    "reference_production_per_minute": 1.0166666667,
+    "food_restore": 1350
+  }
 }

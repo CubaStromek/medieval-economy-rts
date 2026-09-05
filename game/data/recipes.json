@@ -1,8 +1,219 @@
 {
   "saw_planks": {
     "building": "sawmill",
-    "inputs": {"log": 1},
-    "outputs": {"plank": 1},
-    "duration_ticks": 60
+    "inputs": {
+      "log": 1
+    },
+    "outputs": {
+      "plank": 2
+    },
+    "duration_ticks": 60,
+    "display_name": "2 Planks"
+  },
+  "mill_flour": {
+    "building": "mill",
+    "inputs": {
+      "grain": 1
+    },
+    "outputs": {
+      "flour": 1
+    },
+    "duration_ticks": 80,
+    "display_name": "1 Flour"
+  },
+  "bake_bread": {
+    "building": "bakery",
+    "inputs": {
+      "flour": 1
+    },
+    "outputs": {
+      "bread": 2
+    },
+    "duration_ticks": 100,
+    "display_name": "2 Bread"
+  },
+  "smelt_iron": {
+    "building": "iron_smithy",
+    "inputs": {
+      "iron_ore": 1,
+      "coal": 1
+    },
+    "outputs": {
+      "iron": 1
+    },
+    "duration_ticks": 100,
+    "display_name": "1 Iron"
+  },
+  "smelt_gold": {
+    "building": "metallurgist",
+    "inputs": {
+      "gold_ore": 1,
+      "coal": 1
+    },
+    "outputs": {
+      "gold": 2
+    },
+    "duration_ticks": 100,
+    "display_name": "2 Gold"
+  },
+  "breed_pig": {
+    "building": "swine_farm",
+    "inputs": {
+      "grain": 4
+    },
+    "outputs": {
+      "pig": 1,
+      "skin": 1
+    },
+    "duration_ticks": 240,
+    "display_name": "1 Pigs + 1 Raw Skins"
+  },
+  "make_sausages": {
+    "building": "butcher",
+    "inputs": {
+      "pig": 1
+    },
+    "outputs": {
+      "sausage": 3
+    },
+    "duration_ticks": 100,
+    "display_name": "3 Sausages"
+  },
+  "tan_leather": {
+    "building": "tannery",
+    "inputs": {
+      "skin": 1
+    },
+    "outputs": {
+      "leather": 2
+    },
+    "duration_ticks": 100,
+    "display_name": "2 Leather"
+  },
+  "breed_horse": {
+    "building": "stables",
+    "inputs": {
+      "grain": 4
+    },
+    "outputs": {
+      "horse": 1
+    },
+    "duration_ticks": 240,
+    "display_name": "1 Horses"
+  },
+  "make_axe": {
+    "building": "weapon_workshop",
+    "inputs": {
+      "plank": 2
+    },
+    "outputs": {
+      "axe": 1
+    },
+    "duration_ticks": 100,
+    "display_name": "1 Axes"
+  },
+  "make_lance": {
+    "building": "weapon_workshop",
+    "inputs": {
+      "plank": 2
+    },
+    "outputs": {
+      "lance": 1
+    },
+    "duration_ticks": 100,
+    "display_name": "1 Lances"
+  },
+  "make_bow": {
+    "building": "weapon_workshop",
+    "inputs": {
+      "plank": 2
+    },
+    "outputs": {
+      "bow": 1
+    },
+    "duration_ticks": 100,
+    "display_name": "1 Bows"
+  },
+  "make_wooden_shield": {
+    "building": "armour_workshop",
+    "inputs": {
+      "plank": 1
+    },
+    "outputs": {
+      "wooden_shield": 1
+    },
+    "duration_ticks": 100,
+    "display_name": "1 Wooden Shields"
+  },
+  "make_leather_armour": {
+    "building": "armour_workshop",
+    "inputs": {
+      "leather": 1
+    },
+    "outputs": {
+      "leather_armour": 1
+    },
+    "duration_ticks": 100,
+    "display_name": "1 Leather Armour"
+  },
+  "make_sword": {
+    "building": "weapon_smithy",
+    "inputs": {
+      "iron": 1,
+      "coal": 1
+    },
+    "outputs": {
+      "sword": 1
+    },
+    "duration_ticks": 120,
+    "display_name": "1 Swords"
+  },
+  "make_pike": {
+    "building": "weapon_smithy",
+    "inputs": {
+      "iron": 1,
+      "coal": 1
+    },
+    "outputs": {
+      "pike": 1
+    },
+    "duration_ticks": 120,
+    "display_name": "1 Pikes"
+  },
+  "make_crossbow": {
+    "building": "weapon_smithy",
+    "inputs": {
+      "iron": 1,
+      "coal": 1
+    },
+    "outputs": {
+      "crossbow": 1
+    },
+    "duration_ticks": 120,
+    "display_name": "1 Crossbows"
+  },
+  "make_iron_shield": {
+    "building": "armour_smithy",
+    "inputs": {
+      "iron": 1,
+      "coal": 1
+    },
+    "outputs": {
+      "iron_shield": 1
+    },
+    "duration_ticks": 120,
+    "display_name": "1 Iron Shields"
+  },
+  "make_iron_armour": {
+    "building": "armour_smithy",
+    "inputs": {
+      "iron": 1,
+      "coal": 1
+    },
+    "outputs": {
+      "iron_armour": 1
+    },
+    "duration_ticks": 120,
+    "display_name": "1 Iron Armour"
   }
 }

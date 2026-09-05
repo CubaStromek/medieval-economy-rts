@@ -54,6 +54,9 @@
     }
   },
   "trail": {
-    "carrier_passes_to_form": 4
+    "carrier_passes_to_form": 36,
+    "weak_decay_ticks": 200,
+    "established_decay_ticks": 400,
+    "established_min_wear": 16
   }
 }

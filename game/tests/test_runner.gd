@@ -10,10 +10,58 @@ const MainScene = preload("res://scenes/main.tscn")
 const MapProjectionClass = preload("res://scripts/view/map_projection.gd")
 const TerrainRendererClass = preload("res://scripts/view/terrain_renderer.gd")
 const WorkerMovementTests = preload("res://tests/worker_movement_tests.gd")
+const EightWayPathTests = preload("res://tests/eight_way_path_tests.gd")
+const DiagonalMovementTests = preload("res://tests/diagonal_movement_tests.gd")
+const DiagonalTrailTests = preload("res://tests/diagonal_trail_tests.gd")
+const IdleYieldTests = preload("res://tests/idle_yield_tests.gd")
+const TrailTrafficTests = preload("res://tests/trail_traffic_tests.gd")
+const TrailSaveTests = preload("res://tests/trail_save_tests.gd")
+const TrailWearTests = preload("res://tests/trail_wear_tests.gd")
+const TrailRenderTests = preload("res://tests/trail_render_tests.gd")
+const WorkplaceTests = preload("res://tests/workplace_tests.gd")
+const WorkplaceSaveTests = preload("res://tests/workplace_save_tests.gd")
+const HutUiTests = preload("res://tests/hut_ui_tests.gd")
+const ForesterHutTests = preload("res://tests/forester_hut_tests.gd")
+const FisherHutTests = preload("res://tests/fisher_hut_tests.gd")
+const IndoorSaveTests = preload("res://tests/indoor_save_tests.gd")
+const IndoorViewTests = preload("res://tests/indoor_view_tests.gd")
+const IndoorWorkerTests = preload("res://tests/indoor_worker_tests.gd")
+const DayCycleTests = preload("res://tests/day_cycle_tests.gd")
+const DayClockViewTests = preload("res://tests/day_clock_view_tests.gd")
+const NightScheduleSaveTests = preload("res://tests/night_schedule_save_tests.gd")
+const NightFoodTests = preload("res://tests/night_food_tests.gd")
+const NightScheduleViewTests = preload("res://tests/night_schedule_view_tests.gd")
+const NightScheduleTests = preload("res://tests/night_schedule_tests.gd")
 const SaveValidationTests = preload("res://tests/save_validation_tests.gd")
 const GridConfigTests = preload("res://tests/grid_config_tests.gd")
 const ViewInputTests = preload("res://tests/view_input_tests.gd")
 const EconomyInvariantTests = preload("res://tests/economy_invariant_tests.gd")
+const ProductionChainTests = preload("res://tests/production_chain_tests.gd")
+const DepositsTests = preload("res://tests/deposits_tests.gd")
+const ClassicEconomyTests = preload("res://tests/classic_economy_tests.gd")
+const HudLayoutTests = preload("res://tests/hud_layout_tests.gd")
+const WindowLayoutTests = preload("res://tests/window_layout_tests.gd")
+const TerrainHeightTests = preload("res://tests/terrain_height_tests.gd")
+const TerrainRenderTests = preload("res://tests/terrain_render_tests.gd")
+const TerrainChangeTests = preload("res://tests/terrain_change_tests.gd")
+const TerrainCacheTests = preload("res://tests/terrain_cache_tests.gd")
+const ReliefDemoTests = preload("res://tests/relief_demo_tests.gd")
+const ReliefViewTests = preload("res://tests/relief_view_tests.gd")
+const SlopeReadabilityTests = preload("res://tests/slope_readability_tests.gd")
+const ResourceStockTests = preload("res://tests/resource_stock_tests.gd")
+const UnitSpriteTests = preload("res://tests/unit_sprite_tests.gd")
+const EnvironmentGraphicsTests = preload("res://tests/environment_graphics_tests.gd")
+const TestLevelTests = preload("res://tests/test_level_tests.gd")
+const ConstructionCancelUiTests = preload("res://tests/construction_cancel_ui_tests.gd")
+const ConstructionCancelTests = preload("res://tests/construction_cancel_tests.gd")
+const ConstructionCostTests = preload("res://tests/construction_cost_tests.gd")
+const ConstructionCostCompatibilityTests = preload("res://tests/construction_cost_compatibility_tests.gd")
+const InnFeedingTests = preload("res://tests/inn_feeding_tests.gd")
+const SoldierFoodTests = preload("res://tests/soldier_food_tests.gd")
+const FoodSaveTests = preload("res://tests/food_save_tests.gd")
+const FoodUiTests = preload("res://tests/food_ui_tests.gd")
+const HungerCycleTests = preload("res://tests/hunger_cycle_tests.gd")
+const HungerUiTests = preload("res://tests/hunger_ui_tests.gd")
 
 var failures: Array[String] = []
 var test_count: int = 0
@@ -29,7 +77,7 @@ func _ready() -> void:
 		_test_base_terrain_layers_and_rules,
 		_test_terrain_controls_placement_and_pathfinding,
 		_test_terrain_save_round_trip_and_v3_migration,
-		_test_rectangular_projection_round_trip,
+		_test_square_projection_round_trip,
 		_test_transition_masks_are_deterministic,
 		_test_real_carrier_steps_form_contiguous_trail,
 		_test_swap_waits_for_both_steps_and_uses_each_surface,
@@ -60,11 +108,59 @@ func _ready() -> void:
 		test.call()
 		test_count += 1
 	_record_suite("Worker movement", WorkerMovementTests.TEST_COUNT, WorkerMovementTests.run())
+	_record_suite("Eight-way paths", EightWayPathTests.TEST_COUNT, EightWayPathTests.run())
+	_record_suite("Diagonal movement", DiagonalMovementTests.TEST_COUNT, DiagonalMovementTests.run())
+	_record_suite("Diagonal trails", DiagonalTrailTests.TEST_COUNT, DiagonalTrailTests.run())
+	_record_suite("Idle yielding", IdleYieldTests.TEST_COUNT, IdleYieldTests.run())
+	_record_suite("Sustained carrier traffic", TrailTrafficTests.TEST_COUNT, TrailTrafficTests.run())
+	_record_suite("Trail save compatibility", TrailSaveTests.TEST_COUNT, TrailSaveTests.run())
+	_record_suite("Natural trail wear", TrailWearTests.TEST_COUNT, TrailWearTests.run())
+	_record_suite("Natural trail rendering", TrailRenderTests.TEST_COUNT, TrailRenderTests.run())
+	_record_suite("One worker per workplace", WorkplaceTests.TEST_COUNT, WorkplaceTests.run())
+	_record_suite("Workplace save compatibility", WorkplaceSaveTests.TEST_COUNT, WorkplaceSaveTests.run())
+	_record_suite("Forester and fisher hut UI", HutUiTests.TEST_COUNT, HutUiTests.run())
+	_record_suite("Forester hut", ForesterHutTests.TEST_COUNT, ForesterHutTests.run())
+	_record_suite("Fisher hut", FisherHutTests.TEST_COUNT, FisherHutTests.run())
+	_record_suite("Indoor save compatibility", IndoorSaveTests.TEST_COUNT, IndoorSaveTests.run())
+	_record_suite("Indoor worker lifecycle", IndoorWorkerTests.TEST_COUNT, IndoorWorkerTests.run())
+	_record_suite("Calendar clock", DayCycleTests.TEST_COUNT, DayCycleTests.run())
+	_record_suite("Civilian daily schedule", NightScheduleTests.TEST_COUNT, NightScheduleTests.run())
+	_record_suite("Night schedule save compatibility", NightScheduleSaveTests.TEST_COUNT, NightScheduleSaveTests.run())
+	_record_suite("Night meals and deferred cargo", NightFoodTests.TEST_COUNT, NightFoodTests.run())
 	_record_suite("Save validation", SaveValidationTests.TEST_COUNT, SaveValidationTests.run())
 	_record_suite("Grid configuration", GridConfigTests.TEST_COUNT, GridConfigTests.run())
 	_record_suite("Economy invariants", EconomyInvariantTests.TEST_COUNT, EconomyInvariantTests.run())
+	_record_suite("Production chains", ProductionChainTests.TEST_COUNT, ProductionChainTests.run())
+	_record_suite("Natural deposits and saves", DepositsTests.TEST_COUNT, DepositsTests.run())
+	_record_suite("Classic economy", ClassicEconomyTests.TEST_COUNT, ClassicEconomyTests.run())
+	_record_suite("Civilian inn meals", InnFeedingTests.TEST_COUNT, InnFeedingTests.run())
+	_record_suite("Military food deliveries", SoldierFoodTests.TEST_COUNT, SoldierFoodTests.run())
+	_record_suite("Food save compatibility", FoodSaveTests.TEST_COUNT, FoodSaveTests.run())
+	_record_suite("Food controls", FoodUiTests.TEST_COUNT, FoodUiTests.run())
+	_record_suite("Daily hunger", HungerCycleTests.TEST_COUNT, HungerCycleTests.run())
+	_record_suite("Visible satiety", HungerUiTests.TEST_COUNT, HungerUiTests.run())
+	_record_suite("KaM construction prices", ConstructionCostTests.TEST_COUNT, ConstructionCostTests.run())
+	_record_suite("Construction cost compatibility", ConstructionCostCompatibilityTests.TEST_COUNT, ConstructionCostCompatibilityTests.run())
+	_record_suite("Construction cancellation", ConstructionCancelTests.TEST_COUNT, ConstructionCancelTests.run())
+	_record_suite("Resource stock accounting", ResourceStockTests.TEST_COUNT, ResourceStockTests.run())
+	_record_suite("Terrain heights", TerrainHeightTests.TEST_COUNT, TerrainHeightTests.run())
+	_record_suite("Terrain rendering", TerrainRenderTests.TEST_COUNT, TerrainRenderTests.run())
+	_record_suite("Terrain change tracking", TerrainChangeTests.TEST_COUNT, TerrainChangeTests.run())
+	_record_suite("Relief demo", ReliefDemoTests.TEST_COUNT, ReliefDemoTests.run())
+	_record_suite("Minimal test level", TestLevelTests.TEST_COUNT, TestLevelTests.run(self))
 	var input_failures: Array[String] = await ViewInputTests.run(self)
 	_record_suite("Viewport input", ViewInputTests.TEST_COUNT, input_failures)
+	_record_suite("HUD layout and navigation", HudLayoutTests.TEST_COUNT, await HudLayoutTests.run(self))
+	_record_suite("Calendar clock HUD", DayClockViewTests.TEST_COUNT, await DayClockViewTests.run(self))
+	_record_suite("Night schedule HUD", NightScheduleViewTests.TEST_COUNT, await NightScheduleViewTests.run(self))
+	_record_suite("Responsive window layout", WindowLayoutTests.TEST_COUNT, await WindowLayoutTests.run(self))
+	_record_suite("Construction cancellation UI", ConstructionCancelUiTests.TEST_COUNT, await ConstructionCancelUiTests.run(self))
+	_record_suite("Relief viewport", ReliefViewTests.TEST_COUNT, await ReliefViewTests.run(self))
+	_record_suite("Square terrain and slope readability", SlopeReadabilityTests.TEST_COUNT, await SlopeReadabilityTests.run(self))
+	_record_suite("Unit sprites", UnitSpriteTests.TEST_COUNT, await UnitSpriteTests.run(self))
+	_record_suite("Indoor unit visibility", IndoorViewTests.TEST_COUNT, await IndoorViewTests.run(self))
+	_record_suite("Environment graphics", EnvironmentGraphicsTests.TEST_COUNT, await EnvironmentGraphicsTests.run(self))
+	_record_suite("Retained terrain cache", TerrainCacheTests.TEST_COUNT, await TerrainCacheTests.run(self))
 
 	if failures.is_empty():
 		print("TEST RESULT: %d/%d passed" % [test_count, test_count])
@@ -131,7 +227,7 @@ func _test_nearest_path_search_uses_weighted_cost() -> void:
 	)
 	_expect(not path.is_empty(), "Nearest-goal search should find a reachable candidate")
 	_expect(path[path.size() - 1] == travel_time_near, "Nearest-goal search should choose weighted travel time over Manhattan distance")
-	_expect(GridPathfinderClass.path_cost(grid, path) < 12, "Chosen planting route should be cheaper than the geometrically nearer grass route")
+	_expect(GridPathfinderClass.path_cost(grid, path, start) < 12, "Chosen planting route should be cheaper than the geometrically nearer grass route")
 
 
 func _test_surface_wear_and_speed_tiers() -> void:
@@ -274,7 +370,7 @@ func _test_terrain_save_round_trip_and_v3_migration() -> void:
 	source.grid.add_dirt_trail(Vector2i(1, 2))
 	source.grid.set_traffic_wear(Vector2i(2, 2), 2)
 	var snapshot: Dictionary = source.to_data()
-	_expect(int(snapshot["version"]) == 5, "Tree growth should advance the save schema to version 5")
+	_expect(int(snapshot["version"]) == SimulationWorldClass.SAVE_VERSION, "Terrain snapshots should use the current save schema")
 	var restored := SimulationWorldClass.new()
 	_expect(restored.from_data(snapshot), "Version 4 terrain snapshot should load")
 	for cell: Vector2i in [Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]:
@@ -358,17 +454,17 @@ func _test_terrain_save_round_trip_and_v3_migration() -> void:
 	_expect(migrated.grid.traffic_wear_at(Vector2i(2, 0)) == 2, "Version 3 migration must preserve partial traffic wear")
 
 
-func _test_rectangular_projection_round_trip() -> void:
+func _test_square_projection_round_trip() -> void:
 	var origin: Vector2 = MapProjectionClass.cell_center(Vector2i(0, 0))
 	var right: Vector2 = MapProjectionClass.cell_center(Vector2i(1, 0))
 	var down: Vector2 = MapProjectionClass.cell_center(Vector2i(0, 1))
-	_expect(right.y == origin.y and right.x > origin.x, "One map column should move only along the screen X axis")
-	_expect(down.x == origin.x and down.y > origin.y, "One map row should move only along the screen Y axis")
+	_expect(right - origin == Vector2(40.0, 0.0), "One map column must span exactly 40 horizontal drawing units")
+	_expect(down - origin == Vector2(0.0, 40.0), "One map row must span exactly 40 vertical drawing units")
 	for cell: Vector2i in [Vector2i(0, 0), Vector2i(7, 3), Vector2i(19, 15)]:
 		_expect(MapProjectionClass.world_to_cell(MapProjectionClass.cell_center(cell)) == cell, "Projection should round-trip cell centers")
-	_expect(MapProjectionClass.world_to_cell(Vector2(47.99, 47.99)) == Vector2i(0, 0), "Picking should keep points just inside a cell")
-	_expect(MapProjectionClass.world_to_cell(Vector2(48.0, 48.0)) == Vector2i(1, 1), "Picking should cross on the exact cell boundary")
-	_expect(MapProjectionClass.world_to_cell(Vector2(-0.01, 24.0)) == Vector2i(-1, 0), "Picking must floor negative coordinates instead of truncating them")
+	_expect(MapProjectionClass.world_to_cell(MapProjectionClass.CELL_SIZE - Vector2(0.01, 0.01)) == Vector2i(0, 0), "Picking should keep points just inside a cell")
+	_expect(MapProjectionClass.world_to_cell(MapProjectionClass.CELL_SIZE) == Vector2i(1, 1), "Picking should cross on the exact cell boundary")
+	_expect(MapProjectionClass.world_to_cell(Vector2(-0.01, MapProjectionClass.CELL_SIZE.y * 0.5)) == Vector2i(-1, 0), "Picking must floor negative coordinates instead of truncating them")
 	_expect(MapProjectionClass.corner_position(Vector2i(1, 1), 1).y < MapProjectionClass.corner_position(Vector2i(1, 1), 0).y, "Future corner height should project upward behind the shared API")
 
 
@@ -400,6 +496,9 @@ func _test_transition_masks_are_deterministic() -> void:
 
 func _test_real_carrier_steps_form_contiguous_trail() -> void:
 	var simulation := SimulationWorldClass.new(Vector2i(11, 7))
+	# A short legacy delivery fixture tests step-local trail continuity, not the
+	# production wear balance (covered by the sustained-traffic suite).
+	simulation.grid.configure_movement({"trail": {"carrier_passes_to_form": 4, "weak_decay_ticks": 10000, "established_decay_ticks": 10000}})
 	var hut_id: int = simulation.place_building("lumber_hut", Vector2i(2, 4))
 	simulation.place_building("sawmill", Vector2i(7, 4))
 	var hut_outputs: Dictionary = (simulation.buildings[hut_id] as Dictionary)["outputs"] as Dictionary
@@ -528,10 +627,13 @@ func _test_roles_split_harvest_and_transport() -> void:
 
 	var carrier_id: int = simulation.spawn_worker(Vector2i(3, 3), "carrier")
 	var carrier: Dictionary = simulation.workers[carrier_id] as Dictionary
+	var carrier_tasks: Array[String] = simulation._accepted_tasks_for_worker(carrier)
 	_expect(
-		simulation._accepted_tasks_for_worker(carrier) == SimulationWorldClass.CARRIER_TASKS,
-		"Carrier should accept only building-to-building transport"
+		carrier_tasks.size() == simulation.catalog.resources.size(),
+		"Carrier should accept one transport kind for every defined ware"
 	)
+	for resource: String in simulation.catalog.resources:
+		_expect(carrier_tasks.has("transport_" + resource), "Carrier must transport %s without accepting specialist work" % resource)
 	for _tick: int in range(1200):
 		simulation.step_tick()
 		if simulation.stored_amount("plank") > 0:
@@ -657,13 +759,16 @@ func _test_training_save_round_trip_and_v2_migration() -> void:
 		"Unit training state should use the current save version"
 	)
 
-	var test_path := "user://medieval_economy_rts_training_test_save.json"
+	var test_path: String = OS.get_temp_dir().path_join("medieval_economy_rts_training_test_%d.json" % OS.get_process_id())
 	var saved: bool = SaveSystemClass.save_world(source, test_path)
 	var restored := SimulationWorldClass.new()
 	var loaded: bool = SaveSystemClass.load_world(restored, test_path)
-	DirAccess.remove_absolute(ProjectSettings.globalize_path(test_path))
+	if saved:
+		_expect(DirAccess.remove_absolute(test_path) == OK, "Test should clean up its own temporary save")
 	_expect(saved, "SaveSystem should serialize in-progress training")
 	_expect(loaded, "Current save with in-progress training should load")
+	if not saved or not loaded:
+		return
 	var invalid_training_head: Dictionary = snapshot.duplicate(true)
 	var invalid_school: Dictionary = (invalid_training_head["buildings"] as Array)[0] as Dictionary
 	invalid_school["training_queue"] = ["unknown", "lumberjack"]
@@ -685,7 +790,7 @@ func _test_training_save_round_trip_and_v2_migration() -> void:
 	var restored_worker: Dictionary = restored.workers.values()[0] as Dictionary
 	_expect(String(restored_worker["type"]) == "lumberjack", "Restored queue should spawn its original unit type")
 
-	var legacy_path := "user://medieval_economy_rts_v2_fixture.json"
+	var legacy_path: String = OS.get_temp_dir().path_join("medieval_economy_rts_v2_fixture_%d.json" % OS.get_process_id())
 	var legacy_file: FileAccess = FileAccess.open(legacy_path, FileAccess.WRITE)
 	if legacy_file != null:
 		legacy_file.store_string(JSON.stringify({
@@ -713,7 +818,8 @@ func _test_training_save_round_trip_and_v2_migration() -> void:
 	_expect(legacy_file != null, "Historical v2 fixture should be writable")
 	var migrated := SimulationWorldClass.new()
 	var legacy_loaded: bool = SaveSystemClass.load_world(migrated, legacy_path)
-	DirAccess.remove_absolute(ProjectSettings.globalize_path(legacy_path))
+	if legacy_file != null:
+		_expect(DirAccess.remove_absolute(legacy_path) == OK, "Test should clean up its own v2 fixture")
 	_expect(legacy_loaded, "Historical version 2 JSON should migrate through SaveSystem")
 	var migrated_building: Dictionary = migrated.buildings.get(1, {}) as Dictionary
 	_expect((migrated_building.get("training_queue", []) as Array).is_empty(), "Migrated v2 building should gain an empty training queue")
@@ -725,11 +831,15 @@ func _test_training_save_round_trip_and_v2_migration() -> void:
 
 func _test_school_ui_command_path() -> void:
 	var main_view: MainViewClass = MainScene.instantiate() as MainViewClass
+	main_view.demo_kind = "economy"
 	add_child(main_view)
 	_expect(main_view.terrain_renderer.grid == main_view.world.grid, "Main scene should bind TerrainRenderer to the authoritative grid")
 	var initial_grid: GridMapSimClass = main_view.world.grid
 	main_view._reset_demo()
 	_expect(main_view.world.grid != initial_grid and main_view.terrain_renderer.grid == main_view.world.grid, "Reset should rebind TerrainRenderer to the replacement grid")
+	# This fixture tests UI command dispatch; material construction and paid
+	# training are covered through real ticks in ClassicEconomyTests.
+	main_view.world.economy_enabled = false
 	var school_key := InputEventKey.new()
 	school_key.keycode = KEY_5
 	school_key.pressed = true
@@ -740,15 +850,26 @@ func _test_school_ui_command_path() -> void:
 	var school_canvas_position: Vector2 = main_view.terrain_renderer.to_global(
 		main_view.terrain_renderer.cell_center(school_cell)
 	)
+	# Aim this command-path fixture at visible ground for any root aspect ratio
+	# (the headless display is square). Never place by clicking through the HUD.
+	var viewport_size: Vector2 = main_view.get_viewport_rect().size
+	var map_point: Vector2 = viewport_size * Vector2(0.75, 0.5)
+	main_view.camera.position_smoothing_enabled = false
+	main_view.camera.position = school_canvas_position - (map_point - viewport_size * 0.5) / main_view.camera.zoom.x
+	main_view.camera.force_update_scroll()
 	var school_click := InputEventMouseButton.new()
 	school_click.button_index = MOUSE_BUTTON_LEFT
 	school_click.pressed = true
 	school_click.position = main_view.get_viewport().get_canvas_transform() * school_canvas_position
 	school_click.global_position = school_click.position
+	_expect(not main_view.hud.blocks_map_point(school_click.position), "School command fixture must target unobstructed ground")
 	main_view._unhandled_input(school_click)
 	_expect(main_view.selected_cell == school_cell, "Terrain picking should select the clicked school cell")
 	var school_id: int = main_view.world.building_id_at(school_cell)
 	_expect(school_id != 0, "School build tool should place a school through the mouse command path")
+	if school_id == 0:
+		main_view.queue_free()
+		return
 
 	var carrier_button: Button = null
 	var lumberjack_button: Button = null
@@ -786,77 +907,60 @@ func _test_school_ui_command_path() -> void:
 
 func _test_resource_hud() -> void:
 	var main_view: MainViewClass = MainScene.instantiate() as MainViewClass
+	main_view.demo_kind = "economy"
 	add_child(main_view)
+	main_view.set_process(false)
 	_expect(main_view.resource_hud_panel != null, "Main scene should create the resource status bar")
-	_expect(
-		main_view.resource_hud_panel.name == "ResourceStatusBar",
-		"Resource status bar should expose a stable UI node name"
-	)
-	_expect(
-		main_view.resource_amount_labels.size() == main_view.world.catalog.resources.size(),
-		"HUD should create one stored-value label for every defined resource"
-	)
-	_expect(
-		main_view.resource_pipeline_labels.size() == main_view.world.catalog.resources.size(),
-		"HUD should create one flow-value label for every defined resource"
-	)
-	_expect(main_view.world.catalog.resources.has("stone"), "Stone should be a defined placeholder resource")
+	_expect(main_view.resource_hud_panel.name == "ResourceStatusBar",
+		"Resource status bar should expose a stable UI node name")
+	_expect(main_view.resource_amount_labels.size() == main_view.world.catalog.resources.size(),
+		"HUD should create one total-value label for every defined resource")
+	_expect(main_view.resource_breakdown_labels.size() == main_view.world.catalog.resources.size(),
+		"HUD should create one inventory breakdown for every defined resource")
 
-	var warehouse_id: int = main_view.world._first_building("warehouse")
-	var lumber_hut_id: int = main_view.world._first_building("lumber_hut")
-	var sawmill_id: int = main_view.world._first_building("sawmill")
-	var warehouse: Dictionary = main_view.world.buildings[warehouse_id] as Dictionary
-	var lumber_hut: Dictionary = main_view.world.buildings[lumber_hut_id] as Dictionary
-	var sawmill: Dictionary = main_view.world.buildings[sawmill_id] as Dictionary
-	(warehouse["storage"] as Dictionary)["log"] = 3
-	(warehouse["storage"] as Dictionary)["plank"] = 5
-	(warehouse["storage"] as Dictionary)["stone"] = 2
-	(lumber_hut["outputs"] as Dictionary)["log"] = 7
-	(sawmill["outputs"] as Dictionary)["plank"] = 11
+	# Reproduce the reported bug before testing every other resource.
+	main_view.world = SimulationWorldClass.new(Vector2i(12, 8))
+	main_view.world.place_building("warehouse", Vector2i(2, 2))
+	var hut: int = main_view.world.place_building("lumber_hut", Vector2i(8, 2))
+	main_view.world.buildings[hut]["outputs"]["log"] = 6
+	main_view.terrain_renderer.bind_grid(main_view.world.grid)
 	main_view._update_ui()
+	_expect((main_view.resource_amount_labels["log"] as Label).text == "6",
+		"Six logs in the lumberjack hut must show LOGS 6 in detailed stocks")
+	_expect((main_view.hud._summary_amounts["log"] as Label).text == "6",
+		"Six logs in the lumberjack hut must also show LOGS 6 in the overview")
+	_expect((main_view.resource_breakdown_labels["log"] as Label).text == "Warehouse: 0\nBuildings: 6\nCarried: 0",
+		"The log detail must explicitly locate all six logs in buildings")
 
-	_expect(
-		(main_view.resource_amount_labels["log"] as Label).text == "3",
-		"HUD should refresh stored logs from simulation state"
-	)
-	_expect(
-		(main_view.resource_amount_labels["plank"] as Label).text == "5",
-		"HUD should refresh stored planks from simulation state"
-	)
-	_expect(
-		(main_view.resource_amount_labels["stone"] as Label).text == "2",
-		"HUD should refresh stored stone from simulation state"
-	)
-	_expect(
-		(main_view.resource_pipeline_labels["log"] as Label).text == "+7",
-		"HUD should expose logs currently in the production flow"
-	)
-	_expect(
-		(main_view.resource_pipeline_labels["plank"] as Label).text == "+11",
-		"HUD should expose planks currently in the production flow"
-	)
-	_expect(
-		(main_view.resource_pipeline_labels["stone"] as Label).text == "+0",
-		"Stone should remain a zero-flow placeholder until mining exists"
-	)
-	var restored := SimulationWorldClass.new()
-	_expect(restored.from_data(main_view.world.to_data()), "Resource HUD state should survive save/load")
-	_expect(restored.stored_amount("stone") == 2, "Save/load should preserve placeholder stone stock")
-	_expect(
-		(main_view.world.catalog.building("warehouse").get("accepts", []) as Array).has("stone"),
-		"Warehouse definition should expose stone as a storable resource"
-	)
-	for resource_id_variant: Variant in main_view.world.catalog.resources.keys():
-		var resource_id: String = String(resource_id_variant)
-		_expect(
-			main_view.resource_amount_labels.has(resource_id),
-			"HUD should include catalog resource %s" % resource_id
-		)
+	var fixture: Dictionary = ResourceStockTests.all_resource_fixture()
+	main_view.world = fixture["world"]
+	main_view.terrain_renderer.bind_grid(main_view.world.grid)
+	var expected: Dictionary = fixture["expected"]
+	main_view._update_ui()
+	for resource: String in expected:
+		var stock: Dictionary = expected[resource]
+		var breakdown: String = "Warehouse: %d\nBuildings: %d\nCarried: %d" % [
+			int(stock["warehouse"]), int(stock["buildings"]), int(stock["carried"]),
+		]
+		_expect((main_view.resource_amount_labels[resource] as Label).text == str(stock["total"]),
+			"HUD must show the independent expected total for " + resource)
+		_expect((main_view.resource_breakdown_labels[resource] as Label).text == breakdown,
+			"HUD must show explicit warehouse, building and carrier amounts for " + resource)
+		var detail_item: Control = main_view.hud._resource_items[resource]
+		_expect(detail_item.tooltip_text.contains(breakdown),
+			"Detailed stock tooltip must explain each location for " + resource)
+		if main_view.hud._summary_amounts.has(resource):
+			var summary: Label = main_view.hud._summary_amounts[resource]
+			_expect(summary.text == str(stock["total"]), "Overview must use the same total for " + resource)
+			var summary_item: Control = main_view.hud._summary_items[resource]
+			_expect(summary_item.tooltip_text.contains(breakdown),
+				"Overview tooltip must explain the same breakdown for " + resource)
 	main_view.queue_free()
 
 
 func _test_building_inventory_ui() -> void:
 	var main_view: MainViewClass = MainScene.instantiate() as MainViewClass
+	main_view.demo_kind = "economy"
 	add_child(main_view)
 	var building_cells: Dictionary = {}
 	for building_variant: Variant in main_view.world.buildings.values():
@@ -871,6 +975,8 @@ func _test_building_inventory_ui() -> void:
 	var sawmill: Dictionary = main_view.world.buildings[
 		main_view.world.building_id_at(building_cells["sawmill"] as Vector2i)
 	] as Dictionary
+	for resource: String in warehouse["storage"]:
+		warehouse["storage"][resource] = 0
 	(warehouse["storage"] as Dictionary)["log"] = 3
 	(warehouse["storage"] as Dictionary)["plank"] = 5
 	(warehouse["storage"] as Dictionary)["stone"] = 2
@@ -919,7 +1025,12 @@ func _test_building_inventory_ui() -> void:
 
 	main_view.selected_cell = Vector2i(0, 0)
 	main_view._update_ui()
-	_expect(not main_view.building_inventory_label.visible, "Inventory should hide when no building is selected")
+	_expect(main_view.building_inventory_label.visible
+		and main_view.building_inventory_label.text == "Grass terrain\nHeight: 0.0 • slope: 0\nWalkable • Level, buildable ground",
+		"Selecting empty level grass should show its height, slope, walking and foundation rules")
+	main_view.selected_cell = Vector2i(-1, -1)
+	main_view._update_ui()
+	_expect(not main_view.building_inventory_label.visible, "Details should hide when there is no map selection")
 	main_view.queue_free()
 
 
@@ -951,13 +1062,16 @@ func _test_save_round_trip() -> void:
 	for _pass: int in range(source.grid.carrier_passes_to_form_trail() - 1):
 		source.grid.record_carrier_traffic(partial_wear_cell)
 	var expected_partial_wear: int = int(source.grid.traffic_wear[partial_wear_cell])
-	var test_path := "user://medieval_economy_rts_test_save.json"
+	var test_path: String = OS.get_temp_dir().path_join("medieval_economy_rts_round_trip_test_%d.json" % OS.get_process_id())
 	var saved: bool = SaveSystemClass.save_world(source, test_path)
 	var restored: SimulationWorldClass = SimulationWorldClass.new()
 	var loaded: bool = SaveSystemClass.load_world(restored, test_path)
-	DirAccess.remove_absolute(ProjectSettings.globalize_path(test_path))
+	if saved:
+		_expect(DirAccess.remove_absolute(test_path) == OK, "Test should clean up its own temporary save")
 	_expect(saved, "SaveSystem should write a JSON snapshot")
 	_expect(loaded, "Versioned simulation snapshot should load")
+	if not saved or not loaded:
+		return
 	_expect(restored.tick == source.tick, "Loaded tick must match saved tick")
 	_expect(restored.buildings.size() == source.buildings.size(), "Loaded buildings must match saved buildings")
 	_expect(restored.trees.size() == source.trees.size(), "Loaded tree state must match saved tree state")
@@ -1064,7 +1178,7 @@ func _test_blocked_chokepoint_selects_nearby_source() -> void:
 		if y != 3:
 			simulation.grid.block(Vector2i(3, y), -100 - y)
 	var far_tree_id: int = simulation.add_tree(Vector2i(5, 3), 3)
-	var nearby_tree_id: int = simulation.add_tree(Vector2i(1, 5), 3)
+	var nearby_tree_id: int = simulation.add_tree(Vector2i(1, 6), 3)
 	var active_worker_id: int = simulation.spawn_worker(Vector2i(2, 3), "lumberjack")
 	simulation.step_tick()
 	var active_worker: Dictionary = simulation.workers[active_worker_id] as Dictionary
@@ -1103,6 +1217,7 @@ func _test_carrier_uses_occupied_entrance_from_adjacent_cell() -> void:
 
 func _test_gardener_selects_and_plants_autonomously() -> void:
 	var simulation := SimulationWorldClass.new(Vector2i(9, 7))
+	simulation.place_building("forester_hut", Vector2i(1, 1))
 	var gardener_cell := Vector2i(4, 3)
 	var north_cell := Vector2i(4, 2)
 	var west_cell := Vector2i(3, 3)
@@ -1155,6 +1270,9 @@ func _test_gardener_waits_and_retries_without_a_site() -> void:
 		for x: int in range(simulation.grid.size.x):
 			simulation.grid.set_base_terrain(Vector2i(x, y), "water")
 	simulation.grid.set_base_terrain(gardener_cell, "grass")
+	simulation.grid.set_base_terrain(Vector2i(0, 0), "grass")
+	simulation.grid.set_base_terrain(Vector2i(0, 1), "grass")
+	simulation.place_building("forester_hut", Vector2i(0, 0))
 	var gardener_id: int = simulation.spawn_worker(gardener_cell, "gardener")
 	var gardener: Dictionary = simulation.workers[gardener_id] as Dictionary
 	simulation.step_tick()
@@ -1175,6 +1293,8 @@ func _test_gardener_waits_and_retries_without_a_site() -> void:
 
 func _test_multiple_gardeners_reserve_distinct_sites() -> void:
 	var simulation := SimulationWorldClass.new(Vector2i(5, 4))
+	simulation.place_building("forester_hut", Vector2i(0, 1))
+	simulation.place_building("forester_hut", Vector2i(4, 1))
 	var first_id: int = simulation.spawn_worker(Vector2i(2, 1), "gardener")
 	var second_id: int = simulation.spawn_worker(Vector2i(2, 2), "gardener")
 	simulation.step_tick()
@@ -1231,7 +1351,7 @@ func _test_gardener_growth_save_round_trip_and_v4_migration() -> void:
 	var gardener_id: int = source.spawn_worker(Vector2i(5, 5), "gardener")
 	(source.workers[gardener_id] as Dictionary)["planting_cooldown"] = 29
 	var snapshot: Dictionary = source.to_data()
-	_expect(int(snapshot["version"]) == 5, "Gardener growth snapshots should use save version 5")
+	_expect(int(snapshot["version"]) == SimulationWorldClass.SAVE_VERSION, "Gardener growth snapshots should use the current save schema")
 
 	var restored := SimulationWorldClass.new()
 	_expect(restored.from_data(snapshot), "Version 5 should restore gardeners and partial tree growth")
@@ -1259,6 +1379,7 @@ func _test_gardener_growth_save_round_trip_and_v4_migration() -> void:
 	_expect(String((migrated.workers[gardener_id] as Dictionary)["type"]) == "gardener", "Compatible saves should retain known gardener unit IDs")
 
 	var active_source := SimulationWorldClass.new(Vector2i(5, 5))
+	active_source.place_building("forester_hut", Vector2i(0, 0))
 	var active_gardener_id: int = active_source.spawn_worker(Vector2i(2, 2), "gardener")
 	active_source.step_tick()
 	_expect(not active_source.planting_reservations.is_empty(), "Fixture should save while autonomous planting is active")

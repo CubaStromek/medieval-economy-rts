@@ -91,19 +91,19 @@ static func _test_weighted_paths_and_ties(failures: Array[String]) -> void:
 	var start := Vector2i(0, 2)
 	var goal := Vector2i(6, 2)
 	var expected: Array[Vector2i] = [Vector2i(0, 1)]
-	for x: int in range(7):
+	for x: int in range(1, 7):
 		expected.append(Vector2i(x, 0))
 	expected.append_array([Vector2i(6, 1), goal])
 	var path: Array[Vector2i] = GridPathfinderClass.find_path(grid, start, goal)
-	_expect(path == expected and GridPathfinderClass.path_cost(grid, path) == 32,
-		"A* must select the cheaper 32-tick road detour over the 36-tick direct route", failures)
+	_expect(path == expected and GridPathfinderClass.path_cost(grid, path, start) == 31,
+		"A* must select the cheaper 31-tick diagonal-entry road detour over the 36-tick direct route", failures)
 	var nearest_path: Array[Vector2i] = GridPathfinderClass.find_path_to_nearest(
 		grid, start, func(cell: Vector2i) -> bool: return cell == goal)
-	_expect(GridPathfinderClass.path_cost(grid, nearest_path) == 32,
+	_expect(GridPathfinderClass.path_cost(grid, nearest_path, start) == 31,
 		"A* and nearest-goal search must agree on weighted optimal cost", failures)
 	var blocked_path: Array[Vector2i] = GridPathfinderClass.find_path(
 		grid, start, goal, {Vector2i(3, 0): true})
-	_expect(GridPathfinderClass.path_cost(grid, blocked_path) == 36
+	_expect(GridPathfinderClass.path_cost(grid, blocked_path, start) == 36
 		and not blocked_path.has(Vector2i(3, 0)),
 		"Blocking the road corridor must select the direct optimal route", failures)
 
@@ -125,7 +125,7 @@ static func _test_weighted_paths_and_ties(failures: Array[String]) -> void:
 		"An unreachable target must return no route", failures)
 
 	var nearest_ties := GridMapSimClass.new(Vector2i(3, 3))
-	var expected_nearest: Array[Vector2i] = [Vector2i(1, 0), Vector2i(0, 0)]
+	var expected_nearest: Array[Vector2i] = [Vector2i(0, 0)]
 	var tied_goals: Dictionary = {Vector2i(0, 0): true, Vector2i(2, 0): true}
 	_expect(GridPathfinderClass.find_path_to_nearest(nearest_ties, Vector2i(1, 1),
 		func(cell: Vector2i) -> bool: return tied_goals.has(cell)) == expected_nearest,

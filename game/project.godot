@@ -22,9 +22,10 @@ gdscript/warnings/unsafe_method_access=1
 [display]
 
 window/size/viewport_height=720
-window/size/window_width_override=1152
-window/size/window_height_override=720
+window/size/mode=2
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/size/mode.editor=0
 
 [rendering]
 

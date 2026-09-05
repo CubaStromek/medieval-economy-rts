@@ -2,7 +2,7 @@ extends RefCounted
 
 const MainViewClass = preload("res://scripts/view/main_view.gd")
 const MainScene = preload("res://scenes/main.tscn")
-const TEST_COUNT: int = 2 # Focused pause control; training via mouse and keyboard.
+const TEST_COUNT: int = 4 # Pause, training, new professions, field/build shortcuts.
 
 
 # Run through viewport dispatch, including GUI focus, rather than invoking the
@@ -14,6 +14,7 @@ static func run(host: Node) -> Array[String]:
 	viewport.world_2d = World2D.new()
 	host.add_child(viewport)
 	var main: MainViewClass = MainScene.instantiate() as MainViewClass
+	main.demo_kind = "economy"
 	viewport.add_child(main)
 	main.set_process(false)
 	await host.get_tree().process_frame
@@ -44,6 +45,9 @@ static func run(host: Node) -> Array[String]:
 
 	_click(viewport, school_tool)
 	_expect(main.build_mode == "school", "HUD build buttons should route commands to the view", failures)
+	# Keep this focused-input fixture independent of material construction and
+	# gold payment, both exercised by the full classic economy integration suite.
+	main.world.economy_enabled = false
 	var school_cell := Vector2i(1, 1)
 	var school_id: int = main.world.place_building("school", school_cell)
 	if school_id == 0:
@@ -75,6 +79,55 @@ static func run(host: Node) -> Array[String]:
 	_expect(main.simulation_speed == 0.0, "Enter activation must not change simulation speed", failures)
 	_click(viewport, train)
 	_expect(_queue_size(school) == 3, "Mouse training should still work after keyboard interaction", failures)
+
+	# A fresh queue isolates the new profession buttons from the capacity test.
+	school["training_queue"] = []
+	school["training_remaining"] = 0
+	main._update_ui()
+	for profession: String in ["Farmer", "Baker", "Stonemason"]:
+		# Queue text changes the inspector's wrapped height after each click.
+		# Wait for container layout before scrolling to the next real button.
+		await host.get_tree().process_frame
+		await host.get_tree().process_frame
+		var profession_button: Button = _button(main, "Train " + profession)
+		if profession_button == null:
+			failures.append("School must expose Train " + profession)
+			continue
+		var ancestor: Node = profession_button.get_parent()
+		while ancestor != null:
+			if ancestor is ScrollContainer:
+				(ancestor as ScrollContainer).ensure_control_visible(profession_button)
+			ancestor = ancestor.get_parent()
+		await host.get_tree().process_frame
+		await host.get_tree().process_frame
+		_click(viewport, profession_button)
+	_expect((school["training_queue"] as Array) == ["farmer", "baker", "stonemason"],
+		"Actual clicks must enqueue new professions in the chosen order; got %s" % str(school["training_queue"]), failures)
+	for entry: Array in [[KEY_6, "quarry"], [KEY_7, "farm"], [KEY_8, "mill"], [KEY_9, "bakery"], [KEY_0, "field"]]:
+		_key(viewport, entry[0], true)
+		_key(viewport, entry[0], false)
+		_expect(main.build_mode == String(entry[1]), "Keyboard must select the %s build tool" % String(entry[1]), failures)
+	var field_cell: Vector2i = Vector2i(-1, -1)
+	var field_screen: Vector2 = Vector2.ZERO
+	for y: int in range(main.world.grid.size.y):
+		for x: int in range(main.world.grid.size.x):
+			var cell := Vector2i(x, y)
+			if not main.world.can_place_field(cell):
+				continue
+			var screen: Vector2 = viewport.get_canvas_transform() * main.terrain_renderer.to_global(main.terrain_renderer.cell_center(cell))
+			if screen.x > 550 and screen.x < 1050 and screen.y > 190 and screen.y < 630:
+				field_cell = cell
+				field_screen = screen
+				break
+		if field_cell != Vector2i(-1, -1):
+			break
+	if field_cell == Vector2i(-1, -1):
+		failures.append("Viewport fixture must expose buildable ground outside the HUD")
+	else:
+		_click_position(viewport, field_screen)
+		_expect(main.world.field_id_at(field_cell) != 0,
+			"Shortcut 0 followed by a real map click must create a wheat field", failures)
+		_expect(main.selected_cell == field_cell, "Field placement must select the prepared cell", failures)
 	viewport.free()
 	return failures
 
@@ -89,6 +142,10 @@ static func _button(main: MainViewClass, text: String) -> Button:
 
 static func _click(viewport: Viewport, button: Button) -> void:
 	var position: Vector2 = button.get_global_rect().get_center()
+	_click_position(viewport, position)
+
+
+static func _click_position(viewport: Viewport, position: Vector2) -> void:
 	var motion := InputEventMouseMotion.new()
 	motion.position = position
 	motion.global_position = position

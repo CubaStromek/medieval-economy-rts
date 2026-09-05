@@ -84,21 +84,39 @@ static func _test_reroute_after_construction(
 	worker["carrying"] = resource
 	world.step_tick()
 	_expect(int(worker["destination_id"]) == old_destination, "Fixture must start delivery to the original destination", failures)
+	# The specialist's obstruction is cancellable so the test can reopen the
+	# route without destroying either completed workplace.
+	world.economy_enabled = profession == "lumberjack"
+	var crossing_site: int = 0
 	for y: int in range(4):
-		_expect(world.place_building("school", Vector2i(3, y)) != 0, "Route obstruction must use valid building commands", failures)
+		var site: int = world.place_building("school", Vector2i(3, y))
+		_expect(site != 0, "Route obstruction must use valid building commands", failures)
+		if y == 1:
+			crossing_site = site
+	world.economy_enabled = false
 	for iteration: int in range(80):
 		world.step_tick()
 	_expect(worker["carrying"] == resource, "Ware must survive a period with no reachable destination", failures)
 	var new_destination: int = world.place_building(destination_type, Vector2i(1, 3))
 	_expect(new_destination != 0, "Replacement destination must be legal", failures)
+	var expected_destination: int = new_destination
+	if profession == "lumberjack":
+		for iteration: int in range(200):
+			world.step_tick()
+		_expect(int(worker["home_id"]) == old_destination and worker["carrying"] == resource,
+			"A blocked lumberjack must keep its assigned hut and carried log even when another hut is reachable", failures)
+		_expect(int(world.buildings[new_destination]["outputs"][resource]) == 0,
+			"A lumberjack must not deliver its log to an unassigned hut", failures)
+		_expect(world.cancel_construction(crossing_site), "Cancelling the unfinished crossing must reopen the original route", failures)
+		expected_destination = old_destination
 	var delivered: bool = false
 	for iteration: int in range(200):
 		world.step_tick()
 		if String(worker["carrying"]).is_empty():
 			delivered = true
 			break
-	_expect(delivered, "%s must resume %s delivery after a reachable %s is built" % [profession, resource, destination_type], failures)
-	var building: Dictionary = world.buildings[new_destination]
+	_expect(delivered, "%s must resume %s delivery when its valid destination is reachable" % [profession, resource], failures)
+	var building: Dictionary = world.buildings[expected_destination]
 	var stock: int = 0
 	if destination_type == "warehouse":
 		stock = int(building["storage"][resource])
@@ -108,7 +126,8 @@ static func _test_reroute_after_construction(
 		stock = int(building["outputs"][resource])
 	_expect(stock == 1, "Rerouting must deliver the carried item exactly once", failures)
 	if profession == "lumberjack":
-		_expect(int(worker["home_id"]) == new_destination, "An inaccessible hut must be replaced with a reachable lumberjack home", failures)
+		_expect(int(worker["home_id"]) == old_destination and int(world.buildings[new_destination]["outputs"][resource]) == 0,
+			"Reopened access must let the lumberjack resume at its original hut without changing ownership", failures)
 
 
 static func _test_reroute_around_idle_worker(failures: Array[String]) -> void:

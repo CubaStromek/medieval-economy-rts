@@ -2,11 +2,12 @@
 
 ## Design goals
 
-Medieval Economy RTS targets Godot 4.6 with typed GDScript. Authoritative game
+The current Medieval Economy RTS project uses Godot 4.7 and typed GDScript
+(verified on 4.7.2; the earlier vertical slice targeted 4.6). Authoritative game
 state must be testable without graphics, advance on a fixed tick, use integer
 grid coordinates and remain suitable for deterministic replays/multiplayer.
-The first vertical slice is deliberately small but uses the same boundaries
-intended for the full game.
+The current 28-building economy extends the first vertical slice while keeping
+its model/view boundaries.
 
 ## Runtime layers
 
@@ -25,13 +26,20 @@ Input/UI ──commands──> SimulationWorld ──read-only snapshots──> 
   operations to the model and reads model state for display.
 - **UI** (`game/scripts/view/game_hud.gd`) is a separate `CanvasLayer` created by
   the view. It reads model queries and emits build, speed and training requests;
-  only the view applies those commands. Its fixed top-right resource
-  HUD is generated from catalog definitions and shows stored and in-pipeline
-  amounts; the left panel shows build mode, tick, task count and recent events.
+  only the view applies those commands. `EconomyActions` owns the selected
+  School/workshop/recruitment/market controls and emits requests without editing
+  inventories. The stockpile groups all catalog wares into three categories;
+  the left panel separates building categories, a scrollable inspector and
+  always-visible School/forester help.
 - **Data** (`game/data/*.json`) defines resources, buildings, recipes, unit
-  tuning and surface movement costs in one place.
+  tuning, soldiers/equipment, food/trade rules and surface movement costs in
+  one place.
+- **Economic services** (`classic_economy.gd`) handle recipes/orders, material
+  demand, construction, payment, food, recruitment and marketplace services.
+- **Finite extraction** (`resource_deposits.gd`) handles deposit placement,
+  reachable work cells, source claims, depletion and specialist home delivery.
 
-There is no gameplay Autoload in milestone one. A scene owns its
+There is no gameplay Autoload. A scene owns its
 `SimulationWorld`, making multiple worlds and tests possible without hidden
 global state.
 
@@ -42,9 +50,9 @@ bounded catch-up loop. Tests call the same method directly. Visual workers lerp
 between `previous_position` and `position`; interpolation never changes the
 integer logical cell.
 
-The tick rate is a presentation/configuration concern. Recipe and movement
-durations are integer ticks. Future speed controls should change how quickly
-ticks are requested, never scale individual economic deltas by frame time.
+Recipe, growth, construction and movement durations are integer ticks. The
+0.5×/1×/2× and pause controls change how quickly fixed 10 Hz simulation steps
+are requested; individual economic deltas are never scaled by frame time.
 
 ## Terrain grid, trails, roads and placement
 
@@ -55,10 +63,11 @@ is a sparse overlay (`trail`, `stone_road`) and building occupancy is held in
 are neither. A surface overlay can change movement cost but can never make an
 impassable base cell walkable.
 
-The grid exposes buildability, walkability, deterministic cardinal neighbours,
+The grid exposes buildability, walkability, deterministic eight-way movement neighbours,
 weighted path cost and authoritative movement duration. Both A* and the unit
 state machine read the same data-driven values: ordinary grass/dirt `6`, trail
-`4`, stone road `2` ticks/cost per tile. `surface_at()` is retained only as a
+`4`, stone road `2` ticks/cost per cardinal step. Diagonal steps use
+`ceil(sqrt(2) * cardinal_ticks)`, currently `9/6/3`. `surface_at()` is retained only as a
 legacy compatibility wrapper; new systems read `base_terrain_at()` and
 `overlay_at()` separately.
 
@@ -66,28 +75,44 @@ legacy compatibility wrapper; new systems read `base_terrain_at()` and
 worlds. `DefinitionCatalog` caches the parsed defaults and returns independent
 deep copies; partial tuning overrides preserve omitted terrain properties.
 
-Only completed carrier steps on roadable grass or base dirt add traffic wear.
-At four passes, the cell gains a dirt-trail overlay; the threshold-crossing step
-still uses the previous surface speed. Stone construction replaces trail/wear
-state and is always the fastest tier. A building resolves an adjacent entrance
+Only normal carrier steps on roadable grass or base dirt add traffic wear;
+idle yielding is excluded. Cells and canonical undirected links retain up to
+36 passes, with absolute-tick decay. Weak wear loses one pass every 200 ticks;
+established wear loses one every 400 ticks and remains established at 16 or
+more. Decay checks run every 20 ticks over sparse touched state, not the map.
+The threshold-crossing step still uses the previous surface speed. Dirt speed
+requires the actually established entry link; stone construction remains the
+fastest tier. A building resolves an adjacent entrance
 before its one-cell footprint is blocked, and placement clears any surface
 state underneath it.
 
+`trail_last_decay` preserves fractional decay intervals, and `trail_links`
+records direction evidence instead of connecting every neighboring dirt tile.
+`add_dirt_trail()` is an explicit map-authoring helper that may create authored
+joins; actual traffic never uses it. Surface cleanup removes incident links and
+links whose diagonal flanks become impassable. See [`natural-trails.md`](natural-trails.md).
+
 `TerrainRenderer` is a read-only `Node2D` client of this model. A shared
-`MapProjection` maps the flat grid to 48 × 48 screen cells and keeps future
-corner-height offsets behind one API. The current renderer uses cached 1 px
-color textures, deterministic coordinate variants and priority-based automatic
-edge/corner transitions. Grid revisions trigger redraws; the invalidation API
-can later back 16 × 16 cached chunks without changing callers.
+`MapProjection` maps the grid to 40 × 40 ground cells plus shared corner-height
+offsets. Deterministic variants, textures and priority-based edge/corner
+transitions conform to the same triangles as road surfaces and worker feet.
+Base terrain and road/wear overlays have separate cell caches and row meshes.
+Contiguous equal-texture commands are batched without texture sorting. Retained
+even-Z terrain rows interleave with MainView's odd-Z dynamic object rows; camera
+motion and object animation do not resubmit terrain. Per-cell revision stamps
+refresh local dependency neighbourhoods while definition/rebind/legacy changes
+retain a conservative complete-rebuild fallback. See
+[`render-performance.md`](render-performance.md) for profiling and regression coverage.
 
 Next terrain increments:
 
-- painted source textures and mask atlases after scale/projection approval;
-- shared corner heights, slopes, cliffs and deposits;
-- multi-cell rotated footprints and construction states;
+- further painted terrain and mask atlases; roads and trees already have
+  original painted artwork, and shared heights/slopes are implemented;
+- multi-cell rotated footprints; material-delivery construction states are
+  already implemented for one-cell buildings;
 - connected-region cache for quick reachability rejection;
 - stone-road construction tasks instead of immediate completion;
-- trail decay/terrain-dependent wear thresholds if playtesting needs them;
+- terrain-dependent wear tuning if later playtesting needs it;
 - terrain revision integration with cached path invalidation.
 
 ## Entities and definitions
@@ -100,10 +125,18 @@ typed value objects, still independent of scene nodes.
 
 Definitions are loaded by `DefinitionCatalog`:
 
-- `resources.json`: stable resource ID, display name, placeholder color and HUD order;
-- `buildings.json`: display data, footprint, accepted resources, recipe or trainable unit IDs;
-- `recipes.json`: input/output quantities and duration in ticks;
-- `units.json`: profession, training/harvest/planting/carrying parameters and display data.
+- `resources.json`: 28 ware IDs, names, category/color/HUD order, market prices
+  and food restoration where applicable;
+- `buildings.json`: 29 buildings with construction costs/times, category,
+  inventory limits, professions, extraction rules, recipes/orders, training and
+  recruitment IDs;
+- `recipes.json`: 19 input/output batches and project-balanced integer durations;
+- `units.json`: 15 civilian professions, training/payment, harvesting, planting,
+  carrying and display data;
+- `soldiers.json`: 14 Barracks/Town Hall types, equipment/payment and recruit
+  requirements; its training-duration metadata is not an active military timer;
+- `economy.json`: food condition thresholds, trade-off/special rates, field
+  growth, immediate road/vine costs and balance provenance;
 - `movement.json`: base-terrain rules/colors, overlay move ticks (also used as
   A* cost) and dirt-trail threshold.
 
@@ -118,26 +151,62 @@ kind, source ID/key, target and `reserved_by`. Creation is idempotent per source
 key. Reservation and validation happen in one method, so two workers cannot
 observe an unclaimed task and both take it.
 
-Workers have explicit professions and execute these milestone state machines:
+Workers have explicit professions. Representative state machines include:
 
 ```text
 lumberjack: idle → claim tree → harvest → carry log → own lumberjack hut
-carrier:    idle → claim hut log → carry log → sawmill (warehouse fallback)
-carrier:    idle → claim plank → carry plank → warehouse
-gardener:   idle → find nearest valid site → walk → plant sapling → cooldown
+carrier:    claim output/warehouse ware → carry → consumer/site/service or warehouse
+gardener:   own Forester Hut → find valid site in radius → walk → plant → cooldown
+farmer:     walk to wheat/vine plot → sow/harvest → carry to Farm/Vineyard
+extractor:  claim finite deposit → reachable work cell → harvest → carry home
+operator:   claim staffed building → walk → work through its selected recipe
+builder:    claim supplied construction site → walk → complete construction
+recruit:    walk to Barracks or assigned Watchtower → wait for equipment/guard
+hungry unit: find supplied Inn → walk → consume food → resume work
 ```
 
-Gardeners need no player target command. Their weighted nearest-goal search
+Gardeners need a completed, exclusive Forester Hut but no player target command.
+Their weighted nearest-goal search is limited to Manhattan distance 8 from
+that hut (catalog `planting_radius`). Ownership/range is revalidated at arrival
+and completion, and homeless Gardeners wait. The search
 considers authored terrain, overlays, buildings and entrances, worker occupancy
 and exclusive planting-site reservations. Planted trees advance through
 sapling and young phases on simulation ticks. Only the mature phase produces a
 normal `harvest_tree` task, so the existing lumberjack pipeline needs no
 special planted-tree branch.
 
-Production buildings consume recipe inputs, count down integer ticks and expose
-outputs. The hut's log output and sawmill's plank output each create a reserved
-transport offer. A carrier's actual steps reinforce its route; lumberjack
-steps do not.
+Production buildings consume inputs once, count down integer ticks and expose
+outputs. Generic transport tasks cover all 28 wares. Four equipment workshops
+require explicit FIFO recipe orders; `recipe_id`, `production_queue` and
+`order_active` preserve the current batch and order through saves. Production
+requires appropriate staff and bounded output room. A carrier's completed
+steps reinforce its route; specialist steps do not.
+
+As of 2026-09-05, `Workplaces` owns the assignment policy. `worker.home_id` is
+the single persistent association; the reverse `workplace_worker(id)` lookup
+is derived, avoiding a second stale owner field after death/load. A building's
+`worker` definition identifies its one compatible profession. New specialists
+claim the nearest completed, reachable, unoccupied building by permanent
+weighted path cost and building-ID tie-break. Recruits retain their existing
+barracks-order priority and use exclusive ownership only for tower posts.
+
+Once claimed, a workplace is retained during hunger trips, path blockage,
+input starvation and output backpressure. Empty slots do not automatically
+create citizens. `owns_workplace` gates task selection, arrival, extraction,
+field completion, operation and producer delivery. No completed batch or
+blocked delivery searches for a replacement home. A waiting unemployed
+specialist may claim a new vacancy on its next idle tick. Explicit authoring
+requests for a wrong/occupied/unfinished home fail without allocating a unit.
+The historical sandbox-only automatic Sawmill remains an authoring exception;
+playable economy production requires its assigned specialist.
+
+Save v10 and later strictly validate unique compatible completed homes and carried
+output compatibility. It instantiates workers without auto-claiming, so a
+home-less saved citizen cannot steal a later saved owner's building. Versions
+1–9 retain the first valid explicit owner by worker ID, detach surplus or
+obsolete claims without removing citizens/cargo, then let unemployed workers
+seek vacancies through ordinary simulation ticks. Existing construction cost
+revisions remain independent and are not migrated twice.
 
 Schools are the first entity-producing building type. Their definition lists
 trainable unit IDs and queue capacity, while each unit definition owns its
@@ -145,21 +214,46 @@ training duration. Explicit UI commands append to a FIFO queue. Training and
 completion advance in fixed ticks; a completed unit tries the authored entrance
 and then the other cardinal sides in canonical order. If every exit is blocked,
 the completed queue head waits at zero ticks without consuming an entity ID.
-The first slice has no training cost because inventory withdrawal does not yet
-provide the atomic reservation required for deterministic spending.
+In the expanded economy a carrier-delivered Gold payment is consumed exactly
+once for each queue head. `training_paid` prevents a reload or blocked exit
+from charging twice. Older compatibility worlds retain the earlier free
+training rules.
 
-Later, a logistics matcher should score compatible offers and demands by route
-cost, priority, capacity and age. Reservation tokens should cover source
-quantity, destination capacity and worker assignment as one transaction.
+Construction sites use the same carrier matching as processing inputs, but
+store delivered wares separately until a Builder can work. Advanced player
+placement requires materials; authored demo buildings start complete. Roads
+and vine fields intentionally bypass carrier/build tasks: their one-Stone or
+one-Plank cost is paid from completed warehouses immediately and atomically.
+
+`ResourceDeposits` owns finite Stone, Coal, Iron Ore, Gold Ore and Fish sources.
+Workers reserve each source through the shared task board and work only at a
+reachable cell or its bank/edge. Successful completion consumes one source
+unit together with the exclusive task. Output capacity includes other workers'
+reserved extraction and carried yield, preventing simultaneous overfill.
+
+`ClassicEconomy` also handles condition loss and Inn visits, explicit market
+exchanges, Barracks equipment recruitment, Town Hall payments and Watchtower
+staff assignment. School training and construction have active timers. Ready
+trades/recruitment have no extra timer: they resolve at a service update when
+payment/equipment, Recruit and exit conditions permit. Soldiers and tower
+ammunition currently have no combat system.
+
+A later logistics matcher can add configurable priorities and demand age to
+the current route-cost/supply balancing. Reservation tokens can cover source
+quantity, destination capacity and worker assignment as an explicit transaction.
 
 ## Pathfinding and tile reservations
 
-`GridPathfinder` is deterministic weighted A* on four neighbours. It minimizes
+`GridPathfinder` is deterministic weighted A* on eight neighbours. It minimizes
 travel ticks across grass/dirt/stone and uses coordinate tie-breaking. Its
-heuristic is derived from the minimum configured surface cost, so a longer
+octile heuristic is derived from the minimum configured surface cost, so a longer
 stone route can correctly beat a shorter grass route. A returned path excludes
 the start and includes the destination. Task selection compares full weighted
-route cost rather than tile count.
+route cost rather than tile count. Callers supply the starting cell to
+`path_cost(grid, path, start)` so the first diagonal has its correct cost.
+`can_traverse()` rejects diagonal corner cutting through blocked/steep flanks;
+`can_step()` additionally checks temporary occupancy on both flanks. Cardinal
+neighbours remain available for building exits and resource interactions.
 
 The same module also exposes a deterministic Dijkstra nearest-goal search for
 autonomous gardener placement. It orders equal-cost candidates by grid
@@ -179,6 +273,18 @@ task and selects the nearest currently reachable source. Future congestion work
 can add wait-age priority and time-expanded reservations for narrow routes while
 retaining the one-cell/one-owner invariant.
 
+Idle, empty-handed, task-free units can yield one normal step into a safe
+off-route cell. Busy workers, unfinished movements and posted tower guards
+are protected. Pocket selection avoids building entrances, trees, fields,
+deposits and planting claims, and prefers staying off roads. It preserves
+`home_id` and holds the vacated tile until the interpolated sidestep finishes.
+A movement-per-tick guard and brief rest prevent double moves and jitter,
+while a lower-ID worker whose idle update already ran can still yield.
+If ordinary routing fails, a second search may pass through idle blockers,
+but only after checking they have real off-route pockets. A blocker with no
+pocket stays an obstacle, allowing alternative destinations to be selected.
+Yield paths, clearance reservations and rest timers are transient on load.
+
 The tick scheduler tracks workers already updated in the current tick. A swap
 consumes both participants' updates, and cannot involve a worker whose cooldown
 was already decremented that tick. Movement duration is therefore independent
@@ -189,15 +295,16 @@ claiming the same future tree cell. It is released on completion or aborted
 movement; if no site is reachable, the gardener remains idle and retries after
 a data-driven fixed-tick delay.
 
-Building logistics may complete from a cardinally adjacent cell when the
+Building logistics may complete from a legally adjacent cell (including a
+diagonal with clear flanks) when the
 building entrance itself is occupied. Idle workers carrying ware always resume
 delivery before claiming new work, and placement protects existing entrance
 cells from being covered by another building.
 
 If a delivery route becomes inaccessible, the worker retains its cargo and
 selects a reachable compatible destination using current occupancy. A
-lumberjack may change to another reachable hut; carriers prefer a reachable
-sawmill for logs and a warehouse for planks. Without a destination they wait
+specialist retains its original workplace; carriers prefer a reachable
+consumer and then a warehouse. Without a destination they wait
 for a bounded retry interval, allowing later construction to restore delivery.
 
 ## UI, camera and controls
@@ -209,44 +316,166 @@ wheel zoom. Left-click uses the shared projection to select a tile and apply
 the selected road/building tool. Successful load/reset operations rebind the
 renderer because `SimulationWorld` replaces its grid object.
 
-`GameHud` builds a fixed top-right `ResourceStatusBar`. Each catalog
-resource receives a procedural icon plus a stored amount and a smaller `+N`
-pipeline amount. `ResourceIcon` draws log, plank and stone placeholders without
-external textures and provides a generic fallback for future resource IDs.
-Stone is currently a warehouse-compatible zero/default resource; mining and
-stone logistics remain future simulation work.
+`GameHud` builds a 340-pixel left panel with mutually exclusive Build/Details
+views. Visible Infrastructure/Food/Mining/Military buttons organize construction;
+the selected tool and speed have persistent highlights. Explicit selection/tool
+commands also reveal the appropriate view when their values have not changed.
+Long lists scroll independently, and selected tools scroll into view. `EconomyActions`
+shows all 15 School professions and gold cost, workshop recipe orders,
+Barracks/Town Hall equipment requirements and Marketplace quotes. Its signals
+route through `MainView` to `queue_unit_training`, `queue_production`,
+`queue_recruitment` and `queue_trade`; UI never deducts wares itself. Gardener
+is explicitly described as the autonomous forester.
+
+Unfinished buildings expose **Cancel construction** in Details, separately
+from **Stop placing / Esc**. The HUD routes cancellation through `MainView` to
+`SimulationWorld.cancel_construction(id)`. It plans a full material refund to
+reachable completed warehouses before mutation, respecting per-ware capacity
+and incoming cargo. Failure leaves the site/workers untouched and reports why.
+Success removes source tasks and grid blockage, releases builders, clears old
+building references and reroutes loaded carriers without discarding cargo.
+Completed/missing IDs are rejected; the view clears selection and placement
+after success. Cancellation preserves the existing save format.
+
+The overview bar keeps Logs/Planks/Stone/Bread/Gold visible. All stocks opens
+`ResourceStatusBar` with Materials/Food/Equipment tabs and all 28 resources,
+total-stock labels, a warehouse / buildings / carried breakdown and procedural
+`ResourceIcon` drawings. Both views read `SimulationWorld.resource_stock()`;
+overview tooltips expose the same breakdown. The total includes completed
+warehouse storage, building inputs/outputs and each worker's current ware once.
+Materials committed to construction or consumed when a recipe starts are
+excluded. `stored_amount()` retains its warehouse-only meaning for payments,
+and `pipeline_amount()` retains its existing production/transport semantics.
+The popup closes through its button or Escape; it excludes the Controls popup.
+The selected
+inspector shows live inventory, delivered construction materials, recipes,
+input capacity, staff and simulation status. Fields/deposits display growth
+or remaining stock. Long inventories and recruitment costs use separate lines.
+The bottom bar contains time, citizens/hunger, speed and Controls. The event
+strip displays the latest message; its tooltip retains the recent history.
+
+The renderer draws wheat/vine growth, finite-deposit marks, construction
+scaffolds/progress, building motifs and profession marks. Field age and factory
+animation read simulation state. Camera fitting puts the initial 34 × 24 map
+beside the left panel, with ordinary pan/zoom still available.
 
 `MainView._input()` handles Space before GUI dispatch, consuming press, repeat
 and release events. Only a distinct press toggles pause. Focused buttons remain
 keyboard-accessible with Enter without also acting on the pause shortcut.
 
 UI must remain a client of simulation queries/commands. It must not directly
-edit inventory dictionaries in later milestones. Signals or immutable
+edit authoritative inventory dictionaries. Signals or immutable
 presentation snapshots can replace the current polling when the interface
 grows.
+
+## Calendar clock — 2026-09-05
+
+`DayCycle.at_tick()` exposes day, hour, minute and phase through
+`SimulationWorld.calendar_time()`. Its fixed policy maps **6,000 simulation
+ticks to one 24-hour cycle**: 10 minutes at 1×, 20 at 0.5×, 5 at 2×. New worlds
+start at Day 1, 05:00; calendar days advance at midnight. The phase boundaries
+are 05:00 Dawn, 06:00 Day, 18:00 Dusk and 20:00 Night.
+
+The simulation owns the shared 0.1-second tick duration used by MainView.
+Pausing or accelerating changes only tick scheduling. The clock reduces the
+tick modulo the cycle before multiplication and uses integer division, keeping
+the calendar exact even for the largest accepted JSON save tick. It has no
+separate mutable state: existing saves already preserve everything through
+`world.tick`. Future configurable calendars must preserve this mapping for old
+saves instead of silently reinterpreting their elapsed ticks.
+
+The HUD shows calendar time and phase; its tooltip retains elapsed simulation
+time and explains speed/pause, the ten-minute cycle and the work/rest hours.
+Clock queries remain read-only; the simulation applies the schedule below.
+
+## Civilian daily schedule — 2026-09-05
+
+`DailySchedule` gives all civilian professions a 05:00–20:00 work window.
+Recruits, Watchtower guards and every soldier definition remain active at night.
+`DayCycle.is_night()` uses integer tick boundaries, including across midnight.
+The schedule applies to both existing saves and new games.
+
+Before military supply replanning, construction and production, the schedule
+releases civilian work tasks and unpicked ration reservations. Carried goods
+stay on the worker. Paid recipe timers and construction progress pause;
+uncommitted gathering/planting work is released and can restart next morning.
+School training and service queues continue, as do passive tree/field growth
+and trail decay. No civilian production inputs are consumed overnight.
+
+The saved `sleep_home_id` differs from employment (`home_id`) and actual
+location (`inside_building_id`). An employed specialist uses its own completed
+workplace. Carriers, builders and unemployed specialists use a reachable
+completed Warehouse with no capacity limit. A new workplace claim updates a
+previous communal sleeping assignment. Missing or blocked accommodation
+causes bounded retries while the worker remains off duty.
+
+The transient `go_sleep` action preserves an already committed movement step,
+uses the existing path/yield rules and requires real doorway arrival before
+`IndoorWorkers.enter()`. Adjacent delivery access cannot count as entering a
+home. Sleeping workers release outdoor reservations and share the interior.
+At 05:00 they resume normal job planning and physically leave when needed.
+
+Personal Inn visits may interrupt rest, including with deferred cargo. They
+consume real Inn stock and finish through the shared meal system even across
+dawn. Travel to an Inn or sleeping place does not reserve destination input
+capacity for that cargo. Military requests remain pending while carriers sleep.
+HUD schedule/count queries never mutate the world. Lighting and residential
+capacity are not implemented by this schedule.
 
 ## Saving
 
 `SaveSystem` handles JSON file I/O in `user://`; `WorldSnapshot` owns snapshot
 encoding, typed field validation and version migration. `SimulationWorld`
 retains the public `to_data()`/`from_data()` API and commits a staged world only
-after successful loading. Version 5 includes
-map size, tick, entity ID counter, base terrain, stone roads, traffic wear/dirt
-trails, buildings/inventories, school training queues and progress, exact tree
-growth ages, worker professions, gardener cooldowns and lumberjack homes.
-Transient tasks, paths and active autonomous planting targets are intentionally
-rebuilt after load. Versions 1–4 remain loadable: legacy saves
-without base terrain load as grass and missing training state is normalized to
-an idle queue; version 1 roads become stone roads, the first worker becomes a
-lumberjack, remaining workers become carriers and missing building output keys
-are normalized. Trees from versions 1–4 migrate as mature so existing saves do
-not unexpectedly hide previously harvestable work.
+after successful loading. **Version 15** contains the terrain/grid, inventories,
+worker professions/homes/cargo/cooldowns, tree ages and field ages from earlier
+formats, plus field kind, finite deposits, `economy_enabled`, worker condition,
+construction remaining/delivered material, school payment, selected recipe,
+production queue/active order and service queues. Tower guard assignments use
+the worker home reference. Active processing retains already-consumed inputs.
+Version 8 adds shared corner heights, version 9 adds per-site construction cost
+revisions, version 10 validates exclusive profession-compatible workplaces,
+and version 11 stores retained trail wear, absolute decay timestamps and actual
+directional links. Loading restores the periodic decay scan phase without
+aging or adding traffic, preventing a reload from changing regrowth timing.
+Version 12 adds `inside_building_id` and `indoor_wait_ticks` (0–6). A visit is
+separate from `home_id`: an Inn visitor still owns their normal workplace.
+Indoor positions refer to the exact entrance of an existing completed building
+but own no outdoor tile reservation. Multiple indoor people and a single
+outdoor door occupant can coexist. Restoring indoors uses the same worker
+initializer without reserving that outdoor tile. Outdoor workers must have
+zero indoor wait. Job resets preserve visits; exit first acquires a free tile.
+Transient tasks, paths and planting targets are rebuilt after loading.
+
+Version 13 adds meals and reserved military deliveries; version 14 adds the
+partially consumed `meal_course`. Version 15 adds `sleep_home_id`, validates
+completed compatible accommodation, and permits deferred civilian cargo during
+a meal. Loading at night preserves cargo without executing an immediate
+delivery. Sleep is inferred from the saved clock and indoor home; return routes
+are rebuilt on the next tick. Pre-v15 saves start with no sleeping assignment
+and choose one through the same schedule without resetting the clock.
+
+Versions 1–14 remain loadable through explicit defaults and migrations. Pre-v12
+workers restore outdoors instead of inferring a visit from a nearby house. Before
+v6 there are no fields; pre-v7 fields become wheat and deposits are empty.
+Historical buildings are complete and advanced costs/condition remain disabled
+rather than inventing debts or deposits. Legacy worlds still use current
+catalog recipes/professions. Earlier terrain, road, profession and mature-tree
+migrations remain in place. Pre-v8 terrain becomes flat; pre-v9 sites retain
+historical prices. Pre-v10 workplace conflicts keep the first valid owner in
+entity-ID order and release other claims without deleting workers or cargo.
+Pre-v11 trails retain their mature state and start aging from the saved tick;
+old partial wear stays partial. Missing historical direction data is reconstructed
+only between existing mature surfaces, then naturally ages away if unused.
+Current fields and arrays are validated rather than silently accepting missing
+required state.
 
 Loading is transactional: a snapshot is fully parsed and validated in a staged
 world before any live simulation references are replaced. A rejected save
 therefore cannot leave the model or terrain renderer attached to partial state.
 Collections, coordinate lengths, finite integral numbers, resource IDs,
-inventories, processing/training timers, entity references and occupancy are
+inventories, processing/training/construction timers, paid flags, queue kinds,
+field/deposit terrain and amounts, condition, entity references and occupancy are
 validated before acceptance. Integral JSON floats are supported. New and loaded
 workers share `spawn_worker()` initialization, avoiding separate runtime schemas.
 
@@ -261,10 +490,13 @@ Before saves become a compatibility promise, add:
 
 ## Testing
 
+The current runner registers **288 cases** for Godot 4.7.2 (2026-09-05).
+All 288 pass in native project-scene verification.
 `game/tests/test_runner.tscn` runs inside the actual Godot project. The root
 `tests/run-headless.sh` invokes it. The runner includes the original 34 cases
 and dedicated movement, snapshot, grid configuration, viewport input and
-long-running invariant suites, for 50 cases. Current coverage proves:
+long-running invariant suites, plus the field/production, finite-deposit and
+classic-economy suites. Current coverage proves:
 
 - a work source cannot be reserved by two workers;
 - lumberjack and carrier accept disjoint work and logs pass through the hut;
@@ -276,8 +508,22 @@ long-running invariant suites, for 50 cases. Current coverage proves:
 - school training is validated, FIFO, tick-exact and safe when every exit is blocked;
 - gardeners choose weighted nearest sites deterministically, reserve them exclusively and retry safely;
 - sapling/young/mature boundaries are tick-exact and only mature trees are harvested;
-- the catalog-driven resource HUD refreshes stored and in-pipeline amounts and preserves stone stock through saves;
-- version 5 round-trips growth/cooldown state and historical versions 1–4 migrate safely;
+- the catalog-driven resource HUD refreshes total stock and its warehouse/building/carried breakdown for every ware, with warehouse-only payment and transfer-conservation checks;
+- version 12 round-trips indoor visits, directional trail wear/aging, exclusive workplaces, corner heights,
+  tree/field/deposit state, paid training, per-site construction prices,
+  processing/orders, condition, cargo and cooldowns; versions 1–10 migrate
+  without repricing existing sites or duplicating workplace ownership;
+- farmers exclusively claim prepared or ripe fields within eight tiles of their
+  farm, and carriers move grain through the mill and bakery into stored bread;
+- extractors require reachable matching finite deposits and correct professions;
+  repeated/stale completion cannot duplicate yield, exhaustion stops work and
+  source/home capacity remains reserved;
+- all processing ratios, alternative equipment orders and all recruitment
+  equipment requirements are checked against independent expectations;
+- carriers supply building sites before Builder work, school payment survives
+  saves, hunger/Inn/starvation works and market quotes drive physical trades;
+- a Recruit occupies a supplied Watchtower, retains its post through meals and
+  saves and is not consumed by unrelated Barracks orders;
 - swaps preserve full movement duration in either ID order, including one-tick steps;
 - blocked deliveries retain cargo and recover to a newly reachable destination;
 - malformed save shapes, numbers and references are rejected without live changes;
@@ -307,14 +553,40 @@ golden replay hash.
 Floats are acceptable for camera and interpolation, but simulation decisions
 should use integers or explicitly specified fixed-point arithmetic.
 
-## Planned systems beyond milestone one
+## Remaining roadmap
 
-- worker needs, food and housing;
-- construction materials and builder jobs;
+The earlier roadmap's farms/mines, food condition, paid training, economic
+equipment graph and material/Builder construction are now implemented. Remaining
+work includes:
+
+- housing and richer worker/settlement needs;
+- multi-cell buildings and physical road/vine material-delivery jobs;
+- detailed per-animal feeding/growth instead of aggregate recipes;
 - richer warehouse policies and distribution priorities;
-- farms, mines, training and full production graph;
+- unlock progression and siege production;
 - combat/projectiles/formations;
 - fog of war, minimap and AI observation;
 - scenario scripting and native map editor;
 - validated external-data importer that never writes proprietary assets into
   the repository.
+
+## Historical scope and balance boundaries
+
+The first wood/terrain milestone used versions 1–5. The first four-building
+field expansion on 2026-09-05 used v6; it had an unlimited quarry cycle, no
+food/construction/gold consumption and a one-plank sawmill yield. Those are
+historical behaviors. The current v7 catalog has finite extraction, economic
+services and a two-plank sawmill yield. The full dated handover preserves the
+original roadmap.
+
+Production/extraction/growth/construction durations remain this project's
+balance values. As of 2026-09-05, construction material costs use the
+[documented KaM table](construction-costs.md). Each site records a price
+revision: revision 1 preserves the old prototype table, revision 2 uses the
+source-backed catalog. Save v9 validates deliveries against that site's price;
+loading v1–8 keeps historical prices and never refunds or discards materials.
+Swine/horse breeding aggregates four grain
+per animal, vine processing is folded into harvest, roads/vines pay instantly
+from warehouses, and economic recruitment has no additional timer. Combat and
+siege engines remain unimplemented. See [economy-expansion.md](economy-expansion.md)
+for the implemented graph and reference provenance.

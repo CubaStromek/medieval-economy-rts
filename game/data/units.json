@@ -4,13 +4,23 @@
     "training_ticks": 80,
     "harvest_ticks": 30,
     "carry_capacity": 1,
-    "color": "d7a13f"
+    "color": "d7a13f",
+    "home_buildings": [
+      "lumber_hut"
+    ],
+    "training_cost": {
+      "gold": 1
+    }
   },
   "carrier": {
     "display_name": "Carrier",
     "training_ticks": 50,
     "carry_capacity": 1,
-    "color": "6fa8dc"
+    "color": "6fa8dc",
+    "home_buildings": [],
+    "training_cost": {
+      "gold": 1
+    }
   },
   "gardener": {
     "display_name": "Gardener",
@@ -18,6 +28,166 @@
     "plant_ticks": 20,
     "plant_cooldown_ticks": 80,
     "search_retry_ticks": 20,
-    "color": "78b85a"
+    "color": "78b85a",
+    "home_buildings": [
+      "forester_hut"
+    ],
+    "training_cost": {
+      "gold": 1
+    },
+    "description": "Needs a completed, unoccupied Forester Hut. Plants trees only near that hut to replenish the woodland."
+  },
+  "farmer": {
+    "display_name": "Farmer",
+    "training_ticks": 80,
+    "color": "e1bf55",
+    "sow_ticks": 20,
+    "harvest_ticks": 30,
+    "carry_capacity": 1,
+    "home_buildings": [
+      "farm",
+      "vineyard"
+    ],
+    "training_cost": {
+      "gold": 1
+    },
+    "vine_harvest_ticks": 30
+  },
+  "baker": {
+    "display_name": "Baker",
+    "training_ticks": 80,
+    "color": "eee1b5",
+    "home_buildings": [
+      "mill",
+      "bakery"
+    ],
+    "training_cost": {
+      "gold": 1
+    }
+  },
+  "stonemason": {
+    "display_name": "Stonemason",
+    "training_ticks": 80,
+    "color": "a7afb8",
+    "home_buildings": [
+      "quarry"
+    ],
+    "training_cost": {
+      "gold": 1
+    },
+    "extract_ticks": 100,
+    "carry_capacity": 1
+  },
+  "miner": {
+    "display_name": "Miner",
+    "training_ticks": 80,
+    "color": "8f99a5",
+    "home_buildings": [
+      "coal_mine",
+      "iron_mine",
+      "gold_mine"
+    ],
+    "training_cost": {
+      "gold": 1
+    },
+    "extract_ticks": 100,
+    "carry_capacity": 1
+  },
+  "metallurgist": {
+    "display_name": "Metallurgist",
+    "training_ticks": 80,
+    "color": "ba876c",
+    "home_buildings": [
+      "iron_smithy",
+      "metallurgist"
+    ],
+    "training_cost": {
+      "gold": 1
+    }
+  },
+  "smith": {
+    "display_name": "Smith",
+    "training_ticks": 80,
+    "color": "777d87",
+    "home_buildings": [
+      "weapon_smithy",
+      "armour_smithy"
+    ],
+    "training_cost": {
+      "gold": 1
+    }
+  },
+  "butcher": {
+    "display_name": "Butcher",
+    "training_ticks": 80,
+    "color": "bf8b80",
+    "home_buildings": [
+      "butcher",
+      "tannery"
+    ],
+    "training_cost": {
+      "gold": 1
+    }
+  },
+  "animal_breeder": {
+    "display_name": "Animal Breeder",
+    "training_ticks": 80,
+    "color": "a39768",
+    "home_buildings": [
+      "swine_farm",
+      "stables"
+    ],
+    "training_cost": {
+      "gold": 1
+    }
+  },
+  "fisherman": {
+    "display_name": "Fisherman",
+    "training_ticks": 80,
+    "color": "7db0b6",
+    "home_buildings": [
+      "fisher_hut"
+    ],
+    "training_cost": {
+      "gold": 1
+    },
+    "extract_ticks": 100,
+    "carry_capacity": 1
+  },
+  "carpenter": {
+    "display_name": "Carpenter",
+    "training_ticks": 80,
+    "color": "b68e5d",
+    "home_buildings": [
+      "sawmill",
+      "weapon_workshop",
+      "armour_workshop"
+    ],
+    "training_cost": {
+      "gold": 1
+    }
+  },
+  "builder": {
+    "display_name": "Builder",
+    "training_ticks": 80,
+    "color": "bba98a",
+    "home_buildings": [],
+    "training_cost": {
+      "gold": 1
+    },
+    "build_ticks": 100,
+    "carry_capacity": 0
+  },
+  "recruit": {
+    "display_name": "Recruit",
+    "training_ticks": 80,
+    "color": "ad7480",
+    "home_buildings": [
+      "barracks",
+      "watchtower"
+    ],
+    "training_cost": {
+      "gold": 1
+    }
   }
 }

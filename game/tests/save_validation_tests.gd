@@ -83,7 +83,7 @@ static func _test_invalid_values(failures: Array[String]) -> void:
 		{"name": "negative training timer", "mutate": func(data: Dictionary): data["buildings"][0]["training_remaining"] = -1},
 		{"name": "unknown building type", "mutate": func(data: Dictionary): data["buildings"][0]["type"] = "unknown"},
 		{"name": "unknown worker type", "mutate": func(data: Dictionary): data["workers"][0]["type"] = "unknown"},
-		{"name": "unsupported carried resource", "mutate": func(data: Dictionary): data["workers"][0]["carrying"] = "stone"},
+		{"name": "unsupported carried resource", "mutate": func(data: Dictionary): data["workers"][0]["carrying"] = "unknown"},
 		{"name": "gardener carrying log", "mutate": func(data: Dictionary): data["workers"][2]["carrying"] = "log"},
 		{"name": "duplicate IDs across entity types", "mutate": func(data: Dictionary): data["workers"][0]["id"] = data["trees"][0]["id"]},
 		{"name": "reused next ID", "mutate": func(data: Dictionary): data["next_entity_id"] = 1},

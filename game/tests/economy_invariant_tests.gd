@@ -40,10 +40,17 @@ static func run() -> Array[String]:
 
 
 static func _check_world(world: World, failures: Array[String]) -> void:
-	_check(world.tile_reservations.size() == world.workers.size(), "One tile reservation per worker", world, failures)
+	var outdoor_count: int = 0
 	for id: int in world.workers:
 		var worker: Dictionary = world.workers[id]
-		_check(int(world.tile_reservations.get(worker["position"], 0)) == id, "Worker owns its current tile", world, failures)
+		if world.is_worker_inside(worker):
+			var building: Dictionary = world.buildings.get(int(worker["inside_building_id"]), {})
+			_check(not building.is_empty() and world.is_building_complete(building)
+				and building.get("entrance") == worker["position"], "Indoor worker retains a valid completed building", world, failures)
+			_check(not world.tile_reservations.values().has(id), "Indoor workers never reserve outdoor tiles", world, failures)
+		else:
+			outdoor_count += 1
+			_check(int(world.tile_reservations.get(worker["position"], 0)) == id, "Outdoor worker owns its current tile", world, failures)
 		_check(world.grid.is_walkable(worker["position"]), "Worker remains on walkable terrain", world, failures)
 		var task_id: int = int(worker["task_id"])
 		if task_id != 0:
@@ -52,6 +59,7 @@ static func _check_world(world: World, failures: Array[String]) -> void:
 		var plant_target: Vector2i = worker["plant_target"]
 		if plant_target != Vector2i(-1, -1):
 			_check(int(world.planting_reservations.get(plant_target, 0)) == id, "Worker owns its planting target", world, failures)
+	_check(world.tile_reservations.size() == outdoor_count, "Exactly one tile reservation per outdoor worker", world, failures)
 	for cell: Vector2i in world.planting_reservations:
 		var owner: int = int(world.planting_reservations[cell])
 		var worker: Dictionary = world.workers.get(owner, {})

@@ -2,6 +2,7 @@ class_name GridPathfinder
 extends RefCounted
 
 const GridMapSimClass = preload("res://scripts/simulation/grid_map_sim.gd")
+const UNSPECIFIED_START: Vector2i = Vector2i(-2147483648, -2147483648)
 
 
 static func find_path(
@@ -34,10 +35,8 @@ static func find_path(
 		if current == goal:
 			return _reconstruct(came_from, start, goal)
 
-		for next_cell: Vector2i in grid.neighbors(current):
-			if temporary_blockers.has(next_cell):
-				continue
-			var new_cost: int = current_cost + grid.movement_cost(next_cell)
+		for next_cell: Vector2i in grid.neighbors8(current, temporary_blockers):
+			var new_cost: int = current_cost + grid.step_cost(current, next_cell)
 			if not cost_so_far.has(next_cell) or new_cost < int(cost_so_far[next_cell]):
 				cost_so_far[next_cell] = new_cost
 				came_from[next_cell] = current
@@ -75,10 +74,8 @@ static func find_path_to_nearest(
 		if current != start and bool(goal_test.call(current)):
 			return _reconstruct(came_from, start, current)
 
-		for next_cell: Vector2i in grid.neighbors(current):
-			if temporary_blockers.has(next_cell):
-				continue
-			var new_cost: int = current_cost + grid.movement_cost(next_cell)
+		for next_cell: Vector2i in grid.neighbors8(current, temporary_blockers):
+			var new_cost: int = current_cost + grid.step_cost(current, next_cell)
 			if not cost_so_far.has(next_cell) or new_cost < int(cost_so_far[next_cell]):
 				cost_so_far[next_cell] = new_cost
 				came_from[next_cell] = current
@@ -87,10 +84,18 @@ static func find_path_to_nearest(
 	return []
 
 
-static func path_cost(grid: GridMapSimClass, path: Array[Vector2i]) -> int:
+static func path_cost(
+	grid: GridMapSimClass,
+	path: Array[Vector2i],
+	start: Vector2i = UNSPECIFIED_START
+) -> int:
 	var result: int = 0
+	var previous: Vector2i = start
 	for cell: Vector2i in path:
-		result += grid.movement_cost(cell)
+		# Legacy callers without a start retain a cardinal first step. New route
+		# comparisons must supply start because that first step can be diagonal.
+		result += grid.movement_cost(cell) if previous == UNSPECIFIED_START else grid.step_cost(previous, cell)
+		previous = cell
 	return result
 
 
@@ -99,7 +104,11 @@ static func _heuristic_cost(
 	goal: Vector2i,
 	minimum_cost: int
 ) -> int:
-	return (absi(cell.x - goal.x) + absi(cell.y - goal.y)) * minimum_cost
+	var dx: int = absi(cell.x - goal.x)
+	var dy: int = absi(cell.y - goal.y)
+	var diagonal_steps: int = mini(dx, dy)
+	var straight_steps: int = maxi(dx, dy) - diagonal_steps
+	return diagonal_steps * GridMapSimClass.diagonal_duration_ticks(minimum_cost) + straight_steps * minimum_cost
 
 
 static func _cell_before(a: Vector2i, b: Vector2i) -> bool:

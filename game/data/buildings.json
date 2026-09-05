@@ -2,29 +2,987 @@
   "warehouse": {
     "display_name": "Warehouse",
     "color": "4169a1",
-    "footprint": [1, 1],
-    "accepts": ["log", "plank", "stone"]
+    "footprint": [
+      1,
+      1
+    ],
+    "accepts": [
+      "log",
+      "plank",
+      "stone",
+      "grain",
+      "flour",
+      "bread",
+      "iron_ore",
+      "gold_ore",
+      "coal",
+      "iron",
+      "gold",
+      "wine",
+      "leather",
+      "sausage",
+      "pig",
+      "skin",
+      "wooden_shield",
+      "iron_shield",
+      "leather_armour",
+      "iron_armour",
+      "axe",
+      "sword",
+      "lance",
+      "pike",
+      "bow",
+      "crossbow",
+      "horse",
+      "fish"
+    ],
+    "category": "infrastructure",
+    "construction_cost": {
+      "plank": 6,
+      "stone": 5
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_community_reference",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/information/buildings",
+    "inputs": [],
+    "outputs": [],
+    "description": "Warehouse supports the settlement economy."
   },
   "lumber_hut": {
     "display_name": "Lumberjack Hut",
+    "worker": "lumberjack",
     "color": "8a5a36",
+    "footprint": [
+      1,
+      1
+    ],
+    "enables": [
+      "harvest_tree"
+    ],
+    "outputs": [
+      "log"
+    ],
+    "category": "infrastructure",
+    "construction_cost": {
+      "plank": 3,
+      "stone": 2
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 23,
+    "inputs": [],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "description": "Lumberjack Hut supports the settlement economy."
+  },
+  "forester_hut": {
+    "display_name": "Forester Hut",
+    "worker": "gardener",
+    "color": "64834b",
     "footprint": [1, 1],
-    "enables": ["harvest_tree"],
-    "outputs": ["log"]
+    "category": "infrastructure",
+    "inputs": [],
+    "outputs": [],
+    "planting_radius": 8,
+    "construction_cost": {
+      "plank": 3,
+      "stone": 2
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "project_balance",
+    "construction_cost_reference": "docs/forester-and-fisher-huts.md",
+    "description": "Home for one Gardener, who plants trees within 8 tiles of this hut. Train the Gardener at a School."
   },
   "sawmill": {
     "display_name": "Sawmill",
     "color": "b46a3c",
-    "footprint": [1, 1],
-    "inputs": ["log"],
-    "outputs": ["plank"],
-    "recipe": "saw_planks"
+    "footprint": [
+      1,
+      1
+    ],
+    "inputs": [
+      "log"
+    ],
+    "outputs": [
+      "plank"
+    ],
+    "recipe": "saw_planks",
+    "category": "infrastructure",
+    "worker": "carpenter",
+    "recipes": [
+      "saw_planks"
+    ],
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 24,
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "description": "Sawmill supports the settlement economy."
   },
   "school": {
     "display_name": "School",
     "color": "9b7045",
-    "footprint": [1, 1],
-    "trains": ["carrier", "lumberjack", "gardener"],
-    "queue_capacity": 5
+    "footprint": [
+      1,
+      1
+    ],
+    "trains": [
+      "lumberjack",
+      "carrier",
+      "gardener",
+      "farmer",
+      "baker",
+      "stonemason",
+      "miner",
+      "metallurgist",
+      "smith",
+      "butcher",
+      "animal_breeder",
+      "fisherman",
+      "carpenter",
+      "builder",
+      "recruit"
+    ],
+    "queue_capacity": 5,
+    "category": "infrastructure",
+    "training_cost": {
+      "gold": 1
+    },
+    "inputs": [
+      "gold"
+    ],
+    "input_capacity": 4,
+    "construction_cost": {
+      "plank": 6,
+      "stone": 5
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 14,
+    "outputs": [],
+    "output_capacity": 6,
+    "description": "School supports the settlement economy."
+  },
+  "quarry": {
+    "display_name": "Quarry",
+    "color": "858b8f",
+    "footprint": [
+      1,
+      1
+    ],
+    "worker": "stonemason",
+    "inputs": [],
+    "outputs": [
+      "stone"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "description": "Workers extract finite stone deposits nearby.",
+    "category": "mining",
+    "extract_resource": "stone",
+    "extract_radius": 3,
+    "extract_amount": 1,
+    "construction_cost": {
+      "plank": 3,
+      "stone": 2
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 22
+  },
+  "farm": {
+    "display_name": "Farm",
+    "color": "b99b42",
+    "footprint": [
+      1,
+      1
+    ],
+    "worker": "farmer",
+    "inputs": [],
+    "outputs": [
+      "grain"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "description": "Farmers harvest nearby wheat fields.",
+    "allowed_terrain": [
+      "grass",
+      "dirt"
+    ],
+    "enables": [
+      "sow_field",
+      "harvest_field"
+    ],
+    "field_radius": 8,
+    "category": "food",
+    "field_kind": "wheat",
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 27
+  },
+  "mill": {
+    "display_name": "Mill",
+    "color": "c9b086",
+    "footprint": [
+      1,
+      1
+    ],
+    "worker": "baker",
+    "recipe": "mill_flour",
+    "inputs": [
+      "grain"
+    ],
+    "outputs": [
+      "flour"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "description": "A baker mills 1 grain into 1 flour.",
+    "category": "food",
+    "recipes": [
+      "mill_flour"
+    ],
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 28
+  },
+  "bakery": {
+    "display_name": "Bakery",
+    "color": "ba6c43",
+    "footprint": [
+      1,
+      1
+    ],
+    "worker": "baker",
+    "recipe": "bake_bread",
+    "inputs": [
+      "flour"
+    ],
+    "outputs": [
+      "bread"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "description": "A baker turns 1 flour into 2 loaves of bread.",
+    "category": "food",
+    "recipes": [
+      "bake_bread"
+    ],
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 29
+  },
+  "coal_mine": {
+    "display_name": "Coal Mine",
+    "color": "4c5360",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "mining",
+    "inputs": [],
+    "outputs": [
+      "coal"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "miner",
+    "extract_resource": "coal",
+    "extract_radius": 3,
+    "extract_amount": 1,
+    "description": "Workers extract finite coal deposits nearby.",
+    "construction_cost": {
+      "plank": 3,
+      "stone": 2
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 36
+  },
+  "iron_mine": {
+    "display_name": "Iron Mine",
+    "color": "9b7d67",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "mining",
+    "inputs": [],
+    "outputs": [
+      "iron_ore"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "miner",
+    "extract_resource": "iron_ore",
+    "extract_radius": 3,
+    "extract_amount": 1,
+    "description": "Workers extract finite iron ore deposits nearby.",
+    "construction_cost": {
+      "plank": 3,
+      "stone": 2
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 37
+  },
+  "gold_mine": {
+    "display_name": "Gold Mine",
+    "color": "b49950",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "mining",
+    "inputs": [],
+    "outputs": [
+      "gold_ore"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "miner",
+    "extract_resource": "gold_ore",
+    "extract_radius": 3,
+    "extract_amount": 1,
+    "description": "Workers extract finite gold ore deposits nearby.",
+    "construction_cost": {
+      "plank": 3,
+      "stone": 2
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 38
+  },
+  "iron_smithy": {
+    "display_name": "Iron Smithy",
+    "color": "7b8797",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "mining",
+    "inputs": [
+      "iron_ore",
+      "coal"
+    ],
+    "outputs": [
+      "iron"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "metallurgist",
+    "recipes": [
+      "smelt_iron"
+    ],
+    "recipe": "smelt_iron",
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 41,
+    "description": "Iron Smithy supports the settlement economy."
+  },
+  "metallurgist": {
+    "display_name": "Metallurgist",
+    "color": "bda25d",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "mining",
+    "inputs": [
+      "gold_ore",
+      "coal"
+    ],
+    "outputs": [
+      "gold"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "metallurgist",
+    "recipes": [
+      "smelt_gold"
+    ],
+    "recipe": "smelt_gold",
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 39,
+    "description": "Metallurgist supports the settlement economy."
+  },
+  "vineyard": {
+    "display_name": "Vineyard",
+    "color": "9b6b93",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "food",
+    "inputs": [],
+    "outputs": [
+      "wine"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "farmer",
+    "field_kind": "vine",
+    "field_radius": 8,
+    "allowed_terrain": [
+      "grass",
+      "dirt"
+    ],
+    "description": "Farmers harvest nearby vine fields.",
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 26
+  },
+  "fisher_hut": {
+    "display_name": "Fisherman's Hut",
+    "color": "649aa7",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "food",
+    "inputs": [],
+    "outputs": [
+      "fish"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "fisherman",
+    "extract_resource": "fish",
+    "extract_radius": 3,
+    "extract_amount": 1,
+    "description": "Home for one Fisherman, who catches fish at reachable deposits within 3 tiles and brings them here. Carriers collect the fish. Train the Fisherman at a School.",
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 25
+  },
+  "swine_farm": {
+    "display_name": "Swine Farm",
+    "color": "b8897e",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "food",
+    "inputs": [
+      "grain"
+    ],
+    "outputs": [
+      "pig",
+      "skin"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "animal_breeder",
+    "recipes": [
+      "breed_pig"
+    ],
+    "recipe": "breed_pig",
+    "feed_per_animal": 4,
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 30,
+    "description": "Swine Farm supports the settlement economy."
+  },
+  "butcher": {
+    "display_name": "Butcher",
+    "color": "aa776a",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "food",
+    "inputs": [
+      "pig"
+    ],
+    "outputs": [
+      "sausage"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "butcher",
+    "recipes": [
+      "make_sausages"
+    ],
+    "recipe": "make_sausages",
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 31,
+    "description": "Butcher supports the settlement economy."
+  },
+  "tannery": {
+    "display_name": "Tannery",
+    "color": "9b7a5d",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "military",
+    "inputs": [
+      "skin"
+    ],
+    "outputs": [
+      "leather"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "butcher",
+    "recipes": [
+      "tan_leather"
+    ],
+    "recipe": "tan_leather",
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 32,
+    "description": "Tannery supports the settlement economy."
+  },
+  "stables": {
+    "display_name": "Stables",
+    "color": "8f795d",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "military",
+    "inputs": [
+      "grain"
+    ],
+    "outputs": [
+      "horse"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "animal_breeder",
+    "recipes": [
+      "breed_horse"
+    ],
+    "recipe": "breed_horse",
+    "feed_per_animal": 4,
+    "construction_cost": {
+      "plank": 6,
+      "stone": 5
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 33,
+    "description": "Stables supports the settlement economy."
+  },
+  "weapon_workshop": {
+    "display_name": "Weapon Workshop",
+    "color": "987851",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "military",
+    "inputs": [
+      "plank"
+    ],
+    "outputs": [
+      "axe",
+      "lance",
+      "bow"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "carpenter",
+    "recipes": [
+      "make_axe",
+      "make_lance",
+      "make_bow"
+    ],
+    "recipe": "make_axe",
+    "needs_order": true,
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 34,
+    "description": "Weapon Workshop supports the settlement economy."
+  },
+  "armour_workshop": {
+    "display_name": "Armour Workshop",
+    "color": "a08c6a",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "military",
+    "inputs": [
+      "plank",
+      "leather"
+    ],
+    "outputs": [
+      "wooden_shield",
+      "leather_armour"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "carpenter",
+    "recipes": [
+      "make_wooden_shield",
+      "make_leather_armour"
+    ],
+    "recipe": "make_wooden_shield",
+    "needs_order": true,
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 35,
+    "description": "Armour Workshop supports the settlement economy."
+  },
+  "weapon_smithy": {
+    "display_name": "Weapon Smithy",
+    "color": "7b8995",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "military",
+    "inputs": [
+      "iron",
+      "coal"
+    ],
+    "outputs": [
+      "sword",
+      "pike",
+      "crossbow"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "smith",
+    "recipes": [
+      "make_sword",
+      "make_pike",
+      "make_crossbow"
+    ],
+    "recipe": "make_sword",
+    "needs_order": true,
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 42,
+    "description": "Weapon Smithy supports the settlement economy."
+  },
+  "armour_smithy": {
+    "display_name": "Armour Smithy",
+    "color": "87929e",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "military",
+    "inputs": [
+      "iron",
+      "coal"
+    ],
+    "outputs": [
+      "iron_shield",
+      "iron_armour"
+    ],
+    "input_capacity": 4,
+    "output_capacity": 6,
+    "worker": "smith",
+    "recipes": [
+      "make_iron_shield",
+      "make_iron_armour"
+    ],
+    "recipe": "make_iron_shield",
+    "needs_order": true,
+    "construction_cost": {
+      "plank": 4,
+      "stone": 3
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 43,
+    "description": "Armour Smithy supports the settlement economy."
+  },
+  "inn": {
+    "display_name": "Inn",
+    "color": "a86e52",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "food",
+    "inputs": [
+      "bread",
+      "sausage",
+      "wine",
+      "fish"
+    ],
+    "outputs": [],
+    "input_capacity": 6,
+    "output_capacity": 6,
+    "construction_cost": {
+      "plank": 6,
+      "stone": 5
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 21,
+    "description": "Seats six citizens. Bread, wine and a protein course restore satiety over time; varied meals keep workers fed longer.",
+    "seating_capacity": 6,
+    "meal_duration_ticks": 116
+  },
+  "barracks": {
+    "display_name": "Barracks",
+    "color": "ab6e63",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "military",
+    "inputs": [
+      "axe",
+      "wooden_shield",
+      "leather_armour",
+      "iron_shield",
+      "iron_armour",
+      "sword",
+      "bow",
+      "crossbow",
+      "lance",
+      "pike",
+      "horse"
+    ],
+    "outputs": [],
+    "input_capacity": 50,
+    "output_capacity": 6,
+    "construction_cost": {
+      "plank": 6,
+      "stone": 6
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 45,
+    "description": "Equip trained recruits with delivered weapons, armour and horses.",
+    "recruits": [
+      "militia",
+      "axe_fighter",
+      "sword_fighter",
+      "bowman",
+      "crossbowman",
+      "lance_carrier",
+      "pikeman",
+      "scout",
+      "knight"
+    ],
+    "queue_capacity": 20
+  },
+  "marketplace": {
+    "display_name": "Marketplace",
+    "color": "9a8970",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "infrastructure",
+    "inputs": [
+      "log",
+      "plank",
+      "stone",
+      "grain",
+      "flour",
+      "bread",
+      "iron_ore",
+      "gold_ore",
+      "coal",
+      "iron",
+      "gold",
+      "wine",
+      "leather",
+      "sausage",
+      "pig",
+      "skin",
+      "wooden_shield",
+      "iron_shield",
+      "leather_armour",
+      "iron_armour",
+      "axe",
+      "sword",
+      "lance",
+      "pike",
+      "bow",
+      "crossbow",
+      "horse",
+      "fish"
+    ],
+    "outputs": [
+      "log",
+      "plank",
+      "stone",
+      "grain",
+      "flour",
+      "bread",
+      "iron_ore",
+      "gold_ore",
+      "coal",
+      "iron",
+      "gold",
+      "wine",
+      "leather",
+      "sausage",
+      "pig",
+      "skin",
+      "wooden_shield",
+      "iron_shield",
+      "leather_armour",
+      "iron_armour",
+      "axe",
+      "sword",
+      "lance",
+      "pike",
+      "bow",
+      "crossbow",
+      "horse",
+      "fish"
+    ],
+    "input_capacity": 100,
+    "output_capacity": 100,
+    "construction_cost": {
+      "plank": 5,
+      "stone": 6
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_source_override",
+    "construction_cost_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas#L822",
+    "description": "Trade delivered wares using KaM Remake market values."
+  },
+  "town_hall": {
+    "display_name": "Town Hall",
+    "color": "a37e61",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "military",
+    "inputs": [
+      "gold"
+    ],
+    "outputs": [],
+    "input_capacity": 50,
+    "output_capacity": 6,
+    "construction_cost": {
+      "plank": 6,
+      "stone": 5
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 40,
+    "description": "Recruit auxiliary troops using delivered gold.",
+    "recruits": [
+      "rebel",
+      "rogue",
+      "vagabond",
+      "barbarian",
+      "warrior"
+    ],
+    "queue_capacity": 20
+  },
+  "watchtower": {
+    "display_name": "Watchtower",
+    "color": "8d959b",
+    "footprint": [
+      1,
+      1
+    ],
+    "category": "military",
+    "inputs": [
+      "stone"
+    ],
+    "outputs": [],
+    "input_capacity": 6,
+    "output_capacity": 6,
+    "worker": "recruit",
+    "construction_cost": {
+      "plank": 3,
+      "stone": 2
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "kam_manual",
+    "construction_cost_reference": "https://www.knightsandmerchants.net/application/files/7315/6828/9445/manual_tpr_160_eng.pdf",
+    "construction_cost_reference_page": 46,
+    "description": "A recruit staffs the tower and uses stone as ammunition.",
+    "ammunition_resource": "stone",
+    "ammunition_per_shot": 1
   }
 }

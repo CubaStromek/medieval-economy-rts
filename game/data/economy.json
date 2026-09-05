@@ -1,0 +1,52 @@
+{
+  "reference_variant": "kam_remake",
+  "reference_commit": "a3b3e5268e1475460e4561f9143df6f1a532e681",
+  "condition_max": 2700,
+  "condition_hungry": 360,
+  "condition_warning": 1350,
+  "condition_critical": 120,
+  "condition_interval_ticks": 10,
+  "condition_daily_hunger_fraction": 0.8,
+  "condition_initial": 1620,
+  "condition_full_threshold": 2430,
+  "soldier_food_request_threshold": 1485,
+  "max_meals_per_visit": 3,
+  "food_order": [
+    "bread",
+    "wine",
+    "sausage",
+    "fish"
+  ],
+  "market_tradeoff_factor": 2.2,
+  "market_special_rates": [
+    {
+      "from": "log",
+      "to": "gold_ore",
+      "give": 3,
+      "receive": 1
+    }
+  ],
+  "wheat_growth_ticks": 200,
+  "vine_growth_ticks": 160,
+  "wheat_sow_ticks": 20,
+  "wheat_harvest_ticks": 30,
+  "vine_harvest_ticks": 30,
+  "vine_field_cost": {
+    "plank": 1
+  },
+  "road_cost": {
+    "stone": 1
+  },
+  "stock_capacity_per_ware": 99999,
+  "balance_provenance": {
+    "production_ticks": "project_balance",
+    "construction_ticks": "project_balance",
+    "construction_costs": "kam_manual_with_community_storehouse_and_source_marketplace",
+    "wheat_vine_growth_ticks": "project_balance",
+    "starting_condition": "reference_60_percent_without_random_jitter",
+    "hunger_decay": "project_balance_full_to_hungry_within_0.8_game_day",
+    "inn_menu": "project_balance_up_to_three_distinct_courses_bread_wine_protein",
+    "vine_field_cost": "reference_one_timber",
+    "road_cost": "reference_one_stone"
+  }
+}

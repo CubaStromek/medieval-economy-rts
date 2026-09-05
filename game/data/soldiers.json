@@ -1,0 +1,156 @@
+{
+  "militia": {
+    "display_name": "Militia",
+    "building": "barracks",
+    "equipment": {
+      "axe": 1
+    },
+    "requires_recruit": true,
+    "training_ticks": 80,
+    "color": "af6870"
+  },
+  "axe_fighter": {
+    "display_name": "Axe Fighter",
+    "building": "barracks",
+    "equipment": {
+      "wooden_shield": 1,
+      "leather_armour": 1,
+      "axe": 1
+    },
+    "requires_recruit": true,
+    "training_ticks": 80,
+    "color": "af6870"
+  },
+  "sword_fighter": {
+    "display_name": "Sword Fighter",
+    "building": "barracks",
+    "equipment": {
+      "iron_shield": 1,
+      "iron_armour": 1,
+      "sword": 1
+    },
+    "requires_recruit": true,
+    "training_ticks": 80,
+    "color": "af6870"
+  },
+  "bowman": {
+    "display_name": "Bowman",
+    "building": "barracks",
+    "equipment": {
+      "leather_armour": 1,
+      "bow": 1
+    },
+    "requires_recruit": true,
+    "training_ticks": 80,
+    "color": "af6870"
+  },
+  "crossbowman": {
+    "display_name": "Crossbowman",
+    "building": "barracks",
+    "equipment": {
+      "iron_armour": 1,
+      "crossbow": 1
+    },
+    "requires_recruit": true,
+    "training_ticks": 80,
+    "color": "af6870"
+  },
+  "lance_carrier": {
+    "display_name": "Lance Carrier",
+    "building": "barracks",
+    "equipment": {
+      "leather_armour": 1,
+      "lance": 1
+    },
+    "requires_recruit": true,
+    "training_ticks": 80,
+    "color": "af6870"
+  },
+  "pikeman": {
+    "display_name": "Pikeman",
+    "building": "barracks",
+    "equipment": {
+      "iron_armour": 1,
+      "pike": 1
+    },
+    "requires_recruit": true,
+    "training_ticks": 80,
+    "color": "af6870"
+  },
+  "scout": {
+    "display_name": "Scout",
+    "building": "barracks",
+    "equipment": {
+      "wooden_shield": 1,
+      "leather_armour": 1,
+      "axe": 1,
+      "horse": 1
+    },
+    "requires_recruit": true,
+    "training_ticks": 80,
+    "color": "af6870"
+  },
+  "knight": {
+    "display_name": "Knight",
+    "building": "barracks",
+    "equipment": {
+      "iron_shield": 1,
+      "iron_armour": 1,
+      "sword": 1,
+      "horse": 1
+    },
+    "requires_recruit": true,
+    "training_ticks": 80,
+    "color": "af6870"
+  },
+  "rebel": {
+    "display_name": "Rebel",
+    "building": "town_hall",
+    "equipment": {
+      "gold": 2
+    },
+    "requires_recruit": false,
+    "training_ticks": 80,
+    "color": "bb9272"
+  },
+  "rogue": {
+    "display_name": "Rogue",
+    "building": "town_hall",
+    "equipment": {
+      "gold": 3
+    },
+    "requires_recruit": false,
+    "training_ticks": 80,
+    "color": "bb9272"
+  },
+  "vagabond": {
+    "display_name": "Vagabond",
+    "building": "town_hall",
+    "equipment": {
+      "gold": 5
+    },
+    "requires_recruit": false,
+    "training_ticks": 80,
+    "color": "bb9272"
+  },
+  "barbarian": {
+    "display_name": "Barbarian",
+    "building": "town_hall",
+    "equipment": {
+      "gold": 8
+    },
+    "requires_recruit": false,
+    "training_ticks": 80,
+    "color": "bb9272"
+  },
+  "warrior": {
+    "display_name": "Warrior",
+    "building": "town_hall",
+    "equipment": {
+      "gold": 8
+    },
+    "requires_recruit": false,
+    "training_ticks": 80,
+    "color": "bb9272"
+  }
+}

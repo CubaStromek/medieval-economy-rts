@@ -6,6 +6,10 @@ var _tasks: Dictionary = {}
 var _task_by_source: Dictionary = {}
 
 
+func has_source(source_key: String) -> bool:
+	return _task_by_source.has(source_key)
+
+
 func create_task(kind: String, source_key: String, target: Vector2i, source_id: int) -> int:
 	if _task_by_source.has(source_key):
 		return int(_task_by_source[source_key])
@@ -69,6 +73,18 @@ func release(task_id: int, worker_id: int) -> void:
 	var task: Dictionary = _tasks[task_id] as Dictionary
 	if int(task["reserved_by"]) == worker_id:
 		task["reserved_by"] = 0
+
+
+func cancel_tasks_for_source(source_id: int) -> Array[int]:
+	var cancelled: Array[int] = []
+	for task_id: int in _tasks.keys():
+		var task: Dictionary = _tasks[task_id]
+		if int(task["source_id"]) != source_id:
+			continue
+		_task_by_source.erase(String(task["source_key"]))
+		_tasks.erase(task_id)
+		cancelled.append(task_id)
+	return cancelled
 
 
 func active_count() -> int:
