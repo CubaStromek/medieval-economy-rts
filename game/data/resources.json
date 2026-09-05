@@ -1,4 +1,5 @@
 {
-  "log": {"display_name": "Logs", "color": "8b5a2b"},
-  "plank": {"display_name": "Planks", "color": "d7aa68"}
+  "log": {"display_name": "Logs", "color": "8b5a2b", "hud_order": 10},
+  "plank": {"display_name": "Planks", "color": "d7aa68", "hud_order": 20},
+  "stone": {"display_name": "Stone", "color": "858b8f", "hud_order": 30}
 }

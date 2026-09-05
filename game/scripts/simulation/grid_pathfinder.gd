@@ -15,31 +15,74 @@ static func find_path(
 	if not grid.is_walkable(start) or not grid.is_walkable(goal) or temporary_blockers.has(goal):
 		return []
 
-	var frontier: Array[Vector2i] = [start]
+	var minimum_cost: int = grid.minimum_movement_cost()
+	var frontier: Array[Dictionary] = []
+	_heap_push(frontier, {
+		"cell": start, "cost": 0,
+		"priority": _heuristic_cost(start, goal, minimum_cost),
+	})
 	var came_from: Dictionary = {start: start}
 	var cost_so_far: Dictionary = {start: 0}
 
 	while not frontier.is_empty():
-		var current_index: int = _lowest_score_index(
-			frontier,
-			cost_so_far,
-			goal,
-			grid.minimum_movement_cost()
-		)
-		var current: Vector2i = frontier[current_index]
-		frontier.remove_at(current_index)
+		var entry: Dictionary = _heap_pop(frontier)
+		var current: Vector2i = entry["cell"] as Vector2i
+		var current_cost: int = int(entry["cost"])
+		# Improved routes insert a new entry; obsolete entries are discarded.
+		if current_cost != int(cost_so_far.get(current, -1)):
+			continue
 		if current == goal:
 			return _reconstruct(came_from, start, goal)
 
 		for next_cell: Vector2i in grid.neighbors(current):
 			if temporary_blockers.has(next_cell):
 				continue
-			var new_cost: int = int(cost_so_far[current]) + grid.movement_cost(next_cell)
+			var new_cost: int = current_cost + grid.movement_cost(next_cell)
 			if not cost_so_far.has(next_cell) or new_cost < int(cost_so_far[next_cell]):
 				cost_so_far[next_cell] = new_cost
 				came_from[next_cell] = current
-				if not frontier.has(next_cell):
-					frontier.append(next_cell)
+				_heap_push(frontier, {
+					"cell": next_cell, "cost": new_cost,
+					"priority": new_cost + _heuristic_cost(next_cell, goal, minimum_cost),
+				})
+
+	return []
+
+
+static func find_path_to_nearest(
+	grid: GridMapSimClass,
+	start: Vector2i,
+	goal_test: Callable,
+	temporary_blockers: Dictionary = {}
+) -> Array[Vector2i]:
+	if not grid.is_walkable(start):
+		return []
+
+	# Dijkstra search finds the nearest valid cell by the same weighted travel
+	# time used by ordinary workers. The binary heap keeps a full-map search
+	# practical while cost/cell tie-breaking makes the result deterministic.
+	var frontier: Array[Dictionary] = []
+	_heap_push(frontier, {"cell": start, "cost": 0, "priority": 0})
+	var came_from: Dictionary = {start: start}
+	var cost_so_far: Dictionary = {start: 0}
+
+	while not frontier.is_empty():
+		var entry: Dictionary = _heap_pop(frontier)
+		var current: Vector2i = entry["cell"] as Vector2i
+		var current_cost: int = int(entry["cost"])
+		if current_cost != int(cost_so_far.get(current, -1)):
+			continue
+		if current != start and bool(goal_test.call(current)):
+			return _reconstruct(came_from, start, current)
+
+		for next_cell: Vector2i in grid.neighbors(current):
+			if temporary_blockers.has(next_cell):
+				continue
+			var new_cost: int = current_cost + grid.movement_cost(next_cell)
+			if not cost_so_far.has(next_cell) or new_cost < int(cost_so_far[next_cell]):
+				cost_so_far[next_cell] = new_cost
+				came_from[next_cell] = current
+				_heap_push(frontier, {"cell": next_cell, "cost": new_cost, "priority": new_cost})
 
 	return []
 
@@ -51,28 +94,61 @@ static func path_cost(grid: GridMapSimClass, path: Array[Vector2i]) -> int:
 	return result
 
 
-static func _lowest_score_index(
-	frontier: Array[Vector2i],
-	costs: Dictionary,
+static func _heuristic_cost(
+	cell: Vector2i,
 	goal: Vector2i,
 	minimum_cost: int
 ) -> int:
-	var best_index: int = 0
-	var best_score: int = 2147483647
-	for index: int in range(frontier.size()):
-		var cell: Vector2i = frontier[index]
-		var heuristic: int = abs(cell.x - goal.x) + abs(cell.y - goal.y)
-		var score: int = int(costs[cell]) + heuristic * minimum_cost
-		if score < best_score:
-			best_score = score
-			best_index = index
-		elif score == best_score and _cell_before(cell, frontier[best_index]):
-			best_index = index
-	return best_index
+	return (absi(cell.x - goal.x) + absi(cell.y - goal.y)) * minimum_cost
 
 
 static func _cell_before(a: Vector2i, b: Vector2i) -> bool:
 	return a.y < b.y or (a.y == b.y and a.x < b.x)
+
+
+static func _heap_push(heap: Array[Dictionary], entry: Dictionary) -> void:
+	heap.append(entry)
+	var index: int = heap.size() - 1
+	while index > 0:
+		var parent: int = (index - 1) / 2
+		if not _heap_entry_before(heap[index], heap[parent]):
+			break
+		var swap: Dictionary = heap[parent]
+		heap[parent] = heap[index]
+		heap[index] = swap
+		index = parent
+
+
+static func _heap_pop(heap: Array[Dictionary]) -> Dictionary:
+	var result: Dictionary = heap[0]
+	var tail: Dictionary = heap.pop_back()
+	if heap.is_empty():
+		return result
+	heap[0] = tail
+	var index: int = 0
+	while true:
+		var left: int = index * 2 + 1
+		if left >= heap.size():
+			break
+		var right: int = left + 1
+		var best_child: int = left
+		if right < heap.size() and _heap_entry_before(heap[right], heap[left]):
+			best_child = right
+		if not _heap_entry_before(heap[best_child], heap[index]):
+			break
+		var swap: Dictionary = heap[index]
+		heap[index] = heap[best_child]
+		heap[best_child] = swap
+		index = best_child
+	return result
+
+
+static func _heap_entry_before(a: Dictionary, b: Dictionary) -> bool:
+	var a_priority: int = int(a["priority"])
+	var b_priority: int = int(b["priority"])
+	if a_priority != b_priority:
+		return a_priority < b_priority
+	return _cell_before(a["cell"] as Vector2i, b["cell"] as Vector2i)
 
 
 static func _reconstruct(came_from: Dictionary, start: Vector2i, goal: Vector2i) -> Array[Vector2i]:

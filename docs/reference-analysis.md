@@ -160,11 +160,12 @@ Associated replay/input and save-point files are written separately and may be
 compressed. Loading reconstructs object graphs and performs a synchronization
 pass for references after entities exist.
 
-The prototype uses a versioned JSON snapshot. Version 2 saves integer
-simulation state, entities, inventories, professions, home-hut associations,
-stone roads and trail wear. Transient paths/tasks are rebuilt after load, and
-version 1 has an explicit migration. Future formats still need a migration
-registry and deterministic RNG state.
+The prototype uses a versioned JSON snapshot. Version 5 saves integer
+simulation state, base terrain, surface overlays/wear, entities, inventories,
+training queues, professions, gardener cooldowns, exact tree-growth ages and
+home-hut associations. Transient paths/tasks are rebuilt after load, and
+versions 1–4 have explicit compatibility paths. Future formats still need a
+migration registry and deterministic RNG state.
 
 ## Multiplayer and determinism
 

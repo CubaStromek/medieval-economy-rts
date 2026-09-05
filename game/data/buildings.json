@@ -3,7 +3,7 @@
     "display_name": "Warehouse",
     "color": "4169a1",
     "footprint": [1, 1],
-    "accepts": ["log", "plank"]
+    "accepts": ["log", "plank", "stone"]
   },
   "lumber_hut": {
     "display_name": "Lumberjack Hut",
@@ -19,5 +19,12 @@
     "inputs": ["log"],
     "outputs": ["plank"],
     "recipe": "saw_planks"
+  },
+  "school": {
+    "display_name": "School",
+    "color": "9b7045",
+    "footprint": [1, 1],
+    "trains": ["carrier", "lumberjack", "gardener"],
+    "queue_capacity": 5
   }
 }

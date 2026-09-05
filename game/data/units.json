@@ -1,13 +1,23 @@
 {
   "lumberjack": {
     "display_name": "Lumberjack",
+    "training_ticks": 80,
     "harvest_ticks": 30,
     "carry_capacity": 1,
     "color": "d7a13f"
   },
   "carrier": {
     "display_name": "Carrier",
+    "training_ticks": 50,
     "carry_capacity": 1,
     "color": "6fa8dc"
+  },
+  "gardener": {
+    "display_name": "Gardener",
+    "training_ticks": 60,
+    "plant_ticks": 20,
+    "plant_cooldown_ticks": 80,
+    "search_retry_ticks": 20,
+    "color": "78b85a"
   }
 }

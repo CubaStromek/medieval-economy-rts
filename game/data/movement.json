@@ -1,13 +1,56 @@
 {
-  "surfaces": {
+  "terrain": {
     "grass": {
-      "move_ticks": 6
+      "display_name": "Grass",
+      "walkable": true,
+      "buildable": true,
+      "allows_trees": true,
+      "roadable": true,
+      "move_ticks": 6,
+      "color": "587548",
+      "transition_priority": 0
     },
     "dirt": {
-      "move_ticks": 4
+      "display_name": "Bare earth",
+      "walkable": true,
+      "buildable": true,
+      "allows_trees": true,
+      "roadable": true,
+      "move_ticks": 6,
+      "color": "806746",
+      "transition_priority": 1
     },
-    "stone": {
-      "move_ticks": 2
+    "water": {
+      "display_name": "Water",
+      "walkable": false,
+      "buildable": false,
+      "allows_trees": false,
+      "roadable": false,
+      "move_ticks": 6,
+      "color": "3f7183",
+      "transition_priority": 3
+    },
+    "rock": {
+      "display_name": "Rock",
+      "walkable": false,
+      "buildable": false,
+      "allows_trees": false,
+      "roadable": false,
+      "move_ticks": 6,
+      "color": "706f67",
+      "transition_priority": 2
+    }
+  },
+  "overlays": {
+    "trail": {
+      "display_name": "Dirt trail",
+      "move_ticks": 4,
+      "color": "785a38"
+    },
+    "stone_road": {
+      "display_name": "Stone road",
+      "move_ticks": 2,
+      "color": "7c817b"
     }
   },
   "trail": {

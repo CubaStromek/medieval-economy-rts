@@ -10,25 +10,36 @@ graphics, audio, maps or campaigns are included.
 
 ## Playable milestone
 
-The current vertical slice starts with a live isometric economy:
+The current vertical slice starts with a live orthogonal 2.5D economy foundation:
 
-- fixed-step simulation on an integer grid;
+- fixed-step simulation on an integer grid with independent base-terrain,
+  surface-overlay and occupancy layers;
+- authored grass, dirt, water and rock with data-driven walkability and
+  buildability;
 - camera pan/drag/zoom and tile selection;
-- buildable stone roads, warehouses, lumberjack huts and sawmills;
-- distinct lumberjack/carrier professions, deterministic weighted A*, exclusive reservations and blocked-path replanning;
+- buildable stone roads, warehouses, lumberjack huts, sawmills and schools;
+- distinct lumberjack/carrier/gardener professions, deterministic weighted pathfinding, exclusive reservations and blocked-path replanning;
+- FIFO school training for carriers, lumberjacks and gardeners, including deterministic blocked-exit handling;
+- autonomous gardeners that find the nearest reachable free site, plant a sapling and wait before planting again;
+- visible sapling, young-tree and mature-tree phases; lumberjacks only claim mature trees;
 - tree → lumberjack hut → carrier → sawmill → carrier → warehouse production chain;
 - carrier traffic that gradually tramples grass into a faster dirt trail;
 - three movement tiers: grass (slow), dirt trail (faster), stone road (fastest);
-- stored and in-pipeline log/plank UI;
+- a fixed top-right resource HUD with procedural log, plank and stone icons,
+  showing stored stock and in-pipeline flow from live simulation state;
 - versioned JSON save/load;
-- placeholder vector graphics drawn by Godot, with no external assets.
+- a separate read-only terrain renderer with 48 × 48 orthogonal projection,
+  deterministic color variants and automatic material transitions;
+- procedural placeholder textures and vector entities, with no external assets.
 
-The demo already contains one of each required building so production begins
-immediately. The build tools let you place more.
+The demo already contains each building required by the resource chain so
+production and replanting begin immediately. Build and select a school to queue
+additional carriers, lumberjacks or gardeners.
 
 ## Requirements and run
 
-- Godot 4.6 (verified with 4.6.3 stable)
+- Target project format: Godot 4.6. The gardener and tree-growth work is covered
+  by the headless suite on Godot 4.6.1.
 
 From the repository root:
 
@@ -46,7 +57,8 @@ Or import `game/project.godot` in the Godot editor and run the project.
 | Middle mouse drag | Pan camera |
 | Mouse wheel | Zoom |
 | WASD / arrows | Pan camera |
-| 1 / 2 / 3 / 4 | Stone road / warehouse / lumberjack hut / sawmill |
+| 1 / 2 / 3 / 4 / 5 | Stone road / warehouse / lumberjack hut / sawmill / school |
+| School UI buttons | Queue a carrier, lumberjack or gardener at the selected school |
 | Escape | Leave build mode |
 | F5 / F9 | Save / load |
 | R | Reset the demo |
@@ -71,9 +83,17 @@ Equivalent command:
 godot --headless --path game --scene res://tests/test_runner.tscn
 ```
 
-The suite covers exclusive task claims, weighted pathfinding, profession
-boundaries, the end-to-end production chain, trail formation, all movement
-tiers, blocked-worker recovery and version 1/2 save compatibility.
+The suite covers terrain layers and projection, exclusive task claims, weighted
+pathfinding, profession boundaries, unit-training timing and queues, autonomous
+gardener target selection/reservations/retry timing, tree-growth boundaries and
+lumberjack maturity gating, the catalog-driven resource HUD, the end-to-end
+production chain, trail formation, all movement tiers, blocked-worker recovery,
+version 5 round-trips and migrations from versions 1–4.
+
+The suite now runs 50 cases, including full-tick swap timing, delivery recovery
+after construction, malformed-save rejection, actual viewport keyboard/button
+dispatch and two 3,000-tick economy invariant scenarios. Snapshot handling lives
+in `WorldSnapshot`; the view delegates UI construction and text to `GameHud`.
 
 ## Repository layout
 
@@ -81,7 +101,7 @@ tiers, blocked-worker recovery and version 1/2 save compatibility.
 game/                   Godot project and placeholder visuals
   data/                 Data-driven resources, buildings, recipes and units
   scripts/simulation/   FPS-independent authoritative model
-  scripts/view/         Camera, input, UI and rendering
+  scripts/view/         Shared projection, terrain renderer, camera, input and UI
   tests/                Godot test scene
 docs/                   Reference analysis and architecture
 reference/kam_remake/   Ignored, unmodified local reference clone

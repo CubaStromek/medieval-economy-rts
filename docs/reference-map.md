@@ -15,7 +15,7 @@ than mirroring the Delphi structure. “Later” is outside the first milestone.
 | `game/gip/KM_GameInputProcess.pas` | Validate, store and replay gameplay commands | Future typed `CommandQueue` used by SP and MP | Adapt later |
 | `game/gip/KM_GameInputProcess_Multi.pas` | Lockstep schedule, delay, random checks | Future lockstep peer coordinator | Adapt later |
 | `terrain/KM_Terrain.pas` / `TKMTerrain` | Tile authority, terrain changes, passability | `GridMapSim` | Adapt, simplified |
-| `terrain/KM_TerrainTypes.pas` / `TKMTerrainTile` | Layers, height, object, field/tree age, locks, occupancy | Future typed `TerrainCell`; current flat grid/tree entities | Adapt |
+| `terrain/KM_TerrainTypes.pas` / `TKMTerrainTile` | Layers, height, object, field/tree age, locks, occupancy | Dense base-terrain layer plus sparse overlays/occupancy; shared corner heights and a richer typed cell remain future work | Adapt |
 | `terrain/KM_TerrainWalkConnect.pas` | Connected walk regions | Future reachability-region cache | Adapt later |
 | `terrain/KM_TerrainDeposits.pas` | Mineable terrain deposits | Future resource-node system | Adapt later |
 | `pathfinding/KM_PathFinding.pas` | Common pathfinding state/maintenance | `GridPathfinder` interface boundary | Adapt |

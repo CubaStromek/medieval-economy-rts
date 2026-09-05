@@ -27,8 +27,9 @@ typovaném GDScriptu, nikoli o port nebo úpravu původní hry či Delphi enginu
 - Výchozí větev: `main`
 - Výchozí stav před tímto handoverem: commit `6b2472f` (`Initial Medieval
   Economy RTS prototype`), shodný s `origin/main`.
-- Godot: 4.6, ověřeno s 4.6.3 stable.
-- Testy ověřené 2026-08-23: `TEST RESULT: 16/16 passed`.
+- Cílový Godot: 4.6; původní milestone byl ověřen s 4.6.3 stable.
+- Aktuální testy ověřené 2026-09-04 Godotem 4.6.1 stable:
+  `TEST RESULT: 50/50 passed`.
 
 Spuštění hry:
 
@@ -53,12 +54,24 @@ První hratelný vertikální řez obsahuje:
   na FPS;
 - kameru, posun, zoom, výběr polí a build režimy;
 - kamenné cesty, sklad, dřevorubeckou chatu a pilu;
-- oddělené profese dřevorubce a nosiče;
+- oddělené profese dřevorubce, nosiče a autonomního zahradníka;
 - řetězec strom → dřevorubec → chata → nosič → pila → nosič → sklad;
 - datové definice surovin, budov, receptů, profesí a pohybu v `game/data/`;
+- datově řízenou školu s FIFO výcvikem nosičů, dřevorubců a zahradníků, přesným
+  časováním v tickách a čekáním při obsazených výstupech;
+- autonomní výběr nejbližšího dosažitelného místa, výsadbu, exkluzivní rezervace
+  a cooldown zahradníků; ruční mikromanagement výsadby není potřeba;
+- tři vizuální růstové fáze stromu; těžební úkol vzniká až v dospělé fázi;
 - deterministické vážené A*, rezervace úkolů i polí a replánování při blokaci;
-- verzi 2 JSON save/load se zpětným načtením verze 1;
-- UI pro skladové i rozpracované zásoby, rychlost a události;
+- hustou autoritativní vrstvu základního terénu (`grass`, `dirt`, `water`,
+  `rock`) oddělenou od stezek, cest a obsazení;
+- pravoúhlou projekci 48 × 48 px a samostatný čtecí `TerrainRenderer` s
+  deterministickými barevnými variantami a automatickými přechody;
+- verzi 5 JSON save/load se stavem terénu, výcviku, růstu stromů a cooldownu
+  zahradníků a zpětným načtením verzí 1 až 4;
+- datově řízený HUD vpravo nahoře s procedurálními ikonami klád, prken a kamene,
+  který odděleně ukazuje skladové a rozpracované množství; kámen je zatím nulová
+  skladová položka bez těžebního řetězce;
 - procedurální vektorovou placeholder grafiku bez externích assetů.
 
 Architektura drží simulaci v `game/scripts/simulation/` oddělenou od vstupu,
@@ -78,6 +91,8 @@ Aktuální časování:
 - logický tick je stále 10 Hz; rychlost mění jen tempo požadavků na tick;
 - tráva `6` ticků/pole, hlíněná stezka `4`, kamenná cesta `2`;
 - pokácení stromu `30` ticků;
+- výsadba `20` ticků, opakování po `80` tickách;
+- sazenice přechází v mladý strom v ticku `80` a dospívá v ticku `200`;
 - pila spotřebuje 1 kládu a za `60` ticků vyrobí 1 prkno.
 
 Při blokaci jiným pracovníkem se jednotka nesmí zaseknout ani donekonečna
@@ -119,9 +134,11 @@ Referenční princip KaM:
 - samostatné animační vrstvy budov a maska barvy hráče;
 - 2D řazení objektů podle mapové pozice a jednotný směr světla/stínů.
 
-Současný renderer je jen izometrický diamantový placeholder 64 × 32 px. Nemá
-skutečné typy zeminy, výšku ani produkční assety. Simulace dnes rozlišuje hlavně
-povrch pohybu a blokaci budov.
+Současný základ už používá pravoúhlou projekci 48 × 48 px. Rozlišuje trávu,
+hlínu, vodu a skálu, oddělené stezky/cesty, deterministické varianty a
+automatické procedurální okraje. Jde stále o dočasné barevné textury bez výšky
+a produkčních malovaných assetů; jejich účelem je ověřit projekci, měřítko,
+kameru a datové hranice.
 
 ## 7. Schválený plán terénu
 
@@ -138,13 +155,16 @@ Cílová terénní buňka má oddělit:
 Terénní data jsou autorita; renderer je pouze zobrazuje. Cesty se nesmějí dál
 tvářit jako základní druh zeminy.
 
-Plánované fáze:
+Stav plánovaných fází:
 
-1. datový model a save migrace;
-2. samostatný `TerrainRenderer` s bloky přibližně 16 × 16 polí;
-3. malá sada tráva/hlína/kámen/voda + nenápadné deterministické varianty;
-4. automatické okraje, rohy, pruhy a ostrůvky přes průhledné masky;
-5. vizuální vývoj vyšlapaných stezek a napojované kamenné cesty;
+1. datový model a save migrace — hotovo ve verzi 4;
+2. samostatný `TerrainRenderer` — hotovo; cache bloků přibližně 16 × 16 polí
+   zůstává dalším výkonovým krokem;
+3. dočasná sada tráva/hlína/skála/voda + deterministické varianty — hotovo;
+4. procedurální automatické okraje a rohy — základ hotov, malované maskové
+   atlasy teprve vzniknou;
+5. procedurální vyšlapané stezky a napojované kamenné cesty — základ hotov,
+   produkční kresba zbývá;
 6. sdílená výška rohů, svahy a skalní stěny;
 7. voda a pobřeží;
 8. samostatné přírodní dekorace;
@@ -153,9 +173,9 @@ Plánované fáze:
 Výkonnostní cíl produkčního systému je mapa až 256 × 256 polí s lokálním
 překreslením změněných bloků.
 
-## 8. Nejbližší realizační balík
+## 8. Dokončený terénní základ
 
-Další implementace má začít terénem a držet tento omezený rozsah:
+První omezený terénní balík nyní obsahuje:
 
 1. přidat datový model pro trávu, hlínu, vodu a skálu;
 2. oddělit základní zeminu od stezky a kamenné cesty;
@@ -166,7 +186,8 @@ Další implementace má začít terénem a držet tento omezený rozsah:
 7. doplnit testy průchodnosti, stavitelnosti, cest a serializace.
 
 Produkční malované assety se mají vyrábět až po ověření projekce, měřítka,
-kamery a přechodů.
+kamery a přechodů. Technická kontrola a testy proběhly; před výrobou celé sady
+je vhodné uživatelsky potvrdit náhled měřítka 48 px a celkovou hustotu mapy.
 
 Kontrolní milníky jsou: (1) malovaný plochý terén, (2) živá krajina s
 dekoracemi a vodou, (3) reliéf a pravidla svahů, (4) produkční renderer a editor.
@@ -203,12 +224,22 @@ Po terénním základu navazují zejména:
 
 ## 11. Orientace v dokumentaci
 
+Po code review 4. 9. 2026 jsou opravené čtyři integrační chyby: opakovaná
+aktualizace jednotky při výměně míst, neobnovený výběr cíle při zablokovaném
+doručování, přijetí neúplného save a dvojí zpracování mezerníku přes UI focus.
+`WorldSnapshot` nyní vlastní serializaci/validaci/migrace a `GameHud` konstrukci
+a texty UI. Pohybové definice mají společný zdroj v JSON; A* i hledání nejbližšího
+cíle používají společnou haldu. Podrobnosti a testy jsou v architektuře a
+`docs/code-review-fixes.md`.
+
 - `README.md` — spuštění, ovládání, aktuální funkce a právní mantinely.
 - `docs/reference-analysis.md` — rozbor KaM Remake.
 - `docs/godot-architecture.md` — hranice systémů a plán determinismu.
 - `docs/reference-map.md` — mapování Delphi odpovědností na Godot systémy.
 - `THIRD_PARTY_NOTICES.md` — původ reference a licence.
 - `game/scripts/simulation/` — autoritativní model.
-- `game/scripts/view/main_view.gd` — současný vstup, UI a placeholder renderer;
-  při terénním milníku se má kreslení oddělit.
+- `game/scripts/view/main_view.gd` — vstup, UI a kreslení entit;
+- `game/scripts/view/terrain_renderer.gd` — samostatné čtecí zobrazení terénu;
+- `game/scripts/view/map_projection.gd` — sdílená projekce a budoucí hranice pro
+  výšku rohů.
 - `game/tests/test_runner.gd` — současná testovací sada.
