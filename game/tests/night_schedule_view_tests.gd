@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Hud = preload("res://scripts/view/game_hud.gd")
 const TEST_COUNT: int = 5
@@ -16,7 +18,7 @@ static func run(host: Node) -> Array[String]:
 
 
 static func _world() -> World:
-	var world := World.new(Vector2i(16, 10))
+	var world := LegacyFixture.create(Vector2i(16, 10))
 	world.tick = 3750 # 20:00 on the first day.
 	return world
 

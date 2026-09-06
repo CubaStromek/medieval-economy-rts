@@ -4,6 +4,151 @@ Run `./tests/run-headless.sh` from the repository root. The launcher loads
 `game/project.godot` and runs `res://tests/test_runner.tscn`; project verification
 does not use isolated `--script` execution.
 
+
+## Graphics sandbox — 2026-09-07
+
+The separate asset-independent sandbox runner covers **27 cases**: eight prior
+terrain-reference cases, eight renderer-control cases, seven object-layer cases
+and four versioned-state cases. It is intentionally separate from the main
+simulation suite:
+
+```sh
+godot --headless --path game res://tests/terrain_sandbox_runner.tscn
+```
+
+Native verification also covered unchanged default pixels, live layer controls,
+actual checkbox/wheel input, small-window layout, screenshot + settings export
+and both local source crops. The private source atlas and map fixtures are not
+required for the synthetic suite. See [sandbox verification](../docs/terrain-graphics-sandbox.md).
+
+## Mountainous Region external terrain — 2026-09-06
+
+The complete combined project runner passed **552/552 cases** with no GDScript
+parse or runtime errors, preserving the concurrently completed movement and main-menu changes.
+This feature adds **16 cases**: seven loader/simulation cases and nine
+actual-scene view cases. They author synthetic maps and need no original data.
+
+Coverage includes all shared height vertices and orientation, terrain/tree
+validation, no accidental settlement, slope/rock/water placement rules, actual
+pathfinding through a river gap, normal v17 JSON saves, explicit missing-map
+fallback, scene reset, full-map camera fit, wheel input, resize behavior,
+retained terrain caches, separate save slots and real F5/F9 temporary-file
+roundtrips. Large-map tree culling retains near-edge offscreen casters and never
+culls workers or changes simulation state; the default starter remains intact.
+
+The separate Node converter suite passed **18/18**, including the optional
+independent full raw-file check of Mountainous Region. The actual imported map
+also passed Godot loading, complete v17 JSON roundtrip, continued ticks and
+four cross-map routes with every step checked. Native screenshots show the
+real scene in overview and close-up. See
+[provenance, local setup and limitations](../docs/mountainous-region.md).
+
+## Main menu and saved sessions — 2026-09-06
+
+The combined project runner passed **536/536 cases** in Godot 4.7.2.
+The nine new menu cases also passed with native Apple M4 / OpenGL rendering.
+They exercise real button and keyboard input, both menu layouts (1152 × 720
+and 1680 × 720), all three map choices, paused simulation/input isolation,
+saving and resuming, missing/corrupt saves, and restored time, inventory and
+map identity. Fixtures use temporary save files and preserve the player's slot.
+Normal startup and both demo launch flags were checked separately, including
+selecting a different map after launching with a demo flag. Native screenshots
+are in `docs/previews/main-menu.png`, `map-selection.png` and `pause-menu.png`.
+
+
+## Idle carriers blocking narrow doorways — 2026-09-06
+
+The complete combined project runner passed **527/527 cases** both headless
+and in native Godot 4.7.2 (Apple M4 / OpenGL Compatibility), with no GDScript
+parse or runtime errors. The new suites add **16 cases**: nine narrow-lane
+scenarios with production building footprints, four recovery cases after
+cancelled movement, and three cases where a retreat's destination changes.
+
+The reported loaded-lumberjack/idle-carrier blockage was reproduced before
+the fix: the carrier could only select an immediate off-route neighbor, so
+neither planning nor execution could use a clearing farther along the lane.
+Tests now cover multi-step retreat, a dead-end hut doorway, blocked indoor
+exit, both worker-ID orders, timed reciprocal passing, per-step interpolation
+and origin reservations, shared distant pockets, busy-worker/guard protection,
+trail-wear suppression, cargo and workplace conservation, and save/reload.
+Separate cancellation and dawn cases catch an idle movement cooldown that
+previously never finished. Dynamic-obstacle cases ensure a lost resting place
+does not strand the carrier permanently in a busy `yield` state.
+
+Historical no-pocket fixtures now close the lane's tails as well: a clearing
+several tiles ahead or behind is a valid escape, not a permanent blockade.
+Tests use their own worlds; the player's running map and saves were untouched.
+
+## Builder foundation preparation — 2026-09-06
+
+The complete combined project runner passed **511/511 cases**, with no
+GDScript parse or runtime errors. The new suites add **28 cases**: 13 physical
+simulation cases, nine save/validation cases and six real-scene presentation
+cases. Native rendering separately exercised actual placement on the unchanged
+starter hillside, progressive Builder earthwork, Carrier deliveries and final
+construction. The cost remained exactly 3 planks + 2 stone for the Hut.
+
+Checks cover no-Builder and empty-stock controls, ordered preparation before
+materials, one-unit terrain steps, protected neighbors, future surface
+reservations, dynamic worker obstruction, cancellation, exclusive Builders,
+night pause/resume, exact partial-work JSON checkpoints, legacy v1–16 behavior
+and transactional rejection. Actual pointer input checks the gold preview and
+every footprint tile; frame-driven presentation checks stakes, working shovel,
+paused cues and the transition to ordinary construction.
+
+The existing slope-readability negative control now uses a genuinely too-uneven
+but walkable grassy site. Gentle slopes are positive preparation cases; the
+independent flat-rock rejection and road-on-slope controls remain.
+Inspected previews: `docs/previews/foundation-preview.jpg` and
+`docs/previews/foundation-working.jpg`.
+See [mechanics and save v17](../docs/foundation-preparation.md).
+
+## Building footprints — 2026-09-06
+
+The complete combined runner passed **483/483 cases** with no GDScript parse or
+runtime errors. This adds **32 groups**: 14 simulation/geometry, eight save
+compatibility, three full-economy integration and seven viewport/rendering groups.
+The native game view was also inspected for completed buildings and actual
+mouse-hover placement with its eight-cell Sawmill mask and blue doorway.
+
+New suites use default production worlds and actual catalog geometry. They
+exercise every production recipe, all 29 demo types, physical wood and stone
+transport, indoor work, crowded exits, sleep/wake, construction cancellation,
+all mask-cell blockers, diagonal movement and in-flight visible steps, nearest
+footprint extraction range, legacy/current mixed saves and malformed data.
+The existing starter bootstrap and uphill relief logistics also use real masks.
+
+Compact historical fixtures explicitly use `legacy_world_fixture.gd`, which
+returns the production simulation configured to author supported version-0
+buildings. Their prior economic/movement assertions continue testing old-save
+behavior; this helper is never loaded by the game. Current scenarios and new
+footprint suites do not use it. See [geometry and provenance](../docs/building-footprints.md).
+
+Inspected images: `docs/previews/building-footprints-village.png` and
+`docs/previews/building-footprints-placement.png`.
+
+## Sunlight and sky display — 2026-09-06
+
+The complete combined runner passed **451/451 headless cases** in Godot 4.7.2,
+with no GDScript parse or runtime errors.
+
+The lighting feature adds **20 cases**: eight pure solar-cycle checks, five
+sky-display UI cases and seven actual-scene lighting/shadow cases. Focused runs
+passed all twenty; the seven integration cases also passed with native rendering.
+The native pixel check proves that the HUD keeps its color while the map darkens.
+
+Coverage includes smooth dawn/sunset and midnight wrapping, very large saved
+ticks, opposite morning/evening shadows, the real 0.5×/1×/2× and pause controls,
+load/reset synchronization, unchanged simulation snapshots and retained terrain
+mesh identities. Shadow outlines follow independently checked terrain heights,
+clip to map rows and stop drawing for workers who enter buildings. The sky
+display fits 900/1152px layouts, yields clicks to the map and hides behind menus.
+
+Native inspections covered dawn, morning, noon, sunset and night, plus both
+low-sun angles on the starter map's raised terrain, without triangulation errors.
+Inspected screenshots: `docs/previews/solar-morning.png`, `solar-noon.png`,
+`solar-sunset.png` and `solar-night.png` in the same directory.
+
 ## Civilian daily schedule — 2026-09-05
 
 The final combined runner passed **431/431 headless cases** in Godot 4.7.2,
@@ -102,6 +247,9 @@ assertions or content entries.
 | Indoor unit visibility | 6 | Actual indoor versus outdoor passerby draw entries, safe reappearance, building/citizen/stock details, read-only selection, live and stale draw callbacks excluding sprite/shadow/cargo/hunger, no base-map rebuild |
 | Calendar clock | 7 | Exact phase/day boundaries, ten-minute cycle, old/current saves and large ticks |
 | Calendar clock HUD | 4 | Actual pause/speed controls, tooltips and responsive clock |
+| Solar light cycle | 8 | Saved-tick solar/moon phases, bounded smooth palette, large ticks, low-sun shadows and cycle continuity |
+| Sky clock HUD | 5 | Sun/moon arc, read-only previews, sub-tick speed/pause, responsive layout and map click-through |
+| Solar lighting and shadows | 7 | Actual ambient light, world immutability, retained terrain, untinted HUD pixels, indoor shadow lifecycle, sampled relief and immediate load/reset |
 | Civilian daily schedule | 10 | Exact work/rest boundaries, owned huts, communal warehouse entry/exit, paused production/construction, no home, blocked cargo, movement continuity and active guards |
 | Night schedule save compatibility | 9 | Actual sleepers, cargo conservation, route rebuilding, v13/v14 migration, malformed bedrooms, shared doorway, night meal and new workplace |
 | Night meals and deferred cargo | 6 | Released military stock reservations, retained loaded ration, night meals across sleep/save/dawn and empty Inn without night logistics |

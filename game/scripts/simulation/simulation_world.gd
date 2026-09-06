@@ -12,8 +12,11 @@ const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
 const DayCycleClass = preload("res://scripts/simulation/day_cycle.gd")
 const DailyScheduleClass = preload("res://scripts/simulation/daily_schedule.gd")
 const IndoorWorkersClass = preload("res://scripts/simulation/indoor_workers.gd")
+const IdleYieldRouteClass = preload("res://scripts/simulation/idle_yield_route.gd")
 const InnFeedingClass = preload("res://scripts/simulation/inn_feeding.gd")
 const SoldierFoodSupplyClass = preload("res://scripts/simulation/soldier_food_supply.gd")
+const BuildingFootprintsClass = preload("res://scripts/simulation/building_footprints.gd")
+const BuildingFoundationsClass = preload("res://scripts/simulation/building_foundations.gd")
 
 const DEFAULT_MAP_SIZE := Vector2i(20, 16)
 const TICK_SECONDS: float = DayCycleClass.TICK_SECONDS
@@ -35,6 +38,9 @@ var catalog: DefinitionCatalogClass
 var grid: GridMapSimClass
 var task_board: TaskBoardClass
 var buildings: Dictionary = {}
+# An authoring override for historical fixtures. Every placed building stores
+# its own version, so loading one-cell saves never expands existing buildings.
+var default_footprint_version: int = BuildingFootprintsClass.CURRENT_VERSION
 var trees: Dictionary = {}
 var fields: Dictionary = {}
 var deposits: Dictionary = {}
@@ -72,7 +78,7 @@ func setup_demo() -> void:
 	place_building("warehouse", Vector2i(3, 8))
 	var lumber_hut_id: int = place_building("lumber_hut", Vector2i(7, 8))
 	place_building("sawmill", Vector2i(11, 8))
-	var forester_hut_id: int = place_building("forester_hut", Vector2i(13, 8))
+	var forester_hut_id: int = place_building("forester_hut", Vector2i(15, 10) if default_footprint_version > 0 else Vector2i(13, 8))
 	spawn_worker(Vector2i(5, 10), "lumberjack", lumber_hut_id)
 	spawn_worker(Vector2i(7, 10), "carrier")
 	spawn_worker(Vector2i(9, 10), "gardener", forester_hut_id)
@@ -127,8 +133,13 @@ func step_tick() -> void:
 
 
 func add_tree(cell: Vector2i, amount: int = 3) -> int:
+	if foundation_affects_cell(cell):
+		return 0
 	if not grid.allows_trees(cell) or _tree_at(cell) != 0 or field_id_at(cell) != 0 or deposit_id_at(cell) != 0:
 		return 0
+	for building: Dictionary in buildings.values():
+		if int(building.get("footprint_version", 0)) > 0 and building["entrance"] == cell:
+			return 0
 	return _create_tree(cell, amount, TREE_MATURE_AGE_TICKS)
 
 
@@ -316,7 +327,102 @@ func owns_workplace(worker: Dictionary, building_id: int) -> bool:
 	return not owner.is_empty() and int(owner["id"]) == int(worker["id"])
 
 
+func building_cells(building: Dictionary) -> Array[Vector2i]:
+	return BuildingFootprintsClass.cells(catalog.building(String(building["type"])), building["position"], int(building.get("footprint_version", 0)))
+
+
+func placement_cells(building_type: String, anchor: Vector2i) -> Array[Vector2i]:
+	return BuildingFootprintsClass.cells(catalog.building(building_type), anchor, default_footprint_version)
+
+
+func building_door_cell(building: Dictionary) -> Vector2i:
+	return BuildingFootprintsClass.door_cell(catalog.building(String(building["type"])), building["position"], int(building.get("footprint_version", 0)))
+
+
+func placement_entrance(building_type: String, anchor: Vector2i) -> Vector2i:
+	if default_footprint_version == 0:
+		return _find_entrance(anchor)
+	var door: Vector2i = BuildingFootprintsClass.door_cell(catalog.building(building_type), anchor, default_footprint_version)
+	return door + Vector2i.DOWN if door != Vector2i(-1, -1) else Vector2i(-1, -1)
+
+
+func foundation_plan(building_type: String, anchor: Vector2i) -> Dictionary:
+	return BuildingFoundationsClass.plan(self, building_type, anchor)
+
+
+func foundation_affects_cell(cell: Vector2i) -> bool:
+	# This is a surface reservation, not an obstacle to walking. Do not let a
+	# new permanent object prevent an already reserved site from being leveled.
+	for building: Dictionary in buildings.values():
+		if not BuildingFoundationsClass.pending(building):
+			continue
+		for vertex: Vector2i in BuildingFoundationsClass.vertices_for_cells(building_cells(building)):
+			if grid.vertex_height(vertex) != int(building["foundation_target_height"]) and grid.cells_touching_vertex(vertex).has(cell):
+				return true
+	return false
+
+
 func can_place_building(building_type: String, cell: Vector2i) -> bool:
+	if default_footprint_version == 0:
+		return _can_place_legacy_building(building_type, cell)
+	if economy_enabled:
+		return bool(foundation_plan(building_type, cell)["valid"])
+	var definition: Dictionary = catalog.building(building_type)
+	var cells: Array[Vector2i] = placement_cells(building_type, cell)
+	if cells.is_empty() or not _building_terrain_valid(building_type, cell):
+		return false
+	var occupied: Dictionary = {}
+	var foundation_height: int = grid.vertex_height(cells[0])
+	var allowed: Array = definition.get("allowed_terrain", [])
+	for occupied_cell: Vector2i in cells:
+		if not grid.is_buildable(occupied_cell) or grid.cell_height(occupied_cell) != float(foundation_height):
+			return false
+		if not allowed.is_empty() and not allowed.has(grid.base_terrain_at(occupied_cell)):
+			return false
+		if not _building_site_cell_clear(occupied_cell):
+			return false
+		occupied[occupied_cell] = true
+	var entrance: Vector2i = placement_entrance(building_type, cell)
+	var door: Vector2i = BuildingFootprintsClass.door_cell(definition, cell, default_footprint_version)
+	if not grid.can_use_building_exit(door, entrance) or occupied.has(entrance) or not _building_site_cell_clear(entrance):
+		return false
+	# A clear doorway still needs an approach after the new walls are blocked.
+	var approach_exists: bool = false
+	for direction: Vector2i in GridMapSimClass.CARDINAL_DIRECTIONS:
+		var approach: Vector2i = entrance + direction
+		if not occupied.has(approach) and grid.can_traverse(entrance, approach) and _tree_at(approach) == 0:
+			approach_exists = true
+			break
+	return approach_exists and ResourceDepositsClass.placement_valid(self, building_type, cell, entrance, occupied)
+
+
+func _building_site_cell_clear(cell: Vector2i) -> bool:
+	if foundation_affects_cell(cell):
+		return false
+	if _tree_at(cell) != 0 or field_id_at(cell) != 0 or deposit_id_at(cell) != 0 or tile_reservations.has(cell) or planting_reservations.has(cell) or _yielding_origins.has(cell):
+		return false
+	# Logical reservation moves to the destination at the start of a step, but
+	# the person still visibly traverses the origin and diagonal corner until
+	# interpolation finishes. Placement must not erect walls through that step.
+	for worker: Dictionary in workers.values():
+		if int(worker["visual_progress_ticks"]) >= int(worker["visual_duration_ticks"]):
+			continue
+		var previous: Vector2i = worker["previous_position"]
+		var destination: Vector2i = worker["position"]
+		if previous == cell:
+			return false
+		if previous.x != destination.x and previous.y != destination.y \
+				and cell in [Vector2i(previous.x, destination.y), Vector2i(destination.x, previous.y)]:
+			return false
+	for building: Dictionary in buildings.values():
+		if building["entrance"] == cell:
+			return false
+	return true
+
+
+func _can_place_legacy_building(building_type: String, cell: Vector2i) -> bool:
+	if foundation_affects_cell(cell):
+		return false
 	if catalog.building(building_type).is_empty() or not grid.is_buildable(cell) or not _building_terrain_valid(building_type, cell):
 		return false
 	if _tree_at(cell) != 0 or field_id_at(cell) != 0 or deposit_id_at(cell) != 0 or tile_reservations.has(cell) or planting_reservations.has(cell):
@@ -331,13 +437,15 @@ func can_place_building(building_type: String, cell: Vector2i) -> bool:
 func place_building(building_type: String, cell: Vector2i) -> int:
 	if not can_place_building(building_type, cell):
 		return 0
-	var entrance: Vector2i = _find_entrance(cell)
+	var entrance: Vector2i = placement_entrance(building_type, cell)
+	var foundation: Dictionary = foundation_plan(building_type, cell)
 	var entity_id: int = _take_entity_id()
 	buildings[entity_id] = {
 		"id": entity_id,
 		"type": building_type,
 		"position": cell,
 		"entrance": entrance,
+		"footprint_version": default_footprint_version,
 		"storage": _empty_inventory(),
 		"inputs": _empty_inventory(),
 		"outputs": _empty_inventory(),
@@ -347,14 +455,19 @@ func place_building(building_type: String, cell: Vector2i) -> int:
 		"training_paid": false,
 		"construction_remaining": int(catalog.building(building_type).get("construction_ticks", 120)) if economy_enabled else 0,
 		"construction_delivered": {},
+		"foundation_target_height": int(foundation["target_height"]),
+		"foundation_work_total": int(foundation["work_ticks"]),
+		"foundation_work_remaining": int(foundation["work_ticks"]),
 		"construction_cost_revision": DefinitionCatalogClass.CONSTRUCTION_COST_REVISION,
 		"recipe_id": String(catalog.building(building_type).get("recipe", "")),
 		"production_queue": [],
 		"order_active": false,
 		"service_queue": [],
 	}
-	grid.block(cell, entity_id)
-	_push_event("Built %s." % String(catalog.building(building_type).get("display_name", building_type)))
+	for occupied: Vector2i in building_cells(buildings[entity_id]):
+		grid.block(occupied, entity_id)
+	var placement_message: String = "Construction site placed: %s." if economy_enabled else "Built %s."
+	_push_event(placement_message % String(catalog.building(building_type).get("display_name", building_type)))
 	return entity_id
 
 
@@ -394,7 +507,8 @@ func cancel_construction(building_id: int) -> bool:
 			if not String(worker["carrying"]).is_empty():
 				reroute_workers.append(worker)
 	buildings.erase(building_id)
-	grid.unblock(building["position"])
+	for occupied: Vector2i in building_cells(building):
+		grid.unblock(occupied)
 	# Reset all former destinations first so incoming-ware reservations cannot
 	# point at the removed site while carriers choose their replacement routes.
 	for worker: Dictionary in reroute_workers:
@@ -445,6 +559,8 @@ func place_road(cell: Vector2i) -> bool:
 
 
 func set_base_terrain(cell: Vector2i, terrain_id: String) -> bool:
+	if foundation_affects_cell(cell):
+		return false
 	# Authoring commands must guard entity layers that GridMapSim intentionally
 	# does not own. Loading and initial map setup may use the grid setter before
 	# entities exist.
@@ -468,6 +584,8 @@ func set_vertex_height(vertex: Vector2i, height: int) -> bool:
 		return true
 	var affected: Array[Vector2i] = grid.cells_touching_vertex(vertex)
 	for cell: Vector2i in affected:
+		if foundation_affects_cell(cell):
+			return false
 		if grid.blocked_by.has(cell) or tile_reservations.has(cell) or planting_reservations.has(cell):
 			return false
 		if _tree_at(cell) != 0 or field_id_at(cell) != 0 or deposit_id_at(cell) != 0:
@@ -531,14 +649,8 @@ func has_building(building_type: String) -> bool:
 
 
 func building_id_at(cell: Vector2i) -> int:
-	var building_ids: Array = buildings.keys()
-	building_ids.sort()
-	for building_id_variant: Variant in building_ids:
-		var building_id: int = int(building_id_variant)
-		var building: Dictionary = buildings[building_id] as Dictionary
-		if building["position"] as Vector2i == cell:
-			return building_id
-	return 0
+	var entity_id: int = int(grid.blocked_by.get(cell, 0))
+	return entity_id if buildings.has(entity_id) else 0
 
 
 func queue_unit_training(building_id: int, unit_type: String) -> bool:
@@ -723,6 +835,13 @@ func _tick_worker(worker_id: int) -> void:
 		return
 	var state: String = String(worker["state"])
 	if state == "idle":
+		# Cancellation keeps the committed visible step. Finish its clock even
+		# without a job, otherwise this idle person can never become yieldable.
+		if int(worker["move_cooldown"]) > 0:
+			worker["move_cooldown"] = int(worker["move_cooldown"]) - 1
+			return
+		if int(worker["visual_progress_ticks"]) < int(worker["visual_duration_ticks"]):
+			return
 		# A finished meal always ends with a physical exit, even if no job is
 		# available. Soldiers also leave visits restored from historical saves.
 		if is_worker_inside(worker) and (catalog.soldiers.has(String(worker["type"])) \
@@ -952,6 +1071,13 @@ func _commit_worker_step(worker: Dictionary, next_cell: Vector2i) -> void:
 	worker["move_cooldown"] = move_duration - 1
 	worker["visual_progress_ticks"] = 0
 	worker["visual_duration_ticks"] = move_duration
+	_record_yield_step(worker, current)
+
+
+func _record_yield_step(worker: Dictionary, from: Vector2i) -> void:
+	if worker["action"] == "yield":
+		_yielding_origins[from] = int(worker["id"])
+		worker["yield_rest_until"] = tick + int(worker["visual_duration_ticks"]) + YIELD_REST_TICKS
 
 
 func _idle_can_yield(worker: Dictionary) -> bool:
@@ -977,10 +1103,10 @@ func _try_yield_idle_worker(requester: Dictionary, other_id: int) -> bool:
 	var diagonal: bool = start.x != next.x and start.y != next.y
 	if from != next and not (diagonal and from in [Vector2i(start.x, next.y), Vector2i(next.x, start.y)]):
 		return false
-	var best: Vector2i = _idle_yield_destination(other, start, path, path_index)
-	if best == Vector2i(-1, -1):
+	var route: Array[Vector2i] = IdleYieldRouteClass.find(self, other, start, path, path_index, int(requester["id"]))
+	if route.is_empty():
 		return false
-	_start_worker_yield(other, best)
+	_start_worker_yield(other, route, int(requester["id"]))
 	return true
 
 
@@ -990,47 +1116,29 @@ func _try_yield_building_exit(worker: Dictionary, other_id: int) -> bool:
 	var other: Dictionary = workers[other_id]
 	if not _idle_can_yield(other) or other["position"] != worker["position"]:
 		return false
-	var best: Vector2i = _idle_yield_destination(other, worker["position"], worker["path"], int(worker["path_index"]))
-	if best == Vector2i(-1, -1):
+	var route: Array[Vector2i] = IdleYieldRouteClass.find(self, other, worker["position"], worker["path"], int(worker["path_index"]), int(worker["id"]))
+	if route.is_empty():
 		return false
-	_start_worker_yield(other, best)
+	_start_worker_yield(other, route, int(worker["id"]))
 	return true
 
 
-func _start_worker_yield(other: Dictionary, best: Vector2i) -> void:
+func _start_worker_yield(other: Dictionary, route: Array[Vector2i], requester_id: int) -> void:
 	var from: Vector2i = other["position"]
 	var other_id: int = int(other["id"])
-	# This is one normal interpolated movement step, never a teleport or a swap
-	# that pushes an idle person backwards into the requester's occupied cell.
+	# A retreat has a real off-route destination, not an oscillating one-tile
+	# push. Each edge uses the ordinary movement clock and occupancy checks.
 	other["state"] = "moving"
 	other["action"] = "yield"
-	other["path"] = [best]
+	other["yield_requester_id"] = requester_id
+	other["path"] = route
 	other["path_index"] = 0
-	other["target_cell"] = best
-	_commit_worker_step(other, best)
-	_yielding_origins[from] = other_id
-	other["yield_rest_until"] = tick + int(other["visual_duration_ticks"]) + YIELD_REST_TICKS
+	other["target_cell"] = route.back()
+	if grid.can_step(from, route[0], _temporary_blockers_for(other_id)):
+		_commit_worker_step(other, route[0])
+	# A reciprocal first step waits for the next normal update, so neither
+	# participant can move twice in this tick regardless of worker-ID order.
 	_workers_updated_this_tick[other_id] = true
-
-
-func _idle_yield_destination(other: Dictionary, requester_start: Vector2i, path: Array, path_index: int = 0) -> Vector2i:
-	var avoided: Dictionary = {requester_start: true}
-	for index: int in range(path_index, path.size()):
-		avoided[path[index]] = true
-	for building: Dictionary in buildings.values():
-		avoided[building["entrance"]] = true
-	var blockers: Dictionary = _temporary_blockers_for(int(other["id"]))
-	var from: Vector2i = other["position"]
-	var best := Vector2i(-1, -1)
-	var best_cost: int = 2147483647
-	for cell: Vector2i in grid.neighbors8(from, blockers):
-		if avoided.has(cell) or planting_reservations.has(cell) or _tree_at(cell) != 0 or field_id_at(cell) != 0 or deposit_id_at(cell) != 0:
-			continue
-		var cost: int = grid.step_duration_ticks(from, cell) + (100 if not grid.overlay_at(cell).is_empty() else 0)
-		if cost < best_cost:
-			best = cell
-			best_cost = cost
-	return best
 
 
 func _try_swap_workers(worker: Dictionary, other_worker_id: int, next_cell: Vector2i) -> bool:
@@ -1079,6 +1187,8 @@ func _try_swap_workers(worker: Dictionary, other_worker_id: int, next_cell: Vect
 	worker["visual_duration_ticks"] = worker_move_duration
 	other["visual_progress_ticks"] = 0
 	other["visual_duration_ticks"] = other_move_duration
+	_record_yield_step(worker, current)
+	_record_yield_step(other, next_cell)
 	return true
 
 
@@ -1098,6 +1208,20 @@ func _update_worker_visual_progress() -> void:
 
 
 func _reconsider_blocked_worker(worker: Dictionary) -> void:
+	if worker["action"] == "yield":
+		# A distant pocket may be occupied or built over during the retreat.
+		# Pick a fresh safe place instead of remaining a busy, unyieldable unit
+		# forever on the same impossible route through the doorway.
+		var requester_id: int = int(worker.get("yield_requester_id", 0))
+		var requester: Dictionary = workers.get(requester_id, {})
+		var route: Array[Vector2i] = IdleYieldRouteClass.find(self, worker,
+			requester.get("position", Vector2i(-1, -1)), requester.get("path", []),
+			int(requester.get("path_index", 0)), requester_id)
+		if route.is_empty():
+			_reset_worker(worker)
+		else:
+			_begin_worker_move(worker, route, route.back())
+		return
 	if DailyScheduleClass.reconsider_blocked(self, worker):
 		return
 	if SoldierFoodSupplyClass.reconsider_blocked(self, worker):
@@ -1170,9 +1294,8 @@ func _path_with_yielding(from: Vector2i, to: Vector2i, blockers: Dictionary, wor
 	var relaxed: Dictionary = _yieldable_path_blockers(blockers, worker_id)
 	if relaxed.size() == blockers.size():
 		return path
-	# Only rely on an idle person yielding if an off-route pocket is actually
-	# available. Otherwise keep that person blocked and consider another route
-	# or resource, rather than repeatedly choosing an impossible chokepoint.
+	# Planning and execution use the same reachable off-route resting place,
+	# including multi-step retreats out of narrow lanes between buildings.
 	while relaxed.size() < blockers.size():
 		path = GridPathfinderClass.find_path(grid, from, to, relaxed)
 		if path.is_empty():
@@ -1186,7 +1309,7 @@ func _path_with_yielding(from: Vector2i, to: Vector2i, blockers: Dictionary, wor
 			for occupied: Vector2i in crossing:
 				if blockers.has(occupied) and not relaxed.has(occupied):
 					var other: Dictionary = workers.get(int(tile_reservations.get(occupied, 0)), {})
-					if other.is_empty() or _idle_yield_destination(other, from, path) == Vector2i(-1, -1):
+					if other.is_empty() or IdleYieldRouteClass.find(self, other, from, path, 0, worker_id).is_empty():
 						relaxed[occupied] = true
 						rejected = true
 			previous = cell
@@ -1377,6 +1500,7 @@ func _begin_worker_move(worker: Dictionary, path: Array[Vector2i], target: Vecto
 
 func _reset_worker(worker: Dictionary) -> void:
 	_release_planting_reservation(worker)
+	worker.erase("yield_requester_id")
 	worker["state"] = "idle"
 	worker["action"] = ""
 	worker["task_id"] = 0
@@ -1498,18 +1622,20 @@ func _training_ticks_for(unit_type: String) -> int:
 
 
 func _find_unit_spawn_cell(building: Dictionary) -> Vector2i:
-	# Unit producers currently have a one-cell footprint. Prefer the authored
-	# entrance, then use the remaining sides in the grid's canonical order.
-	var position: Vector2i = building["position"] as Vector2i
+	# Prefer the exterior entrance. A large building's fallback cells are reached
+	# from that doorway, never from its bottom-left anchor through its own walls.
+	var door: Vector2i = building_door_cell(building)
 	var entrance: Vector2i = building["entrance"] as Vector2i
+	var legacy: bool = int(building.get("footprint_version", 0)) == 0
 	var candidates: Array[Vector2i] = [entrance]
 	for direction: Vector2i in GridMapSimClass.CARDINAL_DIRECTIONS:
-		var candidate: Vector2i = position + direction
+		var candidate: Vector2i = (door if legacy else entrance) + direction
 		if candidate != entrance:
 			candidates.append(candidate)
 	for candidate: Vector2i in candidates:
+		var accessible: bool = grid.can_use_building_exit(door, candidate) if legacy or candidate == entrance else grid.can_traverse(entrance, candidate)
 		if (
-			grid.can_use_building_exit(position, candidate)
+			accessible
 			and not tile_reservations.has(candidate)
 			and not planting_reservations.has(candidate)
 			and _tree_at(candidate) == 0
@@ -1527,6 +1653,8 @@ func _find_entrance(cell: Vector2i) -> Vector2i:
 
 
 func _can_plant_sapling(cell: Vector2i, allowed_worker_id: int) -> bool:
+	if foundation_affects_cell(cell):
+		return false
 	if field_id_at(cell) != 0:
 		return false
 	if not grid.allows_trees(cell) or _tree_at(cell) != 0 or field_id_at(cell) != 0 or deposit_id_at(cell) != 0:
@@ -1575,7 +1703,8 @@ func _empty_inventory() -> Dictionary:
 func _building_terrain_valid(type: String, cell: Vector2i, changed_cell: Vector2i = Vector2i(-1, -1), changed_terrain: String = "") -> bool:
 	var definition: Dictionary = catalog.building(type)
 	var allowed: Array = definition.get("allowed_terrain", [])
-	if not allowed.is_empty() and not allowed.has(grid.base_terrain_at(cell)):
+	var foundation_terrain: String = changed_terrain if cell == changed_cell else grid.base_terrain_at(cell)
+	if not allowed.is_empty() and not allowed.has(foundation_terrain):
 		return false
 	var nearby: String = String(definition.get("nearby_terrain", ""))
 	if nearby.is_empty():
@@ -1591,6 +1720,8 @@ func _building_terrain_valid(type: String, cell: Vector2i, changed_cell: Vector2
 
 
 func can_place_field(cell: Vector2i, kind: String = "wheat") -> bool:
+	if foundation_affects_cell(cell):
+		return false
 	if not ["wheat", "vine"].has(kind):
 		return false
 	if not grid.is_buildable(cell) or not ["grass", "dirt"].has(grid.base_terrain_at(cell)):
@@ -1715,6 +1846,14 @@ func production_status(building: Dictionary) -> String:
 	var type: String = String(building["type"])
 	var definition: Dictionary = catalog.building(type)
 	if not is_building_complete(building):
+		if BuildingFoundationsClass.pending(building):
+			for worker: Dictionary in workers.values():
+				if worker["action"] == "build_site" and worker["state"] == "working" and int(worker["source_id"]) == int(building["id"]):
+					if not can_worker_work(worker):
+						return "Ground preparation paused for the Builder's rest."
+					var reason: String = BuildingFoundationsClass.waiting_reason(self, building, int(worker["id"]))
+					return reason if not reason.is_empty() else "Leveling ground — %.1f s of work remaining." % (float(building["foundation_work_remaining"]) * TICK_SECONDS)
+			return "Waiting for a Builder to level the ground; materials follow afterward."
 		if not ClassicEconomyClass.materials_ready(self, building):
 			return "Carriers are bringing construction materials."
 		for worker: Dictionary in workers.values():
@@ -1739,7 +1878,7 @@ func production_status(building: Dictionary) -> String:
 	if definition.has("extract_resource"):
 		var remaining: int = 0
 		for deposit: Dictionary in deposits.values():
-			if deposit["resource"] == definition["extract_resource"] and ResourceDepositsClass._in_range(definition, building["position"], deposit["position"]):
+			if deposit["resource"] == definition["extract_resource"] and ResourceDepositsClass._in_range(definition, building["position"], deposit["position"], building_cells(building)):
 				remaining += int(deposit["amount"])
 		if remaining == 0:
 			return "Nearby deposits are exhausted. Build beside a new deposit."
@@ -1832,7 +1971,7 @@ func _task_is_useful(task: Dictionary, worker: Dictionary) -> bool:
 	if kind == "harvest_deposit":
 		return ResourceDepositsClass.task_available(self, task, worker)
 	if kind == "build_site":
-		return buildings.has(id) and not is_building_complete(buildings[id]) and ClassicEconomyClass.materials_ready(self, buildings[id])
+		return buildings.has(id) and not is_building_complete(buildings[id]) and (BuildingFoundationsClass.pending(buildings[id]) or ClassicEconomyClass.materials_ready(self, buildings[id]))
 	if kind == "sow_field" or kind == "harvest_field":
 		var field: Dictionary = fields.get(id, {})
 		if field.is_empty() or field_growth_stage(field) != (0 if kind == "sow_field" else 2):
@@ -1979,6 +2118,9 @@ func _release_worker_task(worker: Dictionary) -> void:
 
 
 func setup_economy_demo() -> void:
+	if default_footprint_version > 0:
+		preload("res://scripts/simulation/footprint_economy_demo.gd").setup(self)
+		return
 	# Authored starter village: buildings are complete before rules are enabled.
 	# Later player construction always requires delivered materials and builders.
 	grid = GridMapSimClass.new(Vector2i(34, 24))
@@ -2046,6 +2188,8 @@ func is_building_complete(building: Dictionary) -> bool:
 
 
 func add_deposit(cell: Vector2i, resource: String, amount: int = 40) -> int:
+	if foundation_affects_cell(cell):
+		return 0
 	return ResourceDepositsClass.add(self, cell, resource, amount)
 
 

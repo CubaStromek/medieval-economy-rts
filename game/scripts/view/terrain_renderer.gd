@@ -48,6 +48,15 @@ var show_buildability: bool = false:
 			return
 		show_buildability = value
 		_redraw_rows()
+# Gold hatching means earthwork may be possible for a building, never a
+# blanket approval of its full footprint. Fields retain flat-ground rules.
+var allow_ground_preparation: bool = false:
+	set(value):
+		if allow_ground_preparation == value:
+			return
+		allow_ground_preparation = value
+		if show_buildability:
+			_redraw_rows()
 var _textures: Dictionary = {}
 var _cells: Dictionary = {}
 var _row_batches: Dictionary = {}
@@ -159,6 +168,14 @@ func buildability_state(cell: Vector2i) -> String:
 	if grid.cell_slope(cell) > GridMapSimClass.MAX_BUILD_SLOPE:
 		return "slope"
 	return "level" if grid.is_buildable(cell) else "blocked"
+
+
+func buildability_guidance(cell: Vector2i) -> String:
+	var state: String = buildability_state(cell)
+	if state == "slope" and allow_ground_preparation and grid.cell_slope(cell) <= 2 \
+			and bool(grid.terrain_definition(grid.base_terrain_at(cell)).get("buildable", false)):
+		return "preparable"
+	return state
 
 
 func transition_mask_for(cell: Vector2i) -> int:
@@ -316,10 +333,10 @@ func paint_cell(canvas: CanvasItem, cell: Vector2i) -> void:
 
 
 func _paint_buildability(canvas: CanvasItem, cell: Vector2i) -> void:
-	var state: String = buildability_state(cell)
+	var state: String = buildability_guidance(cell)
 	if state == "level":
 		return
-	var slope: bool = state == "slope"
+	var slope: bool = state == "preparable" or (state == "slope" and not allow_ground_preparation)
 	var tint := Color(0.92, 0.61, 0.18, 0.10) if slope else Color(0.34, 0.18, 0.14, 0.13)
 	var hatch := Color(1.0, 0.70, 0.27, 0.45) if slope else Color(0.79, 0.33, 0.24, 0.42)
 	var outline := Color(0.95, 0.65, 0.22, 0.50) if slope else Color(0.20, 0.14, 0.11, 0.64)

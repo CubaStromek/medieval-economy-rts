@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Hud = preload("res://scripts/view/game_hud.gd")
 const Main = preload("res://scripts/view/main_view.gd")
@@ -19,7 +21,7 @@ static func run() -> Array[String]:
 
 
 static func _test_inn_menu_and_real_occupancy(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	var citizen: int = world.spawn_worker(world.buildings[inn]["entrance"], "carrier")
 	world.workers[citizen]["hunger"] = 100
@@ -54,7 +56,7 @@ static func _main(world: World) -> Main:
 
 
 static func _test_soldier_button_dispatch(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var soldier: int = world.spawn_worker(Vector2i(8, 5), "militia")
 	var civilian: int = world.spawn_worker(Vector2i(3, 5), "recruit")
 	world.economy_enabled = true
@@ -77,7 +79,7 @@ static func _test_soldier_button_dispatch(failures: Array[String]) -> void:
 
 
 static func _test_army_button_dispatch(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var low: int = world.spawn_worker(Vector2i(7, 5), "militia")
 	var full: int = world.spawn_worker(Vector2i(8, 5), "bowman")
 	var citizen: int = world.spawn_worker(Vector2i(3, 5), "carrier")
@@ -97,7 +99,7 @@ static func _test_army_button_dispatch(failures: Array[String]) -> void:
 
 
 static func _test_catalog_driven_indicators(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	world.catalog.economy["condition_hungry"] = 200
 	world.catalog.economy["soldier_food_request_threshold"] = 1000
 	var citizen: int = world.spawn_worker(Vector2i(2, 5), "carrier")
@@ -119,7 +121,7 @@ static func _test_catalog_driven_indicators(failures: Array[String]) -> void:
 
 
 static func _test_visible_unit_selection(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var soldier: int = world.spawn_worker(Vector2i(8, 5), "militia")
 	var main: Main = _main(world)
 	main.terrain_renderer = Terrain.new()
@@ -135,7 +137,7 @@ static func _test_visible_unit_selection(failures: Array[String]) -> void:
 
 
 static func _test_delivery_status_and_population(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var store: int = world.place_building("warehouse", Vector2i(2, 2))
 	world.buildings[store]["storage"]["bread"] = 1
 	var carrier: int = world.spawn_worker(Vector2i(2, 4), "carrier")

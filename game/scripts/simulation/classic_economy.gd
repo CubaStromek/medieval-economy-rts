@@ -4,11 +4,12 @@ extends RefCounted
 const Pathfinder = preload("res://scripts/simulation/grid_pathfinder.gd")
 const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
 const InnFeedingClass = preload("res://scripts/simulation/inn_feeding.gd")
+const Foundations = preload("res://scripts/simulation/building_foundations.gd")
 const QUEUE_CAPACITY: int = 10
 
 
 static func complete(building: Dictionary) -> bool:
-	return int(building.get("construction_remaining", 0)) == 0
+	return int(building.get("construction_remaining", 0)) == 0 and not Foundations.pending(building)
 
 
 static func has_stock(inventory: Dictionary, cost: Dictionary) -> bool:
@@ -69,6 +70,8 @@ static func queue_production(world: Variant, building_id: int, recipe_id: String
 
 
 static func needs_material(world: Variant, building: Dictionary, resource: String) -> int:
+	if Foundations.pending(building):
+		return 0
 	var definition: Dictionary = world.catalog.building(building["type"])
 	if not complete(building):
 		return maxi(0, int(world.construction_cost(building).get(resource, 0)) - int(building["construction_delivered"].get(resource, 0)))
@@ -90,7 +93,7 @@ static func needs_material(world: Variant, building: Dictionary, resource: Strin
 
 
 static func materials_ready(world: Variant, building: Dictionary) -> bool:
-	return has_stock(building["construction_delivered"], world.construction_cost(building))
+	return not Foundations.pending(building) and has_stock(building["construction_delivered"], world.construction_cost(building))
 
 
 static func generate_tasks(world: Variant) -> void:
@@ -98,18 +101,21 @@ static func generate_tasks(world: Variant) -> void:
 	ids.sort()
 	for id: int in ids:
 		var building: Dictionary = world.buildings[id]
-		if not complete(building) and materials_ready(world, building):
+		if not complete(building) and (Foundations.pending(building) or materials_ready(world, building)):
 			world.task_board.create_task("build_site", "construction:%d" % id, building["entrance"], id)
 
 
 static func tick_construction(world: Variant, building: Dictionary) -> void:
-	if complete(building) or not materials_ready(world, building):
+	if complete(building) or (not Foundations.pending(building) and not materials_ready(world, building)):
 		return
 	for worker: Dictionary in world.workers.values():
 		if worker["action"] != "build_site" or worker["state"] != "working" or int(worker["source_id"]) != int(building["id"]):
 			continue
 		if not world.can_worker_work(worker):
 			continue
+		if Foundations.pending(building):
+			Foundations.tick(world, building, worker)
+			return
 		building["construction_remaining"] = int(building["construction_remaining"]) - 1
 		if complete(building):
 			world.task_board.complete(int(worker["task_id"]), int(worker["id"]))

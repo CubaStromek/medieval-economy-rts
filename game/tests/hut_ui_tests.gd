@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const Catalog = preload("res://scripts/simulation/definition_catalog.gd")
 const Hud = preload("res://scripts/view/game_hud.gd")
 const World = preload("res://scripts/simulation/simulation_world.gd")
@@ -78,7 +80,7 @@ static func _test_training_requirements_and_signals(failures: Array[String]) -> 
 
 
 static func _test_hut_details_and_occupancy(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(14, 10))
+	var world := LegacyFixture.create(Vector2i(14, 10))
 	var hud := Hud.new()
 	hud.configure(world.catalog)
 	for index: int in range(2):

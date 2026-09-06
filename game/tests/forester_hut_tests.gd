@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Relief = preload("res://scripts/simulation/relief_demo.gd")
 const TEST_COUNT: int = 11
@@ -43,14 +45,14 @@ static func _until(world: Variant, condition: Callable, ticks: int = 160) -> boo
 
 
 static func _fixture() -> Dictionary:
-	var world := World.new(Vector2i(14, 10))
+	var world := LegacyFixture.create(Vector2i(14, 10))
 	var hut: int = world.place_building("forester_hut", Vector2i(3, 3))
 	var id: int = world.spawn_worker(Vector2i(5, 4), "gardener", hut)
 	return {"world": world, "hut": hut, "id": id, "worker": world.workers[id]}
 
 
 static func _test_homeless_gardener_waits_for_a_hut(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 8))
+	var world := LegacyFixture.create(Vector2i(12, 8))
 	var id: int = world.spawn_worker(Vector2i(5, 4), "gardener")
 	var worker: Dictionary = world.workers[id]
 	_advance(world, 100)
@@ -64,7 +66,7 @@ static func _test_homeless_gardener_waits_for_a_hut(failures: Array[String]) -> 
 
 
 static func _test_unfinished_hut_has_no_worker(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(10, 8))
+	var world := LegacyFixture.create(Vector2i(10, 8))
 	var hut: int = world.place_building("forester_hut", Vector2i(3, 3))
 	world.buildings[hut]["construction_remaining"] = 1
 	var id: int = world.spawn_worker(Vector2i(5, 4), "gardener")
@@ -78,7 +80,7 @@ static func _test_unfinished_hut_has_no_worker(failures: Array[String]) -> void:
 
 
 static func _test_hut_ownership_is_exclusive(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(16, 10))
+	var world := LegacyFixture.create(Vector2i(16, 10))
 	var first_hut: int = world.place_building("forester_hut", Vector2i(3, 3))
 	var first: int = world.spawn_worker(Vector2i(4, 5), "gardener")
 	var second: int = world.spawn_worker(Vector2i(11, 5), "gardener")
@@ -97,7 +99,7 @@ static func _test_hut_ownership_is_exclusive(failures: Array[String]) -> void:
 
 
 static func _test_planting_radius_is_anchored_to_the_hut(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(22, 22))
+	var world := LegacyFixture.create(Vector2i(22, 22))
 	var center := Vector2i(10, 10)
 	var hut: int = world.place_building("forester_hut", center)
 	var id: int = world.spawn_worker(Vector2i(17, 10), "gardener", hut)
@@ -188,7 +190,7 @@ static func _test_save_preserves_home_and_resumes_local_planting(failures: Array
 	var worker: Dictionary = fixture["worker"]
 	_check(_until(world, func() -> bool: return worker["state"] == "working"),
 		"Save fixture must contain a real in-flight planting job", failures)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	var data: Dictionary = JSON.parse_string(JSON.stringify(world.to_data()))
 	_check(restored.from_data(data), "A save containing an assigned forester and hut can be loaded", failures)
 	if not restored.workers.has(int(fixture["id"])):
@@ -208,7 +210,7 @@ static func _test_save_preserves_home_and_resumes_local_planting(failures: Array
 
 static func _test_authored_demos_house_existing_gardeners(failures: Array[String]) -> void:
 	for demo_kind: String in ["legacy", "relief", "economy"]:
-		var world := World.new(Relief.MAP_SIZE if demo_kind == "relief" else World.DEFAULT_MAP_SIZE)
+		var world := LegacyFixture.create(Relief.MAP_SIZE if demo_kind == "relief" else World.DEFAULT_MAP_SIZE)
 		match demo_kind:
 			"legacy": world.setup_demo()
 			"relief": Relief.setup(world)
@@ -226,7 +228,7 @@ static func _test_authored_demos_house_existing_gardeners(failures: Array[String
 
 
 static func _test_paid_construction_and_school_training(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 8))
+	var world := LegacyFixture.create(Vector2i(12, 8))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 3))
 	var school: int = world.place_building("school", Vector2i(5, 3))
 	world.buildings[warehouse]["storage"]["plank"] = 3

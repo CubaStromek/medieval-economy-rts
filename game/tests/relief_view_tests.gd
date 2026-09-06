@@ -100,14 +100,25 @@ static func _test_building_slope_and_plateau(host: Node, main: MainView, viewpor
 		"The building tool must refuse a walkable but nonlevel slope", failures)
 	_expect(main.event_label.text.contains("level ground"),
 		"A rejected sloping building site must explain the level-ground requirement", failures)
-	_expect(main.world.can_place_building("lumber_hut", Demo.PLATEAU_BUILD_SITE),
+	# Full footprints also reserve a fixed entrance: choose a clear raised plot
+	# beside the authored sawmill, including the approach beyond its walls.
+	var plateau_site := Vector2i(-1, -1)
+	for y: int in range(main.world.grid.size.y):
+		for x: int in range(main.world.grid.size.x):
+			var candidate := Vector2i(x, y)
+			if main.world.grid.cell_height(candidate) == float(Demo.PLATEAU_HEIGHT) and main.world.can_place_building("lumber_hut", candidate):
+				plateau_site = candidate
+				break
+		if plateau_site != Vector2i(-1, -1):
+			break
+	_expect(main.world.can_place_building("lumber_hut", plateau_site),
 		"The elevated positive-control building site must be legally buildable", failures)
-	_center_cell_at(main, viewport, Demo.PLATEAU_BUILD_SITE, MAP_CLICK)
+	_center_cell_at(main, viewport, plateau_site, MAP_CLICK)
 	await _settle(host)
 	_click_position(viewport, MAP_CLICK)
 	_expect(main.world.buildings.size() == before + 1
-		and main.world.building_id_at(Demo.PLATEAU_BUILD_SITE) != 0
-		and main.selected_cell == Demo.PLATEAU_BUILD_SITE,
+		and main.world.building_id_at(plateau_site) != 0
+		and main.selected_cell == plateau_site,
 		"The same building tool must accept a flat raised plateau through map input", failures)
 
 

@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 3
 
@@ -27,7 +29,7 @@ static func run() -> Array[String]:
 
 
 static func _test_all_reference_costs(failures: Array[String]) -> void:
-	var world := World.new()
+	var world := LegacyFixture.create()
 	_check(world.catalog.buildings.size() == EXPECTED.size() + 1, "Catalog must retain all reference buildings plus the project's Forester Hut", failures)
 	for type: String in EXPECTED:
 		var definition: Dictionary = world.catalog.building(type)
@@ -44,7 +46,7 @@ static func _test_all_reference_costs(failures: Array[String]) -> void:
 
 
 static func _test_forester_project_price(failures: Array[String]) -> void:
-	var world := World.new()
+	var world := LegacyFixture.create()
 	var definition: Dictionary = world.catalog.building("forester_hut")
 	var cost: Dictionary = definition.get("construction_cost", {})
 	_check(cost.size() == 2 and cost.get("plank") == 3 and cost.get("stone") == 2,
@@ -55,7 +57,7 @@ static func _test_forester_project_price(failures: Array[String]) -> void:
 
 
 static func _test_logs_do_not_replace_construction_planks(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 8))
+	var world := LegacyFixture.create(Vector2i(12, 8))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 2))
 	world.buildings[warehouse]["storage"]["log"] = 20
 	world.buildings[warehouse]["storage"]["stone"] = 2

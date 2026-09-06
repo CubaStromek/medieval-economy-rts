@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 7
 
@@ -22,7 +24,7 @@ static func run() -> Array[String]:
 static func _fixture(carrier_count: int = 2) -> Dictionary:
 	# Same real delivery route as classic_economy_tests: author the warehouse,
 	# enable construction costs, then let carriers supply the new bakery.
-	var world := World.new(Vector2i(14, 10))
+	var world := LegacyFixture.create(Vector2i(14, 10))
 	var store: int = world.place_building("warehouse", Vector2i(2, 3))
 	world.buildings[store]["storage"]["plank"] = 12
 	world.buildings[store]["storage"]["stone"] = 12
@@ -98,7 +100,7 @@ static func _loaded_carrier(world: Variant, site: int) -> int:
 
 
 static func _test_empty_site_releases_ground(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(8, 8))
+	var world := LegacyFixture.create(Vector2i(8, 8))
 	world.economy_enabled = true
 	var cell := Vector2i(4, 3)
 	var site: int = world.place_building("bakery", cell)
@@ -216,7 +218,7 @@ static func _test_cancelled_site_survives_save_load(failures: Array[String]) -> 
 	_check(world.cancel_construction(site), "Save fixture must cancel its construction site", failures)
 	var checkpoint: Dictionary = _json_snapshot(world)
 	var expected: Dictionary = _material_totals(world)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	var accepted: bool = restored.from_data(checkpoint)
 	_check(accepted, "A save after construction cancellation must pass the production snapshot validator", failures)
 	if not accepted:

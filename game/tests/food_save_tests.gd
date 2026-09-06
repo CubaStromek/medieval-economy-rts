@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 8
 
@@ -32,7 +34,7 @@ static func _until(world: Variant, condition: Callable, ticks: int = 600) -> boo
 
 
 static func _fixture() -> Dictionary:
-	var world = World.new(Vector2i(18, 12))
+	var world = LegacyFixture.create(Vector2i(18, 12))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 2))
 	var carrier: int = world.spawn_worker(Vector2i(8, 4), "carrier")
 	var soldier: int = world.spawn_worker(Vector2i(14, 8), "militia")
@@ -52,7 +54,7 @@ static func _test_pickup_round_trip(failures: Array[String]) -> void:
 	_check(world.workers[carrier]["ration_delivery"].get("phase", "") == "pickup",
 		"A real carrier must reserve a physical ration before its pickup round trip", failures)
 	var saved: Dictionary = _json(world)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(saved):
 		failures.append("A valid reservation before pickup must survive JSON loading")
 		return
@@ -73,7 +75,7 @@ static func _test_carried_round_trip(failures: Array[String]) -> void:
 		failures.append("The save fixture must physically collect its ration before testing in-flight saves")
 		return
 	var saved: Dictionary = _json(world)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(saved):
 		failures.append("A real carried ration and its intended soldier must load")
 		return
@@ -81,7 +83,7 @@ static func _test_carried_round_trip(failures: Array[String]) -> void:
 		"Loading must retain the carried ration without another withdrawal or delivery", failures)
 	for _pass: int in range(3):
 		restored.step_tick()
-		var next = World.new()
+		var next = LegacyFixture.create()
 		if not next.from_data(_json(restored)):
 			failures.append("Repeated in-flight saves must remain reloadable")
 			return
@@ -98,7 +100,7 @@ static func _test_pending_order_without_stock(failures: Array[String]) -> void:
 	world.buildings[f["warehouse"]]["storage"]["bread"] = 0
 	for _tick: int in range(10):
 		world.step_tick()
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(world)):
 		failures.append("An unfilled food request without a stock reservation must load")
 		return
@@ -110,7 +112,7 @@ static func _test_pending_order_without_stock(failures: Array[String]) -> void:
 
 
 static func _test_meal_round_trip(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(10, 8))
+	var world = LegacyFixture.create(Vector2i(10, 8))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	var id: int = world.spawn_worker(world.buildings[inn]["entrance"], "builder")
 	world.buildings[inn]["inputs"]["bread"] = 2
@@ -124,7 +126,7 @@ static func _test_meal_round_trip(failures: Array[String]) -> void:
 	var remaining: int = int(world.workers[id]["meal_ticks_left"])
 	_check(remaining == 58 and world.inn_occupied_seats(inn) == 1 and world.workers[id]["hunger"] == 640,
 		"Meal save fixture must contain a half-eaten bread course, with only half its nutrition applied", failures)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(world)):
 		failures.append("The middle of a progressive three-course meal must load")
 		return
@@ -134,7 +136,7 @@ static func _test_meal_round_trip(failures: Array[String]) -> void:
 			world.step_tick()
 			restored.step_tick()
 		_check(restored.to_data() == world.to_data(), "Meal continuation must match uninterrupted play at and between course boundaries", failures)
-		var next = World.new()
+		var next = LegacyFixture.create()
 		if not next.from_data(_json(restored)):
 			failures.append("Every course boundary and the final seated state must remain loadable")
 			return
@@ -167,7 +169,7 @@ static func _test_corrupt_feeding_is_transactional(failures: Array[String]) -> v
 		for worker: Dictionary in saved["workers"]:
 			if int(worker["id"]) == id:
 				worker.merge(changes, true)
-		var live = World.new()
+		var live = LegacyFixture.create()
 		live.setup_demo()
 		var before: Dictionary = live.to_data()
 		_check(not live.from_data(saved) and live.to_data() == before,
@@ -178,7 +180,7 @@ static func _test_corrupt_feeding_is_transactional(failures: Array[String]) -> v
 	extra["position"] = [8, 8]
 	duplicate["next_entity_id"] = int(duplicate["next_entity_id"]) + 1
 	duplicate["workers"].append(extra)
-	_check(not World.new().from_data(duplicate), "Two carriers may not restore claims for one soldier's meal", failures)
+	_check(not LegacyFixture.create().from_data(duplicate), "Two carriers may not restore claims for one soldier's meal", failures)
 
 
 static func _test_v12_migration(failures: Array[String]) -> void:
@@ -191,7 +193,7 @@ static func _test_v12_migration(failures: Array[String]) -> void:
 		worker.erase("meal_course")
 		worker.erase("food_requested")
 		worker.erase("ration_delivery")
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(saved):
 		failures.append("V12 saves must load without new food fields")
 		return
@@ -203,7 +205,7 @@ static func _test_v12_migration(failures: Array[String]) -> void:
 
 
 static func _test_course_corruption(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(10, 8))
+	var world = LegacyFixture.create(Vector2i(10, 8))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	var id: int = world.spawn_worker(world.buildings[inn]["entrance"], "builder")
 	world.buildings[inn]["inputs"]["bread"] = 2
@@ -230,14 +232,14 @@ static func _test_course_corruption(failures: Array[String]) -> void:
 	for field: String in ["meal_course", "meal_ticks_left"]:
 		var missing: Dictionary = _json(world)
 		missing["workers"][0].erase(field)
-		_check(not World.new().from_data(missing), "V14 must require its saved meal fields: %s" % field, failures)
+		_check(not LegacyFixture.create().from_data(missing), "V14 must require its saved meal fields: %s" % field, failures)
 	var finished: Dictionary = _json(world)
 	finished["workers"][0]["meal_ticks_left"] = 0
-	_check(not World.new().from_data(finished), "A completed visit must not retain a live course", failures)
+	_check(not LegacyFixture.create().from_data(finished), "A completed visit must not retain a live course", failures)
 
 
 static func _test_v13_paid_meal_migration(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(10, 8))
+	var world = LegacyFixture.create(Vector2i(10, 8))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	var id: int = world.spawn_worker(world.buildings[inn]["entrance"], "builder")
 	world.buildings[inn]["inputs"]["bread"] = 2
@@ -249,13 +251,13 @@ static func _test_v13_paid_meal_migration(failures: Array[String]) -> void:
 	saved["workers"][0].erase("meal_course")
 	saved["workers"][0]["meal_ticks_left"] = 200
 	saved["workers"][0]["hunger"] = 2700
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(saved):
 		failures.append("V13 must retain its already-paid meal countdown without a new course")
 		return
 	for _tick: int in range(100):
 		restored.step_tick()
-	var next = World.new()
+	var next = LegacyFixture.create()
 	if not next.from_data(_json(restored)):
 		failures.append("A migrated legacy meal must also survive a v14 re-save")
 		return

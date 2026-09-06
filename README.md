@@ -6,7 +6,75 @@ classic medieval strategy games and uses the public KaM Remake source as a
 technical reference for responsibilities and invariants.
 
 This is not an official Knights and Merchants product. No original game code,
-graphics, audio, maps or campaigns are included.
+graphics, audio, maps or campaigns are distributed with the public source.
+Optional, user-selected map data stays in ignored external directories.
+
+## Graphics sandbox — 2026-09-07
+
+Open `Graphics Sandbox.command` on macOS, or run
+`godot --path game res://scenes/terrain_graphics_sandbox.tscn`.
+The isolated workbench compares the same two small terrain crops with today's
+prototype or a fixed source-informed reference. Toggle textures and lighting,
+adjust relief, zoom/pan, inspect tiles, and save local presets and screenshots.
+Optional prototype trees, contact shadows, object markers and a grid are
+explicitly experimental, not original KaM object graphics.
+
+The public checkout contains the renderer, controls and synthetic tests, but
+**not the original texture atlas or map crops**. Without local external data it
+shows setup guidance; the normal game still runs independently. Water is static.
+See [setup, controls, provenance and limitations](docs/terrain-graphics-sandbox.md).
+
+## Mountainous Region terrain study — 2026-09-06
+
+An optional scene recreates the original map's layout and heights using our
+terrain materials and trees. On macOS, double-click `Mountainous Region.command`.
+Or open `game/scenes/mountainous_region.tscn` and run that scene, or use `godot --path game res://scenes/mountainous_region.tscn`.
+It contains the full source landscape (143 × 127 playable cells, 341 trees),
+but **no starting settlement or mission logic**. The normal starter scene
+is unchanged, and the landscape uses its own save slot.
+
+Original and converted map data remain local, external and ignored by Git.
+See [setup, provenance and limitations](docs/mountainous-region.md).
+
+## Main menu — 2026-09-06
+
+The game now opens a simple Czech main menu. **Nová hra** offers three existing
+maps: **Nová osada** (28 × 22, Warehouse and School), **Osídlené údolí**
+(28 × 22, populated relief village), and **Ekonomická ukázka** (34 × 30,
+the complete production town). Select a map and press **Spustit mapu**.
+**Načíst hru** opens the existing quick-save slot; it is unavailable before
+the first save. A missing or invalid save displays an error and retains the
+current session.
+
+During play, **Menu / Esc** pauses the entire game and offers **Pokračovat ve
+hře** and **Uložit hru**. Escape first cancels an active building tool or closes
+an open HUD panel. Returning from the menu preserves the previous game speed.
+**F5 / F9** still save/load the same single slot. New saves remember the chosen
+map for **R** (restart); old saves load normally and retain the former starter
+map reset behavior. Starting a new map replaces the current session but does
+not overwrite the saved game. The two demo launch flags still start directly.
+
+## Builder ground preparation — 2026-09-06
+
+Buildings can now be placed on gently uneven ground. A gold preview shows
+the required preparation. A physical **Builder first levels the whole
+foundation**, then Carriers deliver materials and ordinary construction begins.
+Steep slopes, mountains and protected neighboring objects remain unavailable.
+Earthwork progress survives saves; cancelling a site keeps soil already moved.
+The current map shape is unchanged. See [rules and verification](docs/foundation-preparation.md).
+
+## Building footprints — 2026-09-06
+
+New buildings now occupy their KaM Remake tile shapes: for example a Warehouse
+is **3 × 3**, a Lumberjack Hut **3 × 2**, a Sawmill **4 × 2** and Barracks
+**4 × 4**. All 28 reference types plus the Forester Hut have their own masks,
+including irregular corners and fixed southern doors. The building preview
+shows the full area and a blue entrance tile. Citizens walk around the entire
+building, and its foundation, roof and scaffolding follow the same footprint.
+
+Build on level or safely preparable ground and leave the front entrance accessible. Existing saved
+buildings keep their previous one-tile size; newly placed ones use full masks.
+Save **v17** preserves both, including new ground-preparation progress. See [geometry, reference and compatibility](docs/building-footprints.md).
 
 ## Civilian Inns and army food supplies — 2026-09-05
 
@@ -45,8 +113,21 @@ overnight and deliver them after dawn; paid production and construction retain
 their progress. Hungry civilians can visit an Inn during the night and then
 return to sleep. The HUD shows their schedule and the number sleeping.
 Save v15 preserves sleeping places and supports earlier saves. Residential
-buildings, other night professions and lighting are future extensions described
+buildings and other night professions are future extensions described
 in [the day/night analysis](docs/day-night-analysis.md).
+
+## Sunlight and moving shadows — 2026-09-06
+
+A small sky display shows the sun travelling east to west from **05:00 to
+20:00**, with a moon after sunset. The map gradually changes from warm dawn
+to daylight, sunset and a readable blue night. Trees, buildings and outdoor
+units cast simplified shadows that change direction and become longer when
+the sun is low. Shadows follow the terrain; the interface keeps its normal
+brightness.
+
+The visual cycle follows the saved game clock, including pause and game speed,
+without changing the ten-minute day, unit schedules or saved-game format.
+It uses light tint and projected silhouettes rather than physical ray tracing.
 
 ## Adaptive game window — 2026-09-05
 
@@ -137,7 +218,7 @@ continue normally, without requiring a new game.
 
 ## Minimal test level — 2026-09-05
 
-The default game opens the 28 × 22 relief landscape with only a completed
+The **Nová osada** map opens the 28 × 22 relief landscape with only a completed
 **Warehouse and School**, no citizens or roads, **20 logs, 20 planks and
 20 stone in the Warehouse**, and **50 gold total**. The Warehouse holds 49 gold
 and one is already in the School. Select the School and **Train Carrier** first
@@ -315,7 +396,8 @@ Or import `game/project.godot` in the Godot editor and run the project.
 | Selected workshop / Barracks / Town Hall | Queue equipment production or recruitment |
 | Selected Marketplace | Choose two wares, inspect the quote and queue an exchange |
 | Unfinished building → Details → Cancel construction | Remove its site and return delivered materials to storage |
-| Stop placing / Escape | Leave placement mode; existing sites stay in place |
+| Stop placing / Escape | Leave placement mode, close a panel, or open the main menu |
+| Menu | Pause and open the main menu; resume or save there |
 | Terrain / F2 | Show level ground, walkable slopes and blocked terrain |
 | F5 / F9 | Save / load |
 | R | Restart the current level |

@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Supply = preload("res://scripts/simulation/soldier_food_supply.gd")
 const TEST_COUNT: int = 6
@@ -38,7 +40,7 @@ static func _advance(world: Variant, ticks: int) -> void:
 
 
 static func _ration_fixture() -> Dictionary:
-	var world = World.new(Vector2i(20, 12))
+	var world = LegacyFixture.create(Vector2i(20, 12))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 3))
 	var carrier: int = world.spawn_worker(Vector2i(2, 9), "carrier")
 	var soldier: int = world.spawn_worker(Vector2i(16, 7), "militia")
@@ -50,7 +52,7 @@ static func _ration_fixture() -> Dictionary:
 
 
 static func _meal_fixture(type: String = "carrier", cargo: String = "log") -> Dictionary:
-	var world = World.new(Vector2i(19, 12))
+	var world = LegacyFixture.create(Vector2i(19, 12))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 3))
 	var hut: int = world.place_building("lumber_hut", Vector2i(9, 3)) if type == "lumberjack" else 0
 	var inn: int = world.place_building("inn", Vector2i(14, 3))
@@ -133,7 +135,7 @@ static func _test_night_meal_with_cargo_survives_save(failures: Array[String]) -
 	var remaining: int = int(before["meal_ticks_left"])
 	var hunger: int = int(before["hunger"])
 	var course: Dictionary = (before["meal_course"] as Dictionary).duplicate(true)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(JSON.parse_string(JSON.stringify(world.to_data())) as Dictionary):
 		failures.append("A genuine night meal with physical cargo must survive JSON save/load")
 		return
@@ -194,7 +196,7 @@ static func _test_dawn_does_not_interrupt_cargo_meal(failures: Array[String]) ->
 
 
 static func _test_empty_inn_does_not_start_night_logistics(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(19, 12))
+	var world = LegacyFixture.create(Vector2i(19, 12))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 3))
 	var sawmill: int = world.place_building("sawmill", Vector2i(9, 3))
 	var inn: int = world.place_building("inn", Vector2i(14, 3))

@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const Grid = preload("res://scripts/simulation/grid_map_sim.gd")
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Renderer = preload("res://scripts/view/terrain_renderer.gd")
@@ -134,11 +136,11 @@ static func _test_tree_growth_species_and_save(library: Trees, failures: Array[S
 		grown["age_ticks"] = World.TREE_MATURE_AGE_TICKS
 		grown["amount"] = 1
 		_expect(library.species_for(grown) == species, "Growing and harvesting a tree must not switch its visual species", failures)
-	var world := World.new(Vector2i(8, 5))
+	var world := LegacyFixture.create(Vector2i(8, 5))
 	for x: int in range(1, 7):
 		world.add_tree(Vector2i(x, 2), 3)
 	var before: Dictionary = world.to_data()
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	_expect(restored.from_data(JSON.parse_string(JSON.stringify(before))), "A real tree snapshot must still load after the graphics change", failures)
 	for id: int in world.trees:
 		_expect(restored.trees.has(id) and library.species_for(world.trees[id]) == library.species_for(restored.trees[id]),
@@ -322,7 +324,7 @@ static func _test_actual_environment_drawing(host: Node, failures: Array[String]
 	var main: MainView = MainScene.instantiate() as MainView
 	viewport.add_child(main)
 	main.set_process(false)
-	main.world = World.new(Vector2i(9, 7))
+	main.world = LegacyFixture.create(Vector2i(9, 7))
 	for y: int in range(8):
 		for x: int in range(10):
 			main.world.grid.set_vertex_height(Vector2i(x, y), 4)

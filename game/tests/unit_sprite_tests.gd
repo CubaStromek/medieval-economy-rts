@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const Catalog = preload("res://scripts/simulation/definition_catalog.gd")
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const MainView = preload("res://scripts/view/main_view.gd")
@@ -149,7 +151,7 @@ static func _test_actual_view_and_pause(host: Node, roles: Array[String], failur
 	var main: MainView = MainScene.instantiate() as MainView
 	viewport.add_child(main)
 	main.set_process(false)
-	main.world = World.new(Vector2i(12, 8))
+	main.world = LegacyFixture.create(Vector2i(12, 8))
 	for y: int in range(9):
 		for x: int in range(13):
 			main.world.grid.set_vertex_height(Vector2i(x, y), 4)

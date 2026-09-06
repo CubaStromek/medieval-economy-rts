@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Deposits = preload("res://scripts/simulation/resource_deposits.gd")
 const TEST_COUNT: int = 9
@@ -46,7 +48,7 @@ static func _site(world: Variant, resource: String, cell: Vector2i, amount: int 
 
 
 static func _test_authored_deposits(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 10))
+	var world = LegacyFixture.create(Vector2i(14, 10))
 	for index: int in range(Deposits.RESOURCES.size()):
 		var resource: String = Deposits.RESOURCES[index]
 		var cell := Vector2i(index * 2 + 1, 2)
@@ -65,7 +67,7 @@ static func _test_authored_deposits(failures: Array[String]) -> void:
 
 static func _test_accessible_work_cells(failures: Array[String]) -> void:
 	for resource: String in ["stone", "fish"]:
-		var world = World.new(Vector2i(9, 9))
+		var world = LegacyFixture.create(Vector2i(9, 9))
 		var id: int = _site(world, resource, Vector2i(4, 4))
 		var start := Vector2i(0, 4)
 		var work: Vector2i = Deposits.candidate_work_cell(world, world.deposits[id], start)
@@ -79,7 +81,7 @@ static func _test_accessible_work_cells(failures: Array[String]) -> void:
 
 
 static func _test_deposit_placement_radius(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 10))
+	var world = LegacyFixture.create(Vector2i(14, 10))
 	var id: int = _site(world, "iron_ore", Vector2i(8, 3))
 	_check(Deposits.placement_valid(world, "iron_mine", Vector2i(5, 3)), "A mine must accept its matching ore at radius three", failures)
 	_check(not Deposits.placement_valid(world, "iron_mine", Vector2i(4, 3)), "A mine must reject deposits beyond its extraction radius", failures)
@@ -90,7 +92,7 @@ static func _test_deposit_placement_radius(failures: Array[String]) -> void:
 
 static func _test_finite_extraction_and_transport(failures: Array[String]) -> void:
 	for entry: Array in [["quarry", "stonemason", "stone"], ["coal_mine", "miner", "coal"], ["iron_mine", "miner", "iron_ore"], ["gold_mine", "miner", "gold_ore"], ["fisher_hut", "fisherman", "fish"]]:
-		var world = World.new(Vector2i(14, 9))
+		var world = LegacyFixture.create(Vector2i(14, 9))
 		var resource: String = String(entry[2])
 		var deposit: int = _site(world, resource, Vector2i(9, 3), 2)
 		world.place_building("warehouse", Vector2i(2, 2))
@@ -108,7 +110,7 @@ static func _test_finite_extraction_and_transport(failures: Array[String]) -> vo
 
 
 static func _test_competing_extraction_respects_capacity(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 10))
+	var world = LegacyFixture.create(Vector2i(14, 10))
 	var first: int = _site(world, "stone", Vector2i(8, 3), 1)
 	var second: int = _site(world, "stone", Vector2i(8, 5), 1)
 	var quarry: int = world.place_building("quarry", Vector2i(6, 4))
@@ -127,7 +129,7 @@ static func _test_competing_extraction_respects_capacity(failures: Array[String]
 
 
 static func _test_extraction_save_conserves_remaining_stock(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(14, 9))
+	var source = LegacyFixture.create(Vector2i(14, 9))
 	var deposit: int = _site(source, "gold_ore", Vector2i(10, 3), 2)
 	source.place_building("warehouse", Vector2i(1, 2))
 	var mine: int = source.place_building("gold_mine", Vector2i(8, 3))
@@ -139,7 +141,7 @@ static func _test_extraction_save_conserves_remaining_stock(failures: Array[Stri
 	if not _until(source, func() -> bool: return source.workers[miner]["carrying"] == "gold_ore", 300):
 		failures.append("Extraction save must catch a miner after consuming one deposit unit")
 		return
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(JSON.parse_string(JSON.stringify(source.to_data()))):
 		failures.append("A miner carrying ore and its finite deposit must survive save/load")
 		return
@@ -147,12 +149,12 @@ static func _test_extraction_save_conserves_remaining_stock(failures: Array[Stri
 	_advance(restored, 1400)
 	_check(restored.stored_amount("gold_ore") == 2 and int(restored.deposits[deposit]["amount"]) == 0,
 		"Restored mining must conserve both already carried ore and the final unmined unit", failures)
-	var exhausted = World.new()
+	var exhausted = LegacyFixture.create()
 	_check(exhausted.from_data(restored.to_data()), "Existing mines must remain loadable beside exhausted deposits", failures)
 
 
 static func _test_snapshot_validation_is_transactional(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(10, 8))
+	var source = LegacyFixture.create(Vector2i(10, 8))
 	_site(source, "coal", Vector2i(7, 2), 3)
 	source.place_building("warehouse", Vector2i(2, 2))
 	source.spawn_worker(Vector2i(3, 4), "carrier")
@@ -185,7 +187,7 @@ static func _test_snapshot_validation_is_transactional(failures: Array[String]) 
 
 
 static func _test_legacy_schema_migration(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(12, 9))
+	var source = LegacyFixture.create(Vector2i(12, 9))
 	_site(source, "stone", Vector2i(9, 3), 5)
 	var quarry: int = source.place_building("quarry", Vector2i(7, 3))
 	source.place_field(Vector2i(3, 3))
@@ -206,7 +208,7 @@ static func _test_legacy_schema_migration(failures: Array[String]) -> void:
 		field.erase("kind")
 	for worker: Dictionary in legacy["workers"]:
 		worker.erase("hunger")
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(legacy):
 		failures.append("Version 6 must migrate an unfinished old quarry batch without a finite deposit requirement")
 		return
@@ -214,13 +216,13 @@ static func _test_legacy_schema_migration(failures: Array[String]) -> void:
 	_check(int(restored.buildings[quarry]["outputs"]["stone"]) == 1 and int(restored.buildings[quarry]["process_remaining"]) == 0,
 		"Migration must finish the one old quarry batch exactly once", failures)
 	_check(restored.fields.values()[0]["kind"] == "wheat", "Legacy fields must migrate as wheat", failures)
-	var second = World.new()
+	var second = LegacyFixture.create()
 	_check(second.from_data(restored.to_data()) and int(second.buildings[quarry]["outputs"]["stone"]) == 1,
 		"Saving the migrated quarry again must not duplicate its completed legacy batch", failures)
 
 
 static func _test_expanded_save_preserves_paid_work_and_orders(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(26, 16))
+	var source = LegacyFixture.create(Vector2i(26, 16))
 	var school: int = source.place_building("school", Vector2i(3, 2))
 	var workshop: int = source.place_building("weapon_workshop", Vector2i(7, 2))
 	var market: int = source.place_building("marketplace", Vector2i(11, 2))
@@ -245,7 +247,7 @@ static func _test_expanded_save_preserves_paid_work_and_orders(failures: Array[S
 	source.workers[soldier]["hunger"] = 100
 	source.economy_enabled = true
 	var snapshot: Dictionary = source.to_data()
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(JSON.parse_string(JSON.stringify(snapshot))):
 		failures.append("Expanded snapshot must accept paid training, active production, services, construction, vines and soldiers together")
 		return

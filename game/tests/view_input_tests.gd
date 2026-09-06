@@ -48,7 +48,16 @@ static func run(host: Node) -> Array[String]:
 	# Keep this focused-input fixture independent of material construction and
 	# gold payment, both exercised by the full classic economy integration suite.
 	main.world.economy_enabled = false
-	var school_cell := Vector2i(1, 1)
+	# Find a genuinely empty full-size school plot in the production demo.
+	var school_cell := Vector2i(-1, -1)
+	for y: int in range(main.world.grid.size.y):
+		for x: int in range(main.world.grid.size.x):
+			var candidate := Vector2i(x, y)
+			if main.world.can_place_building("school", candidate):
+				school_cell = candidate
+				break
+		if school_cell != Vector2i(-1, -1):
+			break
 	var school_id: int = main.world.place_building("school", school_cell)
 	if school_id == 0:
 		failures.append("Input tests require a valid school placement")

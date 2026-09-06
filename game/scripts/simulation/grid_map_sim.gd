@@ -182,13 +182,30 @@ func vertex_height(vertex: Vector2i) -> int:
 
 
 func set_vertex_height(vertex: Vector2i, height: int) -> bool:
+	return _set_vertex_height(vertex, height, 0)
+
+
+func set_foundation_vertex_height(vertex: Vector2i, height: int, building_id: int) -> bool:
+	# Only the owning construction site may reshape its own blocked footprint.
+	# SimulationWorld checks shared entities, workers and path safety first.
+	if building_id <= 0 or not contains_vertex(vertex):
+		return false
+	var owned: bool = false
+	for cell: Vector2i in cells_touching_vertex(vertex):
+		owned = owned or int(blocked_by.get(cell, 0)) == building_id
+	if not owned or absi(vertex_height(vertex) - height) != 1:
+		return false
+	return _set_vertex_height(vertex, height, building_id)
+
+
+func _set_vertex_height(vertex: Vector2i, height: int, allowed_owner: int) -> bool:
 	if not contains_vertex(vertex) or height < 0 or height > MAX_HEIGHT:
 		return false
 	if vertex_height(vertex) == height:
 		return true
 	var affected: Array[Vector2i] = cells_touching_vertex(vertex)
 	for cell: Vector2i in affected:
-		if blocked_by.has(cell):
+		if blocked_by.has(cell) and (allowed_owner == 0 or int(blocked_by[cell]) != allowed_owner):
 			return false
 	_vertex_heights[vertex.y * (size.x + 1) + vertex.x] = height
 	connectivity_revision += 1
@@ -201,7 +218,6 @@ func set_vertex_height(vertex: Vector2i, height: int) -> bool:
 	_mark_trail_changes(trail_changes)
 	_record_render_change(affected, true)
 	return true
-
 
 func cells_touching_vertex(vertex: Vector2i) -> Array[Vector2i]:
 	var cells: Array[Vector2i] = []

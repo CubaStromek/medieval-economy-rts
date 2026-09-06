@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Grid = preload("res://scripts/simulation/grid_map_sim.gd")
 const View = preload("res://scripts/view/main_view.gd")
@@ -42,7 +44,7 @@ static func _expect_reservations(world: Variant, failures: Array[String]) -> voi
 
 static func _test_actual_steps_in_all_eight_directions(failures: Array[String]) -> void:
 	for direction: Vector2i in Grid.MOVEMENT_DIRECTIONS:
-		var world := World.new(Vector2i(7, 7))
+		var world := LegacyFixture.create(Vector2i(7, 7))
 		var start := Vector2i(3, 3)
 		var goal: Vector2i = start + direction
 		var id: int = world.spawn_worker(start, "builder")
@@ -59,7 +61,7 @@ static func _test_actual_steps_in_all_eight_directions(failures: Array[String]) 
 static func _test_surface_step_timing_and_interpolation(failures: Array[String]) -> void:
 	for surface: String in ["grass", "trail", "stone_road"]:
 		for direction: Vector2i in [Vector2i.RIGHT, Vector2i.ONE]:
-			var world := World.new(Vector2i(6, 6))
+			var world := LegacyFixture.create(Vector2i(6, 6))
 			var start := Vector2i.ONE
 			var first: Vector2i = start + direction
 			var goal: Vector2i = first + direction
@@ -104,7 +106,7 @@ static func _test_surface_step_timing_and_interpolation(failures: Array[String])
 
 
 static func _test_carrier_diagonal_traffic_is_step_local(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(7, 7))
+	var world := LegacyFixture.create(Vector2i(7, 7))
 	world.grid.configure_movement({"trail": {"carrier_passes_to_form": 2}})
 	var start := Vector2i.ONE
 	var goal := Vector2i(5, 5)
@@ -147,7 +149,7 @@ static func _test_carrier_diagonal_traffic_is_step_local(failures: Array[String]
 
 
 static func _test_cached_diagonal_rechecks_static_corner(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(5, 5))
+	var world := LegacyFixture.create(Vector2i(5, 5))
 	var start := Vector2i.ONE
 	var goal := Vector2i(2, 2)
 	var id: int = world.spawn_worker(start, "builder")
@@ -169,7 +171,7 @@ static func _test_cached_diagonal_rechecks_static_corner(failures: Array[String]
 
 
 static func _test_cached_diagonal_rechecks_occupied_flank(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(5, 5))
+	var world := LegacyFixture.create(Vector2i(5, 5))
 	var start := Vector2i.ONE
 	var goal := Vector2i(2, 2)
 	var id: int = world.spawn_worker(start, "builder")
@@ -198,7 +200,7 @@ static func _test_cached_diagonal_rechecks_occupied_flank(failures: Array[String
 
 
 static func _diagonal_swap_world(reverse_ids: bool = false, grass_source: bool = false) -> Dictionary:
-	var world := World.new(Vector2i(5, 5))
+	var world := LegacyFixture.create(Vector2i(5, 5))
 	var cells: Array[Vector2i] = [Vector2i.ONE, Vector2i(2, 2)]
 	if not grass_source:
 		world.grid.add_dirt_trail(cells[0])
@@ -280,7 +282,7 @@ static func _test_diagonal_swap_cannot_cut_occupied_flank(failures: Array[String
 
 static func _test_crossing_diagonals_make_progress_without_overlap(failures: Array[String]) -> void:
 	for reverse_ids: bool in [false, true]:
-		var world := World.new(Vector2i(5, 5))
+		var world := LegacyFixture.create(Vector2i(5, 5))
 		var starts: Array[Vector2i] = [Vector2i.ONE, Vector2i(2, 1)]
 		var goals: Array[Vector2i] = [Vector2i(2, 2), Vector2i(1, 2)]
 		if reverse_ids:

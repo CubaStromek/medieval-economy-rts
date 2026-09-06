@@ -7,6 +7,7 @@ const ResourceIconClass = preload("res://scripts/view/resource_icon.gd")
 const EconomyActionsClass = preload("res://scripts/view/economy_actions.gd")
 const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
 const DayCycleClass = preload("res://scripts/simulation/day_cycle.gd")
+const SkyClockClass = preload("res://scripts/view/sky_clock.gd")
 
 const CATEGORIES: Array[String] = ["infrastructure", "food", "mining", "military"]
 const CATEGORY_NAMES: Array[String] = ["Infrastructure", "Food", "Mining", "Military"]
@@ -29,6 +30,7 @@ signal trade_requested(give_resource: String, receive_resource: String)
 signal construction_cancel_requested()
 signal soldier_food_requested(unit_id: int)
 signal army_food_requested()
+signal main_menu_requested()
 
 var resource_hud_panel: PanelContainer
 var resource_amount_labels: Dictionary = {}
@@ -42,6 +44,7 @@ var mode_label: Label
 var event_label: Label
 
 var _catalog: DefinitionCatalogClass
+var _include_main_menu: bool = false
 var _root: Control
 var _build_groups: Dictionary = {}
 var _resource_items: Dictionary = {}
@@ -75,6 +78,7 @@ var _satiety_fill: StyleBoxFlat
 var _selected_unit_id: int = 0
 var _last_unit_selection: int = 0
 var _clock_label: Label
+var _sky_clock: SkyClockClass
 var _citizens_label: Label
 var _help_panel: PanelContainer
 var _help_button: Button
@@ -83,8 +87,9 @@ var _last_selection: Vector2i = Vector2i(-999, -999)
 var _last_build_mode: String = ""
 
 
-func configure(catalog: DefinitionCatalogClass) -> void:
+func configure(catalog: DefinitionCatalogClass, include_main_menu: bool = false) -> void:
 	_catalog = catalog
+	_include_main_menu = include_main_menu
 	name = "HudLayer"
 	_build_ui()
 
@@ -100,8 +105,30 @@ func _build_ui() -> void:
 	_build_overview()
 	_build_dock()
 	_build_status_bar()
+	_build_sky_clock()
 	_build_resource_hud()
 	_build_help()
+	resource_hud_panel.visibility_changed.connect(_update_sky_visibility)
+	_help_panel.visibility_changed.connect(_update_sky_visibility)
+	_update_sky_visibility()
+
+
+func _build_sky_clock() -> void:
+	_sky_clock = SkyClockClass.new()
+	_root.add_child(_sky_clock)
+	_sky_clock.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	_sky_clock.offset_left = -196.0
+	_sky_clock.offset_right = -12.0
+	_sky_clock.offset_top = MAP_TOP
+	_sky_clock.offset_bottom = MAP_TOP + 86.0
+
+
+func update_sky_time(tick: int, fraction: float = 0.0) -> void:
+	_sky_clock.set_time(tick, fraction)
+
+
+func _update_sky_visibility() -> void:
+	_sky_clock.visible = not resource_hud_panel.visible and not _help_panel.visible
 
 
 func _build_overview() -> void:
@@ -262,7 +289,7 @@ func _build_dock() -> void:
 	cancel_site.add_theme_color_override("font_color", Color("#f0b49b"))
 	cancel_site.tooltip_text = "Remove this unfinished building. Delivered materials return to a reachable warehouse; carriers keep and redirect their cargo."
 	cancel_site.pressed.connect(construction_cancel_requested.emit)
-	_text_label(_construction_panel, "Removes this site and returns delivered materials to storage.", 11, MUTED)
+	_text_label(_construction_panel, "Removes this site and returns delivered materials to storage. Already moved soil stays changed.", 11, MUTED)
 	_construction_panel.visible = false
 	production_detail_label = _text_label(inspector, "", 12, MUTED)
 	production_detail_label.name = "ProductionDetailLabel"
@@ -324,6 +351,11 @@ func _build_status_bar() -> void:
 		if opened:
 			_close_stocks()
 	)
+	if _include_main_menu:
+		var menu_button: Button = _button(row, "Menu", "MenuButton")
+		menu_button.size_flags_horizontal = Control.SIZE_SHRINK_END
+		menu_button.tooltip_text = "Hlavní menu (Esc)"
+		menu_button.pressed.connect(func() -> void: main_menu_requested.emit())
 	var events: PanelContainer = _panel("ActivityPanel", Control.PRESET_BOTTOM_WIDE, Rect2(MAP_LEFT, -96, -MAP_LEFT - 12, 30))
 	events.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var event_row := HBoxContainer.new()
@@ -397,7 +429,7 @@ func _build_help() -> void:
 	column.add_child(shortcuts)
 	var entries: Array[Array] = [
 		["Left click", "Select a unit or building / place"],
-		["Esc", "Stop placing / close panels"],
+		["Esc", "Stop placing / close panels / menu"],
 		["MMB / WASD / arrows", "Move camera"],
 		["Mouse wheel", "Zoom"], ["Space", "Pause / resume"],
 		["1–9, 0", "Building shortcuts"], ["F5 / F9", "Save / load"],
@@ -409,6 +441,10 @@ func _build_help() -> void:
 		var action_label: Label = _text_label(shortcuts, String(entry[1]), 12)
 		action_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_help_panel.visible = false
+
+
+func has_open_overlay() -> bool:
+	return resource_hud_panel.visible or _help_panel.visible
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -565,6 +601,7 @@ func _add_speed_button(parent: Control, text_value: String, speed: float) -> voi
 func refresh(world: SimulationWorldClass, selected_cell: Vector2i, build_mode: String, simulation_speed: float, tick_seconds: float, selected_unit_id: int = 0) -> void:
 	if resource_hud_panel == null:
 		return
+	update_sky_time(world.tick)
 	for resource_id: String in resource_amount_labels:
 		var stock: Dictionary = world.resource_stock(resource_id)
 		var total: String = str(stock["total"])
@@ -883,6 +920,8 @@ func blocks_map_point(screen_position: Vector2) -> bool:
 	# Test actual visible panels, not the full-screen transparent HUD root.
 	# Include passive status panels: a click over their text must not build.
 	for child: Node in _root.get_children():
+		if child == _sky_clock:
+			continue # The small sky illustration deliberately leaves map input open.
 		if child is Control:
 			var control: Control = child as Control
 			if control.is_visible_in_tree() and control.get_global_rect().has_point(screen_position):
@@ -904,6 +943,9 @@ func set_placement_preview(tool: String, preview: Dictionary) -> void:
 				String(preview.get("reason", "")), float(preview.get("height", 0.0)), int(preview.get("slope", 0)),
 			]
 			color = Color("#9ae3a8") if bool(preview.get("valid", false)) else Color("#ffb39c")
+			if bool(preview.get("needs_levelling", false)):
+				color = Color("#f4c36a")
+				text = "%s\nTarget height %d · materials arrive afterwards" % [String(preview["reason"]), int(preview["foundation_target_height"])]
 	# Hovering repeatedly over the same tile never relayouts or restyles the
 	# dock. The reserved two-line slot stays stable across valid/invalid sites.
 	if placement_preview_label.text != text:
@@ -1007,6 +1049,20 @@ func _selected_production_text(world: SimulationWorldClass, selected_cell: Vecto
 	var worker_type: String = WorkplacesClass.profession(world, building_id)
 	var recipe: Dictionary = world.catalog.recipe(String(building.get("recipe_id", definition.get("recipe", ""))))
 	var lines: PackedStringArray = []
+	if int(building.get("foundation_work_remaining", 0)) > 0:
+		var remaining: int = int(building["foundation_work_remaining"])
+		var total_work: int = maxi(1, int(building.get("foundation_work_total", remaining)))
+		var progress: int = clampi(int(100.0 * float(total_work - remaining) / float(total_work)), 0, 100)
+		var working: bool = false
+		for worker: Dictionary in world.workers.values():
+			if worker.get("action", "") == "build_site" and worker.get("state", "") == "working" and int(worker.get("source_id", 0)) == building_id:
+				working = world.can_worker_work(worker) and world.BuildingFoundationsClass.waiting_reason(world, building, int(worker["id"])).is_empty()
+				break
+		lines.append("Levelling foundations: %d%%" % progress if working else "Waiting for Builder — ground preparation")
+		lines.append("Earthwork: %d%% · %.1f s left at 1×" % [progress, float(remaining) * world.TICK_SECONDS])
+		lines.append("Ground preparation → materials → construction")
+		lines.append(world.production_status(building))
+		return "\n".join(lines)
 	if int(building.get("construction_remaining", 0)) > 0:
 		var total: int = maxi(1, int(definition.get("construction_ticks", 1)))
 		var progress: int = clampi(int(100.0 * float(total - int(building["construction_remaining"])) / float(total)), 0, 100)

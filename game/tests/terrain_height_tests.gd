@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const Grid = preload("res://scripts/simulation/grid_map_sim.gd")
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Pathfinder = preload("res://scripts/simulation/grid_pathfinder.gd")
@@ -85,7 +87,7 @@ static func _test_paths_use_pass_and_ramp(failures: Array[String]) -> void:
 
 
 static func _test_foundations_exits_and_height_edit_guards(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(7, 6))
+	var world := LegacyFixture.create(Vector2i(7, 6))
 	_fill_height(world.grid, 8)
 	var school: int = world.place_building("school", Vector2i(3, 3))
 	_expect(school != 0, "A school can be founded on a high plateau", failures)
@@ -103,7 +105,7 @@ static func _test_foundations_exits_and_height_edit_guards(failures: Array[Strin
 		and not world.can_place_building("warehouse", Vector2i(5, 0)), "Spawn and building commands reject steep terrain", failures)
 	# Only the west side remains flat; the producer must never spawn into the
 	# newly steep north/east/south cells, even when its preferred entrance is full.
-	var exits_world := World.new(Vector2i(5, 5))
+	var exits_world := LegacyFixture.create(Vector2i(5, 5))
 	var producer: int = exits_world.place_building("school", Vector2i(2, 2))
 	exits_world.grid.set_vertex_height(Vector2i(2, 1), 12)
 	exits_world.grid.set_vertex_height(Vector2i(4, 2), 12)
@@ -113,7 +115,7 @@ static func _test_foundations_exits_and_height_edit_guards(failures: Array[Strin
 
 
 static func _test_real_worker_replans_after_height_change(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(7, 5))
+	var world := LegacyFixture.create(Vector2i(7, 5))
 	var start := Vector2i(0, 2)
 	var goal := Vector2i(6, 2)
 	var id: int = world.spawn_worker(start)
@@ -135,7 +137,7 @@ static func _test_real_worker_replans_after_height_change(failures: Array[String
 
 
 static func _test_swaps_and_interactions_reject_cliffs(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(5, 3))
+	var world := LegacyFixture.create(Vector2i(5, 3))
 	var a: int = world.spawn_worker(Vector2i(1, 1))
 	var b: int = world.spawn_worker(Vector2i(2, 1))
 	world._move_worker_to(world.workers[a], Vector2i(3, 1))
@@ -152,7 +154,7 @@ static func _test_swaps_and_interactions_reject_cliffs(failures: Array[String]) 
 
 
 static func _test_extraction_height_reach(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(5, 4))
+	var world := LegacyFixture.create(Vector2i(5, 4))
 	var target := Vector2i(2, 1)
 	world.grid.set_base_terrain(target, "rock")
 	var deposit: Dictionary = {"position": target, "resource": "stone", "amount": 8}
@@ -166,23 +168,23 @@ static func _test_extraction_height_reach(failures: Array[String]) -> void:
 
 
 static func _test_save_round_trip_and_flat_migrations(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(6, 5))
+	var world := LegacyFixture.create(Vector2i(6, 5))
 	_fill_height(world.grid, 10)
 	world.place_building("school", Vector2i(2, 2))
 	world.spawn_worker(Vector2i(1, 3))
 	world.place_road(Vector2i(4, 3))
 	world.grid.set_vertex_height(Vector2i(6, 0), 24)
 	var data: Dictionary = world.to_data()
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	_expect(data["version"] == World.SAVE_VERSION and restored.from_data(JSON.parse_string(JSON.stringify(data))),
 		"Current snapshot with a plateau, peak and entities loads through actual JSON", failures)
 	_expect(restored.to_data() == data, "Current round trip preserves all shared corner heights and authored state", failures)
-	var flat := World.new(Vector2i(4, 3))
+	var flat := LegacyFixture.create(Vector2i(4, 3))
 	for version: int in range(1, 8):
 		var legacy: Dictionary = flat.to_data()
 		legacy["version"] = version
 		legacy["terrain"].erase("corner_heights")
-		var migrated := World.new()
+		var migrated := LegacyFixture.create()
 		_expect(migrated.from_data(legacy), "Historical v%d snapshots remain loadable" % version, failures)
 		for y: int in range(4):
 			for x: int in range(5):
@@ -190,7 +192,7 @@ static func _test_save_round_trip_and_flat_migrations(failures: Array[String]) -
 
 
 static func _test_invalid_heights_are_transactional(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(5, 4))
+	var world := LegacyFixture.create(Vector2i(5, 4))
 	world.place_building("school", Vector2i(1, 1))
 	world.spawn_worker(Vector2i(3, 2))
 	var baseline: Dictionary = world.to_data()

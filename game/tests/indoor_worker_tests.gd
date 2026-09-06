@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 10
 
@@ -54,7 +56,7 @@ static func _reservations_valid(world: Variant) -> bool:
 
 
 static func _test_entry_requires_actual_completed_door(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 9))
+	var world = LegacyFixture.create(Vector2i(12, 9))
 	var hut: int = world.place_building("lumber_hut", Vector2i(5, 4))
 	var door: Vector2i = world.buildings[hut]["entrance"]
 	var id: int = world.spawn_worker(door + Vector2i.LEFT, "lumberjack", hut)
@@ -79,7 +81,7 @@ static func _test_entry_requires_actual_completed_door(failures: Array[String]) 
 
 
 static func _test_operator_finishes_last_outdoor_step(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 9))
+	var world = LegacyFixture.create(Vector2i(12, 9))
 	var sawmill: int = world.place_building("sawmill", Vector2i(5, 4))
 	var door: Vector2i = world.buildings[sawmill]["entrance"]
 	world.buildings[sawmill]["inputs"]["log"] = 1
@@ -100,7 +102,7 @@ static func _test_operator_finishes_last_outdoor_step(failures: Array[String]) -
 
 
 static func _test_operator_stays_inside_between_batches(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 9))
+	var world = LegacyFixture.create(Vector2i(12, 9))
 	var sawmill: int = world.place_building("sawmill", Vector2i(5, 4))
 	world.buildings[sawmill]["inputs"]["log"] = 2
 	var id: int = world.spawn_worker(Vector2i(2, 6), "carpenter", sawmill)
@@ -124,7 +126,7 @@ static func _test_operator_stays_inside_between_batches(failures: Array[String])
 
 
 static func _test_home_assignment_does_not_hide_remote_workers(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 10))
+	var world = LegacyFixture.create(Vector2i(14, 10))
 	var sawmill: int = world.place_building("sawmill", Vector2i(5, 4))
 	var id: int = world.spawn_worker(Vector2i(10, 7), "carpenter", sawmill)
 	var worker: Dictionary = world.workers[id]
@@ -140,7 +142,7 @@ static func _test_home_assignment_does_not_hide_remote_workers(failures: Array[S
 
 
 static func _test_lumberjack_returns_rests_and_leaves(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 10))
+	var world = LegacyFixture.create(Vector2i(14, 10))
 	var hut: int = world.place_building("lumber_hut", Vector2i(4, 4))
 	var door: Vector2i = world.buildings[hut]["entrance"]
 	world.add_tree(Vector2i(9, 3), 2)
@@ -169,7 +171,7 @@ static func _test_lumberjack_returns_rests_and_leaves(failures: Array[String]) -
 
 
 static func _exit_fixture() -> Dictionary:
-	var world = World.new(Vector2i(12, 9))
+	var world = LegacyFixture.create(Vector2i(12, 9))
 	var hut: int = world.place_building("lumber_hut", Vector2i(5, 4))
 	var door: Vector2i = world.buildings[hut]["entrance"]
 	var id: int = world.spawn_worker(door, "carrier", 0, 0, hut)
@@ -233,7 +235,7 @@ static func _test_virtual_exit_is_not_a_carrier_passage(failures: Array[String])
 
 
 static func _test_diner_enters_then_returns_to_work(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(16, 11))
+	var world = LegacyFixture.create(Vector2i(16, 11))
 	var sawmill: int = world.place_building("sawmill", Vector2i(10, 5))
 	var inn: int = world.place_building("inn", Vector2i(4, 5))
 	world.buildings[inn]["inputs"]["bread"] = 1
@@ -263,7 +265,7 @@ static func _test_diner_enters_then_returns_to_work(failures: Array[String]) -> 
 
 static func _test_guard_reports_through_the_actual_door(failures: Array[String]) -> void:
 	for at_door: bool in [false, true]:
-		var world = World.new(Vector2i(12, 9))
+		var world = LegacyFixture.create(Vector2i(12, 9))
 		var tower: int = world.place_building("watchtower", Vector2i(5, 4))
 		var door: Vector2i = world.buildings[tower]["entrance"]
 		var id: int = world.spawn_worker(door if at_door else door + Vector2i.LEFT, "recruit", tower)
@@ -277,7 +279,7 @@ static func _test_guard_reports_through_the_actual_door(failures: Array[String])
 			"A posted tower guard remains inside between duties", failures)
 	# A communal barracks visitor has no exclusive home. Starting exactly on
 	# its doorway still enters; equipping inside then uses the same safe exit.
-	var world = World.new(Vector2i(12, 9))
+	var world = LegacyFixture.create(Vector2i(12, 9))
 	var barracks: int = world.place_building("barracks", Vector2i(5, 4))
 	var door: Vector2i = world.buildings[barracks]["entrance"]
 	var id: int = world.spawn_worker(door, "recruit")

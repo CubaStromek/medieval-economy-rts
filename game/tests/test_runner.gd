@@ -1,5 +1,9 @@
 extends Node
 
+const ImportedTerrainTests = preload("res://tests/imported_terrain_tests.gd")
+const ImportedTerrainViewTests = preload("res://tests/imported_terrain_view_tests.gd")
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const TaskBoardClass = preload("res://scripts/simulation/task_board.gd")
 const GridMapSimClass = preload("res://scripts/simulation/grid_map_sim.gd")
 const GridPathfinderClass = preload("res://scripts/simulation/grid_pathfinder.gd")
@@ -14,6 +18,9 @@ const EightWayPathTests = preload("res://tests/eight_way_path_tests.gd")
 const DiagonalMovementTests = preload("res://tests/diagonal_movement_tests.gd")
 const DiagonalTrailTests = preload("res://tests/diagonal_trail_tests.gd")
 const IdleYieldTests = preload("res://tests/idle_yield_tests.gd")
+const CorridorYieldTests = preload("res://tests/corridor_yield_tests.gd")
+const IdleMovementRecoveryTests = preload("res://tests/idle_movement_recovery_tests.gd")
+const YieldReplanTests = preload("res://tests/yield_replan_tests.gd")
 const TrailTrafficTests = preload("res://tests/trail_traffic_tests.gd")
 const TrailSaveTests = preload("res://tests/trail_save_tests.gd")
 const TrailWearTests = preload("res://tests/trail_wear_tests.gd")
@@ -32,6 +39,9 @@ const NightScheduleSaveTests = preload("res://tests/night_schedule_save_tests.gd
 const NightFoodTests = preload("res://tests/night_food_tests.gd")
 const NightScheduleViewTests = preload("res://tests/night_schedule_view_tests.gd")
 const NightScheduleTests = preload("res://tests/night_schedule_tests.gd")
+const SolarCycleTests = preload("res://tests/solar_cycle_tests.gd")
+const SkyClockViewTests = preload("res://tests/sky_clock_view_tests.gd")
+const SolarLightingViewTests = preload("res://tests/solar_lighting_view_tests.gd")
 const SaveValidationTests = preload("res://tests/save_validation_tests.gd")
 const GridConfigTests = preload("res://tests/grid_config_tests.gd")
 const ViewInputTests = preload("res://tests/view_input_tests.gd")
@@ -41,6 +51,7 @@ const DepositsTests = preload("res://tests/deposits_tests.gd")
 const ClassicEconomyTests = preload("res://tests/classic_economy_tests.gd")
 const HudLayoutTests = preload("res://tests/hud_layout_tests.gd")
 const WindowLayoutTests = preload("res://tests/window_layout_tests.gd")
+const MainMenuTests = preload("res://tests/main_menu_tests.gd")
 const TerrainHeightTests = preload("res://tests/terrain_height_tests.gd")
 const TerrainRenderTests = preload("res://tests/terrain_render_tests.gd")
 const TerrainChangeTests = preload("res://tests/terrain_change_tests.gd")
@@ -62,6 +73,14 @@ const FoodSaveTests = preload("res://tests/food_save_tests.gd")
 const FoodUiTests = preload("res://tests/food_ui_tests.gd")
 const HungerCycleTests = preload("res://tests/hunger_cycle_tests.gd")
 const HungerUiTests = preload("res://tests/hunger_ui_tests.gd")
+
+const BuildingFootprintTests = preload("res://tests/building_footprint_tests.gd")
+const FootprintSaveTests = preload("res://tests/footprint_save_tests.gd")
+const FootprintIntegrationTests = preload("res://tests/footprint_integration_tests.gd")
+const FoundationViewTests = preload("res://tests/foundation_view_tests.gd")
+const FoundationTests = preload("res://tests/foundation_tests.gd")
+const FoundationSaveTests = preload("res://tests/foundation_save_tests.gd")
+const FootprintViewTests = preload("res://tests/footprint_view_tests.gd")
 
 var failures: Array[String] = []
 var test_count: int = 0
@@ -107,11 +126,24 @@ func _ready() -> void:
 	for test: Callable in original_tests:
 		test.call()
 		test_count += 1
+	_record_suite("Imported terrain", ImportedTerrainTests.TEST_COUNT, ImportedTerrainTests.run())
+	_record_suite("Imported terrain view", ImportedTerrainViewTests.TEST_COUNT, await ImportedTerrainViewTests.run(self))
+	_record_suite("Main menu and saved sessions", MainMenuTests.TEST_COUNT, await MainMenuTests.run(self))
+	_record_suite("Foundation presentation", FoundationViewTests.TEST_COUNT, await FoundationViewTests.run(self))
+	_record_suite("Foundation preparation", FoundationTests.TEST_COUNT, FoundationTests.run())
+	_record_suite("Foundation saves", FoundationSaveTests.TEST_COUNT, FoundationSaveTests.run())
+	_record_suite("Building footprints", BuildingFootprintTests.TEST_COUNT, BuildingFootprintTests.run())
+	_record_suite("Footprint saves", FootprintSaveTests.TEST_COUNT, FootprintSaveTests.run())
+	_record_suite("Footprint economy integration", FootprintIntegrationTests.TEST_COUNT, FootprintIntegrationTests.run())
+	_record_suite("Footprint rendering and input", FootprintViewTests.TEST_COUNT, await FootprintViewTests.run(self))
 	_record_suite("Worker movement", WorkerMovementTests.TEST_COUNT, WorkerMovementTests.run())
 	_record_suite("Eight-way paths", EightWayPathTests.TEST_COUNT, EightWayPathTests.run())
 	_record_suite("Diagonal movement", DiagonalMovementTests.TEST_COUNT, DiagonalMovementTests.run())
 	_record_suite("Diagonal trails", DiagonalTrailTests.TEST_COUNT, DiagonalTrailTests.run())
 	_record_suite("Idle yielding", IdleYieldTests.TEST_COUNT, IdleYieldTests.run())
+	_record_suite("Narrow-lane yielding", CorridorYieldTests.TEST_COUNT, CorridorYieldTests.run())
+	_record_suite("Idle movement recovery", IdleMovementRecoveryTests.TEST_COUNT, IdleMovementRecoveryTests.run())
+	_record_suite("Yield destination recovery", YieldReplanTests.TEST_COUNT, YieldReplanTests.run())
 	_record_suite("Sustained carrier traffic", TrailTrafficTests.TEST_COUNT, TrailTrafficTests.run())
 	_record_suite("Trail save compatibility", TrailSaveTests.TEST_COUNT, TrailSaveTests.run())
 	_record_suite("Natural trail wear", TrailWearTests.TEST_COUNT, TrailWearTests.run())
@@ -124,6 +156,7 @@ func _ready() -> void:
 	_record_suite("Indoor save compatibility", IndoorSaveTests.TEST_COUNT, IndoorSaveTests.run())
 	_record_suite("Indoor worker lifecycle", IndoorWorkerTests.TEST_COUNT, IndoorWorkerTests.run())
 	_record_suite("Calendar clock", DayCycleTests.TEST_COUNT, DayCycleTests.run())
+	_record_suite("Solar light cycle", SolarCycleTests.TEST_COUNT, SolarCycleTests.run())
 	_record_suite("Civilian daily schedule", NightScheduleTests.TEST_COUNT, NightScheduleTests.run())
 	_record_suite("Night schedule save compatibility", NightScheduleSaveTests.TEST_COUNT, NightScheduleSaveTests.run())
 	_record_suite("Night meals and deferred cargo", NightFoodTests.TEST_COUNT, NightFoodTests.run())
@@ -153,6 +186,8 @@ func _ready() -> void:
 	_record_suite("HUD layout and navigation", HudLayoutTests.TEST_COUNT, await HudLayoutTests.run(self))
 	_record_suite("Calendar clock HUD", DayClockViewTests.TEST_COUNT, await DayClockViewTests.run(self))
 	_record_suite("Night schedule HUD", NightScheduleViewTests.TEST_COUNT, await NightScheduleViewTests.run(self))
+	_record_suite("Sky clock HUD", SkyClockViewTests.TEST_COUNT, await SkyClockViewTests.run(self))
+	_record_suite("Solar lighting and shadows", SolarLightingViewTests.TEST_COUNT, await SolarLightingViewTests.run(self))
 	_record_suite("Responsive window layout", WindowLayoutTests.TEST_COUNT, await WindowLayoutTests.run(self))
 	_record_suite("Construction cancellation UI", ConstructionCancelUiTests.TEST_COUNT, await ConstructionCancelUiTests.run(self))
 	_record_suite("Relief viewport", ReliefViewTests.TEST_COUNT, await ReliefViewTests.run(self))
@@ -231,7 +266,7 @@ func _test_nearest_path_search_uses_weighted_cost() -> void:
 
 
 func _test_surface_wear_and_speed_tiers() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(5, 5))
+	var simulation := LegacyFixture.create(Vector2i(5, 5))
 	var cell := Vector2i(2, 2)
 	var grass_ticks: int = simulation.grid.movement_duration_ticks(cell)
 	var threshold: int = simulation.grid.carrier_passes_to_form_trail()
@@ -317,7 +352,7 @@ func _test_base_terrain_layers_and_rules() -> void:
 
 
 func _test_terrain_controls_placement_and_pathfinding() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(7, 5))
+	var simulation := LegacyFixture.create(Vector2i(7, 5))
 	for y: int in range(4):
 		simulation.grid.set_base_terrain(Vector2i(3, y), "water")
 	simulation.grid.set_base_terrain(Vector2i(5, 1), "rock")
@@ -348,7 +383,7 @@ func _test_terrain_controls_placement_and_pathfinding() -> void:
 	_expect(not simulation.set_base_terrain(worker_cell, "water"), "Terrain authoring must not make an occupied worker cell impassable")
 	_expect(not simulation.set_base_terrain(tree_cell, "water"), "Terrain authoring must not replace the base under a tree")
 
-	var training_simulation := SimulationWorldClass.new(Vector2i(7, 7))
+	var training_simulation := LegacyFixture.create(Vector2i(7, 7))
 	var school_id: int = training_simulation.place_building("school", Vector2i(3, 3))
 	for direction: Vector2i in GridMapSimClass.CARDINAL_DIRECTIONS:
 		training_simulation.grid.set_base_terrain(Vector2i(3, 3) + direction, "water")
@@ -362,7 +397,7 @@ func _test_terrain_controls_placement_and_pathfinding() -> void:
 
 
 func _test_terrain_save_round_trip_and_v3_migration() -> void:
-	var source := SimulationWorldClass.new(Vector2i(5, 4))
+	var source := LegacyFixture.create(Vector2i(5, 4))
 	source.grid.set_base_terrain(Vector2i(1, 1), "dirt")
 	source.grid.set_base_terrain(Vector2i(2, 1), "water")
 	source.grid.set_base_terrain(Vector2i(3, 1), "rock")
@@ -371,7 +406,7 @@ func _test_terrain_save_round_trip_and_v3_migration() -> void:
 	source.grid.set_traffic_wear(Vector2i(2, 2), 2)
 	var snapshot: Dictionary = source.to_data()
 	_expect(int(snapshot["version"]) == SimulationWorldClass.SAVE_VERSION, "Terrain snapshots should use the current save schema")
-	var restored := SimulationWorldClass.new()
+	var restored := LegacyFixture.create()
 	_expect(restored.from_data(snapshot), "Version 4 terrain snapshot should load")
 	for cell: Vector2i in [Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]:
 		_expect(restored.grid.base_terrain_at(cell) == source.grid.base_terrain_at(cell), "Save must preserve every authored base terrain ID")
@@ -379,7 +414,7 @@ func _test_terrain_save_round_trip_and_v3_migration() -> void:
 	_expect(restored.grid.overlay_at(Vector2i(1, 2)) == "trail", "Save must preserve trail overlays")
 	_expect(restored.grid.traffic_wear_at(Vector2i(2, 2)) == 2, "Save must preserve partial traffic wear")
 
-	var guarded_world := SimulationWorldClass.new()
+	var guarded_world := LegacyFixture.create()
 	guarded_world.setup_demo()
 	var original_grid: GridMapSimClass = guarded_world.grid
 	var original_tick: int = guarded_world.tick
@@ -429,7 +464,7 @@ func _test_terrain_save_round_trip_and_v3_migration() -> void:
 			"Rejected %s must preserve the complete live world" % String(invalid_case["label"])
 		)
 
-	var legacy_source := SimulationWorldClass.new(Vector2i(7, 7))
+	var legacy_source := LegacyFixture.create(Vector2i(7, 7))
 	var school_id: int = legacy_source.place_building("school", Vector2i(3, 3))
 	legacy_source.queue_unit_training(school_id, "carrier")
 	for _tick: int in range(9):
@@ -441,7 +476,7 @@ func _test_terrain_save_round_trip_and_v3_migration() -> void:
 	var version_3_data: Dictionary = legacy_source.to_data()
 	version_3_data["version"] = 3
 	version_3_data.erase("terrain")
-	var migrated := SimulationWorldClass.new()
+	var migrated := LegacyFixture.create()
 	_expect(migrated.from_data(version_3_data), "Version 3 save should migrate to an all-grass base map")
 	for y: int in range(migrated.grid.size.y):
 		for x: int in range(migrated.grid.size.x):
@@ -495,7 +530,7 @@ func _test_transition_masks_are_deterministic() -> void:
 
 
 func _test_real_carrier_steps_form_contiguous_trail() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(11, 7))
+	var simulation := LegacyFixture.create(Vector2i(11, 7))
 	# A short legacy delivery fixture tests step-local trail continuity, not the
 	# production wear balance (covered by the sustained-traffic suite).
 	simulation.grid.configure_movement({"trail": {"carrier_passes_to_form": 4, "weak_decay_ticks": 10000, "established_decay_ticks": 10000}})
@@ -524,7 +559,7 @@ func _test_real_carrier_steps_form_contiguous_trail() -> void:
 
 
 func _test_swap_waits_for_both_steps_and_uses_each_surface() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(4, 3))
+	var simulation := LegacyFixture.create(Vector2i(4, 3))
 	var first_id: int = simulation.spawn_worker(Vector2i(0, 1), "carrier")
 	var second_id: int = simulation.spawn_worker(Vector2i(1, 1), "carrier")
 	var first: Dictionary = simulation.workers[first_id] as Dictionary
@@ -553,7 +588,7 @@ func _test_swap_waits_for_both_steps_and_uses_each_surface() -> void:
 
 
 func _test_worker_replans_when_building_invalidates_path() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(5, 3))
+	var simulation := LegacyFixture.create(Vector2i(5, 3))
 	var worker_id: int = simulation.spawn_worker(Vector2i(0, 1), "carrier")
 	var worker: Dictionary = simulation.workers[worker_id] as Dictionary
 	var target := Vector2i(4, 1)
@@ -573,7 +608,7 @@ func _test_worker_replans_when_building_invalidates_path() -> void:
 
 
 func _test_carrier_replans_around_blocker_to_occupied_entrance() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(8, 5))
+	var simulation := LegacyFixture.create(Vector2i(8, 5))
 	var warehouse_id: int = simulation.place_building("warehouse", Vector2i(6, 2))
 	var entrance: Vector2i = (simulation.buildings[warehouse_id] as Dictionary)["entrance"] as Vector2i
 	var entrance_blocker_id: int = simulation.spawn_worker(entrance, "carrier")
@@ -603,7 +638,7 @@ func _test_carrier_replans_around_blocker_to_occupied_entrance() -> void:
 
 
 func _test_roles_split_harvest_and_transport() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(13, 8))
+	var simulation := LegacyFixture.create(Vector2i(13, 8))
 	var hut_id: int = simulation.place_building("lumber_hut", Vector2i(2, 4))
 	var sawmill_id: int = simulation.place_building("sawmill", Vector2i(7, 4))
 	simulation.place_building("warehouse", Vector2i(10, 4))
@@ -642,7 +677,7 @@ func _test_roles_split_harvest_and_transport() -> void:
 
 
 func _test_school_training_validation_and_timing() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(9, 9))
+	var simulation := LegacyFixture.create(Vector2i(9, 9))
 	var warehouse_id: int = simulation.place_building("warehouse", Vector2i(1, 1))
 	var school_cell := Vector2i(4, 4)
 	var school_id: int = simulation.place_building("school", school_cell)
@@ -674,7 +709,7 @@ func _test_school_training_validation_and_timing() -> void:
 
 
 func _test_school_training_is_fifo() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(10, 8))
+	var simulation := LegacyFixture.create(Vector2i(10, 8))
 	var hut_id: int = simulation.place_building("lumber_hut", Vector2i(1, 4))
 	var school_id: int = simulation.place_building("school", Vector2i(5, 4))
 	var school: Dictionary = simulation.buildings[school_id] as Dictionary
@@ -703,7 +738,7 @@ func _test_school_training_is_fifo() -> void:
 
 
 func _test_school_training_waits_for_a_free_exit() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(7, 7))
+	var simulation := LegacyFixture.create(Vector2i(7, 7))
 	var school_id: int = simulation.place_building("school", Vector2i(3, 3))
 	var school: Dictionary = simulation.buildings[school_id] as Dictionary
 	var exit_cells: Array[Vector2i] = []
@@ -724,7 +759,7 @@ func _test_school_training_waits_for_a_free_exit() -> void:
 		simulation.step_tick()
 	_expect(simulation._next_entity_id == next_entity_id_before_retry, "Blocked retries must not consume or duplicate entity IDs")
 	var pending_snapshot: Dictionary = simulation.to_data()
-	var pending_restored := SimulationWorldClass.new()
+	var pending_restored := LegacyFixture.create()
 	_expect(pending_restored.from_data(pending_snapshot), "A completed blocked training order should load")
 	simulation = pending_restored
 	school = simulation.buildings[school_id] as Dictionary
@@ -746,7 +781,7 @@ func _test_school_training_waits_for_a_free_exit() -> void:
 
 
 func _test_training_save_round_trip_and_v2_migration() -> void:
-	var source := SimulationWorldClass.new(Vector2i(9, 9))
+	var source := LegacyFixture.create(Vector2i(9, 9))
 	var school_id: int = source.place_building("school", Vector2i(4, 4))
 	_expect(source.queue_unit_training(school_id, "lumberjack"), "Save test should queue a lumberjack")
 	for _tick: int in range(23):
@@ -761,7 +796,7 @@ func _test_training_save_round_trip_and_v2_migration() -> void:
 
 	var test_path: String = OS.get_temp_dir().path_join("medieval_economy_rts_training_test_%d.json" % OS.get_process_id())
 	var saved: bool = SaveSystemClass.save_world(source, test_path)
-	var restored := SimulationWorldClass.new()
+	var restored := LegacyFixture.create()
 	var loaded: bool = SaveSystemClass.load_world(restored, test_path)
 	if saved:
 		_expect(DirAccess.remove_absolute(test_path) == OK, "Test should clean up its own temporary save")
@@ -773,12 +808,12 @@ func _test_training_save_round_trip_and_v2_migration() -> void:
 	var invalid_school: Dictionary = (invalid_training_head["buildings"] as Array)[0] as Dictionary
 	invalid_school["training_queue"] = ["unknown", "lumberjack"]
 	invalid_school["training_remaining"] = 1
-	_expect(not SimulationWorldClass.new().from_data(invalid_training_head), "Version 4 must reject an invalid training queue head")
+	_expect(not LegacyFixture.create().from_data(invalid_training_head), "Version 4 must reject an invalid training queue head")
 	var oversized_training_queue: Dictionary = snapshot.duplicate(true)
 	var oversized_school: Dictionary = (oversized_training_queue["buildings"] as Array)[0] as Dictionary
 	oversized_school["training_queue"] = ["carrier", "carrier", "carrier", "carrier", "carrier", "carrier"]
 	oversized_school["training_remaining"] = 1
-	_expect(not SimulationWorldClass.new().from_data(oversized_training_queue), "Version 4 must reject training queues above building capacity")
+	_expect(not LegacyFixture.create().from_data(oversized_training_queue), "Version 4 must reject training queues above building capacity")
 	var restored_school: Dictionary = restored.buildings[school_id] as Dictionary
 	_expect((restored_school["training_queue"] as Array) == ["lumberjack"], "Save must preserve the training queue")
 	_expect(int(restored_school["training_remaining"]) == expected_remaining, "Save must preserve exact training progress")
@@ -816,7 +851,7 @@ func _test_training_save_round_trip_and_v2_migration() -> void:
 		}, "  "))
 		legacy_file.close()
 	_expect(legacy_file != null, "Historical v2 fixture should be writable")
-	var migrated := SimulationWorldClass.new()
+	var migrated := LegacyFixture.create()
 	var legacy_loaded: bool = SaveSystemClass.load_world(migrated, legacy_path)
 	if legacy_file != null:
 		_expect(DirAccess.remove_absolute(legacy_path) == OK, "Test should clean up its own v2 fixture")
@@ -846,7 +881,16 @@ func _test_school_ui_command_path() -> void:
 	main_view._unhandled_input(school_key)
 	_expect(main_view.build_mode == "school", "Keyboard shortcut 5 should select the School build tool")
 
-	var school_cell := Vector2i(1, 1)
+	# Find a genuinely empty full-size school plot in the production demo.
+	var school_cell := Vector2i(-1, -1)
+	for y: int in range(main_view.world.grid.size.y):
+		for x: int in range(main_view.world.grid.size.x):
+			var candidate := Vector2i(x, y)
+			if main_view.world.can_place_building("school", candidate):
+				school_cell = candidate
+				break
+		if school_cell != Vector2i(-1, -1):
+			break
 	var school_canvas_position: Vector2 = main_view.terrain_renderer.to_global(
 		main_view.terrain_renderer.cell_center(school_cell)
 	)
@@ -919,7 +963,7 @@ func _test_resource_hud() -> void:
 		"HUD should create one inventory breakdown for every defined resource")
 
 	# Reproduce the reported bug before testing every other resource.
-	main_view.world = SimulationWorldClass.new(Vector2i(12, 8))
+	main_view.world = LegacyFixture.create(Vector2i(12, 8))
 	main_view.world.place_building("warehouse", Vector2i(2, 2))
 	var hut: int = main_view.world.place_building("lumber_hut", Vector2i(8, 2))
 	main_view.world.buildings[hut]["outputs"]["log"] = 6
@@ -1035,7 +1079,7 @@ func _test_building_inventory_ui() -> void:
 
 
 func _test_economy_reaches_stored_planks() -> void:
-	var simulation: SimulationWorldClass = SimulationWorldClass.new()
+	var simulation: SimulationWorldClass = LegacyFixture.create()
 	simulation.setup_demo()
 	for _tick: int in range(1600):
 		simulation.step_tick()
@@ -1049,7 +1093,7 @@ func _test_economy_reaches_stored_planks() -> void:
 
 
 func _test_save_round_trip() -> void:
-	var source: SimulationWorldClass = SimulationWorldClass.new()
+	var source: SimulationWorldClass = LegacyFixture.create()
 	source.setup_demo()
 	for _tick: int in range(300):
 		source.step_tick()
@@ -1064,7 +1108,7 @@ func _test_save_round_trip() -> void:
 	var expected_partial_wear: int = int(source.grid.traffic_wear[partial_wear_cell])
 	var test_path: String = OS.get_temp_dir().path_join("medieval_economy_rts_round_trip_test_%d.json" % OS.get_process_id())
 	var saved: bool = SaveSystemClass.save_world(source, test_path)
-	var restored: SimulationWorldClass = SimulationWorldClass.new()
+	var restored: SimulationWorldClass = LegacyFixture.create()
 	var loaded: bool = SaveSystemClass.load_world(restored, test_path)
 	if saved:
 		_expect(DirAccess.remove_absolute(test_path) == OK, "Test should clean up its own temporary save")
@@ -1095,7 +1139,7 @@ func _test_save_round_trip() -> void:
 
 
 func _test_v1_save_migrates_roles() -> void:
-	var source := SimulationWorldClass.new()
+	var source := LegacyFixture.create()
 	source.setup_demo()
 	source.grid.add_road(Vector2i(0, 0))
 	var legacy_data: Dictionary = source.to_data()
@@ -1116,7 +1160,7 @@ func _test_v1_save_migrates_roles() -> void:
 		var outputs: Dictionary = building_data["outputs"] as Dictionary
 		outputs.erase("log")
 
-	var restored := SimulationWorldClass.new()
+	var restored := LegacyFixture.create()
 	var loaded: bool = restored.from_data(legacy_data)
 	_expect(loaded, "Version 1 saves should migrate instead of being rejected")
 	var worker_ids: Array = restored.workers.keys()
@@ -1144,7 +1188,7 @@ func _test_worker_interpolation_never_rewinds() -> void:
 
 
 func _test_blocked_worker_selects_another_source() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(10, 8))
+	var simulation := LegacyFixture.create(Vector2i(10, 8))
 	simulation.place_building("lumber_hut", Vector2i(1, 1))
 	var blocked_tree_id: int = simulation.add_tree(Vector2i(3, 3), 3)
 	var free_tree_id: int = simulation.add_tree(Vector2i(7, 3), 3)
@@ -1172,7 +1216,7 @@ func _test_blocked_worker_selects_another_source() -> void:
 
 
 func _test_blocked_chokepoint_selects_nearby_source() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(8, 7))
+	var simulation := LegacyFixture.create(Vector2i(8, 7))
 	simulation.place_building("lumber_hut", Vector2i(1, 1))
 	for y: int in range(7):
 		if y != 3:
@@ -1199,7 +1243,7 @@ func _test_blocked_chokepoint_selects_nearby_source() -> void:
 
 
 func _test_carrier_uses_occupied_entrance_from_adjacent_cell() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(8, 8))
+	var simulation := LegacyFixture.create(Vector2i(8, 8))
 	var warehouse_id: int = simulation.place_building("warehouse", Vector2i(4, 4))
 	var entrance: Vector2i = (simulation.buildings[warehouse_id] as Dictionary)["entrance"] as Vector2i
 	var blocker_id: int = simulation.spawn_worker(entrance)
@@ -1216,7 +1260,7 @@ func _test_carrier_uses_occupied_entrance_from_adjacent_cell() -> void:
 
 
 func _test_gardener_selects_and_plants_autonomously() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(9, 7))
+	var simulation := LegacyFixture.create(Vector2i(9, 7))
 	simulation.place_building("forester_hut", Vector2i(1, 1))
 	var gardener_cell := Vector2i(4, 3)
 	var north_cell := Vector2i(4, 2)
@@ -1264,7 +1308,7 @@ func _test_gardener_selects_and_plants_autonomously() -> void:
 
 
 func _test_gardener_waits_and_retries_without_a_site() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(3, 3))
+	var simulation := LegacyFixture.create(Vector2i(3, 3))
 	var gardener_cell := Vector2i(1, 1)
 	for y: int in range(simulation.grid.size.y):
 		for x: int in range(simulation.grid.size.x):
@@ -1292,7 +1336,7 @@ func _test_gardener_waits_and_retries_without_a_site() -> void:
 
 
 func _test_multiple_gardeners_reserve_distinct_sites() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(5, 4))
+	var simulation := LegacyFixture.create(Vector2i(5, 4))
 	simulation.place_building("forester_hut", Vector2i(0, 1))
 	simulation.place_building("forester_hut", Vector2i(4, 1))
 	var first_id: int = simulation.spawn_worker(Vector2i(2, 1), "gardener")
@@ -1311,7 +1355,7 @@ func _test_multiple_gardeners_reserve_distinct_sites() -> void:
 
 
 func _test_tree_growth_gates_lumberjack_harvest() -> void:
-	var simulation := SimulationWorldClass.new(Vector2i(9, 7))
+	var simulation := LegacyFixture.create(Vector2i(9, 7))
 	var hut_id: int = simulation.place_building("lumber_hut", Vector2i(1, 1))
 	var tree_cell := Vector2i(5, 3)
 	var tree_id: int = simulation._create_tree(tree_cell, 1, 0)
@@ -1346,14 +1390,14 @@ func _test_tree_growth_gates_lumberjack_harvest() -> void:
 
 
 func _test_gardener_growth_save_round_trip_and_v4_migration() -> void:
-	var source := SimulationWorldClass.new(Vector2i(7, 7))
+	var source := LegacyFixture.create(Vector2i(7, 7))
 	var tree_id: int = source._create_tree(Vector2i(2, 2), 3, 37)
 	var gardener_id: int = source.spawn_worker(Vector2i(5, 5), "gardener")
 	(source.workers[gardener_id] as Dictionary)["planting_cooldown"] = 29
 	var snapshot: Dictionary = source.to_data()
 	_expect(int(snapshot["version"]) == SimulationWorldClass.SAVE_VERSION, "Gardener growth snapshots should use the current save schema")
 
-	var restored := SimulationWorldClass.new()
+	var restored := LegacyFixture.create()
 	_expect(restored.from_data(snapshot), "Version 5 should restore gardeners and partial tree growth")
 	var restored_tree: Dictionary = restored.trees[tree_id] as Dictionary
 	var restored_gardener: Dictionary = restored.workers[gardener_id] as Dictionary
@@ -1365,7 +1409,7 @@ func _test_gardener_growth_save_round_trip_and_v4_migration() -> void:
 
 	var invalid_age: Dictionary = snapshot.duplicate(true)
 	((invalid_age["trees"] as Array)[0] as Dictionary)["age_ticks"] = SimulationWorldClass.TREE_MATURE_AGE_TICKS + 1
-	_expect(not SimulationWorldClass.new().from_data(invalid_age), "Version 5 must reject out-of-range tree ages")
+	_expect(not LegacyFixture.create().from_data(invalid_age), "Version 5 must reject out-of-range tree ages")
 
 	var version_4_data: Dictionary = snapshot.duplicate(true)
 	version_4_data["version"] = 4
@@ -1373,17 +1417,17 @@ func _test_gardener_growth_save_round_trip_and_v4_migration() -> void:
 		(tree_variant as Dictionary).erase("age_ticks")
 	for worker_variant: Variant in version_4_data["workers"]:
 		(worker_variant as Dictionary).erase("planting_cooldown")
-	var migrated := SimulationWorldClass.new()
+	var migrated := LegacyFixture.create()
 	_expect(migrated.from_data(version_4_data), "Version 4 saves should migrate into the growth-aware schema")
 	_expect(migrated.is_tree_mature(migrated.trees[tree_id] as Dictionary), "Pre-growth save trees must migrate as mature and remain harvestable")
 	_expect(String((migrated.workers[gardener_id] as Dictionary)["type"]) == "gardener", "Compatible saves should retain known gardener unit IDs")
 
-	var active_source := SimulationWorldClass.new(Vector2i(5, 5))
+	var active_source := LegacyFixture.create(Vector2i(5, 5))
 	active_source.place_building("forester_hut", Vector2i(0, 0))
 	var active_gardener_id: int = active_source.spawn_worker(Vector2i(2, 2), "gardener")
 	active_source.step_tick()
 	_expect(not active_source.planting_reservations.is_empty(), "Fixture should save while autonomous planting is active")
-	var active_restored := SimulationWorldClass.new()
+	var active_restored := LegacyFixture.create()
 	_expect(active_restored.from_data(active_source.to_data()), "An active autonomous gardener snapshot should load")
 	var active_restored_gardener: Dictionary = active_restored.workers[active_gardener_id] as Dictionary
 	_expect(active_restored.planting_reservations.is_empty(), "Transient planting reservations must not survive save/load as ghosts")

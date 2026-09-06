@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Economy = preload("res://scripts/simulation/classic_economy.gd")
 const Hud = preload("res://scripts/view/game_hud.gd")
@@ -22,7 +24,7 @@ static func run() -> Array[String]:
 
 
 static func _fixture(type: String, delivered: Dictionary = {}, remaining: int = 120) -> Dictionary:
-	var world := World.new(Vector2i(16, 12))
+	var world := LegacyFixture.create(Vector2i(16, 12))
 	var store: int = world.place_building("warehouse", Vector2i(2, 3))
 	world.buildings[store]["storage"]["plank"] = 20
 	world.buildings[store]["storage"]["stone"] = 20
@@ -85,7 +87,7 @@ static func _test_current_sites_and_catalog(failures: Array[String]) -> void:
 				"Legacy migration needs a nonempty material contract for " + type, failures)
 	_check(world.construction_cost(site) == world.catalog.construction_cost("lumber_hut", 2),
 		"The new site's material requests must use its current cost contract", failures)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	_check(restored.from_data(_json_snapshot(world)) and restored.to_data() == world.to_data(),
 		"Current site revisions must round-trip through JSON without state changes", failures)
 
@@ -93,7 +95,7 @@ static func _test_current_sites_and_catalog(failures: Array[String]) -> void:
 static func _test_legacy_price_decrease_and_builder(failures: Array[String]) -> void:
 	# The old farm paid more of both materials than a newly placed farm does.
 	var fixture: Dictionary = _fixture("farm", {"plank": 5, "stone": 4})
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	if not restored.from_data(_legacy_snapshot(fixture)):
 		failures.append("A V8 farm must still load when its delivered materials exceed the new farm price")
 		return
@@ -119,7 +121,7 @@ static func _test_legacy_price_decrease_and_builder(failures: Array[String]) -> 
 static func _test_legacy_price_increase_and_physical_delivery(failures: Array[String]) -> void:
 	# Schools cost 5 planks + 4 stone in the old balance, less than the new price.
 	var fixture: Dictionary = _fixture("school", {"plank": 4, "stone": 4})
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	if not restored.from_data(_legacy_snapshot(fixture)):
 		failures.append("A partly supplied V8 school must load after its new-build price increases")
 		return
@@ -144,7 +146,7 @@ static func _test_legacy_price_increase_and_physical_delivery(failures: Array[St
 
 static func _test_completed_building_and_round_trip(failures: Array[String]) -> void:
 	var fixture: Dictionary = _fixture("farm", {"plank": 5, "stone": 4}, 0)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	if not restored.from_data(_legacy_snapshot(fixture)):
 		failures.append("Completed V8 buildings must load with their retained old-price delivered material records")
 		return
@@ -154,7 +156,7 @@ static func _test_completed_building_and_round_trip(failures: Array[String]) -> 
 		"Loading must never reopen or reprice a completed legacy building", failures)
 	var next: Dictionary = _json_snapshot(restored)
 	_check(int(next["version"]) == World.SAVE_VERSION, "Migrated buildings must be written in the current explicit revision schema", failures)
-	var round_trip := World.new()
+	var round_trip := LegacyFixture.create()
 	_check(round_trip.from_data(next) and round_trip.to_data() == restored.to_data(),
 		"Resaving and reloading a migrated completed site must preserve all state", failures)
 	_check(not round_trip.cancel_construction(site), "Completed old sites must not become refundable after migration", failures)
@@ -162,7 +164,7 @@ static func _test_completed_building_and_round_trip(failures: Array[String]) -> 
 
 static func _test_cancel_conserves_legacy_materials(failures: Array[String]) -> void:
 	var fixture: Dictionary = _fixture("farm", {"plank": 3, "stone": 4})
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	if not restored.from_data(_legacy_snapshot(fixture)):
 		failures.append("Partly supplied old sites must migrate before cancellation")
 		return
@@ -174,7 +176,7 @@ static func _test_cancel_conserves_legacy_materials(failures: Array[String]) -> 
 		"Cancellation must refund exactly actual old deliveries, including stone above the new price, once", failures)
 	_check(not restored.cancel_construction(site) and _material_totals(restored) == before,
 		"Cancelling a migrated site twice must not duplicate its refund", failures)
-	var round_trip := World.new()
+	var round_trip := LegacyFixture.create()
 	_check(round_trip.from_data(_json_snapshot(restored)) and _material_totals(round_trip) == before,
 		"Cancelled legacy material totals must survive another save/load", failures)
 
@@ -182,7 +184,7 @@ static func _test_cancel_conserves_legacy_materials(failures: Array[String]) -> 
 static func _test_invalid_revisions_and_deliveries_are_atomic(failures: Array[String]) -> void:
 	var fixture: Dictionary = _fixture("lumber_hut")
 	var baseline: Dictionary = _json_snapshot(fixture["world"])
-	var target := World.new()
+	var target := LegacyFixture.create()
 	target.place_building("warehouse", Vector2i(1, 1))
 	var unchanged: Dictionary = target.to_data()
 	for revision: Variant in [null, -1, 0, 3, 1.5, "1", true, {}]:
@@ -205,7 +207,7 @@ static func _test_invalid_revisions_and_deliveries_are_atomic(failures: Array[St
 
 static func _test_hud_uses_site_contract(failures: Array[String]) -> void:
 	var fixture: Dictionary = _fixture("farm", {"plank": 1, "stone": 4})
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	if not restored.from_data(_legacy_snapshot(fixture)):
 		failures.append("HUD legacy fixture must load")
 		return

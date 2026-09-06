@@ -108,8 +108,9 @@ Next terrain increments:
 
 - further painted terrain and mask atlases; roads and trees already have
   original painted artwork, and shared heights/slopes are implemented;
-- multi-cell rotated footprints; material-delivery construction states are
-  already implemented for one-cell buildings;
+- rotation for the implemented multi-cell footprints; fixed south-facing masks,
+  full-area construction and per-building save compatibility are described in
+  [`building-footprints.md`](building-footprints.md);
 - connected-region cache for quick reachability rejection;
 - stone-road construction tasks instead of immediate completion;
 - terrain-dependent wear tuning if later playtesting needs it;
@@ -273,17 +274,30 @@ task and selects the nearest currently reachable source. Future congestion work
 can add wait-age priority and time-expanded reservations for narrow routes while
 retaining the one-cell/one-owner invariant.
 
-Idle, empty-handed, task-free units can yield one normal step into a safe
-off-route cell. Busy workers, unfinished movements and posted tower guards
-are protected. Pocket selection avoids building entrances, trees, fields,
+Idle, empty-handed, task-free units can yield into a safe off-route cell.
+`idle_yield_route.gd` first checks immediate pockets, then searches a local
+retreat of up to 16 steps / 256 visited cells. It can traverse the requested
+lane to a clearing farther away; a dead-end door can use an ordinary timed
+reciprocal step past the requester when the clearing is behind them. Busy
+workers, unfinished movements and posted tower guards are protected.
+Pocket selection avoids building entrances, trees, fields,
 deposits and planting claims, and prefers staying off roads. It preserves
-`home_id` and holds the vacated tile until the interpolated sidestep finishes.
+`home_id` and holds each vacated tile until that interpolated step finishes.
+Simultaneous retreats cannot claim the same resting destination, and yielding
+carrier steps never generate trail wear. If that destination closes or becomes
+occupied, the worker chooses a new resting place relative to the requester's
+remaining route. With no remaining escape it releases the stale yield task
+and waits safely instead of staying permanently busy in the passage.
 A movement-per-tick guard and brief rest prevent double moves and jitter,
 while a lower-ID worker whose idle update already ran can still yield.
 If ordinary routing fails, a second search may pass through idle blockers,
-but only after checking they have real off-route pockets. A blocker with no
-pocket stays an obstacle, allowing alternative destinations to be selected.
+but only after the same pure route search verifies a reachable resting place.
+A blocker with no pocket stays an obstacle, allowing alternative destinations
+to be selected.
 Yield paths, clearance reservations and rest timers are transient on load.
+An idle worker still finishes any committed movement cooldown after a job is
+cancelled, preventing a visually stationary person from remaining permanently
+ineligible to yield or enter a building.
 
 The tick scheduler tracks workers already updated in the current tick. A swap
 consumes both participants' updates, and cannot involve a worker whose cooldown
@@ -388,6 +402,38 @@ The HUD shows calendar time and phase; its tooltip retains elapsed simulation
 time and explains speed/pause, the ten-minute cycle and the work/rest hours.
 Clock queries remain read-only; the simulation applies the schedule below.
 
+## Simplified sun and lighting — 2026-09-06
+
+`SolarCycle.sample(tick, fraction)` derives the sun/moon arc, ambient color,
+sky palette and directional shadows from the saved simulation tick and the
+view's clamped fraction of the next tick. It reduces the integer tick before
+converting to floating point, so large saved times repeat the same cycle.
+MainView supplies the fixed-step accumulator fraction and holds it unchanged
+while paused; loading/resetting immediately projects the current clock.
+No lighting state is stored, and neither the economy nor save format changes.
+
+The sun travels left to right from 05:00 to 20:00, reaching its highest point
+at 12:30. Smooth twilight spans 04:00–07:00 and 18:00–21:00 independently of
+the named clock phases and work boundary. Dawn/dusk are warm, midday is near
+neutral white and night retains a readable blue ambient baseline.
+`MainView.modulate` applies the color to the world root and its terrain/entity
+children. GameHud's separate `CanvasLayer` keeps controls unaffected; static
+terrain geometry does not need rebuilding for a change of light.
+
+`SolarShadows` builds simplified projected silhouettes for buildings, trees
+and outdoor units. Shadows point opposite the sun, grow longer near the
+horizon and remain short around midday. Opacity fades to zero at sunrise and
+sunset. Geometry is clipped by grid rows, projected onto the shared heightfield
+and interleaved with the existing terrain/object row drawing. This is an
+art-directed ground projection, not full occlusion or ray tracing between
+objects. Indoor workers cast no outdoor shadow.
+
+`SkyClock` is a decorative 184 × 86-pixel control in the HUD's top-right map
+corner. Its gradient sky and sun/moon arc read the same `SolarCycle` sample;
+it neither advances time nor changes gameplay. The palette, interpolation,
+boundary continuity and large-tick behavior have dedicated tests; the current
+verification status is tracked in [tests/README.md](../tests/README.md).
+
 ## Civilian daily schedule — 2026-09-05
 
 `DailySchedule` gives all civilian professions a 05:00–20:00 work window.
@@ -419,8 +465,8 @@ Personal Inn visits may interrupt rest, including with deferred cargo. They
 consume real Inn stock and finish through the shared meal system even across
 dawn. Travel to an Inn or sleeping place does not reserve destination input
 capacity for that cargo. Military requests remain pending while carriers sleep.
-HUD schedule/count queries never mutate the world. Lighting and residential
-capacity are not implemented by this schedule.
+HUD schedule/count queries never mutate the world. Lighting is a separate
+view layer described above; residential capacity remains unimplemented.
 
 ## Saving
 
@@ -490,8 +536,8 @@ Before saves become a compatibility promise, add:
 
 ## Testing
 
-The current runner registers **288 cases** for Godot 4.7.2 (2026-09-05).
-All 288 pass in native project-scene verification.
+The current suite inventory and dated verification results are maintained in
+[tests/README.md](../tests/README.md).
 `game/tests/test_runner.tscn` runs inside the actual Godot project. The root
 `tests/run-headless.sh` invokes it. The runner includes the original 34 cases
 and dedicated movement, snapshot, grid configuration, viewport input and

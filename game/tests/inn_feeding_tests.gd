@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Feeding = preload("res://scripts/simulation/inn_feeding.gd")
 const Economy = preload("res://scripts/simulation/classic_economy.gd")
@@ -49,7 +51,7 @@ static func _start_inside(world: Variant, inn_id: int, type: String = "carrier",
 
 
 static func _test_meal_occupies_seat_and_pauses_hunger(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	world.buildings[inn]["inputs"]["bread"] = 1
 	var id: int = _start_inside(world, inn)
@@ -72,7 +74,7 @@ static func _test_meal_occupies_seat_and_pauses_hunger(failures: Array[String]) 
 
 
 static func _test_three_distinct_courses_and_no_replay(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	for food: String in ["bread", "sausage", "wine", "fish"]:
 		world.buildings[inn]["inputs"][food] = 2
@@ -99,7 +101,7 @@ static func _test_three_distinct_courses_and_no_replay(failures: Array[String]) 
 
 
 static func _test_six_seats_and_alternative_inn(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(15, 9))
+	var world = LegacyFixture.create(Vector2i(15, 9))
 	var full: int = world.place_building("inn", Vector2i(4, 3))
 	var other: int = world.place_building("inn", Vector2i(11, 3))
 	world.buildings[full]["inputs"]["bread"] = 6
@@ -121,7 +123,7 @@ static func _test_six_seats_and_alternative_inn(failures: Array[String]) -> void
 
 
 static func _test_last_serving_is_consumed_once(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	world.buildings[inn]["inputs"]["fish"] = 1
 	var first: int = _start_inside(world, inn)
@@ -134,7 +136,7 @@ static func _test_last_serving_is_consumed_once(failures: Array[String]) -> void
 
 
 static func _test_soldiers_never_use_the_inn(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	world.buildings[inn]["inputs"]["bread"] = 1
 	var id: int = world.spawn_worker(world.buildings[inn]["entrance"], "militia")
@@ -149,7 +151,7 @@ static func _test_soldiers_never_use_the_inn(failures: Array[String]) -> void:
 
 
 static func _test_carrying_worker_finishes_delivery_first(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	world.buildings[inn]["inputs"]["bread"] = 1
 	var id: int = world.spawn_worker(world.buildings[inn]["entrance"], "carrier")
@@ -162,7 +164,7 @@ static func _test_carrying_worker_finishes_delivery_first(failures: Array[String
 
 
 static func _test_blocked_visit_can_choose_another_inn(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(15, 9))
+	var world = LegacyFixture.create(Vector2i(15, 9))
 	var first: int = world.place_building("inn", Vector2i(4, 3))
 	var other: int = world.place_building("inn", Vector2i(11, 3))
 	world.buildings[first]["inputs"]["bread"] = 1
@@ -182,7 +184,7 @@ static func _test_blocked_visit_can_choose_another_inn(failures: Array[String]) 
 
 
 static func _test_specialist_returns_to_same_workplace(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(15, 9))
+	var world = LegacyFixture.create(Vector2i(15, 9))
 	var bakery: int = world.place_building("bakery", Vector2i(3, 3))
 	var inn: int = world.place_building("inn", Vector2i(9, 3))
 	world.buildings[inn]["inputs"]["bread"] = 1
@@ -198,7 +200,7 @@ static func _test_specialist_returns_to_same_workplace(failures: Array[String]) 
 
 
 static func _test_save_during_meal_preserves_timer(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	world.buildings[inn]["inputs"]["wine"] = 2
 	var id: int = _start_inside(world, inn)
@@ -221,7 +223,7 @@ static func _test_save_during_meal_preserves_timer(failures: Array[String]) -> v
 static func _test_varied_meal_restores_more_than_single_food(failures: Array[String]) -> void:
 	var results: Array[int] = []
 	for foods: Array in [["wine"], ["fish"], ["bread", "wine", "fish"]]:
-		var world = World.new(Vector2i(9, 9))
+		var world = LegacyFixture.create(Vector2i(9, 9))
 		var inn: int = world.place_building("inn", Vector2i(4, 3))
 		for food: String in foods:
 			world.buildings[inn]["inputs"][food] = 3
@@ -233,7 +235,7 @@ static func _test_varied_meal_restores_more_than_single_food(failures: Array[Str
 
 
 static func _test_new_deliveries_are_selected_between_courses(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	world.buildings[inn]["inputs"]["bread"] = 2
 	var id: int = _start_inside(world, inn)
@@ -251,7 +253,7 @@ static func _test_new_deliveries_are_selected_between_courses(failures: Array[St
 
 
 static func _test_legacy_paid_meal_only_finishes_countdown(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	var id: int = world.spawn_worker(world.buildings[inn]["entrance"], "carrier", 0, false, inn)
 	world.buildings[inn]["inputs"]["wine"] = 1

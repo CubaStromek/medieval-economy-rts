@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 2
 
@@ -7,7 +9,7 @@ const TEST_COUNT: int = 2
 static func run() -> Array[String]:
 	var failures: Array[String] = []
 	for expanded: bool in [false, true]:
-		var world := World.new()
+		var world := LegacyFixture.create()
 		world.setup_demo()
 		if expanded:
 			var school: int = world.place_building("school", Vector2i(3, 3))
@@ -21,7 +23,7 @@ static func run() -> Array[String]:
 			if world.tick == 1500:
 				halfway_planks = world.stored_amount("plank")
 			if world.tick % 777 == 0:
-				var restored := World.new()
+				var restored := LegacyFixture.create()
 				var snapshot: Dictionary = JSON.parse_string(JSON.stringify(world.to_data()))
 				if not restored.from_data(snapshot):
 					failures.append("Live snapshot must remain loadable at tick %d" % world.tick)

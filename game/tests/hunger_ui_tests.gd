@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Main = preload("res://scripts/view/main_view.gd")
 const Terrain = preload("res://scripts/view/terrain_renderer.gd")
@@ -25,7 +27,7 @@ static func _main(world: World) -> Main:
 
 
 static func _test_bars_for_every_profession(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(18, 12))
+	var world := LegacyFixture.create(Vector2i(18, 12))
 	var main: Main = _main(world)
 	var roles: Array = world.catalog.units.keys() + world.catalog.soldiers.keys()
 	for index: int in range(roles.size()):
@@ -56,7 +58,7 @@ static func _test_bars_for_every_profession(failures: Array[String]) -> void:
 
 
 static func _test_selected_progress_and_states(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var id: int = world.spawn_worker(Vector2i(3, 5), "carrier")
 	world.economy_enabled = true
 	var main: Main = _main(world)
@@ -72,7 +74,7 @@ static func _test_selected_progress_and_states(failures: Array[String]) -> void:
 
 
 static func _test_game_time_and_speed_estimate(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var id: int = world.spawn_worker(Vector2i(3, 5), "carrier")
 	world.economy_enabled = true
 	var main: Main = _main(world)
@@ -95,7 +97,7 @@ static func _test_game_time_and_speed_estimate(failures: Array[String]) -> void:
 
 
 static func _test_indoor_worker_inspection(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var home: int = world.place_building("sawmill", Vector2i(4, 3))
 	var id: int = world.spawn_worker(world.buildings[home]["entrance"], "carpenter", home)
 	world.workers[id]["hunger"] = 1350
@@ -120,7 +122,7 @@ static func _test_indoor_worker_inspection(failures: Array[String]) -> void:
 
 
 static func _test_progressive_meal_details(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(14, 10))
+	var world := LegacyFixture.create(Vector2i(14, 10))
 	var home: int = world.place_building("bakery", Vector2i(3, 3))
 	var inn: int = world.place_building("inn", Vector2i(8, 3))
 	world.buildings[inn]["inputs"]["bread"] = 1
@@ -150,7 +152,7 @@ static func _test_progressive_meal_details(failures: Array[String]) -> void:
 
 
 static func _test_shared_hunger_and_supply_summary(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var citizen: int = world.spawn_worker(Vector2i(3, 5), "carrier")
 	var soldier: int = world.spawn_worker(Vector2i(8, 5), "militia")
 	world.workers[citizen]["hunger"] = 1620

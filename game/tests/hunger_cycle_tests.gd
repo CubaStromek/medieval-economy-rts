@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Economy = preload("res://scripts/simulation/classic_economy.gd")
 const Feeding = preload("res://scripts/simulation/inn_feeding.gd")
@@ -31,7 +33,7 @@ static func _advance(world: Variant, ticks: int) -> void:
 
 
 static func _test_calendar_derived_loss(failures: Array[String]) -> void:
-	var world = World.new()
+	var world = LegacyFixture.create()
 	_check(world.hunger_loss_per_interval() == 5,
 		"Default daily hunger must lose five condition per ten ticks", failures)
 	world.catalog.economy["condition_daily_hunger_fraction"] = 1.0
@@ -44,7 +46,7 @@ static func _test_calendar_derived_loss(failures: Array[String]) -> void:
 
 static func _test_real_daily_hunger_onset(failures: Array[String]) -> void:
 	for initial: int in [2700, 1620]:
-		var world = World.new(Vector2i(5, 5))
+		var world = LegacyFixture.create(Vector2i(5, 5))
 		var id: int = world.spawn_worker(Vector2i(2, 2), "carrier")
 		world.workers[id]["hunger"] = initial
 		world.economy_enabled = true
@@ -61,7 +63,7 @@ static func _test_real_daily_hunger_onset(failures: Array[String]) -> void:
 
 
 static func _test_every_profession_and_soldier(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(10, 10))
+	var world = LegacyFixture.create(Vector2i(10, 10))
 	var roles: Array = world.catalog.units.keys()
 	roles.append_array(world.catalog.soldiers.keys())
 	roles.sort()
@@ -80,7 +82,7 @@ static func _test_every_profession_and_soldier(failures: Array[String]) -> void:
 
 
 static func _test_eta_accounts_for_tick_phase(failures: Array[String]) -> void:
-	var world = World.new()
+	var world = LegacyFixture.create()
 	world.economy_enabled = true
 	var worker: Dictionary = {"hunger": 370, "meal_ticks_left": 0}
 	for pair: Array in [[0, 20], [3, 17], [9, 11], [10, 20]]:
@@ -103,7 +105,7 @@ static func _test_eta_accounts_for_tick_phase(failures: Array[String]) -> void:
 
 
 static func _test_status_boundaries(failures: Array[String]) -> void:
-	var world = World.new()
+	var world = LegacyFixture.create()
 	world.economy_enabled = true
 	for pair: Array in [[2700, "Fed"], [1351, "Fed"], [1350, "Getting hungry"], [361, "Getting hungry"], [360, "Hungry"], [121, "Hungry"], [120, "Starving"], [0, "Starving"]]:
 		var status: Dictionary = world.hunger_status({"hunger": int(pair[0])})
@@ -114,7 +116,7 @@ static func _test_status_boundaries(failures: Array[String]) -> void:
 
 
 static func _test_disabled_economy(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(5, 5))
+	var world = LegacyFixture.create(Vector2i(5, 5))
 	var id: int = world.spawn_worker(Vector2i(2, 2), "carrier")
 	var before: int = int(world.workers[id]["hunger"])
 	_advance(world, 100)
@@ -126,7 +128,7 @@ static func _test_disabled_economy(failures: Array[String]) -> void:
 
 
 static func _test_meals_pause_daily_decay(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(8, 8))
+	var world = LegacyFixture.create(Vector2i(8, 8))
 	var inn: int = world.place_building("inn", Vector2i(3, 3))
 	world.buildings[inn]["inputs"]["bread"] = 1
 	var id: int = world.spawn_worker(world.buildings[inn]["entrance"], "carrier")
@@ -148,7 +150,7 @@ static func _test_meals_pause_daily_decay(failures: Array[String]) -> void:
 
 static func _test_two_days_of_work_food_and_sleep(failures: Array[String]) -> void:
 	for menu: Array in [["bread", "sausage"], ["bread", "wine", "fish"]]:
-		var world = World.new(Vector2i(16, 12))
+		var world = LegacyFixture.create(Vector2i(16, 12))
 		var warehouse: int = world.place_building("warehouse", Vector2i(2, 3))
 		var sawmill: int = world.place_building("sawmill", Vector2i(5, 3))
 		var inn: int = world.place_building("inn", Vector2i(10, 3))

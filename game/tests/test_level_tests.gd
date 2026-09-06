@@ -141,7 +141,7 @@ static func _check_initial_world(world: World, failures: Array[String]) -> void:
 		var id: int = world.deposit_id_at(cell)
 		_check(id != 0 and world.deposits[id]["resource"] == "stone" and int(world.deposits[id]["amount"]) == 90,
 			"Starter deposits must persist at the accessible western foot of the ridge", failures)
-	_check(world.can_place_building("quarry", Vector2i(18, 16)),
+	_check(world.can_place_building("quarry", Vector2i(17, 16)),
 		"A quarry must be placeable within working reach of the starter stone deposits", failures)
 	for cell: Vector2i in Level.FISH_DEPOSIT_CELLS:
 		var id: int = world.deposit_id_at(cell)
@@ -160,7 +160,7 @@ static func _test_start_bootstraps_wood_and_stone(failures: Array[String]) -> vo
 	for role: String in ["carrier", "builder", "carrier", "lumberjack", "carpenter"]:
 		_check(world.queue_unit_training(school_id, role), "School must accept starter role " + role, failures)
 	var sites: Dictionary = {}
-	var cells: Dictionary = {"lumber_hut": Vector2i(5, 13), "sawmill": Vector2i(10, 16), "quarry": Vector2i(18, 16)}
+	var cells: Dictionary = {"lumber_hut": Vector2i(11, 13), "sawmill": Vector2i(11, 17), "quarry": Vector2i(17, 16)}
 	for type: String in cells:
 		var cell: Vector2i = cells[type]
 		var id: int = world.place_building(type, cell)

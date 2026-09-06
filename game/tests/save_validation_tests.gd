@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 4
 
@@ -14,7 +16,7 @@ static func run() -> Array[String]:
 
 
 static func _fixture() -> Variant:
-	var world = World.new(Vector2i(9, 7))
+	var world = LegacyFixture.create(Vector2i(9, 7))
 	world.place_building("school", Vector2i(1, 1))
 	world.place_building("sawmill", Vector2i(5, 2))
 	world.place_building("warehouse", Vector2i(7, 5))
@@ -141,7 +143,7 @@ static func _test_valid_snapshots_and_migrations(failures: Array[String]) -> voi
 		source.step_tick()
 	var snapshot: Dictionary = source.to_data()
 	var from_json: Variant = JSON.parse_string(JSON.stringify(snapshot))
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(from_json):
 		failures.append("Valid JSON snapshot with integral floats was rejected")
 		return
@@ -170,7 +172,7 @@ static func _test_valid_snapshots_and_migrations(failures: Array[String]) -> voi
 		if version == 1:
 			legacy.erase("dirt_trails")
 			legacy.erase("traffic_wear")
-		var migrated = World.new()
+		var migrated = LegacyFixture.create()
 		if not migrated.from_data(legacy):
 			failures.append("Valid version %d save migration failed" % version)
 			continue

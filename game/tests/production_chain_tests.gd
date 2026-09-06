@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 15
 
@@ -55,7 +57,7 @@ static func _staff(world: World, building_id: int, profession: String) -> int:
 
 
 static func _test_specialists_gate_production(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(16, 10))
+	var world := LegacyFixture.create(Vector2i(16, 10))
 	world.grid.set_base_terrain(Vector2i(12, 2), "rock")
 	world.add_deposit(Vector2i(12, 2), "stone", 8)
 	var quarry: int = world.place_building("quarry", Vector2i(10, 2))
@@ -77,7 +79,7 @@ static func _test_specialists_gate_production(failures: Array[String]) -> void:
 
 
 static func _test_empty_inputs_wait(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 8))
+	var world := LegacyFixture.create(Vector2i(12, 8))
 	for entry: Array in [["mill", "flour", Vector2i(2, 2)], ["bakery", "bread", Vector2i(7, 2)]]:
 		var id: int = world.place_building(String(entry[0]), entry[2])
 		_staff(world, id, "baker")
@@ -97,7 +99,7 @@ static func _test_empty_inputs_wait(failures: Array[String]) -> void:
 
 
 static func _test_bread_batch_timing(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(8, 8))
+	var world := LegacyFixture.create(Vector2i(8, 8))
 	var id: int = world.place_building("bakery", Vector2i(3, 3))
 	var bakery: Dictionary = world.buildings[id]
 	bakery["inputs"]["flour"] = 1
@@ -115,7 +117,7 @@ static func _test_bread_batch_timing(failures: Array[String]) -> void:
 
 
 static func _test_field_sowing_growth_and_harvest(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(10, 8))
+	var world := LegacyFixture.create(Vector2i(10, 8))
 	var farm_id: int = world.place_building("farm", Vector2i(2, 2))
 	var field_id: int = world.place_field(Vector2i(5, 2))
 	var field: Dictionary = world.fields[field_id]
@@ -135,7 +137,7 @@ static func _test_field_sowing_growth_and_harvest(failures: Array[String]) -> vo
 
 
 static func _test_farmers_reserve_distinct_fields(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 10))
+	var world := LegacyFixture.create(Vector2i(12, 10))
 	var farm_a: int = world.place_building("farm", Vector2i(2, 2))
 	var farm_b: int = world.place_building("farm", Vector2i(8, 2))
 	var first: int = world.place_field(Vector2i(5, 2))
@@ -160,7 +162,7 @@ static func _test_farmers_reserve_distinct_fields(failures: Array[String]) -> vo
 
 static func _test_trained_farmers_keep_distinct_workplaces(failures: Array[String]) -> void:
 	for near_farm_full: bool in [false, true]:
-		var world := World.new(Vector2i(26, 12))
+		var world := LegacyFixture.create(Vector2i(26, 12))
 		var near_farm: int = world.place_building("farm", Vector2i(2, 2))
 		var school: int = world.place_building("school", Vector2i(5, 2))
 		var far_farm: int = world.place_building("farm", Vector2i(18, 2))
@@ -202,7 +204,7 @@ static func _test_trained_farmers_keep_distinct_workplaces(failures: Array[Strin
 
 
 static func _test_full_chain_reaches_warehouse(failures: Array[String]) -> void:
-	var world := World.new()
+	var world := LegacyFixture.create()
 	# Isolate the bread/stone/wood chains from consumers in the full settlement
 	# demo; inns and construction intentionally spend its warehouse stock.
 	world.setup_demo()
@@ -239,7 +241,7 @@ static func _test_full_chain_reaches_warehouse(failures: Array[String]) -> void:
 
 
 static func _test_warehouse_supplies_later_consumer(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(14, 8))
+	var world := LegacyFixture.create(Vector2i(14, 8))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 2))
 	world.buildings[warehouse]["storage"]["grain"] = 2
 	world.spawn_worker(Vector2i(3, 5), "carrier")
@@ -257,13 +259,13 @@ static func _test_warehouse_supplies_later_consumer(failures: Array[String]) -> 
 
 
 static func _test_save_resumes_consumed_batch(failures: Array[String]) -> void:
-	var source := World.new(Vector2i(8, 8))
+	var source := LegacyFixture.create(Vector2i(8, 8))
 	var id: int = source.place_building("bakery", Vector2i(3, 3))
 	source.buildings[id]["inputs"]["flour"] = 1
 	_staff(source, id, "baker")
 	_check(_until(source, func() -> bool: return int(source.buildings[id]["process_remaining"]) == 60),
 		"Save fixture must reach the middle of a bread batch", failures)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	if not restored.from_data(JSON.parse_string(JSON.stringify(source.to_data()))):
 		failures.append("A partially consumed bread batch must load from JSON")
 		return
@@ -276,7 +278,7 @@ static func _test_save_resumes_consumed_batch(failures: Array[String]) -> void:
 
 static func _test_save_preserves_carried_wares(failures: Array[String]) -> void:
 	for entry: Array in [["farm", "grain"], ["mill", "flour"], ["bakery", "bread"], ["quarry", "stone"]]:
-		var source := World.new(Vector2i(14, 8))
+		var source := LegacyFixture.create(Vector2i(14, 8))
 		source.grid.set_base_terrain(Vector2i(12, 1), "rock")
 		source.add_deposit(Vector2i(12, 1), "stone", 8)
 		source.place_building("warehouse", Vector2i(1, 2))
@@ -287,7 +289,7 @@ static func _test_save_preserves_carried_wares(failures: Array[String]) -> void:
 		if not _until(source, func() -> bool: return String(source.workers[carrier]["carrying"]) == ware, 200):
 			failures.append("Carrier must pick up %s before save" % ware)
 			continue
-		var restored := World.new()
+		var restored := LegacyFixture.create()
 		if not restored.from_data(JSON.parse_string(JSON.stringify(source.to_data()))):
 			failures.append("Snapshot must allow a carrier holding %s" % ware)
 			continue
@@ -297,7 +299,7 @@ static func _test_save_preserves_carried_wares(failures: Array[String]) -> void:
 
 
 static func _test_output_backpressure(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 8))
+	var world := LegacyFixture.create(Vector2i(12, 8))
 	var id: int = world.place_building("bakery", Vector2i(2, 2))
 	var bakery: Dictionary = world.buildings[id]
 	bakery["inputs"]["flour"] = 4
@@ -330,7 +332,7 @@ static func _test_output_backpressure(failures: Array[String]) -> void:
 
 
 static func _test_input_capacity_with_competing_deliveries(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(18, 10))
+	var world := LegacyFixture.create(Vector2i(18, 10))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 2))
 	world.buildings[warehouse]["storage"]["grain"] = 20
 	var mill: int = world.place_building("mill", Vector2i(9, 2))
@@ -353,7 +355,7 @@ static func _test_input_capacity_with_competing_deliveries(failures: Array[Strin
 
 
 static func _test_terrain_and_field_placement(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(14, 10))
+	var world := LegacyFixture.create(Vector2i(14, 10))
 	world.grid.set_base_terrain(Vector2i(8, 2), "rock")
 	world.add_deposit(Vector2i(8, 2), "stone", 8)
 	world.grid.set_base_terrain(Vector2i(1, 1), "water")
@@ -377,7 +379,7 @@ static func _test_terrain_and_field_placement(failures: Array[String]) -> void:
 
 
 static func _test_new_professions_train_fifo(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(9, 9))
+	var world := LegacyFixture.create(Vector2i(9, 9))
 	var school: int = world.place_building("school", Vector2i(4, 4))
 	for profession: String in ["farmer", "baker", "stonemason"]:
 		_check(world.queue_unit_training(school, profession), "School must accept the new %s profession" % profession, failures)
@@ -394,14 +396,14 @@ static func _test_new_professions_train_fifo(failures: Array[String]) -> void:
 
 
 static func _test_field_save_and_legacy_migration(failures: Array[String]) -> void:
-	var source := World.new(Vector2i(12, 8))
+	var source := LegacyFixture.create(Vector2i(12, 8))
 	for entry: Array in [[Vector2i(2, 2), -1], [Vector2i(4, 2), 73], [Vector2i(6, 2), World.FIELD_MATURE_AGE_TICKS]]:
 		var field: int = source.place_field(entry[0])
 		source.fields[field]["age_ticks"] = int(entry[1])
 	var snapshot: Dictionary = JSON.parse_string(JSON.stringify(source.to_data()))
 	_check(int(snapshot["version"]) == World.SAVE_VERSION and snapshot.has("fields"),
 		"Current save must include explicit field entities", failures)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	if not restored.from_data(snapshot):
 		failures.append("Empty, growing and ripe fields must load together")
 		return
@@ -413,9 +415,9 @@ static func _test_field_save_and_legacy_migration(failures: Array[String]) -> vo
 	var legacy: Dictionary = snapshot.duplicate(true)
 	legacy["version"] = 5
 	legacy.erase("fields")
-	var migrated := World.new()
+	var migrated := LegacyFixture.create()
 	_check(migrated.from_data(legacy) and migrated.fields.is_empty(), "Version 5 saves must migrate with no invented fields", failures)
-	var active := World.new(Vector2i(10, 8))
+	var active := LegacyFixture.create(Vector2i(10, 8))
 	var farm: int = active.place_building("farm", Vector2i(2, 2))
 	var field: int = active.place_field(Vector2i(5, 2))
 	active.fields[field]["age_ticks"] = World.FIELD_MATURE_AGE_TICKS
@@ -423,7 +425,7 @@ static func _test_field_save_and_legacy_migration(failures: Array[String]) -> vo
 	if not _until(active, func() -> bool: return String(active.workers[farmer]["carrying"]) == "grain", 100):
 		failures.append("Farmer save fixture must harvest before carrying grain home")
 		return
-	var resumed := World.new()
+	var resumed := LegacyFixture.create()
 	if not resumed.from_data(JSON.parse_string(JSON.stringify(active.to_data()))):
 		failures.append("Farmer carrying harvested grain must load")
 		return

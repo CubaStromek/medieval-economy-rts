@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 9
 
@@ -22,7 +24,7 @@ static func run() -> Array[String]:
 
 
 static func _test_owned_hut_sleep_round_trip(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(14, 10))
+	var source = LegacyFixture.create(Vector2i(14, 10))
 	var hut: int = source.place_building("lumber_hut", Vector2i(5, 3))
 	var worker_id: int = source.spawn_worker(Vector2i(9, 7), "lumberjack", hut)
 	source.tick = 3750
@@ -30,7 +32,7 @@ static func _test_owned_hut_sleep_round_trip(failures: Array[String]) -> void:
 		failures.append("The save fixture's real lumberjack must reach and sleep inside its owned hut")
 		return
 	var before: Dictionary = source.to_data()
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(source)):
 		failures.append("A real worker sleeping in its own hut must survive JSON loading")
 		return
@@ -58,7 +60,7 @@ static func _test_shared_sleep_keeps_cargo_until_dawn(failures: Array[String]) -
 	var restored: Variant = source
 	for _load: int in range(3):
 		var before: Dictionary = restored.to_data()
-		var next = World.new()
+		var next = LegacyFixture.create()
 		if not next.from_data(_json(restored)):
 			failures.append("Two warehouse sleepers sharing one virtual entrance must survive repeated loading")
 			return
@@ -83,7 +85,7 @@ static func _test_shared_sleep_keeps_cargo_until_dawn(failures: Array[String]) -
 
 
 static func _test_return_home_route_is_rebuilt(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(18, 12))
+	var source = LegacyFixture.create(Vector2i(18, 12))
 	var store: int = source.place_building("warehouse", Vector2i(2, 2))
 	var worker_id: int = source.spawn_worker(Vector2i(15, 9), "carrier")
 	source.tick = 4000
@@ -91,7 +93,7 @@ static func _test_return_home_route_is_rebuilt(failures: Array[String]) -> void:
 	_check(source.workers[worker_id]["sleep_home_id"] == store
 		and not source.is_worker_inside(source.workers[worker_id]),
 		"The walking save fixture must have selected its real warehouse while still outside", failures)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(source)):
 		failures.append("A civilian already returning home must load without saving its transient route")
 		return
@@ -105,7 +107,7 @@ static func _test_return_home_route_is_rebuilt(failures: Array[String]) -> void:
 
 static func _test_legacy_night_saves_keep_goods(failures: Array[String]) -> void:
 	for version: int in [13, 14]:
-		var source = World.new(Vector2i(10, 8))
+		var source = LegacyFixture.create(Vector2i(10, 8))
 		var store: int = source.place_building("warehouse", Vector2i(4, 3))
 		var worker_id: int = source.spawn_worker(source.buildings[store]["entrance"], "carrier")
 		source.workers[worker_id]["carrying"] = "stone"
@@ -117,7 +119,7 @@ static func _test_legacy_night_saves_keep_goods(failures: Array[String]) -> void
 			worker.erase("sleep_home_id")
 			if version < 14:
 				worker.erase("meal_course")
-		var restored = World.new()
+		var restored = LegacyFixture.create()
 		if not restored.from_data(legacy):
 			failures.append("Historical v%d nighttime saves must load without sleep-home fields" % version)
 			continue
@@ -133,7 +135,7 @@ static func _test_legacy_night_saves_keep_goods(failures: Array[String]) -> void
 
 static func _test_legacy_rations_pause_before_resuming(failures: Array[String]) -> void:
 	for phase: String in ["pickup", "deliver"]:
-		var source = World.new(Vector2i(18, 12))
+		var source = LegacyFixture.create(Vector2i(18, 12))
 		var store: int = source.place_building("warehouse", Vector2i(2, 2))
 		var carrier: int = source.spawn_worker(Vector2i(8, 4), "carrier")
 		var soldier: int = source.spawn_worker(Vector2i(14, 8), "militia")
@@ -150,7 +152,7 @@ static func _test_legacy_rations_pause_before_resuming(failures: Array[String]) 
 		for worker: Dictionary in legacy["workers"]:
 			worker.erase("sleep_home_id")
 			worker.erase("meal_course")
-		var restored = World.new()
+		var restored = LegacyFixture.create()
 		if not restored.from_data(legacy):
 			failures.append("A historical %s ration mission saved at night must load" % phase)
 			continue
@@ -168,7 +170,7 @@ static func _test_legacy_rations_pause_before_resuming(failures: Array[String]) 
 
 
 static func _test_invalid_sleep_homes_are_transactional(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(18, 12))
+	var source = LegacyFixture.create(Vector2i(18, 12))
 	var store: int = source.place_building("warehouse", Vector2i(2, 2))
 	var hut: int = source.place_building("lumber_hut", Vector2i(6, 3))
 	var other_hut: int = source.place_building("lumber_hut", Vector2i(10, 3))
@@ -197,7 +199,7 @@ static func _test_invalid_sleep_homes_are_transactional(failures: Array[String])
 			saved.erase("sleep_home_id")
 		else:
 			saved["sleep_home_id"] = changes["value"]
-		var live = World.new(Vector2i(8, 8))
+		var live = LegacyFixture.create(Vector2i(8, 8))
 		var live_store: int = live.place_building("warehouse", Vector2i(2, 2))
 		live.buildings[live_store]["storage"]["stone"] = 9
 		live.spawn_worker(Vector2i(5, 5), "builder")
@@ -229,7 +231,7 @@ static func _test_sleepers_share_virtual_doorway_after_load(failures: Array[Stri
 		var data: Dictionary = _json(source)
 		if reversed:
 			data["workers"].reverse()
-		var restored = World.new()
+		var restored = LegacyFixture.create()
 		if not restored.from_data(data):
 			failures.append("Shared sleepers and their visible doorway occupant must load independently of saved worker order")
 			continue
@@ -242,7 +244,7 @@ static func _test_sleepers_share_virtual_doorway_after_load(failures: Array[Stri
 
 
 static func _test_night_meal_keeps_cargo_after_load(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(10, 8))
+	var source = LegacyFixture.create(Vector2i(10, 8))
 	var inn: int = source.place_building("inn", Vector2i(4, 3))
 	var carrier: int = source.spawn_worker(source.buildings[inn]["entrance"], "carrier")
 	source.buildings[inn]["inputs"]["bread"] = 1
@@ -255,7 +257,7 @@ static func _test_night_meal_keeps_cargo_after_load(failures: Array[String]) -> 
 		failures.append("A hungry nighttime carrier without a bedroom must be able to start a real meal while retaining cargo")
 		return
 	_advance(source, 5)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(source)):
 		failures.append("A legitimate nighttime meal with carried cargo must survive current-schema JSON loading")
 		return
@@ -265,19 +267,19 @@ static func _test_night_meal_keeps_cargo_after_load(failures: Array[String]) -> 
 		"Night meal loading must preserve its exact paid course, occupied seat and original carried ware", failures)
 	# Already-started meals remain valid when their countdown crosses dawn.
 	restored.tick = 5999
-	var dawn = World.new()
+	var dawn = LegacyFixture.create()
 	if not dawn.from_data(_json(restored)):
 		failures.append("A saved loaded meal with cargo must also remain valid immediately before dawn")
 		return
 	dawn.step_tick()
-	var after_dawn = World.new()
+	var after_dawn = LegacyFixture.create()
 	_check(after_dawn.from_data(_json(dawn))
 		and after_dawn.workers[carrier]["carrying"] == "stone",
 		"A civilian meal started at night must remain saveable with cargo after the clock reaches daytime", failures)
 
 
 static func _test_workplace_claim_updates_previous_warehouse_bed(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(14, 10))
+	var source = LegacyFixture.create(Vector2i(14, 10))
 	var store: int = source.place_building("warehouse", Vector2i(3, 3))
 	var worker_id: int = source.spawn_worker(Vector2i(8, 7), "lumberjack")
 	source.tick = 4000
@@ -294,7 +296,7 @@ static func _test_workplace_claim_updates_previous_warehouse_bed(failures: Array
 	_check(hut != 0 and assigned == hut and source.workers[worker_id]["home_id"] == hut
 		and source.workers[worker_id]["sleep_home_id"] == hut,
 		"Claiming a new daytime workplace must replace the unemployed specialist's previous warehouse bedroom with its owned hut", failures)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(source)):
 		failures.append("A specialist who acquired a workplace after warehouse sleep must remain JSON-saveable immediately after claiming the hut")
 		return
@@ -309,7 +311,7 @@ static func _test_workplace_claim_updates_previous_warehouse_bed(failures: Array
 
 
 static func _warehouse_sleep_fixture() -> Dictionary:
-	var world = World.new(Vector2i(12, 9))
+	var world = LegacyFixture.create(Vector2i(12, 9))
 	var store: int = world.place_building("warehouse", Vector2i(5, 3))
 	var carrier: int = world.spawn_worker(Vector2i(2, 6), "carrier")
 	var builder: int = world.spawn_worker(Vector2i(8, 6), "builder")

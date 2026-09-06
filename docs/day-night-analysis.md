@@ -1,8 +1,9 @@
 # Den a noc: implementovaný režim a další návrhy
 
-**Stav k 2026-09-05: herní hodiny a noční režim civilních pracovníků jsou
-implementované. Celý den trvá 10 minut při 1×. Civilisté pracují od 05:00
-do 20:00 a v noci odcházejí spát. Osvětlení ani volitelné noční směny zatím
+**Stav k 2026-09-06: herní hodiny, noční režim civilních pracovníků a
+zjednodušené denní osvětlení jsou implementované. Celý den trvá 10 minut při
+1×. Civilisté pracují od 05:00 do 20:00 a v noci odcházejí spát. Pohyb slunce
+mění zabarvení mapy a směr i délku stínů. Volitelné noční směny zatím
 implementované nejsou.**
 
 Tento dokument vznikl jako analýza a byl aktualizován podle následného
@@ -126,6 +127,9 @@ sledovat více celých cyklů, zásoby hostinců a dopravu u společných sklad�
 | [classic_economy.gd](../game/scripts/simulation/classic_economy.gd), [inn_feeding.gd](../game/scripts/simulation/inn_feeding.gd) | Respektování pracovní doby a umožnění jídla během noci se zachováním nákladu. |
 | [world_snapshot.gd](../game/scripts/simulation/world_snapshot.gd) | Save v15: trvalé `sleep_home_id`, validace a obnova nočního režimu. |
 | [game_hud.gd](../game/scripts/view/game_hud.gd) | Hodiny, rozvrh v detailu jednotky a počet skutečně spících v budově i osadě. |
+| [solar_cycle.gd](../game/scripts/view/solar_cycle.gd) | Poloha slunce a měsíce, barvy oblohy a mapy, směr a intenzita stínů z herního času. |
+| [main_view.gd](../game/scripts/view/main_view.gd), [solar_shadows.gd](../game/scripts/view/solar_shadows.gd) | Zabarvení světa a promítnuté stíny budov, stromů a venkovních jednotek. |
+| [sky_clock.gd](../game/scripts/view/sky_clock.gd) | Malý ukazatel oblohy se sluncem a měsícem v HUD. |
 
 Rozvrh se vyhodnocuje před aktualizací výroby, aby na hranici 20:00 nezačala
 nová dávka ani nepokračovala další civilní pracovní činnost. Pohyb dále
@@ -163,13 +167,33 @@ na jídlo. Údaje o sytosti a nákladu zůstávají dostupné. Detail budovy má
 vedle skutečného počtu přítomných `Inside` také samostatný počet `Sleeping`;
 člověk stojící venku u dveří se do něj nepočítá.
 
-**Stmívání, změna barev světa, svítící okna ani nové noční osvětlení zatím
-nejsou součástí implementace.** Fáze uvedená na hodinách nemění vykreslení
-mapy.
+**Zjednodušené osvětlení od 2026-09-06 plynule mění vzhled mapy podle času.**
+Slunce vychází v 05:00 na levé straně ukazatele a zapadá ve 20:00 vpravo;
+vrcholu patnáctihodinového oblouku dosáhne ve 12:30. Svítání probíhá mezi
+04:00 a 07:00 a soumrak mezi 18:00 a 21:00. Přechod pracovního rozvrhu ve
+20:00 proto nezpůsobuje skok do tmy. Ranní a večerní světlo je teplé,
+polední téměř neutrální a noc zachovává čitelný modrý základ.
+
+Vpravo nahoře je ukazatel oblohy o velikosti 184 × 86 pixelů s obloukem
+slunce, v noci měsíce. Jde o grafické znázornění stejných herních hodin,
+nikoli samostatný čas nebo astronomickou simulaci. Barva světa se aplikuje
+na kořen mapy; HUD má vlastní `CanvasLayer` a zůstává nezabarvený.
+
+Budovy, stromy a venkovní jednotky vrhají stíny opačně ke slunci: ráno
+doprava, večer doleva, uprostřed dne kratší. Stíny jsou ořezané podle řádků
+mřížky a promítnuté na výškový terén; nejde o úplný výpočet vzájemného
+zakrývání objektů paprsky. U horizontu plynule vyhasínají. Svítící okna
+a místní světla budov zůstávají možností dalšího rozšíření.
+
+Vizuální čas vychází výhradně z uloženého ticku a zlomku mezi snímky.
+Pauza zastaví i pohyb světla; změna rychlosti a načtení hry se projeví
+automaticky. Osvětlení nemění ekonomiku, civilní rozvrh ani formát uložení.
 
 Ověření zahrnuje hranice pracovní doby, návraty různých profesí, zachování
 nákladu a postupu, obsazené dveře, noční jídlo, výjimku pro armádu,
-uložení/načtení a zobrazení v reálném HUD. Přehled sad a aktuální výsledky
+uložení/načtení a zobrazení v reálném HUD. Osvětlení má navíc pokrytí
+hranic času, plynulosti, stínů, interpolace a opakování při velkých tickách.
+Přehled sad a aktuální výsledky
 jsou vedené v [testech](../tests/README.md). Při dalších úpravách je potřeba
 zachovat regresní pokrytí pohybu, pracovišť, výroby, hladu a inventáře.
 
@@ -186,7 +210,7 @@ ani schválená další implementace**:
 | Nové obytné domy, například pro čtyři obyvatele, a `residence_id` | Odloženo; nyní vlastní pracoviště nebo společný sklad a `sleep_home_id`. |
 | Pozastavení školy, obchodu a náboru mimo denní hodiny | Nezavedeno; služby pokračují. |
 | Volitelné zapnutí rozvrhu při načtení staré hry | Nezavedeno; starší savy používají rozvrh automaticky podle uloženého času. |
-| Plynulé denní a noční zabarvení mapy | Zůstává samostatnou budoucí vizuální etapou. |
+| Plynulé denní a noční zabarvení mapy | Implementováno 2026-09-06 spolu s ukazatelem oblohy a směrovými stíny. |
 
 Konkrétní **noční profese a pracoviště zůstávají k upřesnění s uživatelem**.
 Při jejich návrhu má smysl rozlišit profesi a konkrétní budovu: například
@@ -200,7 +224,7 @@ směnu. Současné pravidlo jednoho specialisty na pracoviště neobsahuje
 střídání dvou zaměstnanců na témže místě.
 
 Další možné rozšíření tvoří skutečné obytné domy s kapacitou, samostatné
-otevírací hodiny služeb a vizuální střídání dne a noci. Případné zabarvení
-světa musí zachovat čitelnost HUD, cest a výšek terénu a nemá každým snímkem
+otevírací hodiny služeb a místní noční světla. Vizuální úpravy musí dále
+zachovat čitelnost HUD, cest a výšek terénu a nemají každým snímkem
 přestavovat statickou geometrii. Žádný z těchto bodů není podmínkou již
 implementovaného civilního nočního odpočinku.

@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 6
 
@@ -18,7 +20,7 @@ static func run() -> Array[String]:
 static func _test_swaps_consume_one_tick(failures: Array[String]) -> void:
 	for duration: int in [1, 2, 4, 6]:
 		for reverse_ids: bool in [false, true]:
-			var world := World.new(Vector2i(4, 3))
+			var world := LegacyFixture.create(Vector2i(4, 3))
 			world.grid.configure_movement({"terrain": {"grass": {"move_ticks": duration}}})
 			var positions: Array[Vector2i] = [Vector2i(1, 1), Vector2i(2, 1)]
 			if reverse_ids:
@@ -54,7 +56,7 @@ static func _test_swaps_consume_one_tick(failures: Array[String]) -> void:
 
 static func _test_swap_waits_in_both_id_orders(failures: Array[String]) -> void:
 	for waiting_id: int in [1, 2]:
-		var world := World.new(Vector2i(4, 3))
+		var world := LegacyFixture.create(Vector2i(4, 3))
 		for x: int in range(4):
 			world.place_road(Vector2i(x, 1))
 		var left_id: int = world.spawn_worker(Vector2i(1, 1))
@@ -77,7 +79,7 @@ static func _test_swap_waits_in_both_id_orders(failures: Array[String]) -> void:
 static func _test_reroute_after_construction(
 	failures: Array[String], resource: String, profession: String, destination_type: String
 ) -> void:
-	var world := World.new(Vector2i(8, 4))
+	var world := LegacyFixture.create(Vector2i(8, 4))
 	var old_destination: int = world.place_building(destination_type, Vector2i(6, 2))
 	var id: int = world.spawn_worker(Vector2i(0, 1), profession, old_destination if profession == "lumberjack" else 0)
 	var worker: Dictionary = world.workers[id]
@@ -131,7 +133,7 @@ static func _test_reroute_after_construction(
 
 
 static func _test_reroute_around_idle_worker(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(8, 8))
+	var world := LegacyFixture.create(Vector2i(8, 8))
 	var old_destination: int = world.place_building("warehouse", Vector2i(5, 2))
 	var id: int = world.spawn_worker(Vector2i(2, 1))
 	var worker: Dictionary = world.workers[id]
@@ -142,13 +144,15 @@ static func _test_reroute_around_idle_worker(failures: Array[String]) -> void:
 		if y != 1:
 			_expect(world.set_base_terrain(Vector2i(3, y), "water"), "Fixture should close all but one crossing", failures)
 	_expect(world.spawn_worker(Vector2i(3, 1)) != 0, "An idle carrier must occupy the remaining crossing", failures)
-	# The reachable alternative is farther away, so ignoring the idle worker
-	# would repeatedly choose the old warehouse even after this one is built.
+	# The one-cell crossing has no immediate side pocket, but there is a
+	# clearing beyond it. The idle carrier can now retreat several steps, so
+	# this route stays usable instead of forcing cargo into the farther store.
 	var new_destination: int = world.place_building("warehouse", Vector2i(0, 7))
 	for iteration: int in range(200):
 		world.step_tick()
-	_expect(int(world.buildings[new_destination]["storage"]["plank"]) == 1,
-		"Destination selection must consider worker occupancy, not repeatedly select the blocked nearer route", failures)
+	_expect(int(world.buildings[old_destination]["storage"]["plank"]) == 1
+		and int(world.buildings[new_destination]["storage"]["plank"]) == 0,
+		"A reachable multi-step clearing must let the carrier finish its original delivery through a narrow crossing", failures)
 	_expect(String(worker["carrying"]).is_empty(), "Blocked-path recovery must not duplicate cargo", failures)
 
 

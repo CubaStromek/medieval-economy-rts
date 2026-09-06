@@ -2,10 +2,11 @@
   "warehouse": {
     "display_name": "Warehouse",
     "color": "4169a1",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 3],
+    "footprint_mask": ["###", "###", "#E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Store",
     "accepts": [
       "log",
       "plank",
@@ -52,10 +53,11 @@
     "display_name": "Lumberjack Hut",
     "worker": "lumberjack",
     "color": "8a5a36",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 2],
+    "footprint_mask": ["###", "##E"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Woodcutter",
     "enables": [
       "harvest_tree"
     ],
@@ -80,7 +82,11 @@
     "display_name": "Forester Hut",
     "worker": "gardener",
     "color": "64834b",
-    "footprint": [1, 1],
+    "footprint": [3, 2],
+    "footprint_mask": ["###", "##E"],
+    "footprint_source": "project_forester_woodcutter_shape",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Woodcutter",
     "category": "infrastructure",
     "inputs": [],
     "outputs": [],
@@ -97,10 +103,11 @@
   "sawmill": {
     "display_name": "Sawmill",
     "color": "b46a3c",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 2],
+    "footprint_mask": ["####", "#E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Sawmill",
     "inputs": [
       "log"
     ],
@@ -128,10 +135,11 @@
   "school": {
     "display_name": "School",
     "color": "9b7045",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 3],
+    "footprint_mask": ["###", "###", "#E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "School",
     "trains": [
       "lumberjack",
       "carrier",
@@ -173,10 +181,11 @@
   "quarry": {
     "display_name": "Quarry",
     "color": "858b8f",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 2],
+    "footprint_mask": ["###", "#E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Quarry",
     "worker": "stonemason",
     "inputs": [],
     "outputs": [
@@ -201,10 +210,11 @@
   "farm": {
     "display_name": "Farm",
     "color": "b99b42",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 3],
+    "footprint_mask": ["####", "####", "#E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Farm",
     "worker": "farmer",
     "inputs": [],
     "outputs": [
@@ -236,10 +246,11 @@
   "mill": {
     "display_name": "Mill",
     "color": "c9b086",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 2],
+    "footprint_mask": ["###", "#E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Mill",
     "worker": "baker",
     "recipe": "mill_flour",
     "inputs": [
@@ -267,10 +278,11 @@
   "bakery": {
     "display_name": "Bakery",
     "color": "ba6c43",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 3],
+    "footprint_mask": ["###", "###", "##E"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Bakery",
     "worker": "baker",
     "recipe": "bake_bread",
     "inputs": [
@@ -298,10 +310,11 @@
   "coal_mine": {
     "display_name": "Coal Mine",
     "color": "4c5360",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 2],
+    "footprint_mask": ["###", "#E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Coal mine",
     "category": "mining",
     "inputs": [],
     "outputs": [
@@ -326,10 +339,11 @@
   "iron_mine": {
     "display_name": "Iron Mine",
     "color": "9b7d67",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 1],
+    "footprint_mask": ["#E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Iron mine",
     "category": "mining",
     "inputs": [],
     "outputs": [
@@ -354,10 +368,11 @@
   "gold_mine": {
     "display_name": "Gold Mine",
     "color": "b49950",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [2, 1],
+    "footprint_mask": ["#E"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Gold mine",
     "category": "mining",
     "inputs": [],
     "outputs": [
@@ -382,10 +397,11 @@
   "iron_smithy": {
     "display_name": "Iron Smithy",
     "color": "7b8797",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 2],
+    "footprint_mask": ["####", "##E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Iron smithy",
     "category": "mining",
     "inputs": [
       "iron_ore",
@@ -414,10 +430,11 @@
   "metallurgist": {
     "display_name": "Metallurgist",
     "color": "bda25d",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 3],
+    "footprint_mask": ["###", "###", "#E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Metallurgist",
     "category": "mining",
     "inputs": [
       "gold_ore",
@@ -446,10 +463,11 @@
   "vineyard": {
     "display_name": "Vineyard",
     "color": "9b6b93",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 2],
+    "footprint_mask": ["###", "##E"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Wineyard",
     "category": "food",
     "inputs": [],
     "outputs": [
@@ -477,10 +495,11 @@
   "fisher_hut": {
     "display_name": "Fisherman's Hut",
     "color": "649aa7",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 2],
+    "footprint_mask": ["##.", "E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Fisher hut",
     "category": "food",
     "inputs": [],
     "outputs": [
@@ -505,10 +524,11 @@
   "swine_farm": {
     "display_name": "Swine Farm",
     "color": "b8897e",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 3],
+    "footprint_mask": [".###", "####", "###E"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Swine",
     "category": "food",
     "inputs": [
       "grain"
@@ -538,10 +558,11 @@
   "butcher": {
     "display_name": "Butcher",
     "color": "aa776a",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 3],
+    "footprint_mask": ["##.", "###", "##E"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Butchers",
     "category": "food",
     "inputs": [
       "pig"
@@ -569,10 +590,11 @@
   "tannery": {
     "display_name": "Tannery",
     "color": "9b7a5d",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 2],
+    "footprint_mask": ["###", "#E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Tannery",
     "category": "military",
     "inputs": [
       "skin"
@@ -600,10 +622,11 @@
   "stables": {
     "display_name": "Stables",
     "color": "8f795d",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 3],
+    "footprint_mask": ["####", "####", "##E#"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Stables",
     "category": "military",
     "inputs": [
       "grain"
@@ -632,10 +655,11 @@
   "weapon_workshop": {
     "display_name": "Weapon Workshop",
     "color": "987851",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 2],
+    "footprint_mask": ["####", "#E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Weapon workshop",
     "category": "military",
     "inputs": [
       "plank"
@@ -668,10 +692,11 @@
   "armour_workshop": {
     "display_name": "Armour Workshop",
     "color": "a08c6a",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [3, 3],
+    "footprint_mask": ["##.", "###", "E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Armor workshop",
     "category": "military",
     "inputs": [
       "plank",
@@ -703,10 +728,11 @@
   "weapon_smithy": {
     "display_name": "Weapon Smithy",
     "color": "7b8995",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 2],
+    "footprint_mask": ["####", "#E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Weapon smithy",
     "category": "military",
     "inputs": [
       "iron",
@@ -740,10 +766,11 @@
   "armour_smithy": {
     "display_name": "Armour Smithy",
     "color": "87929e",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 3],
+    "footprint_mask": [".##.", "####", "#E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Armor smithy",
     "category": "military",
     "inputs": [
       "iron",
@@ -775,10 +802,11 @@
   "inn": {
     "display_name": "Inn",
     "color": "a86e52",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 3],
+    "footprint_mask": [".###", "####", "#E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Inn",
     "category": "food",
     "inputs": [
       "bread",
@@ -804,10 +832,11 @@
   "barracks": {
     "display_name": "Barracks",
     "color": "ab6e63",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 4],
+    "footprint_mask": ["####", "####", "####", "#E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Barracks",
     "category": "military",
     "inputs": [
       "axe",
@@ -850,10 +879,11 @@
   "marketplace": {
     "display_name": "Marketplace",
     "color": "9a8970",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 3],
+    "footprint_mask": [".###", "####", "###E"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Marketplace",
     "category": "infrastructure",
     "inputs": [
       "log",
@@ -929,10 +959,11 @@
   "town_hall": {
     "display_name": "Town Hall",
     "color": "a37e61",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [4, 3],
+    "footprint_mask": ["####", "####", "#E##"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Town hall",
     "category": "military",
     "inputs": [
       "gold"
@@ -961,10 +992,11 @@
   "watchtower": {
     "display_name": "Watchtower",
     "color": "8d959b",
-    "footprint": [
-      1,
-      1
-    ],
+    "footprint": [2, 2],
+    "footprint_mask": ["##", "#E"],
+    "footprint_source": "kam_remake_plan_yx",
+    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+    "footprint_reference_house": "Watch tower",
     "category": "military",
     "inputs": [
       "stone"

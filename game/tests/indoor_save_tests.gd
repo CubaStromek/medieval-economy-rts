@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 6
 
@@ -19,7 +21,7 @@ static func run() -> Array[String]:
 
 
 static func _test_real_operator_resumes_inside(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(12, 9))
+	var source = LegacyFixture.create(Vector2i(12, 9))
 	var sawmill: int = source.place_building("sawmill", Vector2i(5, 4))
 	var carpenter: int = source.spawn_worker(Vector2i(2, 6), "carpenter", sawmill)
 	if sawmill == 0 or carpenter == 0:
@@ -36,7 +38,7 @@ static func _test_real_operator_resumes_inside(failures: Array[String]) -> void:
 	var remaining: int = int(source.buildings[sawmill]["process_remaining"])
 	_check(remaining > 0 and int(source.buildings[sawmill]["inputs"]["log"]) == 0,
 		"The indoor save must pause an in-flight batch whose single log was already consumed", failures)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(source)):
 		failures.append("An actual working indoor carpenter must survive JSON save/load")
 		return
@@ -67,7 +69,7 @@ static func _test_visitors_and_outdoor_door_occupant_round_trip(failures: Array[
 			var snapshot: Dictionary = _json(source)
 			if reversed:
 				snapshot["workers"].reverse()
-			var restored = World.new()
+			var restored = LegacyFixture.create()
 			if not restored.from_data(snapshot):
 				failures.append("Two indoor visitors and one outdoor person sharing the virtual doorway must load independently of IDs and JSON array order")
 				continue
@@ -115,7 +117,7 @@ static func _test_corrupt_indoor_state_is_transactional(failures: Array[String])
 	for test_case: Dictionary in cases:
 		var invalid: Dictionary = _json(source)
 		(test_case["change"] as Callable).call(invalid)
-		var live = World.new(Vector2i(8, 8))
+		var live = LegacyFixture.create(Vector2i(8, 8))
 		var store: int = live.place_building("warehouse", Vector2i(2, 2))
 		live.buildings[store]["storage"]["stone"] = 9
 		live.spawn_worker(Vector2i(4, 5), "carrier")
@@ -132,7 +134,7 @@ static func _test_corrupt_indoor_state_is_transactional(failures: Array[String])
 
 
 static func _test_v11_remains_outdoors(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(10, 8))
+	var source = LegacyFixture.create(Vector2i(10, 8))
 	var hut: int = source.place_building("lumber_hut", Vector2i(4, 3))
 	var owner: int = source.spawn_worker(source.buildings[hut]["entrance"], "lumberjack", hut)
 	var carrier: int = source.spawn_worker(Vector2i(7, 6), "carrier")
@@ -144,7 +146,7 @@ static func _test_v11_remains_outdoors(failures: Array[String]) -> void:
 	for worker: Dictionary in legacy["workers"]:
 		worker.erase("inside_building_id")
 		worker.erase("indoor_wait_ticks")
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(legacy):
 		failures.append("A genuine v11 snapshot without indoor fields must load")
 		return
@@ -164,7 +166,7 @@ static func _test_indoor_death_preserves_outdoor_reservation(failures: Array[Str
 	source.workers[doomed]["hunger"] = 1
 	source.tick = int(source.catalog.economy.get("condition_interval_ticks", 10)) - 1
 	source.economy_enabled = true
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(source)):
 		failures.append("A starving indoor visitor sharing a visible person's doorway must load")
 		return
@@ -182,7 +184,7 @@ static func _test_blocked_exit_survives_load_and_eventually_delivers(failures: A
 	var source: Variant = fixture["world"]
 	var inside: int = int(fixture["inside"])
 	source.workers[inside]["indoor_wait_ticks"] = 0
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(source)):
 		failures.append("A carrier waiting inside with cargo at an occupied exit must load")
 		return
@@ -211,7 +213,7 @@ static func _test_blocked_exit_survives_load_and_eventually_delivers(failures: A
 
 
 static func _door_fixture(outside_first: bool) -> Dictionary:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	var hut: int = world.place_building("lumber_hut", Vector2i(4, 3))
 	world.place_building("warehouse", Vector2i(9, 3))
 	var door: Vector2i = world.buildings[hut]["entrance"]

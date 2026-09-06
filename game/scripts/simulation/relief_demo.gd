@@ -12,15 +12,15 @@ const RIDGE: Vector2i = Vector2i(23, 5)
 const PASS_CELL: Vector2i = Vector2i(23, 12)
 const PASS_WEST: Vector2i = Vector2i(19, 12)
 const PASS_EAST: Vector2i = Vector2i(27, 12)
-const LOWLAND_BUILD_SITE: Vector2i = Vector2i(15, 17)
-const PLATEAU_BUILD_SITE: Vector2i = Vector2i(13, 5)
+const LOWLAND_BUILD_SITE: Vector2i = Vector2i(15, 14)
+const PLATEAU_BUILD_SITE: Vector2i = Vector2i(8, 3)
 const BUILDING_CELLS: Dictionary = {
 	"warehouse": Vector2i(7, 16),
-	"lumber_hut": Vector2i(5, 13),
-	"forester_hut": Vector2i(2, 16),
+	"lumber_hut": Vector2i(11, 14),
+	"forester_hut": Vector2i(10, 19),
 	"sawmill": Vector2i(10, 5),
 	"school": Vector2i(3, 16),
-	"inn": Vector2i(13, 16),
+	"inn": Vector2i(13, 19),
 }
 const STARTING_STOCK: Dictionary = {
 	"plank": 20, "stone": 40, "gold": 12,
@@ -58,14 +58,22 @@ static func setup_village(world: Variant) -> void:
 	for type: String in BUILDING_CELLS:
 		ids[type] = world.place_building(type, BUILDING_CELLS[type])
 		assert(int(ids[type]) != 0, "Invalid relief demo building: " + type)
-	# Build the transport spine before planting so the gardener preserves it.
-	for y: int in range(4, 16):
+	# Keep one-cell road gutters outside every authored footprint and doorway.
+	for y: int in range(4, 14):
 		world.grid.add_road(Vector2i(9, y))
-	world.grid.add_road(Vector2i(10, 4))
-	for x: int in range(3, 15):
+	for x: int in range(9, 12):
+		world.grid.add_road(Vector2i(x, 6))
+	for y: int in range(13, 18):
+		world.grid.add_road(Vector2i(10, y))
+	world.grid.add_road(Vector2i(9, 13))
+	for x: int in range(3, 18):
+		world.grid.add_road(Vector2i(x, 17))
+	for x: int in range(10, 14):
 		world.grid.add_road(Vector2i(x, 15))
-	for y: int in range(12, 16):
-		world.grid.add_road(Vector2i(5, y))
+	for y: int in range(17, 21):
+		world.grid.add_road(Vector2i(17, y))
+	for x: int in range(10, 18):
+		world.grid.add_road(Vector2i(x, 20))
 	for x: int in range(10, 28):
 		world.grid.add_dirt_trail(Vector2i(x, 12))
 	plant_trees(world)
@@ -75,9 +83,9 @@ static func setup_village(world: Variant) -> void:
 		warehouse["storage"][resource] = int(STARTING_STOCK[resource])
 	_spawn(world, Vector2i(4, 13), "lumberjack", int(ids["lumber_hut"]))
 	_spawn(world, Vector2i(11, 6), "carpenter", int(ids["sawmill"]))
-	_spawn(world, Vector2i(2, 15), "gardener", int(ids["forester_hut"]))
+	_spawn(world, Vector2i(12, 20), "gardener", int(ids["forester_hut"]))
 	_spawn(world, Vector2i(6, 17), "builder")
-	for cell: Vector2i in [Vector2i(6, 15), Vector2i(8, 15), Vector2i(10, 15), Vector2i(12, 15)]:
+	for cell: Vector2i in [Vector2i(6, 15), Vector2i(10, 16), Vector2i(11, 16), Vector2i(12, 16)]:
 		_spawn(world, cell, "carrier")
 	# Starter buildings/roads are authored complete. Expansion retains the same
 	# delivered construction materials, paid training and hunger rules as economy.

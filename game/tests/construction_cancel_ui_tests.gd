@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const MainScene = preload("res://scenes/main.tscn")
 const MainView = preload("res://scripts/view/main_view.gd")
 const World = preload("res://scripts/simulation/simulation_world.gd")
@@ -16,7 +18,7 @@ static func run(host: Node) -> Array[String]:
 		var main: MainView = MainScene.instantiate() as MainView
 		viewport.add_child(main)
 		main.set_process(false)
-		main.world = World.new(Vector2i(16, 12))
+		main.world = LegacyFixture.create(Vector2i(16, 12))
 		var store_cell := Vector2i(2, 2)
 		var store_id: int = main.world.place_building("warehouse", store_cell)
 		main.world.economy_enabled = true
@@ -59,7 +61,7 @@ static func run(host: Node) -> Array[String]:
 		await _settle(host)
 		_check(main.world.building_id_at(main.selected_cell) == store_id, "Completed warehouse must be selected by the map click", failures)
 		_check(not cancel.is_visible_in_tree(), "Completed buildings must never offer construction cancellation", failures)
-		var restored := World.new()
+		var restored := LegacyFixture.create()
 		_check(restored.from_data(main.world.to_data()), "UI cancellation must leave a saveable world", failures)
 		viewport.free()
 	return failures

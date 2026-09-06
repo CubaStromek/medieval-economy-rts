@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 11
 
@@ -97,7 +99,7 @@ static func _has_type(world: Variant, type: String) -> bool:
 
 
 static func _recipe_fixture(recipe_id: String) -> Dictionary:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var expected: Array = EXPECTED_RECIPES[recipe_id]
 	var building_id: int = world.place_building(expected[0], Vector2i(4, 3))
 	var building: Dictionary = world.buildings[building_id]
@@ -108,7 +110,7 @@ static func _recipe_fixture(recipe_id: String) -> Dictionary:
 
 
 static func _test_all_reference_recipes(failures: Array[String]) -> void:
-	var catalog_world = World.new()
+	var catalog_world = LegacyFixture.create()
 	_check(catalog_world.catalog.recipes.size() == 19, "KaM catalog must cover all 19 processing recipes", failures)
 	_check(catalog_world.catalog.buildings.size() == 29 and catalog_world.catalog.resources.size() == 28, "Remake catalog must contain 28 reference buildings plus the Forester Hut and 28 wares", failures)
 	_check(catalog_world.catalog.units.has("gardener"), "The expanded economy must retain the gardener/forester profession", failures)
@@ -143,7 +145,7 @@ static func _test_recipe_capacity_and_explicit_orders(failures: Array[String]) -
 		building["outputs"][first_output] = cap
 		_advance(world, 60)
 		_check(_positive(building["inputs"]) == expected[2] and int(building["process_remaining"]) == 0, "%s must reserve output capacity before taking inputs" % recipe_id, failures)
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var workshop: int = world.place_building("weapon_workshop", Vector2i(4, 3))
 	world.buildings[workshop]["inputs"]["plank"] = 4
 	world.spawn_worker(Vector2i(2, 4), "carpenter")
@@ -153,7 +155,7 @@ static func _test_recipe_capacity_and_explicit_orders(failures: Array[String]) -
 
 
 static func _test_production_fifo_and_boundaries(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(10, 9))
+	var world = LegacyFixture.create(Vector2i(10, 9))
 	var id: int = world.place_building("weapon_workshop", Vector2i(4, 3))
 	world.buildings[id]["inputs"]["plank"] = 6
 	world.spawn_worker(Vector2i(2, 4), "carpenter")
@@ -181,7 +183,7 @@ static func _test_production_fifo_and_boundaries(failures: Array[String]) -> voi
 
 static func _test_all_recruitment_equipment(failures: Array[String]) -> void:
 	for type: String in EXPECTED_SOLDIERS:
-		var world = World.new(Vector2i(9, 9))
+		var world = LegacyFixture.create(Vector2i(9, 9))
 		var cost: Dictionary = EXPECTED_SOLDIERS[type]
 		var uses_recruit: bool = not cost.has("gold")
 		var building_type: String = "barracks" if uses_recruit else "town_hall"
@@ -209,15 +211,15 @@ static func _test_all_recruitment_equipment(failures: Array[String]) -> void:
 		if uses_recruit:
 			_check(world.workers.has(recruit_id) and world.workers[recruit_id]["type"] == type, "%s must convert the arriving recruit, preserving its identity" % type, failures)
 		_check(not world.queue_recruitment(id, "rebel" if uses_recruit else "militia"), "Recruitment must reject a unit belonging to the other building", failures)
-		var restored = World.new()
+		var restored = LegacyFixture.create()
 		_check(restored.from_data(_json_snapshot(world)) and _has_type(restored, type), "%s must survive JSON save/load as a soldier" % type, failures)
 		var malformed: Dictionary = _json_snapshot(world)
 		malformed["buildings"][0]["service_queue"] = [{"kind": "recruit", "unit": "rebel" if uses_recruit else "militia"}]
-		_check(not World.new().from_data(malformed), "Saved recruitment orders must match the soldier's required building", failures)
+		_check(not LegacyFixture.create().from_data(malformed), "Saved recruitment orders must match the soldier's required building", failures)
 
 
 static func _test_paid_training_survives_save(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var school: int = world.place_building("school", Vector2i(4, 3))
 	world.economy_enabled = true
 	_check(world.queue_unit_training(school, "builder"), "School must queue a builder", failures)
@@ -239,7 +241,7 @@ static func _test_paid_training_survives_save(failures: Array[String]) -> void:
 
 
 static func _test_carriers_and_builder_construct(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 10))
+	var world = LegacyFixture.create(Vector2i(14, 10))
 	var store: int = world.place_building("warehouse", Vector2i(2, 3))
 	world.buildings[store]["storage"]["plank"] = 12
 	world.buildings[store]["storage"]["stone"] = 12
@@ -261,7 +263,7 @@ static func _test_carriers_and_builder_construct(failures: Array[String]) -> voi
 
 
 static func _test_wheat_and_vine_cycles(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(16, 12))
+	var world = LegacyFixture.create(Vector2i(16, 12))
 	var farm: int = world.place_building("farm", Vector2i(3, 2))
 	var vineyard: int = world.place_building("vineyard", Vector2i(10, 2))
 	var wheat: int = world.place_field(Vector2i(3, 6), "wheat")
@@ -276,7 +278,7 @@ static func _test_wheat_and_vine_cycles(failures: Array[String]) -> void:
 	_check(_until(world, func() -> bool: return int(world.buildings[farm]["outputs"]["grain"]) >= 1 and int(world.buildings[vineyard]["outputs"]["wine"]) >= 1, 1000), "Farmers must sow/grow/harvest wheat and deliver wine to the vineyard", failures)
 	_check(int(world.fields[vine]["age_ticks"]) >= 0, "Harvested perennial vines must regrow without becoming an unseeded wheat plot", failures)
 	_check(world.from_data(_json_snapshot(world)), "Active mixed wheat/vine agriculture must survive JSON save/load", failures)
-	var authored = World.new(Vector2i(9, 9))
+	var authored = LegacyFixture.create(Vector2i(9, 9))
 	var store: int = authored.place_building("warehouse", Vector2i(1, 1))
 	authored.buildings[store]["storage"]["plank"] = 2
 	authored.buildings[store]["storage"]["stone"] = 2
@@ -291,7 +293,7 @@ static func _test_wheat_and_vine_cycles(failures: Array[String]) -> void:
 static func _test_food_consumption_and_starvation(failures: Array[String]) -> void:
 	var restore: Dictionary = {"bread": 1080, "sausage": 1620, "wine": 810, "fish": 1350}
 	for food: String in restore:
-		var world = World.new(Vector2i(9, 9))
+		var world = LegacyFixture.create(Vector2i(9, 9))
 		var inn: int = world.place_building("inn", Vector2i(4, 3))
 		var worker: int = world.spawn_worker(world.buildings[inn]["entrance"], "carrier")
 		world.buildings[inn]["inputs"][food] = 1
@@ -303,7 +305,7 @@ static func _test_food_consumption_and_starvation(failures: Array[String]) -> vo
 		_check(int(world.buildings[inn]["inputs"][food]) == 0, "Eating %s must consume one physical food ware" % food, failures)
 		_advance(world, int(world.catalog.building("inn")["meal_duration_ticks"]))
 		_check(int(world.workers[worker]["hunger"]) == 100 + int(restore[food]), "%s must apply the KaM Remake restoration amount" % food, failures)
-	var world = World.new(Vector2i(9, 9))
+	var world = LegacyFixture.create(Vector2i(9, 9))
 	var inn: int = world.place_building("inn", Vector2i(4, 3))
 	var worker: int = world.spawn_worker(world.buildings[inn]["entrance"], "carrier")
 	for food: String in restore:
@@ -315,7 +317,7 @@ static func _test_food_consumption_and_starvation(failures: Array[String]) -> vo
 	_check(int(world.workers[worker]["hunger"]) == 2700 and int(world.buildings[inn]["inputs"]["wine"]) == 0 \
 		and int(world.buildings[inn]["inputs"]["fish"]) == 1 and int(world.workers[worker]["meal_ticks_left"]) == 0,
 		"Inn meals must restore condition through three distinct courses and leave the fourth food untouched", failures)
-	var starving = World.new(Vector2i(7, 7))
+	var starving = LegacyFixture.create(Vector2i(7, 7))
 	var doomed: int = starving.spawn_worker(Vector2i(2, 2), "carrier")
 	starving.workers[doomed]["hunger"] = 1
 	starving.economy_enabled = true
@@ -326,7 +328,7 @@ static func _test_food_consumption_and_starvation(failures: Array[String]) -> vo
 
 
 static func _test_market_quotes_and_physical_trade(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 10))
+	var world = LegacyFixture.create(Vector2i(14, 10))
 	var expected: Array = [
 		["log", "gold_ore", 3, 1], ["stone", "gold", 9, 1],
 		["gold", "stone", 1, 2], ["plank", "bread", 2, 1],
@@ -367,7 +369,7 @@ static func _grain_equivalent(world: Variant) -> int:
 
 
 static func _test_inflight_processing_conserves_material(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(15, 10))
+	var world = LegacyFixture.create(Vector2i(15, 10))
 	var store: int = world.place_building("warehouse", Vector2i(2, 3))
 	var mill: int = world.place_building("mill", Vector2i(6, 3))
 	var bakery: int = world.place_building("bakery", Vector2i(10, 3))
@@ -406,7 +408,7 @@ static func _near_entrance(world: Variant, worker_id: int, building_id: int) -> 
 
 
 static func _test_watchtower_guard_ammunition_and_recruitment(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(15, 12))
+	var world = LegacyFixture.create(Vector2i(15, 12))
 	var store: int = world.place_building("warehouse", Vector2i(2, 3))
 	var tower: int = world.place_building("watchtower", Vector2i(8, 3))
 	# Adjacent entrances deliberately put the tower guard within the barracks'

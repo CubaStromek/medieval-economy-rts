@@ -198,9 +198,11 @@ static func _test_hover_input(host: Node, failures: Array[String]) -> void:
 	_expect(main.world.grid.cell_slope(Demo.PLATEAU_BUILD_SITE) == 0
 		and main.world.grid.cell_height(Demo.PLATEAU_BUILD_SITE) > 0,
 		"Valid hover control must be a genuinely raised flat plateau, not height-zero special handling", failures)
-	await _hover_case(host, main, viewport, label, draw_observation, Demo.RAMP,
-		"lumber_hut", false, "level ground", failures)
-	_expect(main.world.grid.is_walkable(Demo.RAMP) and main.world.grid.cell_slope(Demo.RAMP) > 0,
+	var steep_site := Vector2i(15, 15)
+	main.world.grid.set_vertex_height(Vector2i(16, 15), 3)
+	await _hover_case(host, main, viewport, label, draw_observation, steep_site,
+		"lumber_hut", false, "too uneven", failures)
+	_expect(main.world.grid.is_walkable(steep_site) and main.world.grid.cell_slope(steep_site) > 0,
 		"Rejected building control must be an otherwise walkable slope", failures)
 	var before_rejection: Dictionary = main.world.to_data().duplicate(true)
 	_click(viewport, MAP_POINTER)
@@ -213,7 +215,7 @@ static func _test_hover_input(host: Node, failures: Array[String]) -> void:
 	_expect(main.build_mode == "lumber_hut" and main.world.to_data() == before_rejection,
 		"Rejected slope clicks must not spend resources, create a site or leave the selected tool", failures)
 	# Separate material rejection from the authored ridge's simultaneous slope.
-	var rock_cell: Vector2i = Demo.LOWLAND_BUILD_SITE
+	var rock_cell := Vector2i(14, 18)
 	main.world.grid.set_base_terrain(rock_cell, "rock")
 	_expect(main.world.grid.cell_slope(rock_cell) == 0,
 		"Blocked-material fixture must be flat so it cannot fail for the slope reason", failures)

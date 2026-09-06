@@ -1,5 +1,14 @@
 # Square terrain and slope feedback — 2026-09-05
 
+## Subsequent construction change — 2026-09-06
+
+The 40 × 40 projection and normal-view height cues remain unchanged.
+[Builder foundation preparation](foundation-preparation.md) now permits safe
+gentle slopes for economy buildings: the full preview is gold with an earthwork
+estimate. Steep or obstructed sites stay invalid, and fields remain flat-only.
+The earlier captures and flat-only construction behavior below document the
+2026-09-05 milestone, before this explicit Builder mechanic.
+
 ## Request and scope
 
 Use 40 × 40 ground cells, matching the unrotated grid proportions inspected in

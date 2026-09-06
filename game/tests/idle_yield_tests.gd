@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 10
 
@@ -33,7 +35,7 @@ static func _advance(world: Variant, ticks: int) -> void:
 
 
 static func _fixture(pocket: bool = true, blocker_first: bool = false, preplan: bool = true) -> Dictionary:
-	var world = World.new(Vector2i(11, 7))
+	var world = LegacyFixture.create(Vector2i(11, 7))
 	for y: int in range(7):
 		for x: int in range(11):
 			if y != 3:
@@ -42,6 +44,11 @@ static func _fixture(pocket: bool = true, blocker_first: bool = false, preplan: 
 		world.grid.set_base_terrain(Vector2i(4, 2), "grass")
 	world.grid.set_base_terrain(Vector2i(8, 2), "grass")
 	var warehouse: int = world.place_building("warehouse", Vector2i(8, 2))
+	if not pocket:
+		# A genuinely closed lane: no resting cell beyond the destination or
+		# behind the requester, even with multi-step coordinated passing.
+		for x: int in [0, 1, 2, 9, 10]:
+			world.grid.set_base_terrain(Vector2i(x, 3), "water")
 	var requester: int = 0
 	var blocker: int = 0
 	if blocker_first:
@@ -113,7 +120,7 @@ static func _test_busy_workers_and_guards_are_protected(failures: Array[String])
 		_check(not world._try_yield_idle_worker(world.workers[fixture["requester"]], int(fixture["blocker"])),
 			"Yield requests must not interrupt working, moving, carrying, reserved or still-animating workers: %s" % str(change), failures)
 		_check(blocker["position"] == Vector2i(4, 3), "Rejected yield requests must leave the protected worker in place", failures)
-	var guard_world = World.new(Vector2i(10, 8))
+	var guard_world = LegacyFixture.create(Vector2i(10, 8))
 	var tower: int = guard_world.place_building("watchtower", Vector2i(2, 2))
 	var requester: int = guard_world.spawn_worker(Vector2i(5, 1), "carrier")
 	var guard: int = guard_world.spawn_worker(Vector2i(4, 1), "recruit", tower)
@@ -158,8 +165,9 @@ static func _test_two_requests_cannot_share_one_pocket(failures: Array[String]) 
 	second["path"] = [Vector2i(5, 2), Vector2i(5, 3), Vector2i(6, 3)]
 	_check(world._try_yield_idle_worker(world.workers[fixture["requester"]], int(fixture["blocker"])),
 		"The first yield request must reserve the shared side pocket", failures)
-	_check(not world._try_yield_idle_worker(second, second_blocker),
-		"The second idle worker must not enter a side pocket already reserved by the first", failures)
+	world._try_yield_idle_worker(second, second_blocker)
+	_check(world.workers[second_blocker]["target_cell"] != Vector2i(4, 2),
+		"The second worker may retreat elsewhere but must not claim the first worker's reserved pocket", failures)
 	_check(_unique_worker_tiles(world), "Simultaneous requests must not create overlapping workers", failures)
 	_check(int(world.tile_reservations.get(Vector2i(4, 2), 0)) == int(fixture["blocker"]),
 		"The side-pocket reservation must remain owned by the first yielding worker", failures)
@@ -192,7 +200,7 @@ static func _test_snapshot_during_yield_is_legal(failures: Array[String]) -> voi
 	var farm: int = _add_home(fixture)
 	_check(world._try_yield_idle_worker(world.workers[fixture["requester"]], int(fixture["blocker"])),
 		"Save fixture must actually begin a yielding step", failures)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	_check(restored.from_data(JSON.parse_string(JSON.stringify(world.to_data()))),
 		"Saving during a sidestep must produce a valid reloadable snapshot", failures)
 	if not restored.workers.has(fixture["blocker"]):
@@ -228,6 +236,11 @@ static func _test_idle_carrier_plans_through_a_yieldable_pocket(failures: Array[
 static func _test_idle_carrier_selects_an_accessible_alternative(failures: Array[String]) -> void:
 	var fixture: Dictionary = _fixture(false, false, false)
 	var world = fixture["world"]
+	for x: int in [0, 1, 2]:
+		world.grid.set_base_terrain(Vector2i(x, 3), "grass")
+	# A loaded worker cannot be asked to yield. An empty worker now CAN walk
+	# back to this alternative branch, so it no longer represents a blockade.
+	world.workers[fixture["blocker"]]["carrying"] = "grain"
 	# A bent approach makes this warehouse farther than the blocked one. Route
 	# selection must reject the impossible short route, not win by distance alone.
 	for cell: Vector2i in [Vector2i(0, 2), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(2, 0)]:

@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 7
 
@@ -25,7 +27,7 @@ static func _check(condition: bool, message: String, failures: Array[String]) ->
 
 
 static func _lane() -> Dictionary:
-	var world := World.new(Vector2i(10, 5))
+	var world := LegacyFixture.create(Vector2i(10, 5))
 	for y: int in range(5):
 		if y != 2:
 			for x: int in range(10):
@@ -73,7 +75,7 @@ static func _test_sustained_real_traffic_earns_a_trail(failures: Array[String]) 
 
 
 static func _test_world_time_regrows_abandoned_trails(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(8, 4))
+	var world := LegacyFixture.create(Vector2i(8, 4))
 	world.grid.configure_movement({"trail": {"carrier_passes_to_form": 6,
 		"established_min_wear": 2, "weak_decay_ticks": 2, "established_decay_ticks": 4}})
 	var from := Vector2i(2, 2)
@@ -93,7 +95,7 @@ static func _test_world_time_regrows_abandoned_trails(failures: Array[String]) -
 
 
 static func _test_yielding_carriers_leave_no_wear(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(8, 6))
+	var world := LegacyFixture.create(Vector2i(8, 6))
 	var requester: int = world.spawn_worker(Vector2i(2, 2), "builder")
 	var id: int = world.spawn_worker(Vector2i(3, 2), "carrier")
 	var carrier: Dictionary = world.workers[id]
@@ -112,7 +114,7 @@ static func _test_yielding_carriers_leave_no_wear(failures: Array[String]) -> vo
 
 
 static func _test_trail_speed_requires_the_used_connection(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(7, 6))
+	var world := LegacyFixture.create(Vector2i(7, 6))
 	var a := Vector2i(2, 2)
 	var b := Vector2i(3, 2)
 	for pass_index: int in range(36):
@@ -129,25 +131,25 @@ static func _test_trail_speed_requires_the_used_connection(failures: Array[Strin
 
 
 static func _test_fields_remove_all_trail_memory(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(6, 6))
+	var world := LegacyFixture.create(Vector2i(6, 6))
 	var cell := Vector2i(2, 2)
 	world.grid.record_carrier_traffic(cell, Vector2i(1, 2), 0)
 	_check(world.place_field(cell) != 0, "A faint footprint must not prevent preparing a field", failures)
 	_check(world.grid.traffic_wear_at(cell) == 0 and not world.grid.trail_last_decay.has(cell)
 		and world.grid.trail_links.is_empty(), "Preparing a field removes incident wear and decay metadata", failures)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	_check(restored.from_data(world.to_data()), "Clearing trail state for a field must leave a reloadable world", failures)
 
 
 static func _test_deposit_placement_clears_old_footprints(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(6, 6))
+	var world := LegacyFixture.create(Vector2i(6, 6))
 	var cell := Vector2i(3, 3)
 	world.grid.record_carrier_traffic(cell, Vector2i(2, 3), 0)
 	var deposit: int = world.add_deposit(cell, "coal", 3)
 	_check(deposit != 0, "A faint footprint must not prevent legal deposit authoring", failures)
 	_check(world.grid.traffic_wear_at(cell) == 0 and not world.grid.trail_last_decay.has(cell)
 		and world.grid.trail_links.is_empty(), "An authored deposit must clear its obsolete trail metadata", failures)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	_check(restored.from_data(world.to_data()) and restored.deposits.has(deposit)
 		and int(restored.deposits[deposit]["amount"]) == 3,
 		"A deposit replacing weak footprints must remain reloadable with its resources intact", failures)

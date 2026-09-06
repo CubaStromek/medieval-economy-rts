@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Grid = preload("res://scripts/simulation/grid_map_sim.gd")
 const TEST_COUNT: int = 8
@@ -31,7 +33,7 @@ static func _json(data: Dictionary) -> Dictionary:
 
 
 static func _fixture() -> Variant:
-	var world = World.new(Vector2i(12, 10))
+	var world = LegacyFixture.create(Vector2i(12, 10))
 	world.tick = 1000
 	var warehouse: int = world.place_building("warehouse", Vector2i(9, 7))
 	var hut: int = world.place_building("lumber_hut", Vector2i(2, 7))
@@ -69,7 +71,7 @@ static func _test_exact_round_trip_and_no_loading_traffic(failures: Array[String
 	var snapshot: Dictionary = source.to_data()
 	_check(snapshot["version"] == World.SAVE_VERSION and int(snapshot["version"]) >= 11 and snapshot["trail_links"].size() == 4 and snapshot["trail_last_decay"].size() == 5,
 		"The v11 fixture must contain precise cell ages and four independently observed direction links", failures)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(snapshot)):
 		failures.append("A valid v11 directional-trail snapshot must load")
 		return
@@ -88,7 +90,7 @@ static func _test_decay_remainder_survives_reload(failures: Array[String]) -> vo
 	# incorrectly run an extra scan at 1050 and decay before the live world.
 	source.grid.tick_trails(1040)
 	source.tick = 1049
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(source.to_data())):
 		failures.append("Decay-remainder fixture must reload")
 		return
@@ -123,7 +125,7 @@ static func _test_v10_preserves_mature_and_weak_tracks(failures: Array[String]) 
 	legacy["roads"] = [[4, 2]]
 	legacy["dirt_trails"] = [[2, 1], [3, 2]]
 	legacy["traffic_wear"] = [[1, 1, 1], [2, 1, 4], [3, 2, 4], [5, 1, 3]]
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(legacy):
 		failures.append("A real v10 snapshot with four-pass trails must migrate")
 		return
@@ -144,7 +146,7 @@ static func _test_v10_preserves_mature_and_weak_tracks(failures: Array[String]) 
 
 
 static func _test_v1_preserves_roads_and_citizens(failures: Array[String]) -> void:
-	var source = World.new(Vector2i(8, 8))
+	var source = LegacyFixture.create(Vector2i(8, 8))
 	source.tick = 30
 	var hut: int = source.place_building("lumber_hut", Vector2i(2, 2))
 	source.place_building("warehouse", Vector2i(6, 5))
@@ -158,7 +160,7 @@ static func _test_v1_preserves_roads_and_citizens(failures: Array[String]) -> vo
 	for worker: Dictionary in legacy["workers"]:
 		for key: String in ["type", "home_id", "planting_cooldown"]:
 			worker.erase(key)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	_check(restored.from_data(legacy), "The original v1 schema without any trail fields must still load", failures)
 	_check(restored.workers.size() == 2 and restored.grid.roads.has(Vector2i(3, 3))
 		and restored.grid.traffic_wear.is_empty() and restored.grid.trail_last_decay.is_empty() and restored.grid.trail_links.is_empty(),
@@ -249,7 +251,7 @@ static func _test_legacy_links_do_not_cross_blocked_corners(failures: Array[Stri
 	legacy.erase("trail_links")
 	legacy["buildings"][1]["position"] = [2, 2]
 	legacy["buildings"][1]["entrance"] = [1, 2]
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	_check(restored.from_data(legacy), "Legacy mature cells beside a blocked corner must load without inventing an illegal old direction", failures)
 	_check(not restored.grid.trail_connection_active(Vector2i(2, 1), Vector2i(3, 2)),
 		"Historical direction reconstruction must respect loaded building flanks", failures)

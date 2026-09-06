@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const MainView = preload("res://scripts/view/main_view.gd")
 const MainScene = preload("res://scenes/main.tscn")
@@ -30,7 +32,7 @@ static func run(host: Node) -> Array[String]:
 
 
 static func _fixture() -> Dictionary:
-	var world := World.new(Vector2i(12, 8))
+	var world := LegacyFixture.create(Vector2i(12, 8))
 	var building_id: int = world.place_building("sawmill", Vector2i(4, 3))
 	var entrance: Vector2i = world.buildings[building_id]["entrance"]
 	var worker_id: int = world.spawn_worker(entrance, "carpenter", building_id)
@@ -120,7 +122,7 @@ static func _test_indoor_details_keep_citizens(failures: Array[String]) -> void:
 		"Indoor citizens and their carried resources must remain in the settlement totals", failures)
 	hud.free()
 	# An employee eating in another building is not indoors at their workplace.
-	var visiting_world := World.new(Vector2i(14, 8))
+	var visiting_world := LegacyFixture.create(Vector2i(14, 8))
 	var home_id: int = visiting_world.place_building("sawmill", Vector2i(3, 3))
 	var inn_id: int = visiting_world.place_building("inn", Vector2i(9, 3))
 	var employee_id: int = visiting_world.spawn_worker(visiting_world.buildings[inn_id]["entrance"], "carpenter", home_id)

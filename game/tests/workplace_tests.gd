@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Jobs = preload("res://scripts/simulation/workplaces.gd")
 const TEST_COUNT: int = 20
@@ -56,7 +58,7 @@ static func _home(world: Variant, worker_id: int) -> int:
 
 
 static func _test_one_hut_one_lumberjack(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	var hut: int = world.place_building("lumber_hut", Vector2i(3, 2))
 	var first: int = world.spawn_worker(Vector2i(2, 4), "lumberjack")
 	var second: int = world.spawn_worker(Vector2i(6, 4), "lumberjack")
@@ -68,7 +70,7 @@ static func _test_one_hut_one_lumberjack(failures: Array[String]) -> void:
 
 
 static func _test_free_huts_are_claimed_once(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 8))
+	var world = LegacyFixture.create(Vector2i(14, 8))
 	var first_hut: int = world.place_building("lumber_hut", Vector2i(2, 2))
 	var second_hut: int = world.place_building("lumber_hut", Vector2i(10, 2))
 	var first: int = world.spawn_worker(Vector2i(1, 4), "lumberjack")
@@ -86,7 +88,7 @@ static func _test_shared_professions_keep_distinct_workplaces(failures: Array[St
 		["butcher", "butcher", "tannery"], ["animal_breeder", "swine_farm", "stables"],
 		["smith", "weapon_smithy", "armour_smithy"],
 	]:
-		var world = World.new(Vector2i(14, 8))
+		var world = LegacyFixture.create(Vector2i(14, 8))
 		var first_home: int = world.place_building(String(entry[1]), Vector2i(2, 2))
 		var second_home: int = world.place_building(String(entry[2]), Vector2i(10, 2))
 		var first: int = world.spawn_worker(Vector2i(2, 4), String(entry[0]))
@@ -99,7 +101,7 @@ static func _test_shared_professions_keep_distinct_workplaces(failures: Array[St
 
 
 static func _test_unemployed_specialist_cannot_work(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	var tree: int = world.add_tree(Vector2i(6, 3), 2)
 	var lumberjack: int = world.spawn_worker(Vector2i(5, 3), "lumberjack")
 	_advance(world, 150)
@@ -111,7 +113,7 @@ static func _test_unemployed_specialist_cannot_work(failures: Array[String]) -> 
 
 
 static func _test_newly_completed_building_hires_waiting_worker(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	var hut: int = world.place_building("lumber_hut", Vector2i(3, 2))
 	world.buildings[hut]["construction_remaining"] = 1
 	var worker: int = world.spawn_worker(Vector2i(2, 4), "lumberjack")
@@ -123,7 +125,7 @@ static func _test_newly_completed_building_hires_waiting_worker(failures: Array[
 
 
 static func _test_obstructed_home_stays_owned(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	var old_hut: int = world.place_building("lumber_hut", Vector2i(9, 2))
 	var worker: int = world.spawn_worker(Vector2i(1, 4), "lumberjack", old_hut)
 	world.workers[worker]["carrying"] = "log"
@@ -137,7 +139,7 @@ static func _test_obstructed_home_stays_owned(failures: Array[String]) -> void:
 
 
 static func _test_full_home_stays_owned(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	var full_hut: int = world.place_building("lumber_hut", Vector2i(2, 2))
 	var free_hut: int = world.place_building("lumber_hut", Vector2i(9, 2))
 	var worker: int = world.spawn_worker(Vector2i(2, 4), "lumberjack", full_hut)
@@ -151,7 +153,7 @@ static func _test_full_home_stays_owned(failures: Array[String]) -> void:
 
 
 static func _test_meal_preserves_ownership(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	var hut: int = world.place_building("lumber_hut", Vector2i(2, 2))
 	var inn: int = world.place_building("inn", Vector2i(6, 2))
 	var owner: int = world.spawn_worker(Vector2i(3, 4), "lumberjack", hut)
@@ -166,7 +168,7 @@ static func _test_meal_preserves_ownership(failures: Array[String]) -> void:
 
 
 static func _test_starvation_releases_the_vacancy(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	var hut: int = world.place_building("lumber_hut", Vector2i(2, 2))
 	var owner: int = world.spawn_worker(Vector2i(3, 4), "lumberjack", hut)
 	var waiting: int = world.spawn_worker(Vector2i(8, 4), "lumberjack")
@@ -180,7 +182,7 @@ static func _test_starvation_releases_the_vacancy(failures: Array[String]) -> vo
 
 
 static func _test_explicit_claims_are_atomic(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 8))
+	var world = LegacyFixture.create(Vector2i(14, 8))
 	var hut: int = world.place_building("lumber_hut", Vector2i(2, 2))
 	var other_hut: int = world.place_building("lumber_hut", Vector2i(10, 2))
 	var owner: int = world.spawn_worker(Vector2i(2, 4), "lumberjack", hut)
@@ -199,7 +201,7 @@ static func _test_explicit_claims_are_atomic(failures: Array[String]) -> void:
 
 
 static func _test_transient_blockers_do_not_change_employment(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	var near_hut: int = world.place_building("lumber_hut", Vector2i(2, 2))
 	world.place_building("lumber_hut", Vector2i(9, 2))
 	world.spawn_worker(world.buildings[near_hut]["entrance"], "carrier")
@@ -211,7 +213,7 @@ static func _test_transient_blockers_do_not_change_employment(failures: Array[St
 
 
 static func _test_lumberjacks_deliver_to_their_own_huts(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(16, 9))
+	var world = LegacyFixture.create(Vector2i(16, 9))
 	var first_hut: int = world.place_building("lumber_hut", Vector2i(2, 2))
 	var second_hut: int = world.place_building("lumber_hut", Vector2i(12, 2))
 	world.add_tree(Vector2i(3, 5), 1)
@@ -227,7 +229,7 @@ static func _test_lumberjacks_deliver_to_their_own_huts(failures: Array[String])
 
 
 static func _test_one_baker_cannot_run_two_buildings(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 8))
+	var world = LegacyFixture.create(Vector2i(14, 8))
 	var mill: int = world.place_building("mill", Vector2i(2, 2))
 	var bakery: int = world.place_building("bakery", Vector2i(10, 2))
 	world.buildings[mill]["inputs"]["grain"] = 1
@@ -245,7 +247,7 @@ static func _test_one_baker_cannot_run_two_buildings(failures: Array[String]) ->
 
 
 static func _test_communal_workers_do_not_claim_buildings(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 8))
+	var world = LegacyFixture.create(Vector2i(14, 8))
 	var hut: int = world.place_building("lumber_hut", Vector2i(2, 2))
 	world.place_building("warehouse", Vector2i(7, 2))
 	for index: int in range(2):
@@ -261,7 +263,7 @@ static func _test_communal_workers_do_not_claim_buildings(failures: Array[String
 
 
 static func _test_carried_ware_limits_new_workplace(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(16, 9))
+	var world = LegacyFixture.create(Vector2i(16, 9))
 	world.grid.set_base_terrain(Vector2i(4, 2), "rock")
 	world.add_deposit(Vector2i(4, 2), "iron_ore", 3)
 	world.add_deposit(Vector2i(13, 2), "coal", 3)
@@ -276,7 +278,7 @@ static func _test_carried_ware_limits_new_workplace(failures: Array[String]) -> 
 
 
 static func _unreachable_fixture() -> Dictionary:
-	var world = World.new(Vector2i(16, 10))
+	var world = LegacyFixture.create(Vector2i(16, 10))
 	for y: int in range(10):
 		world.grid.set_base_terrain(Vector2i(8, y), "water")
 	var farm: int = world.place_building("farm", Vector2i(12, 3))
@@ -306,7 +308,7 @@ static func _test_failed_search_is_cached_despite_surface_traffic(failures: Arra
 	_check(world.grid.revision > render_revision and world.grid.connectivity_revision == connectivity,
 		"Roads and traffic must change rendering without changing permanent connectivity", failures)
 	_check(_searches(worker) == 1, "Road/trail/wear changes must retain a failed reachability cache", failures)
-	var empty = World.new(Vector2i(8, 8))
+	var empty = LegacyFixture.create(Vector2i(8, 8))
 	var unassigned: int = empty.spawn_worker(Vector2i(3, 3), "farmer")
 	_advance(empty, 20)
 	_check(_searches(empty.workers[unassigned]) == 0, "No candidate workplaces must require no path searches", failures)
@@ -410,7 +412,7 @@ static func _test_failed_search_tracks_position_cargo_and_grid(failures: Array[S
 
 
 static func _test_equal_cost_chooses_lowest_building_id(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(14, 10))
+	var world = LegacyFixture.create(Vector2i(14, 10))
 	# The lower ID is deliberately on the right: the pathfinder's cell-order
 	# heap tie-break otherwise encounters the left entrance first.
 	var first: int = world.place_building("farm", Vector2i(10, 2))

@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Supply = preload("res://scripts/simulation/soldier_food_supply.gd")
 const TEST_COUNT: int = 14
@@ -21,7 +23,7 @@ static func run() -> Array[String]:
 
 
 static func _fixture(ware: String = "bread", amount: int = 1) -> Dictionary:
-	var world = World.new(Vector2i(20, 12))
+	var world = LegacyFixture.create(Vector2i(20, 12))
 	var source: int = world.place_building("warehouse", Vector2i(2, 3))
 	world.buildings[source]["storage"][ware] = amount
 	var soldier: int = world.spawn_worker(Vector2i(16, 7), "militia")

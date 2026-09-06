@@ -3,17 +3,28 @@ extends Node2D
 const SimulationWorldClass = preload("res://scripts/simulation/simulation_world.gd")
 const SaveSystemClass = preload("res://scripts/simulation/save_system.gd")
 const TerrainRendererClass = preload("res://scripts/view/terrain_renderer.gd")
+const MapProjectionClass = preload("res://scripts/view/map_projection.gd")
 const GameHudClass = preload("res://scripts/view/game_hud.gd")
 const ReliefDemoClass = preload("res://scripts/simulation/relief_demo.gd")
 const TestLevelClass = preload("res://scripts/simulation/test_level.gd")
+const ImportedTerrainClass = preload("res://scripts/simulation/imported_terrain.gd")
 const UnitSpriteLibraryClass = preload("res://scripts/view/unit_sprite_library.gd")
 const TreeSpriteLibraryClass = preload("res://scripts/view/tree_sprite_library.gd")
 const PlacementPreviewRulesClass = preload("res://scripts/view/placement_preview_rules.gd")
+const SolarCycleClass = preload("res://scripts/view/solar_cycle.gd")
+const SolarShadowsClass = preload("res://scripts/view/solar_shadows.gd")
+const BuildingFootprintRendererClass = preload("res://scripts/view/building_footprint_renderer.gd")
 
 const FIXED_TICK_SECONDS: float = SimulationWorldClass.TICK_SECONDS
 const MAX_TICKS_PER_FRAME: int = 8
+const TERRAIN_STUDY_SAVE_PATH: String = "user://medieval_economy_rts_mountainous_region_save.json"
+const LARGE_MAP_CULL_CELLS: int = 4096
+
+signal main_menu_requested()
 
 var world: SimulationWorldClass
+var honor_launch_arguments: bool = true
+var save_path: String = SaveSystemClass.DEFAULT_PATH
 var selected_cell := Vector2i(-1, -1)
 var selected_unit_id: int = 0
 var build_mode: String = ""
@@ -21,8 +32,12 @@ var accumulator: float = 0.0
 var dragging_camera: bool = false
 var simulation_speed: float = 0.5
 var speed_before_pause: float = 0.5
-# Populated demos remain available through --relief-demo and --economy-demo.
-var demo_kind: String = "test"
+# Populated demos and the external terrain study leave the normal test level intact.
+@export var demo_kind: String = "test"
+@export var terrain_map_path: String = ImportedTerrainClass.DEFAULT_PATH
+# Embedded/custom scenes can select an isolated save location as well.
+@export var save_path_override: String = ""
+var terrain_load_error: String = ""
 var show_terrain_rules: bool = false
 
 @onready var camera: Camera2D = $Camera2D
@@ -32,6 +47,8 @@ var unit_sprites := UnitSpriteLibraryClass.new()
 var tree_sprites := TreeSpriteLibraryClass.new()
 var _dynamic_rows: Dictionary = {}
 var _row_entries: Dictionary = {}
+var _row_shadows: Dictionary = {}
+var solar_state: Dictionary = {}
 var _draw_canvas: CanvasItem
 var hovered_cell: Vector2i = Vector2i(-1, -1)
 var placement_preview: Dictionary = {}
@@ -65,18 +82,16 @@ var event_label: Label:
 func _ready() -> void:
 	# Small painted sprites are strongly minified at the overview zoom.
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	if OS.get_cmdline_user_args().has("--economy-demo"):
+	if honor_launch_arguments and OS.get_cmdline_user_args().has("--economy-demo"):
 		demo_kind = "economy"
-	elif OS.get_cmdline_user_args().has("--relief-demo"):
+	elif honor_launch_arguments and OS.get_cmdline_user_args().has("--relief-demo"):
 		demo_kind = "relief"
-	_create_demo_world()
+	elif honor_launch_arguments and OS.get_cmdline_user_args().has("--mountainous-region"):
+		demo_kind = "mountainous-region"
+	if world == null:
+		_create_demo_world()
+	_update_window_title()
 	if get_viewport() == get_tree().root:
-		var level_titles: Dictionary = {
-			"test": "Test level · Warehouse + School · Construction supplies ready",
-			"relief": "Roads and trees",
-			"economy": "Economy demo + environment",
-		}
-		get_tree().root.title = "Medieval Economy RTS · " + String(level_titles.get(demo_kind, level_titles["test"]))
 		_configure_game_window()
 	terrain_renderer.external_painter = true
 	terrain_renderer.bind_grid(world.grid)
@@ -91,6 +106,18 @@ func _ready() -> void:
 	add_child(_placement_canvas)
 	_update_ui()
 	queue_redraw()
+
+
+func _update_window_title() -> void:
+	if get_viewport() != get_tree().root:
+		return
+	var level_titles: Dictionary = {
+		"test": "Test level · Warehouse + School · Construction supplies ready",
+		"relief": "Roads and trees",
+		"economy": "Economy demo + environment",
+		"mountainous-region": "Mountainous Region · imported terrain study",
+	}
+	get_tree().root.title = "Medieval Economy RTS · " + String(level_titles.get(demo_kind, level_titles["test"]))
 
 
 func _configure_game_window() -> void:
@@ -204,11 +231,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_0:
 				_set_build_mode("field")
 			KEY_ESCAPE:
-				_set_build_mode("")
+				if build_mode.is_empty() and not hud.has_open_overlay() and main_menu_requested.has_connections():
+					_request_main_menu()
+				else:
+					_set_build_mode("")
 			KEY_F2:
 				_set_terrain_rules(not show_terrain_rules)
 			KEY_F5:
-				world._push_event("Game saved." if SaveSystemClass.save_world(world) else "Save failed.")
+				_save_game()
 			KEY_F9:
 				_load_game()
 			KEY_R:
@@ -219,15 +249,27 @@ func _unhandled_input(event: InputEvent) -> void:
 func _draw() -> void:
 	if world == null:
 		return
+	_update_day_lighting()
 	# Terrain owns retained even-Z rows; only these odd-Z object rows redraw
 	# with animation. The same ground order preserves foreground occlusion.
 	_sync_dynamic_rows()
 	_row_entries.clear()
-	for entry: Dictionary in _world_draw_entries():
+	_row_shadows.clear()
+	for entry: Dictionary in _world_draw_entries(true):
 		var row: int = clampi(floori((entry["ground_position"] as Vector2).y + 0.5), 0, world.grid.size.y - 1)
 		if not _row_entries.has(row):
 			_row_entries[row] = []
 		_row_entries[row].append(entry)
+		if entry["kind"] == "tree":
+			entry["growth_stage"] = world.tree_growth_stage(entry["state"])
+		# Short survey stakes must not cast the silhouette of a full house.
+		if entry["kind"] == "building" and int((entry["state"] as Dictionary).get("foundation_work_remaining", 0)) > 0:
+			continue
+		var shadows: Dictionary = SolarShadowsClass.rows_for(terrain_renderer, entry, solar_state)
+		for shadow_row: int in shadows:
+			if not _row_shadows.has(shadow_row):
+				_row_shadows[shadow_row] = []
+			(_row_shadows[shadow_row] as Array).append_array(shadows[shadow_row])
 	for canvas: Node2D in _dynamic_rows.values():
 		canvas.queue_redraw()
 	if _placement_canvas != null and _placement_canvas.visible:
@@ -287,15 +329,27 @@ func _clear_placement_preview() -> void:
 func _draw_placement_preview() -> void:
 	if _placement_canvas == null or placement_preview.is_empty() or not world.grid.contains(hovered_cell):
 		return
-	var polygon: PackedVector2Array = terrain_renderer.cell_polygon(hovered_cell)
-	if polygon.size() != 4:
-		return
 	var valid: bool = bool(placement_preview["valid"])
 	var color: Color = Color("#80df91") if valid else Color("#ff8e79")
+	if valid and bool(placement_preview.get("needs_levelling", false)):
+		color = Color("#f4c36a")
+	for cell: Vector2i in placement_preview.get("cells", [hovered_cell]):
+		_draw_preview_cell(cell, color, valid, true)
+	var entrance: Vector2i = placement_preview.get("entrance", Vector2i(-1, -1))
+	if world.grid.contains(entrance):
+		_draw_preview_cell(entrance, Color("#72d5ee"), valid, false)
+		var center: Vector2 = terrain_renderer.cell_center(entrance)
+		var arrow := PackedVector2Array([center + Vector2(-6, 3), center + Vector2(0, -4), center + Vector2(6, 3)])
+		_placement_canvas.draw_polyline(arrow, Color("#c0f2ff"), 2.5 / maxf(0.3, camera.zoom.x), true)
+
+
+func _draw_preview_cell(cell: Vector2i, color: Color, valid: bool, mark_invalid: bool) -> void:
+	var polygon: PackedVector2Array = terrain_renderer.cell_polygon(cell)
+	if polygon.size() != 4:
+		return
 	var fill: Color = color
 	fill.a = 0.12 if valid else 0.19
-	# At a 40px row / 8px height step, a five-unit face can project to a
-	# line. Godot cannot triangulate that zero-area face; its outline remains.
+	# A steep heightfield face can project to a line: only fill real triangles.
 	for indices: Array in [[0, 1, 2], [0, 2, 3]]:
 		var a: Vector2 = polygon[int(indices[0])]
 		var b: Vector2 = polygon[int(indices[1])]
@@ -307,12 +361,10 @@ func _draw_placement_preview() -> void:
 	var width: float = 2.5 / maxf(0.30, camera.zoom.x)
 	_placement_canvas.draw_polyline(outline, Color(0.04, 0.07, 0.04, 0.9), width + 2.0 / camera.zoom.x, true)
 	_placement_canvas.draw_polyline(outline, color, width, true)
-	if not valid:
+	if not valid and mark_invalid:
 		for endpoints: Array in [[Vector2(0.24, 0.24), Vector2(0.76, 0.76)], [Vector2(0.24, 0.76), Vector2(0.76, 0.24)]]:
 			var cross := PackedVector2Array([
-				_field_point(hovered_cell, endpoints[0]),
-				_field_point(hovered_cell, Vector2(0.5, 0.5)),
-				_field_point(hovered_cell, endpoints[1]),
+				_field_point(cell, endpoints[0]), _field_point(cell, Vector2(0.5, 0.5)), _field_point(cell, endpoints[1]),
 			])
 			_placement_canvas.draw_polyline(cross, color, width, true)
 
@@ -340,6 +392,11 @@ func _paint_dynamic_row(canvas: Node2D, row: int) -> void:
 	_draw_canvas = canvas
 	_draw_deposits(row)
 	_draw_fields(row)
+	for shadow: Dictionary in _row_shadows.get(row, []):
+		# Indoor state can change between queuing this row and its draw callback.
+		if shadow["kind"] == "worker" and world.is_worker_inside(shadow["state"]):
+			continue
+		canvas.draw_colored_polygon(shadow["points"], shadow["color"])
 	_draw_selection(row)
 	for entry: Dictionary in _row_entries.get(row, []):
 		_draw_world_entry(entry)
@@ -347,11 +404,18 @@ func _paint_dynamic_row(canvas: Node2D, row: int) -> void:
 
 
 func _draw_selection(row: int) -> void:
-	if selected_unit_id != 0 or not world.grid.contains(selected_cell) or selected_cell.y != row:
+	if selected_unit_id != 0 or not world.grid.contains(selected_cell):
 		return
-	var polygon: PackedVector2Array = terrain_renderer.cell_polygon(selected_cell)
-	polygon.append(polygon[0])
-	_draw_canvas.draw_polyline(polygon, Color(1.0, 0.86, 0.28), 3.0, true)
+	var building_id: int = world.building_id_at(selected_cell)
+	var cells: Array[Vector2i] = [selected_cell]
+	if building_id != 0:
+		cells = world.building_cells(world.buildings[building_id])
+	for cell: Vector2i in cells:
+		if cell.y != row:
+			continue
+		var polygon: PackedVector2Array = terrain_renderer.cell_polygon(cell)
+		polygon.append(polygon[0])
+		_draw_canvas.draw_polyline(polygon, Color(1.0, 0.86, 0.28), 3.0, true)
 
 
 func _field_point(cell: Vector2i, uv: Vector2) -> Vector2:
@@ -438,15 +502,32 @@ func _draw_deposits(row: int) -> void:
 			_draw_canvas.draw_string(ThemeDB.fallback_font, center + Vector2(-8, 19), badge, HORIZONTAL_ALIGNMENT_CENTER, 16, 10, color.lightened(0.45))
 
 
-func _world_draw_entries() -> Array[Dictionary]:
+func _visible_tree_bounds() -> Rect2:
+	# Culling is presentation-only, and deliberately generous. An offscreen
+	# canopy or caster must remain when its sprite/shadow reaches the viewport,
+	# including a receiver anywhere in the supported 64-unit height range.
+	var shadow_vector: Vector2 = solar_state.get("shadow_vector", Vector2.ZERO) as Vector2
+	var shadow_cells: float = maxf(2.0, shadow_vector.length() * 1.25 + 0.5)
+	var margin: float = TreeSpriteLibraryClass.MATURE_SPRUCE_HEIGHT
+	margin += shadow_cells * MapProjectionClass.CELL_SIZE.length()
+	margin += float(world.grid.MAX_HEIGHT) * MapProjectionClass.HEIGHT_STEP_PIXELS
+	return (get_global_transform_with_canvas().affine_inverse() * get_viewport_rect()).grow(margin)
+
+
+func _world_draw_entries(visible_trees_only: bool = false) -> Array[Dictionary]:
 	var draw_entries: Array[Dictionary] = []
+	var cull_trees: bool = visible_trees_only and world.grid.size.x * world.grid.size.y > LARGE_MAP_CULL_CELLS
+	var tree_bounds: Rect2 = _visible_tree_bounds() if cull_trees else Rect2()
 	for tree_variant: Variant in world.trees.values():
 		var tree: Dictionary = tree_variant as Dictionary
+		var tree_position: Vector2 = terrain_renderer.cell_center(tree["position"] as Vector2i)
+		if cull_trees and not tree_bounds.has_point(tree_position):
+			continue
 		draw_entries.append({
 			"id": int(tree["id"]),
 			"kind": "tree",
 			"kind_order": 0,
-			"position": terrain_renderer.cell_center(tree["position"] as Vector2i),
+			"position": tree_position,
 			"ground_position": Vector2(tree["position"] as Vector2i),
 			"state": tree,
 		})
@@ -460,6 +541,10 @@ func _world_draw_entries() -> Array[Dictionary]:
 			"ground_position": Vector2(building["position"] as Vector2i),
 			"state": building,
 		})
+		if int(building.get("footprint_version", 0)) > 0:
+			var shape: Dictionary = building_geometry(building)
+			draw_entries[-1]["shadow_ground_position"] = shape["ground_center"]
+			draw_entries[-1]["shadow_radius"] = (shape["ground_size"] as Vector2) * 0.5
 	var frame_alpha: float = clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0)
 	for worker_variant: Variant in world.workers.values():
 		var worker: Dictionary = worker_variant as Dictionary
@@ -537,6 +622,9 @@ func _draw_building(building: Dictionary, center: Vector2) -> void:
 	var building_type: String = String(building["type"])
 	var definition: Dictionary = world.catalog.building(building_type)
 	var base_color: Color = Color.from_string("#" + String(definition.get("color", "888888")), Color.GRAY)
+	if int(building.get("footprint_version", 0)) > 0:
+		_draw_footprint_building(building, definition, base_color)
+		return
 	_draw_ellipse_shadow(center)
 	if int(building.get("construction_remaining", 0)) > 0:
 		_draw_construction_site(center, building, definition)
@@ -546,6 +634,45 @@ func _draw_building(building: Dictionary, center: Vector2) -> void:
 	var roof: PackedVector2Array = _building_roof_polygon(center)
 	_draw_canvas.draw_colored_polygon(roof, base_color.lightened(0.08))
 	_draw_canvas.draw_line(center + Vector2(0, -12), center + Vector2(0, 7), base_color.darkened(0.35), 1.5)
+	_draw_building_details(building, center)
+	_draw_canvas.draw_string(ThemeDB.fallback_font, center + Vector2(-30, 22), String(definition.get("display_name", building["type"])), HORIZONTAL_ALIGNMENT_CENTER, 60, 11, Color(0.95, 0.95, 0.86))
+
+
+# Public inspection API: these are the exact polygons painted and hit-tested.
+func building_geometry(building: Dictionary) -> Dictionary:
+	return BuildingFootprintRendererClass.geometry(world, terrain_renderer, building)
+
+
+func _draw_footprint_building(building: Dictionary, definition: Dictionary, base_color: Color) -> void:
+	var shape: Dictionary = building_geometry(building)
+	var construction: bool = int(building.get("construction_remaining", 0)) > 0
+	BuildingFootprintRendererClass.draw_shell(_draw_canvas, shape, base_color, construction)
+	var label: Vector2 = shape["label_position"]
+	if construction:
+		var total: float = maxf(1.0, float(definition.get("construction_ticks", 120)))
+		var progress: float = clampf(1.0 - float(building["construction_remaining"]) / total, 0.0, 1.0)
+		if bool(shape["earthwork"]):
+			progress = float(shape["earthwork_progress"])
+		_draw_canvas.draw_rect(Rect2(label + Vector2(-36, -8), Vector2(72, 5)), Color(0.12, 0.14, 0.10))
+		_draw_canvas.draw_rect(Rect2(label + Vector2(-36, -8), Vector2(72 * progress, 5)), Color(0.88, 0.70, 0.30))
+		label.y += 11
+		if bool(shape["earthwork"]):
+			_draw_canvas.draw_string(ThemeDB.fallback_font, label + Vector2(-85, 0), "Ground preparation %d%%" % int(progress * 100.0), HORIZONTAL_ALIGNMENT_CENTER, 170, 11, Color("#f4c36a"))
+			label.y += 13
+	else:
+		_draw_building_details(building, shape["detail_center"])
+		BuildingFootprintRendererClass.draw_door(_draw_canvas, shape)
+	var selected: bool = selected_unit_id == 0 and world.building_id_at(selected_cell) == int(building["id"])
+	if selected:
+		for edge: PackedVector2Array in (shape["boundary"] if construction else shape["roof_edges"]):
+			_draw_canvas.draw_polyline(edge, Color(1.0, 0.86, 0.28), 2.5, true)
+	_draw_canvas.draw_string(ThemeDB.fallback_font, label + Vector2(-65, 0), String(definition.get("display_name", building["type"])), HORIZONTAL_ALIGNMENT_CENTER, 130, 11, Color(0.97, 0.95, 0.82))
+
+
+func _draw_building_details(building: Dictionary, center: Vector2) -> void:
+	var building_type: String = String(building["type"])
+	var definition: Dictionary = world.catalog.building(building_type)
+	var base_color: Color = Color.from_string("#" + String(definition.get("color", "888888")), Color.GRAY)
 	match building_type:
 		"farm":
 			_draw_farm_details(center)
@@ -575,8 +702,6 @@ func _draw_building(building: Dictionary, center: Vector2) -> void:
 			_draw_fisher_details(center)
 		_:
 			_draw_workshop_details(center, definition)
-	_draw_canvas.draw_string(ThemeDB.fallback_font, center + Vector2(-30, 22), String(definition.get("display_name", building["type"])), HORIZONTAL_ALIGNMENT_CENTER, 60, 11, Color(0.95, 0.95, 0.86))
-
 
 func _draw_ellipse_shadow(center: Vector2) -> void:
 	var points := PackedVector2Array()
@@ -813,46 +938,39 @@ func _worker_id_at_visual_position(position: Vector2) -> int:
 			if (presentation["rect"] as Rect2).grow(2.0).has_point(position):
 				return int(entry["id"])
 		elif entry["kind"] == "building":
-			var center: Vector2 = entry["position"] as Vector2
-			if Geometry2D.is_point_in_polygon(position, _building_roof_polygon(center)) or Geometry2D.is_point_in_polygon(position, _building_wall_polygon(center)):
+			if _building_contains_visual_point(entry["state"], position):
 				return 0
 	return 0
 
 
 func _building_id_at_visual_position(position: Vector2) -> int:
-	var building_entries: Array[Dictionary] = []
-	for building_variant: Variant in world.buildings.values():
-		var building: Dictionary = building_variant as Dictionary
-		building_entries.append({
-			"id": int(building["id"]),
-			"type": String(building["type"]),
-			"position": terrain_renderer.cell_center(building["position"] as Vector2i),
-			"ground_position": Vector2(building["position"] as Vector2i),
-		})
-	building_entries.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
-		var a_position: Vector2 = a["ground_position"] as Vector2
-		var b_position: Vector2 = b["ground_position"] as Vector2
-		if not is_equal_approx(a_position.y, b_position.y):
-			return a_position.y < b_position.y
-		if not is_equal_approx(a_position.x, b_position.x):
-			return a_position.x < b_position.x
-		return int(a["id"]) < int(b["id"])
-	)
-	building_entries.reverse()
-	for entry: Dictionary in building_entries:
-		if terrain_renderer.point_occluded(position, entry["ground_position"] as Vector2):
+	var entries: Array[Dictionary] = _world_draw_entries()
+	entries.reverse()
+	for entry: Dictionary in entries:
+		if entry["kind"] != "building" or terrain_renderer.point_occluded(position, entry["ground_position"] as Vector2):
 			continue
-		var center: Vector2 = entry["position"] as Vector2
-		if String(entry["type"]) == "mill" and position.distance_to(center + Vector2(0, -35)) <= 27.0:
-			return int(entry["id"])
-		if String(entry["type"]) == "bakery" and Rect2(center + Vector2(11, -55), Vector2(12, 25)).has_point(position):
-			return int(entry["id"])
-		if (
-			Geometry2D.is_point_in_polygon(position, _building_roof_polygon(center))
-			or Geometry2D.is_point_in_polygon(position, _building_wall_polygon(center))
-		):
+		if _building_contains_visual_point(entry["state"], position):
 			return int(entry["id"])
 	return 0
+
+
+func _building_contains_visual_point(building: Dictionary, position: Vector2) -> bool:
+	var center: Vector2 = terrain_renderer.cell_center(building["position"] as Vector2i)
+	if int(building.get("footprint_version", 0)) > 0:
+		var shape: Dictionary = building_geometry(building)
+		if BuildingFootprintRendererClass.contains_point(shape, position, int(building.get("construction_remaining", 0)) > 0):
+			return true
+		center = shape["detail_center"]
+	else:
+		if Geometry2D.is_point_in_polygon(position, _building_roof_polygon(center)) or Geometry2D.is_point_in_polygon(position, _building_wall_polygon(center)):
+			return true
+	if int(building.get("construction_remaining", 0)) > 0:
+		return false
+	if String(building["type"]) == "mill" and position.distance_to(center + Vector2(0, -35)) <= 27.0:
+		return true
+	if String(building["type"]) == "bakery" and Rect2(center + Vector2(11, -55), Vector2(12, 25)).has_point(position):
+		return true
+	return false
 
 
 static func _building_wall_polygon(center: Vector2) -> PackedVector2Array:
@@ -901,7 +1019,36 @@ func _draw_worker(worker: Dictionary, foot_position: Vector2) -> void:
 		var definition: Dictionary = world.catalog.resources.get(carrying, {}) as Dictionary
 		var color: Color = Color.from_string("#" + String(definition.get("color", "d0a966")), Color.TAN)
 		unit_sprites.paint_cargo(_draw_canvas, carrying, presentation["cargo_position"] as Vector2, color)
+	_draw_worker_earthwork(worker_earthwork_presentation(worker, foot_position))
 	_draw_worker_satiety(worker_satiety_presentation(worker, foot_position))
+
+
+# Read-only working cue; its phase comes only from simulation ticks, so pausing
+# freezes the shovel and loading the same tick reproduces the same pose.
+func worker_earthwork_presentation(worker: Dictionary, foot_position: Vector2) -> Dictionary:
+	var site: Dictionary = world.buildings.get(int(worker.get("source_id", 0)), {})
+	if world.is_worker_inside(worker) or worker.get("action", "") != "build_site" \
+			or worker.get("state", "") != "working" or int(site.get("foundation_work_remaining", 0)) <= 0:
+		return {"visible": false}
+	if not world.can_worker_work(worker) or int(worker.get("visual_progress_ticks", 0)) < int(worker.get("visual_duration_ticks", 0)) \
+			or not world.BuildingFoundationsClass.waiting_reason(world, site, int(worker["id"])).is_empty():
+		return {"visible": false}
+	var phase: float = float(world.tick % 12) / 12.0
+	var lift: float = sin(phase * PI)
+	var hand: Vector2 = foot_position + Vector2(5, -12)
+	var shovel: Vector2 = foot_position + Vector2(15 - 5 * lift, 2 - 10 * lift)
+	return {"visible": true, "hand": hand, "shovel": shovel,
+		"soil": foot_position + Vector2(18, -4 - 6 * lift), "phase": phase}
+
+
+func _draw_worker_earthwork(presentation: Dictionary) -> void:
+	if not bool(presentation.get("visible", false)):
+		return
+	var shovel: Vector2 = presentation["shovel"]
+	_draw_canvas.draw_line(presentation["hand"], shovel, Color(0.69, 0.48, 0.24), 2.0, true)
+	_draw_canvas.draw_colored_polygon(PackedVector2Array([shovel + Vector2(-3, -2), shovel + Vector2(3, -2),
+		shovel + Vector2(3, 2), shovel + Vector2(0, 5), shovel + Vector2(-3, 2)]), Color(0.69, 0.73, 0.70))
+	_draw_canvas.draw_circle(presentation["soil"], 2.0, Color(0.44, 0.31, 0.16))
 
 
 func worker_satiety_presentation(worker: Dictionary, foot_position: Vector2) -> Dictionary:
@@ -981,14 +1128,31 @@ func _build_ui() -> void:
 	hud.construction_cancel_requested.connect(_cancel_selected_construction)
 	hud.soldier_food_requested.connect(_request_soldier_food)
 	hud.army_food_requested.connect(_request_army_food)
+	hud.main_menu_requested.connect(_request_main_menu)
 	add_child(hud)
-	hud.configure(world.catalog)
+	hud.configure(world.catalog, main_menu_requested.has_connections())
+
+
+func _request_main_menu() -> void:
+	dragging_camera = false
+	_set_build_mode("")
+	_pointer_inside = false
+	_clear_placement_preview()
+	main_menu_requested.emit()
+
+
+func _save_game() -> bool:
+	var saved: bool = SaveSystemClass.save_world(world, _save_game_path(), demo_kind)
+	world._push_event("Game saved." if saved else "Save failed.")
+	_update_ui()
+	return saved
 
 
 func _set_build_mode(mode: String) -> void:
 	build_mode = mode
 	if not mode.is_empty():
 		selected_unit_id = 0
+	terrain_renderer.allow_ground_preparation = mode not in ["", "road", "field", "vine_field"]
 	terrain_renderer.show_buildability = not mode.is_empty() and mode != "road"
 	_preview_state_key.clear()
 	_update_ui()
@@ -1093,6 +1257,21 @@ func _update_ui() -> void:
 			selected_unit_id = 0
 	if hud != null:
 		hud.refresh(world, selected_cell, build_mode, simulation_speed, FIXED_TICK_SECONDS, selected_unit_id)
+	_update_day_lighting()
+
+
+func _update_day_lighting() -> void:
+	if world == null:
+		return
+	# Fractional simulation time makes the sun glide at any game speed. The
+	# accumulator stays fixed during pause; load/reset supplies a new saved tick.
+	var fraction: float = clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0)
+	solar_state = SolarCycleClass.sample(world.tick, fraction)
+	# Modulate this world's CanvasItems only. The HUD has its own CanvasLayer,
+	# and multiple viewports/worlds can each have an independent time of day.
+	modulate = solar_state["ambient"] as Color
+	if hud != null:
+		hud.update_sky_time(world.tick, fraction)
 
 
 func _request_soldier_food(unit_id: int) -> void:
@@ -1127,13 +1306,22 @@ func _handle_keyboard_camera(delta: float) -> void:
 
 func _set_zoom(value: float) -> void:
 	_camera_auto_fit = false
-	var clamped: float = clampf(value, 0.30, 2.4)
+	var clamped: float = clampf(value, _minimum_zoom(), 2.4)
 	camera.zoom = Vector2(clamped, clamped)
 	camera.force_update_scroll()
 	_update_placement_preview()
 
 
 func _create_demo_world() -> void:
+	terrain_load_error = ""
+	if demo_kind == "mountainous-region":
+		var imported: Dictionary = ImportedTerrainClass.load_world(terrain_map_path)
+		world = imported.get("world") as SimulationWorldClass
+		if world != null:
+			return
+		terrain_load_error = String(imported.get("error", "Unknown map error"))
+		# Never label fallback terrain as a successful replica of the source map.
+		demo_kind = "test"
 	if demo_kind == "economy":
 		world = SimulationWorldClass.new()
 		world.setup_economy_demo()
@@ -1143,6 +1331,8 @@ func _create_demo_world() -> void:
 	else:
 		world = SimulationWorldClass.new(TestLevelClass.MAP_SIZE)
 		TestLevelClass.setup(world)
+	if not terrain_load_error.is_empty():
+		world._push_event("Mountainous Region could not be loaded: %s. Showing the test level." % terrain_load_error)
 
 
 func _reset_demo() -> void:
@@ -1150,19 +1340,33 @@ func _reset_demo() -> void:
 	_pointer_inside = false
 	_clear_placement_preview()
 	_create_demo_world()
+	_update_window_title()
 	terrain_renderer.bind_grid(world.grid)
 	_center_camera()
 	accumulator = 0.0
 	selected_cell = Vector2i(-1, -1)
 	selected_unit_id = 0
+	_update_ui()
+	queue_redraw()
+
+
+func _save_game_path() -> String:
+	if not save_path_override.is_empty():
+		return save_path_override
+	if save_path != SaveSystemClass.DEFAULT_PATH:
+		return save_path
+	return TERRAIN_STUDY_SAVE_PATH if demo_kind == "mountainous-region" else SaveSystemClass.DEFAULT_PATH
 
 
 func _load_game() -> void:
 	_set_build_mode("")
 	_pointer_inside = false
 	_clear_placement_preview()
-	var loaded: bool = SaveSystemClass.load_world(world)
+	var path: String = _save_game_path()
+	var loaded: bool = SaveSystemClass.load_world(world, path)
 	if loaded:
+		demo_kind = SaveSystemClass.saved_map_id(path)
+		_update_window_title()
 		selected_unit_id = 0
 		terrain_renderer.bind_grid(world.grid)
 		_center_camera()
@@ -1170,18 +1374,35 @@ func _load_game() -> void:
 		if not world.grid.contains(selected_cell):
 			selected_cell = Vector2i(-1, -1)
 	world._push_event("Game loaded." if loaded else "No valid save found.")
+	_update_ui()
+	queue_redraw()
+
+
+func _camera_map_rect() -> Rect2:
+	var viewport_size: Vector2 = get_viewport_rect().size
+	return Rect2(Vector2(GameHudClass.MAP_LEFT, GameHudClass.MAP_TOP),
+		Vector2(maxf(1.0, viewport_size.x - GameHudClass.MAP_LEFT - 12.0),
+			maxf(1.0, viewport_size.y - GameHudClass.MAP_TOP - GameHudClass.MAP_BOTTOM)))
+
+
+func _camera_fit_zoom() -> float:
+	var bounds: Rect2 = terrain_renderer.map_bounds().grow(44.0)
+	var available: Vector2 = _camera_map_rect().size
+	return clampf(minf(available.x / maxf(1.0, bounds.size.x),
+		available.y / maxf(1.0, bounds.size.y)), 0.001, 1.0)
+
+
+func _minimum_zoom() -> float:
+	# Keep the familiar close-map range, but let a large imported region fit.
+	return minf(0.30, _camera_fit_zoom())
 
 
 func _center_camera() -> void:
 	_camera_auto_fit = true
 	var bounds: Rect2 = terrain_renderer.map_bounds().grow(44.0)
-	var viewport_size: Vector2 = get_viewport_rect().size
-	var left_margin: float = GameHudClass.MAP_LEFT
-	var available: Vector2 = Vector2(maxf(360.0, viewport_size.x - left_margin - 12.0), maxf(340.0, viewport_size.y - GameHudClass.MAP_TOP - GameHudClass.MAP_BOTTOM))
-	var fit_zoom: float = clampf(minf(available.x / maxf(1.0, bounds.size.x), available.y / maxf(1.0, bounds.size.y)), 0.30, 1.0)
+	var fit_zoom: float = _camera_fit_zoom()
 	camera.zoom = Vector2(fit_zoom, fit_zoom)
-	var target_center: Vector2 = Vector2(left_margin + available.x * 0.5, GameHudClass.MAP_TOP + available.y * 0.5)
-	camera.position = bounds.get_center() - (target_center - viewport_size * 0.5) / fit_zoom
+	camera.position = bounds.get_center() - (_camera_map_rect().get_center() - get_viewport_rect().size * 0.5) / fit_zoom
 
 
 func _on_viewport_size_changed() -> void:

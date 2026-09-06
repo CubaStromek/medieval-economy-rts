@@ -22,5 +22,19 @@ repository for its full notices and history.
 ## Knights and Merchants assets
 
 No original executable, source code, graphics, music, sound, map or campaign is
-included. “Knights and Merchants” is used only to identify the reference game.
+distributed with this public source. Optional local map imports, their source
+binaries and converted data stay in ignored external directories. “Knights and Merchants” is used only to identify the reference game.
 This project is unofficial and is not endorsed by the original rightsholders.
+
+The terrain converter implements the documented binary layout and uses terrain
+kind/tree-ID format tables from the KaM Remake reference above. Original game
+maps retain their own asset rights; an engine license does not license those
+maps. See [Mountainous Region provenance](docs/mountainous-region.md).
+
+The optional graphics sandbox reimplements the reference terrain projection,
+tile rotations and interpolated height-lighting rules in Godot. Its local
+original texture atlas, cropped maps, object-position fixtures and screenshots
+remain in ignored `game/external_assets/` directories and are not published.
+The optional displayed tree art is this project's existing prototype artwork,
+not original KaM tree sprites. See
+[graphics sandbox provenance and limitations](docs/terrain-graphics-sandbox.md).

@@ -41,14 +41,20 @@ static func id_at(world: Variant, cell: Vector2i) -> int:
 	return 0
 
 
-static func placement_valid(world: Variant, building_type: String, cell: Vector2i) -> bool:
+static func placement_valid(world: Variant, building_type: String, cell: Vector2i, entrance: Vector2i = NO_CELL, proposed_footprint: Dictionary = {}) -> bool:
 	var definition: Dictionary = world.catalog.building(building_type)
 	var resource: String = String(definition.get("extract_resource", ""))
 	if resource.is_empty():
 		return true
+	var range_cells: Array[Vector2i] = []
+	for occupied: Vector2i in proposed_footprint:
+		range_cells.append(occupied)
 	for deposit: Dictionary in world.deposits.values():
-		if deposit["resource"] == resource and int(deposit["amount"]) > 0 and _in_range(definition, cell, deposit["position"]):
-			if candidate_work_cell(world, deposit, cell) != NO_CELL:
+		if deposit["resource"] == resource and int(deposit["amount"]) > 0 and _in_range(definition, cell, deposit["position"], range_cells):
+			# Placement must test the route that remains after the walls exist.
+			# Modern gathering radius starts at the nearest occupied house tile;
+			# historical placement without a mask keeps its one-cell anchor.
+			if candidate_work_cell(world, deposit, cell if entrance == NO_CELL else entrance, proposed_footprint) != NO_CELL:
 				return true
 	return false
 
@@ -165,11 +171,17 @@ static func _at_deposit(world: Variant, worker: Dictionary, deposit: Dictionary)
 
 
 static func _serves(world: Variant, definition: Dictionary, building: Dictionary, deposit: Dictionary) -> bool:
-	return String(definition.get("extract_resource", "")) == String(deposit["resource"]) and world.is_building_complete(building) and _in_range(definition, building["position"], deposit["position"])
+	return String(definition.get("extract_resource", "")) == String(deposit["resource"]) and world.is_building_complete(building) and _in_range(definition, building["position"], deposit["position"], world.building_cells(building))
 
 
-static func _in_range(definition: Dictionary, building_cell: Vector2i, deposit_cell: Vector2i) -> bool:
-	return absi(building_cell.x - deposit_cell.x) + absi(building_cell.y - deposit_cell.y) <= int(definition.get("extract_radius", 3))
+static func _in_range(definition: Dictionary, building_cell: Vector2i, deposit_cell: Vector2i, footprint_cells: Array[Vector2i] = []) -> bool:
+	var radius: int = int(definition.get("extract_radius", 3))
+	if footprint_cells.is_empty():
+		return absi(building_cell.x - deposit_cell.x) + absi(building_cell.y - deposit_cell.y) <= radius
+	for cell: Vector2i in footprint_cells:
+		if absi(cell.x - deposit_cell.x) + absi(cell.y - deposit_cell.y) <= radius:
+			return true
+	return false
 
 
 static func _output_room(world: Variant, building: Dictionary, resource: String, except_worker: int) -> bool:

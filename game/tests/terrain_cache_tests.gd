@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const Grid = preload("res://scripts/simulation/grid_map_sim.gd")
 const Renderer = preload("res://scripts/view/terrain_renderer.gd")
 const World = preload("res://scripts/simulation/simulation_world.gd")
@@ -162,7 +164,7 @@ static func _test_shared_height_and_removed_roads(failures: Array[String]) -> vo
 
 
 static func _test_definition_and_rebind(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(10, 8))
+	var world := LegacyFixture.create(Vector2i(10, 8))
 	world.grid.add_road(Vector2i(6, 5))
 	world.grid.set_base_terrain(Vector2i(5, 5), "water")
 	world.grid.set_vertex_height(Vector2i(1, 1), 2)
@@ -180,7 +182,7 @@ static func _test_definition_and_rebind(failures: Array[String]) -> void:
 	var new_texture: Texture2D = renderer._textures["grass"] as Texture2D
 	_expect(new_texture != old_texture and new_texture.get_image().get_pixel(0, 0) != old_pixel,
 		"Definition invalidation must replace the actual texture pixels, not only acknowledge its revision", failures)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	_expect(restored.from_data(JSON.parse_string(JSON.stringify(world.to_data()))),
 		"Renderer rebind fixture must load a genuine serialized world", failures)
 	renderer.bind_grid(restored.grid)

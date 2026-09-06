@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 10
 
@@ -54,7 +56,7 @@ static func _reservations_valid(world: Variant) -> bool:
 
 
 static func _test_exact_boundaries_and_professions(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(40, 8))
+	var world = LegacyFixture.create(Vector2i(40, 8))
 	var roles: Array = world.catalog.units.keys()
 	roles.append_array(world.catalog.soldiers.keys())
 	var index: int = 0
@@ -80,7 +82,7 @@ static func _test_exact_boundaries_and_professions(failures: Array[String]) -> v
 
 static func _test_outdoor_specialists_sleep_at_their_own_huts(failures: Array[String]) -> void:
 	for row: Array in [["lumberjack", "lumber_hut"], ["gardener", "forester_hut"], ["fisherman", "fisher_hut"]]:
-		var world = World.new(Vector2i(18, 12))
+		var world = LegacyFixture.create(Vector2i(18, 12))
 		var warehouse: int = world.place_building("warehouse", Vector2i(2, 3))
 		var resource: int = 0
 		if row[0] == "lumberjack":
@@ -132,7 +134,7 @@ static func _test_outdoor_specialists_sleep_at_their_own_huts(failures: Array[St
 
 
 static func _test_shared_warehouse_routes_and_morning_exits(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(36, 22))
+	var world = LegacyFixture.create(Vector2i(36, 22))
 	var warehouse: int = world.place_building("warehouse", Vector2i(18, 7))
 	var ids: Array[int] = []
 	for index: int in range(6):
@@ -178,7 +180,7 @@ static func _test_shared_warehouse_routes_and_morning_exits(failures: Array[Stri
 
 
 static func _test_consumed_recipe_pauses_without_restarting(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(12, 10))
+	var world = LegacyFixture.create(Vector2i(12, 10))
 	var bakery: int = world.place_building("bakery", Vector2i(5, 3))
 	var building: Dictionary = world.buildings[bakery]
 	building["inputs"]["flour"] = 1
@@ -209,7 +211,7 @@ static func _test_consumed_recipe_pauses_without_restarting(failures: Array[Stri
 
 
 static func _test_construction_preserves_completed_progress(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(16, 11))
+	var world = LegacyFixture.create(Vector2i(16, 11))
 	world.place_building("warehouse", Vector2i(3, 3))
 	world.economy_enabled = true
 	var site: int = world.place_building("bakery", Vector2i(11, 3))
@@ -240,7 +242,7 @@ static func _test_construction_preserves_completed_progress(failures: Array[Stri
 
 
 static func _test_sleeping_cargo_does_not_reserve_inputs(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(20, 12))
+	var world = LegacyFixture.create(Vector2i(20, 12))
 	var warehouse: int = world.place_building("warehouse", Vector2i(3, 3))
 	var hut: int = world.place_building("lumber_hut", Vector2i(10, 3))
 	var carrier: int = world.spawn_worker(Vector2i(6, 8), "carrier")
@@ -263,7 +265,7 @@ static func _test_sleeping_cargo_does_not_reserve_inputs(failures: Array[String]
 
 
 static func _test_missing_home_does_not_permit_night_work(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(15, 10))
+	var world = LegacyFixture.create(Vector2i(15, 10))
 	var sawmill: int = world.place_building("sawmill", Vector2i(10, 3))
 	var id: int = world.spawn_worker(Vector2i(5, 7), "carrier")
 	var carrier: Dictionary = world.workers[id]
@@ -285,7 +287,7 @@ static func _test_missing_home_does_not_permit_night_work(failures: Array[String
 
 
 static func _test_blocked_sleep_route_preserves_cargo(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(20, 12))
+	var world = LegacyFixture.create(Vector2i(20, 12))
 	world.place_building("warehouse", Vector2i(2, 3))
 	var sawmill: int = world.place_building("sawmill", Vector2i(15, 3))
 	var id: int = world.spawn_worker(Vector2i(13, 8), "carrier")
@@ -310,7 +312,7 @@ static func _test_blocked_sleep_route_preserves_cargo(failures: Array[String]) -
 
 
 static func _test_night_finishes_the_visible_movement_step(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(18, 12))
+	var world = LegacyFixture.create(Vector2i(18, 12))
 	world.place_building("warehouse", Vector2i(14, 3))
 	world.place_building("sawmill", Vector2i(2, 3))
 	var id: int = world.spawn_worker(Vector2i(10, 8), "carrier")
@@ -340,7 +342,7 @@ static func _test_night_finishes_the_visible_movement_step(failures: Array[Strin
 
 
 static func _test_guard_reports_to_its_tower_at_night(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(18, 12))
+	var world = LegacyFixture.create(Vector2i(18, 12))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 3))
 	var tower: int = world.place_building("watchtower", Vector2i(12, 3))
 	var id: int = world.spawn_worker(Vector2i(8, 8), "recruit")

@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Level = preload("res://scripts/simulation/test_level.gd")
 const Relief = preload("res://scripts/simulation/relief_demo.gd")
@@ -17,9 +19,9 @@ static func run() -> Array[String]:
 
 
 static func _test_existing_pond_and_paid_start(failures: Array[String]) -> void:
-	var world = World.new(Level.MAP_SIZE)
+	var world = LegacyFixture.create(Level.MAP_SIZE)
 	Level.setup(world)
-	var terrain = World.new(Level.MAP_SIZE)
+	var terrain = LegacyFixture.create(Level.MAP_SIZE)
 	Relief.setup_terrain(terrain)
 	_check(world.buildings.size() == 2 and world.workers.is_empty(),
 		"Fish availability must not grant a free fishing hut or citizen", failures)
@@ -45,7 +47,7 @@ static func _test_existing_pond_and_paid_start(failures: Array[String]) -> void:
 
 
 static func _test_player_builds_trains_catches_and_transports(failures: Array[String]) -> void:
-	var world = World.new(Level.MAP_SIZE)
+	var world = LegacyFixture.create(Level.MAP_SIZE)
 	Level.setup(world)
 	var school_id: int = world.building_id_at(Vector2i(3, 16))
 	# Use only the commands available to a player: ordinary paid training,
@@ -91,7 +93,7 @@ static func _test_player_builds_trains_catches_and_transports(failures: Array[St
 		"Starting fishing must use exactly three paid citizens", failures)
 	_check(_remaining_fish(world) + int(world.resource_stock("fish")["total"]) == 80,
 		"Construction and fish logistics must conserve all eighty natural or caught fish", failures)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	_check(restored.from_data(_snapshot(world)), "The player-built fishing settlement must remain saveable", failures)
 
 
@@ -156,7 +158,7 @@ static func _test_save_mid_catch_and_finite_stock(failures: Array[String]) -> vo
 			break
 	_check(source.workers[fisher]["carrying"] == "fish" and _remaining_fish(source) == 1,
 		"Save fixture must pause after an actual bank catch while the fisherman carries it home", failures)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_snapshot(source)):
 		failures.append("A real fisherman carrying a caught fish must survive save/load")
 		return
@@ -173,7 +175,7 @@ static func _test_save_mid_catch_and_finite_stock(failures: Array[String]) -> vo
 
 
 static func _pond(amount: int) -> Variant:
-	var world = World.new(Vector2i(12, 8))
+	var world = LegacyFixture.create(Vector2i(12, 8))
 	for cell: Vector2i in [Vector2i(7, 2), Vector2i(7, 4)]:
 		world.grid.set_base_terrain(cell, "water")
 		world.add_deposit(cell, "fish", amount)

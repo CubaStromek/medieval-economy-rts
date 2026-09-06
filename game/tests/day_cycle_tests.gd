@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const DayCycle = preload("res://scripts/simulation/day_cycle.gd")
 const TEST_COUNT: int = 7
@@ -21,7 +23,7 @@ static func run() -> Array[String]:
 
 
 static func _test_new_world_and_read_only_clock(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(2, 2))
+	var world = LegacyFixture.create(Vector2i(2, 2))
 	var before: Dictionary = world.to_data()
 	for _read: int in range(20):
 		_expect_clock(world.calendar_time(), 1, 5, 0, "dawn", "Fresh world", failures)
@@ -34,7 +36,7 @@ static func _test_new_world_and_read_only_clock(failures: Array[String]) -> void
 
 
 static func _test_minute_phase_and_calendar_boundaries(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(2, 2))
+	var world = LegacyFixture.create(Vector2i(2, 2))
 	# Explicit expectations describe the promised ten-minute day independently
 	# of production constants or a second copy of its conversion formula.
 	for row: Array in [
@@ -64,7 +66,7 @@ static func _test_minute_phase_and_calendar_boundaries(failures: Array[String]) 
 
 
 static func _test_full_cycle_uses_six_thousand_simulation_ticks(failures: Array[String]) -> void:
-	var world = World.new(Vector2i(2, 2))
+	var world = LegacyFixture.create(Vector2i(2, 2))
 	for _tick: int in range(5999):
 		world.step_tick()
 	_check(world.tick == 5999, "The real simulation must execute all 5,999 requested ticks", failures)
@@ -80,7 +82,7 @@ static func _test_current_json_preserves_clock_and_inventory(failures: Array[Str
 	var before: Dictionary = source.to_data()
 	_check(int(before["version"]) == World.SAVE_VERSION and int(before["version"]) >= 12,
 		"A calendar save must use the current schema and retain indoor-save compatibility", failures)
-	var restored = World.new()
+	var restored = LegacyFixture.create()
 	if not restored.from_data(_json(before)):
 		failures.append("A populated current evening save must load through actual JSON serialization")
 		return
@@ -105,7 +107,7 @@ static func _test_saved_boundary_continues_on_next_tick(failures: Array[String])
 		# after loading, independently of the persistent calendar and materials.
 		var source: Variant = _inventory_fixture(false)
 		source.tick = int(row[0])
-		var restored = World.new()
+		var restored = LegacyFixture.create()
 		if not restored.from_data(_json(source.to_data())):
 			failures.append("A save immediately before tick %d must load" % (source.tick + 1))
 			continue
@@ -134,7 +136,7 @@ static func _test_historical_saves_project_existing_tick_without_migration(failu
 			if version == 11:
 				worker.erase("inside_building_id")
 				worker.erase("indoor_wait_ticks")
-		var restored = World.new()
+		var restored = LegacyFixture.create()
 		if not restored.from_data(legacy):
 			failures.append("A historical v%d save must acquire its calendar from the preserved tick" % version)
 			continue
@@ -153,11 +155,11 @@ static func _test_large_json_ticks_keep_integer_precision(failures: Array[String
 		[9007199254740500, 1501199875791, 7, 0, "day"],
 		[9007199254740991, 1501199875791, 8, 57, "day"],
 	]:
-		var source = World.new(Vector2i(2, 2))
+		var source = LegacyFixture.create(Vector2i(2, 2))
 		source.tick = int(row[0])
 		_expect_clock(DayCycle.at_tick(source.tick), row[1], row[2], row[3], row[4],
 			"Large tick %d conversion" % source.tick, failures)
-		var restored = World.new()
+		var restored = LegacyFixture.create()
 		if not restored.from_data(_json(source.to_data())):
 			failures.append("The calendar must support the existing JSON-safe tick %d" % source.tick)
 			continue
@@ -171,7 +173,7 @@ static func _test_large_json_ticks_keep_integer_precision(failures: Array[String
 
 
 static func _inventory_fixture(include_carrier: bool = true) -> Variant:
-	var world = World.new(Vector2i(12, 9))
+	var world = LegacyFixture.create(Vector2i(12, 9))
 	var store: int = world.place_building("warehouse", Vector2i(2, 2))
 	var sawmill: int = world.place_building("sawmill", Vector2i(6, 2))
 	world.buildings[store]["storage"]["plank"] = 7

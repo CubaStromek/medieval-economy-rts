@@ -1,5 +1,7 @@
 extends RefCounted
 
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
+
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const TEST_COUNT: int = 5
 
@@ -20,7 +22,7 @@ static func run() -> Array[String]:
 # Deliberately seed different counts in each inventory bucket: this tests all
 # catalog IDs independently of their current production recipes or HUD category.
 static func all_resource_fixture() -> Dictionary:
-	var world := World.new(Vector2i(40, 12))
+	var world := LegacyFixture.create(Vector2i(40, 12))
 	var first_warehouse: int = world.place_building("warehouse", Vector2i(2, 2))
 	var second_warehouse: int = world.place_building("warehouse", Vector2i(6, 2))
 	var hut: int = world.place_building("lumber_hut", Vector2i(10, 2))
@@ -61,7 +63,7 @@ static func _test_every_catalog_resource(failures: Array[String]) -> void:
 
 
 static func _test_real_carrier_transfer_conserves_stock(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 8))
+	var world := LegacyFixture.create(Vector2i(12, 8))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 2))
 	var hut: int = world.place_building("lumber_hut", Vector2i(8, 2))
 	world.buildings[hut]["outputs"]["log"] = 6
@@ -82,13 +84,13 @@ static func _test_real_carrier_transfer_conserves_stock(failures: Array[String])
 	_check(observed_carrying, "Transfer fixture must observe a physical carried log", failures)
 	_check(world.resource_stock("log") == {"warehouse": 6, "buildings": 0, "carried": 0, "total": 6},
 		"After delivery all six logs must move into the warehouse bucket", failures)
-	var restored := World.new()
+	var restored := LegacyFixture.create()
 	_check(restored.from_data(world.to_data()) and restored.resource_stock("log") == world.resource_stock("log"),
 		"Save/load must preserve resource totals and locations", failures)
 
 
 static func _test_warehouse_payment_does_not_spend_total_stock(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(10, 8))
+	var world := LegacyFixture.create(Vector2i(10, 8))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 2))
 	var tower: int = world.place_building("watchtower", Vector2i(6, 2))
 	if tower == 0:
@@ -109,7 +111,7 @@ static func _test_warehouse_payment_does_not_spend_total_stock(failures: Array[S
 
 
 static func _test_recipe_consumption_and_completion(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(8, 8))
+	var world := LegacyFixture.create(Vector2i(8, 8))
 	var sawmill: int = world.place_building("sawmill", Vector2i(3, 3))
 	world.buildings[sawmill]["inputs"]["log"] = 1
 	_check(int(world.resource_stock("log")["total"]) == 1, "Unused recipe inputs must count as stock", failures)
@@ -125,7 +127,7 @@ static func _test_recipe_consumption_and_completion(failures: Array[String]) -> 
 
 
 static func _test_construction_and_unfinished_storage_are_excluded(failures: Array[String]) -> void:
-	var world := World.new(Vector2i(12, 8))
+	var world := LegacyFixture.create(Vector2i(12, 8))
 	var warehouse: int = world.place_building("warehouse", Vector2i(2, 2))
 	var unfinished: int = world.place_building("warehouse", Vector2i(6, 2))
 	var hut: int = world.place_building("lumber_hut", Vector2i(9, 2))

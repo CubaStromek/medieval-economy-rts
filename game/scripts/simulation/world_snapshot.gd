@@ -3,8 +3,9 @@ extends RefCounted
 
 const GridMapSimClass = preload("res://scripts/simulation/grid_map_sim.gd")
 const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
+const BuildingFoundationsClass = preload("res://scripts/simulation/building_foundations.gd")
 
-const SAVE_VERSION: int = 15
+const SAVE_VERSION: int = 17
 const MAX_INDOOR_WAIT_TICKS: int = 6
 const MAX_MAP_SIZE := Vector2i(256, 256)
 # JSON stores numbers as doubles. Keep integer state exact across JSON round trips.
@@ -48,6 +49,10 @@ static func to_data(world: Variant) -> Dictionary:
 	var buildings: Array[Dictionary] = []
 	for entity_id: int in _sorted_ids(world.buildings):
 		var building: Dictionary = world.buildings[entity_id].duplicate(true)
+		building["footprint_version"] = int(building.get("footprint_version", 0))
+		building["foundation_target_height"] = int(building.get("foundation_target_height", -1))
+		building["foundation_work_total"] = int(building.get("foundation_work_total", 0))
+		building["foundation_work_remaining"] = int(building.get("foundation_work_remaining", 0))
 		building["position"] = _vector_to_array(building["position"])
 		building["entrance"] = _vector_to_array(building["entrance"])
 		buildings.append(building)
@@ -146,7 +151,7 @@ func _load(data: Dictionary) -> bool:
 	# Buildings must already block their cells before diagonal flank validation.
 	if not _load_trail_links(data, saved_tick):
 		return false
-	if not _load_workers(workers):
+	if not _load_workers(workers) or not _validate_foundation_surroundings():
 		return false
 	if _version >= 4 and next_id <= _highest_id:
 		return false
@@ -357,6 +362,12 @@ func _load_buildings(saved_buildings: Array) -> bool:
 		var type: String = _read_string(saved.get("type"))
 		var position: Vector2i = _read_cell(saved.get("position"))
 		var entrance: Vector2i = _read_cell(saved.get("entrance"))
+		# Expanding a historic settlement would overlap neighbors, roads and
+		# citizens. Keep each old building's exact one-cell geometry and door.
+		var footprint_version: int = 0 if _version < 16 else _read_integer(saved.get("footprint_version"), 0, 1)
+		var foundation_target: int = -1 if _version < 17 else _read_integer(saved.get("foundation_target_height"), -1, GridMapSimClass.MAX_HEIGHT)
+		var foundation_total: int = 0 if _version < 17 else _read_integer(saved.get("foundation_work_total"))
+		var foundation_remaining: int = 0 if _version < 17 else _read_integer(saved.get("foundation_work_remaining"))
 		var definition: Dictionary = _world.catalog.building(type)
 		var inputs: Dictionary = _read_inventory(saved.get("inputs", {} if _version < 4 else null))
 		var outputs: Dictionary = _read_inventory(saved.get("outputs", {} if _version < 4 else null))
@@ -383,15 +394,16 @@ func _load_buildings(saved_buildings: Array) -> bool:
 		var service_queue: Array[Dictionary] = _read_service_queue(saved.get("service_queue", [] if _version < 7 else null), type)
 		if order_active and (production_queue.is_empty() or production_queue[0] != recipe_id or process_remaining == 0):
 			return false
-		var extraction: bool = not String(definition.get("extract_resource", "")).is_empty()
-		if (
-			not _valid or definition.is_empty() or not _world.grid.is_buildable(position)
-			or (not extraction and not _world._building_terrain_valid(type, position))
-			or _deposit_at(position) or _deposit_at(entrance)
-			or entrances.has(position) or not _world.grid.can_use_building_exit(position, entrance)
-			or not _world.grid.overlay_at(position).is_empty()
-			or _world.grid.traffic_wear_at(position) != 0
-		):
+		var geometry: Dictionary = {
+			"type": type, "position": position, "entrance": entrance,
+			"footprint_version": footprint_version,
+			"foundation_target_height": foundation_target,
+			"foundation_work_total": foundation_total,
+			"foundation_work_remaining": foundation_remaining,
+		}
+		if not _valid or definition.is_empty() or not _validate_building_geometry(geometry, definition, entrances):
+			return false
+		if foundation_remaining > 0 and (construction_remaining != construction_limit or not construction_delivered.is_empty()):
 			return false
 		var queue: Array = _read_array(saved.get("training_queue", [] if _version < 3 else null))
 		var trainable: Array = definition.get("trains", [])
@@ -417,6 +429,10 @@ func _load_buildings(saved_buildings: Array) -> bool:
 			process_remaining = 0
 		_world.buildings[entity_id] = {
 			"id": entity_id, "type": type, "position": position, "entrance": entrance,
+			"footprint_version": footprint_version,
+			"foundation_target_height": foundation_target,
+			"foundation_work_total": foundation_total,
+			"foundation_work_remaining": foundation_remaining,
 			"storage": storage, "inputs": inputs, "outputs": outputs,
 			"process_remaining": process_remaining,
 			"training_queue": training_queue, "training_remaining": training_remaining,
@@ -426,13 +442,112 @@ func _load_buildings(saved_buildings: Array) -> bool:
 			"construction_delivered": construction_delivered, "production_queue": production_queue,
 			"order_active": order_active, "service_queue": service_queue,
 		}
-		entrances[entrance] = true
-		_world.grid.block(position, entity_id)
+		entrances[entrance] = footprint_version == 1
+		for cell: Vector2i in _world.building_cells(geometry):
+			_world.grid.block(cell, entity_id)
+	return true
+
+
+func _validate_building_geometry(building: Dictionary, definition: Dictionary, entrances: Dictionary) -> bool:
+	var position: Vector2i = building["position"]
+	var entrance: Vector2i = building["entrance"]
+	var modern: bool = int(building["footprint_version"]) == 1
+	var pending: bool = BuildingFoundationsClass.pending(building)
+	var cells: Array[Vector2i] = _world.building_cells(building)
+	if cells.is_empty() or not _validate_foundation_progress(building, cells):
+		return false
+	var door: Vector2i = _world.building_door_cell(building)
+	# Use the saved instance's door, never the world's authoring preference.
+	if modern and entrance != door + Vector2i.DOWN:
+		return false
+	if entrances.has(entrance) and (modern or bool(entrances[entrance])):
+		return false
+	if cells.has(entrance) or _deposit_at(entrance):
+		return false
+	# A Builder works from outside the reserved, not-yet-level foundation.
+	# Ordinary completed foundations retain the strict historical door check.
+	if pending:
+		if not _world.grid.is_walkable(entrance):
+			return false
+	elif not _world.grid.can_use_building_exit(door, entrance):
+		return false
+	var extraction: bool = not String(definition.get("extract_resource", "")).is_empty()
+	if not extraction and not _world._building_terrain_valid(String(building["type"]), position):
+		return false
+	var allowed: Array = definition.get("allowed_terrain", [])
+	var foundation_height: int = -1
+	for cell: Vector2i in cells:
+		var terrain_buildable: bool = bool(_world.grid.terrain_definition(_world.grid.base_terrain_at(cell)).get("buildable", false))
+		var site_ground_valid: bool = _world.grid.is_walkable(cell) and terrain_buildable if pending else _world.grid.is_buildable(cell)
+		if (
+			not site_ground_valid or entrances.has(cell) or _deposit_at(cell)
+			or not _world.grid.overlay_at(cell).is_empty() or _world.grid.traffic_wear_at(cell) != 0
+		):
+			return false
+		if modern:
+			if not allowed.is_empty() and not allowed.has(_world.grid.base_terrain_at(cell)):
+				return false
+			if pending:
+				continue
+			for height: int in _world.grid.cell_corner_heights(cell):
+				if foundation_height == -1:
+					foundation_height = height
+				elif height != foundation_height:
+					return false
+	return true
+
+
+# Heights themselves, not cached work labels, are the authoritative remaining
+# earthwork. Reading a save never flattens terrain or advances a work tick.
+func _validate_foundation_progress(building: Dictionary, cells: Array[Vector2i]) -> bool:
+	var target: int = int(building["foundation_target_height"])
+	var total: int = int(building["foundation_work_total"])
+	var remaining: int = int(building["foundation_work_remaining"])
+	if target == -1:
+		# Older saves are intentionally not retrofitted or charged for earthwork.
+		return total == 0 and remaining == 0
+	if int(building["footprint_version"]) != 1:
+		return false
+	var vertices: Array[Vector2i] = BuildingFoundationsClass.vertices_for_cells(cells)
+	var work_interval: int = BuildingFoundationsClass.TICKS_PER_HEIGHT_UNIT
+	if total % work_interval != 0 or remaining > total:
+		return false
+	if total > vertices.size() * BuildingFoundationsClass.MAX_HEIGHT_SPAN * work_interval:
+		return false
+	var minimum: int = GridMapSimClass.MAX_HEIGHT
+	var maximum: int = 0
+	var height_units: int = 0
+	for vertex: Vector2i in vertices:
+		if not _world.grid.contains_vertex(vertex):
+			return false
+		var height: int = _world.grid.vertex_height(vertex)
+		minimum = mini(minimum, height)
+		maximum = maxi(maximum, height)
+		height_units += absi(height - target)
+	if remaining == 0:
+		return height_units == 0
+	if total == 0 or maximum - minimum > BuildingFoundationsClass.MAX_HEIGHT_SPAN:
+		return false
+	if target < minimum or target > maximum:
+		return false
+	return height_units == ceili(float(remaining) / float(work_interval))
+
+
+func _validate_foundation_surroundings() -> bool:
+	# Trees, fields, deposits, citizens and all other foundations are now known.
+	# The shared non-mutating safety check uses this site's existing blockers.
+	for building: Dictionary in _world.buildings.values():
+		if BuildingFoundationsClass.pending(building) and not BuildingFoundationsClass.validate_saved(_world, building):
+			return false
 	return true
 
 
 func _load_trees(saved_trees: Array) -> bool:
 	var cells: Dictionary = {}
+	var modern_entrances: Dictionary = {}
+	for building: Dictionary in _world.buildings.values():
+		if int(building["footprint_version"]) == 1:
+			modern_entrances[building["entrance"]] = true
 	for value: Variant in saved_trees:
 		var saved: Dictionary = _read_dictionary(value)
 		var entity_id: int = _read_entity_id(saved.get("id"))
@@ -443,7 +558,7 @@ func _load_trees(saved_trees: Array) -> bool:
 			age = _read_integer(saved.get("age_ticks"), 0, _world.TREE_MATURE_AGE_TICKS)
 		elif saved.has("age_ticks"):
 			_read_integer(saved["age_ticks"], 0, _world.TREE_MATURE_AGE_TICKS)
-		if not _valid or cells.has(position) or _deposit_at(position) or not _world.grid.allows_trees(position):
+		if not _valid or cells.has(position) or modern_entrances.has(position) or _deposit_at(position) or not _world.grid.allows_trees(position):
 			return false
 		cells[position] = true
 		_world.trees[entity_id] = {"id": entity_id, "position": position, "amount": amount, "age_ticks": age}
