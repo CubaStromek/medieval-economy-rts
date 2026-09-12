@@ -1,0 +1,493 @@
+{
+  "generated_at": "2026-09-10T15:57:16.494222+00:00",
+  "tool": "tools/preview_pixellab_walk.py",
+  "status": "warnings",
+  "expected_directions": [
+    "S"
+  ],
+  "expected_frames_per_direction": 8,
+  "full_eight_direction_delivery": false,
+  "review_note": "Pouze jižní směr. API vrátilo devět odlišných snímků. Krok se neuzavírá plynule; ostatních sedm směrů chůze zatím není dodáno.",
+  "frame_count": 9,
+  "uniform_canvas": [
+    128,
+    128
+  ],
+  "bbox_convention": "left/top inclusive; right/bottom exclusive",
+  "source_files_unchanged": true,
+  "atlas_cells_exact_rgba_match": true,
+  "registration": "whole source canvases, unchanged; no automatic trim, pivot, or foot alignment",
+  "measured_human_height_source_px": 108.0,
+  "preview_only_scale_source_height": 108.0,
+  "preview_scale_note": "Malý náhled: 33 px výšky člověka podle jediné zadané tělesné výšky 108 zdrojových px. Jde o náhledové měřítko; přesnou společnou kotvu nohou a skutečnou hru je ještě třeba ověřit.",
+  "atlas": {
+    "file": "atlas.png",
+    "size": [
+      1152,
+      128
+    ],
+    "sha256": "ae83ea0054c2c74d42a23457ef12e98aaba8dea60ec332bc296a3297dcb87ee2",
+    "cells": [
+      {
+        "direction": "S",
+        "frame": 0,
+        "rect_xywh": [
+          0,
+          0,
+          128,
+          128
+        ]
+      },
+      {
+        "direction": "S",
+        "frame": 1,
+        "rect_xywh": [
+          128,
+          0,
+          128,
+          128
+        ]
+      },
+      {
+        "direction": "S",
+        "frame": 2,
+        "rect_xywh": [
+          256,
+          0,
+          128,
+          128
+        ]
+      },
+      {
+        "direction": "S",
+        "frame": 3,
+        "rect_xywh": [
+          384,
+          0,
+          128,
+          128
+        ]
+      },
+      {
+        "direction": "S",
+        "frame": 4,
+        "rect_xywh": [
+          512,
+          0,
+          128,
+          128
+        ]
+      },
+      {
+        "direction": "S",
+        "frame": 5,
+        "rect_xywh": [
+          640,
+          0,
+          128,
+          128
+        ]
+      },
+      {
+        "direction": "S",
+        "frame": 6,
+        "rect_xywh": [
+          768,
+          0,
+          128,
+          128
+        ]
+      },
+      {
+        "direction": "S",
+        "frame": 7,
+        "rect_xywh": [
+          896,
+          0,
+          128,
+          128
+        ]
+      },
+      {
+        "direction": "S",
+        "frame": 8,
+        "rect_xywh": [
+          1024,
+          0,
+          128,
+          128
+        ]
+      }
+    ]
+  },
+  "directions": [
+    {
+      "direction": "S",
+      "frames": [
+        {
+          "file": "jobs/S/images/frame_00.png",
+          "width": 128,
+          "height": 128,
+          "source_mode": "RGBA",
+          "sha256": "33c26b181f108bdf5d1a2dea1ee680b23a1b3934953aa5e000a221117d03df47",
+          "rgba_sha256": "363671344f695ba55bcaf311bc76383a88e4338f537a4b1bc55be37ccfebe405",
+          "has_alpha_storage": true,
+          "alpha_min_max": [
+            0,
+            255
+          ],
+          "transparent_pixels": 13471,
+          "opaque_pixels": 2913,
+          "partial_alpha_pixels": 0,
+          "has_visible_content_and_transparency": true,
+          "nonzero_alpha_border_pixels": 0,
+          "bounds_alpha_ge_1": [
+            35,
+            7,
+            92,
+            115
+          ],
+          "bounds_alpha_ge_16": [
+            35,
+            7,
+            92,
+            115
+          ],
+          "bounds_alpha_ge_128": [
+            35,
+            7,
+            92,
+            115
+          ]
+        },
+        {
+          "file": "jobs/S/images/frame_01.png",
+          "width": 128,
+          "height": 128,
+          "source_mode": "RGBA",
+          "sha256": "3a667690612089b52b722b2e947511aa7d772e4d845047b73ad3472213ccd99f",
+          "rgba_sha256": "e08f75539a9ef990fab981adf15b261b073bff381774c38a7cea96541bc2f9ca",
+          "has_alpha_storage": true,
+          "alpha_min_max": [
+            0,
+            255
+          ],
+          "transparent_pixels": 13491,
+          "opaque_pixels": 2893,
+          "partial_alpha_pixels": 0,
+          "has_visible_content_and_transparency": true,
+          "nonzero_alpha_border_pixels": 0,
+          "bounds_alpha_ge_1": [
+            34,
+            9,
+            91,
+            119
+          ],
+          "bounds_alpha_ge_16": [
+            34,
+            9,
+            91,
+            119
+          ],
+          "bounds_alpha_ge_128": [
+            34,
+            9,
+            91,
+            119
+          ]
+        },
+        {
+          "file": "jobs/S/images/frame_02.png",
+          "width": 128,
+          "height": 128,
+          "source_mode": "RGBA",
+          "sha256": "b1a009be02a7d32379ca158fd0a530fcb0b867b3769013e3e6a18a4423f87992",
+          "rgba_sha256": "0bef5c1adf9e79da97436009e54bfe77dd0dceb5d2e28c728bf7be5c29eedc70",
+          "has_alpha_storage": true,
+          "alpha_min_max": [
+            0,
+            255
+          ],
+          "transparent_pixels": 13501,
+          "opaque_pixels": 2883,
+          "partial_alpha_pixels": 0,
+          "has_visible_content_and_transparency": true,
+          "nonzero_alpha_border_pixels": 0,
+          "bounds_alpha_ge_1": [
+            34,
+            10,
+            90,
+            115
+          ],
+          "bounds_alpha_ge_16": [
+            34,
+            10,
+            90,
+            115
+          ],
+          "bounds_alpha_ge_128": [
+            34,
+            10,
+            90,
+            115
+          ]
+        },
+        {
+          "file": "jobs/S/images/frame_03.png",
+          "width": 128,
+          "height": 128,
+          "source_mode": "RGBA",
+          "sha256": "5bbbea7ba36405937cc8bf7a5107ea0fec41185a953c5edb83ba10609c9d3f0d",
+          "rgba_sha256": "da488f5e990497b3a8bb97fc9b1620568c420cc9e6d77220baef8e952dcff853",
+          "has_alpha_storage": true,
+          "alpha_min_max": [
+            0,
+            255
+          ],
+          "transparent_pixels": 13419,
+          "opaque_pixels": 2965,
+          "partial_alpha_pixels": 0,
+          "has_visible_content_and_transparency": true,
+          "nonzero_alpha_border_pixels": 0,
+          "bounds_alpha_ge_1": [
+            36,
+            8,
+            90,
+            110
+          ],
+          "bounds_alpha_ge_16": [
+            36,
+            8,
+            90,
+            110
+          ],
+          "bounds_alpha_ge_128": [
+            36,
+            8,
+            90,
+            110
+          ]
+        },
+        {
+          "file": "jobs/S/images/frame_04.png",
+          "width": 128,
+          "height": 128,
+          "source_mode": "RGBA",
+          "sha256": "8759d0459c82f7a494a3d3afce3d49f30f62dc1b7e67f6f7a5a6eab72b1d536d",
+          "rgba_sha256": "8467fa7145c5a0d41f370cb71a16fef6888fd0e253a3923c68c098956164374a",
+          "has_alpha_storage": true,
+          "alpha_min_max": [
+            0,
+            255
+          ],
+          "transparent_pixels": 13427,
+          "opaque_pixels": 2957,
+          "partial_alpha_pixels": 0,
+          "has_visible_content_and_transparency": true,
+          "nonzero_alpha_border_pixels": 0,
+          "bounds_alpha_ge_1": [
+            38,
+            6,
+            88,
+            109
+          ],
+          "bounds_alpha_ge_16": [
+            38,
+            6,
+            88,
+            109
+          ],
+          "bounds_alpha_ge_128": [
+            38,
+            6,
+            88,
+            109
+          ]
+        },
+        {
+          "file": "jobs/S/images/frame_05.png",
+          "width": 128,
+          "height": 128,
+          "source_mode": "RGBA",
+          "sha256": "44ec157fc5f40d164a8cf3376d7b986b4ee9da8d4a8872e9c5dacd55a473ebe6",
+          "rgba_sha256": "4d1bcdd2e6ac0e43c99c6fdf4cf4f2ba4752dbf93c32d8140b70b90363511e85",
+          "has_alpha_storage": true,
+          "alpha_min_max": [
+            0,
+            255
+          ],
+          "transparent_pixels": 13559,
+          "opaque_pixels": 2825,
+          "partial_alpha_pixels": 0,
+          "has_visible_content_and_transparency": true,
+          "nonzero_alpha_border_pixels": 0,
+          "bounds_alpha_ge_1": [
+            38,
+            7,
+            87,
+            114
+          ],
+          "bounds_alpha_ge_16": [
+            38,
+            7,
+            87,
+            114
+          ],
+          "bounds_alpha_ge_128": [
+            38,
+            7,
+            87,
+            114
+          ]
+        },
+        {
+          "file": "jobs/S/images/frame_06.png",
+          "width": 128,
+          "height": 128,
+          "source_mode": "RGBA",
+          "sha256": "6c55c8d3219d7a5b6db9c60d08f6df6b488b6322832fd97e3f8952c753811c19",
+          "rgba_sha256": "f0798e28697c3266a438374decb27d3d3b2ddadbe3a2d9c3c1a8a8cab7670901",
+          "has_alpha_storage": true,
+          "alpha_min_max": [
+            0,
+            255
+          ],
+          "transparent_pixels": 13618,
+          "opaque_pixels": 2766,
+          "partial_alpha_pixels": 0,
+          "has_visible_content_and_transparency": true,
+          "nonzero_alpha_border_pixels": 0,
+          "bounds_alpha_ge_1": [
+            39,
+            9,
+            87,
+            120
+          ],
+          "bounds_alpha_ge_16": [
+            39,
+            9,
+            87,
+            120
+          ],
+          "bounds_alpha_ge_128": [
+            39,
+            9,
+            87,
+            120
+          ]
+        },
+        {
+          "file": "jobs/S/images/frame_07.png",
+          "width": 128,
+          "height": 128,
+          "source_mode": "RGBA",
+          "sha256": "f483b2e2af6a23fff618335d15c0968ecb9d60084a8cdd0ac52d5ddb5f3b4248",
+          "rgba_sha256": "f8f5bb4416f4c0e556ab0bfc2318be328e56532627271865159197ea01e2c546",
+          "has_alpha_storage": true,
+          "alpha_min_max": [
+            0,
+            255
+          ],
+          "transparent_pixels": 13640,
+          "opaque_pixels": 2744,
+          "partial_alpha_pixels": 0,
+          "has_visible_content_and_transparency": true,
+          "nonzero_alpha_border_pixels": 0,
+          "bounds_alpha_ge_1": [
+            39,
+            9,
+            89,
+            115
+          ],
+          "bounds_alpha_ge_16": [
+            39,
+            9,
+            89,
+            115
+          ],
+          "bounds_alpha_ge_128": [
+            39,
+            9,
+            89,
+            115
+          ]
+        },
+        {
+          "file": "jobs/S/images/frame_08.png",
+          "width": 128,
+          "height": 128,
+          "source_mode": "RGBA",
+          "sha256": "e6c5b6b085dfa5dd437de2b108ff2cba05c5ce919243f267c8fda3b54bb814d9",
+          "rgba_sha256": "416d13c6d5e959e13e6e891b327068cbbcf2e44e60861b39835c2d7228e1e652",
+          "has_alpha_storage": true,
+          "alpha_min_max": [
+            0,
+            255
+          ],
+          "transparent_pixels": 13492,
+          "opaque_pixels": 2892,
+          "partial_alpha_pixels": 0,
+          "has_visible_content_and_transparency": true,
+          "nonzero_alpha_border_pixels": 0,
+          "bounds_alpha_ge_1": [
+            38,
+            8,
+            90,
+            110
+          ],
+          "bounds_alpha_ge_16": [
+            38,
+            8,
+            90,
+            110
+          ],
+          "bounds_alpha_ge_128": [
+            38,
+            8,
+            90,
+            110
+          ]
+        }
+      ],
+      "duplicate_rgba_pairs": [],
+      "adjacent_rgba_mean_differences_0_255": [
+        6.13907,
+        5.9236,
+        8.47656,
+        7.5807,
+        6.51129,
+        6.05693,
+        4.52164,
+        6.44861,
+        10.52046
+      ]
+    }
+  ],
+  "review_gifs": [
+    {
+      "file": "gifs/S-10fps.gif",
+      "frames": 9,
+      "duration_ms_per_frame": 100,
+      "sha256": "60dfa5ff310c4911f7da443e0a552e8258badd7c55a5d337ed1667364e0becdc",
+      "format_note": "Review only: background flattened and GIF shared 256-color palette; original RGBA PNGs remain authoritative."
+    },
+    {
+      "file": "gifs/overview-10fps.gif",
+      "frames": 9,
+      "duration_ms_per_frame": 100,
+      "sha256": "60dfa5ff310c4911f7da443e0a552e8258badd7c55a5d337ed1667364e0becdc",
+      "format_note": "Review only: background flattened and GIF shared 256-color palette; original RGBA PNGs remain authoritative."
+    }
+  ],
+  "warnings": [
+    "S: 9 frames, expected 8."
+  ],
+  "not_verified": [
+    "visual identity and axe grip",
+    "gait/loop quality",
+    "common physical foot anchor",
+    "ground contact in game",
+    "normal game integration",
+    "user acceptance"
+  ]
+}

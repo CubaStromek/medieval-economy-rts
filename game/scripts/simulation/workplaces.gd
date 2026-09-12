@@ -20,7 +20,7 @@ static func occupant(world: Variant, building_id: int) -> Dictionary:
 		return {}
 	var result: Dictionary = {}
 	for worker: Dictionary in world.workers.values():
-		if int(worker.get("home_id", 0)) != building_id or String(worker["type"]) != role:
+		if int(worker.get("owner_id", 1)) != int(building.get("owner_id", 1)) or int(worker.get("home_id", 0)) != building_id or String(worker["type"]) != role:
 			continue
 		if result.is_empty() or int(worker["id"]) < int(result["id"]):
 			result = worker
@@ -37,6 +37,8 @@ static func requires_home(world: Variant, worker: Dictionary) -> bool:
 static func can_claim(world: Variant, worker: Dictionary, building_id: int) -> bool:
 	var building: Dictionary = world.buildings.get(building_id, {})
 	if building.is_empty() or not world.is_building_complete(building):
+		return false
+	if int(worker.get("owner_id", 1)) != int(building.get("owner_id", 1)):
 		return false
 	var role: String = String(worker["type"])
 	if profession(world, building_id) != role or role.is_empty():
@@ -71,13 +73,13 @@ static func ensure(world: Variant, worker: Dictionary) -> int:
 	if _owns(world, worker, previous):
 		return previous
 	worker["home_id"] = 0
-	if not requires_home(world, worker):
+	if not world.is_local_entity(worker) or world.is_worker_work_paused(worker) or not requires_home(world, worker):
 		return 0
 	var ids: Array = world.buildings.keys()
 	ids.sort()
 	var targets: Dictionary = {}
 	for id: int in ids:
-		if can_claim(world, worker, id):
+		if world.is_building_enabled(world.buildings[id]) and can_claim(world, worker, id):
 			targets[id] = world.buildings[id]["entrance"]
 	if targets.is_empty():
 		worker.erase("_workplace_search_cache")

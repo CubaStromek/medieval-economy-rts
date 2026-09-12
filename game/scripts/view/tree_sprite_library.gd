@@ -16,6 +16,7 @@ static var _textures: Dictionary = {}
 static var _sizes: Dictionary = {}
 static var _root_offsets: Dictionary = {}
 static var _cell_regions: Dictionary = {}
+static var _hit_masks: Dictionary = {}
 static var _atlas_loaded: bool = false
 
 
@@ -64,6 +65,18 @@ func presentation_for(tree: Dictionary, stage: int, feet: Vector2, show_amount: 
 	}
 
 
+func contains_point(tree: Dictionary, stage: int, feet: Vector2, point: Vector2) -> bool:
+	var key: Vector2i = _sprite_key(tree, stage)
+	if not _hit_masks.has(key):
+		return false
+	var rect: Rect2 = sprite_rect(tree, stage, feet)
+	if not rect.has_point(point) or rect.size.x <= 0.0 or rect.size.y <= 0.0:
+		return false
+	var mask: BitMap = _hit_masks[key]
+	var pixel: Vector2 = (point - rect.position) / rect.size * Vector2(mask.get_size())
+	return mask.get_bitv(Vector2i(floori(pixel.x), floori(pixel.y)))
+
+
 static func _sprite_key(tree: Dictionary, stage: int) -> Vector2i:
 	return Vector2i(species_for(tree), clampi(stage, 0, STAGE_COUNT - 1))
 
@@ -107,6 +120,9 @@ static func _load_atlas() -> void:
 			var scale_factor: float = minf(target_height / float(visible.size.y), STAGE_MAX_WIDTHS[stage] / float(visible.size.x))
 			_sizes[key] = Vector2(visible.size) * scale_factor
 			_root_offsets[key] = _root_position(cell, visible) * scale_factor
+			var hit_mask := BitMap.new()
+			hit_mask.create_from_image_alpha(cell.get_region(visible), ALPHA_THRESHOLD)
+			_hit_masks[key] = hit_mask
 	_atlas_loaded = true
 
 

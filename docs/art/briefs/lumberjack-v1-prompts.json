@@ -1,0 +1,1067 @@
+{
+  "date": "2026-09-09",
+  "roleId": "lumberjack",
+  "unitAssetVersion": "v1",
+  "buildingStyleVersion": "0.2",
+  "stage": "directional walking-pose concept set; not a walk cycle or integrated runtime sprite",
+  "sourceStyle": "docs/art/concepts/lumber-hut-v3-stock/logs-6.png",
+  "tool": "built-in imagegen",
+  "model": "not explicitly identified by tool",
+  "cliFallbackUsed": false,
+  "requestedVariants": 16,
+  "deliveredFinalVariants": 16,
+  "directionOrder": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "directionIndexMeaning": "Order of MOVEMENT_DIRECTIONS in grid_map_sim.gd, not an implemented sprite-facing API",
+  "files": [
+    {
+      "key": "axe_N",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-a1775302-69cd-415e-9e99-430912bdbb8e.png",
+      "destination": "docs/art/concepts/lumberjack-v1/axe-n.png",
+      "final": true,
+      "direction": "N",
+      "movementArrayIndex": 0,
+      "groundVector": [
+        0,
+        -1
+      ],
+      "state": "axe",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1409726,
+      "sha256": "ec064125857a1201a5d28ad42d2ad21d7d0b9586a23bfa8867dc0b8579f22458"
+    },
+    {
+      "key": "log_N",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-7b76cada-ca41-47cc-8e50-f932ff2a7ba4.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-n.png",
+      "final": false,
+      "direction": "N",
+      "movementArrayIndex": 0,
+      "groundVector": [
+        0,
+        -1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1464289,
+      "sha256": "bffe96b8d884696e53f55bce003a7c391419fdafe5b38bd5a88f10e7f9497d9a",
+      "supersededBy": "docs/art/concepts/lumberjack-v1/log-n-v2.png",
+      "supersededReason": "Targeted audit found same anterior depth problem in rear view."
+    },
+    {
+      "key": "axe_NE",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-da3b57bb-c6c5-4abe-b7df-aaf7a983d29d.png",
+      "destination": "docs/art/concepts/lumberjack-v1/axe-ne.png",
+      "final": true,
+      "direction": "NE",
+      "movementArrayIndex": 1,
+      "groundVector": [
+        1,
+        -1
+      ],
+      "state": "axe",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1439947,
+      "sha256": "33d85496740b98e509232e6cda38a2956251ad13a5038633c743bf427667e918"
+    },
+    {
+      "key": "log_NE",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-19321867-482f-4efa-a1f7-338754a7c0ec.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-ne.png",
+      "final": false,
+      "direction": "NE",
+      "movementArrayIndex": 1,
+      "groundVector": [
+        1,
+        -1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1472256,
+      "sha256": "41c5ad68ef47d9cda74f7c39cbd5347886972c59339e3e6475ea56c629d914cd",
+      "supersededBy": "docs/art/concepts/lumberjack-v1/log-ne-v2.png",
+      "supersededReason": "User rejected anterior log placement under chin."
+    },
+    {
+      "key": "axe_E",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-63502821-cf60-4b3c-949a-94a3a480ba26.png",
+      "destination": "docs/art/concepts/lumberjack-v1/axe-e.png",
+      "final": true,
+      "direction": "E",
+      "movementArrayIndex": 2,
+      "groundVector": [
+        1,
+        0
+      ],
+      "state": "axe",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1452416,
+      "sha256": "bf7386266ec0c39cf9dc3a344cf12694bda1ff270d0f42ff900cc0bc8ce59389"
+    },
+    {
+      "key": "log_E",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-98d1e81e-63c6-45c4-8486-15da74a2b607.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-e.png",
+      "final": true,
+      "direction": "E",
+      "movementArrayIndex": 2,
+      "groundVector": [
+        1,
+        0
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1481656,
+      "sha256": "7ee862dfea8394dfd55d7a3ac64cc6f2db5e928dec9e0edf0d605ad27acdc7be"
+    },
+    {
+      "key": "axe_SE",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+      "destination": "docs/art/concepts/lumberjack-v1/axe-se.png",
+      "final": true,
+      "direction": "SE",
+      "movementArrayIndex": 3,
+      "groundVector": [
+        1,
+        1
+      ],
+      "state": "axe",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1497101,
+      "sha256": "d0deaaa07079ce02b217c0997429dfc8bd3379389fe6f3c3869585c3b871e579"
+    },
+    {
+      "key": "log_SE",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be4c2565-7a8c-4ca2-8446-baebcd2f3821.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-se.png",
+      "final": true,
+      "direction": "SE",
+      "movementArrayIndex": 3,
+      "groundVector": [
+        1,
+        1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1494956,
+      "sha256": "0a34928987bec90ae0aa838c5936cdaa700753ea49586f85b64da68ddcc84c87"
+    },
+    {
+      "key": "axe_S",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-7404073b-4884-4c40-8467-02f9cda05f62.png",
+      "destination": "docs/art/concepts/lumberjack-v1/axe-s.png",
+      "final": true,
+      "direction": "S",
+      "movementArrayIndex": 4,
+      "groundVector": [
+        0,
+        1
+      ],
+      "state": "axe",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1461983,
+      "sha256": "61f9ed49dea824a6c1887570cd79f9d0eba40e4772c822d91d4f2c1098a6da86"
+    },
+    {
+      "key": "log_S",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-87285ef9-89c3-4251-9ce3-ab5b9ace287d.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-s.png",
+      "final": true,
+      "direction": "S",
+      "movementArrayIndex": 4,
+      "groundVector": [
+        0,
+        1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1508868,
+      "sha256": "069acecd5785e5057fe6267c7788c0a1d4d305ece4a87895100bdcf69a38cd8e"
+    },
+    {
+      "key": "axe_SW",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-fc8ab5bc-b14b-450b-834e-b09aff920509.png",
+      "destination": "docs/art/concepts/lumberjack-v1/axe-sw.png",
+      "final": true,
+      "direction": "SW",
+      "movementArrayIndex": 5,
+      "groundVector": [
+        -1,
+        1
+      ],
+      "state": "axe",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1457003,
+      "sha256": "ae1b4fd5f4a2c9a038ae029f1cd8ae765fe9e082c8067eddf78d2cbc4e2d364e"
+    },
+    {
+      "key": "log_SW",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-362abec6-245a-4d1d-8e81-e499c0a77481.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-sw.png",
+      "final": true,
+      "direction": "SW",
+      "movementArrayIndex": 5,
+      "groundVector": [
+        -1,
+        1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1493755,
+      "sha256": "baf9b85ab8d71c28bf723fa0ea293ad913e53122a25d0632a67de5ace0508774"
+    },
+    {
+      "key": "axe_W",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-a3dcf971-47f5-47f8-84cb-26b1339e7d7f.png",
+      "destination": "docs/art/concepts/lumberjack-v1/axe-w.png",
+      "final": true,
+      "direction": "W",
+      "movementArrayIndex": 6,
+      "groundVector": [
+        -1,
+        0
+      ],
+      "state": "axe",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1429347,
+      "sha256": "bd8c55906b28b18a4a1e8f5afe431bc7a80bf4f60e336137735435a6add17c9e"
+    },
+    {
+      "key": "log_W",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-c2aa9546-18fc-4ad5-b95e-cd884cfcec60.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-w.png",
+      "final": true,
+      "direction": "W",
+      "movementArrayIndex": 6,
+      "groundVector": [
+        -1,
+        0
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1491431,
+      "sha256": "8e1de19d88fb6afa621326e375b3e247c1def99e095cfd4ec5ebfb35db1196c4"
+    },
+    {
+      "key": "axe_NW",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-7df359ab-b9ff-4613-8b63-2a57485bf825.png",
+      "destination": "docs/art/concepts/lumberjack-v1/axe-nw.png",
+      "final": true,
+      "direction": "NW",
+      "movementArrayIndex": 7,
+      "groundVector": [
+        -1,
+        -1
+      ],
+      "state": "axe",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1426941,
+      "sha256": "5e7a03790f7ac8613f18e3b7194c19a5e6f868a0415dd1bc492e72a6c81c602f"
+    },
+    {
+      "key": "log_NW",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-acbcc8f9-88df-4ed5-88ee-259921944405.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-nw.png",
+      "final": false,
+      "direction": "NW",
+      "movementArrayIndex": 7,
+      "groundVector": [
+        -1,
+        -1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1466327,
+      "sha256": "835e77da54e04752395ff0060b2e63f95afbaf4b4c014df7d586135c1a7fec27",
+      "supersededBy": "docs/art/concepts/lumberjack-v1/log-nw-v2.png",
+      "supersededReason": "Targeted audit found ambiguous posterior shoulder support."
+    },
+    {
+      "key": "axe_SW",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-8fdb1d0d-4ca2-470f-ad19-cae0c7bfbe90.png",
+      "destination": "docs/art/sources/lumberjack-v1/axe-sw-initial.png",
+      "final": false,
+      "reason": "Initial side-of-tool error; retained only as exact input to correction.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1455941,
+      "sha256": "a33da22c4f253938d98466018e711ce7dc34df8fdb2eeab89c51af0c20beaee1"
+    },
+    {
+      "key": "axe_W",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-e0b44d39-c5bd-432f-9c87-d6341f9eb822.png",
+      "destination": "docs/art/sources/lumberjack-v1/axe-w-initial.png",
+      "final": false,
+      "reason": "Initial side-of-tool error; retained only as exact input to correction.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1450926,
+      "sha256": "f38477949df016219a6f9dc856b654966f29325658063b679c8222db3378f103"
+    },
+    {
+      "key": "log_NE",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-6ec02117-85e8-4acd-bc21-94891e203ced.png",
+      "destination": "docs/art/sources/lumberjack-v1/log-ne-initial.png",
+      "final": false,
+      "reason": "Initial side-of-tool error; retained only as exact input to correction.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1477326,
+      "sha256": "3c8ec7b6cc1bab705ad7e130da3f99edc22866abd1388f2ebc94ffe155ab2631"
+    },
+    {
+      "key": "log_E",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-d37e239e-2279-4bf8-934b-b6d0989e3f42.png",
+      "destination": "docs/art/sources/lumberjack-v1/log-e-initial.png",
+      "final": false,
+      "reason": "Initial side-of-tool error; retained only as exact input to correction.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1487284,
+      "sha256": "724f08ca68cded4982ff04524611f6ae0df96fdd6be91dc897fdcecdf51a2dff"
+    },
+    {
+      "key": "log_NE_neck_v2",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-95074576-a1c0-4950-a67f-71ad80c88c5a.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-ne-v2.png",
+      "final": true,
+      "direction": "NE",
+      "movementArrayIndex": 1,
+      "groundVector": [
+        1,
+        -1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1464426,
+      "sha256": "6081842e3eb5d67d87c79b2c96531dabcedaa718c3a04deedaf88281e3db4918",
+      "hasTRNS": false,
+      "revision": "posterior-neck-carry-v2"
+    },
+    {
+      "key": "log_N_neck_v2",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be41e90f-d018-4d00-bfd2-2764b64a7eae.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-n-v2.png",
+      "final": false,
+      "direction": "N",
+      "movementArrayIndex": 0,
+      "groundVector": [
+        0,
+        -1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1439719,
+      "sha256": "a6a6affc4ede5c87f2a3798dd45b15c632acfd47b2515331b2b8bcb275dab1ba",
+      "hasTRNS": false,
+      "revision": "posterior-neck-carry-v2",
+      "supersededBy": "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png",
+      "supersededReason": "User rejected transverse torso/head overlap and unnatural support arm; chose a new lengthwise right-shoulder pose."
+    },
+    {
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-c2b11520-ced7-41ed-a034-fb1b0d356f88.png",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "hasTRNS": false,
+      "bytes": 1460480,
+      "sha256": "c6b6724ed6cff4f89f98c8018358e8ef0465e52e33a4865ea6b798a02b3d6c24",
+      "key": "log_NW-ATTEMPT1_neck_v2",
+      "destination": "docs/art/sources/lumberjack-v1/log-nw-neck-attempt1.png",
+      "final": false,
+      "revision": "posterior-neck-carry-v2",
+      "rejection": "Removed collar without an unambiguous posterior log reposition."
+    },
+    {
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-baa41661-2ae8-4e7e-b2fd-fa0d5656df92.png",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "hasTRNS": false,
+      "bytes": 1464698,
+      "sha256": "bf060ec8bfd534c8078a2364f6e42ae16bbf3b7abd419def2e20edc04fd7d89b",
+      "key": "log_NW-ATTEMPT2_neck_v2",
+      "destination": "docs/art/sources/lumberjack-v1/log-nw-neck-attempt2.png",
+      "final": false,
+      "revision": "posterior-neck-carry-v2",
+      "rejection": "Corrected transverse posterior log, but left a stray fragment of original log above cap."
+    },
+    {
+      "key": "log_NW_neck_v2",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-aad504ac-d69a-45d5-9913-c95527d755d4.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-nw-v2.png",
+      "final": true,
+      "direction": "NW",
+      "movementArrayIndex": 7,
+      "groundVector": [
+        -1,
+        -1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1481111,
+      "sha256": "026f5b5e100b15232eb85b0b86aabec4c2b1bc5bc0e32fb20f78b1776bd19ba1",
+      "hasTRNS": false,
+      "revision": "posterior-neck-carry-v2"
+    },
+    {
+      "key": "log_N_shoulder_v1",
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-23a7c2fb-88a2-4aa8-bcc0-8498316198f4.png",
+      "destination": "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png",
+      "final": true,
+      "direction": "N",
+      "movementArrayIndex": 0,
+      "groundVector": [
+        0,
+        -1
+      ],
+      "state": "log",
+      "poseFrames": 1,
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "bytes": 1431985,
+      "sha256": "a34cbdfa17d5d520caf2b97f0628ea649519c579ba860376d94a9659f654643a",
+      "hasTRNS": false,
+      "revision": "lengthwise-right-shoulder-N-v1",
+      "userSelected": true,
+      "userSelectionScope": "single concept pose; no whole-set or game approval"
+    }
+  ],
+  "runs": [
+    {
+      "key": "axe_SE",
+      "prompt": "Use case: stylized-concept.\nAsset type: NEW ORIGINAL medieval RTS woodcutter character, single directional walking-key-pose concept, matching our own building art.\nInput image 1 is ONLY a STYLE/MATERIAL/CAMERA-ELEVATION REFERENCE, not the subject to copy. It shows our own lumberjack hut with round logs. Create its HUMAN worker, do NOT include any building or background scene.\nSubject: one friendly but practical adult male woodcutter, sturdy shoulders and believable adult proportions, about 5.5 heads tall (NOT chibi, dwarf or muscular fantasy hero). Short chestnut-brown beard and hair, modest weathered face. Outfit identity to lock for future turnarounds: soft close-fitting rust-ochre wool cap, muted sage/olive-green knee-above work tunic, cream linen sleeves rolled to the elbows, plain dark-brown leather belt with small dull iron buckle, short split brown leather apron covering ONLY the front upper thighs, dark umber trousers and worn medium-brown ankle boots. Large readable color regions, few seams, no jewelry or decorative heraldry. Front of tunic has a simple short cream lace opening; back remains plain.\nState: walking to work with EXACTLY ONE practical single-bladed WOODCUTTING AXE held low in his anatomical RIGHT hand, wooden handle, small matte iron head, not a battle axe. Left arm swings naturally. NO LOG, backpack, tool belt clutter, extra axe or tree.\nFacing: SOUTHEAST / bottom-right of the screen, three-quarter FRONT view. Nose, chest, hips and toe direction all point diagonally down-right. Show face and one side. The body is walking in that direction, NOT looking back at viewer. One natural modest mid-step pose, no running, no attack.\nCamera: FIXED elevated strategy-game camera looking DOWN noticeably from above, compatible with the roof/work-area nadhled of the supplied hut. Clearly see the TOP of his cap, top planes of shoulders and boots. Head slightly occludes upper chest from above. Orthographic-like projection, no horizon, no eye-level portrait viewpoint, no strong perspective, no camera tilt. Future directions rotate the person on the ground, NOT the camera.\nStyle: softly hand-painted volumetric medieval craft-game art matching the reference; matte warm timber, cream cloth, warm brown leather and restrained natural green. Painted clean edges with thin warm dark separation, no heavy black outline. Broad forms before detail; not photoreal, not plastic/mobile-game glossy, no tiny noisy textures. Neutral soft lighting, restrained local shading. The axe/cloth/skin should read when the human is later about 33 world pixels tall; this is a larger design master, not final pixel art.\nComposition: one COMPLETE full-body worker centered on a warm off-white plain background, square canvas. Human body occupies about two thirds of canvas height with ample margins for later carried log. Show cap, both hands, axe and both boot soles entirely, feet near bottom center. No crop, vignette, environment, platform, cast ground shadow, floor line, logos, text, captions, arrows, grid, UI or watermark. Deliver ONE character, no multi-view sheet.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+      "output": "docs/art/concepts/lumberjack-v1/axe-se.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumber-hut-v3-stock/logs-6.png",
+          "projectPath": "docs/art/concepts/lumber-hut-v3-stock/logs-6.png"
+        }
+      ]
+    },
+    {
+      "key": "log_SE",
+      "prompt": "Use case: identity-preserve.\nAsset type: one walking-with-log concept pose for our SAME original woodcutter.\nInput image 1 is the CHARACTER EDIT TARGET. Input image 2 is ONLY the log-material/style reference of our own hut; do not include the house.\nKeep the same adult man's identity, face, beard/hair, ochre cap, olive tunic with cream neck lace and rolled cream sleeves, belt, short brown front leather apron, dark trousers, brown boots, exact elevated camera, SE/bottom-right facing, natural walking phase, body size, painterly texture and warm off-white background.\nCHANGE ONLY the carrying action: he is returning home carrying EXACTLY ONE round unprocessed brown-bark LOG balanced lengthwise on his anatomical RIGHT shoulder, oriented forward/back ALONG his walking direction, not sideways across both shoulders. One forearm on that side raised naturally to steady the front underside of the log, the other arm naturally balancing. Anatomically plausible 2 arms / 2 hands, no extra fingers or fused hands. The single log has pale sawn end grain, a modest diameter about 1/6 of the human's height and length about 3/4 of his height; believable for one strong worker, not an entire tree, bundle, plank, split firewood or giant trunk. Include both ends if the viewing angle permits, with a clear continuous cylinder. No branches. It matches the stock logs' matte brown bark and honey-colored end grain.\nHis ONE axe is no longer in his hand: move that SAME single-bladed practical axe into a secure simple leather loop on his anatomical LEFT hip, iron head safely beside the belt, wooden handle pointing downward, avoiding the knee and ground. No second axe, no duplicate log, no axe through the log/body. The log must rest on the shoulder and be visibly supported, not float or replace an arm.\nCamera remains noticeably ABOVE with visible cap top and shoulder tops. Face/chest/hips/feet keep facing SOUTHEAST, diagonally bottom-right. A modest loaded walking key pose, not stationary posing, running or wood chopping.\nComposition: one full human with one log and one stowed axe on the same square warm off-white background. Keep human body scale and feet anchor as close as possible to the target; do not shrink the human to fit the log. All ends, cap and boots inside canvas, no clipping. Match soft neutral painted lighting. No house, trees, landscape, floor line, pedestal, long shadow, caption, arrows, letters, numbers, UI, watermark or multiple figures. This is a directional concept image, not a sprite sheet.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be4c2565-7a8c-4ca2-8446-baebcd2f3821.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-se.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-se.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumber-hut-v3-stock/logs-6.png",
+          "projectPath": "docs/art/concepts/lumber-hut-v3-stock/logs-6.png"
+        }
+      ]
+    },
+    {
+      "key": "axe_N",
+      "prompt": "Use case: identity-preserve.\nAsset type: single directional walking-key-pose concept, variant N, SAME woodcutter.\nInput image 1 is the CHARACTER IDENTITY / OUTFIT / PAINT STYLE and CAMERA-ELEVATION edit target. Make a new facing of this SAME man, not a new person or mirrored photograph.\nTarget facing: NORTH / straight UP on screen. Exactly REAR view: only back of cap, back of head, back of tunic and rear of legs. NO face, nose, eyes, chest laces or apron bib visible from the back. Head and toes point away from viewer straight upward. No left/right yaw.\nRotate the CHARACTER around his vertical axis on the ground; keep the CAMERA fixed at the same elevated downward-looking strategy-game angle. The top of his ochre cap, shoulders and boots remain visible. Do not flatten into an eye-level side/front portrait or change camera elevation. All directions use the same ground plane. No horizon or foreshortening trick.\nLOCK IDENTITY: exact same sturdy adult, about 5.5-head adult proportions, short chestnut beard/hair, rust-ochre rolled wool cap, muted olive-green tunic, cream neck-lace opening on front only, rolled cream sleeves, dark brown belt and dull buckle at front, short plain brown leather apron FRONT ONLY (back is plain green with belt across waist), dark umber trousers, brown ankle boots. Keep silhouette, material palette, density of painted detail and human size. Do not invent straps, bags, apron on the back, hood, armor, costume change or different hair.\nACTION: one natural walking key pose in the target direction, modest relaxed stride, anatomical LEFT leg in forward phase and right leg trailing, appropriate arm counter-swing. Exactly ONE single-bladed practical iron woodcutting axe with the same wood handle, held LOW in his anatomical RIGHT hand, blade down/out, not swinging or attacking. Left hand empty. NO LOG. In directions where the right hand is behind his body let it be naturally partially occluded; do not swap hands merely to expose the axe.\nOne full character, same square canvas and warm off-white background, stable approximate human body size and feet anchor. Preserve head/tool/boot margins; no clipping/crop, no cast ground shadow, platform, scene, lettering, arrows, UI, watermark or other figures. Soft matte hand-painted style matches the supplied own character, not plastic or photorealistic. Final must clearly communicate N, not the source southeast facing.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-a1775302-69cd-415e-9e99-430912bdbb8e.png",
+      "output": "docs/art/concepts/lumberjack-v1/axe-n.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-se.png"
+        }
+      ]
+    },
+    {
+      "key": "axe_NE",
+      "prompt": "Use case: identity-preserve.\nAsset type: single directional walking-key-pose concept, variant NE, SAME woodcutter.\nInput image 1 is the CHARACTER IDENTITY / OUTFIT / PAINT STYLE and CAMERA-ELEVATION edit target. Make a new facing of this SAME man, not a new person or mirrored photograph.\nTarget facing: NORTHEAST / upper-RIGHT on screen. A REAR three-quarter view: back dominant with his rightward-facing side, nose at most a tiny profile sliver toward UPPER RIGHT, no full chest/front. Back of tunic and cap dominate. Torso, head, hips and feet all moving diagonally AWAY and RIGHT.\nRotate the CHARACTER around his vertical axis on the ground; keep the CAMERA fixed at the same elevated downward-looking strategy-game angle. The top of his ochre cap, shoulders and boots remain visible. Do not flatten into an eye-level side/front portrait or change camera elevation. All directions use the same ground plane. No horizon or foreshortening trick.\nLOCK IDENTITY: exact same sturdy adult, about 5.5-head adult proportions, short chestnut beard/hair, rust-ochre rolled wool cap, muted olive-green tunic, cream neck-lace opening on front only, rolled cream sleeves, dark brown belt and dull buckle at front, short plain brown leather apron FRONT ONLY (back is plain green with belt across waist), dark umber trousers, brown ankle boots. Keep silhouette, material palette, density of painted detail and human size. Do not invent straps, bags, apron on the back, hood, armor, costume change or different hair.\nACTION: one natural walking key pose in the target direction, modest relaxed stride, anatomical LEFT leg in forward phase and right leg trailing, appropriate arm counter-swing. Exactly ONE single-bladed practical iron woodcutting axe with the same wood handle, held LOW in his anatomical RIGHT hand, blade down/out, not swinging or attacking. Left hand empty. NO LOG. In directions where the right hand is behind his body let it be naturally partially occluded; do not swap hands merely to expose the axe.\nOne full character, same square canvas and warm off-white background, stable approximate human body size and feet anchor. Preserve head/tool/boot margins; no clipping/crop, no cast ground shadow, platform, scene, lettering, arrows, UI, watermark or other figures. Soft matte hand-painted style matches the supplied own character, not plastic or photorealistic. Final must clearly communicate NE, not the source southeast facing.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-da3b57bb-c6c5-4abe-b7df-aaf7a983d29d.png",
+      "output": "docs/art/concepts/lumberjack-v1/axe-ne.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-se.png"
+        }
+      ]
+    },
+    {
+      "key": "axe_E",
+      "prompt": "Use case: identity-preserve.\nAsset type: single directional walking-key-pose concept, variant E, SAME woodcutter.\nInput image 1 is the CHARACTER IDENTITY / OUTFIT / PAINT STYLE and CAMERA-ELEVATION edit target. Make a new facing of this SAME man, not a new person or mirrored photograph.\nTarget facing: EAST / directly RIGHT on screen. Exact right-facing SIDE PROFILE, nose points horizontally RIGHT. Body facing across the screen, not toward viewer or away. One side of head and torso visible, hands/legs naturally overlap. Do not turn it into a three-quarter front or rear view.\nRotate the CHARACTER around his vertical axis on the ground; keep the CAMERA fixed at the same elevated downward-looking strategy-game angle. The top of his ochre cap, shoulders and boots remain visible. Do not flatten into an eye-level side/front portrait or change camera elevation. All directions use the same ground plane. No horizon or foreshortening trick.\nLOCK IDENTITY: exact same sturdy adult, about 5.5-head adult proportions, short chestnut beard/hair, rust-ochre rolled wool cap, muted olive-green tunic, cream neck-lace opening on front only, rolled cream sleeves, dark brown belt and dull buckle at front, short plain brown leather apron FRONT ONLY (back is plain green with belt across waist), dark umber trousers, brown ankle boots. Keep silhouette, material palette, density of painted detail and human size. Do not invent straps, bags, apron on the back, hood, armor, costume change or different hair.\nACTION: one natural walking key pose in the target direction, modest relaxed stride, anatomical LEFT leg in forward phase and right leg trailing, appropriate arm counter-swing. Exactly ONE single-bladed practical iron woodcutting axe with the same wood handle, held LOW in his anatomical RIGHT hand, blade down/out, not swinging or attacking. Left hand empty. NO LOG. In directions where the right hand is behind his body let it be naturally partially occluded; do not swap hands merely to expose the axe.\nOne full character, same square canvas and warm off-white background, stable approximate human body size and feet anchor. Preserve head/tool/boot margins; no clipping/crop, no cast ground shadow, platform, scene, lettering, arrows, UI, watermark or other figures. Soft matte hand-painted style matches the supplied own character, not plastic or photorealistic. Final must clearly communicate E, not the source southeast facing.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-63502821-cf60-4b3c-949a-94a3a480ba26.png",
+      "output": "docs/art/concepts/lumberjack-v1/axe-e.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-se.png"
+        }
+      ]
+    },
+    {
+      "key": "axe_S",
+      "prompt": "Use case: identity-preserve.\nAsset type: single directional walking-key-pose concept, variant S, SAME woodcutter.\nInput image 1 is the CHARACTER IDENTITY / OUTFIT / PAINT STYLE and CAMERA-ELEVATION edit target. Make a new facing of this SAME man, not a new person or mirrored photograph.\nTarget facing: SOUTH / straight DOWN on screen. Exactly FRONT view under the same elevated camera: face and chest laces centered toward viewer, shoulders balanced, apron in front. Head/chest/hips/boots point straight toward viewer DOWN. No left/right yaw and no sideways head turn.\nRotate the CHARACTER around his vertical axis on the ground; keep the CAMERA fixed at the same elevated downward-looking strategy-game angle. The top of his ochre cap, shoulders and boots remain visible. Do not flatten into an eye-level side/front portrait or change camera elevation. All directions use the same ground plane. No horizon or foreshortening trick.\nLOCK IDENTITY: exact same sturdy adult, about 5.5-head adult proportions, short chestnut beard/hair, rust-ochre rolled wool cap, muted olive-green tunic, cream neck-lace opening on front only, rolled cream sleeves, dark brown belt and dull buckle at front, short plain brown leather apron FRONT ONLY (back is plain green with belt across waist), dark umber trousers, brown ankle boots. Keep silhouette, material palette, density of painted detail and human size. Do not invent straps, bags, apron on the back, hood, armor, costume change or different hair.\nACTION: one natural walking key pose in the target direction, modest relaxed stride, anatomical LEFT leg in forward phase and right leg trailing, appropriate arm counter-swing. Exactly ONE single-bladed practical iron woodcutting axe with the same wood handle, held LOW in his anatomical RIGHT hand, blade down/out, not swinging or attacking. Left hand empty. NO LOG. In directions where the right hand is behind his body let it be naturally partially occluded; do not swap hands merely to expose the axe.\nOne full character, same square canvas and warm off-white background, stable approximate human body size and feet anchor. Preserve head/tool/boot margins; no clipping/crop, no cast ground shadow, platform, scene, lettering, arrows, UI, watermark or other figures. Soft matte hand-painted style matches the supplied own character, not plastic or photorealistic. Final must clearly communicate S, not the source southeast facing.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-7404073b-4884-4c40-8467-02f9cda05f62.png",
+      "output": "docs/art/concepts/lumberjack-v1/axe-s.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-se.png"
+        }
+      ]
+    },
+    {
+      "key": "axe_SW",
+      "prompt": "Use case: identity-preserve.\nAsset type: single directional walking-key-pose concept, variant SW, SAME woodcutter.\nInput image 1 is the CHARACTER IDENTITY / OUTFIT / PAINT STYLE and CAMERA-ELEVATION edit target. Make a new facing of this SAME man, not a new person or mirrored photograph.\nTarget facing: SOUTHWEST / lower-LEFT on screen. Three-quarter FRONT view, face/chest/hips/toes all point diagonally toward viewer and LEFT. This is not a simple mirrored screenshot: keep the axe in his anatomical RIGHT hand and clothing details on their correct body side.\nRotate the CHARACTER around his vertical axis on the ground; keep the CAMERA fixed at the same elevated downward-looking strategy-game angle. The top of his ochre cap, shoulders and boots remain visible. Do not flatten into an eye-level side/front portrait or change camera elevation. All directions use the same ground plane. No horizon or foreshortening trick.\nLOCK IDENTITY: exact same sturdy adult, about 5.5-head adult proportions, short chestnut beard/hair, rust-ochre rolled wool cap, muted olive-green tunic, cream neck-lace opening on front only, rolled cream sleeves, dark brown belt and dull buckle at front, short plain brown leather apron FRONT ONLY (back is plain green with belt across waist), dark umber trousers, brown ankle boots. Keep silhouette, material palette, density of painted detail and human size. Do not invent straps, bags, apron on the back, hood, armor, costume change or different hair.\nACTION: one natural walking key pose in the target direction, modest relaxed stride, anatomical LEFT leg in forward phase and right leg trailing, appropriate arm counter-swing. Exactly ONE single-bladed practical iron woodcutting axe with the same wood handle, held LOW in his anatomical RIGHT hand, blade down/out, not swinging or attacking. Left hand empty. NO LOG. In directions where the right hand is behind his body let it be naturally partially occluded; do not swap hands merely to expose the axe.\nOne full character, same square canvas and warm off-white background, stable approximate human body size and feet anchor. Preserve head/tool/boot margins; no clipping/crop, no cast ground shadow, platform, scene, lettering, arrows, UI, watermark or other figures. Soft matte hand-painted style matches the supplied own character, not plastic or photorealistic. Final must clearly communicate SW, not the source southeast facing.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-8fdb1d0d-4ca2-470f-ad19-cae0c7bfbe90.png",
+      "output": "docs/art/sources/lumberjack-v1/axe-sw-initial.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-se.png"
+        }
+      ]
+    },
+    {
+      "key": "axe_W",
+      "prompt": "Use case: identity-preserve.\nAsset type: single directional walking-key-pose concept, variant W, SAME woodcutter.\nInput image 1 is the CHARACTER IDENTITY / OUTFIT / PAINT STYLE and CAMERA-ELEVATION edit target. Make a new facing of this SAME man, not a new person or mirrored photograph.\nTarget facing: WEST / directly LEFT on screen. Exact left-facing SIDE PROFILE, nose points horizontally LEFT. Body facing across the screen, not toward viewer or away. One side of head and torso visible, limbs naturally overlap. Do not turn it into a three-quarter front or rear view; axe remains on anatomical right.\nRotate the CHARACTER around his vertical axis on the ground; keep the CAMERA fixed at the same elevated downward-looking strategy-game angle. The top of his ochre cap, shoulders and boots remain visible. Do not flatten into an eye-level side/front portrait or change camera elevation. All directions use the same ground plane. No horizon or foreshortening trick.\nLOCK IDENTITY: exact same sturdy adult, about 5.5-head adult proportions, short chestnut beard/hair, rust-ochre rolled wool cap, muted olive-green tunic, cream neck-lace opening on front only, rolled cream sleeves, dark brown belt and dull buckle at front, short plain brown leather apron FRONT ONLY (back is plain green with belt across waist), dark umber trousers, brown ankle boots. Keep silhouette, material palette, density of painted detail and human size. Do not invent straps, bags, apron on the back, hood, armor, costume change or different hair.\nACTION: one natural walking key pose in the target direction, modest relaxed stride, anatomical LEFT leg in forward phase and right leg trailing, appropriate arm counter-swing. Exactly ONE single-bladed practical iron woodcutting axe with the same wood handle, held LOW in his anatomical RIGHT hand, blade down/out, not swinging or attacking. Left hand empty. NO LOG. In directions where the right hand is behind his body let it be naturally partially occluded; do not swap hands merely to expose the axe.\nOne full character, same square canvas and warm off-white background, stable approximate human body size and feet anchor. Preserve head/tool/boot margins; no clipping/crop, no cast ground shadow, platform, scene, lettering, arrows, UI, watermark or other figures. Soft matte hand-painted style matches the supplied own character, not plastic or photorealistic. Final must clearly communicate W, not the source southeast facing.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-e0b44d39-c5bd-432f-9c87-d6341f9eb822.png",
+      "output": "docs/art/sources/lumberjack-v1/axe-w-initial.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-se.png"
+        }
+      ]
+    },
+    {
+      "key": "axe_NW",
+      "prompt": "Use case: identity-preserve.\nAsset type: single directional walking-key-pose concept, variant NW, SAME woodcutter.\nInput image 1 is the CHARACTER IDENTITY / OUTFIT / PAINT STYLE and CAMERA-ELEVATION edit target. Make a new facing of this SAME man, not a new person or mirrored photograph.\nTarget facing: NORTHWEST / upper-LEFT on screen. A REAR three-quarter view: back dominant, head and toes diagonally AWAY and LEFT. Back of cap, hair and plain tunic dominate; at most a small profile sliver of nose pointing upper-left, no full front or chest laces.\nRotate the CHARACTER around his vertical axis on the ground; keep the CAMERA fixed at the same elevated downward-looking strategy-game angle. The top of his ochre cap, shoulders and boots remain visible. Do not flatten into an eye-level side/front portrait or change camera elevation. All directions use the same ground plane. No horizon or foreshortening trick.\nLOCK IDENTITY: exact same sturdy adult, about 5.5-head adult proportions, short chestnut beard/hair, rust-ochre rolled wool cap, muted olive-green tunic, cream neck-lace opening on front only, rolled cream sleeves, dark brown belt and dull buckle at front, short plain brown leather apron FRONT ONLY (back is plain green with belt across waist), dark umber trousers, brown ankle boots. Keep silhouette, material palette, density of painted detail and human size. Do not invent straps, bags, apron on the back, hood, armor, costume change or different hair.\nACTION: one natural walking key pose in the target direction, modest relaxed stride, anatomical LEFT leg in forward phase and right leg trailing, appropriate arm counter-swing. Exactly ONE single-bladed practical iron woodcutting axe with the same wood handle, held LOW in his anatomical RIGHT hand, blade down/out, not swinging or attacking. Left hand empty. NO LOG. In directions where the right hand is behind his body let it be naturally partially occluded; do not swap hands merely to expose the axe.\nOne full character, same square canvas and warm off-white background, stable approximate human body size and feet anchor. Preserve head/tool/boot margins; no clipping/crop, no cast ground shadow, platform, scene, lettering, arrows, UI, watermark or other figures. Soft matte hand-painted style matches the supplied own character, not plastic or photorealistic. Final must clearly communicate NW, not the source southeast facing.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-7df359ab-b9ff-4613-8b63-2a57485bf825.png",
+      "output": "docs/art/concepts/lumberjack-v1/axe-nw.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-9d1dcaef-9f43-4ba4-836f-d5077cbc4801.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-se.png"
+        }
+      ]
+    },
+    {
+      "key": "log_N",
+      "prompt": "Use case: identity-preserve.\nAsset type: one directional walking-with-log concept, N, for our SAME woodcutter.\nImage 1 is the DIRECTION/POSE/CAMERA EDIT TARGET: our axe-only woodcutter in facing N. Keep THIS facing and camera; do not change it to image 2's southeast view.\nImage 2 is ONLY the approved-for-this-production identity, LOG CARRY METHOD, hand support, single log size/material and stowed axe reference. This reference is not a direction to copy.\nREQUIRED DIRECTION: NORTH / straight UP on screen. Exactly REAR view: only back of cap, back of head, back of tunic and rear of legs. NO face, nose, eyes, chest laces or apron bib visible from the back. Head and toes point away from viewer straight upward. No left/right yaw.\nCHANGE THE LOAD STATE of image 1. He now carries exactly ONE round bark-covered timber log TRANSVERSELY across his upper back/right shoulder line, as shown in image 2. The log runs across his shoulder line, perpendicular to his body heading, turns with the body, and remains one continuous cylinder with pale sawn ends. Raise his anatomical RIGHT hand to support the underside of the log at that shoulder with a natural bent elbow; his anatomical LEFT arm balances in the walk. Shoulders/body lean only slightly under load. Keep two arms, two hands, one log. No duplicated/floating cargo or log passing through his head/neck. Allow natural depth occlusion from this viewing direction; do not show impossible extra limbs just to make everything visible.\nMove his ONE same iron woodcutting axe from right hand into the leather loop on his anatomical LEFT hip, blade/head beside belt and handle pointing down, exactly like image 2. Right hand supports log, left hand is empty; never hold an extra axe. Do not switch anatomical sides when viewed from behind.\nLOCK IDENTITY AND CAMERA: exact same sturdy adult man, short chestnut beard/hair, ochre rolled cap, olive-green tunic, cream front neck lacing and rolled sleeves, dark brown belt, SHORT FRONT-ONLY brown leather apron (NO back apron), umber trousers, brown boots. Preserve source height/proportions, paint detail, matte materials, and the elevated downward-looking strategy-game camera showing cap/shoulder tops; rotate only load/action, not the target facing. Preserve natural walking pose in this direction, no chopping or static T-pose.\nUse the same warm off-white square canvas, similar feet anchor and HUMAN body scale independent of cargo extent; never shrink the human because the log widens his silhouette. Entire log, head, hands, axe and boots must fit without cropping. No building, environment, floor/long shadow, platform, people, arrows, lettering, captions, grid, UI or watermark. One complete character image, not multiple views.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-7b76cada-ca41-47cc-8e50-f932ff2a7ba4.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-n.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-a1775302-69cd-415e-9e99-430912bdbb8e.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-n.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be4c2565-7a8c-4ca2-8446-baebcd2f3821.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-se.png"
+        }
+      ],
+      "supersededBy": "docs/art/concepts/lumberjack-v1/log-n-v2.png"
+    },
+    {
+      "key": "log_NE",
+      "prompt": "Use case: identity-preserve.\nAsset type: one directional walking-with-log concept, NE, for our SAME woodcutter.\nImage 1 is the DIRECTION/POSE/CAMERA EDIT TARGET: our axe-only woodcutter in facing NE. Keep THIS facing and camera; do not change it to image 2's southeast view.\nImage 2 is ONLY the approved-for-this-production identity, LOG CARRY METHOD, hand support, single log size/material and stowed axe reference. This reference is not a direction to copy.\nREQUIRED DIRECTION: NORTHEAST / upper-RIGHT on screen. A REAR three-quarter view: back dominant with his rightward-facing side, nose at most a tiny profile sliver toward UPPER RIGHT, no full chest/front. Back of tunic and cap dominate. Torso, head, hips and feet all moving diagonally AWAY and RIGHT.\nCHANGE THE LOAD STATE of image 1. He now carries exactly ONE round bark-covered timber log TRANSVERSELY across his upper back/right shoulder line, as shown in image 2. The log runs across his shoulder line, perpendicular to his body heading, turns with the body, and remains one continuous cylinder with pale sawn ends. Raise his anatomical RIGHT hand to support the underside of the log at that shoulder with a natural bent elbow; his anatomical LEFT arm balances in the walk. Shoulders/body lean only slightly under load. Keep two arms, two hands, one log. No duplicated/floating cargo or log passing through his head/neck. Allow natural depth occlusion from this viewing direction; do not show impossible extra limbs just to make everything visible.\nMove his ONE same iron woodcutting axe from right hand into the leather loop on his anatomical LEFT hip, blade/head beside belt and handle pointing down, exactly like image 2. Right hand supports log, left hand is empty; never hold an extra axe. Do not switch anatomical sides when viewed from behind.\nLOCK IDENTITY AND CAMERA: exact same sturdy adult man, short chestnut beard/hair, ochre rolled cap, olive-green tunic, cream front neck lacing and rolled sleeves, dark brown belt, SHORT FRONT-ONLY brown leather apron (NO back apron), umber trousers, brown boots. Preserve source height/proportions, paint detail, matte materials, and the elevated downward-looking strategy-game camera showing cap/shoulder tops; rotate only load/action, not the target facing. Preserve natural walking pose in this direction, no chopping or static T-pose.\nUse the same warm off-white square canvas, similar feet anchor and HUMAN body scale independent of cargo extent; never shrink the human because the log widens his silhouette. Entire log, head, hands, axe and boots must fit without cropping. No building, environment, floor/long shadow, platform, people, arrows, lettering, captions, grid, UI or watermark. One complete character image, not multiple views.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-6ec02117-85e8-4acd-bc21-94891e203ced.png",
+      "output": "docs/art/sources/lumberjack-v1/log-ne-initial.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-da3b57bb-c6c5-4abe-b7df-aaf7a983d29d.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-ne.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be4c2565-7a8c-4ca2-8446-baebcd2f3821.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-se.png"
+        }
+      ]
+    },
+    {
+      "key": "log_E",
+      "prompt": "Use case: identity-preserve.\nAsset type: one directional walking-with-log concept, E, for our SAME woodcutter.\nImage 1 is the DIRECTION/POSE/CAMERA EDIT TARGET: our axe-only woodcutter in facing E. Keep THIS facing and camera; do not change it to image 2's southeast view.\nImage 2 is ONLY the approved-for-this-production identity, LOG CARRY METHOD, hand support, single log size/material and stowed axe reference. This reference is not a direction to copy.\nREQUIRED DIRECTION: EAST / directly RIGHT on screen. Exact right-facing SIDE PROFILE, nose points horizontally RIGHT. Body facing across the screen, not toward viewer or away. One side of head and torso visible, hands/legs naturally overlap. Do not turn it into a three-quarter front or rear view.\nCHANGE THE LOAD STATE of image 1. He now carries exactly ONE round bark-covered timber log TRANSVERSELY across his upper back/right shoulder line, as shown in image 2. The log runs across his shoulder line, perpendicular to his body heading, turns with the body, and remains one continuous cylinder with pale sawn ends. Raise his anatomical RIGHT hand to support the underside of the log at that shoulder with a natural bent elbow; his anatomical LEFT arm balances in the walk. Shoulders/body lean only slightly under load. Keep two arms, two hands, one log. No duplicated/floating cargo or log passing through his head/neck. Allow natural depth occlusion from this viewing direction; do not show impossible extra limbs just to make everything visible.\nMove his ONE same iron woodcutting axe from right hand into the leather loop on his anatomical LEFT hip, blade/head beside belt and handle pointing down, exactly like image 2. Right hand supports log, left hand is empty; never hold an extra axe. Do not switch anatomical sides when viewed from behind.\nLOCK IDENTITY AND CAMERA: exact same sturdy adult man, short chestnut beard/hair, ochre rolled cap, olive-green tunic, cream front neck lacing and rolled sleeves, dark brown belt, SHORT FRONT-ONLY brown leather apron (NO back apron), umber trousers, brown boots. Preserve source height/proportions, paint detail, matte materials, and the elevated downward-looking strategy-game camera showing cap/shoulder tops; rotate only load/action, not the target facing. Preserve natural walking pose in this direction, no chopping or static T-pose.\nUse the same warm off-white square canvas, similar feet anchor and HUMAN body scale independent of cargo extent; never shrink the human because the log widens his silhouette. Entire log, head, hands, axe and boots must fit without cropping. No building, environment, floor/long shadow, platform, people, arrows, lettering, captions, grid, UI or watermark. One complete character image, not multiple views.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-d37e239e-2279-4bf8-934b-b6d0989e3f42.png",
+      "output": "docs/art/sources/lumberjack-v1/log-e-initial.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-63502821-cf60-4b3c-949a-94a3a480ba26.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-e.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be4c2565-7a8c-4ca2-8446-baebcd2f3821.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-se.png"
+        }
+      ]
+    },
+    {
+      "key": "log_S",
+      "prompt": "Use case: identity-preserve.\nAsset type: one directional walking-with-log concept, S, for our SAME woodcutter.\nImage 1 is the DIRECTION/POSE/CAMERA EDIT TARGET: our axe-only woodcutter in facing S. Keep THIS facing and camera; do not change it to image 2's southeast view.\nImage 2 is ONLY the approved-for-this-production identity, LOG CARRY METHOD, hand support, single log size/material and stowed axe reference. This reference is not a direction to copy.\nREQUIRED DIRECTION: SOUTH / straight DOWN on screen. Exactly FRONT view under the same elevated camera: face and chest laces centered toward viewer, shoulders balanced, apron in front. Head/chest/hips/boots point straight toward viewer DOWN. No left/right yaw and no sideways head turn.\nCHANGE THE LOAD STATE of image 1. He now carries exactly ONE round bark-covered timber log TRANSVERSELY across his upper back/right shoulder line, as shown in image 2. The log runs across his shoulder line, perpendicular to his body heading, turns with the body, and remains one continuous cylinder with pale sawn ends. Raise his anatomical RIGHT hand to support the underside of the log at that shoulder with a natural bent elbow; his anatomical LEFT arm balances in the walk. Shoulders/body lean only slightly under load. Keep two arms, two hands, one log. No duplicated/floating cargo or log passing through his head/neck. Allow natural depth occlusion from this viewing direction; do not show impossible extra limbs just to make everything visible.\nMove his ONE same iron woodcutting axe from right hand into the leather loop on his anatomical LEFT hip, blade/head beside belt and handle pointing down, exactly like image 2. Right hand supports log, left hand is empty; never hold an extra axe. Do not switch anatomical sides when viewed from behind.\nLOCK IDENTITY AND CAMERA: exact same sturdy adult man, short chestnut beard/hair, ochre rolled cap, olive-green tunic, cream front neck lacing and rolled sleeves, dark brown belt, SHORT FRONT-ONLY brown leather apron (NO back apron), umber trousers, brown boots. Preserve source height/proportions, paint detail, matte materials, and the elevated downward-looking strategy-game camera showing cap/shoulder tops; rotate only load/action, not the target facing. Preserve natural walking pose in this direction, no chopping or static T-pose.\nUse the same warm off-white square canvas, similar feet anchor and HUMAN body scale independent of cargo extent; never shrink the human because the log widens his silhouette. Entire log, head, hands, axe and boots must fit without cropping. No building, environment, floor/long shadow, platform, people, arrows, lettering, captions, grid, UI or watermark. One complete character image, not multiple views.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-87285ef9-89c3-4251-9ce3-ab5b9ace287d.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-s.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-7404073b-4884-4c40-8467-02f9cda05f62.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-s.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be4c2565-7a8c-4ca2-8446-baebcd2f3821.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-se.png"
+        }
+      ]
+    },
+    {
+      "key": "log_SW",
+      "prompt": "Use case: identity-preserve.\nAsset type: one directional walking-with-log concept, SW, for our SAME woodcutter.\nImage 1 is the DIRECTION/POSE/CAMERA EDIT TARGET: our axe-only woodcutter in facing SW. Keep THIS facing and camera; do not change it to image 2's southeast view.\nImage 2 is ONLY the approved-for-this-production identity, LOG CARRY METHOD, hand support, single log size/material and stowed axe reference. This reference is not a direction to copy.\nREQUIRED DIRECTION: SOUTHWEST / lower-LEFT on screen. Three-quarter FRONT view, face/chest/hips/toes all point diagonally toward viewer and LEFT. This is not a simple mirrored screenshot: keep the axe in his anatomical RIGHT hand and clothing details on their correct body side.\nCHANGE THE LOAD STATE of image 1. He now carries exactly ONE round bark-covered timber log TRANSVERSELY across his upper back/right shoulder line, as shown in image 2. The log runs across his shoulder line, perpendicular to his body heading, turns with the body, and remains one continuous cylinder with pale sawn ends. Raise his anatomical RIGHT hand to support the underside of the log at that shoulder with a natural bent elbow; his anatomical LEFT arm balances in the walk. Shoulders/body lean only slightly under load. Keep two arms, two hands, one log. No duplicated/floating cargo or log passing through his head/neck. Allow natural depth occlusion from this viewing direction; do not show impossible extra limbs just to make everything visible.\nMove his ONE same iron woodcutting axe from right hand into the leather loop on his anatomical LEFT hip, blade/head beside belt and handle pointing down, exactly like image 2. Right hand supports log, left hand is empty; never hold an extra axe. Do not switch anatomical sides when viewed from behind.\nLOCK IDENTITY AND CAMERA: exact same sturdy adult man, short chestnut beard/hair, ochre rolled cap, olive-green tunic, cream front neck lacing and rolled sleeves, dark brown belt, SHORT FRONT-ONLY brown leather apron (NO back apron), umber trousers, brown boots. Preserve source height/proportions, paint detail, matte materials, and the elevated downward-looking strategy-game camera showing cap/shoulder tops; rotate only load/action, not the target facing. Preserve natural walking pose in this direction, no chopping or static T-pose.\nUse the same warm off-white square canvas, similar feet anchor and HUMAN body scale independent of cargo extent; never shrink the human because the log widens his silhouette. Entire log, head, hands, axe and boots must fit without cropping. No building, environment, floor/long shadow, platform, people, arrows, lettering, captions, grid, UI or watermark. One complete character image, not multiple views.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-362abec6-245a-4d1d-8e81-e499c0a77481.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-sw.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-fc8ab5bc-b14b-450b-834e-b09aff920509.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-sw.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be4c2565-7a8c-4ca2-8446-baebcd2f3821.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-se.png"
+        }
+      ]
+    },
+    {
+      "key": "log_W",
+      "prompt": "Use case: identity-preserve.\nAsset type: one directional walking-with-log concept, W, for our SAME woodcutter.\nImage 1 is the DIRECTION/POSE/CAMERA EDIT TARGET: our axe-only woodcutter in facing W. Keep THIS facing and camera; do not change it to image 2's southeast view.\nImage 2 is ONLY the approved-for-this-production identity, LOG CARRY METHOD, hand support, single log size/material and stowed axe reference. This reference is not a direction to copy.\nREQUIRED DIRECTION: WEST / directly LEFT on screen. Exact left-facing SIDE PROFILE, nose points horizontally LEFT. Body facing across the screen, not toward viewer or away. One side of head and torso visible, limbs naturally overlap. Do not turn it into a three-quarter front or rear view; axe remains on anatomical right.\nCHANGE THE LOAD STATE of image 1. He now carries exactly ONE round bark-covered timber log TRANSVERSELY across his upper back/right shoulder line, as shown in image 2. The log runs across his shoulder line, perpendicular to his body heading, turns with the body, and remains one continuous cylinder with pale sawn ends. Raise his anatomical RIGHT hand to support the underside of the log at that shoulder with a natural bent elbow; his anatomical LEFT arm balances in the walk. Shoulders/body lean only slightly under load. Keep two arms, two hands, one log. No duplicated/floating cargo or log passing through his head/neck. Allow natural depth occlusion from this viewing direction; do not show impossible extra limbs just to make everything visible.\nMove his ONE same iron woodcutting axe from right hand into the leather loop on his anatomical LEFT hip, blade/head beside belt and handle pointing down, exactly like image 2. Right hand supports log, left hand is empty; never hold an extra axe. Do not switch anatomical sides when viewed from behind.\nLOCK IDENTITY AND CAMERA: exact same sturdy adult man, short chestnut beard/hair, ochre rolled cap, olive-green tunic, cream front neck lacing and rolled sleeves, dark brown belt, SHORT FRONT-ONLY brown leather apron (NO back apron), umber trousers, brown boots. Preserve source height/proportions, paint detail, matte materials, and the elevated downward-looking strategy-game camera showing cap/shoulder tops; rotate only load/action, not the target facing. Preserve natural walking pose in this direction, no chopping or static T-pose.\nUse the same warm off-white square canvas, similar feet anchor and HUMAN body scale independent of cargo extent; never shrink the human because the log widens his silhouette. Entire log, head, hands, axe and boots must fit without cropping. No building, environment, floor/long shadow, platform, people, arrows, lettering, captions, grid, UI or watermark. One complete character image, not multiple views.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-c2aa9546-18fc-4ad5-b95e-cd884cfcec60.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-w.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-a3dcf971-47f5-47f8-84cb-26b1339e7d7f.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-w.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be4c2565-7a8c-4ca2-8446-baebcd2f3821.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-se.png"
+        }
+      ]
+    },
+    {
+      "key": "log_NW",
+      "prompt": "Use case: identity-preserve.\nAsset type: one directional walking-with-log concept, NW, for our SAME woodcutter.\nImage 1 is the DIRECTION/POSE/CAMERA EDIT TARGET: our axe-only woodcutter in facing NW. Keep THIS facing and camera; do not change it to image 2's southeast view.\nImage 2 is ONLY the approved-for-this-production identity, LOG CARRY METHOD, hand support, single log size/material and stowed axe reference. This reference is not a direction to copy.\nREQUIRED DIRECTION: NORTHWEST / upper-LEFT on screen. A REAR three-quarter view: back dominant, head and toes diagonally AWAY and LEFT. Back of cap, hair and plain tunic dominate; at most a small profile sliver of nose pointing upper-left, no full front or chest laces.\nCHANGE THE LOAD STATE of image 1. He now carries exactly ONE round bark-covered timber log TRANSVERSELY across his upper back/right shoulder line, as shown in image 2. The log runs across his shoulder line, perpendicular to his body heading, turns with the body, and remains one continuous cylinder with pale sawn ends. Raise his anatomical RIGHT hand to support the underside of the log at that shoulder with a natural bent elbow; his anatomical LEFT arm balances in the walk. Shoulders/body lean only slightly under load. Keep two arms, two hands, one log. No duplicated/floating cargo or log passing through his head/neck. Allow natural depth occlusion from this viewing direction; do not show impossible extra limbs just to make everything visible.\nMove his ONE same iron woodcutting axe from right hand into the leather loop on his anatomical LEFT hip, blade/head beside belt and handle pointing down, exactly like image 2. Right hand supports log, left hand is empty; never hold an extra axe. Do not switch anatomical sides when viewed from behind.\nLOCK IDENTITY AND CAMERA: exact same sturdy adult man, short chestnut beard/hair, ochre rolled cap, olive-green tunic, cream front neck lacing and rolled sleeves, dark brown belt, SHORT FRONT-ONLY brown leather apron (NO back apron), umber trousers, brown boots. Preserve source height/proportions, paint detail, matte materials, and the elevated downward-looking strategy-game camera showing cap/shoulder tops; rotate only load/action, not the target facing. Preserve natural walking pose in this direction, no chopping or static T-pose.\nUse the same warm off-white square canvas, similar feet anchor and HUMAN body scale independent of cargo extent; never shrink the human because the log widens his silhouette. Entire log, head, hands, axe and boots must fit without cropping. No building, environment, floor/long shadow, platform, people, arrows, lettering, captions, grid, UI or watermark. One complete character image, not multiple views.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-acbcc8f9-88df-4ed5-88ee-259921944405.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-nw.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-7df359ab-b9ff-4613-8b63-2a57485bf825.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-nw.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be4c2565-7a8c-4ca2-8446-baebcd2f3821.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-se.png"
+        }
+      ],
+      "supersededBy": "docs/art/concepts/lumberjack-v1/log-nw-v2.png"
+    },
+    {
+      "key": "fix_axe_W",
+      "prompt": "Use case: precise-object-edit.\nInput image 1 is the EXACT EDIT TARGET. The woodcutter is already walking straight LEFT (WEST) correctly. KEEP this body, facing, pose, camera, clothing, face, cap, legs, background and framing unchanged.\nFix ONLY which hand holds the single axe. The target incorrectly has the axe in the nearer hand on the RIGHT SIDE OF THE IMAGE. That near arm is his anatomical LEFT arm. Remove the axe entirely from that hand and leave it naturally EMPTY, fingers relaxed in walking motion.\nMove the SAME single-bladed axe to his farther arm's hand on the LEFT SIDE OF THE IMAGE (the other currently empty hand, lower-left of his torso). That is his anatomical RIGHT hand. That hand must firmly grip the wooden handle; iron head hangs down/out below that fist and to the left of the legs, clear of his body. Match the existing axe's wood and iron, natural wrist, plausible grip. Exactly ONE axe total. Near image-right hand empty, far image-left hand grips axe.\nDo not mirror the whole character, change the direction or pose, rotate the camera, add a second axe, put a log in the scene, change costume or alter any other part of the image. Same warm off-white square canvas and softly hand-painted style. Return the entire unchanged full-body character with only this tool-hand correction.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-a3dcf971-47f5-47f8-84cb-26b1339e7d7f.png",
+      "output": "docs/art/concepts/lumberjack-v1/axe-w.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-e0b44d39-c5bd-432f-9c87-d6341f9eb822.png",
+          "projectPath": "docs/art/sources/lumberjack-v1/axe-w-initial.png"
+        }
+      ]
+    },
+    {
+      "key": "fix_axe_SW",
+      "prompt": "Use case: precise-object-edit.\nInput image 1 is the EXACT EDIT TARGET. The woodcutter is already walking diagonally toward the LOWER LEFT (SOUTHWEST) correctly. KEEP this body, facing, pose, camera, clothing, face, cap, legs, background and framing unchanged.\nFix ONLY which hand holds the single axe. The target incorrectly has the axe in the nearer hand on the RIGHT SIDE OF THE IMAGE. That near arm is his anatomical LEFT arm. Remove the axe entirely from that hand and leave it naturally EMPTY, fingers relaxed in walking motion.\nMove the SAME single-bladed axe to his farther arm's hand on the LEFT SIDE OF THE IMAGE (the other currently empty hand, lower-left of his torso). That is his anatomical RIGHT hand. That hand must firmly grip the wooden handle; iron head hangs down/out below that fist and to the left of the legs, clear of his body. Match the existing axe's wood and iron, natural wrist, plausible grip. Exactly ONE axe total. Near image-right hand empty, far image-left hand grips axe.\nDo not mirror the whole character, change the direction or pose, rotate the camera, add a second axe, put a log in the scene, change costume or alter any other part of the image. Same warm off-white square canvas and softly hand-painted style. Return the entire unchanged full-body character with only this tool-hand correction.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-fc8ab5bc-b14b-450b-834e-b09aff920509.png",
+      "output": "docs/art/concepts/lumberjack-v1/axe-sw.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-8fdb1d0d-4ca2-470f-ad19-cae0c7bfbe90.png",
+          "projectPath": "docs/art/sources/lumberjack-v1/axe-sw-initial.png"
+        }
+      ]
+    },
+    {
+      "key": "fix_log_E",
+      "prompt": "Use case: precise-object-edit.\nInput image 1 is the complete EDIT TARGET. Keep this exact woodcutter, EAST/right-facing side walking direction, one log, supporting right arm/hand, empty left hand, camera, canvas, outfit, anatomy, feet, pose, light, colors and all background unchanged.\nFix ONLY the AXE BELT POSITION. It is currently on his anatomical RIGHT hip, which is wrong for our character.\nRemove the axe and its leather loop from the visible near hip on the LEFT side of this image, directly below the raised log-supporting arm. Restore that tunic and belt area cleanly. Move the single axe to his anatomical LEFT hip on the FAR side of the torso, at the RIGHT edge of his waist just behind the empty downward arm. It may be mostly naturally occluded by torso and that arm; only a small honest sliver of head/handle may be visible. Do not relocate it to the near side simply to display it.\nExactly ONE axe, securely stowed, never handheld. Anatomical RIGHT hand still supports exactly ONE log, LEFT hand stays empty. If the axe is occluded, do not add a substitute tool or duplicate.\nNo change to his identity, current direction, log angle/material, hands, legs, clothing or camera; no mirror, caption, scene, new prop or extra limb. Return the whole character on the same warm off-white square background. This is a small tool-placement correction only.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-98d1e81e-63c6-45c4-8486-15da74a2b607.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-e.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-d37e239e-2279-4bf8-934b-b6d0989e3f42.png",
+          "projectPath": "docs/art/sources/lumberjack-v1/log-e-initial.png"
+        }
+      ]
+    },
+    {
+      "key": "fix_log_NE",
+      "prompt": "Use case: precise-object-edit.\nInput image 1 is the complete EDIT TARGET. Keep this exact woodcutter, NORTHEAST/upper-right rear three-quarter walking direction, one log, supporting right arm/hand, empty left hand, camera, canvas, outfit, anatomy, feet, pose, light, colors and all background unchanged.\nFix ONLY the AXE BELT POSITION. It is currently on his anatomical RIGHT hip, which is wrong for our character.\nRemove the axe and its leather loop from the visible RIGHT edge of his waist, below the raised supporting right elbow. Restore plain green tunic and belt there. Put the SAME one axe into a leather loop at his anatomical LEFT hip on the LEFT edge of his waist, beside the empty lowered left arm. Iron head at belt height, wooden handle downward along the left thigh.\nExactly ONE axe, securely stowed, never handheld. Anatomical RIGHT hand still supports exactly ONE log, LEFT hand stays empty. If the axe is occluded, do not add a substitute tool or duplicate.\nNo change to his identity, current direction, log angle/material, hands, legs, clothing or camera; no mirror, caption, scene, new prop or extra limb. Return the whole character on the same warm off-white square background. This is a small tool-placement correction only.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-19321867-482f-4efa-a1f7-338754a7c0ec.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-ne.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-6ec02117-85e8-4acd-bc21-94891e203ced.png",
+          "projectPath": "docs/art/sources/lumberjack-v1/log-ne-initial.png"
+        }
+      ],
+      "supersededBy": "docs/art/concepts/lumberjack-v1/log-ne-v2.png"
+    },
+    {
+      "key": "log_NE_neck_v2",
+      "prompt": "Edit the FIRST reference image, preserving its full-body composition, exact character identity, facing direction, gait, clothing, hand-painted medieval RTS visual style, elevated orthographic camera, background, and scale. The SECOND image shows the same NE-facing character without the load and is only an anatomical reference for his clean head, neck and shoulders.\n\nCRITICAL CORRECTION: this man walks away toward upper-right (NE), and we see his BACK. The existing log is wrongly crossing IN FRONT of his throat under his beard. REMOVE that incorrect log placement and rebuild the carry in actual 3D: ONE wooden log carried crosswise BEHIND HIS NECK, resting on the posterior shoulder shelf / trapezius across his UPPER BACK, like a back-squat bar, never like a front-squat bar. Move the log toward the viewer and toward the lower-left relative to the head; NOT up under his jaw. In this rear three-quarter view the log must visibly OVERLAP/OCCLUDE the upper olive-green back of his tunic and the base of his NAPE. His head is anatomically forward of the log; the visible right cheek, beard, chin, and front of the throat project beyond the FAR side of the log with clear breathing space and no wood touching under the chin. Make the depth relationship unambiguous. The cylinder must not run across his chest or intersect his neck. Its weight is supported by the back of the shoulders, not his face.\n\nConcretely, compared with the incorrect first reference, shift the transverse cylinder posteriorly over the upper BACK (roughly down-left in image space), and reconstruct the visible occlusion at the shoulders/nape; do not just recolor the original placement. Keep its length and diameter similar, its bark and right cut end visible. Reposition the anatomical RIGHT arm so the bent forearm and palm naturally steady the underside of this correctly rearward log. The right elbow is a little outward and backward. His LEFT arm stays freely swinging down. Keep ONE single-bladed axe holstered on the anatomical LEFT hip exactly as in the first reference. Do not add a second axe or extra fingers. Keep face pointing NE and retain both feet and the original walking direction; do not turn his body to disguise the error. Do not add labels, inset diagrams, ground, scenery, or crop any part. Square high-resolution isolated concept on the same warm near-white background.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-95074576-a1c0-4950-a67f-71ad80c88c5a.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-ne-v2.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumberjack-v1/log-ne.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-ne.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumberjack-v1/axe-ne.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-ne.png"
+        }
+      ]
+    },
+    {
+      "key": "log_N_neck_v2",
+      "prompt": "Edit the FIRST reference only. Preserve this original character's direction, identity, clothing, full body, gait, scale, elevated strategy-game orthographic camera, painterly texture and near-white background. SECOND reference is the already corrected NE character, provided ONLY to show the physical back-of-neck carry: log overlapping upper back, not passing in front of throat. Do NOT copy the NE heading, body pose or framing. \n\nRequired correction: one log must rest CROSSWISE BEHIND THE NAPE on the posterior shoulder shelf and upper trapezius, like a back-squat bar, never a front-squat bar. In a REAR view the log is closer to the viewer than the neck: it must visibly occlude the base of the nape / posterior collar and a band of the upper olive tunic BACK. It must NOT vanish behind a fully visible bare posterior neck and complete rear collar, as if the wood were in front of the throat. Move/rebuild the cylinder rearward over the upper back rather than just lifting it under the jaw. Keep the weight at the shoulder shelf, not halfway down the back. Head and front throat remain ahead of the load, with no jaw pressure. Adjust the anatomical RIGHT forearm and supporting palm to steady the underside naturally. LEFT arm swings down freely. Retain exactly one single-bladed axe holstered on the anatomical LEFT hip, no duplicated tools. Keep the same log size, bark and warm cut end as far as the corrected perspective permits. Only change the load position, occlusion and necessary right-arm support. No text, no diagram, no new accessories, no ground or scenery, no cropping.\nDirection MUST stay N: directly away toward the top of the image, full back view of head and body. Both the posterior neck and rear collar cannot remain in front of the corrected transverse log. Its middle crosses the upper back immediately below the hairline. Preserve the forward walking leg and both feet.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-be41e90f-d018-4d00-bfd2-2764b64a7eae.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-n-v2.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumberjack-v1/log-n.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-n.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-95074576-a1c0-4950-a67f-71ad80c88c5a.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-ne-v2.png"
+        }
+      ],
+      "supersededBy": "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png"
+    },
+    {
+      "key": "log_NW-ATTEMPT1_neck_v2",
+      "prompt": "Edit the FIRST reference only. Preserve this original character's direction, identity, clothing, full body, gait, scale, elevated strategy-game orthographic camera, painterly texture and near-white background. SECOND reference is the already corrected NE character, provided ONLY to show the physical back-of-neck carry: log overlapping upper back, not passing in front of throat. Do NOT copy the NE heading, body pose or framing. \n\nRequired correction: one log must rest CROSSWISE BEHIND THE NAPE on the posterior shoulder shelf and upper trapezius, like a back-squat bar, never a front-squat bar. In a REAR view the log is closer to the viewer than the neck: it must visibly occlude the base of the nape / posterior collar and a band of the upper olive tunic BACK. It must NOT vanish behind a fully visible bare posterior neck and complete rear collar, as if the wood were in front of the throat. Move/rebuild the cylinder rearward over the upper back rather than just lifting it under the jaw. Keep the weight at the shoulder shelf, not halfway down the back. Head and front throat remain ahead of the load, with no jaw pressure. Adjust the anatomical RIGHT forearm and supporting palm to steady the underside naturally. LEFT arm swings down freely. Retain exactly one single-bladed axe holstered on the anatomical LEFT hip, no duplicated tools. Keep the same log size, bark and warm cut end as far as the corrected perspective permits. Only change the load position, occlusion and necessary right-arm support. No text, no diagram, no new accessories, no ground or scenery, no cropping.\nDirection MUST stay NW: walking away toward the upper-left, rear-left three-quarter view. Face and beard visible on the image-left must have clear empty space ahead, while the log crosses BEHIND the base of the nape on the upper back, not on the far side of the exposed rear collar. Preserve upper-left heading and both feet.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-c2b11520-ced7-41ed-a034-fb1b0d356f88.png",
+      "output": "docs/art/sources/lumberjack-v1/log-nw-neck-attempt1.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumberjack-v1/log-nw.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-nw.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-95074576-a1c0-4950-a67f-71ad80c88c5a.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-ne-v2.png"
+        }
+      ],
+      "rejection": "Removed collar without an unambiguous posterior log reposition."
+    },
+    {
+      "key": "log_NW-ATTEMPT2_neck_v2",
+      "prompt": "Make a targeted anatomical correction to the FIRST reference, keeping the same full-body character facing and walking away toward UPPER LEFT (NW), unchanged feet, cap, face, beard, tunic, belt axe on LEFT hip, art style, scale, and background. SECOND reference shows the correct carry mechanics in a different heading. Use its shoulder contact, NOT its facing direction.\n\nThe previous attempt merely hid the white collar and did NOT move the log correctly. Actually REPLACE the log geometry and position. It must be a TRANSVERSE bar across the BACK of BOTH shoulders, behind the nape, with the long axis perpendicular to the man's NW travel. Seen in this NW rear-left view, its axis should run from image LOWER LEFT to image UPPER RIGHT, roughly along the shoulder line. The nearer visible cut end is now at image LEFT, protruding a little past his left shoulder, while the far end extends to image RIGHT beyond his raised right hand. This change of orientation is intentional and necessary: do NOT preserve the original incorrect log stretching from upper-left behind his cap to lower-right.\n\nBring the log toward the viewer, across and OCCLUDING a visible band of his upper green BACK immediately behind/below the hairline and base of the nape. His leftward-looking face/chin must lie completely ahead of the log with a clear small gap, not pressed on wood. Think a weightlifter with a back-squat bar: the bar rests on the rear trapezius, not in front of the throat. In this rear view a continuous strip of log must be IN FRONT OF the upper back in screen-layer order. Do not hide the carrying error by deleting the neck, collar, or rotating his head. Head stays connected to body in front of the load. Maintain one realistic bark-covered log about the same length/diameter, one axe stowed anatomical LEFT hip, RIGHT hand reaching up to stabilize far/right end of the log from below, LEFT arm down swinging. Rebuild right elbow and palm as needed. Preserve character rendering and full-body square warm near-white presentation. No text or extra objects.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-baa41661-2ae8-4e7e-b2fd-fa0d5656df92.png",
+      "output": "docs/art/sources/lumberjack-v1/log-nw-neck-attempt2.png",
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumberjack-v1/log-nw.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-nw.png"
+        },
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-95074576-a1c0-4950-a67f-71ad80c88c5a.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-ne-v2.png"
+        }
+      ],
+      "rejection": "Corrected transverse posterior log, but left a stray fragment of original log above cap."
+    },
+    {
+      "key": "log_NW_neck_v2",
+      "prompt": "Surgical cleanup edit only. Preserve this entire image exactly in composition, identity, pose, correct log-across-upper-back placement, arms, axe, style and white background. There is an ERRONEOUS leftover fragment of a SECOND log sticking out immediately BEHIND and ABOVE the orange cap at the top-left of his head, around image x470–600, y25–85 on this square image. REMOVE ONLY this stray bark-covered stub and restore the plain near-white background behind the cap. Do not remove or reshape the orange cap or head. The ONE large diagonal log across his upper back, from the lower-left visible round cut end toward the raised right hand, must stay exactly as it is. His head silhouette above the correct log should consist of cap/hair/face ONLY, with empty background above and to the left—no wood protruding above his hat. Do not add any props, do not change anything else. Full image, no crop.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-aad504ac-d69a-45d5-9913-c95527d755d4.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-nw-v2.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-baa41661-2ae8-4e7e-b2fd-fa0d5656df92.png",
+          "projectPath": "docs/art/sources/lumberjack-v1/log-nw-neck-attempt2.png"
+        }
+      ]
+    },
+    {
+      "key": "log_N_shoulder_v1",
+      "prompt": "Use case: precise-object-edit.\nInput image: clean axe-only woodcutter, used as the CHARACTER IDENTITY AND BODY BASE. Create ONE new carrying pose from this clean base, not a variation of any earlier log-carry picture.\nPreserve the original full-body adult man, walking away NORTH toward image top, elevated rear-view medieval RTS camera, ochre cap, chestnut hair, olive tunic, cream rolled sleeves, brown belt/trousers/boots, painterly style, proportions and plain warm off-white background.\n\nNEW NATURAL LOAD MECHANICS: one manageable bark-covered log rests LENGTHWISE on his anatomical RIGHT shoulder, beside his head. Its long axis runs FRONT-TO-BACK parallel with his walking direction, NOT sideways across the shoulders. From this rear elevated view we see the circular REAR cut end projecting back toward us just above/outside the right shoulder blade; the rest of the cylinder recedes forward, upward in image space beside the RIGHT side of his cap. Foreshorten the log naturally. The log is approximately forearm-thick, not wider than his head. Its midpoint balances on the TOP of the right shoulder, with clearly visible shoulder contact and contact shadow. No wood across the middle of his back, nape or chest. His head, neck and left shoulder remain visibly intact and clear of the entire cylinder, with an unmistakable small gap between head and wood.\n\nThe RIGHT shoulder bears the weight. The right upper arm hangs close to his right side, the elbow is naturally bent and directed down and slightly FORWARD, and the forearm reaches forward/up to steady the FORWARD section of the log. The wrist is in a neutral straight line with the forearm, NOT hyperextended, palm scooped backward or elbow twisted behind the back. The hand may be largely OCCLUDED by the log and shoulder in this rear view: preserve believable anatomy rather than forcing all fingers or palm into view. Natural loose stabilizing grip, not lifting the whole weight one-handed. Mild forward body lean under the load, head tilts subtly to the LEFT for clearance, but he keeps walking directly away NORTH.\n\nMove the existing ONE woodcutting axe from right hand to a leather loop on anatomical LEFT hip, blade outward and handle down. Left arm swings down free. Keep both feet and original walking step, no extra props, no second log, no torso penetration, no floating wood, no ropes, no labels or diagrams. One full-body square concept image only, same outfit and painting treatment as the input.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-23a7c2fb-88a2-4aa8-bcc0-8498316198f4.png",
+      "output": "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png",
+      "selectedFinal": true,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumberjack-v1/axe-n.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/axe-n.png"
+        }
+      ]
+    },
+    {
+      "key": "log_N_shoulder_clearance_rejected",
+      "prompt": "Use case: precise-object-edit.\nEdit ONLY the log placement and the minimal supporting forearm adjustment in this image. Keep the same full-body N-facing man, unchanged head/cap/hair/neck, clothing, gait, left-hip axe, art style, framing and background.\n\nThe new LENGTHWISE right-shoulder carry is the correct pose to retain. Fix one remaining problem: the log's forward end leans inward into the right edge of the cap. Straighten the log's front-to-back axis so its projection is nearly VERTICAL, parallel to his NORTH walking direction. Swing the FAR end outward toward image RIGHT, not toward his head. In this 1254-square composition, aim for the shaft axis roughly around image x790–800 from the near cut end to the far end, rather than the current diagonal axis that comes inward toward x710 at the top. A small overall outward move is fine, but the log must STILL REST firmly on the top of his anatomical RIGHT shoulder/deltoid, not float outside it.\n\nAt HEAD/CAP height create a clear narrow strip of near-white BACKGROUND, about 15–25 image pixels or more, between the rightmost silhouette of his cap/hair and the leftmost edge of the wood. The head remains EXACTLY where it is, intact and unreshaped. No contact, overlap or tangency between log and skull, cap, hair or neck. Shoulder contact lower down stays visible with the existing small weight-bearing shadow.\n\nPreserve ONE forearm-thick, foreshortened bark log with the REAR cut face pointing toward the viewer and the cylinder receding forward, no far cut face. Retain the NATURAL right elbow pointing down/forward and neutral forearm/wrist while adapting the hand to the new shaft position; mostly hidden fingers are fine. No palm bent back, no transverse beam, no new props. Everything else unchanged.",
+      "originalOutput": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-0182ca00-020a-427b-a9fe-e0c77e076414.png",
+      "output": null,
+      "previewOnly": true,
+      "selectedFinal": false,
+      "inputs": [
+        {
+          "originalPath": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-23a7c2fb-88a2-4aa8-bcc0-8498316198f4.png",
+          "projectPath": "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png"
+        }
+      ],
+      "rejection": "User preferred the earlier cap-contact pose as more natural. Do not select forced-clearance version.",
+      "retainedInProject": false
+    }
+  ],
+  "actualDesign": "Same own woodcutter identity. Axe-only poses unchanged. NEW selected N loaded pose carries one log lengthwise on right shoulder, right arm steadies forward section, axe stowed left. Other seven loaded directions retain prior transverse concepts and are not yet consistent with this new carry.",
+  "designDeviation": "Master prompt asked for lengthwise shoulder log; generated transverse upper-back/right-shoulder carry was visually reviewed and selected as a sensible own design. Later prompts requested transverse carry. Log tilt/orientation still varies between generated facings. User rejected NE depth after initial review; NE/N/NW posterior-carry revisions supersede those originals. NW transverse axis was changed intentionally to match rear shoulder support. Exact 3D log orientation between all 8 views remains uncalibrated. Latest user-selected N concept switches from transverse to lengthwise right-shoulder carry. Natural cap contact is intentionally retained at user's preference; a forced-gap variant was not selected. Other directions not regenerated.",
+  "qa": {
+    "completeConceptCoverage": true,
+    "visualReview": "Do not reuse previous blanket or N-v2 anatomical PASS. Current N lengthwise concept has visible right-shoulder load contact, no transverse central-back bar, and partly hidden wrist. User chose natural cap-contact version; detailed hidden-hand anatomy and ingame behavior remain unverified.",
+    "criticalConceptDefects": null,
+    "alphaVerified": true,
+    "pixelRegistration": false,
+    "rigidTurnaround": false,
+    "gaitPhaseCalibrated": false,
+    "animationCycleDelivered": false,
+    "ingameScaleVerified": false,
+    "gameIntegration": false,
+    "userApproval": false,
+    "alphaResult": "26 retained project PNGs have RGB color type2 and no transparent alpha; the new selected shoulder concept was measured as 1254x1254 without tRNS.",
+    "criticalConceptDefectsNote": "No broad all-defects claim. Selected NE/N/NW pass targeted posterior-neck carry check; other 5 load poses passed that specific audit without regeneration. Full game/animation QA not performed.",
+    "targetedPosteriorCarry": {
+      "NE": "pass after v2 repair",
+      "N": "Previous N-v2 pass withdrawn after user rejection. Replaced with single lengthwise-shoulder proposal chosen by user; cap contact intentionally retained.",
+      "NW": "pass after v2 repair and stray-log cleanup",
+      "E": "unchanged, no throat crossing identified",
+      "SE": "unchanged, no throat crossing identified",
+      "S": "unchanged, no throat crossing identified",
+      "SW": "unchanged, no throat crossing identified",
+      "W": "unchanged, no throat crossing identified"
+    },
+    "carryPoseSetSynchronized": false,
+    "singlePoseUserSelection": {
+      "direction": "N",
+      "file": "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png",
+      "capContactAccepted": true,
+      "wholeSetApproved": false
+    }
+  },
+  "productionLimits": [
+    "16 images are single walking key poses, not animation sequences.",
+    "Warm off-white backgrounds; PNG metadata must confirm actual alpha.",
+    "Human scale, feet pivots, equipment proportions and log orientation are not rigorously matched.",
+    "Cardinal E/W torsos are mildly three-quarter; heading is visually distinct from diagonals.",
+    "Need actual RGBA and body-based scale/pivots, directional renderer and cargo-overlay suppression before game integration."
+  ],
+  "changedRuntime": false,
+  "changedSaves": false,
+  "changedMaps": false,
+  "finalImageDimensions": [
+    1254,
+    1254
+  ],
+  "finalImageBytes": 23422652,
+  "intermediateSourceCount": 10,
+  "qaHistory": [
+    {
+      "date": "2026-09-09",
+      "qa": {
+        "completeConceptCoverage": true,
+        "visualReview": "Main agent plus independent visual QA, all16",
+        "criticalConceptDefects": false,
+        "alphaVerified": true,
+        "pixelRegistration": false,
+        "rigidTurnaround": false,
+        "gaitPhaseCalibrated": false,
+        "animationCycleDelivered": false,
+        "ingameScaleVerified": false,
+        "gameIntegration": false,
+        "userApproval": false,
+        "alphaResult": "All20 saved source/final PNGs are RGB color type2 with no tRNS, no transparent alpha."
+      },
+      "status": "superseded: user correctly identified anterior/throat log placement in NE; original broad review missed this"
+    },
+    {
+      "date": "2026-09-09",
+      "qa": {
+        "completeConceptCoverage": true,
+        "visualReview": "Original blanket review superseded. Root and independent targeted audit of all 8 log poses; repaired NE/N/NW each re-inspected for posterior shoulder contact, free throat, prop count and support-hand side.",
+        "criticalConceptDefects": null,
+        "alphaVerified": true,
+        "pixelRegistration": false,
+        "rigidTurnaround": false,
+        "gaitPhaseCalibrated": false,
+        "animationCycleDelivered": false,
+        "ingameScaleVerified": false,
+        "gameIntegration": false,
+        "userApproval": false,
+        "alphaResult": "All 25 retained PNGs are RGB color type 2 with no tRNS. The 5 new correction outputs were measured; none has transparent alpha.",
+        "criticalConceptDefectsNote": "No broad all-defects claim. Selected NE/N/NW pass targeted posterior-neck carry check; other 5 load poses passed that specific audit without regeneration. Full game/animation QA not performed.",
+        "targetedPosteriorCarry": {
+          "NE": "pass after v2 repair",
+          "N": "pass after v2 repair",
+          "NW": "pass after v2 repair and stray-log cleanup",
+          "E": "unchanged, no throat crossing identified",
+          "SE": "unchanged, no throat crossing identified",
+          "S": "unchanged, no throat crossing identified",
+          "SW": "unchanged, no throat crossing identified",
+          "W": "unchanged, no throat crossing identified"
+        }
+      },
+      "status": "N carry review superseded by user's repeated rejection: head/body overlap and unnatural arm."
+    }
+  ],
+  "revision": {
+    "date": "2026-09-09",
+    "id": "lengthwise-right-shoulder-N-v1",
+    "revisedDirections": [
+      "N"
+    ],
+    "otherDirectionsChanged": false,
+    "reason": "New carry mechanics from clean axe-N base; user preferred first lengthwise version with cap contact over forced-clearance variant.",
+    "userSelectedSingleConcept": true,
+    "productionApproved": false
+  },
+  "revisionHistory": [
+    {
+      "date": "2026-09-09",
+      "id": "posterior-neck-carry-v2",
+      "reason": "User rejection: log must be behind neck, not below chin.",
+      "revisedDirections": [
+        "NE",
+        "N",
+        "NW"
+      ],
+      "unmodifiedDirections": [
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W"
+      ],
+      "axePosesUnmodified": true,
+      "userApproved": false
+    }
+  ]
+}

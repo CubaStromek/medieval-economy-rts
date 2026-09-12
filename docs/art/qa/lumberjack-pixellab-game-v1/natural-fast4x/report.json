@@ -1,0 +1,6301 @@
+{
+  "captures": [],
+  "chop_burst": [],
+  "chop_burst_target": 0,
+  "code_sha256_at_start": {
+    "res://scripts/simulation/simulation_world.gd": "e410a6f3490fd01f864c5af8cfc1cd941eac3b3040219858ec65e0843a507e93",
+    "res://scripts/view/game_session.gd": "d337f0e155561f0f1b364a046745e68d883b9593f7ff65465a5ebab19657f7e1",
+    "res://scripts/view/lumberjack_animation_library.gd": "1c905af5eba53233abaec2581f11701bfa54bbeea598efd693f2cbf276b49628",
+    "res://scripts/view/lumberjack_presentation.gd": "03479574a1dd3acd7ebaf8d4acf65db6b44d9a27e601909ac208520f4ec55b63",
+    "res://scripts/view/lumberjack_work_placement.gd": "297efd69b6e6c9ba38a5787752602ec17714be6515da291b3b909a8d2bd6ef27",
+    "res://scripts/view/main_view.gd": "15e92deebd6012f56ab730f1896727a403555d162ba9614f8f9e67def11990c7",
+    "res://scripts/view/solar_shadows.gd": "33c6e50d880eb833d65e4b3dbf626e2214d1a16ab55150f8ab6db9695d9b4909",
+    "res://tests/lumberjack_game_integration_runner.gd": "c4c57bc7e71e8cd8acc143700f31808a9d6ba9b037fae145b2ce2a059b655c75"
+  },
+  "coverage_limit": "Only authored normal simulation at its natural dawn lighting and visibility. All-eight-direction, fog and lighting fixtures are separate tests; screenshots require visual review.",
+  "display": "headless",
+  "engine": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "failures": [],
+  "home_id": 2,
+  "home_output_before": 0,
+  "invalid_shadow_polygons": [],
+  "music": "N/A: this project has no music or audio players",
+  "natural_directions_observed": [
+    "S",
+    "W",
+    "E",
+    "SE",
+    "N"
+  ],
+  "observations": [
+    {
+      "accumulator": 0.0779270556225661,
+      "camera_zoom": 0.642384111881256,
+      "contact_ground_position": [
+        4.0,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        546.795288085938,
+        680.895751953125
+      ],
+      "foot_world": [
+        180.0,
+        540.0
+      ],
+      "ground_position": [
+        4.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_axe",
+        "direction": "S",
+        "flip_h": false,
+        "fps": 10.0,
+        "frame_count": 24,
+        "frame_index": 0,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        4.0,
+        13.0
+      ],
+      "tick": 0,
+      "tree_amount": 0,
+      "tree_id": 0,
+      "worker": {
+        "action": "",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          4,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 0,
+        "state": "idle",
+        "type": "lumberjack",
+        "visual_duration_ticks": 1,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0112603889558994,
+      "camera_zoom": 0.642384111881256,
+      "contact_ground_position": [
+        4.0,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        543.553527832031,
+        680.802978515625
+      ],
+      "foot_world": [
+        180.0,
+        540.0
+      ],
+      "ground_position": [
+        4.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_axe",
+        "direction": "S",
+        "flip_h": false,
+        "fps": 10.0,
+        "frame_count": 24,
+        "frame_index": 0,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        4.0,
+        13.0
+      ],
+      "tick": 1,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          4,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 1,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00909588888888893,
+      "camera_zoom": 0.642384111881256,
+      "contact_ground_position": [
+        3.51453638076782,
+        12.9989500045776
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        486.697967529297,
+        679.504638671875
+      ],
+      "foot_world": [
+        160.581451416016,
+        539.9580078125
+      ],
+      "ground_position": [
+        3.3181734085083,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_axe",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 15.0,
+        "frame_count": 24,
+        "frame_index": 20,
+        "moving": true,
+        "renders_cargo": null,
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.51453638076782,
+        12.9989500045776
+      ],
+      "tick": 6,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 4,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0157625555555556,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.38468933105469,
+        12.9986934661865
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        739.53466796875,
+        576.975463867188
+      ],
+      "foot_world": [
+        155.387573242188,
+        539.94775390625
+      ],
+      "ground_position": [
+        3.1403956413269,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_axe",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 15.0,
+        "frame_count": 24,
+        "frame_index": 1,
+        "moving": true,
+        "renders_cargo": null,
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.38468933105469,
+        12.9986934661865
+      ],
+      "tick": 7,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 5,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0116052222222223,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        727.384887695312,
+        576.968505859375
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 0,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 8,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 30
+      }
+    },
+    {
+      "accumulator": 0.0105518888888889,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 0,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.00351729629629631
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 9,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 29
+      }
+    },
+    {
+      "accumulator": 0.0105518888888889,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 1,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.0368506296296296
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 10,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 28
+      }
+    },
+    {
+      "accumulator": 0.00752158585858588,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 3,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.069173861952862
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 11,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 27
+      }
+    },
+    {
+      "accumulator": 0.00642255555555557,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 4,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.102140851851852
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 12,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 26
+      }
+    },
+    {
+      "accumulator": 0.0361225555555556,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 6,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.145374185185185
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 13,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 25
+      }
+    },
+    {
+      "accumulator": 0.0572665555555556,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 8,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.185755518518519
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 14,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 24
+      }
+    },
+    {
+      "accumulator": 0.0156865555555556,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 9,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.205228851851852
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 15,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 23
+      }
+    },
+    {
+      "accumulator": 0.0659492222222222,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 12,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.255316407407407
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 16,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 22
+      }
+    },
+    {
+      "accumulator": 0.0326158888888889,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 13,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.27753862962963
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 17,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 21
+      }
+    },
+    {
+      "accumulator": 0.0659492222222222,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 15,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.321983074074074
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 18,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 20
+      }
+    },
+    {
+      "accumulator": 0.0326158888888889,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 16,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.344205296296296
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 19,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 19
+      }
+    },
+    {
+      "accumulator": 0.0511812222222223,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 18,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.383727074074074
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 20,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 18
+      }
+    },
+    {
+      "accumulator": 0.0117872828282829,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 19,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.403929094276094
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 21,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 17
+      }
+    },
+    {
+      "accumulator": 0.0335044545454546,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 21,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.444501484848485
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 22,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 16
+      }
+    },
+    {
+      "accumulator": 0.0464075656565657,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 23,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.482135855218855
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 23,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 15
+      }
+    },
+    {
+      "accumulator": 0.00195956565656569,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 0,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.500653188552189
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 24,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 14
+      }
+    },
+    {
+      "accumulator": 0.0210875656565657,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 1,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.540362521885522
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 25,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 13
+      }
+    },
+    {
+      "accumulator": 0.0168035656565657,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 3,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.572267855218855
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 26,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 12
+      }
+    },
+    {
+      "accumulator": 0.0482995656565657,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 5,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.616099855218855
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 27,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 11
+      }
+    },
+    {
+      "accumulator": 0.0522515656565657,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 7,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.650750521885522
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 28,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 10
+      }
+    },
+    {
+      "accumulator": 0.0530995656565657,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 8,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.684366521885522
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 29,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 9
+      }
+    },
+    {
+      "accumulator": 0.00643289898989899,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 9,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.7021442996633
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 30,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 8
+      }
+    },
+    {
+      "accumulator": 0.0130995656565657,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 11,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.737699855218855
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 31,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 7
+      }
+    },
+    {
+      "accumulator": 0.0197662323232323,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 13,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.773255410774411
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 32,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 6
+      }
+    },
+    {
+      "accumulator": 0.023469936026936,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 14,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.807823312008979
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 33,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 5
+      }
+    },
+    {
+      "accumulator": 0.0286551212121212,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 16,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.84288504040404
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 34,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 4
+      }
+    },
+    {
+      "accumulator": 0.0323588249158249,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 18,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.877452941638608
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 35,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 3
+      }
+    },
+    {
+      "accumulator": 0.0390254915824916,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 19,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.913008497194164
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 36,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 2
+      }
+    },
+    {
+      "accumulator": 0.0442106767676767,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 21,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.948070225589225
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 37,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 1
+      }
+    },
+    {
+      "accumulator": 0.0479143804713804,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 0,
+        "moving": false,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 38,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0139557138047137,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.28097605705261,
+        12.9986219406128
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        754.193359375,
+        577.000244140625
+      ],
+      "foot_world": [
+        151.239044189453,
+        539.944885253906
+      ],
+      "ground_position": [
+        3.02325963973999,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 8,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.28097605705261,
+        12.9986219406128
+      ],
+      "tick": 39,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          4,
+          13
+        ],
+        "previous_position": [
+          3,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0180597138047137,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.42884612083435,
+        12.9987592697144
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        766.195556640625,
+        577.013305664062
+      ],
+      "foot_world": [
+        157.153839111328,
+        539.950378417969
+      ],
+      "ground_position": [
+        3.19676613807678,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 15,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.42884612083435,
+        12.9987592697144
+      ],
+      "tick": 40,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          4,
+          13
+        ],
+        "previous_position": [
+          3,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0300837138047137,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.55683898925781,
+        12.9990730285645
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        778.48291015625,
+        577.043334960938
+      ],
+      "foot_world": [
+        162.273559570312,
+        539.962890625
+      ],
+      "ground_position": [
+        3.38347291946411,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 7,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.55683898925781,
+        12.9990730285645
+      ],
+      "tick": 41,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          4,
+          13
+        ],
+        "previous_position": [
+          3,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 2,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00569304713804708,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.63487935066223,
+        12.9993295669556
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        785.974731445312,
+        577.068115234375
+      ],
+      "foot_world": [
+        165.395172119141,
+        539.973205566406
+      ],
+      "ground_position": [
+        3.5094883441925,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 12,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.63487935066223,
+        12.9993295669556
+      ],
+      "tick": 42,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          4,
+          13
+        ],
+        "previous_position": [
+          3,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 3,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0390263804713804,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.77748084068298,
+        12.9997549057007
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        799.66455078125,
+        577.108764648438
+      ],
+      "foot_world": [
+        171.099243164062,
+        539.990173339844
+      ],
+      "ground_position": [
+        3.73171067237854,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 5,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.77748084068298,
+        12.9997549057007
+      ],
+      "tick": 43,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          4,
+          13
+        ],
+        "previous_position": [
+          3,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 4,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0039703804713804,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.857670545578,
+        12.9999055862427
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        807.362670898438,
+        577.123291015625
+      ],
+      "foot_world": [
+        174.306823730469,
+        539.996215820312
+      ],
+      "ground_position": [
+        3.83995056152344,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 9,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.857670545578,
+        12.9999055862427
+      ],
+      "tick": 44,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          4,
+          13
+        ],
+        "previous_position": [
+          3,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 5,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0261926026936026,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        4.0436544418335,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        825.217163085938,
+        577.13232421875
+      ],
+      "foot_world": [
+        181.746185302734,
+        540.0
+      ],
+      "ground_position": [
+        4.0436544418335,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 1,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        4.0436544418335,
+        13.0
+      ],
+      "tick": 45,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          5,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0526734915824915,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        4.25445556640625,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        845.4541015625,
+        577.13232421875
+      ],
+      "foot_world": [
+        190.17822265625,
+        540.0
+      ],
+      "ground_position": [
+        4.25445556640625,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 10,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        4.25445556640625,
+        13.0
+      ],
+      "tick": 46,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          5,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0137846026936026,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        4.35630750656128,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        855.231811523438,
+        577.13232421875
+      ],
+      "foot_world": [
+        194.252304077148,
+        540.0
+      ],
+      "ground_position": [
+        4.35630750656128,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 14,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        4.35630750656128,
+        13.0
+      ],
+      "tick": 47,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          5,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 2,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0245108249158248,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        4.54085159301758,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        872.948120117188,
+        577.13232421875
+      ],
+      "foot_world": [
+        201.634063720703,
+        540.0
+      ],
+      "ground_position": [
+        4.54085159301758,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 5,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        4.54085159301758,
+        13.0
+      ],
+      "tick": 48,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          5,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 3,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.046733047138047,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        4.74455499649048,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        892.503601074219,
+        577.13232421875
+      ],
+      "foot_world": [
+        209.782196044922,
+        540.0
+      ],
+      "ground_position": [
+        4.74455499649048,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 13,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        4.74455499649048,
+        13.0
+      ],
+      "tick": 49,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          5,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 4,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0583917138047138,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        4.9306526184082,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        910.368957519531,
+        577.13232421875
+      ],
+      "foot_world": [
+        217.226104736328,
+        540.0
+      ],
+      "ground_position": [
+        4.9306526184082,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 5,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        4.9306526184082,
+        13.0
+      ],
+      "tick": 50,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          5,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 5,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0514272693602693,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        5.08571195602417,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        925.254699707031,
+        577.13232421875
+      ],
+      "foot_world": [
+        223.428482055664,
+        540.0
+      ],
+      "ground_position": [
+        5.08571195602417,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 11,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        5.08571195602417,
+        13.0
+      ],
+      "tick": 51,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          6,
+          13
+        ],
+        "previous_position": [
+          5,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0537312693602693,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        5.25621891021729,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        941.623352050781,
+        577.13232421875
+      ],
+      "foot_world": [
+        230.248748779297,
+        540.0
+      ],
+      "ground_position": [
+        5.25621891021729,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 2,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        5.25621891021729,
+        13.0
+      ],
+      "tick": 52,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          6,
+          13
+        ],
+        "previous_position": [
+          5,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0449530471380471,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        5.40825510025024,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        956.218811035156,
+        577.13232421875
+      ],
+      "foot_world": [
+        236.330200195312,
+        540.0
+      ],
+      "ground_position": [
+        5.40825510025024,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 8,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        5.40825510025024,
+        13.0
+      ],
+      "tick": 53,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          6,
+          13
+        ],
+        "previous_position": [
+          5,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 2,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0367330471380471,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        5.56122159957886,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        970.903625488281,
+        577.13232421875
+      ],
+      "foot_world": [
+        242.448867797852,
+        540.0
+      ],
+      "ground_position": [
+        5.56122159957886,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 14,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        5.56122159957886,
+        13.0
+      ],
+      "tick": 54,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          6,
+          13
+        ],
+        "previous_position": [
+          5,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 3,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0500663804713803,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        5.7501106262207,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        989.036926269531,
+        577.13232421875
+      ],
+      "foot_world": [
+        250.004425048828,
+        540.0
+      ],
+      "ground_position": [
+        5.7501106262207,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 6,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        5.7501106262207,
+        13.0
+      ],
+      "tick": 55,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          6,
+          13
+        ],
+        "previous_position": [
+          5,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 4,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00191823232323218,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        5.83653020858765,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        997.333251953125,
+        577.13232421875
+      ],
+      "foot_world": [
+        253.461212158203,
+        540.0
+      ],
+      "ground_position": [
+        5.83653020858765,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 9,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        5.83653020858765,
+        13.0
+      ],
+      "tick": 56,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          6,
+          13
+        ],
+        "previous_position": [
+          5,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 5,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00562193602693588,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        6.00936985015869,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1013.92584228516,
+        577.13232421875
+      ],
+      "foot_world": [
+        260.374786376953,
+        540.0
+      ],
+      "ground_position": [
+        6.00936985015869,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 0,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        6.00936985015869,
+        13.0
+      ],
+      "tick": 57,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          7,
+          13
+        ],
+        "previous_position": [
+          6,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00932563973063957,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        6.18220949172974,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1030.5185546875,
+        577.13232421875
+      ],
+      "foot_world": [
+        267.288391113281,
+        540.0
+      ],
+      "ground_position": [
+        6.18220949172974,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 7,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        6.18220949172974,
+        13.0
+      ],
+      "tick": 58,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          7,
+          13
+        ],
+        "previous_position": [
+          6,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0302930471380471,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        6.38382196426392,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1049.87329101562,
+        577.13232421875
+      ],
+      "foot_world": [
+        275.352874755859,
+        540.0
+      ],
+      "ground_position": [
+        6.38382196426392,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 15,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        6.38382196426392,
+        13.0
+      ],
+      "tick": 59,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          7,
+          13
+        ],
+        "previous_position": [
+          6,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 2,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0419850471380471,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        6.56997489929199,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1067.74389648438,
+        577.13232421875
+      ],
+      "foot_world": [
+        282.799011230469,
+        540.0
+      ],
+      "ground_position": [
+        6.56997489929199,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 6,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        6.56997489929199,
+        13.0
+      ],
+      "tick": 60,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          7,
+          13
+        ],
+        "previous_position": [
+          6,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 3,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0595930471380471,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        6.76598834991455,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1086.56127929688,
+        577.13232421875
+      ],
+      "foot_world": [
+        290.639526367188,
+        540.0
+      ],
+      "ground_position": [
+        6.76598834991455,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 14,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        6.76598834991455,
+        13.0
+      ],
+      "tick": 61,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          7,
+          13
+        ],
+        "previous_position": [
+          6,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 4,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0167359042809042,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        6.8612265586853,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1095.7041015625,
+        577.13232421875
+      ],
+      "foot_world": [
+        294.449066162109,
+        540.0
+      ],
+      "ground_position": [
+        6.8612265586853,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 2,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        6.8612265586853,
+        13.0
+      ],
+      "tick": 62,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          7,
+          13
+        ],
+        "previous_position": [
+          6,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 5,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0310216185666185,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        7.05170249938965,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1113.98974609375,
+        577.13232421875
+      ],
+      "foot_world": [
+        302.068115234375,
+        540.0
+      ],
+      "ground_position": [
+        7.05170249938965,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 10,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        7.05170249938965,
+        13.0
+      ],
+      "tick": 63,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          8,
+          13
+        ],
+        "previous_position": [
+          7,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0437200312650312,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        7.23953342437744,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1132.021484375,
+        577.13232421875
+      ],
+      "foot_world": [
+        309.581329345703,
+        540.0
+      ],
+      "ground_position": [
+        7.23953342437744,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 1,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        7.23953342437744,
+        13.0
+      ],
+      "tick": 64,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          8,
+          13
+        ],
+        "previous_position": [
+          7,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0522886026936025,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        7.42048120498657,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1149.392578125,
+        577.13232421875
+      ],
+      "foot_world": [
+        316.819244384766,
+        540.0
+      ],
+      "ground_position": [
+        7.42048120498657,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 8,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        7.42048120498657,
+        13.0
+      ],
+      "tick": 65,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          8,
+          13
+        ],
+        "previous_position": [
+          7,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 2,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00784415824915807,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        7.51307344436646,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1158.28137207031,
+        577.13232421875
+      ],
+      "foot_world": [
+        320.522918701172,
+        540.0
+      ],
+      "ground_position": [
+        7.51307344436646,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 12,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        7.51307344436646,
+        13.0
+      ],
+      "tick": 66,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          8,
+          13
+        ],
+        "previous_position": [
+          7,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 3,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0189552693602692,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        7.69825887680054,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1176.05920410156,
+        577.13232421875
+      ],
+      "foot_world": [
+        327.930358886719,
+        540.0
+      ],
+      "ground_position": [
+        7.69825887680054,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 3,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        7.69825887680054,
+        13.0
+      ],
+      "tick": 67,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          8,
+          13
+        ],
+        "previous_position": [
+          7,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 4,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0300663804713802,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        7.88344383239746,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1193.8369140625,
+        577.13232421875
+      ],
+      "foot_world": [
+        335.337768554688,
+        540.0
+      ],
+      "ground_position": [
+        7.88344383239746,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 11,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        7.88344383239746,
+        13.0
+      ],
+      "tick": 68,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          8,
+          13
+        ],
+        "previous_position": [
+          7,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 5,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0348032693602692,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        8.17401599884033,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1221.73193359375,
+        577.13232421875
+      ],
+      "foot_world": [
+        346.960632324219,
+        540.0
+      ],
+      "ground_position": [
+        8.17401599884033,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 6,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        8.17401599884033,
+        13.0
+      ],
+      "tick": 69,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          9,
+          13
+        ],
+        "previous_position": [
+          8,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0490889836459835,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        8.74544525146484,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1276.58911132812,
+        577.13232421875
+      ],
+      "foot_world": [
+        369.817810058594,
+        540.0
+      ],
+      "ground_position": [
+        8.74544525146484,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 13,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        8.74544525146484,
+        13.0
+      ],
+      "tick": 70,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          9,
+          13
+        ],
+        "previous_position": [
+          8,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00623184078884059,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        9.03115940093994,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1304.017578125,
+        577.13232421875
+      ],
+      "foot_world": [
+        381.246368408203,
+        540.0
+      ],
+      "ground_position": [
+        9.03115940093994,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 9,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        9.03115940093994,
+        13.0
+      ],
+      "tick": 71,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          10,
+          13
+        ],
+        "previous_position": [
+          9,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0205425709475706,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        9.60271263122559,
+        13.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1358.88671875,
+        577.13232421875
+      ],
+      "foot_world": [
+        404.108520507812,
+        540.0
+      ],
+      "ground_position": [
+        9.60271263122559,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 0,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        9.60271263122559,
+        13.0
+      ],
+      "tick": 72,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          10,
+          13
+        ],
+        "previous_position": [
+          9,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0348282852332849,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        10.0,
+        13.1741418838501
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1397.0263671875,
+        593.85009765625
+      ],
+      "foot_world": [
+        420.0,
+        546.965698242188
+      ],
+      "ground_position": [
+        10.0,
+        13.1741418838501
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "S",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 6,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        10.0,
+        13.1741418838501
+      ],
+      "tick": 73,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          10,
+          14
+        ],
+        "previous_position": [
+          10,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.045939396344396,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        10.0,
+        13.729697227478
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1397.0263671875,
+        647.183227539062
+      ],
+      "foot_world": [
+        420.0,
+        569.187866210938
+      ],
+      "ground_position": [
+        10.0,
+        13.729697227478
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "S",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 13,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        10.0,
+        13.729697227478
+      ],
+      "tick": 74,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          10,
+          14
+        ],
+        "previous_position": [
+          10,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00149495189995155,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        10.0,
+        14.007474899292
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1397.0263671875,
+        673.849975585938
+      ],
+      "foot_world": [
+        420.0,
+        580.299011230469
+      ],
+      "ground_position": [
+        10.0,
+        14.007474899292
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "S",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 8,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        10.0,
+        14.007474899292
+      ],
+      "tick": 75,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          10,
+          15
+        ],
+        "previous_position": [
+          10,
+          14
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0126060630110627,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        10.0,
+        14.5630302429199
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1397.0263671875,
+        727.183349609375
+      ],
+      "foot_world": [
+        420.0,
+        602.521240234375
+      ],
+      "ground_position": [
+        10.0,
+        14.5630302429199
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "S",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 14,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        10.0,
+        14.5630302429199
+      ],
+      "tick": 76,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          10,
+          15
+        ],
+        "previous_position": [
+          10,
+          14
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0179712693602691,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        10.0,
+        15.0898561477661
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1397.0263671875,
+        777.758544921875
+      ],
+      "foot_world": [
+        420.0,
+        623.59423828125
+      ],
+      "ground_position": [
+        10.0,
+        15.0898561477661
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "S",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 3,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        10.0,
+        15.0898561477661
+      ],
+      "tick": 77,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          10,
+          16
+        ],
+        "previous_position": [
+          10,
+          15
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00942104713804687,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        10.0,
+        15.5471048355103
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1397.0263671875,
+        821.654418945312
+      ],
+      "foot_world": [
+        420.0,
+        641.884155273438
+      ],
+      "ground_position": [
+        10.0,
+        15.5471048355103
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "S",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 5,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        10.0,
+        15.5471048355103
+      ],
+      "tick": 78,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          10,
+          16
+        ],
+        "previous_position": [
+          10,
+          15
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0160877138047135,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        10.0536260604858,
+        16.0536251068115
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1402.17443847656,
+        870.280395507812
+      ],
+      "foot_world": [
+        422.145050048828,
+        662.14501953125
+      ],
+      "ground_position": [
+        10.0536260604858,
+        16.0536251068115
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "SE",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 11,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        10.0536260604858,
+        16.0536251068115
+      ],
+      "tick": 79,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          11,
+          17
+        ],
+        "previous_position": [
+          10,
+          16
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 3,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0157955656565654,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        10.3859853744507,
+        16.3859844207764
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1434.0810546875,
+        902.186889648438
+      ],
+      "foot_world": [
+        435.439422607422,
+        675.439392089844
+      ],
+      "ground_position": [
+        10.3859853744507,
+        16.3859844207764
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "SE",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 13,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        10.3859853744507,
+        16.3859844207764
+      ],
+      "tick": 80,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          11,
+          17
+        ],
+        "previous_position": [
+          10,
+          16
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 3,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0102755656565654,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        10.7009181976318,
+        16.7009181976318
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1464.314453125,
+        932.420532226562
+      ],
+      "foot_world": [
+        448.036743164062,
+        688.036743164062
+      ],
+      "ground_position": [
+        10.7009181976318,
+        16.7009181976318
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "SE",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 15,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        10.7009181976318,
+        16.7009181976318
+      ],
+      "tick": 81,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          11,
+          17
+        ],
+        "previous_position": [
+          10,
+          16
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 3,
+        "visual_progress_ticks": 2,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0152515656565653,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        11.0762577056885,
+        17.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1500.34716796875,
+        961.132446289062
+      ],
+      "foot_world": [
+        463.05029296875,
+        700.0
+      ],
+      "ground_position": [
+        11.0762577056885,
+        17.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 3,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        11.0762577056885,
+        17.0
+      ],
+      "tick": 82,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          12,
+          17
+        ],
+        "previous_position": [
+          11,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.018955269360269,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        11.5947761535645,
+        17.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1550.12475585938,
+        961.132446289062
+      ],
+      "foot_world": [
+        483.791046142578,
+        700.0
+      ],
+      "ground_position": [
+        11.5947761535645,
+        17.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 8,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        11.5947761535645,
+        17.0
+      ],
+      "tick": 83,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          12,
+          17
+        ],
+        "previous_position": [
+          11,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0123117138047135,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        12.0615587234497,
+        17.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1594.93603515625,
+        961.132446289062
+      ],
+      "foot_world": [
+        502.462341308594,
+        700.0
+      ],
+      "ground_position": [
+        12.0615587234497,
+        17.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 11,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        12.0615587234497,
+        17.0
+      ],
+      "tick": 84,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          17
+        ],
+        "previous_position": [
+          12,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0123117138047135,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        12.5615587234497,
+        17.0
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1642.93603515625,
+        961.132446289062
+      ],
+      "foot_world": [
+        522.462341308594,
+        700.0
+      ],
+      "ground_position": [
+        12.5615587234497,
+        17.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 15,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        12.5615587234497,
+        17.0
+      ],
+      "tick": 85,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          17
+        ],
+        "previous_position": [
+          12,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.00600456228956198,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        16.9899921417236
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1685.0263671875,
+        960.171630859375
+      ],
+      "foot_world": [
+        540.0,
+        699.599670410156
+      ],
+      "ground_position": [
+        13.0,
+        16.9899921417236
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "N",
+        "flip_h": false,
+        "fps": 13.75,
+        "frame_count": 11,
+        "frame_index": 0,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        13.0,
+        16.9899921417236
+      ],
+      "tick": 86,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          16
+        ],
+        "previous_position": [
+          13,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0413557138047135,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        16.7644062042236
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1685.0263671875,
+        938.515380859375
+      ],
+      "foot_world": [
+        540.0,
+        690.576232910156
+      ],
+      "ground_position": [
+        13.0,
+        16.7644062042236
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "N",
+        "flip_h": false,
+        "fps": 13.75,
+        "frame_count": 11,
+        "frame_index": 6,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        13.0,
+        16.7644062042236
+      ],
+      "tick": 87,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          16
+        ],
+        "previous_position": [
+          13,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0383254107744105,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        16.6027908325195
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1685.0263671875,
+        923.000366210938
+      ],
+      "foot_world": [
+        540.0,
+        684.111633300781
+      ],
+      "ground_position": [
+        13.0,
+        16.6027908325195
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "N",
+        "flip_h": false,
+        "fps": 13.75,
+        "frame_count": 11,
+        "frame_index": 0,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        13.0,
+        16.6027908325195
+      ],
+      "tick": 88,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          16
+        ],
+        "previous_position": [
+          13,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 2,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0371503804713802,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        16.4380836486816
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1685.0263671875,
+        907.188354492188
+      ],
+      "foot_world": [
+        540.0,
+        677.523315429688
+      ],
+      "ground_position": [
+        13.0,
+        16.4380836486816
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "N",
+        "flip_h": false,
+        "fps": 13.75,
+        "frame_count": 11,
+        "frame_index": 4,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        13.0,
+        16.4380836486816
+      ],
+      "tick": 89,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          16
+        ],
+        "previous_position": [
+          13,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 3,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0371503804713802,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        16.2714157104492
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1685.0263671875,
+        891.188354492188
+      ],
+      "foot_world": [
+        540.0,
+        670.856628417969
+      ],
+      "ground_position": [
+        13.0,
+        16.2714157104492
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "N",
+        "flip_h": false,
+        "fps": 13.75,
+        "frame_count": 11,
+        "frame_index": 9,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        13.0,
+        16.2714157104492
+      ],
+      "tick": 90,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          16
+        ],
+        "previous_position": [
+          13,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 4,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0388490471380468,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        16.1019191741943
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1685.0263671875,
+        874.916625976562
+      ],
+      "foot_world": [
+        540.0,
+        664.076782226562
+      ],
+      "ground_position": [
+        13.0,
+        16.1019191741943
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "N",
+        "flip_h": false,
+        "fps": 13.75,
+        "frame_count": 11,
+        "frame_index": 3,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        13.0,
+        16.1019191741943
+      ],
+      "tick": 91,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          16
+        ],
+        "previous_position": [
+          13,
+          17
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 5,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0388490471380468,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        15.8057546615601
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1685.0263671875,
+        846.484985351562
+      ],
+      "foot_world": [
+        540.0,
+        652.230224609375
+      ],
+      "ground_position": [
+        13.0,
+        15.8057546615601
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "N",
+        "flip_h": false,
+        "fps": 13.75,
+        "frame_count": 11,
+        "frame_index": 0,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        13.0,
+        15.8057546615601
+      ],
+      "tick": 92,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          15
+        ],
+        "previous_position": [
+          13,
+          16
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.0502930471380468,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        15.24853515625
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        1685.0263671875,
+        792.99169921875
+      ],
+      "foot_world": [
+        540.0,
+        629.94140625
+      ],
+      "ground_position": [
+        13.0,
+        15.24853515625
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "N",
+        "flip_h": false,
+        "fps": 13.75,
+        "frame_count": 11,
+        "frame_index": 4,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        13.0,
+        15.24853515625
+      ],
+      "tick": 93,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          13,
+          15
+        ],
+        "previous_position": [
+          13,
+          16
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 1,
+        "work_remaining": 0
+      }
+    },
+    {
+      "accumulator": 0.000293047138046801,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        15.0
+      ],
+      "draw_entry_present": false,
+      "foot_screen": [
+        1685.0263671875,
+        769.13232421875
+      ],
+      "foot_world": [
+        540.0,
+        620.0
+      ],
+      "ground_position": [
+        13.0,
+        15.0
+      ],
+      "home_log_output": 1,
+      "presentation": {},
+      "shadow_ground_position": [
+        13.0,
+        15.0
+      ],
+      "tick": 94,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 2,
+        "position": [
+          13,
+          15
+        ],
+        "previous_position": [
+          13,
+          15
+        ],
+        "source_id": 0,
+        "state": "idle",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 2,
+        "work_remaining": 0
+      }
+    }
+  ],
+  "package_manifest_sha256": "7aa01262a49e4e682f87c9a8445f6fc79ec1fd6f18154f34d8a11a320a43fa64",
+  "phases": {
+    "chop-end": {
+      "accumulator": 0.023469936026936,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 14,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.807823312008979
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 33,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 5
+      }
+    },
+    "chop-middle": {
+      "accumulator": 0.0335044545454546,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 21,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.444501484848485
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 22,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 16
+      }
+    },
+    "chop-start": {
+      "accumulator": 0.0116052222222223,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        727.384887695312,
+        576.968505859375
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": true,
+        "clip": "chop",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 18.0,
+        "frame_count": 24,
+        "frame_index": 0,
+        "moving": false,
+        "renders_cargo": null,
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 8,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "working",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 30
+      }
+    },
+    "delivered": {
+      "accumulator": 0.000293047138046801,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        13.0,
+        15.0
+      ],
+      "draw_entry_present": false,
+      "foot_screen": [
+        1685.0263671875,
+        769.13232421875
+      ],
+      "foot_world": [
+        540.0,
+        620.0
+      ],
+      "ground_position": [
+        13.0,
+        15.0
+      ],
+      "home_log_output": 1,
+      "presentation": {},
+      "shadow_ground_position": [
+        13.0,
+        15.0
+      ],
+      "tick": 94,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 2,
+        "position": [
+          13,
+          15
+        ],
+        "previous_position": [
+          13,
+          15
+        ],
+        "source_id": 0,
+        "state": "idle",
+        "type": "lumberjack",
+        "visual_duration_ticks": 2,
+        "visual_progress_ticks": 2,
+        "work_remaining": 0
+      }
+    },
+    "picked-log": {
+      "accumulator": 0.0479143804713804,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        752.0,
+        577.000122070312
+      ],
+      "foot_world": [
+        150.325149536133,
+        539.94482421875
+      ],
+      "ground_position": [
+        3.0,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 0,
+        "moving": false,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.25812888145447,
+        12.9986200332642
+      ],
+      "tick": 38,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 6,
+        "work_remaining": 0
+      }
+    },
+    "walk_axe": {
+      "accumulator": 0.00909588888888893,
+      "camera_zoom": 0.642384111881256,
+      "contact_ground_position": [
+        3.51453638076782,
+        12.9989500045776
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        486.697967529297,
+        679.504638671875
+      ],
+      "foot_world": [
+        160.581451416016,
+        539.9580078125
+      ],
+      "ground_position": [
+        3.3181734085083,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_axe",
+        "direction": "W",
+        "flip_h": false,
+        "fps": 15.0,
+        "frame_count": 24,
+        "frame_index": 20,
+        "moving": true,
+        "renders_cargo": null,
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.51453638076782,
+        12.9989500045776
+      ],
+      "tick": 6,
+      "tree_amount": 5,
+      "tree_id": 13,
+      "worker": {
+        "action": "harvest",
+        "carrying": "",
+        "destination_id": 0,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          3,
+          13
+        ],
+        "previous_position": [
+          4,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 4,
+        "work_remaining": 0
+      }
+    },
+    "walk_log": {
+      "accumulator": 0.0139557138047137,
+      "camera_zoom": 2.40000009536743,
+      "contact_ground_position": [
+        3.28097605705261,
+        12.9986219406128
+      ],
+      "draw_entry_present": true,
+      "foot_screen": [
+        754.193359375,
+        577.000244140625
+      ],
+      "foot_world": [
+        151.239044189453,
+        539.944885253906
+      ],
+      "ground_position": [
+        3.02325963973999,
+        13.0
+      ],
+      "home_log_output": 0,
+      "presentation": {
+        "animated_lumberjack": true,
+        "chopping": false,
+        "clip": "walk_log",
+        "direction": "E",
+        "flip_h": false,
+        "fps": 20.0,
+        "frame_count": 16,
+        "frame_index": 8,
+        "moving": true,
+        "renders_cargo": "log",
+        "work_progress": 0.0
+      },
+      "shadow_ground_position": [
+        3.28097605705261,
+        12.9986219406128
+      ],
+      "tick": 39,
+      "tree_amount": 4,
+      "tree_id": 13,
+      "worker": {
+        "action": "deliver_log",
+        "carrying": "log",
+        "destination_id": 2,
+        "home_id": 2,
+        "id": 19,
+        "inside_building_id": 0,
+        "position": [
+          4,
+          13
+        ],
+        "previous_position": [
+          3,
+          13
+        ],
+        "source_id": 13,
+        "state": "moving",
+        "type": "lumberjack",
+        "visual_duration_ticks": 6,
+        "visual_progress_ticks": 0,
+        "work_remaining": 0
+      }
+    }
+  },
+  "player_save_loaded": false,
+  "scenario": "production menu -> relief -> authored lumberjack and hut",
+  "schema_version": 1,
+  "script_sha256": "c4c57bc7e71e8cd8acc143700f31808a9d6ba9b037fae145b2ce2a059b655c75",
+  "source_amount_before": 5,
+  "source_id": 13,
+  "synthetic_worker_or_world_states": false,
+  "worker_id": 19
+}

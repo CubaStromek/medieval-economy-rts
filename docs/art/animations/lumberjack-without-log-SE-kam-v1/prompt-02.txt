@@ -1,0 +1,4 @@
+Use case: background-extraction.
+Edit the attached sprite sheet. Remove the entire white-and-gray checkerboard background from around and between all eight lumberjacks. The checkerboard is an ERROR baked into the source, not part of the artwork.
+Keep ALL eight characters and their exact pixels, poses, proportions, costumes, axes, spacing, scale and sheet layout unchanged. Keep the holes between limbs clear. No shadow on any ground surface, no contact shadow, no drop shadow or halo. Preserve only the natural form shading INSIDE each character.
+Output a clean cutout sheet on genuinely transparent alpha, without drawing a checkerboard transparency indicator into the image. If the output format cannot encode alpha, the background must be perfectly uniform pure white (#FFFFFF) with absolutely no pattern or shadow. No gray squares, floor, colors, gradients, words or grid lines.

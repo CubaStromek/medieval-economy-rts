@@ -1,0 +1,146 @@
+{
+  "walk_axe/N": {
+    "relative": "jobs/walk_axe/N",
+    "expected_count": 25,
+    "provenance_sha256": "038e94e7a2a72f87448b4f0c43843cf2040ee9d631e3aa3edfbf351d7dcb7818",
+    "extraction_ledger_sha256": "d2d41ffe2447a03d8aa730c48b30a36ba137ff5c01ddf5c21faef45bafb58b87"
+  },
+  "walk_axe/NE": {
+    "relative": "jobs/walk_axe/NE",
+    "expected_count": 25,
+    "provenance_sha256": "29730fe239be8d1925d0ded37834302405282cbc103c1352b85dc523b390cef4",
+    "extraction_ledger_sha256": "a0edf286603e2117e86a524626dbfff926c69e24c936995eea3a77b0ebb638a0"
+  },
+  "walk_axe/E": {
+    "relative": "jobs/walk_axe/E",
+    "expected_count": 9,
+    "provenance_sha256": "d48c6aa52fb481a320ed03657357764e9deae1f64cf273f77000f92d88218d12",
+    "extraction_ledger_sha256": "144f6569c84f94d28f5403bc6c5725c11b1118af7b51d9afe0efd403f2cd8bfa"
+  },
+  "walk_axe/SE": {
+    "relative": "jobs/walk_axe/SE",
+    "expected_count": 25,
+    "provenance_sha256": "92928a581df3f80d19ecd1eb74ae82a7540490818a1170860db8a71df96814f9",
+    "extraction_ledger_sha256": "f1dee723946ef1c15f1987561604ab5fcf1acc914829f935d3275a4d55775a06"
+  },
+  "walk_axe/S": {
+    "relative": "jobs/walk_axe/S",
+    "expected_count": 25,
+    "provenance_sha256": "b8b86d6ef3720f25e3a2187ca5f89927df9ae7386638fa4de56eb93b932a80b0",
+    "extraction_ledger_sha256": "080cff259438bfb733aaeb6d602317b76769e7ee8ec6b7a5a54ebc044c6395ec"
+  },
+  "walk_axe/SW": {
+    "relative": "jobs/walk_axe/SW",
+    "expected_count": 25,
+    "provenance_sha256": "d865097ec8e3a54c33a8acdcfb10e651ceec13375b498a39557227844f81d39e",
+    "extraction_ledger_sha256": "9cc42963db3e963b4428f0250d1cc2ddab5caebfd88c2e08bab8e8861522d951"
+  },
+  "walk_axe/W": {
+    "relative": "jobs/walk_axe/W",
+    "expected_count": 25,
+    "provenance_sha256": "bc0e43ad329435f38803104589a04f905725e7c52e910ec6fffb783d50f2a769",
+    "extraction_ledger_sha256": "9fc3a10b46e832153234101ecaab3f4f62dec9be7eda752e98781998e9b4fa5f"
+  },
+  "walk_axe/NW": {
+    "relative": "jobs/walk_axe/NW",
+    "expected_count": 25,
+    "provenance_sha256": "08a6ac3c14957a81461a1538a339c615b96c97312249225891956f6824bf2f53",
+    "extraction_ledger_sha256": "df5d2f52232018db3aa3bbed759931ffd4cefed0143154dd2ed4708458442a62"
+  },
+  "chop/N": {
+    "relative": "repairs/chop-N-forward",
+    "expected_count": 17,
+    "provenance_sha256": "69e802813cc8e3372588d1555471b29381c503a14922866ca7f0f3a56e40610e",
+    "extraction_ledger_sha256": "03f58da529071b0069eae1345bc75f46eddeb7eeefb261ad77a2e4ad4f44c1e5"
+  },
+  "chop/NE": {
+    "relative": "jobs/chop/NE",
+    "expected_count": 17,
+    "provenance_sha256": "b5a0c6b6e5b0a6729f2ab51fd1ad476c6947f2023ed2ddca8e5fdbee8b45c110",
+    "extraction_ledger_sha256": "ac8f3a40cfef8d0fd6d992061ef57bef65c5dd8f8325103dcdaf71e28ff97e96"
+  },
+  "chop/E": {
+    "relative": "repairs/chop-E-slow-24",
+    "expected_count": 25,
+    "provenance_sha256": "416f8ce9922e5a031edefdda74fc4488273c23bad8e8740647aa70575778c2cd",
+    "extraction_ledger_sha256": "3c69eb5e7915915f65952081475ffd3a812e6ddf8064d374b296f74f3a1edd68"
+  },
+  "chop/SE": {
+    "relative": "jobs/chop/SE",
+    "expected_count": 17,
+    "provenance_sha256": "1069d0f91bca794b8a3081003cfaf7fdfe5e7f095b363d0552b3a0c268902a78",
+    "extraction_ledger_sha256": "01121e63de228cc8b5984fb9d056407f201402f5a34594193b8d22b6a65b24b6"
+  },
+  "chop/S": {
+    "relative": "repairs/chop-S-waist-empty",
+    "expected_count": 17,
+    "provenance_sha256": "176d11fe67a60ecdf77ab58f77c9f75eef6683fe780258c03abc98140e3d6b36",
+    "extraction_ledger_sha256": "9cbbe51188d312dadfba6b5485650a5bf9ba9aaa9690cbed5fc292eaaa9927aa"
+  },
+  "chop/SW": {
+    "relative": "jobs/chop/SW",
+    "expected_count": 17,
+    "provenance_sha256": "b0fab161ddc1136b6de7a3f42e36bdfde918dde6e1ba4303bf6f1023b1fbf7aa",
+    "extraction_ledger_sha256": "e256ee6dc1ac0d2b53ceb28bf95f9371433d50e01a1380508d3e416b6fe17e75"
+  },
+  "chop/W": {
+    "relative": "repairs/chop-W-slow-24",
+    "expected_count": 25,
+    "provenance_sha256": "3cd2d76612928e85acc8f8cfcec5b05804357bba212e606b9d810a9a4e2d68b7",
+    "extraction_ledger_sha256": "786e00711d1d931bd06f1e9be3bc80114b95d6c2fec8a04a7bef826397a3d0f4"
+  },
+  "chop/NW": {
+    "relative": "jobs/chop/NW",
+    "expected_count": 17,
+    "provenance_sha256": "023bde6ff19f2a2dfd385e79c8b66422229d5bb7073f4520acb6d799513d1447",
+    "extraction_ledger_sha256": "46e28506ff54e34744c056e9c4e558c4da00fe635972211d3fc44f62bd472758"
+  },
+  "walk_log/N": {
+    "relative": "jobs/walk_log/N",
+    "expected_count": 17,
+    "provenance_sha256": "753cb6f3c6266e7d7a9b122d627ae672a5f8793bc73c40a94e562be72f86dfb1",
+    "extraction_ledger_sha256": "1cf7a6fb1d1c06fd168ddae77488a5f9b41fa3fd90d23d60a2759a99eca41598"
+  },
+  "walk_log/NE": {
+    "relative": "jobs/walk_log/NE",
+    "expected_count": 17,
+    "provenance_sha256": "8d1d50536cd0c18a9202cf940a3b435fa1d44c17c8cf6cf191deecfef7414811",
+    "extraction_ledger_sha256": "b3ff17530e1bf9d738de25943c90e59c8d23dc83ac1fc8eb88d44f74a7a4f8ef"
+  },
+  "walk_log/E": {
+    "relative": "jobs/walk_log/E",
+    "expected_count": 17,
+    "provenance_sha256": "f44a0884fa16b44a2a766957663d11b412001368597e940f29cdcf747134779c",
+    "extraction_ledger_sha256": "c0158f644a0f90dbc6efbd20eb15528a7d403bfd06a518572451493f8fea92bb"
+  },
+  "walk_log/SE": {
+    "relative": "jobs/walk_log/SE",
+    "expected_count": 17,
+    "provenance_sha256": "70b61fad2a6bca97d81ab4c19ce628ca436dee31b1194eafdeacf0a75e2f61cf",
+    "extraction_ledger_sha256": "bda0b54874d44870c53be1a5ca215b0854b2e268f34706a60a6309459b148815"
+  },
+  "walk_log/S": {
+    "relative": "jobs/walk_log/S",
+    "expected_count": 17,
+    "provenance_sha256": "da8014210256a87c22f975f3fccab39e180f38d872b6b4b67cc6032d89351765",
+    "extraction_ledger_sha256": "8d73d2fb83756df0f6d73be57c83dd8d2122b32d23812b10b9c2c40c3fa500f6"
+  },
+  "walk_log/SW": {
+    "relative": "jobs/walk_log/SW",
+    "expected_count": 17,
+    "provenance_sha256": "be1c8ddf07f39493d4d6ce47526f7239c2a2e34122750b748abc896531bea981",
+    "extraction_ledger_sha256": "026b7277957b49612fbb3c858b71a3ee89e320f533c591b5f1f1b69241c57787"
+  },
+  "walk_log/W": {
+    "relative": "jobs/walk_log/W",
+    "expected_count": 17,
+    "provenance_sha256": "b5347efe059a1bd3352381a1946a036b5315f87b7ec23298d175f7b7fc6fbcb2",
+    "extraction_ledger_sha256": "c3ac9e40ebb6c317b30d2e77f9395f8901bbee7e149c9f823dcc73b0881e6291"
+  },
+  "walk_log/NW": {
+    "relative": "jobs/walk_log/NW",
+    "expected_count": 17,
+    "provenance_sha256": "68326836b5f98dbf1c74e8f25e595be4f89b59ad42fbb77dafb87fedaab05cfc",
+    "extraction_ledger_sha256": "1137fdec29e475952bfc9b26a74ad21d5120d35d4cd6118322e632d042e1e3d2"
+  }
+}

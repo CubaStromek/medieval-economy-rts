@@ -26,13 +26,16 @@ static func _check(condition: bool, message: String, failures: Array[String]) ->
 		failures.append(message)
 
 
-# Full production footprints form both walls of a one-cell-wide passage.
+# Revision-1 production footprints form both walls of a one-cell-wide passage.
 # The idle person at (4,5) has no one-step off-route destination: the only
 # clearing (6,6) requires first walking forward along the requested route.
 # Water closes unrelated detours, while every authored foundation/door stays
 # legal and the complete fixture can be round-tripped through the real loader.
 static func _fixture(pocket: bool = true, blocker_first: bool = false, guard: bool = false, dead_end: bool = false, inside_exit: bool = false) -> Dictionary:
 	var world = World.new(Vector2i(14, 12))
+	# This regression preserves an existing settlement's exact corridor and
+	# offset doorway. The new notched hut has its own movement coverage.
+	world.default_footprint_version = 1
 	var store: int = world.place_building("warehouse", Vector2i(3, 4))
 	world.place_building("school", Vector2i(3, 8))
 	var hut: int = world.place_building("lumber_hut", Vector2i(7, 4))
@@ -122,7 +125,7 @@ static func _test_loaded_lumberjack_returns_through_large_building_gap(failures:
 		fixture["world"] = restored
 		_check(restored.buildings.size() == 3 and restored.grid.blocked_by.size() == 24
 			and restored.buildings[fixture["hut"]]["entrance"] == Vector2i(9, 5),
-			"The corridor fixture must retain the current warehouse/school/hut footprints and the hut's offset door", failures)
+			"The corridor fixture must retain the saved revision-1 warehouse/school/hut footprints and the hut's offset door", failures)
 		_check(_deliver(fixture, failures),
 			"A loaded lumberjack carrying a log must get past the idle carrier and deliver to its hut when a clearing exists several steps away", failures)
 		var worker: Dictionary = restored.workers[fixture["requester"]]

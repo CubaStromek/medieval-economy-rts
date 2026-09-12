@@ -1,0 +1,11 @@
+Use case: identity-preserve
+Asset type: TWO full-body animation key poses side by side, one row, equal cells, no labels.
+Image 1: appearance, body, boots, axe AND CORRECT TWO-HANDED GRIP reference. Keep this exact painted craftsman and narrow planted stance.
+Image 2: original KaM pose reference for the two raised preparation phases A (left) and B (right). It is small pixel art but BOTH hands hold the axe in each pose.
+
+Draw our craftsman in the two original compact raised-axe preparations. Derive the arms from image 1's clearly readable two-handed shaft grip, then BEND BOTH ELBOWS so the axe is brought closer above the RIGHT side of the cap. Keep both hands gripping the SAME continuous brown wooden shaft, with a small visible strip of WOOD BETWEEN THE TWO FISTS. Two fists, two connected forearms, two elbows. No hand holds a wrist. The lower fist sits along the diagonal shaft toward the handle butt; the upper fist nearer the blade. Keep the handle visible past the lower fist.
+
+LEFT A: compact two-handed axe held above and to the image-right of the cap. The metal axe head is slightly above the crown, right of the cap. BOTH elbows bent, close to the upper body, forearms raised together in front/right of face. This is the return/preparation above-right phase, not full wide windup.
+RIGHT B: a nearby frame of the same compact pose: axe head a LITTLE HIGHER and slightly more LEFT than A, closer above the right half of the cap. Both hands stay on the shaft. Knees, feet, body size and planted stance stay identical to A.
+
+Preserve image 1's camera, head/body proportions, orange segmented cap, brown beard, olive tunic, cream sleeves, belt, front leather apron, brown trousers and boots. Face remains visible. Keep boots at the same height across cells. Full body and axe completely in frame with generous empty margins. Plain white background, NO ground/contact/cast shadows, no tree, no ground, no labels. Crisp same painted sprite style. Do not use a wide leg stance or axe far to the left of the head. The critical feature is TWO SEPARATE VISIBLE HANDS HOLDING WOOD IN EACH IMAGE.

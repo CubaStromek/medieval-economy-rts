@@ -28,3 +28,26 @@
 *.tmp
 *.log
 
+# Local automation / Python caches and credentials
+/.playwright-mcp/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+
+# Reproducible Blender QA scene (source GLB and QA images remain versioned)
+/docs/art/models/lumberjack-meshy-v1/qa/static-import-20260910/qa-scene.blend
+*.blend1
+
+# Local PixelLab transport/account logs; retain artwork, prompts and provenance
+/docs/art/animations/**/request.json
+/docs/art/animations/**/submitted.json
+/docs/art/animations/**/result.json
+/docs/art/animations/**/polls/
+/docs/art/animations/**/balance*.json
+/docs/art/animations/**/final-balance*.json
+/docs/art/animations/**/budget.json
+
+# Pilot-only absolute symlink; production raw images live in jobs/walk_axe/S
+/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/jobs

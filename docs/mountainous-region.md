@@ -1,12 +1,18 @@
-# Mountainous Region terrain study
+# Mountainous Region landscape and starter
 
-Implemented 2026-09-06. An optional landscape imported from the original
-Mountainous Region map, using this project's own terrain and tree artwork.
-The default Warehouse + School starter scene is unchanged.
+The optional landscape import was implemented 2026-09-06 and its playable
+starter was added 2026-09-07. It uses the original Mountainous Region layout
+with this project's own terrain, tree and building artwork. The default
+Warehouse + School starter scene is unchanged.
 
 ## Open the map
 
-On macOS, double-click `Mountainous Region.command` at the project root.
+Choose **Nová hra · vybrat mapu → Mountainous Region → Spustit mapu** in the
+main menu. Its separate saved game is also accessible through **Načíst hru**;
+when both slots exist, the menu offers a choice. A missing or invalid import
+keeps the player in the menu without replacing an existing game.
+
+On macOS, you can also double-click `Mountainous Region.command` at the project root.
 Or open `game/scenes/mountainous_region.tscn` in Godot and run that scene (F6).
 Alternatively, from the repository root:
 
@@ -16,19 +22,23 @@ godot --path game res://scenes/mountainous_region.tscn
 
 The local imported data must exist at
 `game/external_assets/maps/mountainous-region.json`. Missing or malformed data
-produces a visible error and opens the normal test level; it never substitutes
+produces a visible error in the menu. The standalone scene opens the normal test level; it never substitutes
 a generated landscape under the Mountainous Region name.
 
-The scene starts at 09:00 with the entire map in view. Use the mouse wheel to
-zoom, arrows or middle-button dragging to pan, Space to pause, and F2 to inspect
-terrain rules. R reloads the selected landscape and discards unsaved changes.
-F5/F9 save/load this landscape in a separate slot from the normal starter map.
+The scene starts at 09:00 focused on the starter plateau. Use the mouse wheel
+to zoom out to the whole map, arrows or middle-button dragging to pan, Space to
+pause, and F2 to inspect terrain rules. R reloads the selected landscape and
+discards unsaved changes. F5/F9 save/load this landscape in a separate slot
+from the normal starter map.
 
-This is **terrain only**: no starting buildings, citizens, armies, resource
-deposits, roads or mission logic. With no Warehouse/School or starting supplies,
-it is a landscape to inspect, not yet a playable economic scenario. Construction
-previews and the existing ground-preparation rules still inspect the real
-heightfield. Starting positions and a balanced economy are a separate next step.
+The northeastern plateau contains one completed **Warehouse** at anchor
+`(94, 19)` and one completed **School** at `(100, 19)`. The start has no
+citizens, armies, roads or mission logic. Its exact stock is 50 gold and 20 each
+of logs, planks and stone; all other wares start at zero. The Warehouse holds
+49 gold and all materials, while one gold is already delivered to the School.
+Train a Carrier first so further School payments can move physically from the
+Warehouse. The imported source still defines no harvestable deposits, so the
+20 starting stone is finite until resource authoring is added separately.
 
 ## Provenance and reproducibility
 
@@ -90,17 +100,20 @@ KaM collision or mission compatibility**.
 ## Verification
 
 - Public synthetic tests require no proprietary files: seven loader/simulation
-  cases plus nine actual-scene camera, failure, reset, save-slot and tree-culling
-  cases. Large maps avoid rendering distant trees; a conservative margin retains
-  offscreen canopies and shadow casters, without changing simulation or terrain.
+  cases, four starter cases and nine actual-scene camera, failure, reset,
+  save-slot and tree-culling cases. Starter checks cover source identity, both
+  completed footprints, exact stock, connected doors, first-Carrier logistics
+  and JSON continuation. Large maps avoid rendering distant trees; a conservative
+  margin retains offscreen canopies and shadow casters without changing simulation.
 - Eighteen Node importer tests cover bounded decoding, malformed files, terrain
   classification, layers, shore preservation, tree stages and safe output.
   With the optional local source supplied, an independent fixed-record scanner
   checks every real height, material and tree rather than calling the converter
   to manufacture its own expected result.
-- Actual Godot loading confirms 143 × 127 cells and 341 trees, no settlement.
-  A normal JSON save v17 roundtrip preserves the complete world exactly; the
-  loaded world continues through 20 ticks without adding actors or roads.
+- Actual Godot loading confirms 143 × 127 cells, 341 trees and the two completed
+  starter buildings at the verified plateau. A normal JSON save v17 roundtrip
+  preserves the complete world and its exact inventories; loading never grants
+  the starting stock a second time.
 - Four real pathfinding routes, including opposite map corners and both sides
   of the central area, have every step checked before and after loading.
 - Native Godot screenshots inspect full-map fit and closer terrain views;

@@ -1,0 +1,432 @@
+{
+  "date_utc": "2026-09-10T05:47:46.446264+00:00",
+  "status": "audit complete; visual review required",
+  "source": {
+    "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/models/lumberjack-meshy-v1/source/Meshy_AI_Medieval_Craftsman_0910054251_texture.glb",
+    "sha256": "123bfdb63341390146c5ee02bf193bada124b04ff5cf58c414d588a818959d44"
+  },
+  "scope": "Static source inspection only; source geometry, UVs, original textures and materials are not edited.",
+  "glb": {
+    "version": 2,
+    "file_bytes": 61905824,
+    "chunks": [
+      {
+        "type": "JSON",
+        "bytes": 2276
+      },
+      {
+        "type": "BIN\u0000",
+        "bytes": 61903520
+      }
+    ],
+    "generator": "pygltflib@v1.16.5",
+    "extensions_used": [],
+    "extensions_required": [],
+    "images": [
+      {
+        "index": 0,
+        "name": null,
+        "mime_type": "image/jpeg",
+        "storage": "bufferView",
+        "embedded": true,
+        "buffer_view": 4,
+        "compressed_image_bytes": 2904529
+      },
+      {
+        "index": 1,
+        "name": null,
+        "mime_type": "image/jpeg",
+        "storage": "bufferView",
+        "embedded": true,
+        "buffer_view": 5,
+        "compressed_image_bytes": 1535132
+      },
+      {
+        "index": 2,
+        "name": null,
+        "mime_type": "image/jpeg",
+        "storage": "bufferView",
+        "embedded": true,
+        "buffer_view": 6,
+        "compressed_image_bytes": 1947582
+      }
+    ],
+    "textures": [
+      {
+        "index": 0,
+        "name": null,
+        "sources": [
+          {
+            "image": 0,
+            "route": "source"
+          }
+        ],
+        "sampler": 0
+      },
+      {
+        "index": 1,
+        "name": null,
+        "sources": [
+          {
+            "image": 1,
+            "route": "source"
+          }
+        ],
+        "sampler": 1
+      },
+      {
+        "index": 2,
+        "name": null,
+        "sources": [
+          {
+            "image": 2,
+            "route": "source"
+          }
+        ],
+        "sampler": 2
+      }
+    ],
+    "materials": [
+      {
+        "index": 0,
+        "name": null,
+        "maps": [
+          {
+            "map": "pbrMetallicRoughness.baseColorTexture",
+            "texture": 0,
+            "images": [
+              {
+                "image": 0,
+                "route": "source"
+              }
+            ],
+            "texcoord": 0,
+            "scale": null,
+            "strength": null
+          },
+          {
+            "map": "pbrMetallicRoughness.metallicRoughnessTexture",
+            "texture": 1,
+            "images": [
+              {
+                "image": 1,
+                "route": "source"
+              }
+            ],
+            "texcoord": 0,
+            "scale": null,
+            "strength": null
+          },
+          {
+            "map": "normalTexture",
+            "texture": 2,
+            "images": [
+              {
+                "image": 2,
+                "route": "source"
+              }
+            ],
+            "texcoord": 0,
+            "scale": null,
+            "strength": null
+          }
+        ],
+        "base_color_factor": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "roughness_factor": 1.0,
+        "metallic_factor": 1.0,
+        "alpha_mode": "OPAQUE",
+        "double_sided": true,
+        "extensions": []
+      }
+    ],
+    "meshes": [
+      {
+        "index": 0,
+        "name": null,
+        "primitives": [
+          {
+            "mode": 4,
+            "material": 0,
+            "attributes": [
+              "POSITION",
+              "NORMAL",
+              "TEXCOORD_0"
+            ],
+            "vertices": 1005879,
+            "indices": 5832036,
+            "morph_targets": 0
+          }
+        ]
+      }
+    ],
+    "skins": [],
+    "animations": [],
+    "node_count": 1
+  },
+  "warnings": [
+    "No armature: expected for this requested static T-pose; this model is not yet rigged."
+  ],
+  "blender": {
+    "blender_version": "5.2.0 LTS",
+    "object_count": 1,
+    "meshes": [
+      {
+        "object": "Mesh_0",
+        "data": "Mesh_0",
+        "vertices": 1005879,
+        "polygons": 1944012,
+        "triangles": 1944012,
+        "uv_layers": [
+          {
+            "name": "UVMap",
+            "loops": 5832036
+          }
+        ],
+        "materials": [
+          "Material_0"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "modifiers": [],
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "name": "Material_0",
+        "use_nodes": true,
+        "image_nodes": [
+          {
+            "node": "Image Texture",
+            "image": "Image_0",
+            "interpolation": "Linear",
+            "projection": "FLAT",
+            "extension": "REPEAT",
+            "linked_outputs": [
+              "Color"
+            ]
+          },
+          {
+            "node": "Image Texture.001",
+            "image": "Image_1",
+            "interpolation": "Linear",
+            "projection": "FLAT",
+            "extension": "REPEAT",
+            "linked_outputs": [
+              "Color"
+            ]
+          },
+          {
+            "node": "Image Texture.002",
+            "image": "Image_2",
+            "interpolation": "Linear",
+            "projection": "FLAT",
+            "extension": "REPEAT",
+            "linked_outputs": [
+              "Color"
+            ]
+          }
+        ],
+        "node_links": [
+          {
+            "from": "Principled BSDF.BSDF",
+            "to": "Material Output.Surface"
+          },
+          {
+            "from": "Image Texture.Color",
+            "to": "Principled BSDF.Base Color"
+          },
+          {
+            "from": "Separate Color.Blue",
+            "to": "Principled BSDF.Metallic"
+          },
+          {
+            "from": "Separate Color.Green",
+            "to": "Principled BSDF.Roughness"
+          },
+          {
+            "from": "Image Texture.001.Color",
+            "to": "Separate Color.Color"
+          },
+          {
+            "from": "Normal Map.Normal",
+            "to": "Principled BSDF.Normal"
+          },
+          {
+            "from": "Image Texture.002.Color",
+            "to": "Normal Map.Color"
+          }
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "Image_0",
+        "source": "FILE",
+        "size": [
+          2048,
+          2048
+        ],
+        "channels": 4,
+        "depth": 24,
+        "has_data": true,
+        "colorspace": "sRGB",
+        "alpha_mode": "CHANNEL_PACKED",
+        "packed": true,
+        "packed_files": 1,
+        "filepath": "",
+        "external_file_exists": null
+      },
+      {
+        "name": "Image_1",
+        "source": "FILE",
+        "size": [
+          2048,
+          2048
+        ],
+        "channels": 4,
+        "depth": 24,
+        "has_data": true,
+        "colorspace": "Non-Color",
+        "alpha_mode": "CHANNEL_PACKED",
+        "packed": true,
+        "packed_files": 1,
+        "filepath": "",
+        "external_file_exists": null
+      },
+      {
+        "name": "Image_2",
+        "source": "FILE",
+        "size": [
+          2048,
+          2048
+        ],
+        "channels": 4,
+        "depth": 24,
+        "has_data": true,
+        "colorspace": "Non-Color",
+        "alpha_mode": "CHANNEL_PACKED",
+        "packed": true,
+        "packed_files": 1,
+        "filepath": "",
+        "external_file_exists": null
+      }
+    ],
+    "armatures": [],
+    "actions": []
+  },
+  "renders": {
+    "minimum": [
+      -0.9513099789619446,
+      -0.20300400257110596,
+      -0.886572003364563
+    ],
+    "maximum": [
+      0.9506509900093079,
+      0.20509199798107147,
+      0.8864539861679077
+    ],
+    "dimensions": [
+      1.9019609689712524,
+      0.4080960154533386,
+      1.7730259895324707
+    ],
+    "front_axis_assumption": "-Y",
+    "elevation_degrees": 6.0,
+    "axis_note": "Front is a declared camera assumption, not automatic semantic front detection. Inspect face/apron and rerun with --front-axis if needed.",
+    "engine": "CYCLES",
+    "views": [
+      {
+        "view": "front",
+        "file": "front.png",
+        "camera_location": [
+          -0.0003294944763183594,
+          -7.565123558044434,
+          0.7951772212982178
+        ],
+        "camera_rotation": [
+          1.4660766124725342,
+          -0.0,
+          0.0
+        ],
+        "ortho_scale": 2.3153042793273926
+      },
+      {
+        "view": "threequarter",
+        "file": "threequarter.png",
+        "camera_location": [
+          5.349758625030518,
+          -5.349044322967529,
+          0.7951772212982178
+        ],
+        "camera_rotation": [
+          1.4660767316818237,
+          -8.783591454175621e-08,
+          0.7853983640670776
+        ],
+        "ortho_scale": 2.3153042793273926
+      },
+      {
+        "view": "back",
+        "file": "back.png",
+        "camera_location": [
+          -0.0003294944763183594,
+          7.567211151123047,
+          0.7951772212982178
+        ],
+        "camera_rotation": [
+          1.4660766124725342,
+          -1.5016861709682416e-07,
+          -3.141592502593994
+        ],
+        "ortho_scale": 2.3153042793273926
+      },
+      {
+        "view": "side",
+        "file": "side.png",
+        "camera_location": [
+          7.565837860107422,
+          0.0010439977049827576,
+          0.7951772212982178
+        ],
+        "camera_rotation": [
+          1.4660766124725342,
+          -5.6403493431389506e-08,
+          1.5707963705062866
+        ],
+        "ortho_scale": 2.3153042793273926
+      }
+    ]
+  },
+  "source_unchanged": true
+}

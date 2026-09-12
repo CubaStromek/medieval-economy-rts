@@ -3,6 +3,8 @@ extends Node2D
 
 const GridMapSimClass = preload("res://scripts/simulation/grid_map_sim.gd")
 const MapProjectionClass = preload("res://scripts/view/map_projection.gd")
+const PaintedTerrainLibraryClass = preload("res://scripts/view/painted_terrain_library.gd")
+const PaintedTerrainCompositorClass = preload("res://scripts/view/painted_terrain_compositor.gd")
 
 const VARIANT_TINTS: Array[float] = [0.975, 1.0, 1.025]
 const TRANSITION_WIDTH: float = 0.14
@@ -26,6 +28,15 @@ const CONTOUR_LIGHT_ALPHA: float = 0.17
 const SLOPE_NORMAL_STRENGTH: float = 0.70
 
 var grid: GridMapSimClass
+# Scenes opt in; bare renderers and the sandbox's historical four-material
+# baseline deliberately retain their previous appearance.
+@export var use_painted_terrain: bool = false:
+	set(value):
+		if use_painted_terrain == value:
+			return
+		use_painted_terrain = value
+		if grid != null:
+			rebuild()
 # Retained terrain rows interleave with MainView's dynamic object rows. An
 # opaque foreground ridge still hides the lower half of a worker behind it.
 var external_painter: bool = false:
@@ -58,6 +69,8 @@ var allow_ground_preparation: bool = false:
 		if show_buildability:
 			_redraw_rows()
 var _textures: Dictionary = {}
+var _painted_tints: Dictionary = {}
+var _painted_compositor: PaintedTerrainCompositorClass
 var _cells: Dictionary = {}
 var _row_batches: Dictionary = {}
 var _row_canvases: Dictionary = {}
@@ -80,6 +93,7 @@ func bind_grid(value: GridMapSimClass) -> void:
 	_row_batches.clear()
 	_invalidated_cells.clear()
 	if grid == null:
+		_painted_compositor = null
 		_sync_row_canvases()
 	_ensure_cache()
 	queue_redraw()
@@ -90,6 +104,14 @@ func rebuild() -> void:
 	_last_definition_revision = -1
 	_ensure_cache()
 	queue_redraw()
+
+
+func painted_available() -> bool:
+	return PaintedTerrainLibraryClass.available()
+
+
+func painted_mode_active() -> bool:
+	return use_painted_terrain and grid != null and _painted_compositor != null
 
 
 func invalidate_cell(cell: Vector2i) -> void:
@@ -266,6 +288,7 @@ func paint_row(canvas: CanvasItem, row: int) -> void:
 	if not _row_batches.has(row):
 		return
 	canvas.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	canvas.material = _painted_compositor.shader_material if painted_mode_active() else null
 	# Different columns have disjoint projected X intervals. Base/surface can
 	# be separate layers within a row, but never reorder triangles by texture:
 	# transparent shoulders/transitions rely on their original painter order.
@@ -283,6 +306,8 @@ func paint_row(canvas: CanvasItem, row: int) -> void:
 
 
 func _sync_row_canvases() -> void:
+	var terrain_material: ShaderMaterial = _painted_compositor.shader_material if painted_mode_active() else null
+	material = terrain_material
 	for row: int in _row_canvases.keys():
 		if grid == null or not external_painter or row >= grid.size.y:
 			var obsolete: Node2D = _row_canvases[row]
@@ -295,10 +320,12 @@ func _sync_row_canvases() -> void:
 	z_index = 0
 	for row: int in range(grid.size.y):
 		if _row_canvases.has(row):
+			(_row_canvases[row] as Node2D).material = terrain_material
 			continue
 		var canvas := Node2D.new()
 		canvas.name = "TerrainRow_%d" % row
 		canvas.z_index = row * 2
+		canvas.material = terrain_material
 		canvas.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
 		canvas.draw.connect(paint_row.bind(canvas, row))
 		add_child(canvas)
@@ -319,6 +346,7 @@ func paint_cell(canvas: CanvasItem, cell: Vector2i) -> void:
 	_ensure_cache()
 	if not _cells.has(cell):
 		return
+	canvas.material = _painted_compositor.shader_material if painted_mode_active() else null
 	for command: Dictionary in (_cells[cell] as Dictionary)["draws"] as Array:
 		canvas.draw_polygon(
 			command["points"] as PackedVector2Array,
@@ -382,8 +410,10 @@ func _ensure_cache() -> void:
 	if grid == null:
 		_bounds = Rect2()
 		return
+	var compositor_configured: bool = false
 	if grid.definition_revision != _last_definition_revision:
 		_rebuild_texture_cache()
+		compositor_configured = painted_mode_active()
 		_last_definition_revision = grid.definition_revision
 		_last_revision = -1
 	if grid.revision == _last_revision and _invalidated_cells.is_empty():
@@ -408,6 +438,12 @@ func _ensure_cache() -> void:
 			_expand_dirty(surface_dirty, cell, true)
 		for cell: Vector2i in _invalidated_cells:
 			_expand_dirty(base_dirty, cell, true)
+	# Terrain weights and smooth vertex lighting follow only base changes.
+	# Traffic and paved-road edits must not re-upload ground data.
+	if painted_mode_active() and not compositor_configured and not base_dirty.is_empty():
+		var changed_ground: Array[Vector2i] = []
+		changed_ground.assign(base_dirty.keys())
+		_painted_compositor.update_terrain(changed_ground)
 	var base_rows: Dictionary = {}
 	var surface_rows: Dictionary = {}
 	for cell: Vector2i in base_dirty:
@@ -456,11 +492,14 @@ func _build_base_cell(cell: Vector2i) -> void:
 		bounds = bounds.expand(point)
 	var commands: Array[Dictionary] = []
 	var terrain_id: String = grid.base_terrain_at(cell)
-	var tint: float = VARIANT_TINTS[grid.visual_variant_at(cell, VARIANT_TINTS.size())]
-	_append_uv_polygon(commands, cell, PackedVector2Array(UV_CORNERS),
-		Color(tint, tint, tint), _textures.get(terrain_id) as Texture2D)
-	_append_transitions(commands, cell)
-	_append_slope_contours(commands, cell)
+	var tint: float = 1.0 if painted_mode_active() else VARIANT_TINTS[grid.visual_variant_at(cell, VARIANT_TINTS.size())]
+	_append_base_polygon(commands, cell, PackedVector2Array(UV_CORNERS),
+		Color(tint, tint, tint), terrain_id)
+	if not painted_mode_active():
+		# V1 blends the shared material field and interpolates corner lighting
+		# in its shader. Legacy strips/contours would paint over that result.
+		_append_transitions(commands, cell)
+		_append_slope_contours(commands, cell)
 	_cells[cell] = {"polygon": polygon, "bounds": bounds, "base_draws": commands}
 	base_cell_build_count += 1
 
@@ -554,8 +593,9 @@ func _batch_commands(commands: Array[Dictionary]) -> Array[Dictionary]:
 		texture = next_texture
 		points.append_array(command["points"])
 		uvs.append_array(command["texture_uvs"])
-		for _vertex: int in range((command["points"] as PackedVector2Array).size()):
-			colors.append(command["colors"][0])
+		var command_colors: PackedColorArray = command["colors"] as PackedColorArray
+		for vertex: int in range((command["points"] as PackedVector2Array).size()):
+			colors.append(command_colors[0] if command_colors.size() == 1 else command_colors[vertex])
 	if not points.is_empty():
 		batches.append(_make_batch(points, colors, uvs, texture))
 	return batches
@@ -615,7 +655,7 @@ func _append_transitions(commands: Array[Dictionary], cell: Vector2i) -> void:
 				2: strip = _uv_rect(0.0, 1.0 - inner, 1.0, 1.0 - outer)
 				_: strip = _uv_rect(outer, 0.0, inner, 1.0)
 			var alpha: float = [0.58, 0.28, 0.10][band]
-			_append_uv_polygon(commands, cell, strip, Color(1, 1, 1, alpha), _textures.get(terrain_id) as Texture2D)
+			_append_base_polygon(commands, cell, strip, Color(1, 1, 1, alpha), terrain_id)
 	for diagonal: Vector2i in DIAGONAL_DIRECTIONS:
 		var terrain_id: String = corner_transition_id_for(cell, diagonal)
 		if terrain_id.is_empty():
@@ -623,7 +663,17 @@ func _append_transitions(commands: Array[Dictionary], cell: Vector2i) -> void:
 		var corner := Vector2(0.0 if diagonal.x < 0 else 1.0, 0.0 if diagonal.y < 0 else 1.0)
 		var corner_points := PackedVector2Array([
 			corner, corner - Vector2(diagonal.x * 0.24, 0.0), corner - Vector2(0.0, diagonal.y * 0.24)])
-		_append_uv_polygon(commands, cell, corner_points, Color(1, 1, 1, 0.45), _textures.get(terrain_id) as Texture2D)
+		_append_base_polygon(commands, cell, corner_points, Color(1, 1, 1, 0.45), terrain_id)
+
+
+# V1 ground uses the complete atlas and shared compositor. Surface roads,
+# trails, wear and guidance retain their original textures and untagged UVs.
+func _append_base_polygon(commands: Array[Dictionary], cell: Vector2i,
+		uv_points: PackedVector2Array, color: Color, terrain_id: String) -> void:
+	var painted: bool = painted_mode_active()
+	var texture: Texture2D = _painted_compositor.atlas if painted else _textures.get(terrain_id) as Texture2D
+	var tint: Color = _painted_tints.get(terrain_id, Color.WHITE) as Color if painted else color
+	_append_uv_polygon(commands, cell, uv_points, tint, texture, 0.0, "terrain", painted)
 
 
 func _append_surface(commands: Array[Dictionary], cell: Vector2i) -> void:
@@ -848,7 +898,7 @@ static func _organic_disc(cell: Vector2i, radius: float) -> PackedVector2Array:
 # An unsplit road quad would float above/below a twisted terrain cell.
 func _append_uv_polygon(commands: Array[Dictionary], cell: Vector2i,
 		uv_points: PackedVector2Array, color: Color, texture: Texture2D = null,
-		texture_span: float = 0.0, layer: String = "terrain") -> void:
+		texture_span: float = 0.0, layer: String = "terrain", painted: bool = false) -> void:
 	for half: int in range(2):
 		var clipped: PackedVector2Array = _clip_diagonal(uv_points, half == 0)
 		if clipped.size() < 3:
@@ -856,7 +906,7 @@ func _append_uv_polygon(commands: Array[Dictionary], cell: Vector2i,
 		var screen_points := PackedVector2Array()
 		for uv: Vector2 in clipped:
 			screen_points.append(_project_cell_uv(cell, uv))
-		var shade: float = _triangle_shade(cell, half == 0)
+		var shade: float = 1.0 if painted else _triangle_shade(cell, half == 0)
 		var shaded := Color(color.r * shade, color.g * shade, color.b * shade, color.a)
 		# Explicit fans handle projected back-facing rock triangles as well as
 		# normal slopes, without asking the polygon triangulator to infer a fold.
@@ -867,7 +917,10 @@ func _append_uv_polygon(commands: Array[Dictionary], cell: Vector2i,
 			var local_uvs := PackedVector2Array([clipped[0], clipped[index], clipped[index + 1]])
 			var texture_uvs := PackedVector2Array()
 			for uv: Vector2 in local_uvs:
-				texture_uvs.append((Vector2(cell) + uv) / texture_span if texture_span > 0.0 else uv)
+				if painted:
+					texture_uvs.append(PaintedTerrainCompositorClass.ground_uv(Vector2(cell) + uv))
+				else:
+					texture_uvs.append((Vector2(cell) + uv) / texture_span if texture_span > 0.0 else uv)
 			commands.append({
 				"points": points,
 				"colors": PackedColorArray([shaded]),
@@ -937,15 +990,25 @@ static func _uv_rect(left: float, top: float, right: float, bottom: float) -> Pa
 	return PackedVector2Array([Vector2(left, top), Vector2(right, top), Vector2(right, bottom), Vector2(left, bottom)])
 
 
-static func _uv_disc(radius: float) -> PackedVector2Array:
-	var points := PackedVector2Array()
-	for index: int in range(12):
-		points.append(Vector2(0.5, 0.5) + Vector2.from_angle(float(index) / 12.0 * TAU) * radius)
-	return points
-
-
 func _rebuild_texture_cache() -> void:
 	_textures.clear()
+	_painted_tints.clear()
+	_painted_compositor = null
+	if use_painted_terrain:
+		var compositor := PaintedTerrainCompositorClass.new()
+		if compositor.configure(grid):
+			_painted_compositor = compositor
+	_sync_row_canvases()
+	if painted_mode_active():
+		var defaults: Dictionary = GridMapSimClass.DefinitionCatalogClass.movement_defaults().get("terrain", {}) as Dictionary
+		for terrain_id: String in GridMapSimClass.BASE_TERRAIN_IDS:
+			var definition: Dictionary = defaults.get(terrain_id, {}) as Dictionary
+			var baseline: Color = Color.from_string("#" + String(definition.get("color", "777777")), Color.GRAY)
+			var configured: Color = _terrain_color(terrain_id)
+			_painted_tints[terrain_id] = Color(
+				configured.r / maxf(baseline.r, 0.001),
+				configured.g / maxf(baseline.g, 0.001),
+				configured.b / maxf(baseline.b, 0.001), 1.0)
 	for terrain_id: String in GridMapSimClass.BASE_TERRAIN_IDS:
 		_textures[terrain_id] = _terrain_texture(_terrain_color(terrain_id), terrain_id)
 	var stone_texture: Texture2D = null
@@ -956,11 +1019,6 @@ func _rebuild_texture_cache() -> void:
 
 func _terrain_color(terrain_id: String) -> Color:
 	var definition: Dictionary = grid.terrain_definition(terrain_id)
-	return Color.from_string("#" + String(definition.get("color", "777777")), Color.GRAY)
-
-
-func _overlay_color(overlay_id: String) -> Color:
-	var definition: Dictionary = grid.overlay_definition(overlay_id)
 	return Color.from_string("#" + String(definition.get("color", "777777")), Color.GRAY)
 
 

@@ -1,8 +1,9 @@
 extends RefCounted
 
 const FORMAT: String = "kam-graphics-sandbox-v1"
+const TEXTURE_PACKS: Array[String] = ["classic", "modern"]
 const DEFAULTS: Dictionary = {
-	"patch": 0, "comparison": 2, "textures": true, "lighting": true,
+	"patch": 0, "comparison": 1, "texture_pack": "modern", "textures": true, "lighting": true,
 	"light_strength": 1.0, "relief_scale": 1.0, "linear_filter": false,
 	"trees": false, "shadows": false, "markers": false, "grid": false,
 	"tree_scale": 1.0, "zoom": 1.0,
@@ -16,7 +17,10 @@ var values: Dictionary = DEFAULTS.duplicate(true)
 func set_value(key: String, value: Variant) -> void:
 	if not DEFAULTS.has(key):
 		return
-	if DEFAULTS[key] is bool:
+	if key == "texture_pack":
+		if value is String and value in TEXTURE_PACKS:
+			values[key] = value
+	elif DEFAULTS[key] is bool:
 		if value is bool:
 			values[key] = value
 	elif RANGES.has(key):
@@ -35,8 +39,16 @@ func snapshot() -> Dictionary:
 func restore(document: Variant) -> bool:
 	if not document is Dictionary or document.get("format") != FORMAT or not document.get("settings") is Dictionary:
 		return false
+	var settings: Dictionary = document["settings"]
+	if settings.has("texture_pack"):
+		var texture_pack: Variant = settings["texture_pack"]
+		if not texture_pack is String or texture_pack not in TEXTURE_PACKS:
+			return false
 	reset()
-	for key: Variant in document["settings"]:
+	# v1 presets saved before texture packs existed used the original atlas.
+	if not settings.has("texture_pack"):
+		values["texture_pack"] = "classic"
+	for key: Variant in settings:
 		if key is String:
-			set_value(key, document["settings"][key])
+			set_value(key, settings[key])
 	return true

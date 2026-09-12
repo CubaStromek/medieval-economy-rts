@@ -1,0 +1,125 @@
+{
+  "date": "2026-09-10",
+  "job_id": "8319001f-9d85-48d5-a906-b3e8238b3f15",
+  "raw_count": 17,
+  "selected_raw_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "raw_retained_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "excluded_from_playback": {
+    "0": "original/setup reference retained as raw",
+    "11-16": "second windup and second strike; unequal lower hold across loop"
+  },
+  "visually_counted_complete_chop_cycles": 1,
+  "recommended_direction_fps": 7.5,
+  "selected_cycle_duration_seconds": 1.3333333333333333,
+  "target_cycle_duration_seconds": 1.3333333333333333,
+  "phase_raw_indices": {
+    "preparation": [
+      1
+    ],
+    "windup": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "strike_and_lower_hold": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "return": [
+      10
+    ]
+  },
+  "seam_comparisons": [
+    {
+      "from_raw": 10,
+      "to_raw": 1,
+      "rgb_MAE_full_canvas_0_255": 1.8759104410807292,
+      "rgb_MAE_union_bbox_0_255": 7.8027206566810525
+    },
+    {
+      "from_raw": 16,
+      "to_raw": 1,
+      "rgb_MAE_full_canvas_0_255": 2.2662200927734375,
+      "rgb_MAE_union_bbox_0_255": 8.897615624251138
+    },
+    {
+      "from_raw": 9,
+      "to_raw": 10,
+      "rgb_MAE_full_canvas_0_255": 1.6884206136067708,
+      "rgb_MAE_union_bbox_0_255": 7.022869594651773
+    },
+    {
+      "from_raw": 1,
+      "to_raw": 2,
+      "rgb_MAE_full_canvas_0_255": 2.592900594075521,
+      "rgb_MAE_union_bbox_0_255": 9.310121265249471
+    },
+    {
+      "from_raw": 5,
+      "to_raw": 6,
+      "rgb_MAE_full_canvas_0_255": 2.641026814778646,
+      "rgb_MAE_union_bbox_0_255": 11.321450375021804
+    },
+    {
+      "from_raw": 10,
+      "to_raw": 11,
+      "rgb_MAE_full_canvas_0_255": 2.6359761555989585,
+      "rgb_MAE_union_bbox_0_255": 10.067094017094016
+    }
+  ],
+  "all_rgba256_with_true_alpha": true,
+  "all_border_alpha_zero": true,
+  "raw_sha256_unchanged_against_preexisting_statistics": true,
+  "raw_sha256": {
+    "frame_00.png": "d901ffc15ee9f784daf5c4cff6c15d3884bb28b9a9423a58efa7401e4e0a15a2",
+    "frame_01.png": "ec70e323ce6db85c103fbb04d510119ac8466be5fa8f39242b0d42e55bccfb24",
+    "frame_02.png": "0e886cbf6cea579856636201962720f5505bcaa5181e78f798b5c3d1a9da07e2",
+    "frame_03.png": "4c9480fb937de285edd797c316548910b713d38506d62fb13e7179c9dc55e393",
+    "frame_04.png": "408ab5860b59425a0e49e795d81bc1f8ac189d08be915ed52e39633197a51166",
+    "frame_05.png": "66ace55bc20f610966601165dee95bd1c6fe18a3baa5540aee4aa8c3a07cc1b3",
+    "frame_06.png": "4cbf38fda0e2cdc06ad30272d279a46eba0e0517c05926016ab88aa752e4bf2f",
+    "frame_07.png": "39831b99a4ae085b28d392854838a2aec6b76d101f75ddb5ce00e17cdbe02a5d",
+    "frame_08.png": "db02276f2982887713c9cf703737e1e836f34e430910ac00578acf5bf657fc47",
+    "frame_09.png": "e47282611f83304f9dac7d4fc9012297649d2d0eb7e072da555fe4da5ba8a87e",
+    "frame_10.png": "5067e6e18cfe759ca3c8209e48c92196863204753058e1303e16820f4df0dbef",
+    "frame_11.png": "b940c97f67818bce109b2ef94410b79370ec678eb5289f52fcb557abbb0fbe41",
+    "frame_12.png": "e3a213a5d813a0f7032063b10916efbddd0c3cb23566c4d844152403a1f882f5",
+    "frame_13.png": "7412896af9124e3ce3ff69672c9bb8a7a192814fd55d812c2ae62f5252ef8501",
+    "frame_14.png": "49267f1a54212f5b5322beafd7d52dcf0798db37482b23cdbed6c4bfa8002502",
+    "frame_15.png": "347de92156aa318d358a1ab761a4f247d57a1197a9d1b1a256300d0a0765e742",
+    "frame_16.png": "8579ab0ea0adeb9543956e22c1bcf1948a8845911a165046faf95c24f02d580a"
+  },
+  "selection_status": "conditional pass for one complete cycle and cadence; far grip physical trajectory remains unverified"
+}

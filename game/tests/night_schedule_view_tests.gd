@@ -161,9 +161,10 @@ static func _test_compact_status_bar(host: Node, failures: Array[String]) -> voi
 		"A shortened settlement label must retain both complete counts in its reachable hover tooltip", failures)
 	_expect(hud._clock_label.tooltip_text.contains("Civilian work: 05:00–20:00")
 		and hud._clock_label.tooltip_text.contains("Sleep: 20:00–05:00")
-		and hud._clock_label.tooltip_text.contains("carriers and builders sleep in a warehouse")
+		and hud._clock_label.tooltip_text.contains("carriers and builders use assigned Workers' Cottages")
+		and hud._clock_label.tooltip_text.contains("warehouses as overflow shelter")
 		and hud._clock_label.tooltip_text.contains("Full day/night cycle: 10 minutes at 1×."),
-		"The clock tooltip must explain civilian hours and temporary warehouse accommodation while retaining the ten-minute cycle", failures)
+		"The clock tooltip must explain civilian hours, cottages and warehouse overflow while retaining the ten-minute cycle", failures)
 	viewport.free()
 
 

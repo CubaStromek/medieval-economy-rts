@@ -1,0 +1,44 @@
+{
+  "scope": "PARTIAL PILOT: walk_axe/S only; 1 of 24 required clip-direction combinations",
+  "selected_raw_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "excluded_raw_indices": [
+    0
+  ],
+  "selection_authority": "Root task instruction 2026-09-10; raw frame 00 retained as input reference; generated sequence 1..24 selected explicitly",
+  "source_jobs": "../jobs",
+  "anchor_source_px": [
+    128,
+    205
+  ],
+  "body_height_source_px": 163,
+  "body_height_world_px": 33,
+  "anchor_status": "provisional; fixed source anchor, not calibrated against real terrain",
+  "fps": 12,
+  "raw_expected_frame_count": 25,
+  "gameplay_integration": false
+}

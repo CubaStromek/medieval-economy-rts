@@ -1,0 +1,389 @@
+{
+  "version": 1,
+  "createdDate": "2026-09-10",
+  "name": "První pilot vlastní postavy: chůze SE bez klády a bez zemního stínu",
+  "direction": "SE",
+  "frameCount": 8,
+  "grid": {
+    "columns": 4,
+    "rows": 2,
+    "cellSize": [
+      384,
+      512
+    ],
+    "order": "left-to-right, then top-to-bottom",
+    "sourceSize": [
+      1536,
+      1024
+    ]
+  },
+  "sheet": {
+    "file": "sprite-sheet.png",
+    "mode": "RGB",
+    "hasAlpha": false,
+    "hasTransparencyMetadata": false,
+    "sha256": "02d9861f223ee991fbd17c3a6caa407f13159c1aab93a009643ed66fa07c82ce",
+    "sizeBytes": 1546381
+  },
+  "frames": [
+    {
+      "index": 0,
+      "file": "frames/00.png",
+      "sourceRect": [
+        0,
+        0,
+        384,
+        512
+      ],
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "2e6c9198ae2466f95bd0dc261180fccc06a7e74add86a57098ee5eba944f9722",
+      "pixelsSha256": "f8227e67b336b712f3e100287745495396eb562845eee846dc0e717df5457082"
+    },
+    {
+      "index": 1,
+      "file": "frames/01.png",
+      "sourceRect": [
+        384,
+        0,
+        384,
+        512
+      ],
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "dfa31c7d347b5a2930cfa59e9454f86fa2fe5936715da4e1525368bdd5c62b75",
+      "pixelsSha256": "27b7b7c3970056f81d87517bb595f623c956bcfd3b08a17599614b00f97573e0"
+    },
+    {
+      "index": 2,
+      "file": "frames/02.png",
+      "sourceRect": [
+        768,
+        0,
+        384,
+        512
+      ],
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "ee3d914691620f97cddef31e61a0dc011325b7d9d91a020b3a57c410ab220cd9",
+      "pixelsSha256": "a808cd56d781e1709017fa4d8fad851673872da97368137cafcbe27bb26f50f2"
+    },
+    {
+      "index": 3,
+      "file": "frames/03.png",
+      "sourceRect": [
+        1152,
+        0,
+        384,
+        512
+      ],
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "d43d7547cc575d0448fe1bb08c17b6cf9bb2508b05132428acceaa4d31432cbb",
+      "pixelsSha256": "a23bf2256f9a01d526a814e56fe31e5d795d48e36300812c093b0e8ba7edf0c0"
+    },
+    {
+      "index": 4,
+      "file": "frames/04.png",
+      "sourceRect": [
+        0,
+        512,
+        384,
+        512
+      ],
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "2e11aa08ab8aa445d876a0c8861aae79ebda9d2269a810891a881f883d0a2c93",
+      "pixelsSha256": "59e3652d4246e903add5a768c97fc9db35033d301d7161d7dc36823063595948"
+    },
+    {
+      "index": 5,
+      "file": "frames/05.png",
+      "sourceRect": [
+        384,
+        512,
+        384,
+        512
+      ],
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "3ac46b998baf18c38e10a7f1acae984c07bfbaccd3004d1e870b3d5453e3f205",
+      "pixelsSha256": "6dee61f9a23e3c07eb039904e62f8b35663d108625e52f5a26a6fcb70e945528"
+    },
+    {
+      "index": 6,
+      "file": "frames/06.png",
+      "sourceRect": [
+        768,
+        512,
+        384,
+        512
+      ],
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "f3d46d253bbd3d1f35337731be2e54ce9124df78d10b8ecd66a2dc0ca22668fd",
+      "pixelsSha256": "a72ee66ff46e57f3f39931e99a6b7df256c512c64d54a736a8d529521b729836"
+    },
+    {
+      "index": 7,
+      "file": "frames/07.png",
+      "sourceRect": [
+        1152,
+        512,
+        384,
+        512
+      ],
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "b079dc31e6bd05999b0b6979c9fac61830a2027ba7c1885f491f82393876a4a2",
+      "pixelsSha256": "9be68f929efac6ad476b086db11092a13c16f1c5b899a9c958b35103d2834ca9"
+    }
+  ],
+  "reviews": [
+    {
+      "file": "review-10fps.gif",
+      "fps": 10,
+      "durationMsPerFrame": 100,
+      "frameCount": 8,
+      "size": [
+        384,
+        512
+      ],
+      "loop": "infinite",
+      "hasTransparency": false,
+      "decodedModes": [
+        "P",
+        "RGB",
+        "RGB",
+        "RGB",
+        "RGB",
+        "RGB",
+        "RGB",
+        "RGB"
+      ],
+      "sha256": "30bc505ee35cb7117cc1dfebba202410676f90bdb3c48a11e529ea0bd7abecd9",
+      "sizeBytes": 353886
+    },
+    {
+      "file": "review-5fps.gif",
+      "fps": 5,
+      "durationMsPerFrame": 200,
+      "frameCount": 8,
+      "size": [
+        384,
+        512
+      ],
+      "loop": "infinite",
+      "hasTransparency": false,
+      "decodedModes": [
+        "P",
+        "RGB",
+        "RGB",
+        "RGB",
+        "RGB",
+        "RGB",
+        "RGB",
+        "RGB"
+      ],
+      "sha256": "2859db56eef3900a29743920139edf2eb7dc0d3c52bc3fbde2a494f8cb567498",
+      "sizeBytes": 353886
+    }
+  ],
+  "gifEncoding": {
+    "palette": "One shared 256-colour median-cut palette computed from the entire RGB sprite sheet.",
+    "paletteSha256": "626ded338d880afb6c3e90156f7314f48f8406a9ae92a5a187e23328df9ee937",
+    "dithering": "none",
+    "note": "GIF is palette-reduced by format necessity; the PNG sheet and all eight PNG crops preserve the original RGB pixels exactly."
+  },
+  "background": {
+    "method": "Four 16x16 corner patches per 384x512 cell, all eight cells; samples avoid character art.",
+    "samplePixels": 8192,
+    "exactWhitePixels": 828,
+    "uniqueSampleColours": 22,
+    "channelMin": [
+      253,
+      253,
+      253
+    ],
+    "channelMax": [
+      255,
+      255,
+      255
+    ],
+    "mostCommonColours": [
+      {
+        "rgb": [
+          254,
+          254,
+          254
+        ],
+        "pixels": 4825
+      },
+      {
+        "rgb": [
+          253,
+          253,
+          253
+        ],
+        "pixels": 1162
+      },
+      {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "pixels": 828
+      },
+      {
+        "rgb": [
+          254,
+          253,
+          253
+        ],
+        "pixels": 206
+      },
+      {
+        "rgb": [
+          255,
+          254,
+          254
+        ],
+        "pixels": 206
+      },
+      {
+        "rgb": [
+          254,
+          253,
+          254
+        ],
+        "pixels": 175
+      },
+      {
+        "rgb": [
+          255,
+          254,
+          255
+        ],
+        "pixels": 175
+      },
+      {
+        "rgb": [
+          254,
+          254,
+          255
+        ],
+        "pixels": 142
+      }
+    ],
+    "perfectlyUniformWhite": false,
+    "corrected": false
+  },
+  "provenance": {
+    "generationTool": "OpenAI built-in image_gen",
+    "imageGenerationCalls": 3,
+    "finalGeneratedFile": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-2ddc9925-0193-4525-a9b5-ef15bf0f0787.png",
+    "prompts": [
+      {
+        "file": "prompt-01.txt",
+        "sha256": "11ce955421b2ec7ea401c62354c82c20045235eb5dd07106614ca9a90c78d5c9"
+      },
+      {
+        "file": "prompt-02.txt",
+        "sha256": "b886aafaf036880abfb49956b81ba19c1aa3fdec0f3c3239e30ca5312bff4451"
+      },
+      {
+        "file": "prompt-03.txt",
+        "sha256": "7475baa7617c4e99ec2df504adc3b7228634d4ea2a8b628cb11bb0690a309624"
+      }
+    ],
+    "ownIdentityReference": {
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animation-references/lumberjack-without-log/SE.png",
+      "sha256": "d0deaaa07079ce02b217c0997429dfc8bd3379389fe6f3c3869585c3b871e579"
+    },
+    "originalMotionReference": {
+      "description": "Exact original KaM SE woodcutter walk sequence with axe and without log, used as a pose reference for the generative redraw.",
+      "extractedReferenceDirectory": "original_game_data/kam-reference-export/lumberjack-SE-with-axe-no-log",
+      "bodySpriteIds1Based": [
+        2228,
+        2229,
+        2230,
+        2231,
+        2232,
+        2233,
+        2234,
+        2235
+      ],
+      "axeOverlaySpriteIds1Based": [
+        3435,
+        3436,
+        3437,
+        3438,
+        3439,
+        3440,
+        3441,
+        3442
+      ],
+      "poseFidelity": "Approximate generative interpretation, not a pixel-accurate match to KaM."
+    }
+  },
+  "status": {
+    "pilot": true,
+    "userApproved": false,
+    "gameIntegrated": false,
+    "inGameValidated": false,
+    "trueAlphaAchieved": false,
+    "noGroundShadow": "No separate cast/contact ground shadow apparent in visual sheet inspection; background remains opaque."
+  },
+  "packaging": {
+    "losslessPngCrops": true,
+    "sheetCopiedByteForByte": true,
+    "gridReassemblyPixelExact": true,
+    "recolourApplied": false,
+    "alphaExtractionApplied": false,
+    "shapeEditsApplied": false,
+    "poseCorrectionApplied": false,
+    "boundingBoxResizeApplied": false,
+    "perFrameAutoscaleApplied": false,
+    "registration": "Original unmodified cell coordinates; no inferred foot anchor or image recentering.",
+    "sourceAndPromptsUnchanged": true
+  },
+  "notes": [
+    "První SE pilot vlastní identity postavy vedený původními KaM pózami. Přibližná shoda póz není důkazem stejné animace jako v KaM.",
+    "PNG jsou RGB s neprůhledným téměř bílým pozadím, nemají skutečný alfa kanál. Rohové vzorky nejsou dokonale jednotné #FFFFFF a nebyly opraveny.",
+    "GIF 10 fps a 5 fps slouží pouze ke kontrole. Neprokazují správné časování ani neklouzání postavy ve hře.",
+    "Původní prompts zachovávají i dřívější požadavek na alpha; ten výsledný soubor nesplňuje."
+  ]
+}

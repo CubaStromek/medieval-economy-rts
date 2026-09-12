@@ -1,0 +1,10 @@
+Use case: style-transfer
+Asset: a coherent eight-frame walking sprite sheet, exactly FOUR columns by TWO rows, same layout as image 1, ideally 1536x1024.
+Image 1 is the motion/pose AND REGISTRATION reference: the original KaM walk facing diagonally down-right (SE). Redraw EACH corresponding cell directly, preserving that frame's head position, hip placement, shoulder rotation, leg overlap, planted versus swinging foot and axe position. Preserve the original small gait bob and eight-frame progression. Do not re-center each sprite independently.
+Image 2 is ONLY character identity and painted materials, not the repeated pose.
+
+Replace the old pixel character with our same stocky brown-bearded lumberjack: rust-orange segmented cap with rolled brim, olive tunic with cream lace-up neck and rolled cream cuffs, brown belt and rectangular buckle, brown front leather apron, brown trousers and cuffed boots. Keep constant head size, body length and axe size across all cells. Elevated three-quarter camera as image 1. No costume variations.
+Walking with ONE single-bit iron axe in anatomical RIGHT hand (image-left in this view), LEFT hand empty. No log. Both arms swing naturally in opposition to legs while the axe stays securely in the SAME hand.
+The second row is the OPPOSITE-LEG half of the stride. Especially cells 3 and 7 (top third / bottom third) must show opposite supporting legs, not the exact same limb pose. Follow their original hip and leg overlaps. The knee and toe of every boot follow the travel direction down-right, including the trailing boot; no backward foot or twisted ankle. Use clear overlap and visible boot separation where the reference has it.
+Preserve compact walking stride from the reference, not a run or exaggerated lunge. All eight figures fit with margins around cap, axe and feet, no clipping, no touching cells.
+White background, NO ground shadow, NO contact shadow, NO cast shadow, NO checkerboard, NO labels/grid/text, NO environment. Keep normal painted shading on the body only. All eight frames are consecutive phases of ONE consistent character and walk loop.

@@ -1,6 +1,7 @@
 extends RefCounted
 
 const World = preload("res://scripts/simulation/simulation_world.gd")
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
 const Foundations = preload("res://scripts/simulation/building_foundations.gd")
 const TEST_COUNT: int = 9
 
@@ -67,7 +68,7 @@ static func _test_partial_work_round_trip(failures: Array[String]) -> void:
 	if not restored.from_data(_json(source)):
 		failures.append("V17 must load an actually worked, still uneven foundation through JSON")
 		return
-	_check(restored.to_data() == before and int(before["version"]) == 17,
+	_check(restored.to_data() == before and int(before["version"]) == World.SAVE_VERSION,
 		"Loading must preserve exact terrain, partial earthwork ticks, construction, materials and citizens without advancing anything", failures)
 	var site: Dictionary = restored.buildings[fixture["site"]]
 	for cell: Vector2i in restored.building_cells(site):
@@ -120,7 +121,7 @@ static func _test_v16_migration_preserves_existing_work(failures: Array[String])
 		for building: Dictionary in legacy["buildings"]:
 			for key: String in ["foundation_target_height", "foundation_work_total", "foundation_work_remaining"]:
 				building.erase(key)
-		var expected: Dictionary = world.to_data()
+		var expected: Dictionary = LegacyFixture.expected_pre_fog_migration(world.to_data())
 		for building: Dictionary in expected["buildings"]:
 			building["foundation_target_height"] = -1
 			building["foundation_work_total"] = 0

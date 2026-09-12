@@ -9,9 +9,76 @@ This is not an official Knights and Merchants product. No original game code,
 graphics, audio, maps or campaigns are distributed with the public source.
 Optional, user-selected map data stays in ignored external directories.
 
+## Current handover — 2026-09-12
+
+Start with [HANDOVER.md](HANDOVER.md) for the current implementation, decisions,
+known limits, artwork acceptance status and next steps. The previous handover
+is preserved as history, not current requirements.
+
+This milestone includes painted V1 terrain, fog of war, seven-day nutrition,
+individual work pause, two-bed worker housing and the normal-game PixelLab
+lumberjack (three activities × eight directions, 439 animation frames).
+The lumber hut has 33 construction steps, visible 0–6 stored logs, and a
+new nine-cell footprint; old saved huts retain their old geometry. Current
+save format is **v21**. The 11 September refactor improves HUD aggregation and
+transport availability checks without changing actual destination ranking.
+
+Fresh Godot 4.7.2 checks: **762/762 headless** and **81/81 native rendering
+checks**. See the [publication verification](docs/release-verification-2026-09-12.md)
+for commands, tool tests and clean-checkout status. Historical test counts in
+the feature sections below describe their original milestones.
+
+Runtime assets live in `game/art/`; `docs/art/` also retains original project
+concepts, rejected experiments and QA evidence. They are not all loaded by the
+game or approved as an art-style reference. Original KaM data, API transport
+logs, caches, local ZIP deliveries and a reproducible Blender QA scene remain
+excluded from Git; see [publication scope](HANDOVER.md#8-co-se-publikuje-a-co-zůstává-lokální).
+
+## Painted lumber hut construction — 2026-09-10
+
+The normal game now draws the Lumberjack Hut with its own transparent artwork
+and **12 timber + 21 finishing steps**, matching the counts measured in the
+original KaM graphics. Place a Lumberjack Hut through **Build** or shortcut
+**3**; after ground preparation and material delivery, actual Builder work
+reveals the structure. This is enabled automatically on current footprints,
+including existing saved construction, with unchanged costs and duration.
+Historical one-cell footprints retain their compatible old appearance.
+
+All stages share the same door and a separate stable depth point, so the next
+grass row no longer erases the front of the house. The normal menu, starter
+maps and loaded games use this renderer. See the
+[in-game animation and QA](docs/art/qa/lumber-hut-construction-v1/README.md)
+for verified behavior and the pilot's remaining slope-contact art calibration.
+
+Future objects follow the [shared implementation workflow](docs/art/object-implementation-workflow.md),
+with a reusable [integration record](docs/art/object-integration-template.md)
+and [QA checklist](docs/art/object-qa-template.md). `AGENTS.md` makes these the
+starting point for subsequent object work; building style remains governed
+by the existing art guide.
+
+## Unit thoughts and individual work pause — 2026-09-07
+
+Select a citizen to see **Co si myslím**: short Czech first-person descriptions
+of what they are doing now and what comes next. Pause/resume that unit's work,
+or independently pause a building's operation or construction. Food, sleep and
+safe movement continue; already-carried goods and paid work are preserved.
+Save **v20** remembers each unit and building's separate setting. See
+[controls, exact pause rules and compatibility](docs/unit-thoughts-and-pause.md).
+
+## Fog of war — 2026-09-07
+
+New games reveal only the surroundings of your settlement. Unexplored ground
+is black; discovered ground remains visible, slightly darkened when outside
+current sight. Foreign units disappear completely outside your vision.
+Citizens and completed buildings provide sight; Watchtowers see farther.
+Exploration survives saving/loading, and old saves retain knowledge of their
+formerly visible map. See [rules, ownership and rendering](docs/fog-of-war.md).
+
 ## Graphics sandbox — 2026-09-07
 
-Open `Graphics Sandbox.command` on macOS, or run
+Choose **Grafický sandbox** in the main menu. **Hlavní menu / Esc** returns
+from the sandbox; an existing game remains paused and can be continued.
+You can also open `Graphics Sandbox.command` on macOS, or run
 `godot --path game res://scenes/terrain_graphics_sandbox.tscn`.
 The isolated workbench compares the same two small terrain crops with today's
 prototype or a fixed source-informed reference. Toggle textures and lighting,
@@ -24,35 +91,45 @@ The public checkout contains the renderer, controls and synthetic tests, but
 shows setup guidance; the normal game still runs independently. Water is static.
 See [setup, controls, provenance and limitations](docs/terrain-graphics-sandbox.md).
 
-## Mountainous Region terrain study — 2026-09-06
+## Mountainous Region starter map — 2026-09-07
 
 An optional scene recreates the original map's layout and heights using our
-terrain materials and trees. On macOS, double-click `Mountainous Region.command`.
+terrain materials and trees. Choose **Nová hra · vybrat mapu → Mountainous Region
+→ Spustit mapu** from the main menu. On macOS, you can also double-click `Mountainous Region.command`.
 Or open `game/scenes/mountainous_region.tscn` and run that scene, or use `godot --path game res://scenes/mountainous_region.tscn`.
 It contains the full source landscape (143 × 127 playable cells, 341 trees),
-but **no starting settlement or mission logic**. The normal starter scene
-is unchanged, and the landscape uses its own save slot.
+plus a playable start on the northeastern plateau: a completed **Warehouse and
+School**, no citizens or roads, **50 gold**, and **20 each of logs, planks and
+stone**. One gold is already inside the School so the first Carrier can be
+trained; the other 49 and all materials are stored in the Warehouse. The normal
+starter scene is unchanged, and the landscape uses its own save slot.
 
 Original and converted map data remain local, external and ignored by Git.
 See [setup, provenance and limitations](docs/mountainous-region.md).
 
-## Main menu — 2026-09-06
+## Main menu — 2026-09-07
 
-The game now opens a simple Czech main menu. **Nová hra** offers three existing
+The game now opens a simple Czech main menu. **Nová hra · vybrat mapu** offers four
 maps: **Nová osada** (28 × 22, Warehouse and School), **Osídlené údolí**
-(28 × 22, populated relief village), and **Ekonomická ukázka** (34 × 30,
-the complete production town). Select a map and press **Spustit mapu**.
-**Načíst hru** opens the existing quick-save slot; it is unavailable before
-the first save. A missing or invalid save displays an error and retains the
-current session.
+(28 × 22, populated relief village), **Ekonomická ukázka** (34 × 30,
+the complete production town), and **Mountainous Region** (143 × 127,
+the locally imported mountain landscape with a starter settlement).
+Select a map and press **Spustit mapu**. A missing or invalid Mountainous Region
+import leaves the menu and current game intact.
+**Načíst hru** opens the saved game, or offers a choice when both the ordinary
+and Mountainous Region slots exist; it is unavailable before the first save.
+A missing or invalid save displays an error and retains the current session.
+**Grafický sandbox** opens the existing terrain workbench, with its own settings.
 
 During play, **Menu / Esc** pauses the entire game and offers **Pokračovat ve
 hře** and **Uložit hru**. Escape first cancels an active building tool or closes
 an open HUD panel. Returning from the menu preserves the previous game speed.
-**F5 / F9** still save/load the same single slot. New saves remember the chosen
+**F5 / F9** save/load the current game's slot; Mountainous Region retains its
+separate slot both in the menu and its standalone launcher. New saves remember the chosen
 map for **R** (restart); old saves load normally and retain the former starter
 map reset behavior. Starting a new map replaces the current session but does
-not overwrite the saved game. The two demo launch flags still start directly.
+not overwrite the saved game. The demo launch flags still start directly;
+`--mountainous-region` and `--graphics-sandbox` also work through the main entry.
 
 ## Builder ground preparation — 2026-09-06
 
@@ -67,7 +144,8 @@ The current map shape is unchanged. See [rules and verification](docs/foundation
 
 New buildings now occupy their KaM Remake tile shapes: for example a Warehouse
 is **3 × 3**, a Lumberjack Hut **3 × 2**, a Sawmill **4 × 2** and Barracks
-**4 × 4**. All 28 reference types plus the Forester Hut have their own masks,
+**4 × 4**. All 28 reference types plus the Forester Hut and Workers' Cottage
+have their own masks,
 including irregular corners and fixed southern doors. The building preview
 shows the full area and a blue entrance tile. Citizens walk around the entire
 building, and its foundation, roof and scaffolding follow the same footprint.
@@ -76,15 +154,26 @@ Build on level or safely preparable ground and leave the front entrance accessib
 buildings keep their previous one-tile size; newly placed ones use full masks.
 Save **v17** preserves both, including new ground-preparation progress. See [geometry, reference and compatibility](docs/building-footprints.md).
 
-## Civilian Inns and army food supplies — 2026-09-05
+## Civilian Inns and army food supplies — updated 2026-09-07
 
 Build an **Inn** under **Food** and keep it supplied with Bread, Sausages, Wine
 or Fish. Hungry civilians eat there automatically, occupying one of six seats,
 then leave and return to their own work. Specialists retain their workplaces.
 Satiety is visible above outdoor units and in their details. Hunger follows the
-game day: a full unit needs food again after about 19 game hours. Diners remain
+game day: a full civilian needs food again after approximately one normal
+work/sleep day. Diners remain
 hidden inside while eating up to three different courses; bread, wine and fish
 fill them more than a single food, with nutrition increasing during each course.
+
+An empty satiety bar is **not an immediate death sentence**. New units start
+fully fed; a separate long-term reserve allows **seven full game days without
+food** (70 minutes at 1×, 35 at 2×). Sleeping halves appetite loss, not that
+calendar reserve. After two days of nutritional deficit, productive work
+gradually falls to a minimum of 80% by day four; walking never slows. Paid meals
+rebuild the reserve proportionally and restore strength gradually, rather than
+resetting seven days with one bite. Save v19 preserves the exact remaining
+reserve and fractional progress; older games keep their satiety and stocks
+and start with a fresh reserve because they recorded no deprivation history.
 
 Soldiers receive food at their posts. Click a soldier and choose **Supply food**,
 or use **Military → Supply army**. Below 55% condition, a Carrier reserves and
@@ -105,15 +194,18 @@ the same calendar time without additional clock state or resetting progress.
 Older saves gain the corresponding calendar display from their elapsed ticks.
 Civilian workers stop work at **20:00** and resume at **05:00**. Specialists
 sleep inside their own workplace, including lumber, forester and fisher huts.
-Carriers, builders and unemployed specialists share a completed Warehouse as
-temporary accommodation. Soldiers and Watchtower guards remain active.
+Each completed, enabled **Workers' Cottage** houses exactly two Carriers or
+Builders; they prefer a reachable cottage with a free bed and use a completed
+Warehouse only as overflow accommodation. Unemployed specialists also use a
+Warehouse. Soldiers and Watchtower guards remain active.
 
 Workers walk to the door before disappearing inside. They keep carried goods
 overnight and deliver them after dawn; paid production and construction retain
 their progress. Hungry civilians can visit an Inn during the night and then
 return to sleep. The HUD shows their schedule and the number sleeping.
-Save v15 preserves sleeping places and supports earlier saves. Residential
-buildings and other night professions are future extensions described
+Save v15 preserves sleeping places and supports earlier saves. Cottage capacity
+is rebuilt from those assignments, so the residence extension needs no new save
+field. Other night professions remain future extensions described
 in [the day/night analysis](docs/day-night-analysis.md).
 
 ## Sunlight and moving shadows — 2026-09-06
@@ -232,8 +324,8 @@ Construction uses finished **planks**, not raw **logs**. The original KaM
 Lumberjack Hut and Quarry each cost **3 planks + 2 stone**, and the Sawmill
 costs **4 + 3**. Starter supplies cover all three, an Inn and a reserve;
 their quantities are this prototype's scenario balance, not a claimed universal
-KaM starting inventory. All 28 reference prices and the extra Forester Hut's
-project-balanced price are listed in
+KaM starting inventory. All 28 reference prices and the project-balanced prices
+of the Forester Hut and Workers' Cottage are listed in
 [construction costs](docs/construction-costs.md). Materials still require
 physical carrier deliveries before a Builder can finish a site.
 
@@ -306,8 +398,9 @@ for controls, shared height rules, rendering and compatibility.
 
 ## Economy milestone — 2026-09-05
 
-The 34 × 24 economy demo now exercises **29 building types, 28 wares,
-15 civilian professions and 14 military equipment/recruitment types**. It
+The economy demo now exercises **30 building types in 35 completed instances,
+259 occupied building tiles, 28 wares, 15 civilian professions and 14 military
+equipment/recruitment types**. It
 contains the wood, bread, wine, fishing, livestock, leather, iron, gold,
 weapons and armour branches of the KaM-style economy.
 
@@ -359,9 +452,9 @@ Mills and bakeries both employ bakers.
 This implements the economic branches in this prototype's own simulation,
 not full behavioral or timing parity with KaM. Work durations are project
 balance values; reference-building construction prices follow the
-[documented KaM table](docs/construction-costs.md). The extra Forester Hut's
-price is explicitly project-balanced.
-Livestock uses one aggregate four-grain
+[documented KaM table](docs/construction-costs.md). The extra Forester Hut and
+Workers' Cottage prices are explicitly project-balanced; the cottage costs
+**3 planks + 2 stone**. Livestock uses one aggregate four-grain
 recipe per animal. Roads and vine fields pay directly from warehouse stock
 and appear immediately. Military recruitment has no extra timer once its
 requirements are present; combat, siege engines, unlock progression and
@@ -391,7 +484,7 @@ Or import `game/project.godot` in the Godot editor and run the project.
 | WASD / arrows | Pan camera |
 | 1 / 2 / 3 / 4 / 5 | Stone road / warehouse / lumberjack hut / sawmill / school |
 | 6 / 7 / 8 / 9 / 0 | Quarry / farm / mill / bakery / wheat field |
-| Build category menu | All 29 buildings, wheat fields and vine fields |
+| Build category menu | All 30 buildings, wheat fields and vine fields |
 | School UI buttons | Queue one of 15 professions; each citizen costs 1 gold |
 | Selected workshop / Barracks / Town Hall | Queue equipment production or recruitment |
 | Selected Marketplace | Choose two wares, inspect the quote and queue an exchange |

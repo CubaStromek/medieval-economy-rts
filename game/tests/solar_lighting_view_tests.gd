@@ -7,7 +7,7 @@ const MainView = preload("res://scripts/view/main_view.gd")
 const MainScene = preload("res://scenes/main.tscn")
 const Shadows = preload("res://scripts/view/solar_shadows.gd")
 const MapProjectionClass = preload("res://scripts/view/map_projection.gd")
-const TEST_COUNT: int = 7
+const TEST_COUNT: int = 8
 
 
 static func run(host: Node) -> Array[String]:
@@ -30,8 +30,39 @@ static func run(host: Node) -> Array[String]:
 	await _test_indoor_shadow_sources(host, main, failures)
 	await _test_ground_projection(host, main, failures)
 	_test_load_and_world_replacement(main, failures)
+	_test_tangent_shadow_strip(failures)
 	viewport.free()
 	return failures
+
+
+static func _test_tangent_shadow_strip(failures: Array[String]) -> void:
+	# Captured from the normal relief-map return route, tick 87, worker 24.
+	# This exact nonempty row-17 clip caused the native canvas to reject it.
+	var tangent := PackedVector2Array([
+		Vector2(343.510131835938, 720.0), Vector2(343.394165039062, 720.0),
+		Vector2(343.43017578125, 719.996032714844),
+	])
+	_expect(Geometry2D.triangulate_polygon(tangent).is_empty(),
+		"The recorded tangent shadow must reproduce the native triangulation failure", failures)
+	var second := PackedVector2Array([
+		Vector2(561.1865234375, 640.027465820312), Vector2(560.693969726562, 640.0),
+		Vector2(561.454772949219, 640.0),
+	])
+	for recorded: PackedVector2Array in [tangent, second]:
+		var local: PackedVector2Array = Shadows._local_outline(recorded)
+		_expect(not Geometry2D.triangulate_polygon(local).is_empty(),
+			"Recorded tangent strips must triangulate in local drawing coordinates", failures)
+		for index: int in range(recorded.size()):
+			_expect(local[index] + recorded[0] == recorded[index],
+				"Local drawing and its origin must preserve every actual projected vertex", failures)
+	var visible := PackedVector2Array([
+		Vector2(343.5, 720.0), Vector2(343.0, 720.0), Vector2(343.2, 719.5),
+	])
+	_expect(not Geometry2D.triangulate_polygon(Shadows._local_outline(visible)).is_empty(),
+		"A nearby visible triangular shadow must remain drawable", failures)
+	visible.reverse()
+	_expect(not Geometry2D.triangulate_polygon(Shadows._local_outline(visible)).is_empty(),
+		"Local shadow drawing must preserve both polygon windings", failures)
 
 
 static func _world() -> World:

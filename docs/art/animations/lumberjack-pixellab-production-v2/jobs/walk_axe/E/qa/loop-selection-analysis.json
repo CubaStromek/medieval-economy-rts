@@ -1,0 +1,32 @@
+{
+  "loop_selection": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "seam_8_to_1": {
+    "from_index": 8,
+    "to_index": 1,
+    "comparable": true,
+    "raw_rgb_mean_absolute_difference": 1.58139,
+    "composited_rgb_mean_absolute_difference": 1.566004,
+    "alpha_mean_absolute_difference": 3.311234,
+    "changed_composited_pixels": 4069,
+    "changed_composited_fraction": 0.062088
+  },
+  "source_reference_0_to_8": {
+    "from_index": 0,
+    "to_index": 8,
+    "comparable": true,
+    "raw_rgb_mean_absolute_difference": 2.472315,
+    "composited_rgb_mean_absolute_difference": 2.267298,
+    "alpha_mean_absolute_difference": 3.72757,
+    "changed_composited_pixels": 5979,
+    "changed_composited_fraction": 0.091232
+  }
+}

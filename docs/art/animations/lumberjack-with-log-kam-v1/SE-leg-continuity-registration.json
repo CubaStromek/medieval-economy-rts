@@ -1,0 +1,100 @@
+{
+  "date": "2026-09-10",
+  "source": "sources/SE-phases-07-08-proportions.png",
+  "sourceSize": [
+    1610,
+    977
+  ],
+  "normalizedPairSize": [
+    896,
+    544
+  ],
+  "normalization": "Whole pair Lanczos resize; exact448x544 crops; integer translation only. No per-limb transform.",
+  "commonCellScaleAfterNormalization": 1,
+  "frames": [
+    {
+      "index": 6,
+      "humanFrame": 7,
+      "targetBaselineCap": {
+        "centerX": 228.9205882352941,
+        "top": 91
+      },
+      "normalizedCap": {
+        "top": 91,
+        "centerX": 237.52242744063324,
+        "bounds": [
+          208,
+          91,
+          276,
+          157
+        ],
+        "componentPixels": 2791
+      },
+      "integerOffset": [
+        -9,
+        0
+      ],
+      "finalCap": {
+        "top": 91,
+        "centerX": 228.52242744063324,
+        "bounds": [
+          199,
+          91,
+          267,
+          157
+        ],
+        "componentPixels": 2791
+      },
+      "finalBounds": [
+        114,
+        58,
+        303,
+        423
+      ],
+      "file": "final-frame-overrides/SE/06.png",
+      "sha256": "6b01c6817899555589d3188a79e4f579f25d6a1e8549b8f41e342b97ef771c50"
+    },
+    {
+      "index": 7,
+      "humanFrame": 8,
+      "targetBaselineCap": {
+        "centerX": 241.5982404692082,
+        "top": 91
+      },
+      "normalizedCap": {
+        "top": 90,
+        "centerX": 238.46027397260275,
+        "bounds": [
+          207,
+          90,
+          277,
+          157
+        ],
+        "componentPixels": 2834
+      },
+      "integerOffset": [
+        3,
+        1
+      ],
+      "finalCap": {
+        "top": 91,
+        "centerX": 241.46027397260275,
+        "bounds": [
+          210,
+          91,
+          280,
+          157
+        ],
+        "componentPixels": 2817
+      },
+      "finalBounds": [
+        125,
+        59,
+        318,
+        429
+      ],
+      "file": "final-frame-overrides/SE/07.png",
+      "sha256": "37e30637d11217f268e48a7177349bb341b9bbb1588685f7f3f5047b1f524573"
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "count": 25,
+  "loop_24_to_1": {
+    "from_index": 24,
+    "to_index": 1,
+    "comparable": true,
+    "raw_rgb_mean_absolute_difference": 3.484863,
+    "composited_rgb_mean_absolute_difference": 3.373784,
+    "alpha_mean_absolute_difference": 8.564072,
+    "changed_composited_pixels": 5780,
+    "changed_composited_fraction": 0.088196
+  },
+  "median_internal_composited_rgb_delta": 3.177119,
+  "bounds_ranges": [
+    [
+      82,
+      93
+    ],
+    [
+      48,
+      52
+    ],
+    [
+      158,
+      168
+    ],
+    [
+      207,
+      218
+    ]
+  ],
+  "head_region_measurements": [
+    {
+      "index": 1,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        52,
+        149,
+        84
+      ]
+    },
+    {
+      "index": 2,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        50,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 3,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        48,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 4,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        48,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 5,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        48,
+        151,
+        84
+      ]
+    },
+    {
+      "index": 6,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        50,
+        151,
+        84
+      ]
+    },
+    {
+      "index": 7,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        52,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 8,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        52,
+        151,
+        84
+      ]
+    },
+    {
+      "index": 9,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        50,
+        152,
+        84
+      ]
+    },
+    {
+      "index": 10,
+      "head_region_alpha_bbox_y_lt_84": [
+        112,
+        48,
+        151,
+        84
+      ]
+    },
+    {
+      "index": 11,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        49,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 12,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        52,
+        149,
+        84
+      ]
+    },
+    {
+      "index": 13,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        52,
+        149,
+        84
+      ]
+    },
+    {
+      "index": 14,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        50,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 15,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        49,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 16,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        48,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 17,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        48,
+        151,
+        84
+      ]
+    },
+    {
+      "index": 18,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        50,
+        151,
+        84
+      ]
+    },
+    {
+      "index": 19,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        52,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 20,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        52,
+        151,
+        84
+      ]
+    },
+    {
+      "index": 21,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        50,
+        151,
+        84
+      ]
+    },
+    {
+      "index": 22,
+      "head_region_alpha_bbox_y_lt_84": [
+        112,
+        48,
+        151,
+        84
+      ]
+    },
+    {
+      "index": 23,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        49,
+        150,
+        84
+      ]
+    },
+    {
+      "index": 24,
+      "head_region_alpha_bbox_y_lt_84": [
+        113,
+        52,
+        149,
+        84
+      ]
+    }
+  ],
+  "all_visible_and_transparent": true,
+  "nonzero_border_pixels": 0,
+  "source_files_unchanged": true,
+  "identical_rgba_pairs": []
+}

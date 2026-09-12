@@ -1,0 +1,194 @@
+{
+  "walk_axe/N": {
+    "file": "references/walk_axe/N.png",
+    "source_job": "jobs/walk_axe/N",
+    "source_index": 0,
+    "source_file": "jobs/walk_axe/N/images/frame_00.png",
+    "png_sha256": "175145239f9fd3f0ccfe529631c94d54f031dfd32095317da593d22c16ed1ef8",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_axe/NE": {
+    "file": "references/walk_axe/NE.png",
+    "source_job": "jobs/walk_axe/NE",
+    "source_index": 0,
+    "source_file": "jobs/walk_axe/NE/images/frame_00.png",
+    "png_sha256": "c50bea20fdbe4a6a88f0484e7f32c57e78cf973abd56963f965e804a34067949",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_axe/E": {
+    "file": "references/walk_axe/E.png",
+    "source_job": "jobs/walk_axe/E",
+    "source_index": 0,
+    "source_file": "jobs/walk_axe/E/images/frame_00.png",
+    "png_sha256": "4b8dd94904c703e3b5ac8ce18c45fcd6f84294ccd1a66cdbee41d84c1ad359c1",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_axe/SE": {
+    "file": "references/walk_axe/SE.png",
+    "source_job": "jobs/walk_axe/SE",
+    "source_index": 0,
+    "source_file": "jobs/walk_axe/SE/images/frame_00.png",
+    "png_sha256": "72b52ccb0282dbeab919ba8e71d8aad4ccc8644bc8226aa677470530268f614e",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_axe/S": {
+    "file": "references/walk_axe/S.png",
+    "source_job": "jobs/walk_axe/S",
+    "source_index": 0,
+    "source_file": "jobs/walk_axe/S/images/frame_00.png",
+    "png_sha256": "5d5b2e7456cba6f8c83163cae04099d732dda2225c008bb53f640db9c1ce6bb7",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_axe/SW": {
+    "file": "references/walk_axe/SW.png",
+    "source_job": "jobs/walk_axe/SW",
+    "source_index": 0,
+    "source_file": "jobs/walk_axe/SW/images/frame_00.png",
+    "png_sha256": "e9e04a6ae92f46697af833ae8f14147eab2810ba8ed94dcba6e8d30b53fc56cf",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_axe/W": {
+    "file": "references/walk_axe/W.png",
+    "source_job": "jobs/walk_axe/W",
+    "source_index": 0,
+    "source_file": "jobs/walk_axe/W/images/frame_00.png",
+    "png_sha256": "f2f6e1bde11f9ee45fdaba5af3cc37c306ba072c78c92abc58d601c88d792795",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_axe/NW": {
+    "file": "references/walk_axe/NW.png",
+    "source_job": "jobs/walk_axe/NW",
+    "source_index": 0,
+    "source_file": "jobs/walk_axe/NW/images/frame_00.png",
+    "png_sha256": "74e1f120fecaff7e769c6346d5ce95906127507346b55d53fe93913bc345f142",
+    "role": "archived input reference; not an idle animation"
+  },
+  "chop/N": {
+    "file": "references/chop/N.png",
+    "source_job": "repairs/chop-N-forward",
+    "source_index": 0,
+    "source_file": "repairs/chop-N-forward/images/frame_00.png",
+    "png_sha256": "ec3ce4a74dcd64d92b70afb8e5efde9c62867721e7e249b51a518972e2ea7fa8",
+    "role": "archived input reference; not an idle animation"
+  },
+  "chop/NE": {
+    "file": "references/chop/NE.png",
+    "source_job": "jobs/chop/NE",
+    "source_index": 0,
+    "source_file": "jobs/chop/NE/images/frame_00.png",
+    "png_sha256": "f0908aaf081909c8498dec478fae6f0738ffeb8974b559fbcd88aacf5b75cefa",
+    "role": "archived input reference; not an idle animation"
+  },
+  "chop/E": {
+    "file": "references/chop/E.png",
+    "source_job": "repairs/chop-E-slow-24",
+    "source_index": 0,
+    "source_file": "repairs/chop-E-slow-24/images/frame_00.png",
+    "png_sha256": "fcd6369d54fd6cd18cb51a8436ea971239266b4dcab6f5886df909720d249689",
+    "role": "archived input reference; not an idle animation"
+  },
+  "chop/SE": {
+    "file": "references/chop/SE.png",
+    "source_job": "jobs/chop/SE",
+    "source_index": 0,
+    "source_file": "jobs/chop/SE/images/frame_00.png",
+    "png_sha256": "256f7ed4d84ecf22aa18de7ae00bfa329ac4a73c06295f31dd67ac6767037e98",
+    "role": "archived input reference; not an idle animation"
+  },
+  "chop/S": {
+    "file": "references/chop/S.png",
+    "source_job": "repairs/chop-S-waist-empty",
+    "source_index": 0,
+    "source_file": "repairs/chop-S-waist-empty/images/frame_00.png",
+    "png_sha256": "7521100122a854e170eaaa4410d65fa3b916da12fcfb49579b021205776554be",
+    "role": "archived input reference; not an idle animation"
+  },
+  "chop/SW": {
+    "file": "references/chop/SW.png",
+    "source_job": "jobs/chop/SW",
+    "source_index": 0,
+    "source_file": "jobs/chop/SW/images/frame_00.png",
+    "png_sha256": "cd9256263bd3afa221efe7772908f5ec1edb6d0b08f8d837a111a39f644e17ad",
+    "role": "archived input reference; not an idle animation"
+  },
+  "chop/W": {
+    "file": "references/chop/W.png",
+    "source_job": "repairs/chop-W-slow-24",
+    "source_index": 0,
+    "source_file": "repairs/chop-W-slow-24/images/frame_00.png",
+    "png_sha256": "659261b9750570ddfa8269ed16b51642dce636c4aa5ced7abe1bd9614a8922da",
+    "role": "archived input reference; not an idle animation"
+  },
+  "chop/NW": {
+    "file": "references/chop/NW.png",
+    "source_job": "jobs/chop/NW",
+    "source_index": 0,
+    "source_file": "jobs/chop/NW/images/frame_00.png",
+    "png_sha256": "d229781a9a8a055776428ad068033a67d503fc83f39152e4b82dc54aa6228e18",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_log/N": {
+    "file": "references/walk_log/N.png",
+    "source_job": "jobs/walk_log/N",
+    "source_index": 0,
+    "source_file": "jobs/walk_log/N/images/frame_00.png",
+    "png_sha256": "f151f308544fc6293510b602fbbd149f2fd434eebbc05533ff2758f71788e03e",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_log/NE": {
+    "file": "references/walk_log/NE.png",
+    "source_job": "jobs/walk_log/NE",
+    "source_index": 0,
+    "source_file": "jobs/walk_log/NE/images/frame_00.png",
+    "png_sha256": "99fbff2f4800dd9f763e16e0f362e7e279df687dc00a36409e1cfce39d52367d",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_log/E": {
+    "file": "references/walk_log/E.png",
+    "source_job": "jobs/walk_log/E",
+    "source_index": 0,
+    "source_file": "jobs/walk_log/E/images/frame_00.png",
+    "png_sha256": "a321875ac9c266969df81b04af5b3b37f9e0a22f59478db67970caeec5d74eeb",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_log/SE": {
+    "file": "references/walk_log/SE.png",
+    "source_job": "jobs/walk_log/SE",
+    "source_index": 0,
+    "source_file": "jobs/walk_log/SE/images/frame_00.png",
+    "png_sha256": "3004fa83937d12bb44379249a06c98873558907548770a1472084d75afbda2a9",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_log/S": {
+    "file": "references/walk_log/S.png",
+    "source_job": "jobs/walk_log/S",
+    "source_index": 0,
+    "source_file": "jobs/walk_log/S/images/frame_00.png",
+    "png_sha256": "5a42bc2d9862918c6d99be2673949c2f340d3a126d07db208032eb1ab138b686",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_log/SW": {
+    "file": "references/walk_log/SW.png",
+    "source_job": "jobs/walk_log/SW",
+    "source_index": 0,
+    "source_file": "jobs/walk_log/SW/images/frame_00.png",
+    "png_sha256": "0d2fda302c329d20120d1f9ecbb068101e52ab85ac858db4eb4a0d88bf0dc388",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_log/W": {
+    "file": "references/walk_log/W.png",
+    "source_job": "jobs/walk_log/W",
+    "source_index": 0,
+    "source_file": "jobs/walk_log/W/images/frame_00.png",
+    "png_sha256": "3a3514ca7cbb94a5ccb8d0181cff375ade3cbb7b2132368ec37856cd7cfcc456",
+    "role": "archived input reference; not an idle animation"
+  },
+  "walk_log/NW": {
+    "file": "references/walk_log/NW.png",
+    "source_job": "jobs/walk_log/NW",
+    "source_index": 0,
+    "source_file": "jobs/walk_log/NW/images/frame_00.png",
+    "png_sha256": "b6ac4d97740c58ccc92de745af44a71425e8acfc33f028be1daac065b125cc25",
+    "role": "archived input reference; not an idle animation"
+  }
+}

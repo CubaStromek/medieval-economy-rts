@@ -1,0 +1,43 @@
+{
+  "actual_probe_sandbox": "/private/tmp/pixellab-direction-fps-probe",
+  "original_jobs": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/jobs",
+  "direction_rates": {
+    "S": 10,
+    "W": 15
+  },
+  "clip_fallback_rate": 12,
+  "raw_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "code_sha256": {
+    "game/scripts/view/lumberjack_animation_library.gd": "d59a24ad33f7158c74d3c275d575c210e2e63aac82b048285e3960978a9f3d14",
+    "game/tools/preview_pixellab_lumberjack.gd": "fa9669f1d9d1c65f27212f4b994a543af7be5b579409c33e49647848ddc838b3"
+  },
+  "historical_pilot_manifest_sha256": "32de64977741a40532c39636a492e14857b1fa902e358081aa7683780293a189",
+  "historical_runtime_unchanged": true,
+  "is_production_package": false,
+  "main_game_used": false
+}

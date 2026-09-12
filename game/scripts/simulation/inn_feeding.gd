@@ -2,6 +2,7 @@ class_name InnFeeding
 extends RefCounted
 
 const Pathfinder = preload("res://scripts/simulation/grid_pathfinder.gd")
+const NutritionClass = preload("res://scripts/simulation/nutrition.gd")
 const SEARCH_RETRY_TICKS: int = 20
 
 
@@ -30,7 +31,7 @@ static func tick_worker(world: Variant, worker: Dictionary) -> bool:
 	@warning_ignore("integer_division")
 	var target_restore: int = int(course["restore"]) * elapsed / duration
 	var added: int = target_restore - int(course["applied"])
-	worker["hunger"] = mini(int(world.catalog.economy["condition_max"]), int(worker["hunger"]) + added)
+	NutritionClass.restore_food(world, worker, added)
 	# Track the raw restored amount even when saturation caps the visible gain.
 	# A snapshot can then resume the exact integer curve without double feeding.
 	course["applied"] = target_restore
@@ -96,7 +97,7 @@ static func _start_next_course(world: Variant, worker: Dictionary, foods_eaten: 
 			or foods_eaten.size() >= int(world.catalog.economy["max_meals_per_visit"]):
 		return false
 	var inn: Dictionary = world.buildings.get(int(worker.get("inside_building_id", 0)), {})
-	if inn.is_empty() or inn["type"] != "inn" or not world.is_building_complete(inn):
+	if inn.is_empty() or not world.is_local_entity(inn) or not world.is_building_enabled(inn) or inn["type"] != "inn" or not world.is_building_complete(inn):
 		return false
 	for resource: String in world.catalog.economy["food_order"]:
 		if foods_eaten.has(resource) or int(inn["inputs"].get(resource, 0)) <= 0:
@@ -132,7 +133,7 @@ static func retry_after_blocked(world: Variant, worker: Dictionary) -> void:
 
 
 static func _can_serve(world: Variant, inn: Dictionary) -> bool:
-	if inn.is_empty() or inn["type"] != "inn" or not world.is_building_complete(inn):
+	if inn.is_empty() or not world.is_local_entity(inn) or not world.is_building_enabled(inn) or inn["type"] != "inn" or not world.is_building_complete(inn):
 		return false
 	if occupied_seats(world, int(inn["id"])) >= int(world.catalog.building("inn").get("seating_capacity", 6)):
 		return false

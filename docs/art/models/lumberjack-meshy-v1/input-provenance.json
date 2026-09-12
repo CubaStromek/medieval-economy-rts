@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-10",
+  "method": "Built-in imagegen prep for Meshy; final 3D model generated in Meshy",
+  "prompt": "Use case: identity-preserve. Prepare ONE clean reference image for 3D character reconstruction in Meshy. Input image1 is the original front-facing lumberjack, input image2 is the same man's three-quarter appearance reference. Depict this EXACT SAME adult stocky medieval lumberjack in a strict neutral T-POSE: upright symmetrical body, both arms extended horizontally at shoulder height, straight relaxed elbows, palms down with visible separate relaxed fingers, both legs straight with feet shoulder-width apart and parallel pointing forward. Front orthographic view at chest height, no top-down camera and no perspective foreshortening. Preserve the same recognizable strong face, short brown beard, brown hair, rust-orange segmented cloth cap with rolled brim, muted olive green tunic with cream neck lacing, cream rolled sleeves, brown leather belt with rectangular metal buckle, single knee-length leather apron ONLY on the front, brown trousers, cuffed leather boots, natural painted matte materials and colors. Remove the axe completely: BOTH HANDS EMPTY. No axe, log, tools or equipment fused to hands or clothing. Preserve robust proportions and outfit, not skinny or muscular superhero. No new garments or accessories. Clean distinct silhouette with air gaps under both arms and between both legs. No crossed legs. Center the whole character with all fingertips and boots fully visible and generous margin in a square image on plain white background. Only one character; no sheet, diagram, labels, lettering, shadows on a floor or pedestal. This is a neutral modelling reference, NOT a walk-cycle frame.",
+  "originalInputs": [
+    "docs/art/animation-references/lumberjack-without-log/S.png",
+    "docs/art/animation-references/lumberjack-without-log/SE.png"
+  ],
+  "output": "reference/lumberjack-tpose.png",
+  "generationSettings": {
+    "date": "2026-09-10",
+    "platform": "Meshy web",
+    "model": "Meshy 7 - Flagship",
+    "resolution": "Standard",
+    "texture": true,
+    "pose": "T-pose",
+    "multiView": false,
+    "imageEnhancement": false,
+    "split": false,
+    "license": "Private",
+    "estimatedCredits": 30,
+    "initialCreditBalance": 1150,
+    "input": "reference/lumberjack-tpose.png",
+    "scope": "One textured static T-pose model; no rig or animation yet."
+  }
+}

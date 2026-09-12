@@ -78,7 +78,9 @@ static func _test_routes_and_building_rules(failures: Array[String]) -> void:
 	_check(not world.grid.is_walkable(Vector2i(5, 4)) and not world.grid.is_walkable(Vector2i(9, 4)),
 		"Imported water and mountain material must remain actual movement obstacles", failures)
 	var before: Dictionary = world.to_data()
-	_check(world.foundation_plan("lumber_hut", Vector2i(1, 5)).get("valid", false)
+	# The current notched hut keeps the former doorway at (3,6) while its
+	# expanded ground contacts fit entirely on the level western river bank.
+	_check(world.foundation_plan("lumber_hut", Vector2i(0, 6)).get("valid", false)
 		and not world.can_place_building("lumber_hut", Vector2i(4, 5)),
 		"Existing Builder ground preparation remains authoritative on imported terrain and rejects water", failures)
 	_check(world.to_data() == before, "Placement previews on an imported map cannot alter its terrain", failures)

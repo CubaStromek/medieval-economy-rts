@@ -124,7 +124,7 @@ static func _test_saved_boundary_continues_on_next_tick(failures: Array[String])
 static func _test_historical_saves_project_existing_tick_without_migration(failures: Array[String]) -> void:
 	var source: Variant = _inventory_fixture()
 	source.tick = 10749
-	var expected: Dictionary = source.to_data()
+	var expected: Dictionary = LegacyFixture.expected_pre_fog_migration(source.to_data())
 	for version: int in [11, 12]:
 		var legacy: Dictionary = _json(expected)
 		legacy["version"] = version

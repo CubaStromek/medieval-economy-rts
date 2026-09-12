@@ -2,12 +2,13 @@ class_name DailySchedule
 extends RefCounted
 
 const Feeding = preload("res://scripts/simulation/inn_feeding.gd")
+const ResidencesClass = preload("res://scripts/simulation/residences.gd")
 const RETRY_TICKS: int = 20
 
 
 static func follows(world: Variant, worker: Dictionary) -> bool:
 	var role: String = String(worker.get("type", ""))
-	return role != "recruit" and world.catalog.units.has(role) and not world.catalog.soldiers.has(role)
+	return world.is_local_entity(worker) and role != "recruit" and world.catalog.units.has(role) and not world.catalog.soldiers.has(role)
 
 
 # Run before building production and military supply replanning. A pending
@@ -142,7 +143,10 @@ static func valid_home(world: Variant, worker: Dictionary, home: int) -> bool:
 	var workplace: int = int(worker.get("home_id", 0))
 	if world.owns_workplace(worker, workplace):
 		return home == workplace
-	return building["type"] == "warehouse"
+	if ResidencesClass.capacity(world, home) > 0:
+		return ResidencesClass.valid_home(world, worker, home)
+	return building["type"] == "warehouse" \
+		and int(building.get("owner_id", 1)) == int(worker.get("owner_id", 1))
 
 
 static func _ensure_home(world: Variant, worker: Dictionary) -> int:
@@ -151,6 +155,14 @@ static func _ensure_home(world: Variant, worker: Dictionary) -> int:
 		worker["sleep_home_id"] = workplace
 		return workplace
 	var home: int = int(worker.get("sleep_home_id", 0))
+	if home != 0 and ResidencesClass.valid_home(world, worker, home):
+		return home
+	var residence: int = ResidencesClass.nearest_available(world, worker)
+	if residence != 0:
+		worker["sleep_home_id"] = residence
+		return residence
+	# Warehouses remain emergency accommodation for maps and excess workers
+	# without a free two-person cottage. A new vacancy is preferred next night.
 	if valid_home(world, worker, home):
 		return home
 	worker["sleep_home_id"] = 0

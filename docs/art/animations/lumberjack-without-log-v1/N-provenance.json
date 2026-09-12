@@ -1,0 +1,47 @@
+{
+  "date": "2026-09-09",
+  "direction": "N",
+  "tool": "built-in imagegen",
+  "source": "docs/art/animation-references/lumberjack-without-log/N.png",
+  "sheet_layout": {
+    "columns": 4,
+    "rows": 2
+  },
+  "candidate": "sheets/N-candidate.png",
+  "status": "candidate_needs_motion_refinement_not_production_ready",
+  "alpha_status": "Measured with sips: hasAlpha=no; 1254x1254 pixels. Opaque white-background preview, not production transparency.",
+  "attempts": [
+    {
+      "id": 1,
+      "prompt": "Use case: stylized-concept. Create a 4-column by 2-row sprite sheet of EIGHT CONSECUTIVE WALKING POSES of the SAME lumberjack in the supplied reference. Reference image role: exact character identity, painted style, clothing, elevated rear camera. Every pose faces directly NORTH, away from the viewer. Never turn sideways. Axe remains in anatomical RIGHT hand, on screen RIGHT; screen-left hand is empty. No log. Same orange cap, green shirt, rolled cream sleeves, brown trousers and boots, belt, back-view silhouette. Pure solid WHITE background, NO checkerboard, no text, no labels, no grid lines, no ground shadow.\nPriority is real eight-phase motion with OPPOSITE LEGS, not eight duplicates. Rear view walking away: the advancing foot moves UPWARD on the image; the trailing foot moves DOWNWARD and shows its sole. Row-major poses 1-8: 1 LEFT boot far UP and RIGHT boot far DOWN; 2 LEFT planted, RIGHT heel lifts; 3 RIGHT knee bends and passes beside planted LEFT leg, feet nearly together; 4 RIGHT boot swings UP as LEFT starts trailing; 5 RIGHT boot far UP and LEFT boot far DOWN (visibly reverse pose 1); 6 RIGHT planted, LEFT heel lifts; 7 LEFT knee bends and passes beside planted RIGHT leg, feet nearly together; 8 LEFT boot swings UP as RIGHT starts trailing. Opposite arm swing; right-hand axe follows hand but remains firmly held. Subtle vertical body bob. Eight distinct sequential phases, suitable for looping 8 to 1. Fit every complete figure in its equally sized cell, equal scale and centered pelvis, clean generous margins.",
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-05068653-8314-4430-a261-b2ed50a11809.png",
+      "saved": "sheets/N-rejected-axe-hand.png",
+      "outcome": "Actual opposite-leg halves and passing poses. Rejected because frames 5-7 have incorrect/missing axe hand."
+    },
+    {
+      "id": 2,
+      "prompt": "Use case: precise-object-edit. Edit this eight-frame rear-view lumberjack walk sprite sheet with ONE correction: the AXE MUST ALWAYS BE IN HIS ANATOMICAL RIGHT HAND, which is the hand on the SCREEN RIGHT of EACH figure. In the BOTTOM ROW ONLY, figures 1, 2, and 3 currently wrongly have an axe in their SCREEN LEFT hands or no axe. Remove each of those screen-left axes and make each SCREEN LEFT hand empty with natural curled fingers. Put the same short-handled axe into the SCREEN RIGHT hand of each of those three figures, hanging blade down with handle firmly gripped, matching the fourth figure in the bottom row and original reference. No other changes. CRITICAL preserve the exact current EIGHT leg poses, positions of every boot and knee, body scale, rear viewing direction, painting, cap, sleeves, pure WHITE background, and 4-column 2-row layout. Do NOT mirror any character or any legs. Do not add or remove frames. No checkerboard. Eight axes total, always screen-right.",
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-a354bc98-02cb-4746-aee4-093a14e78f55.png",
+      "saved": "sheets/N-candidate.png",
+      "outcome": "Axe corrected to anatomical right/screen right in every frame; leg poses preserved. Selected for diagnostic preview."
+    }
+  ],
+  "visual_qa": {
+    "view": "All eight figures face away/north, elevated camera broadly follows reference; cap top visible.",
+    "identity": "Orange cap, green shirt, cream sleeves, trousers and boots preserved; rear silhouettes consistent.",
+    "axe": "All eight selected-candidate figures hold axe in anatomical right hand/screen right.",
+    "phases": "Genuine alternating-leg halves: frames 1-4 screen-left boot lower, frames 5-8 screen-right boot lower. Frames 3 and 7 have passing-like feet. Frames 4 and 8 revert toward the respective half-cycle contact pose, so row-major playback has an unwanted setback before switching legs.",
+    "recommended_diagnostic_order": [
+      1,
+      2,
+      3,
+      8,
+      5,
+      6,
+      7,
+      4
+    ],
+    "diagnostic_order_note": "Potential preview-only reordering to put raised/swing poses before opposite contact; not a verified smooth animation and not approval.",
+    "remaining": "Near-duplicate contact poses 1/4 and 5/8, uneven arm motion after surgical axe correction, original row-major phase order imperfect. Need motion playback QA and refinements; no in-game QA, no production alpha, no approval."
+  }
+}

@@ -53,11 +53,20 @@
     "display_name": "Lumberjack Hut",
     "worker": "lumberjack",
     "color": "8a5a36",
-    "footprint": [3, 2],
-    "footprint_mask": ["###", "##E"],
-    "footprint_source": "kam_remake_plan_yx",
-    "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
-    "footprint_reference_house": "Woodcutter",
+    "footprint_version": 2,
+    "footprint": [4, 3],
+    "footprint_mask": [".###", ".##E", "###."],
+    "footprint_source": "project_lumber_hut_contact_fit_2026_09_10",
+    "footprint_reference": "docs/art/briefs/lumber-hut-footprint-v2-integration.md",
+    "footprint_revisions": {
+      "1": {
+        "footprint": [3, 2],
+        "footprint_mask": ["###", "##E"],
+        "footprint_source": "kam_remake_plan_yx",
+        "footprint_reference": "https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas",
+        "footprint_reference_house": "Woodcutter"
+      }
+    },
     "enables": [
       "harvest_tree"
     ],
@@ -99,6 +108,31 @@
     "construction_cost_source": "project_balance",
     "construction_cost_reference": "docs/forester-and-fisher-huts.md",
     "description": "Home for one Gardener, who plants trees within 8 tiles of this hut. Train the Gardener at a School."
+  },
+  "workers_house": {
+    "display_name": "Workers' Cottage",
+    "color": "a9784f",
+    "footprint": [2, 2],
+    "footprint_mask": ["##", "#E"],
+    "footprint_source": "project_workers_house",
+    "footprint_reference": "docs/worker-housing.md",
+    "footprint_reference_house": "Workers' Cottage",
+    "category": "infrastructure",
+    "inputs": [],
+    "outputs": [],
+    "residence_capacity": 2,
+    "resident_types": [
+      "carrier",
+      "builder"
+    ],
+    "construction_cost": {
+      "plank": 3,
+      "stone": 2
+    },
+    "construction_ticks": 120,
+    "construction_cost_source": "project_balance",
+    "construction_cost_reference": "docs/worker-housing.md",
+    "description": "Provides two sleeping places for Carriers and Builders. Their workplaces remain independent."
   },
   "sawmill": {
     "display_name": "Sawmill",

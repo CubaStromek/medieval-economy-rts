@@ -1,0 +1,130 @@
+{
+  "date": "2026-09-09",
+  "buildingId": "lumber_hut",
+  "styleVersion": "0.2",
+  "baseVersion": "v3",
+  "stage": "concept stock-state illustrations, not production sprites",
+  "tool": "built-in imagegen",
+  "model": "not identified by tool",
+  "base": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumber-hut-v3.png",
+  "variants": [
+    {
+      "count": 1,
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-1858a758-b078-409c-99f3-f8ea144d7a94.png",
+      "destination": "docs/art/concepts/lumber-hut-v3-stock/logs-1.png",
+      "inputs": [
+        "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-8854aaf4-c9ae-48e0-b0ea-5a551e0cc4d5.png",
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumber-hut-v3.png"
+      ],
+      "prompt": "Use case: precise-object-edit.\nAsset type: inventory-state concept variant 1 of our existing medieval lumberjack hut. Output ONE full square image, not a sheet.\nInput image 1 is the EDIT TARGET: the hut containing exactly SIX logs in a 3+2+1 stack.\nInput image 2 is a RESTORATION REFERENCE ONLY: the identical hut with its cradle empty; use it to reveal authentic cradle planks/background where removed logs used to be. Do not change house/camera to make a new design.\nPRIMARY REQUEST: create the version with EXACTLY 1 individual logs in the existing lower-left foreground cradle by deleting only the specified logs from image 1.\nKEEP only the BOTTOM-LEFT log of the existing pile, in its exact same slot. REMOVE the other five logs completely: bottom-middle, bottom-right, both middle-tier logs and the top log. ONE log total, resting on the cradle floor, NOT floating or centered somewhere new.\nThe retained log(s) must have EXACTLY the same diameter, length, brown bark and pale circular end grain, parallel orientation, lighting and positions as those particular logs in Image 1. Near sawn end faces stay clearly countable toward the viewer. Do not redistribute, resize or reshape the remaining pile to fill the freed space. Preserve the existing bottom-left slot even in the one-log state. Restore newly exposed planks and structure faithfully from image 2. The base cradle posts and front retaining rail remain in front of the stock and do not hide the countable faces. No hidden extra logs, no loose firewood, no logs on the sawhorse.\nLOCK ALL OTHER PIXELS AS CLOSELY AS POSSIBLE: exact same elevated front-LEFT camera, readable roof planes, house architecture and silhouette, framing, position and scale, canvas and margins, chimney, roof shingles, window, tools, sawhorse, warm stone feet, empty right doorway and empty presence-marker bracket, rack construction, soft lighting, colors and warm off-white background. Change ONLY the removed logs and their local contact shadows; do not crop, zoom, shift, repaint, rotate or redesign the house. Keep the door approach empty. No people, smoke, active marker, captions, text, numbers, UI, watermarks, scenery or extra items.\nMaintain the existing softly hand-painted stylized medieval craft material finish. Final visible count must be 1; visually count the individual near cross-sections before finishing.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "sha256": "5ea506236aa3e8e7dccd0baa1534ec42c8b850ee6b5029cdbd692aa2845bc172",
+      "visualCountVerified": 1
+    },
+    {
+      "count": 2,
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-d7654004-9c68-4b4c-afdd-a96374a590da.png",
+      "destination": "docs/art/concepts/lumber-hut-v3-stock/logs-2.png",
+      "inputs": [
+        "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-8854aaf4-c9ae-48e0-b0ea-5a551e0cc4d5.png",
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumber-hut-v3.png"
+      ],
+      "prompt": "Use case: precise-object-edit.\nAsset type: inventory-state concept variant 2 of our existing medieval lumberjack hut. Output ONE full square image, not a sheet.\nInput image 1 is the EDIT TARGET: the hut containing exactly SIX logs in a 3+2+1 stack.\nInput image 2 is a RESTORATION REFERENCE ONLY: the identical hut with its cradle empty; use it to reveal authentic cradle planks/background where removed logs used to be. Do not change house/camera to make a new design.\nPRIMARY REQUEST: create the version with EXACTLY 2 individual logs in the existing lower-left foreground cradle by deleting only the specified logs from image 1.\nKEEP only the BOTTOM-LEFT and BOTTOM-MIDDLE logs, in their exact existing slots side by side on the cradle floor. REMOVE the bottom-right log, both middle-tier logs and the top log. TWO logs total, no upper tier.\nThe retained log(s) must have EXACTLY the same diameter, length, brown bark and pale circular end grain, parallel orientation, lighting and positions as those particular logs in Image 1. Near sawn end faces stay clearly countable toward the viewer. Do not redistribute, resize or reshape the remaining pile to fill the freed space. Preserve the existing bottom-left slot even in the one-log state. Restore newly exposed planks and structure faithfully from image 2. The base cradle posts and front retaining rail remain in front of the stock and do not hide the countable faces. No hidden extra logs, no loose firewood, no logs on the sawhorse.\nLOCK ALL OTHER PIXELS AS CLOSELY AS POSSIBLE: exact same elevated front-LEFT camera, readable roof planes, house architecture and silhouette, framing, position and scale, canvas and margins, chimney, roof shingles, window, tools, sawhorse, warm stone feet, empty right doorway and empty presence-marker bracket, rack construction, soft lighting, colors and warm off-white background. Change ONLY the removed logs and their local contact shadows; do not crop, zoom, shift, repaint, rotate or redesign the house. Keep the door approach empty. No people, smoke, active marker, captions, text, numbers, UI, watermarks, scenery or extra items.\nMaintain the existing softly hand-painted stylized medieval craft material finish. Final visible count must be 2; visually count the individual near cross-sections before finishing.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "sha256": "78171265640f2b304d53b491279968a25713db083f1c76bc23eb5491689ba425",
+      "visualCountVerified": 2
+    },
+    {
+      "count": 3,
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-c327b30a-e47a-42b9-b715-80f1487fd8b6.png",
+      "destination": "docs/art/concepts/lumber-hut-v3-stock/logs-3.png",
+      "inputs": [
+        "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-8854aaf4-c9ae-48e0-b0ea-5a551e0cc4d5.png",
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumber-hut-v3.png"
+      ],
+      "prompt": "Use case: precise-object-edit.\nAsset type: inventory-state concept variant 3 of our existing medieval lumberjack hut. Output ONE full square image, not a sheet.\nInput image 1 is the EDIT TARGET: the hut containing exactly SIX logs in a 3+2+1 stack.\nInput image 2 is a RESTORATION REFERENCE ONLY: the identical hut with its cradle empty; use it to reveal authentic cradle planks/background where removed logs used to be. Do not change house/camera to make a new design.\nPRIMARY REQUEST: create the version with EXACTLY 3 individual logs in the existing lower-left foreground cradle by deleting only the specified logs from image 1.\nKEEP exactly the THREE BOTTOM-TIER logs side by side, in their exact existing slots on the cradle floor. REMOVE both second-tier logs and the top log. THREE logs total, all in one bottom row; NOT a two-plus-one triangle.\nThe retained log(s) must have EXACTLY the same diameter, length, brown bark and pale circular end grain, parallel orientation, lighting and positions as those particular logs in Image 1. Near sawn end faces stay clearly countable toward the viewer. Do not redistribute, resize or reshape the remaining pile to fill the freed space. Preserve the existing bottom-left slot even in the one-log state. Restore newly exposed planks and structure faithfully from image 2. The base cradle posts and front retaining rail remain in front of the stock and do not hide the countable faces. No hidden extra logs, no loose firewood, no logs on the sawhorse.\nLOCK ALL OTHER PIXELS AS CLOSELY AS POSSIBLE: exact same elevated front-LEFT camera, readable roof planes, house architecture and silhouette, framing, position and scale, canvas and margins, chimney, roof shingles, window, tools, sawhorse, warm stone feet, empty right doorway and empty presence-marker bracket, rack construction, soft lighting, colors and warm off-white background. Change ONLY the removed logs and their local contact shadows; do not crop, zoom, shift, repaint, rotate or redesign the house. Keep the door approach empty. No people, smoke, active marker, captions, text, numbers, UI, watermarks, scenery or extra items.\nMaintain the existing softly hand-painted stylized medieval craft material finish. Final visible count must be 3; visually count the individual near cross-sections before finishing.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "sha256": "b9e5750bd2b8bfb0158f72d1393fe093d9830e0e781474364691e9af81b567ca",
+      "visualCountVerified": 3
+    },
+    {
+      "count": 4,
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-2cdfafc4-b1d4-4e5a-8e39-d5a67084e30b.png",
+      "destination": "docs/art/concepts/lumber-hut-v3-stock/logs-4.png",
+      "inputs": [
+        "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-8854aaf4-c9ae-48e0-b0ea-5a551e0cc4d5.png",
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumber-hut-v3.png"
+      ],
+      "prompt": "Use case: precise-object-edit.\nAsset type: inventory-state concept variant 4 of our existing medieval lumberjack hut. Output ONE full square image, not a sheet.\nInput image 1 is the EDIT TARGET: the hut containing exactly SIX logs in a 3+2+1 stack.\nInput image 2 is a RESTORATION REFERENCE ONLY: the identical hut with its cradle empty; use it to reveal authentic cradle planks/background where removed logs used to be. Do not change house/camera to make a new design.\nPRIMARY REQUEST: create the version with EXACTLY 4 individual logs in the existing lower-left foreground cradle by deleting only the specified logs from image 1.\nKEEP all THREE BOTTOM-TIER logs and the LEFT second-tier log resting in the gap between bottom-left and bottom-middle. REMOVE the right second-tier log and the single top log. FOUR logs total: three on bottom plus one above the left gap. No apex log.\nThe retained log(s) must have EXACTLY the same diameter, length, brown bark and pale circular end grain, parallel orientation, lighting and positions as those particular logs in Image 1. Near sawn end faces stay clearly countable toward the viewer. Do not redistribute, resize or reshape the remaining pile to fill the freed space. Preserve the existing bottom-left slot even in the one-log state. Restore newly exposed planks and structure faithfully from image 2. The base cradle posts and front retaining rail remain in front of the stock and do not hide the countable faces. No hidden extra logs, no loose firewood, no logs on the sawhorse.\nLOCK ALL OTHER PIXELS AS CLOSELY AS POSSIBLE: exact same elevated front-LEFT camera, readable roof planes, house architecture and silhouette, framing, position and scale, canvas and margins, chimney, roof shingles, window, tools, sawhorse, warm stone feet, empty right doorway and empty presence-marker bracket, rack construction, soft lighting, colors and warm off-white background. Change ONLY the removed logs and their local contact shadows; do not crop, zoom, shift, repaint, rotate or redesign the house. Keep the door approach empty. No people, smoke, active marker, captions, text, numbers, UI, watermarks, scenery or extra items.\nMaintain the existing softly hand-painted stylized medieval craft material finish. Final visible count must be 4; visually count the individual near cross-sections before finishing.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "sha256": "cae5effbd38c103d89f5ff81e54fa6de642509c8d19cbdf038c5094e4d7adb0e",
+      "visualCountVerified": 4
+    },
+    {
+      "count": 5,
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-f202150e-b003-441d-bcc8-ab315cc1fe49.png",
+      "destination": "docs/art/concepts/lumber-hut-v3-stock/logs-5.png",
+      "inputs": [
+        "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-c327b30a-e47a-42b9-b715-80f1487fd8b6.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Make ONE stock-state concept variant by editing the supplied image.\nImage 1 is the exact edit target: our hut with THREE logs in a SINGLE BOTTOM ROW in the lower-left cradle.\nChange ONLY the log pile: add TWO parallel matching logs into a SECOND ROW above those three. One new log rests in the gap between bottom-left and bottom-middle; the other new log rests in the gap between bottom-middle and bottom-right. Each new log matches the existing logs' diameter, length, brown bark, pale circular sawn face and orientation receding up-left. Align the near end faces in the same front plane. FIVE logs total: THREE bottom + TWO upper. Exactly TWO tiers. The top ridge is FLAT across the TWO upper logs: absolutely NO apex/third-tier log.\nCounting check: the near end-grain faces must form this arrangement: upper row TWO circles, lower row THREE circles. Total exactly FIVE visible near cut faces, representing five whole logs. No extra faces, no hidden log or decorative firewood.\nPreserve the THREE existing bottom logs exactly; do not move, resize, replace, rotate or add to them. Preserve the original wooden rack, short front retaining rail and posts in front of the stock with natural local contact shadows.\nKeep every other part of the input unchanged: exact same canvas/framing, entire house silhouette, scale, elevated front-LEFT camera and roof planes, shingle details, stone chimney and feet, wooden construction, tool/axe rack, sawhorse, cream panels, window, empty doorway and empty marker bracket, soft painted lighting, warm off-white background. No captions, numbers, UI, people, smoke, grass or other props. No crop or zoom. Only two logs are being added. Final result: one whole hut, exactly FIVE logs.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "sha256": "2bd5f72f72f60d33f884aeb478a2ec8530f2e3906c6da797372b7a6d51a1ae16",
+      "visualCountVerified": 5
+    },
+    {
+      "count": 6,
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-8854aaf4-c9ae-48e0-b0ea-5a551e0cc4d5.png",
+      "destination": "docs/art/concepts/lumber-hut-v3-stock/logs-6.png",
+      "inputs": [
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumber-hut-v3.png"
+      ],
+      "prompt": "Use case: precise-object-edit.\nAsset type: stock-state concept variant of our existing medieval lumberjack hut; ONE image, not a sheet.\nInput image 1 is the EDIT TARGET. Preserve this exact house and image, only put stock in its empty low wooden cradle in the LOWER LEFT foreground.\nPrimary request: add EXACTLY SIX individual round unprocessed timber logs in the existing foreground storage cradle. This is inventory state 6. Each log is a single brown bark-covered cylinder with a warm pale sawn end showing rings, uniform modest diameter. All six are parallel, laid LENGTHWISE along the long planks of the cradle, receding up-left toward the shed, with their near cut ends aimed toward the viewer, just above the front retaining rail. The front cross-sections form a compact triangular stack: exactly THREE clearly separate circular ends in the bottom tier, TWO in the second tier resting in the gaps, ONE at the top. 3+2+1=6 logs total. Do not add other timber, hidden extra logs or bundles. Keep all six near end-grain faces readable and unobscured by the short front rail or posts, with believable contact, lighting, occlusion and grounded shadows. Log size must allow six to fit the existing cradle without changing it. These are whole trunk sections, not planks or split firewood. Do not put logs on the separate sawhorse behind it.\nINVARIANTS: Keep the entire building pixel-aligned as closely as possible: EXACT same elevated front-LEFT camera and visible roof planes, framing, square canvas, position and scale, roof shingles and outlines, stone chimney, all posts and warm stone foundations, cream plaster, tools/axe rack, sawhorse, empty right doorway, window, door-side empty marker bracket, foreground rack geometry, lighting, edges and warm off-white background. No moving/rebuilding the rack or house, no change to camera, no zoom or crop. Only edit the log pile and the local shadows where it contacts the cradle. Keep the door approach clear. No people, active status, smoke, lettering, labels, numbers, badges, grass, watermarks or panels.\nMatch the existing softly hand-painted stylized materials, warm medieval craft village mood, restrained colors and clean game-concept readability. Return one full hut matching the input canvas with six countable logs.",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "alpha": false,
+      "sha256": "edddd12a7f53bb29826a29065006520c4ebd5a5fb4f7aef3e28167861bb27d31",
+      "visualCountVerified": 6
+    }
+  ],
+  "discarded": [
+    {
+      "intendedCount": 5,
+      "actualVisibleCount": 6,
+      "source": "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-dccdfcac-901d-4975-90de-34e0099fa9fd.png",
+      "prompt": "Use case: precise-object-edit.\nAsset type: inventory-state concept variant 5 of our existing medieval lumberjack hut. Output ONE full square image, not a sheet.\nInput image 1 is the EDIT TARGET: the hut containing exactly SIX logs in a 3+2+1 stack.\nInput image 2 is a RESTORATION REFERENCE ONLY: the identical hut with its cradle empty; use it to reveal authentic cradle planks/background where removed logs used to be. Do not change house/camera to make a new design.\nPRIMARY REQUEST: create the version with EXACTLY 5 individual logs in the existing lower-left foreground cradle by deleting only the specified logs from image 1.\nKEEP all THREE BOTTOM-TIER logs and BOTH second-tier logs, all in their exact same slots. REMOVE ONLY the single TOP/APEX log. FIVE logs total: three on bottom plus two above, no third tier.\nThe retained log(s) must have EXACTLY the same diameter, length, brown bark and pale circular end grain, parallel orientation, lighting and positions as those particular logs in Image 1. Near sawn end faces stay clearly countable toward the viewer. Do not redistribute, resize or reshape the remaining pile to fill the freed space. Preserve the existing bottom-left slot even in the one-log state. Restore newly exposed planks and structure faithfully from image 2. The base cradle posts and front retaining rail remain in front of the stock and do not hide the countable faces. No hidden extra logs, no loose firewood, no logs on the sawhorse.\nLOCK ALL OTHER PIXELS AS CLOSELY AS POSSIBLE: exact same elevated front-LEFT camera, readable roof planes, house architecture and silhouette, framing, position and scale, canvas and margins, chimney, roof shingles, window, tools, sawhorse, warm stone feet, empty right doorway and empty presence-marker bracket, rack construction, soft lighting, colors and warm off-white background. Change ONLY the removed logs and their local contact shadows; do not crop, zoom, shift, repaint, rotate or redesign the house. Keep the door approach empty. No people, smoke, active marker, captions, text, numbers, UI, watermarks, scenery or extra items.\nMaintain the existing softly hand-painted stylized medieval craft material finish. Final visible count must be 5; visually count the individual near cross-sections before finishing.",
+      "inputs": [
+        "/Users/openclaw/.codex/generated_images/01a02f92-4a6b-7401-88d6-2e5a7a8def31/exec-8854aaf4-c9ae-48e0-b0ea-5a551e0cc4d5.png",
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/concepts/lumber-hut-v3.png"
+      ],
+      "reason": "Wrong count; replaced. Not copied to project."
+    }
+  ],
+  "runtimeIntegrated": false,
+  "separateStockLayers": false,
+  "pixelRegistrationVerified": false,
+  "gameScaleVerified": false,
+  "qaNotes": [
+    "Exact visible near log-face counts 1,2,3,4,5,6 visually checked.",
+    "Upper log in 4 and upper pair in 5 are recessed relative to six-log master. Do not use as registered animation frames.",
+    "Warm off-white concept backgrounds; alpha must be measured, not assumed.",
+    "No current changes to game logic, maps, saves or presence indicators.",
+    "Independent visual review of all six counts completed; user approval pending."
+  ]
+}

@@ -23,14 +23,14 @@ const EXPECTED: Dictionary = {
 static func run() -> Array[String]:
 	var failures: Array[String] = []
 	_test_all_reference_costs(failures)
-	_test_forester_project_price(failures)
+	_test_project_extension_prices(failures)
 	_test_logs_do_not_replace_construction_planks(failures)
 	return failures
 
 
 static func _test_all_reference_costs(failures: Array[String]) -> void:
 	var world := LegacyFixture.create()
-	_check(world.catalog.buildings.size() == EXPECTED.size() + 1, "Catalog must retain all reference buildings plus the project's Forester Hut", failures)
+	_check(world.catalog.buildings.size() == EXPECTED.size() + 2, "Catalog must retain all reference buildings plus the project's Forester Hut and Workers' Cottage", failures)
 	for type: String in EXPECTED:
 		var definition: Dictionary = world.catalog.building(type)
 		var amount: Array = EXPECTED[type]
@@ -45,15 +45,16 @@ static func _test_all_reference_costs(failures: Array[String]) -> void:
 		"Road/vine costs must retain their separate source-backed material rules", failures)
 
 
-static func _test_forester_project_price(failures: Array[String]) -> void:
+static func _test_project_extension_prices(failures: Array[String]) -> void:
 	var world := LegacyFixture.create()
-	var definition: Dictionary = world.catalog.building("forester_hut")
-	var cost: Dictionary = definition.get("construction_cost", {})
-	_check(cost.size() == 2 and cost.get("plank") == 3 and cost.get("stone") == 2,
-		"Forester Hut must cost 3 finished planks and 2 stone", failures)
-	_check(definition.get("construction_cost_source", "") == "project_balance"
-		and not String(definition.get("construction_cost_reference", "")).is_empty(),
-		"The additional Forester Hut price must not be misrepresented as an original KaM price", failures)
+	for type: String in ["forester_hut", "workers_house"]:
+		var definition: Dictionary = world.catalog.building(type)
+		var cost: Dictionary = definition.get("construction_cost", {})
+		_check(cost.size() == 2 and cost.get("plank") == 3 and cost.get("stone") == 2,
+			"%s must cost 3 finished planks and 2 stone" % definition.get("display_name", type), failures)
+		_check(definition.get("construction_cost_source", "") == "project_balance"
+			and not String(definition.get("construction_cost_reference", "")).is_empty(),
+			"The additional %s price must not be misrepresented as an original KaM price" % definition.get("display_name", type), failures)
 
 
 static func _test_logs_do_not_replace_construction_planks(failures: Array[String]) -> void:

@@ -91,6 +91,8 @@ static func generate_tasks(world: Variant) -> void:
 		if int(deposit["amount"]) <= 0:
 			continue
 		for building: Dictionary in world.buildings.values():
+			if not world.is_local_entity(building) or not world.is_building_enabled(building):
+				continue
 			var definition: Dictionary = world.catalog.building(String(building["type"]))
 			if _serves(world, definition, building, deposit):
 				world.task_board.create_task("harvest_deposit", "deposit:%d" % id, deposit["position"], id)

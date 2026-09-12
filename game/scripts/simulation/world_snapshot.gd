@@ -2,10 +2,15 @@ class_name WorldSnapshot
 extends RefCounted
 
 const GridMapSimClass = preload("res://scripts/simulation/grid_map_sim.gd")
+const ResidencesClass = preload("res://scripts/simulation/residences.gd")
 const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
 const BuildingFoundationsClass = preload("res://scripts/simulation/building_foundations.gd")
+const BuildingFootprintsClass = preload("res://scripts/simulation/building_footprints.gd")
+const FogOfWarClass = preload("res://scripts/simulation/fog_of_war.gd")
+const NutritionClass = preload("res://scripts/simulation/nutrition.gd")
 
-const SAVE_VERSION: int = 17
+const SAVE_VERSION: int = 21
+const MAX_OWNER_ID: int = 16
 const MAX_INDOOR_WAIT_TICKS: int = 6
 const MAX_MAP_SIZE := Vector2i(256, 256)
 # JSON stores numbers as doubles. Keep integer state exact across JSON round trips.
@@ -49,6 +54,8 @@ static func to_data(world: Variant) -> Dictionary:
 	var buildings: Array[Dictionary] = []
 	for entity_id: int in _sorted_ids(world.buildings):
 		var building: Dictionary = world.buildings[entity_id].duplicate(true)
+		building["owner_id"] = int(building.get("owner_id", 1))
+		building["enabled"] = building.get("enabled", true)
 		building["footprint_version"] = int(building.get("footprint_version", 0))
 		building["foundation_target_height"] = int(building.get("foundation_target_height", -1))
 		building["foundation_work_total"] = int(building.get("foundation_work_total", 0))
@@ -81,6 +88,8 @@ static func to_data(world: Variant) -> Dictionary:
 		workers.append({
 			"id": entity_id,
 			"type": worker["type"],
+			"owner_id": int(worker.get("owner_id", 1)),
+			"enabled": worker.get("enabled", true),
 			"home_id": worker["home_id"],
 			"sleep_home_id": worker.get("sleep_home_id", 0),
 			"inside_building_id": worker.get("inside_building_id", 0),
@@ -89,17 +98,27 @@ static func to_data(world: Variant) -> Dictionary:
 			"carrying": worker["carrying"],
 			"planting_cooldown": worker.get("planting_cooldown", 0),
 			"hunger": worker.get("hunger", int(world.catalog.economy.get("condition_initial", 1620))),
+			"nutrition_deficit_ticks": worker.get("nutrition_deficit_ticks", 0),
+			"condition_decay_remainder": worker.get("condition_decay_remainder", 0),
+			"nutrition_recovery_remainder": worker.get("nutrition_recovery_remainder", 0),
+			"work_effort_remainder": worker.get("work_effort_remainder", 0),
 			"meal_ticks_left": worker.get("meal_ticks_left", 0),
 			"meal_course": (worker.get("meal_course", {}) as Dictionary).duplicate(true),
 			"food_requested": worker.get("food_requested", false),
 			"ration_delivery": (worker.get("ration_delivery", {}) as Dictionary).duplicate(true),
 		})
+	# Saving is observational. In particular, never recompute sight or advance
+	# exploration here; transient visibility is rebuilt from loaded sources.
+	var explored: Array[Array] = []
+	for cell: Vector2i in _sorted_cells(world.fog.explored.keys()):
+		explored.append(_vector_to_array(cell))
 	return {
 		"version": SAVE_VERSION,
 		"economy_enabled": world.economy_enabled,
 		"tick": world.tick,
 		"next_entity_id": world._next_entity_id,
 		"map_size": _vector_to_array(world.grid.size),
+		"fog": {"enabled": world.fog.enabled, "local_player_id": world.fog.local_player_id, "explored": explored},
 		"terrain": {"base": terrain_rows, "corner_heights": height_rows},
 		"roads": roads,
 		"dirt_trails": trails,
@@ -142,6 +161,7 @@ func _load(data: Dictionary) -> bool:
 		return false
 	_world.grid = GridMapSimClass.new(size)
 	_world.grid.configure_movement(_world.catalog.movement)
+	_world.fog = FogOfWarClass.new(size)
 	if _version >= 4 and not _load_terrain(data.get("terrain")):
 		return false
 	if not _load_surfaces(data, saved_tick):
@@ -181,8 +201,45 @@ func _load(data: Dictionary) -> bool:
 			continue
 		elif not String(worker["carrying"]).is_empty():
 			_world._resume_carried_ware(worker)
+	if not _load_fog(data.get("fog")):
+		return false
 	_world._push_event("Save loaded at tick %d." % saved_tick)
 	return true
+
+
+func _load_fog(value: Variant) -> bool:
+	var cells: Array[Vector2i] = []
+	if _version < 18:
+		# The old game showed the whole map. Keep that knowledge without
+		# granting permanent live vision. Only the playable session activates
+		# fog; bare historical fixtures remain explicitly disabled on raw load.
+		for y: int in range(_world.grid.size.y):
+			for x: int in range(_world.grid.size.x):
+				cells.append(Vector2i(x, y))
+		_world.fog.legacy_reveal_pending = true
+	else:
+		var saved: Dictionary = _read_dictionary(value)
+		if not _valid or saved.size() != 3 or not saved.has("enabled") \
+				or not saved.has("local_player_id") or not saved.has("explored"):
+			return false
+		var enabled: bool = _read_bool(saved["enabled"])
+		var player: int = _read_integer(saved["local_player_id"], 1, MAX_OWNER_ID)
+		var entries: Array = _read_array(saved["explored"])
+		if not _valid or entries.size() > _world.grid.size.x * _world.grid.size.y:
+			return false
+		var seen: Dictionary = {}
+		for entry: Variant in entries:
+			var cell: Vector2i = _read_cell(entry)
+			if not _valid or seen.has(cell):
+				return false
+			seen[cell] = true
+			cells.append(cell)
+		_world.fog.enabled = enabled
+		_world.fog.local_player_id = player
+	if not _world.fog.restore_explored(cells):
+		return false
+	_world.update_visibility()
+	return _valid
 
 
 func _load_terrain(value: Variant) -> bool:
@@ -360,11 +417,14 @@ func _load_buildings(saved_buildings: Array) -> bool:
 		var saved: Dictionary = _read_dictionary(value)
 		var entity_id: int = _read_entity_id(saved.get("id"))
 		var type: String = _read_string(saved.get("type"))
+		var owner_id: int = 1 if _version < 18 else _read_integer(saved.get("owner_id"), 0, MAX_OWNER_ID)
+		var enabled: bool = _read_bool(saved.get("enabled") if _version >= 20 else true)
 		var position: Vector2i = _read_cell(saved.get("position"))
 		var entrance: Vector2i = _read_cell(saved.get("entrance"))
 		# Expanding a historic settlement would overlap neighbors, roads and
-		# citizens. Keep each old building's exact one-cell geometry and door.
-		var footprint_version: int = 0 if _version < 16 else _read_integer(saved.get("footprint_version"), 0, 1)
+		# citizens. Keep every saved footprint revision's exact cells and door.
+		var maximum_footprint_version: int = BuildingFootprintsClass.CURRENT_VERSION if _version >= 21 else 1
+		var footprint_version: int = 0 if _version < 16 else _read_integer(saved.get("footprint_version"), 0, maximum_footprint_version)
 		var foundation_target: int = -1 if _version < 17 else _read_integer(saved.get("foundation_target_height"), -1, GridMapSimClass.MAX_HEIGHT)
 		var foundation_total: int = 0 if _version < 17 else _read_integer(saved.get("foundation_work_total"))
 		var foundation_remaining: int = 0 if _version < 17 else _read_integer(saved.get("foundation_work_remaining"))
@@ -401,7 +461,7 @@ func _load_buildings(saved_buildings: Array) -> bool:
 			"foundation_work_total": foundation_total,
 			"foundation_work_remaining": foundation_remaining,
 		}
-		if not _valid or definition.is_empty() or not _validate_building_geometry(geometry, definition, entrances):
+		if not _valid or not BuildingFootprintsClass.supports_version(definition, footprint_version) or not _validate_building_geometry(geometry, definition, entrances):
 			return false
 		if foundation_remaining > 0 and (construction_remaining != construction_limit or not construction_delivered.is_empty()):
 			return false
@@ -429,6 +489,8 @@ func _load_buildings(saved_buildings: Array) -> bool:
 			process_remaining = 0
 		_world.buildings[entity_id] = {
 			"id": entity_id, "type": type, "position": position, "entrance": entrance,
+			"owner_id": owner_id,
+			"enabled": enabled,
 			"footprint_version": footprint_version,
 			"foundation_target_height": foundation_target,
 			"foundation_work_total": foundation_total,
@@ -442,7 +504,7 @@ func _load_buildings(saved_buildings: Array) -> bool:
 			"construction_delivered": construction_delivered, "production_queue": production_queue,
 			"order_active": order_active, "service_queue": service_queue,
 		}
-		entrances[entrance] = footprint_version == 1
+		entrances[entrance] = footprint_version > 0
 		for cell: Vector2i in _world.building_cells(geometry):
 			_world.grid.block(cell, entity_id)
 	return true
@@ -451,7 +513,7 @@ func _load_buildings(saved_buildings: Array) -> bool:
 func _validate_building_geometry(building: Dictionary, definition: Dictionary, entrances: Dictionary) -> bool:
 	var position: Vector2i = building["position"]
 	var entrance: Vector2i = building["entrance"]
-	var modern: bool = int(building["footprint_version"]) == 1
+	var modern: bool = int(building["footprint_version"]) > 0
 	var pending: bool = BuildingFoundationsClass.pending(building)
 	var cells: Array[Vector2i] = _world.building_cells(building)
 	if cells.is_empty() or not _validate_foundation_progress(building, cells):
@@ -506,7 +568,7 @@ func _validate_foundation_progress(building: Dictionary, cells: Array[Vector2i])
 	if target == -1:
 		# Older saves are intentionally not retrofitted or charged for earthwork.
 		return total == 0 and remaining == 0
-	if int(building["footprint_version"]) != 1:
+	if int(building["footprint_version"]) == 0:
 		return false
 	var vertices: Array[Vector2i] = BuildingFoundationsClass.vertices_for_cells(cells)
 	var work_interval: int = BuildingFoundationsClass.TICKS_PER_HEIGHT_UNIT
@@ -546,7 +608,7 @@ func _load_trees(saved_trees: Array) -> bool:
 	var cells: Dictionary = {}
 	var modern_entrances: Dictionary = {}
 	for building: Dictionary in _world.buildings.values():
-		if int(building["footprint_version"]) == 1:
+		if int(building["footprint_version"]) > 0:
 			modern_entrances[building["entrance"]] = true
 	for value: Variant in saved_trees:
 		var saved: Dictionary = _read_dictionary(value)
@@ -612,6 +674,8 @@ func _load_workers(saved_workers: Array) -> bool:
 		var entity_id: int = normalized[index]["id"]
 		var fallback: String = "lumberjack" if index == 0 else "carrier"
 		var type: String = _read_string(saved.get("type", fallback if _version == 1 else null))
+		var owner_id: int = 1 if _version < 18 else _read_integer(saved.get("owner_id"), 0, MAX_OWNER_ID)
+		var enabled: bool = _read_bool(saved.get("enabled") if _version >= 20 else true)
 		var position: Vector2i = _read_cell(saved.get("position"))
 		var home_id: int = _read_integer(saved.get("home_id", 0 if _version == 1 else null))
 		var sleep_home_id: int = _read_integer(saved.get("sleep_home_id") if _version >= 15 else 0)
@@ -621,7 +685,15 @@ func _load_workers(saved_workers: Array) -> bool:
 		var indoor_wait: int = _read_integer(saved.get("indoor_wait_ticks") if _version >= 12 else 0, 0, MAX_INDOOR_WAIT_TICKS)
 		var carrying: String = _read_string(saved.get("carrying"))
 		var cooldown: int = _read_integer(saved.get("planting_cooldown", 0 if _version < 5 else null))
-		var hunger: int = _read_integer(saved.get("hunger", int(_world.catalog.economy.get("condition_initial", 1620)) if _version < 7 else null), 0, int(_world.catalog.economy.get("condition_max", 2700)))
+		# Very old snapshots had no satiety field. Its historical fallback is
+		# not the current new-game balance; preserve the original 60% value.
+		var hunger: int = _read_integer(saved.get("hunger", 1620 if _version < 7 else null), 0, int(_world.catalog.economy.get("condition_max", 2700)))
+		# Pre-v19 games did not record malnutrition history. Do not invent a
+		# starvation debt from their current satiety or from the global clock.
+		var deficit: int = _read_integer(saved.get("nutrition_deficit_ticks") if _version >= 19 else 0, 0, NutritionClass.max_deficit_ticks(_world))
+		var condition_remainder: int = _read_integer(saved.get("condition_decay_remainder") if _version >= 19 else 0, 0, NutritionClass.FIXED_SCALE - 1)
+		var recovery_remainder: int = _read_integer(saved.get("nutrition_recovery_remainder") if _version >= 19 else 0, 0, NutritionClass.max_recovery_remainder(_world))
+		var effort_remainder: int = _read_integer(saved.get("work_effort_remainder") if _version >= 19 else 0, 0, NutritionClass.FIXED_SCALE - 1)
 		var meal_limit: int = maxi(1, int(_world.catalog.building("inn").get("meal_duration_ticks", 116))) \
 			* maxi(1, int(_world.catalog.economy.get("max_meals_per_visit", 2)))
 		var meal_ticks: int = _read_integer(saved.get("meal_ticks_left") if _version >= 13 else 0, 0, meal_limit)
@@ -677,13 +749,20 @@ func _load_workers(saved_workers: Array) -> bool:
 		# Reuse defaults, but suppress auto-assignment while restoring. An early
 		# unassigned citizen must never steal a later saved owner's workplace.
 		_world._next_entity_id = entity_id
-		if _world.spawn_worker(position, type, home_id, false, inside_id) == 0:
+		if _world.spawn_worker(position, type, home_id, false, inside_id, owner_id) == 0:
 			return false
+		# Restore policy as data, never invoke live pause setters that cancel
+		# tasks or release reservations. Paid goods and work remain untouched.
+		_world.workers[entity_id]["enabled"] = enabled
 		_world.workers[entity_id]["sleep_home_id"] = sleep_home_id
 		_world.workers[entity_id]["indoor_wait_ticks"] = indoor_wait
 		_world.workers[entity_id]["carrying"] = carrying
 		_world.workers[entity_id]["planting_cooldown"] = cooldown
 		_world.workers[entity_id]["hunger"] = hunger
+		_world.workers[entity_id]["nutrition_deficit_ticks"] = deficit
+		_world.workers[entity_id]["condition_decay_remainder"] = condition_remainder
+		_world.workers[entity_id]["nutrition_recovery_remainder"] = recovery_remainder
+		_world.workers[entity_id]["work_effort_remainder"] = effort_remainder
 		_world.workers[entity_id]["meal_ticks_left"] = meal_ticks
 		_world.workers[entity_id]["meal_course"] = meal_course.duplicate(true)
 		_world.workers[entity_id]["food_requested"] = food_requested
@@ -692,6 +771,7 @@ func _load_workers(saved_workers: Array) -> bool:
 
 
 func _validate_sleep_homes() -> bool:
+	var residence_counts: Dictionary = {}
 	for worker: Dictionary in _world.workers.values():
 		var sleep_home_id: int = int(worker["sleep_home_id"])
 		if sleep_home_id == 0:
@@ -703,7 +783,14 @@ func _validate_sleep_homes() -> bool:
 		if _world.owns_workplace(worker, workplace):
 			if sleep_home_id != workplace:
 				return false
-		elif bedroom["type"] != "warehouse":
+		elif bedroom["type"] == "warehouse" \
+				and int(bedroom.get("owner_id", 1)) == int(worker.get("owner_id", 1)):
+			continue
+		elif ResidencesClass.supports(_world, sleep_home_id, worker):
+			residence_counts[sleep_home_id] = int(residence_counts.get(sleep_home_id, 0)) + 1
+			if int(residence_counts[sleep_home_id]) > ResidencesClass.capacity(_world, sleep_home_id):
+				return false
+		else:
 			return false
 	return true
 

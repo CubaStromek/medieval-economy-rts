@@ -112,7 +112,7 @@ static func _recipe_fixture(recipe_id: String) -> Dictionary:
 static func _test_all_reference_recipes(failures: Array[String]) -> void:
 	var catalog_world = LegacyFixture.create()
 	_check(catalog_world.catalog.recipes.size() == 19, "KaM catalog must cover all 19 processing recipes", failures)
-	_check(catalog_world.catalog.buildings.size() == 29 and catalog_world.catalog.resources.size() == 28, "Remake catalog must contain 28 reference buildings plus the Forester Hut and 28 wares", failures)
+	_check(catalog_world.catalog.buildings.size() == 30 and catalog_world.catalog.resources.size() == 28, "Catalog must contain 28 reference buildings plus the Forester Hut and Workers' Cottage project extensions, and 28 wares", failures)
 	_check(catalog_world.catalog.units.has("gardener"), "The expanded economy must retain the gardener/forester profession", failures)
 	for recipe_id: String in EXPECTED_RECIPES:
 		var fixture: Dictionary = _recipe_fixture(recipe_id)
@@ -320,9 +320,10 @@ static func _test_food_consumption_and_starvation(failures: Array[String]) -> vo
 	var starving = LegacyFixture.create(Vector2i(7, 7))
 	var doomed: int = starving.spawn_worker(Vector2i(2, 2), "carrier")
 	starving.workers[doomed]["hunger"] = 1
+	starving.workers[doomed]["nutrition_deficit_ticks"] = 42000 - 10
 	starving.economy_enabled = true
 	_advance(starving, 9)
-	_check(starving.workers.has(doomed), "Condition must not decay ahead of the ten-tick interval", failures)
+	_check(starving.workers.has(doomed), "Empty satiety must not kill a citizen before the long-term reserve is exhausted", failures)
 	starving.step_tick()
 	_check(not starving.workers.has(doomed) and not starving.tile_reservations.has(Vector2i(2, 2)), "Starvation must remove the citizen and release its occupied tile", failures)
 

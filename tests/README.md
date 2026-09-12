@@ -4,6 +4,206 @@ Run `./tests/run-headless.sh` from the repository root. The launcher loads
 `game/project.godot` and runs `res://tests/test_runner.tscn`; project verification
 does not use isolated `--script` execution.
 
+## Publication verification — 2026-09-12
+
+The current project was rerun with Godot **4.7.2**: **762/762** full headless
+cases and **81/81** focused native OpenGL cases passed. The local Python
+PixelLab client suite passed **16/16**, including its Pillow-dependent case;
+no live API generation was invoked. Commands and clean-checkout verification
+are recorded in [the publication report](../docs/release-verification-2026-09-12.md).
+Older counts below are historical feature milestones, not the current total.
+
+## Refactor and runtime work — 2026-09-11
+
+The extended full headless suite passed **762/762** after the stock/HUD and
+transport-search changes. The final focused native suite passed **81/81**,
+including stock ownership/freshness, physical deliveries, unchanged destination
+ranking, hunger/sleep/fog UI and retained/painted terrain. Run
+`godot --path game --audio-driver Dummy res://tests/refactor_runner.tscn`.
+The [audit and measurements](../docs/refactor-audit-2026-09-11.md) distinguish
+measured improvements from remaining candidates. No gameplay/save/art changes.
+
+## Lumber hut footprint v2 — 2026-09-10
+
+The current complete runner passed **755/755 headless cases**. The new
+`lumber_hut_footprint_tests.gd` suite adds **12 cases** for the nine-cell
+4×3 mask, recessed doorway, placement/leveling/cancellation, real paid
+construction and wood transport, historical v0/v1 plus current v2 saves,
+atomic invalid-load rejection, and both connected authored road networks.
+Run `godot --headless --path game res://tests/lumber_hut_footprint_runner.tscn`.
+
+The actual construction, stock, footprint-input, Relief viewport and slope
+suites also passed **41/41 natively**. [Footprint QA](../docs/art/qa/lumber-hut-footprint-v2/README.md)
+contains 61 native visual samples, unchanged-art hashes, exact hover/click
+matching, and the normal menu → Relief → physical log delivery journey
+(7 phases, 17 captures, zero failures). `res://tools/preview_lumber_hut_footprint.tscn`
+reproduces its visual fixtures. No house PNG, construction mask or art
+registration changed. Explicit historical fixtures keep their independently
+measured v1 corridors/64-tick earthwork; new v2 behavior is tested separately.
+
+## Lumber hut stored logs — 2026-09-10
+
+The complete runner passed **743/743 headless cases**. The stock suite passed
+**8/8 headless and natively**, covering actual 0–6 assets, physical producer
+handover/carrier pickup, reservations, save/load, construction, privacy,
+paused/disabled work, alpha selection, six rendered log-end pixel controls
+and night lighting. The final added stock-only alpha-picking assertion was
+also rerun in the focused headless/native suite.
+
+Run `godot --path game res://tests/lumber_hut_stock_runner.tscn` for the focused
+suite. `res://tests/lumber_hut_stock_game_runner.tscn -- --speed=4` exercises the
+real menu → Relief → harvest → hut delivery journey (7 phases, 17 native
+captures, zero failures). `res://tools/preview_lumber_hut_stock.tscn` captures
+all stock levels and contexts. [QA and actual images](../docs/art/qa/lumber-hut-stock-v1/README.md)
+separate synthetic stock fixtures from the real delivery. The original house,
+all construction masters/masks and their registration remain unchanged;
+the footprint/art grounding bug was deferred at that milestone and is now
+handled by the separate v2 geometry revision above.
+
+## PixelLab lumberjack in the normal game — 2026-09-10
+
+The complete project scene runner passed **735/735 headless cases** in Godot
+4.7.2 after integration and the shadow-precision fix. The added suites cover
+6 real-asset/alpha cases, 10 observed-animation state cases and 13 actual
+MainScene cases, plus one captured native shadow geometry regression.
+This includes all 24 clip/direction combinations, motion/work/cargo transitions,
+pause, shared loading/fallback, real save/load, indoor/fog visibility, all-eight
+work-stance continuity and alpha selection behind a foreground tree.
+
+[Native game QA](../docs/art/qa/lumberjack-pixellab-game-v1/README.md) separates
+22 artificial-state screenshots and independent pixel controls from the real
+menu → Relief → harvest → delivery journey. Reproduce the natural run with
+`godot --path game res://tests/lumberjack_game_integration_runner.tscn -- --capture=/private/tmp/lumberjack-game-review --speed=1`.
+Use `--no-capture --speed=4` for the logic-only faster journey. The runner uses
+isolated save paths and preserves player saves. The final recorded native run
+contains 17 phase screenshots and 60 observed frames of a real chopping cycle.
+
+## Lumber hut construction — 2026-09-10
+
+The complete scene runner passed **705/705 headless cases** in Godot 4.7.2.
+`lumber_hut_construction_tests.gd` adds **12 cases**, also verified **12/12
+natively**: all 33 graphical steps driven by real Builder work and delivered
+materials, saved/resumed progress, unchanged costs and footprints, genuine
+alpha, selection, earthwork, pause, legacy appearance, fog and lighting.
+Stable depth and actual lower-front pixels are checked against an unobstructed
+sprite reference to catch terrain erasing the building.
+
+Run the focused scene with
+`godot --path game res://tests/lumber_hut_construction_runner.tscn`.
+The [72 native QA captures and animation](../docs/art/qa/lumber-hut-construction-v1/README.md)
+record artwork validation separately from the simulation tests.
+
+## Workers' housing — 2026-09-09
+
+`housing_tests.gd` adds **9 cases** for the project-specific Workers' Cottage:
+exact two-bed capacity, automatic Carrier/Builder assignment, distribution
+between multiple cottages after reassignment, ownership and reachability, unfinished/disabled
+residences, Warehouse overflow, dawn departure, JSON round trips and atomic
+rejection of incompatible or over-capacity v20 snapshots.
+
+The complete project scene runner passed **693/693 headless cases** in Godot
+4.7.2. The catalog/geometry suites now verify 30 building types, both
+project-balanced 3-plank + 2-stone extensions, and the economy demo's 35
+instances occupying 259 cells.
+
+## Unit thoughts and independent work pause — 2026-09-07
+
+Four new suites add **38 cases**:
+
+- `activity_control_tests.gd`: **12** simulation cases for independent flags,
+  physical returns, carried goods, cancelled pickups, closed destinations,
+  exporting existing outputs, hunger/sleep/yield and paused services.
+- `pause_save_tests.gd`: **9** v20 persistence/validation cases, including
+  legacy defaults without resetting nutrition, preserved paid recipes and
+  training, construction/earthwork, partial meals and carried military rations.
+- `unit_thoughts_tests.gd`: **10** read-only Czech current/next descriptions,
+  covering real work, logistics, meals, sleep, blocked movement, pause and fog.
+- `inspector_activity_tests.gd`: **7** view/input cases for live indoor details,
+  separate unit/workplace controls, services/sites, ownership, stale signals,
+  real mouse clicks and scrolling long nutrition text in a 900×720 inspector.
+
+The complete project scene runner passed **684/684 headless cases** in Godot
+4.7.2 without parse or runtime errors, extending the previous 646-case baseline.
+The new inspector/input suite also passed **7/7 in native OpenGL**, with actual
+900×720 renders checked for readable thoughts, separate pause reasons and
+scrollable nutrition/construction controls. The pause save suite passed
+**9/9 natively**; affected existing nutrition UI checks passed **17/17**.
+See [feature rules and implementation](../docs/unit-thoughts-and-pause.md).
+
+## Gentle seven-day nutrition — 2026-09-07
+
+The complete project scene runner passed **646/646 headless cases** in Godot
+4.7.2, without parse or runtime errors. Three new suites add **26 cases**:
+thirteen simulation cases, eight v19 save cases and five nutrition UI cases.
+The affected UI suites also passed **17/17 in native OpenGL**, and nutrition
+save cases passed **8/8 natively**. The actual 900×720 inspector was rendered
+and checked in fed, empty, weakened and starving states without overflow.
+
+Coverage includes a full 42,000-tick no-food simulation with actual sleep and
+fog, exact death for civilians and soldiers even when spawned off the global
+clock phase, half sleeping appetite without extending the seven-day reserve,
+fully fed new professions, unchanged carrier movement, progressive recovery
+without a one-bite reset, 80% outdoor/indoor/construction/earthwork progress,
+rescuing a zero-satiety soldier with a real ration, and inactive foreign units.
+Save tests preserve partial metabolic, meal-recovery and work remainders;
+malformed fields fail transactionally and old saves retain their satiety and
+stocks while starting an explicit fresh deprivation history.
+
+An additional isolated **ten-day / 60,000-tick** run used current building
+footprints, fog, a supplied Inn, three Carriers and a Carpenter. All four
+survived and ate nine real visits each, producing **860 stored planks**. Peak
+deprivation stayed below **1.023 days**, never accumulating toward weakness;
+the final JSON save/load was exact. No player save or running game was changed.
+
+## Fog of war — 2026-09-07
+
+At the fog milestone, the combined project runner passed **620/620 cases** both headless
+and in native Godot 4.7.2 / Apple M4 / OpenGL Compatibility, without GDScript
+parse or runtime errors. Four new suites add **31 cases**: ten simulation and
+ownership cases, nine save/validation cases, eight view/input cases and four
+actual gameplay activation cases.
+
+Coverage includes three map states, circular sight and footprint centers,
+completed buildings/towers, indoor and dying observers, retained exploration,
+strict ownership, inert foreign economy placeholders, observer-cache/delta
+invalidation, transactional v18 loading and pre-v18 migration. Actual scene
+tests exercise all normal new-game maps, restart, legacy activation, intentional
+disabled saves, hidden selection and controls, whole-footprint placement,
+local HUD accounting, stale sprite/shadow callbacks and real mouse input.
+
+Native image assertions compare a hidden enemy with the same scene with that
+enemy removed: sprite, shadow, carried gold and satiety leave no pixels. They
+also check black unknown ground with F2 overlays enabled, remembered ground,
+unchanged visible ground and height-correct foreground occlusion. Movement
+does not rebuild terrain or fog geometry; actual height edits provide the
+positive invalidation control. The inspected native illustration is
+[fog-of-war.png](../docs/previews/fog-of-war.png).
+
+The 256×256 / 60-observer native benchmark reduced a simultaneous sight/mask
+update from 36.15 ms to 14.35 ms by retaining projected fog geometry. See
+[rules, limitations and measured costs](../docs/fog-of-war.md).
+Existing migration assertions now explicitly expect legacy all-map knowledge;
+the terrain-hover suite authors a surveyed map to isolate terrain explanations.
+The player's saved games and running map were not reset or overwritten.
+
+Native pixel tests require their own test window to be visible: a hidden or
+minimized macOS window can suspend `frame_post_draw` without a script error.
+If needed, restore only the verified test-process window, not the player's game.
+
+## Menu map selection and graphics sandbox — 2026-09-07
+
+The combined game runner passed **572/572 cases**, and the separate graphics
+sandbox runner passed **40/40**. All **15 menu cases** also passed with native
+Godot 4.7.2 / Apple M4 rendering. The six additional menu cases cover sandbox
+entry/return with and without a paused game, the fourth map's starter and reset,
+missing/wrong imports, and both independent save slots after restarting the
+session. Fixtures use synthetic terrain and temporary saves, without requiring
+the optional local source map or overwriting either player slot.
+
+Native previews additionally verified the real Mountainous Region start and
+existing graphics workbench opened through the menu. Both corresponding launch
+flags were checked. Opening/closing the sandbox does not write its presets.
+
 
 ## Graphics sandbox — 2026-09-07
 
@@ -21,15 +221,26 @@ actual checkbox/wheel input, small-window layout, screenshot + settings export
 and both local source crops. The private source atlas and map fixtures are not
 required for the synthetic suite. See [sandbox verification](../docs/terrain-graphics-sandbox.md).
 
+## Mountainous Region starter — 2026-09-07
+
+The complete combined project runner passed **572/572 cases** in Godot 4.7.2.
+Four new asset-independent cases cover the canonical map identity, completed
+Warehouse and School footprints, the unobstructed route between their doors,
+exact totals of 50 gold and 20 each of logs/planks/stone, zero unrequested
+wares, first-Carrier delivery for a second profession, and a complete v17 JSON
+roundtrip. The gold breakdown is intentionally 49 in the Warehouse plus one in
+the School, preventing a citizen-free start from deadlocking.
+
 ## Mountainous Region external terrain — 2026-09-06
 
 The complete combined project runner passed **552/552 cases** with no GDScript
 parse or runtime errors, preserving the concurrently completed movement and main-menu changes.
-This feature adds **16 cases**: seven loader/simulation cases and nine
-actual-scene view cases. They author synthetic maps and need no original data.
+The terrain-only import milestone added **16 cases**: seven loader/simulation
+cases and nine actual-scene view cases. They author synthetic maps and need no
+original data. The later canonical starter coverage is described above.
 
 Coverage includes all shared height vertices and orientation, terrain/tree
-validation, no accidental settlement, slope/rock/water placement rules, actual
+validation, no accidental settlement on generic imports, slope/rock/water placement rules, actual
 pathfinding through a river gap, normal v17 JSON saves, explicit missing-map
 fallback, scene reset, full-map camera fit, wheel input, resize behavior,
 retained terrain caches, separate save slots and real F5/F9 temporary-file
@@ -112,7 +323,8 @@ The native game view was also inspected for completed buildings and actual
 mouse-hover placement with its eight-cell Sawmill mask and blue doorway.
 
 New suites use default production worlds and actual catalog geometry. They
-exercise every production recipe, all 29 demo types, physical wood and stone
+exercise every production recipe, all 30 demo types across 35 buildings and
+259 occupied cells, physical wood and stone
 transport, indoor work, crowded exits, sleep/wake, construction cancellation,
 all mask-cell blockers, diagonal movement and in-flight visible steps, nearest
 footprint extraction range, legacy/current mixed saves and malformed data.
@@ -251,6 +463,7 @@ assertions or content entries.
 | Sky clock HUD | 5 | Sun/moon arc, read-only previews, sub-tick speed/pause, responsive layout and map click-through |
 | Solar lighting and shadows | 7 | Actual ambient light, world immutability, retained terrain, untinted HUD pixels, indoor shadow lifecycle, sampled relief and immediate load/reset |
 | Civilian daily schedule | 10 | Exact work/rest boundaries, owned huts, communal warehouse entry/exit, paused production/construction, no home, blocked cargo, movement continuity and active guards |
+| Workers' housing | 9 | Two-bed cottage assignment for Carriers/Builders, reassignment between houses, warehouse overflow, disabled and unfinished homes, ownership, save/load, and strict v20 type/capacity validation |
 | Night schedule save compatibility | 9 | Actual sleepers, cargo conservation, route rebuilding, v13/v14 migration, malformed bedrooms, shared doorway, night meal and new workplace |
 | Night meals and deferred cargo | 6 | Released military stock reservations, retained loaded ration, night meals across sleep/save/dawn and empty Inn without night logistics |
 | Night schedule HUD | 5 | Selected worker status, building/local/global sleeper counts, preserved cargo/population, military exclusion and 900px layout |
@@ -264,7 +477,7 @@ assertions or content entries.
 | Viewport input | 4 | Real keyboard/mouse dispatch, pause/focus, build tools, training and fields |
 | Deposits | 9 | Five finite source types, terrain/reachability, exclusive extraction, depletion, output room and snapshots |
 | Classic economy | 11 | Recipes, FIFO orders, army equipment, payment, construction, vines, food, trade and Watchtower guards |
-| KaM construction prices | 3 | Independent exact costs for all 28 reference buildings, separately attributed Forester Hut project price, road/vine costs and rejection of raw logs as construction planks |
+| KaM construction prices | 3 | Independent exact costs for all 28 reference buildings, separately attributed Forester Hut and Workers' Cottage project prices, road/vine costs and rejection of raw logs as construction planks |
 | Construction cost compatibility | 7 | Price decrease/increase, physical legacy delivery and builder completion, completed-site history, legacy-to-current round trip, conservative refunds, strict revision/material validation and old/new HUD prices |
 | HUD layout and navigation | 12 | Two window sizes, stock/tool tabs, map-input isolation, school selection, repeat selection, help and Escape |
 | Responsive window layout | 5 | Maximized/resizable startup policy, expanding aspect ratio, 16:9 and ultrawide HUD/map fit, real width/height resize signals and retained manual camera zoom |

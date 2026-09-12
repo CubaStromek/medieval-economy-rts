@@ -1,0 +1,9 @@
+{
+  "archive": "lumberjack-pixellab-v2.zip",
+  "files": 534,
+  "bytes": 35146715,
+  "sha256": "fe5a9ff4755f6d64e1b35a9de3a49596c4bfb72a992120e015a476819ce3c5c9",
+  "all_entries_byte_exact": true,
+  "zip_crc_passed": true,
+  "contents": "selected package, full-color previews, Godot integration, actual native QA; no API credentials or raw request bodies"
+}

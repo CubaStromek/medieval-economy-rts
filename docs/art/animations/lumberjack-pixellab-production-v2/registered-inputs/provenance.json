@@ -1,0 +1,445 @@
+{
+  "created_at": "2026-09-10T16:53:27.262807+00:00",
+  "scope": "All eight selected static axe references plus chop S; root authorized W/NW v2 inclusion before this registration",
+  "target_source": "direction-inputs/walk_axe/S.png",
+  "target_landmark": {
+    "cap_silhouette_top_y": 52,
+    "orange_cap_bounds_exclusive": [
+      115,
+      53,
+      142,
+      73
+    ],
+    "orange_cap_center_x": 128.0,
+    "raster_center_x": 128,
+    "mask_pixel_count": 442
+  },
+  "landmark_method": "Visually verified cap is highest visible object in each selected source. Cap top = full-alpha silhouette top. X center = midpoint of orange cap mask bounds inside first21px band, x65..189, alpha>=32, HSV hue .025..11 saturation>=.35 value>=.15; nearest raster x=floor(center+.5).",
+  "physical_ground_anchor": "not established; cap registration is image registration only",
+  "rotation_scale_and_per_frame_foot_adjustment": "none",
+  "records": [
+    {
+      "id": "S",
+      "source": "direction-inputs/walk_axe/S.png",
+      "source_sha256": "5d5b2e7456cba6f8c83163cae04099d732dda2225c008bb53f640db9c1ce6bb7",
+      "output": "registered-inputs/walk_axe/S.png",
+      "output_sha256": "bbcebef8b1de29157e0f375be4d2b5d82c94fa73075dfc6afceac8165e63995e",
+      "canvas": [
+        256,
+        256
+      ],
+      "source_cap_landmark": {
+        "cap_silhouette_top_y": 52,
+        "orange_cap_bounds_exclusive": [
+          115,
+          53,
+          142,
+          73
+        ],
+        "orange_cap_center_x": 128.0,
+        "raster_center_x": 128,
+        "mask_pixel_count": 442
+      },
+      "translation_source_px": [
+        0,
+        0
+      ],
+      "registered_cap_top_y": 52,
+      "registered_cap_center_x": 128.0,
+      "registered_raster_center_x": 128,
+      "source_alpha_bbox_exclusive": [
+        83,
+        52,
+        170,
+        215
+      ],
+      "output_alpha_bbox_exclusive": [
+        83,
+        52,
+        170,
+        215
+      ],
+      "visible_pixel_count": 6918,
+      "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+      "visible_pixels_clipped": 0,
+      "source_unchanged": true,
+      "resampling": "none"
+    },
+    {
+      "id": "SE",
+      "source": "edits/axe-low-SE-pro/images/frame_00.png",
+      "source_sha256": "07f57c1396bb9f9b4fbc0984df806d6ac9f580bc748dc56257b6b9846e82a925",
+      "output": "registered-inputs/walk_axe/SE.png",
+      "output_sha256": "38f75cd0d7bd66e36a8b79a0c6f0a87ea256d262670f844da041cb8777eef169",
+      "canvas": [
+        256,
+        256
+      ],
+      "source_cap_landmark": {
+        "cap_silhouette_top_y": 48,
+        "orange_cap_bounds_exclusive": [
+          113,
+          48,
+          144,
+          69
+        ],
+        "orange_cap_center_x": 128.0,
+        "raster_center_x": 128,
+        "mask_pixel_count": 505
+      },
+      "translation_source_px": [
+        0,
+        4
+      ],
+      "registered_cap_top_y": 52,
+      "registered_cap_center_x": 128.0,
+      "registered_raster_center_x": 128,
+      "source_alpha_bbox_exclusive": [
+        84,
+        48,
+        165,
+        209
+      ],
+      "output_alpha_bbox_exclusive": [
+        84,
+        52,
+        165,
+        213
+      ],
+      "visible_pixel_count": 6258,
+      "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+      "visible_pixels_clipped": 0,
+      "source_unchanged": true,
+      "resampling": "none"
+    },
+    {
+      "id": "E",
+      "source": "edits/axe-low-E-pro/images/frame_00.png",
+      "source_sha256": "e69e7f5f853c6eaa91056b5bf0033d3aef9ab8b35530ca03b7ee34e0816608b2",
+      "output": "registered-inputs/walk_axe/E.png",
+      "output_sha256": "ccbb46ecdd13639f76f04339f3d3ac21a81f493b0e264b48682bfba3ed4d0be4",
+      "canvas": [
+        256,
+        256
+      ],
+      "source_cap_landmark": {
+        "cap_silhouette_top_y": 47,
+        "orange_cap_bounds_exclusive": [
+          114,
+          47,
+          145,
+          68
+        ],
+        "orange_cap_center_x": 129.0,
+        "raster_center_x": 129,
+        "mask_pixel_count": 538
+      },
+      "translation_source_px": [
+        -1,
+        5
+      ],
+      "registered_cap_top_y": 52,
+      "registered_cap_center_x": 128.0,
+      "registered_raster_center_x": 128,
+      "source_alpha_bbox_exclusive": [
+        100,
+        47,
+        171,
+        201
+      ],
+      "output_alpha_bbox_exclusive": [
+        99,
+        52,
+        170,
+        206
+      ],
+      "visible_pixel_count": 5648,
+      "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+      "visible_pixels_clipped": 0,
+      "source_unchanged": true,
+      "resampling": "none"
+    },
+    {
+      "id": "NE",
+      "source": "edits/axe-low-NE-pro/images/frame_00.png",
+      "source_sha256": "93b6dd5ea8289d0481edb186d34393f44d93c94d099004bac760b179d578d4f7",
+      "output": "registered-inputs/walk_axe/NE.png",
+      "output_sha256": "5466c8a42f5694812d4d678fabfed93ac80e49f39837353830c21a4a9006e78f",
+      "canvas": [
+        256,
+        256
+      ],
+      "source_cap_landmark": {
+        "cap_silhouette_top_y": 40,
+        "orange_cap_bounds_exclusive": [
+          115,
+          40,
+          144,
+          61
+        ],
+        "orange_cap_center_x": 129.0,
+        "raster_center_x": 129,
+        "mask_pixel_count": 489
+      },
+      "translation_source_px": [
+        -1,
+        12
+      ],
+      "registered_cap_top_y": 52,
+      "registered_cap_center_x": 128.0,
+      "registered_raster_center_x": 128,
+      "source_alpha_bbox_exclusive": [
+        89,
+        40,
+        185,
+        198
+      ],
+      "output_alpha_bbox_exclusive": [
+        88,
+        52,
+        184,
+        210
+      ],
+      "visible_pixel_count": 6835,
+      "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+      "visible_pixels_clipped": 0,
+      "source_unchanged": true,
+      "resampling": "none"
+    },
+    {
+      "id": "N",
+      "source": "edits/axe-low-N-pro/images/frame_00.png",
+      "source_sha256": "3945b6141b6646f9085b5c41353933879c1b6306dbf7b57972d1169ad2456bf6",
+      "output": "registered-inputs/walk_axe/N.png",
+      "output_sha256": "733cd95bef7090a91f882ea523b2fe8944324827b0549d40d0eeaaa3ba78cc4d",
+      "canvas": [
+        256,
+        256
+      ],
+      "source_cap_landmark": {
+        "cap_silhouette_top_y": 39,
+        "orange_cap_bounds_exclusive": [
+          112,
+          39,
+          140,
+          60
+        ],
+        "orange_cap_center_x": 125.5,
+        "raster_center_x": 126,
+        "mask_pixel_count": 474
+      },
+      "translation_source_px": [
+        2,
+        13
+      ],
+      "registered_cap_top_y": 52,
+      "registered_cap_center_x": 127.5,
+      "registered_raster_center_x": 128,
+      "source_alpha_bbox_exclusive": [
+        80,
+        39,
+        188,
+        198
+      ],
+      "output_alpha_bbox_exclusive": [
+        82,
+        52,
+        190,
+        211
+      ],
+      "visible_pixel_count": 7578,
+      "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+      "visible_pixels_clipped": 0,
+      "source_unchanged": true,
+      "resampling": "none"
+    },
+    {
+      "id": "SW",
+      "source": "direction-inputs/walk_axe/SW.png",
+      "source_sha256": "2e7764f9f630ee7543ab0133b81fdfe17d8cc66f6cb84a669a651e4e08668e99",
+      "output": "registered-inputs/walk_axe/SW.png",
+      "output_sha256": "aa2c883c49313383ddb6ce82457916105164c12bbd76cd488a5a98d986f60cd6",
+      "canvas": [
+        256,
+        256
+      ],
+      "source_cap_landmark": {
+        "cap_silhouette_top_y": 50,
+        "orange_cap_bounds_exclusive": [
+          113,
+          50,
+          142,
+          71
+        ],
+        "orange_cap_center_x": 127.0,
+        "raster_center_x": 127,
+        "mask_pixel_count": 494
+      },
+      "translation_source_px": [
+        1,
+        2
+      ],
+      "registered_cap_top_y": 52,
+      "registered_cap_center_x": 128.0,
+      "registered_raster_center_x": 128,
+      "source_alpha_bbox_exclusive": [
+        65,
+        50,
+        167,
+        203
+      ],
+      "output_alpha_bbox_exclusive": [
+        66,
+        52,
+        168,
+        205
+      ],
+      "visible_pixel_count": 7081,
+      "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+      "visible_pixels_clipped": 0,
+      "source_unchanged": true,
+      "resampling": "none"
+    },
+    {
+      "id": "W",
+      "source": "edits/axe-low-W-pro-v2/images/frame_00.png",
+      "source_sha256": "688183517e10717de126734a6a91f5a6acb9972508385efeb2cdd152fb7810e7",
+      "output": "registered-inputs/walk_axe/W.png",
+      "output_sha256": "c653bdcca44987979fde5f5cc293fe833c944fe29a7e43de4c5bb62dd4d38329",
+      "canvas": [
+        256,
+        256
+      ],
+      "source_cap_landmark": {
+        "cap_silhouette_top_y": 48,
+        "orange_cap_bounds_exclusive": [
+          84,
+          48,
+          115,
+          69
+        ],
+        "orange_cap_center_x": 99.0,
+        "raster_center_x": 99,
+        "mask_pixel_count": 486
+      },
+      "translation_source_px": [
+        29,
+        4
+      ],
+      "registered_cap_top_y": 52,
+      "registered_cap_center_x": 128.0,
+      "registered_raster_center_x": 128,
+      "source_alpha_bbox_exclusive": [
+        63,
+        48,
+        129,
+        214
+      ],
+      "output_alpha_bbox_exclusive": [
+        92,
+        52,
+        158,
+        218
+      ],
+      "visible_pixel_count": 5977,
+      "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+      "visible_pixels_clipped": 0,
+      "source_unchanged": true,
+      "resampling": "none"
+    },
+    {
+      "id": "NW",
+      "source": "edits/axe-low-NW-pro-v2/images/frame_00.png",
+      "source_sha256": "47cbcac6ab143e891f39dbaa105e8ea232d20f8c59e521677743ca2c0bcb5895",
+      "output": "registered-inputs/walk_axe/NW.png",
+      "output_sha256": "d2256dc475fe59ab2887d203c4e4e6f6990bc612a17fca9ab6a85268ba7acce3",
+      "canvas": [
+        256,
+        256
+      ],
+      "source_cap_landmark": {
+        "cap_silhouette_top_y": 42,
+        "orange_cap_bounds_exclusive": [
+          109,
+          42,
+          139,
+          63
+        ],
+        "orange_cap_center_x": 123.5,
+        "raster_center_x": 124,
+        "mask_pixel_count": 520
+      },
+      "translation_source_px": [
+        4,
+        10
+      ],
+      "registered_cap_top_y": 52,
+      "registered_cap_center_x": 127.5,
+      "registered_raster_center_x": 128,
+      "source_alpha_bbox_exclusive": [
+        88,
+        42,
+        176,
+        208
+      ],
+      "output_alpha_bbox_exclusive": [
+        92,
+        52,
+        180,
+        218
+      ],
+      "visible_pixel_count": 6796,
+      "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+      "visible_pixels_clipped": 0,
+      "source_unchanged": true,
+      "resampling": "none"
+    },
+    {
+      "id": "chop-S",
+      "source": "edits/chop-S-pro-v3/images/frame_00.png",
+      "source_sha256": "1695ddfb88c12fa077e9e57d0c3f8c3db2660e27ed68134ad626396ac9eadbdb",
+      "output": "registered-inputs/chop/S.png",
+      "output_sha256": "6a3e84d8a534e618c5f4c73db9dc2b97daa39a7d6f44b9dce1e47a6a9718e497",
+      "canvas": [
+        256,
+        256
+      ],
+      "source_cap_landmark": {
+        "cap_silhouette_top_y": 52,
+        "orange_cap_bounds_exclusive": [
+          110,
+          52,
+          138,
+          73
+        ],
+        "orange_cap_center_x": 123.5,
+        "raster_center_x": 124,
+        "mask_pixel_count": 448
+      },
+      "translation_source_px": [
+        4,
+        0
+      ],
+      "registered_cap_top_y": 52,
+      "registered_cap_center_x": 127.5,
+      "registered_raster_center_x": 128,
+      "source_alpha_bbox_exclusive": [
+        83,
+        52,
+        190,
+        215
+      ],
+      "output_alpha_bbox_exclusive": [
+        87,
+        52,
+        194,
+        215
+      ],
+      "visible_pixel_count": 6775,
+      "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+      "visible_pixels_clipped": 0,
+      "source_unchanged": true,
+      "resampling": "none"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+Use case: style-transfer.
+Create ONE coherent sprite sheet containing exactly SIX complete full-body poses of the SAME lumberjack chopping a standing tree, facing SE / diagonally down-right. Layout is exactly THREE equal columns and TWO equal rows, read A B C / D E F, with no labels. Large landscape sheet with ample empty space around each body and the entire swinging axe.
+
+Reference image 1 is ONLY the six exact MOTION/POSE targets A–F, taken from a real chopping animation. Redraw each cell's corresponding pose in our own character design. Its pixel art, red scarf/checkered team colors, pointy hat, and black-checkered ground shadows are NOT to be copied. In source order:
+A (top left): axe cocked beside/behind the shoulder and head, ready to swing.
+B (top middle): a deeper/higher backswing, axe head closer above the head.
+C (top right): axe swung forward out to the right, at approximately chest level.
+D (bottom left): completed low strike forward/down toward the lower-right, around lower-trunk/waist height, firm planted stance.
+E (bottom middle): axe lifted slightly out of the completed low strike, forward at mid-torso level.
+F (bottom right): axe rising diagonally upward-right, on the return toward the shoulder.
+Do not invent six progressive walking poses. These are six unique poses reused in a ten-phase chop loop A,B,A,C,D,D,D,E,C,F.
+
+Reference image 2 is the character's precise IDENTITY and painted rendering style from our preceding walk animation. Keep that exact stocky adult man, same head size and broad torso, short brown beard, rusty orange round cap with stitched segments and rolled brim, muted olive tunic, cream lace-up neck and rolled sleeves, brown leather belt with rectangular metal buckle, FRONT leather apron, brown trousers and cuffed brown boots. Keep the axe's original single gray iron blade, wooden handle, relative dimensions and material. No log. Do not reuse the walking leg position from reference 2.
+Use image 2's matte, earthy, clean painterly illustration style at exactly the same level of simplification and character design in all six poses.
+
+Motion invariants: BOTH boots remain firmly planted at exactly the SAME cell-relative coordinates in all six pictures, with an identical stable staggered stance oriented diagonally down-right. No leg lift, stride, sliding, swapping of feet, relocation or resizing. Preserve source shoulder and elbow motion, coherent dominant RIGHT-hand axe grip; do not switch hands or introduce an arbitrary new second-hand grip. Same number of fingers and limbs, wrists connected naturally. Slight torso twist and compression in the swing is fine; camera and body scale do not move. Copy the source axe trajectory, especially the high backswing versus the low completed stroke. Axe blade and handle remain one rigid consistent object, never changing length or becoming double-bladed.
+
+Fixed elevated orthographic 3/4 view matching the preceding SE character; the character stays positioned at the SAME shared ground anchor within each equal-sized cell. Preserve the whole hat, raised hands, axe and both boots with safe margins. Never center each pose based on the changing axe silhouette. This is felling an upright tree at trunk height, not splitting a log on the floor.
+The invisible target tree is separate scenery and must NOT be drawn. Only the worker and his axe, no trunk, stump, timber, chips, impact star, floor, platform or environment.
+
+BACKGROUND: flat solid PURE WHITE (#FFFFFF), with absolutely NO cast shadow, contact shadow, drop shadow, ground shading, checkerboard pattern, gray squares, colored background, halo or gradient. Normal form shading INSIDE the figure is allowed. Maintain clean isolated silhouettes. No captions, letters, numbers, borders, grid lines, motion streaks or blur. Exactly six finished poses, three columns and two rows.

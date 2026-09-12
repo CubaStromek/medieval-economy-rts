@@ -128,7 +128,7 @@ Definitions are loaded by `DefinitionCatalog`:
 
 - `resources.json`: 28 ware IDs, names, category/color/HUD order, market prices
   and food restoration where applicable;
-- `buildings.json`: 29 buildings with construction costs/times, category,
+- `buildings.json`: 30 buildings with construction costs/times, category,
   inventory limits, professions, extraction rules, recipes/orders, training and
   recruitment IDs;
 - `recipes.json`: 19 input/output batches and project-balanced integer durations;
@@ -450,10 +450,12 @@ and trail decay. No civilian production inputs are consumed overnight.
 
 The saved `sleep_home_id` differs from employment (`home_id`) and actual
 location (`inside_building_id`). An employed specialist uses its own completed
-workplace. Carriers, builders and unemployed specialists use a reachable
-completed Warehouse with no capacity limit. A new workplace claim updates a
-previous communal sleeping assignment. Missing or blocked accommodation
-causes bounded retries while the worker remains off duty.
+workplace. Carriers and builders first choose a reachable, completed and enabled
+Workers' Cottage with one of its two beds free; a completed Warehouse remains
+overflow accommodation when no cottage bed is available. Unemployed specialists
+use a Warehouse. A new workplace claim updates a previous communal sleeping
+assignment. Missing or blocked accommodation causes bounded retries while the
+worker remains off duty.
 
 The transient `go_sleep` action preserves an already committed movement step,
 uses the existing path/yield rules and requires real doorway arrival before
@@ -466,14 +468,16 @@ consume real Inn stock and finish through the shared meal system even across
 dawn. Travel to an Inn or sleeping place does not reserve destination input
 capacity for that cargo. Military requests remain pending while carriers sleep.
 HUD schedule/count queries never mutate the world. Lighting is a separate
-view layer described above; residential capacity remains unimplemented.
+view layer described above. Cottage occupancy is derived from compatible
+workers' `sleep_home_id` assignments, so deaths and reassignment free beds
+without a second persisted resident list.
 
 ## Saving
 
 `SaveSystem` handles JSON file I/O in `user://`; `WorldSnapshot` owns snapshot
 encoding, typed field validation and version migration. `SimulationWorld`
 retains the public `to_data()`/`from_data()` API and commits a staged world only
-after successful loading. **Version 15** contains the terrain/grid, inventories,
+after successful loading. **Current version 20** contains the terrain/grid, inventories,
 worker professions/homes/cargo/cooldowns, tree ages and field ages from earlier
 formats, plus field kind, finite deposits, `economy_enabled`, worker condition,
 construction remaining/delivered material, school payment, selected recipe,
@@ -500,6 +504,12 @@ a meal. Loading at night preserves cargo without executing an immediate
 delivery. Sleep is inferred from the saved clock and indoor home; return routes
 are rebuilt on the next tick. Pre-v15 saves start with no sleeping assignment
 and choose one through the same schedule without resetting the clock.
+
+The Workers' Cottage reuses the v15 `sleep_home_id` contract and therefore adds
+no new snapshot field or migration. Version 20 validates that every saved
+cottage sleeper has a compatible type and that no residence exceeds its
+catalog capacity. Pre-cottage saves continue to choose accommodation through
+the normal schedule and may use their completed Warehouse as overflow.
 
 Versions 1–14 remain loadable through explicit defaults and migrations. Pre-v12
 workers restore outdoors instead of inferring a visit from a nearby house. Before
@@ -605,7 +615,7 @@ The earlier roadmap's farms/mines, food condition, paid training, economic
 equipment graph and material/Builder construction are now implemented. Remaining
 work includes:
 
-- housing and richer worker/settlement needs;
+- broader housing, household consumption and richer worker/settlement needs;
 - multi-cell buildings and physical road/vine material-delivery jobs;
 - detailed per-animal feeding/growth instead of aggregate recipes;
 - richer warehouse policies and distribution priorities;

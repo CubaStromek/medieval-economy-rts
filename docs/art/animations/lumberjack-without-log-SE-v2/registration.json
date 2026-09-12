@@ -1,0 +1,230 @@
+{
+  "date": "2026-09-09",
+  "method": "Fixed 0.32 image scale; cap landmark registration plus small authored gait bob; white canvas; no pose deformation or mirrored limbs.",
+  "records": [
+    {
+      "index": 0,
+      "source": "keyframes/00.png",
+      "sourceMetadata": {
+        "width": 1086,
+        "height": 1448,
+        "colorType": 2,
+        "sha256": "baa66a2d11f8361360803d4e6356eabf2c35d1c62a97bd8545d5e85231d2d9bd"
+      },
+      "scale": 0.32,
+      "capLandmark": [
+        530,
+        110
+      ],
+      "intendedBob": 0,
+      "placement": [
+        22,
+        15
+      ],
+      "file": "frames/00.png",
+      "label": "Pravá došlapuje",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "colorType": 2,
+        "sha256": "cb68377b6131d1c1cb1f4eaab332e09397fbe1907a36beeaa745080a996e73f7"
+      }
+    },
+    {
+      "index": 1,
+      "source": "keyframes/01.png",
+      "sourceMetadata": {
+        "width": 1086,
+        "height": 1448,
+        "colorType": 2,
+        "sha256": "5bae969ba560e91dd0a0b088661fa5ac59a7cbdd23c1643ccbc427ccd976db1a"
+      },
+      "scale": 0.32,
+      "capLandmark": [
+        530,
+        110
+      ],
+      "intendedBob": 2,
+      "placement": [
+        22,
+        17
+      ],
+      "file": "frames/01.png",
+      "label": "Váha na pravé",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "colorType": 2,
+        "sha256": "0330e8fa7dc8530275e915b0b5c968aa24eba0169f066827cb765db1c750c0f1"
+      }
+    },
+    {
+      "index": 2,
+      "source": "keyframes/02.png",
+      "sourceMetadata": {
+        "width": 1086,
+        "height": 1448,
+        "colorType": 2,
+        "sha256": "8c615af95eec2979e6b9e6538c0719034f13e1dbb072560a3d8d5bca45f16de6"
+      },
+      "scale": 0.32,
+      "capLandmark": [
+        530,
+        132
+      ],
+      "intendedBob": -2,
+      "placement": [
+        22,
+        6
+      ],
+      "file": "frames/02.png",
+      "label": "Levá prochází",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "colorType": 2,
+        "sha256": "fbd8235b970c3d261f726703c950a7a1444cc7342856403c0244eb97ebea90d0"
+      }
+    },
+    {
+      "index": 3,
+      "source": "keyframes/03.png",
+      "sourceMetadata": {
+        "width": 1086,
+        "height": 1448,
+        "colorType": 2,
+        "sha256": "e7b0071258beb96c8c281f5a24b81e9c5db5322361eaff9281fc70f721829eef"
+      },
+      "scale": 0.32,
+      "capLandmark": [
+        530,
+        126
+      ],
+      "intendedBob": -3,
+      "placement": [
+        22,
+        7
+      ],
+      "file": "frames/03.png",
+      "label": "Levá dosahuje",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "colorType": 2,
+        "sha256": "6b7ef4bd2ea7191d4a610cbb662d8ef33611db1ed2e3de9b4a15d272ca8d1485"
+      }
+    },
+    {
+      "index": 4,
+      "source": "keyframes/04.png",
+      "sourceMetadata": {
+        "width": 1086,
+        "height": 1448,
+        "colorType": 2,
+        "sha256": "81d19d41e77d7bf76bcd4f0e8326eb55705663c363b09ec3eaed2de812c5a4e3"
+      },
+      "scale": 0.32,
+      "capLandmark": [
+        526,
+        115
+      ],
+      "intendedBob": 0,
+      "placement": [
+        24,
+        13
+      ],
+      "file": "frames/04.png",
+      "label": "Levá došlapuje",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "colorType": 2,
+        "sha256": "68cb59854a8032730a0c695614123ec8ec054ce6c376cac94bc0e00fdf26b57d"
+      }
+    },
+    {
+      "index": 5,
+      "source": "keyframes/05.png",
+      "sourceMetadata": {
+        "width": 1086,
+        "height": 1448,
+        "colorType": 2,
+        "sha256": "724263d0fc211d58f1d46b5d8540dd9d1dda20e7248584fb6ff95246987b8f05"
+      },
+      "scale": 0.32,
+      "capLandmark": [
+        532,
+        141
+      ],
+      "intendedBob": 2,
+      "placement": [
+        22,
+        7
+      ],
+      "file": "frames/05.png",
+      "label": "Váha na levé",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "colorType": 2,
+        "sha256": "50cac6968783b20dd5b525ca5c9dd064cbaaa05155f60982b09a50a74972d8a9"
+      }
+    },
+    {
+      "index": 6,
+      "source": "keyframes/06.png",
+      "sourceMetadata": {
+        "width": 1086,
+        "height": 1448,
+        "colorType": 2,
+        "sha256": "22032bb634ba228ced6b060bd898c5cf67a2c086d89125c31657d64e2f95a79c"
+      },
+      "scale": 0.32,
+      "capLandmark": [
+        534,
+        147
+      ],
+      "intendedBob": -2,
+      "placement": [
+        21,
+        1
+      ],
+      "file": "frames/06.png",
+      "label": "Pravá prochází",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "colorType": 2,
+        "sha256": "ec3466135c6e81a57d6223b6c7976c4c005c92644812ddf17ee3b3ffd32c037d"
+      }
+    },
+    {
+      "index": 7,
+      "source": "keyframes/07.png",
+      "sourceMetadata": {
+        "width": 1086,
+        "height": 1448,
+        "colorType": 2,
+        "sha256": "d66a89528e518188af0b7b8eea42992b178c43539c67e49b5c3d4f8d631a13ba"
+      },
+      "scale": 0.32,
+      "capLandmark": [
+        532,
+        143
+      ],
+      "intendedBob": -3,
+      "placement": [
+        22,
+        1
+      ],
+      "file": "frames/07.png",
+      "label": "Pravá dosahuje",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "colorType": 2,
+        "sha256": "1692c921abb490a3a61a15c1a85a41ad77c50977dd30e932022364b1e910391e"
+      }
+    }
+  ]
+}

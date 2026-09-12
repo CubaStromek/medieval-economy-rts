@@ -1,0 +1,77 @@
+{
+  "date": "2026-09-09",
+  "direction": "S",
+  "tool": "built-in imagegen",
+  "source": "docs/art/animation-references/lumberjack-without-log/S.png",
+  "sheet_layout": {
+    "columns": 4,
+    "rows": 2
+  },
+  "candidate": "sheets/S-candidate.png",
+  "status": "diagnostic_candidate_incomplete_animation_not_production_ready",
+  "alpha_status": "Measured with sips: 1254x1254 pixels, hasAlpha=no. Opaque white-background preview; not production transparency.",
+  "attempts": [
+    {
+      "id": 1,
+      "prompt": "Use case: stylized-concept. Game walk-cycle sprite sheet: exactly 4 columns x 2 rows, EIGHT sequential distinct walking poses in place on PURE SOLID WHITE background. No checkerboard, text, labels, ground or shadows. Supplied reference image locks this lumberjack's painted style, face, orange cap, olive green shirt, cream rolled sleeves, brown trousers and boots, front brown leather apron, axe, and elevated camera. No log. Keep same direction, same character scale and centered pelvis within each equal cell. Fully contained figures with clear margins.\nCRITICAL: this is TWO DIFFERENT HALF-CYCLES, not eight copies. Frames 1 and 5 are visibly OPPOSITE LEG contacts. Frames 3 and 7 are feet-together passing poses. Animate actual leg and arm motion, including knee bends and heel lifts, with smooth subtle body bob. Image 1 is the SOUTH-facing identity and camera reference; image 2 is only a rear-view EXAMPLE of different leg poses, DO NOT copy its direction. ALL figures face SOUTH/TOWARD the viewer like image 1. Axe is permanently held in anatomical RIGHT hand (SCREEN LEFT); screen-right hand remains EMPTY in all 8 frames. Legs may alternate but the axe never swaps hands.\nExplicit row-major leg poses: 1 screen-LEFT boot far DOWN toward viewer, screen-RIGHT boot UP behind; 2 left boot planted and right heel lifting; 3 left leg straight as right bent knee passes it and the two boots approach each other; 4 right boot swings forward DOWN, left boot begins trailing UP; 5 screen-RIGHT boot far DOWN and screen-LEFT boot UP, the opposite of frame1; 6 right boot planted and left heel lifts; 7 right leg straight as left bent knee passes and feet approach together; 8 left boot swings forward DOWN, right boot starts trailing UP. Exactly two alternating strides across these eight frames. Counter-swing arms, keeping axe in SCREEN LEFT hand throughout. Head and camera face straight toward viewer; do not turn to other directions.",
+      "source_images": [
+        "docs/art/animation-references/lumberjack-without-log/S.png",
+        "docs/art/animations/lumberjack-without-log-v1/sheets/N-candidate.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-99c4fd08-02da-49c6-9ed2-6d1e8aeb5028.png",
+      "saved": "sheets/S-rejected-attempt-1.png",
+      "selected": false
+    },
+    {
+      "id": 2,
+      "prompt": "Use case: precise-object-edit. Correct ONLY THE LEGS BELOW THE APRON in the FOUR BOTTOM-ROW figures. Top row is unchanged. Upper bodies, faces, clothing, cap, arms and axe positions are unchanged. In each bottom-row figure exchange the two LEG POSES by horizontally mirroring ONLY trousers and boots below the apron: the long forward leg must now appear on SCREEN RIGHT, and the short rear leg on SCREEN LEFT. Specifically bottom left figure must have its SCREEN RIGHT boot LOW near the bottom of its cell, and its SCREEN LEFT boot raised UP near the rear. Currently it has left boot low; REVERSE THIS. Apply this lower-body-only leg-pose reversal to all four bottom figures so bottom row is opposite strides from top row. Never mirror any hand, axe, apron, torso, or head. All figures still face SOUTH toward the viewer, axe stays SCREEN LEFT, pure WHITE background. Preserve 4 columns x2 rows and the exact painting.",
+      "source_images": [
+        "sheets/S-rejected-attempt-1.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-dc850e96-5be2-45fc-bb5f-81a673493c73.png",
+      "saved": "sheets/S-candidate.png",
+      "selected": true
+    },
+    {
+      "id": 3,
+      "prompt": "Use case: precise-object-edit. IMAGE 1 is the EDIT TARGET: an existing eight-pose rear-facing lumberjack walk animation sheet. IMAGE 2 is ONLY a character appearance and new VIEWING DIRECTION reference, not the pose reference. ROTATE EACH OF THE EIGHT EXISTING POSES in image1 to the viewing direction of image2. Preserve the EXACT limb pose relationships, knee bends, planted vs lifted feet and all eight distinct phases from image1. Do not replace the poses with copies of image2. In image1 top row is one leg step and bottom row is the opposite leg step; after camera rotation this same alternation MUST remain. Keep frames3 and7 as passing poses. Keep all eight figures, 4 columns x2 rows, identical scale and centered pelvis. Painted rendering, same identity and elevated camera as image2, orange cap, olive green tunic, cream rolled sleeves, brown trousers and boots, leather front apron when visible. Pure WHITE background, no checkerboard, no text or shadows.\nRotate ALL eight figures from rear-facing NORTH to front-facing SOUTH toward viewer, exact camera in image2. This is a 180 degree camera change around the posed person: top row of original image1 shows screen-left leg trailing, which after camera rotation becomes the SCREEN RIGHT leg extending toward viewer. Bottom row becomes SCREEN LEFT leg extending toward viewer. Preserve original poses instead of duplicating image2 walking stance. Axe always in anatomical RIGHT hand, visible SCREEN LEFT of every south-facing figure. Screen-right anatomical left hand empty. Never swap the axe to the other hand.",
+      "source_images": [
+        "docs/art/animations/lumberjack-without-log-v1/sheets/N-candidate.png",
+        "docs/art/animation-references/lumberjack-without-log/S.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-52bfa641-976c-444d-bdda-bfe3e5970afd.png",
+      "saved": "sheets/S-rejected-attempt-3.png",
+      "selected": false
+    },
+    {
+      "id": 4,
+      "prompt": "Use case: precise-object-edit. ONE LOCAL CORRECTION ONLY to this 4-column x2-row lumberjack sheet: the THIRD FIGURE IN THE BOTTOM ROW, frame7. Leave ALL SEVEN OTHER FIGURES COMPLETELY UNCHANGED. Leave frame7's entire upper body, cap, face, apron, arms, axe, size and position unchanged. Edit only its trousers and boots below the apron.\nChange frame7 from a long stride into a PASSING POSE. His anatomical LEFT leg, seen on SCREEN RIGHT, stays straight as the planted support leg. His anatomical RIGHT leg, seen on SCREEN LEFT, bends at the knee and swings forward CLOSE BESIDE the support leg. Raise this screen-left boot so its heel is beside the other ankle/lower shin; the two boots are nearly together beneath the hips, not separated fore/aft in a wide stride. The right/screen-left knee is bent and lifted. The desired lower-leg silhouette is the opposite-leg counterpart of the TOP-ROW THIRD figure's feet-together passing pose. Do not change any arm or exchange hands. Axe remains in anatomical RIGHT hand on SCREEN LEFT, empty other hand. Keep all8 figures facing SOUTH/toward viewer, exact white background, painted detail, elevated camera, and4x2 layout. No other modifications, no new content.",
+      "source_images": [
+        "sheets/S-candidate.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-5f06a3f3-8ddd-41d0-b6ae-d3c0612fedac.png",
+      "saved": "sheets/S-passing-v2.png",
+      "selected": false,
+      "outcome": "Precise frame7 edit moved the raised boot slightly lower/closer, but it still remains far behind the planted foot; a clear feet-together passing pose was not achieved. Upper body, hand and other figures visually retained."
+    }
+  ],
+  "visual_qa": {
+    "direction": "All figures SOUTH/toward viewer, elevated frontal view.",
+    "identity": "Reference appearance and front apron retained.",
+    "axe": "Correct anatomical right/screen left in all frames.",
+    "phases": "Attempt2 produces visibly opposite contact legs in bottom row; however all four bottom contacts are near duplicates and passing phase7 was lost. Top phase3 is feet-together. Candidate incomplete as eight-phase animation.",
+    "attempts": "Attempt1 repeated same leg in both halves. Attempt2 lower-body pose exchange achieved opposite contacts. Attempt3 N-first rotation still repeated same leg, therefore rejected.",
+    "remaining": "Needs proper lower-row passing and transitional poses, arm counter-swing and playback QA. Not a smooth accepted cycle."
+  },
+  "approval": "No user approval, no in-game QA, no production alpha, no game integration.",
+  "passing_revision": {
+    "file": "sheets/S-passing-v2.png",
+    "status": "partial_change_not_verified_passing_pose",
+    "metadata": {
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false
+    },
+    "assessment": "Frame7 raised screen-left boot is slightly nearer to planted screen-right boot than original candidate, but screen-space fore/aft separation remains substantial (visually around100px at source resolution), unlike top-row frame3 feet-together silhouette. Do not treat as completed passing correction. Candidate selection remains attempt2 pending root review."
+  }
+}

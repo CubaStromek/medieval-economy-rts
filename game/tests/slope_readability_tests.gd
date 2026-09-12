@@ -179,6 +179,13 @@ static func _test_hover_input(host: Node, failures: Array[String]) -> void:
 	viewport.add_child(main)
 	main.camera.position_smoothing_enabled = false
 	main.simulation_speed = 0.0
+	# These controls compare terrain/earthwork reasons on a surveyed landscape.
+	# Unknown-footprint rejection is exercised independently by the fog suite.
+	var surveyed: Array[Vector2i] = []
+	for y: int in range(main.world.grid.size.y):
+		for x: int in range(main.world.grid.size.x):
+			surveyed.append(Vector2i(x, y))
+	main.world.fog.restore_explored(surveyed)
 	await _settle(host)
 	_expect(main.is_processing() and main.world.tick == 0,
 		"Paused-input fixture must keep actual Main frames running without advancing the world", failures)
@@ -191,13 +198,17 @@ static func _test_hover_input(host: Node, failures: Array[String]) -> void:
 	var draw_observation: Array[int] = [0]
 	overlay.draw.connect(func() -> void: draw_observation[0] += 1)
 	_key(viewport, KEY_3)
-	await _hover_case(host, main, viewport, label, draw_observation, Demo.PLATEAU_BUILD_SITE,
+	# Keep the original threshold at (10,3). The revised hut anchor moves left
+	# and south; reusing (8,3) would extend its northern row onto the real slope.
+	var plateau_site := Vector2i(7, 4)
+	await _hover_case(host, main, viewport, label, draw_observation, plateau_site,
 		"lumber_hut", true, "level ground", failures)
 	_expect(main.terrain_renderer.show_buildability and not main.show_terrain_rules,
 		"Choosing a building must automatically show buildability without changing the player's manual F2 choice", failures)
-	_expect(main.world.grid.cell_slope(Demo.PLATEAU_BUILD_SITE) == 0
-		and main.world.grid.cell_height(Demo.PLATEAU_BUILD_SITE) > 0,
-		"Valid hover control must be a genuinely raised flat plateau, not height-zero special handling", failures)
+	for cell: Vector2i in main.world.placement_cells("lumber_hut", plateau_site):
+		_expect(main.world.grid.cell_slope(cell) == 0
+			and main.world.grid.cell_height(cell) == float(Demo.PLATEAU_HEIGHT),
+			"Every occupied cell of the valid hover control must stand on the actual flat raised plateau", failures)
 	var steep_site := Vector2i(15, 15)
 	main.world.grid.set_vertex_height(Vector2i(16, 15), 3)
 	await _hover_case(host, main, viewport, label, draw_observation, steep_site,

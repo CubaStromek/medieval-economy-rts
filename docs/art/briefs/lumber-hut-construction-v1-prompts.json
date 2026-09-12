@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-10",
+  "tool": "built-in imagegen",
+  "model": "not explicitly identified by tool",
+  "records": [
+    {
+      "key": "lumber_finished_prompt",
+      "output": "docs/art/sources/lumber-hut-construction-v1/rejected-fake-alpha.png",
+      "status": "rejected; RGB checkerboard instead of alpha",
+      "prompt": "Use case: background-extraction\nAsset type: production RGBA game building sprite for Medieval Economy RTS, style manual v0.2.\nInput image 1 is our OWN woodcutter hut v3, the EDIT TARGET. Preserve the exact recognizable house design, the elevated front-LEFT parallel viewpoint and the exact structural geometry, stepped shingle roofs, left open working shed, right enclosed taller hut, door, stone footings, sawhorse and axe rack. This is preparation of this own house for game use, not a redesign.\nRemove ONLY the light/off-white background from this image, including every open hole between wooden posts, the open gaps around the sawhorse and the empty front-left stock cradle. Deliver GENUINE TRANSPARENT ALPHA, not a painted checkerboard and not an opaque white backdrop. Keep the doorway interior dark because it is part of the enclosed hut. Preserve the empty cradle with no stored logs. No people, no smoke, no text, no overlay, no long cast ground shadow or ground plane.\nKeep the source framing and relative positions, one complete uncropped house with transparent padding. Preserve soft clean painted edges. Output PNG with genuine RGBA alpha and isolated architecture, the neutral finished state. Do not add a checkerboard pattern anywhere.",
+      "input": "docs/art/concepts/lumber-hut-v3.png"
+    },
+    {
+      "key": "lumber_finished_matte_prompt",
+      "output": "docs/art/sources/lumber-hut-construction-v1/finished-matte.png",
+      "status": "accepted color-key master; alpha created during technical asset export",
+      "prompt": "Use case: precise-object-edit\nInput image 1 is our own completed woodcutter hut v3 EDIT TARGET.\nChange ONLY the plain off-white background to a perfectly flat saturated MAGENTA #FF00FF technical color-key background. Include this EXACT solid magenta in all open air gaps between posts and around the sawhorse, no gradients or checkerboard. Keep the inside of the closed right hut's doorway DARK; that is architectural interior, not background.\nPreserve the building's exact position, original canvas framing, elevated front-left viewpoint, the entire architecture, colors, two grey-brown shingle roofs, stone chimney and footings, left EMPTY log cradle, tool rack, and sawhorse. Do not redesign, reposition or resize any house part. No magenta light spill or reflections on the house. Crisp antialiased edge against pure magenta. No added floor, shadows, objects, text, outlines or graphics.\nThis is a technical matte source for a game sprite exporter; do NOT depict transparency or a checkerboard. Return one complete own finished building on pure magenta, same square framing.",
+      "input": "docs/art/concepts/lumber-hut-v3.png"
+    },
+    {
+      "key": "lumber_wood_prompt",
+      "output": "docs/art/sources/lumber-hut-construction-v1/wood-matte.png",
+      "status": "accepted construction color-key master; alpha created during technical asset export",
+      "prompt": "Use case: precise-object-edit\nAsset type: production construction-stage master for our Medieval Economy RTS woodcutter hut.\nInput image 1 is our OWN completed hut v3, the EDIT TARGET. Reconstruct exactly THIS house in a ROOFLESS UNFINISHED timber-frame construction state. Same elevated front-LEFT parallel viewpoint, exactly same building positioning, stone footings, right-door threshold position, footprint, original square canvas and framing. Do NOT redesign or move the ground contacts.\nRemove BOTH shingle roofs, the chimney, all tools and sawhorse, shutter, plaster infill, and the front storage cradle's retaining bars. Show the real structural timber of this very building: warm stone footings in the same places, timber posts of the same heights/locations, connecting horizontal beams, diagonal braces, modest bare wooden roof rafters with no roof covering, rough partial lower plank walls around the right room and rear of left shed. Make the right door opening obvious in the original position; its stone threshold remains. Show unfinished interior construction through the missing roof. No finished ceiling, no furniture, no loose construction stock, no logs, people, smoke, scaffolding protruding beyond the footprint, windows glass or status signs. Foreground foundation/posts unchanged in size and position from input so states can be registered at the same door.\nThis is the full end of the first construction phase; the timber frame will be revealed in twelve spatial parts by a separate data mask. Keep the full end-stage structure, do not draw twelve variants or labels.\nUse the same painterly material character and neutral diffuse shading as the own input; no heavy black outline or glossy plastic; architecture still the wide low left shed attached to the taller right hut. Preserve the high view down into top planes, not a frontal elevation.\nBackground: perfectly flat saturated MAGENTA #FF00FF technical color-key matte, including EVERY air gap between rafters/posts and through unfinished openings. No gradients, no texture, no checkerboard. No magenta light spill, reflections or cast ground shadows. Pure magenta is for the sprite exporter; do not paint fake transparency. One uncropped square building, original framing and padding, no text.",
+      "input": "docs/art/concepts/lumber-hut-v3.png"
+    }
+  ]
+}

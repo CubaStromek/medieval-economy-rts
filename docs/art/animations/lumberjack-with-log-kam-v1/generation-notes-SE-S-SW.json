@@ -1,0 +1,144 @@
+{
+  "date": "2026-09-10",
+  "mode": "built-in image_gen",
+  "model": "Not reported by tool",
+  "callCount": 7,
+  "records": [
+    {
+      "direction": "SE",
+      "prompt": "prompts/SE.txt",
+      "inputs": [
+        "walk-targets/SE.png",
+        "../../../../original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/SE.png",
+        "../../concepts/lumberjack-v1/log-n-shoulder-v1.png"
+      ],
+      "output": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-ab0ac745-7e80-4db9-a43a-e34a5d75b272.png",
+      "stored": "rejected/SE-axe-wrong-hip.png",
+      "selected": false,
+      "reason": "Axe hung at anatomical right hip instead of left."
+    },
+    {
+      "direction": "SE",
+      "prompt": "prompts/SE-axe-hip-repair.txt",
+      "inputs": [
+        "rejected/SE-axe-wrong-hip.png"
+      ],
+      "output": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-a9983b82-126e-4432-9a4b-b2040e62ea4d.png",
+      "stored": "sources/SE.png",
+      "selected": true,
+      "reason": "Removed near right hip axe; anatomical left hip is on far side, naturally occluded."
+    },
+    {
+      "direction": "S",
+      "prompt": "prompts/S.txt",
+      "inputs": [
+        "walk-targets/S.png",
+        "../../../../original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/S.png",
+        "../../concepts/lumberjack-v1/log-n-shoulder-v1.png"
+      ],
+      "output": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-8d1d0f0b-ca49-43fc-9c21-55864b438ef4.png",
+      "stored": "sources/S.png",
+      "selected": true
+    },
+    {
+      "direction": "SW",
+      "prompt": "prompts/SW.txt",
+      "inputs": [
+        "walk-targets/SW.png",
+        "../../../../original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/SW.png",
+        "../../concepts/lumberjack-v1/log-n-shoulder-v1.png"
+      ],
+      "output": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-2362b1db-d328-494e-bda0-b226f1b2cb04.png",
+      "stored": "sources/SW.png",
+      "selected": true
+    },
+    {
+      "direction": "SE",
+      "frameIndex": 6,
+      "humanFrame": 7,
+      "prompt": "prompts/SE-phase-07-leg-repair.txt",
+      "inputs": [
+        "rejected/SE-phase-07-before-leg-fix.png",
+        "../../../../original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/SE-phase-07.png",
+        "frames/SE/05.png"
+      ],
+      "output": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-aeee9afa-5de1-4209-8ebc-b9ed92d33ef3.png",
+      "stored": "sources/SE-phase-07-leg-repair.png",
+      "selected": false,
+      "sourceSize": [
+        1138,
+        1382
+      ],
+      "finalSize": [
+        448,
+        544
+      ],
+      "processing": "Whole-canvas Lanczos resize only; no pixel repaint outside the image generation tool.",
+      "reason": "User reported phase7 looks like one leg. Expose the existing trailing right calf and boot beside the planted left leg; preserve shoulder load and passing-step placement.",
+      "historicalFinalOverride": "final-frame-overrides/SE/06.png",
+      "preservedFinal": "rejected/SE-before-leg-continuity/06.png",
+      "supersededReason": "User identified leg-identity discontinuity. Original prompt incorrectly called near leg LEFT and far leg RIGHT; visibility of an added boot did not establish correct hip-to-knee continuity."
+    },
+    {
+      "direction": "SE",
+      "frameIndices": [
+        6,
+        7
+      ],
+      "humanFrames": [
+        7,
+        8
+      ],
+      "prompt": "prompts/SE-phases-07-08-leg-continuity.txt",
+      "inputs": [
+        "sources/SE-phases-07-08-edit-target.png",
+        "../../../../original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/SE-phases-07-08.png",
+        "frames/SE/05.png",
+        "frames/SE/00.png"
+      ],
+      "output": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-89a8c8f0-6c1c-4384-a0a8-3eed75cb5866.png",
+      "stored": "sources/SE-phases-07-08-leg-continuity.png",
+      "normalized": "sources/SE-phases-07-08-leg-continuity-normalized.png",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "selected": false,
+      "reason": "Near RIGHT hip/knee continuity is readable, but lower bodies grew about30px taller while upper bodies remained at similar height. Superseded by proportion correction."
+    },
+    {
+      "direction": "SE",
+      "frameIndices": [
+        6,
+        7
+      ],
+      "humanFrames": [
+        7,
+        8
+      ],
+      "prompt": "prompts/SE-phases-07-08-proportions.txt",
+      "inputs": [
+        "sources/SE-phases-07-08-leg-continuity-normalized.png",
+        "sources/SE-phases-07-08-edit-target.png"
+      ],
+      "output": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-faf2e240-380b-49c8-8f3d-22ab3dfa25c2.png",
+      "stored": "sources/SE-phases-07-08-proportions.png",
+      "normalized": "sources/SE-phases-07-08-proportions-normalized.png",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "finalSize": [
+        448,
+        544
+      ],
+      "selected": true,
+      "finalOverrides": [
+        "final-frame-overrides/SE/06.png",
+        "final-frame-overrides/SE/07.png"
+      ],
+      "processing": "Whole pair Lanczos normalization to896x544, exact two cell crops, integer cap registration only; no code repaint or selective limb warp. See SE-leg-continuity-registration.json.",
+      "reason": "Shorten lower bodies while retaining the continuous anatomical near RIGHT hip-knee-boot progression6→7→8→1; final static and packaging QA recorded separately."
+    }
+  ]
+}

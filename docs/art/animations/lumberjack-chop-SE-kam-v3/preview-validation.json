@@ -1,0 +1,77 @@
+{
+  "date": "2026-09-10",
+  "userCorrection": "Original KaM chopping uses both hands on one axe shaft. Prior one-handed interpretation was wrong.",
+  "reviewStatus": "awaiting-user-review",
+  "fragmentPath": "/Users/openclaw/.codex/visualizations/2026/09/09/01a087a4-bf3d-7f70-b463-afa4f5165f3c/lumberjack-chopping-twohand-compare.html",
+  "fragmentBytes": 137457,
+  "fragmentSha256": "ae1512c9177eafb0ec4f2b2f95277e6a0da4ce65871e1d02211832090f901b29",
+  "synchronizedPhaseOrder": [
+    "A",
+    "B",
+    "A",
+    "C",
+    "D",
+    "D",
+    "D",
+    "E",
+    "C",
+    "F"
+  ],
+  "originalPreview": {
+    "rawFrames": [
+      0,
+      1,
+      3,
+      4,
+      7,
+      9
+    ],
+    "rawCanvas": [
+      75,
+      50
+    ],
+    "uniformNearestScale": 8,
+    "sharedOffset": [
+      -64,
+      65
+    ],
+    "originalShadowRetained": true,
+    "sourceAtlasUnchangedFromV2Comparison": true
+  },
+  "ownPreview": {
+    "canvas": [
+      640,
+      480
+    ],
+    "footAnchor": [
+      256,
+      440
+    ],
+    "atlasBuiltFromFinalUniquePNGFiles": true,
+    "webpQuality": 90,
+    "PNGDeliverablesUnchanged": true,
+    "background": "RGB near-white, opaque"
+  },
+  "logicValidation": {
+    "method": "Node vm with explicit DOM, Image and timer test doubles; no browser",
+    "all10SlotsSynchronized": true,
+    "threeSlotDHold": true,
+    "playPause": true,
+    "wraparound": true,
+    "tempo5And10Fps": true,
+    "pauseWhenHidden": true
+  },
+  "browserRuntimeChecked": false,
+  "visualQA": {
+    "inspection": "Final registered 6-pose sheet and matched source/new A/D contact sheet viewed. Separate read-only review of selected source A/B and C/D/E/F.",
+    "bothHandsOnWoodInAllSixSelectedPoses": true,
+    "noSeparateGroundShadowObserved": true,
+    "plantedFrontSoleRegistered": true,
+    "noExactJointOrAxeGeometryClaim": true
+  },
+  "limits": [
+    "Source-based painted redraw approximates the KaM poses; axe/limb geometry is not an exact tracing.",
+    "A/B uniformly resampled from separately generated pair; C–F retain source pixel scale.",
+    "No genuine alpha channel, game integration, runtime browser inspection or user approval."
+  ]
+}

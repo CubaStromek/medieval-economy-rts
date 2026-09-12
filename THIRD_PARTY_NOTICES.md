@@ -1,5 +1,28 @@
 # Third-party notices and provenance
 
+## Project-created artwork — publication 2026-09-12
+
+The current runtime terrain atlas, lumber hut layers and lumberjack animation
+atlases are project-created outputs. Their recorded inputs and transformations
+are documented in `docs/modern-terrain-textures.md`,
+`docs/art/briefs/lumber-hut-construction-v1.md`,
+`docs/art/briefs/lumber-hut-stock-v1-integration.md` and
+`docs/art/briefs/lumberjack-pixellab-game-v1-integration.md`.
+The PixelLab production set derives from this project's own lumberjack master,
+not original KaM sprite inputs.
+
+`docs/art/` also preserves earlier own-character redraw experiments that used
+external KaM motion references, with their individual provenance and rejection
+records. They are not the production PixelLab set or an approved reference.
+The preserved Meshy GLB is a static, unrigged project experiment, not a runtime
+model. Generated outputs and provenance records are not a guarantee of exclusive
+rights; do not infer rights to original game assets from this engine's license.
+
+Source game files, their direct sprite exports, imported map data and original
+reference screenshots remain in ignored external directories. Raw API transport
+and account logs are also excluded. Local file paths or historical links to
+those directories in research documents do not redistribute their contents.
+
 ## KaM Remake
 
 - Project: KaM Remake

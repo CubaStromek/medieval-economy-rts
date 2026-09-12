@@ -1,0 +1,35 @@
+{
+  "date": "2026-09-10",
+  "fragmentPath": "/Users/openclaw/.codex/visualizations/2026/09/09/01a087a4-bf3d-7f70-b463-afa4f5165f3c/lumberjack-chopping.html",
+  "fragmentBytes": 111234,
+  "embeddedAtlas": [
+    1920,
+    960
+  ],
+  "deliveredFrameSize": [
+    640,
+    480
+  ],
+  "phaseOrder": [
+    "A",
+    "B",
+    "A",
+    "C",
+    "D",
+    "D",
+    "D",
+    "E",
+    "C",
+    "F"
+  ],
+  "phaseMappingAndExactRepeatedPNGsVerified": true,
+  "logicValidation": "Node vm with explicit DOM/Image/timer test doubles; verified all10phase drawrects, wraparound, play/pause,5/10fps, pause when hidden.",
+  "browserRuntimeChecked": false,
+  "browserRuntimeLimitation": "No browser inspection attempted after prior local-file URL policy rejection. No browser workaround used.",
+  "imageQA": "Corrected six-pose sheet and registered ten-phase sheet visually reviewed. Axe A/B corrected; planted sole integer-registered, no ground shadow seen.",
+  "artLimits": [
+    "RGB white background, no alpha",
+    "own two-handed grip interpretation",
+    "generative poses, no gameQA or userapproval"
+  ]
+}

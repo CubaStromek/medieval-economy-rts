@@ -117,6 +117,11 @@ static func _test_catalog_driven_indicators(failures: Array[String]) -> void:
 	_expect(main.worker_satiety_presentation(world.workers[citizen], Vector2.ZERO)["color"] == hungry and hungry != civil_bar["color"], "Both types' visible bars must react at the configured inclusive hungry threshold", failures)
 	world.workers[soldier]["food_requested"] = true
 	_expect(main._worker_food_marker_color(world.workers[soldier]).a > 0.0 and main.worker_satiety_presentation(world.workers[soldier], Vector2.ZERO)["color"] == hungry, "A requested delivery must add its own indicator while preserving the soldier's real satiety color", failures)
+	world.workers[citizen]["hunger"] = 0
+	world.workers[soldier]["hunger"] = 0
+	_expect(main.worker_satiety_presentation(world.workers[citizen], Vector2.ZERO)["color"] == hungry and main.worker_satiety_presentation(world.workers[soldier], Vector2.ZERO)["color"] == hungry, "An empty civilian or soldier satiety bar must remain hungry rather than critical while the long-term reserve is healthy", failures)
+	world.workers[soldier]["nutrition_deficit_ticks"] = 36000
+	_expect(main.worker_satiety_presentation(world.workers[soldier], Vector2.ZERO)["color"] == Hud.satiety_color("Starving") and Hud.satiety_color("Starving") != hungry, "Only a genuinely near-exhausted nutrition reserve should turn the empty soldier bar critical", failures)
 	main.free()
 
 

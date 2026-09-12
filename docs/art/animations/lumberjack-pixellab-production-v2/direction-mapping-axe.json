@@ -1,0 +1,66 @@
+[
+  {
+    "index": 0,
+    "direction": "S",
+    "source": "docs/art/animations/lumberjack-pixellab-production-v2/rotations-axe/images/frame_00.png",
+    "input": "docs/art/animations/lumberjack-pixellab-production-v2/direction-inputs/walk_axe/S.png",
+    "sha256": "5d5b2e7456cba6f8c83163cae04099d732dda2225c008bb53f640db9c1ce6bb7",
+    "mapping": "visually verified root 2026-09-10; independent review pending"
+  },
+  {
+    "index": 1,
+    "direction": "SE",
+    "source": "docs/art/animations/lumberjack-pixellab-production-v2/rotations-axe/images/frame_01.png",
+    "input": "docs/art/animations/lumberjack-pixellab-production-v2/direction-inputs/walk_axe/SE.png",
+    "sha256": "d21c593e4c19f09bd4e3056494be048d68aa0900314216585409d027ca697bea",
+    "mapping": "visually verified root 2026-09-10; independent review pending"
+  },
+  {
+    "index": 2,
+    "direction": "E",
+    "source": "docs/art/animations/lumberjack-pixellab-production-v2/rotations-axe/images/frame_02.png",
+    "input": "docs/art/animations/lumberjack-pixellab-production-v2/direction-inputs/walk_axe/E.png",
+    "sha256": "f1168d215225ef8c96cff448f86a78ee10929b825ff1980bd4f352df1cd4cbeb",
+    "mapping": "visually verified root 2026-09-10; independent review pending"
+  },
+  {
+    "index": 3,
+    "direction": "NE",
+    "source": "docs/art/animations/lumberjack-pixellab-production-v2/rotations-axe/images/frame_03.png",
+    "input": "docs/art/animations/lumberjack-pixellab-production-v2/direction-inputs/walk_axe/NE.png",
+    "sha256": "cb3c0cc0de71ec47d1f0e886172210cad6b63d81bb01a7767e6d97f591170ad7",
+    "mapping": "visually verified root 2026-09-10; independent review pending"
+  },
+  {
+    "index": 4,
+    "direction": "N",
+    "source": "docs/art/animations/lumberjack-pixellab-production-v2/rotations-axe/images/frame_04.png",
+    "input": "docs/art/animations/lumberjack-pixellab-production-v2/direction-inputs/walk_axe/N.png",
+    "sha256": "56a803464adde0936c5205bf8c84576bcefe89bd3d01cc2302bae7b13e501f39",
+    "mapping": "visually verified root 2026-09-10; independent review pending"
+  },
+  {
+    "index": 5,
+    "direction": "NW",
+    "source": "docs/art/animations/lumberjack-pixellab-production-v2/rotations-axe/images/frame_05.png",
+    "input": "docs/art/animations/lumberjack-pixellab-production-v2/direction-inputs/walk_axe/NW.png",
+    "sha256": "a3c1853c7bf8db01d54152c4c53d56e8d1707446503ed59191b430ab333c048e",
+    "mapping": "visually verified root 2026-09-10; independent review pending"
+  },
+  {
+    "index": 6,
+    "direction": "W",
+    "source": "docs/art/animations/lumberjack-pixellab-production-v2/rotations-axe/images/frame_06.png",
+    "input": "docs/art/animations/lumberjack-pixellab-production-v2/direction-inputs/walk_axe/W.png",
+    "sha256": "6d92f4857eea76bf5320c9b5cf0a61cb80faa3b755b6c39ea1228c42b661cca3",
+    "mapping": "visually verified root 2026-09-10; independent review pending"
+  },
+  {
+    "index": 7,
+    "direction": "SW",
+    "source": "docs/art/animations/lumberjack-pixellab-production-v2/rotations-axe/images/frame_07.png",
+    "input": "docs/art/animations/lumberjack-pixellab-production-v2/direction-inputs/walk_axe/SW.png",
+    "sha256": "2e7764f9f630ee7543ab0133b81fdfe17d8cc66f6cb84a669a651e4e08668e99",
+    "mapping": "visually verified root 2026-09-10; independent review pending"
+  }
+]

@@ -1,0 +1,106 @@
+{
+  "date": "2026-09-10",
+  "directionOrder": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "phaseCountPerDirection": 8,
+  "totalFrames": 64,
+  "fragmentPath": "/Users/openclaw/.codex/visualizations/2026/09/09/01a087a4-bf3d-7f70-b463-afa4f5165f3c/lumberjack-walk-eight-directions.html",
+  "fragmentBytes": 843145,
+  "fragmentSha256": "fe537636b36b1aa8f37780f802f7e4c453258fb1d089e908f9b8e8385300910d",
+  "selectedImages": {
+    "canvas": [
+      384,
+      512
+    ],
+    "renderAnchor": [
+      184,
+      368
+    ],
+    "alpha": false,
+    "groundShadowObserved": false,
+    "previewBuiltFromFinalCalibratedFrames": true,
+    "ownPreviewAtlas": [
+      1152,
+      768
+    ],
+    "ownPreviewWebpQuality": 86,
+    "PNGDeliverablesUnchangedByPreview": true
+  },
+  "sourcePreview": {
+    "action": "uaWalkBooty",
+    "rawCanvas": [
+      40,
+      49
+    ],
+    "rawOrigin": [
+      19,
+      41
+    ],
+    "scale": 8,
+    "offset": [
+      32,
+      40
+    ],
+    "originalColoursAndCheckerShadowRetained": true
+  },
+  "registrationQA": {
+    "measurements": 64,
+    "oneScalePerDirection": true,
+    "noPerFrameScaling": true,
+    "crownMatchedToCorrespondingSourcePhase": true,
+    "maxCapXResidualPixels": 0.4983164983165125,
+    "allSilhouettesUnclipped": true,
+    "footLocking": false
+  },
+  "visualQA": {
+    "sourceSheetsInspected": 8,
+    "finalCalibratedOverviewInspected": true,
+    "finalSESheetInspected": true,
+    "oppositeLegHalfCyclesReviewed": true,
+    "loop8To1ReviewedInContactSheets": true,
+    "oneAxeSameRightHandWithNaturalOcclusion": true,
+    "repairs": [
+      "NW frameindex3 wrong-hand correction",
+      "SE frameindex4 red-shoulder costume correction"
+    ]
+  },
+  "fileQA": {
+    "directions": 8,
+    "PNGFrames": 64,
+    "frameSize": [
+      384,
+      512
+    ],
+    "uniqueFramesPerDirection": 8,
+    "GIFs": 16,
+    "GIFTimelinesCheckedAfterDecode": true,
+    "spriteAtlasSize": [
+      3072,
+      4096
+    ],
+    "all64AtlasCellsMatchFinalFrames": true
+  },
+  "previewLogicQA": {
+    "method": "Node vm with explicit DOM, Image and timer test doubles, not a browser",
+    "correctAtlasAndPhaseForAll64Pairs": true,
+    "playPause": true,
+    "wraparound": true,
+    "speed5And10Fps": true,
+    "pauseOnDirectionChange": true,
+    "pauseWhenHidden": true
+  },
+  "browserRuntimeChecked": false,
+  "limits": [
+    "New painted anatomy approximates original poses; crown-based registration does not guarantee exact joint positions or world-space foot contact.",
+    "Opaque near-white RGB; no true alpha.",
+    "No game integration, in-game validation or user approval of this new walk set."
+  ]
+}

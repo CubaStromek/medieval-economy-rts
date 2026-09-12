@@ -1,0 +1,5391 @@
+{
+  "directions": [
+    {
+      "id": "N",
+      "source": "sources/N.png",
+      "sourceSize": [
+        1608,
+        978
+      ],
+      "sourceSha256": "11a7dee9f37a1c24888667fbbe05119d84895a9f7dfb2cb9a007b94939079658",
+      "sourceMode": "RGB",
+      "normalizedSize": [
+        1792,
+        1088
+      ],
+      "normalizationScaleXY": [
+        1.1144278606965174,
+        1.112474437627812
+      ],
+      "targetSha256": "58ddad753bc13ff03491f3a2bec628f38b8f1d69afe39d98f4ff2f8d4965b1a0",
+      "sharedBodyScale": 0.9100126742712294,
+      "anchor": [
+        216,
+        400
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rawFile": "raw/N/00.png",
+          "file": "frames/N/00.png",
+          "rawRect": [
+            0,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "e92412d38a91d3139525b3a0afe221a25802ec5d6465ef22be76d3e43eba7c1a",
+          "sha256": "e7b9821e9b00cce162ef6425daf9c08de7eef054c87703e690a0a98c563986a0",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 90,
+            "centerX": 177.7672131147541,
+            "bounds": [
+              144,
+              90,
+              214,
+              154
+            ],
+            "componentPixels": 3148
+          },
+          "rawCap": {
+            "top": 90,
+            "centerX": 182.46385542168676,
+            "bounds": [
+              145,
+              90,
+              218,
+              155
+            ],
+            "componentPixels": 3395
+          },
+          "scaledCap": {
+            "top": 82,
+            "centerX": 166.10365853658536,
+            "bounds": [
+              132,
+              82,
+              198,
+              141
+            ],
+            "componentPixels": 2826
+          },
+          "rawBodyHeight": 396,
+          "targetBodyHeight": 361,
+          "integerOffset": [
+            12,
+            8
+          ],
+          "scaledCellSize": [
+            408,
+            495
+          ],
+          "figureBounds": [
+            81,
+            64,
+            294,
+            450
+          ],
+          "capCenterResidualPx": 0.33644542183125736,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawFile": "raw/N/01.png",
+          "file": "frames/N/01.png",
+          "rawRect": [
+            448,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "b09fc57451499991c4f2d9e53ca79bac6ade2feaa01d19bb8106e47b204b0fdd",
+          "sha256": "f7bdbc9f1b4ad464b474fe175573d2fdfb795e25e22da84ebc8046a6340eebe1",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 82,
+            "centerX": 187.35689045936397,
+            "bounds": [
+              152,
+              82,
+              224,
+              146
+            ],
+            "componentPixels": 3206
+          },
+          "rawCap": {
+            "top": 86,
+            "centerX": 190.140522875817,
+            "bounds": [
+              152,
+              86,
+              227,
+              148
+            ],
+            "componentPixels": 3389
+          },
+          "scaledCap": {
+            "top": 79,
+            "centerX": 173.0701219512195,
+            "bounds": [
+              138,
+              79,
+              207,
+              138
+            ],
+            "componentPixels": 2881
+          },
+          "rawBodyHeight": 373,
+          "targetBodyHeight": 335,
+          "integerOffset": [
+            14,
+            3
+          ],
+          "scaledCellSize": [
+            408,
+            495
+          ],
+          "figureBounds": [
+            92,
+            58,
+            304,
+            420
+          ],
+          "capCenterResidualPx": -0.286768508144462,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawFile": "raw/N/02.png",
+          "file": "frames/N/02.png",
+          "rawRect": [
+            896,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "47c229b41208e9e7add344a8ed6d3e8d389f863fa8daef91cdfc7bca4410c9fe",
+          "sha256": "f3a5ddfdbd6160298dd20d60d686c119da2082ea37381164064f103a3283a7d8",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 74,
+            "centerX": 204.3581560283688,
+            "bounds": [
+              169,
+              74,
+              241,
+              138
+            ],
+            "componentPixels": 3120
+          },
+          "rawCap": {
+            "top": 85,
+            "centerX": 208.84411764705882,
+            "bounds": [
+              172,
+              85,
+              245,
+              140
+            ],
+            "componentPixels": 3056
+          },
+          "scaledCap": {
+            "top": 77,
+            "centerX": 190.00638977635782,
+            "bounds": [
+              157,
+              77,
+              223,
+              137
+            ],
+            "componentPixels": 2860
+          },
+          "rawBodyHeight": 386,
+          "targetBodyHeight": 359,
+          "integerOffset": [
+            14,
+            -3
+          ],
+          "scaledCellSize": [
+            408,
+            495
+          ],
+          "figureBounds": [
+            98,
+            52,
+            319,
+            426
+          ],
+          "capCenterResidualPx": -0.3517662520109752,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawFile": "raw/N/03.png",
+          "file": "frames/N/03.png",
+          "rawRect": [
+            1344,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "ddf2150566cd75155323aaf067afc2f00649d2c8bfeadcbf4891cd627d60fdb3",
+          "sha256": "cd1865675b900cff4df7bb77247468047a0a01bdcd30929f1488f232f99fc596",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 82,
+            "centerX": 220.93687707641195,
+            "bounds": [
+              186,
+              82,
+              258,
+              146
+            ],
+            "componentPixels": 3219
+          },
+          "rawCap": {
+            "top": 87,
+            "centerX": 216.7203947368421,
+            "bounds": [
+              181,
+              87,
+              254,
+              148
+            ],
+            "componentPixels": 3318
+          },
+          "scaledCap": {
+            "top": 80,
+            "centerX": 197.2158054711246,
+            "bounds": [
+              165,
+              80,
+              231,
+              139
+            ],
+            "componentPixels": 2872
+          },
+          "rawBodyHeight": 396,
+          "targetBodyHeight": 359,
+          "integerOffset": [
+            24,
+            2
+          ],
+          "scaledCellSize": [
+            408,
+            495
+          ],
+          "figureBounds": [
+            126,
+            59,
+            336,
+            442
+          ],
+          "capCenterResidualPx": 0.27892839471266484,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawFile": "raw/N/04.png",
+          "file": "frames/N/04.png",
+          "rawRect": [
+            0,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "e0ea284fd76c7a4b474a7b2919fd58e54ed56d2987de5e7e52ab9518a691a506",
+          "sha256": "10b7370011b7a4dd7f42920ea5a2fb8a69008d7828ca3e46a2eedec3f56589bc",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 98,
+            "centerX": 227.37894736842105,
+            "bounds": [
+              192,
+              98,
+              264,
+              162
+            ],
+            "componentPixels": 3206
+          },
+          "rawCap": {
+            "top": 86,
+            "centerX": 194.70219435736678,
+            "bounds": [
+              159,
+              86,
+              231,
+              152
+            ],
+            "componentPixels": 3413
+          },
+          "scaledCap": {
+            "top": 78,
+            "centerX": 177.16206896551725,
+            "bounds": [
+              145,
+              78,
+              210,
+              138
+            ],
+            "componentPixels": 2819
+          },
+          "rawBodyHeight": 397,
+          "targetBodyHeight": 367,
+          "integerOffset": [
+            50,
+            20
+          ],
+          "scaledCellSize": [
+            408,
+            495
+          ],
+          "figureBounds": [
+            136,
+            76,
+            340,
+            460
+          ],
+          "capCenterResidualPx": -0.21687840290380223,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawFile": "raw/N/05.png",
+          "file": "frames/N/05.png",
+          "rawRect": [
+            448,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "1e9d754c8b56c8e76cb78d6fba7cadf8b49c82055757697738cdbf76c2f39ba2",
+          "sha256": "fcecbfceac30259af6e490c6fdba82257beddc799f3f289a7a38f5a9d0cb48f5",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 81,
+            "centerX": 220.68879668049792,
+            "bounds": [
+              186,
+              81,
+              258,
+              146
+            ],
+            "componentPixels": 3169
+          },
+          "rawCap": {
+            "top": 80,
+            "centerX": 192.58333333333334,
+            "bounds": [
+              155,
+              80,
+              228,
+              145
+            ],
+            "componentPixels": 3422
+          },
+          "scaledCap": {
+            "top": 73,
+            "centerX": 175.3723076923077,
+            "bounds": [
+              141,
+              73,
+              208,
+              132
+            ],
+            "componentPixels": 2832
+          },
+          "rawBodyHeight": 389,
+          "targetBodyHeight": 343,
+          "integerOffset": [
+            45,
+            8
+          ],
+          "scaledCellSize": [
+            408,
+            495
+          ],
+          "figureBounds": [
+            121,
+            60,
+            336,
+            435
+          ],
+          "capCenterResidualPx": -0.31648898819022975,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawFile": "raw/N/06.png",
+          "file": "frames/N/06.png",
+          "rawRect": [
+            896,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "d8d3cc6b48faecbf778087157cf6ba4bc0245d433497f126ef758340ecac7900",
+          "sha256": "e552c94e4bd1e39e749400c09f8ebca0438a77d4ebdb92f6355e83eae37038b3",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 73,
+            "centerX": 206.06106870229007,
+            "bounds": [
+              171,
+              73,
+              243,
+              138
+            ],
+            "componentPixels": 3130
+          },
+          "rawCap": {
+            "top": 77,
+            "centerX": 207.37685459940653,
+            "bounds": [
+              171,
+              77,
+              245,
+              139
+            ],
+            "componentPixels": 3420
+          },
+          "scaledCap": {
+            "top": 70,
+            "centerX": 188.90123456790124,
+            "bounds": [
+              156,
+              70,
+              223,
+              130
+            ],
+            "componentPixels": 2928
+          },
+          "rawBodyHeight": 393,
+          "targetBodyHeight": 351,
+          "integerOffset": [
+            17,
+            3
+          ],
+          "scaledCellSize": [
+            408,
+            495
+          ],
+          "figureBounds": [
+            115,
+            51,
+            323,
+            430
+          ],
+          "capCenterResidualPx": -0.15983413438883076,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawFile": "raw/N/07.png",
+          "file": "frames/N/07.png",
+          "rawRect": [
+            1344,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "08afb5b692d8e9c07b30902d3c62e8bb1602e9d9239f7540725fda5183d995a1",
+          "sha256": "e6704d9744ba03afee858fdcfcdb109c8e6593838a1119a930b71d3e589d3e2e",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 82,
+            "centerX": 191.2568493150685,
+            "bounds": [
+              156,
+              82,
+              228,
+              146
+            ],
+            "componentPixels": 3202
+          },
+          "rawCap": {
+            "top": 77,
+            "centerX": 206.7331189710611,
+            "bounds": [
+              170,
+              77,
+              244,
+              144
+            ],
+            "componentPixels": 3512
+          },
+          "scaledCap": {
+            "top": 70,
+            "centerX": 188.2027027027027,
+            "bounds": [
+              155,
+              70,
+              222,
+              131
+            ],
+            "componentPixels": 2898
+          },
+          "rawBodyHeight": 407,
+          "targetBodyHeight": 365,
+          "integerOffset": [
+            3,
+            12
+          ],
+          "scaledCellSize": [
+            408,
+            495
+          ],
+          "figureBounds": [
+            95,
+            60,
+            310,
+            453
+          ],
+          "capCenterResidualPx": -0.05414661236579832,
+          "figureClipped": false
+        }
+      ],
+      "sheet": "sheets/N.png",
+      "sheetSha256": "b37c6b359b27ff82a6e1ae420c4a9cb3b1a87a34db028534f6a5c3b8cabbca7d",
+      "reviews": [
+        {
+          "file": "reviews/N-5fps.gif",
+          "fps": 5,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "sha256": "5b5d298e5ffba6ea78237bf1d14839f4e66bfb4885a9217564a8407cd67aab0c"
+        },
+        {
+          "file": "reviews/N-10fps.gif",
+          "fps": 10,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "sha256": "e683c6a98c46a75fb0413a2f857722b16ea9b4a23635b6a76766daf42d44afd0"
+        }
+      ],
+      "allFiguresInsideCanvas": true
+    },
+    {
+      "id": "NE",
+      "source": "sources/NE.png",
+      "sourceSize": [
+        1609,
+        977
+      ],
+      "sourceSha256": "94ecebb2d694678205399cf82a70465893e1b1917b4c03c235e11ec1b7e90a38",
+      "sourceMode": "RGB",
+      "normalizedSize": [
+        1792,
+        1088
+      ],
+      "normalizationScaleXY": [
+        1.1137352392790554,
+        1.1136131013306039
+      ],
+      "targetSha256": "8120587dada4ecf12d002e4cff6b968cc4e04ffb6fd30ef74e2849b87f738232",
+      "sharedBodyScale": 0.9779917469050894,
+      "anchor": [
+        216,
+        400
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rawFile": "raw/NE/00.png",
+          "file": "frames/NE/00.png",
+          "rawRect": [
+            0,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "7fd8eb1f40049307857d846ced2407fdd5e6830b3c6ae4dc49ca26fc1debd4ce",
+          "sha256": "42f75db3550698d387798d856a537f19a493a2cc8c0a018c301a012352604536",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 81,
+            "centerX": 207.55555555555554,
+            "bounds": [
+              164,
+              81,
+              239,
+              144
+            ],
+            "componentPixels": 3314
+          },
+          "rawCap": {
+            "top": 81,
+            "centerX": 209.57991803278688,
+            "bounds": [
+              165,
+              81,
+              241,
+              144
+            ],
+            "componentPixels": 3386
+          },
+          "scaledCap": {
+            "top": 79,
+            "centerX": 204.99576271186442,
+            "bounds": [
+              161,
+              79,
+              236,
+              141
+            ],
+            "componentPixels": 3251
+          },
+          "rawBodyHeight": 360,
+          "targetBodyHeight": 355,
+          "integerOffset": [
+            3,
+            2
+          ],
+          "scaledCellSize": [
+            438,
+            532
+          ],
+          "figureBounds": [
+            73,
+            63,
+            298,
+            434
+          ],
+          "capCenterResidualPx": 0.4402071563088725,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawFile": "raw/NE/01.png",
+          "file": "frames/NE/01.png",
+          "rawRect": [
+            448,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "9999c2015fbc64f3c9b9c8a6b3962007336d8ceded8732e976aee191deefc743",
+          "sha256": "e6d46f9ff3bf548b020967647c12bc244deee07f19ea5ce74d2997aa0e686f30",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 82,
+            "centerX": 214.03549060542798,
+            "bounds": [
+              170,
+              82,
+              246,
+              146
+            ],
+            "componentPixels": 3494
+          },
+          "rawCap": {
+            "top": 81,
+            "centerX": 215.82156862745097,
+            "bounds": [
+              170,
+              81,
+              248,
+              145
+            ],
+            "componentPixels": 3530
+          },
+          "scaledCap": {
+            "top": 79,
+            "centerX": 210.97131147540983,
+            "bounds": [
+              166,
+              79,
+              243,
+              142
+            ],
+            "componentPixels": 3377
+          },
+          "rawBodyHeight": 345,
+          "targetBodyHeight": 341,
+          "integerOffset": [
+            3,
+            3
+          ],
+          "scaledCellSize": [
+            438,
+            532
+          ],
+          "figureBounds": [
+            106,
+            64,
+            308,
+            420
+          ],
+          "capCenterResidualPx": -0.06417913001814668,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawFile": "raw/NE/02.png",
+          "file": "frames/NE/02.png",
+          "rawRect": [
+            896,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "5872673c3e58babb3b71efc2b3d750712188659838cd487bd3b25d69bc350e24",
+          "sha256": "b58864551944a13a5896df1fb35a2f95b64799f89343963e85efa45aeb83c5ff",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 74,
+            "centerX": 224.1360824742268,
+            "bounds": [
+              180,
+              74,
+              256,
+              138
+            ],
+            "componentPixels": 3470
+          },
+          "rawCap": {
+            "top": 74,
+            "centerX": 225.54788418708242,
+            "bounds": [
+              180,
+              74,
+              258,
+              140
+            ],
+            "componentPixels": 3559
+          },
+          "scaledCap": {
+            "top": 73,
+            "centerX": 220.31422505307856,
+            "bounds": [
+              176,
+              73,
+              252,
+              137
+            ],
+            "componentPixels": 3380
+          },
+          "rawBodyHeight": 368,
+          "targetBodyHeight": 357,
+          "integerOffset": [
+            4,
+            1
+          ],
+          "scaledCellSize": [
+            438,
+            532
+          ],
+          "figureBounds": [
+            121,
+            62,
+            317,
+            433
+          ],
+          "capCenterResidualPx": 0.1781425788517481,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawFile": "raw/NE/03.png",
+          "file": "frames/NE/03.png",
+          "rawRect": [
+            1344,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "c92ebc58461fcc094fe12616fbe17593b3819c7ba3fadbbabc734f7b835632be",
+          "sha256": "7016c83f6cf2d5ca74d4ba1f662b2e390b47da04f0d25b7e0d0d8453c973a724",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 236.4,
+            "bounds": [
+              192,
+              89,
+              269,
+              154
+            ],
+            "componentPixels": 3459
+          },
+          "rawCap": {
+            "top": 90,
+            "centerX": 237.1899791231733,
+            "bounds": [
+              192,
+              90,
+              270,
+              155
+            ],
+            "componentPixels": 3464
+          },
+          "scaledCap": {
+            "top": 88,
+            "centerX": 231.9637526652452,
+            "bounds": [
+              188,
+              88,
+              264,
+              151
+            ],
+            "componentPixels": 3301
+          },
+          "rawBodyHeight": 372,
+          "targetBodyHeight": 372,
+          "integerOffset": [
+            4,
+            1
+          ],
+          "scaledCellSize": [
+            438,
+            532
+          ],
+          "figureBounds": [
+            110,
+            75,
+            328,
+            452
+          ],
+          "capCenterResidualPx": -0.43624733475479616,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawFile": "raw/NE/04.png",
+          "file": "frames/NE/04.png",
+          "rawRect": [
+            0,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "e926f71667e23b2b2667c8ab3f454e95d3ecb32305f9003d7831ea81d081f7f0",
+          "sha256": "b9965c08afe9aef5bd6741c889e2e4fbc0dfe97d81d67be2a750dc98bdb53aab",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 105,
+            "centerX": 240.74309978768576,
+            "bounds": [
+              196,
+              105,
+              273,
+              169
+            ],
+            "componentPixels": 3483
+          },
+          "rawCap": {
+            "top": 78,
+            "centerX": 237.63655030800822,
+            "bounds": [
+              191,
+              78,
+              270,
+              143
+            ],
+            "componentPixels": 3553
+          },
+          "scaledCap": {
+            "top": 76,
+            "centerX": 232.2963752665245,
+            "bounds": [
+              187,
+              76,
+              264,
+              140
+            ],
+            "componentPixels": 3389
+          },
+          "rawBodyHeight": 387,
+          "targetBodyHeight": 384,
+          "integerOffset": [
+            8,
+            29
+          ],
+          "scaledCellSize": [
+            438,
+            532
+          ],
+          "figureBounds": [
+            110,
+            87,
+            336,
+            484
+          ],
+          "capCenterResidualPx": -0.4467245211612578,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawFile": "raw/NE/05.png",
+          "file": "frames/NE/05.png",
+          "rawRect": [
+            448,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "ed6450cb75b0f8ae269edd7fd1b3fa9123760486fb4071cfa1722e5cf270a3ec",
+          "sha256": "151bc55e6272726af41d660385e484f4dd761cc65757724ff897cb091e74a86b",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 235.80962800875272,
+            "bounds": [
+              191,
+              89,
+              268,
+              153
+            ],
+            "componentPixels": 3424
+          },
+          "rawCap": {
+            "top": 78,
+            "centerX": 235.5995575221239,
+            "bounds": [
+              190,
+              78,
+              268,
+              143
+            ],
+            "componentPixels": 3518
+          },
+          "scaledCap": {
+            "top": 76,
+            "centerX": 230.43287037037038,
+            "bounds": [
+              186,
+              76,
+              262,
+              140
+            ],
+            "componentPixels": 3360
+          },
+          "rawBodyHeight": 351,
+          "targetBodyHeight": 344,
+          "integerOffset": [
+            5,
+            13
+          ],
+          "scaledCellSize": [
+            438,
+            532
+          ],
+          "figureBounds": [
+            111,
+            71,
+            330,
+            432
+          ],
+          "capCenterResidualPx": -0.3767576383823439,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawFile": "raw/NE/06.png",
+          "file": "frames/NE/06.png",
+          "rawRect": [
+            896,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "7dd211385f5e214c3991a13020d5f48bf2e8ea8a7fae4a84d265e2b6c30c1653",
+          "sha256": "76ab183c786efb31a474c8fbf821b178721e8671814464b2f55b34cb2be91f4e",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 74,
+            "centerX": 226.89834024896265,
+            "bounds": [
+              182,
+              74,
+              259,
+              137
+            ],
+            "componentPixels": 3469
+          },
+          "rawCap": {
+            "top": 70,
+            "centerX": 229.43763213530656,
+            "bounds": [
+              185,
+              70,
+              262,
+              135
+            ],
+            "componentPixels": 3506
+          },
+          "scaledCap": {
+            "top": 68,
+            "centerX": 224.07795100222717,
+            "bounds": [
+              181,
+              68,
+              256,
+              132
+            ],
+            "componentPixels": 3351
+          },
+          "rawBodyHeight": 352,
+          "targetBodyHeight": 341,
+          "integerOffset": [
+            3,
+            6
+          ],
+          "scaledCellSize": [
+            438,
+            532
+          ],
+          "figureBounds": [
+            124,
+            59,
+            323,
+            419
+          ],
+          "capCenterResidualPx": 0.17961075326451237,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawFile": "raw/NE/07.png",
+          "file": "frames/NE/07.png",
+          "rawRect": [
+            1344,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "b32fa3e749e5cab366d461d8999fa77a9cb165f67f52eb5df0953fc6018bbfaf",
+          "sha256": "11365bc1a99a56ba90f341bc9ef3988f944730a3021a77c70022af967a167509",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 74,
+            "centerX": 216.14519427402863,
+            "bounds": [
+              171,
+              74,
+              248,
+              137
+            ],
+            "componentPixels": 3421
+          },
+          "rawCap": {
+            "top": 71,
+            "centerX": 226.02217294900223,
+            "bounds": [
+              180,
+              71,
+              258,
+              135
+            ],
+            "componentPixels": 3483
+          },
+          "scaledCap": {
+            "top": 70,
+            "centerX": 221.0083857442348,
+            "bounds": [
+              176,
+              70,
+              253,
+              132
+            ],
+            "componentPixels": 3328
+          },
+          "rawBodyHeight": 367,
+          "targetBodyHeight": 356,
+          "integerOffset": [
+            -5,
+            4
+          ],
+          "scaledCellSize": [
+            438,
+            532
+          ],
+          "figureBounds": [
+            89,
+            57,
+            314,
+            432
+          ],
+          "capCenterResidualPx": -0.13680852979382507,
+          "figureClipped": false
+        }
+      ],
+      "sheet": "sheets/NE.png",
+      "sheetSha256": "4c27b06fc28cd59c0c133eba412f541db03809eddc68a13e3f00c3a7034fe1ea",
+      "reviews": [
+        {
+          "file": "reviews/NE-5fps.gif",
+          "fps": 5,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "sha256": "78c850d13bb8d267e536b84069b38a93a9eaed0e0508879e2d92d98b2e20778e"
+        },
+        {
+          "file": "reviews/NE-10fps.gif",
+          "fps": 10,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "sha256": "67658cdb918287789d36624176944e7d9b752915f1d6b1fa8eb8bb6e5e2113db"
+        }
+      ],
+      "allFiguresInsideCanvas": true
+    },
+    {
+      "id": "E",
+      "source": "sources/E.png",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "sourceSha256": "361a0c06f128b4e60aca07026e5b4bcc6e114cc40b7d326cec180ff927b23020",
+      "sourceMode": "RGB",
+      "normalizedSize": [
+        1792,
+        1088
+      ],
+      "normalizationScaleXY": [
+        1.1130434782608696,
+        1.1136131013306039
+      ],
+      "targetSha256": "b7fdbf0d4f4f69863facd5472ed192a092d9d723c6db9712def8c4ff354b5d07",
+      "sharedBodyScale": 0.9565846599131693,
+      "anchor": [
+        216,
+        400
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rawFile": "raw/E/00.png",
+          "file": "frames/E/00.png",
+          "rawRect": [
+            0,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "c43ea1631749d95cd326355327a801c3361efe88557aa7ea2abcafb5368e55f3",
+          "sha256": "fb7f289642c1426cb2a24bf267926959bb507d1df4ad178975e9476191b5777f",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 237.32417582417582,
+            "bounds": [
+              201,
+              89,
+              271,
+              143
+            ],
+            "componentPixels": 2087
+          },
+          "rawCap": {
+            "top": 88,
+            "centerX": 239.51951951951952,
+            "bounds": [
+              203,
+              88,
+              266,
+              123
+            ],
+            "componentPixels": 1218
+          },
+          "scaledCap": {
+            "top": 84,
+            "centerX": 229.47301587301587,
+            "bounds": [
+              195,
+              84,
+              255,
+              117
+            ],
+            "componentPixels": 1118
+          },
+          "rawBodyHeight": 350,
+          "targetBodyHeight": 332,
+          "integerOffset": [
+            8,
+            5
+          ],
+          "scaledCellSize": [
+            429,
+            520
+          ],
+          "figureBounds": [
+            75,
+            87,
+            349,
+            424
+          ],
+          "capCenterResidualPx": 0.14884004884004298,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawFile": "raw/E/01.png",
+          "file": "frames/E/01.png",
+          "rawRect": [
+            448,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "10d71abf4a34dacdf64abd919f7d3fa015de781557ebff6ef621edaebc4e7563",
+          "sha256": "c0f752459405c0a6b2b14bb8016ab78dd50fb4fa7efdede6726e3d9ebe686244",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 81,
+            "centerX": 236.4788029925187,
+            "bounds": [
+              197,
+              81,
+              270,
+              138
+            ],
+            "componentPixels": 2165
+          },
+          "rawCap": {
+            "top": 83,
+            "centerX": 235.43428571428572,
+            "bounds": [
+              201,
+              83,
+              265,
+              118
+            ],
+            "componentPixels": 1107
+          },
+          "scaledCap": {
+            "top": 79,
+            "centerX": 225.19571865443424,
+            "bounds": [
+              192,
+              79,
+              254,
+              112
+            ],
+            "componentPixels": 1015
+          },
+          "rawBodyHeight": 347,
+          "targetBodyHeight": 334,
+          "integerOffset": [
+            11,
+            2
+          ],
+          "scaledCellSize": [
+            429,
+            520
+          ],
+          "figureBounds": [
+            86,
+            79,
+            350,
+            413
+          ],
+          "capCenterResidualPx": -0.2830843380844499,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawFile": "raw/E/02.png",
+          "file": "frames/E/02.png",
+          "rawRect": [
+            896,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "53894987a3d432efde61fe372ba2a6c53ace8b7b94cbf872717a145e7fcff989",
+          "sha256": "8a30e871c9571b83a29a1d6be892a4c591832d9419e90b69e01210370bcfd91c",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 81,
+            "centerX": 234.5447570332481,
+            "bounds": [
+              195,
+              81,
+              268,
+              138
+            ],
+            "componentPixels": 2345
+          },
+          "rawCap": {
+            "top": 82,
+            "centerX": 235.04787234042553,
+            "bounds": [
+              200,
+              82,
+              264,
+              117
+            ],
+            "componentPixels": 1078
+          },
+          "scaledCap": {
+            "top": 78,
+            "centerX": 224.85352112676057,
+            "bounds": [
+              187,
+              78,
+              258,
+              135
+            ],
+            "componentPixels": 1711
+          },
+          "rawBodyHeight": 355,
+          "targetBodyHeight": 341,
+          "integerOffset": [
+            10,
+            3
+          ],
+          "scaledCellSize": [
+            429,
+            520
+          ],
+          "figureBounds": [
+            107,
+            79,
+            348,
+            421
+          ],
+          "capCenterResidualPx": 0.3087640935124796,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawFile": "raw/E/03.png",
+          "file": "frames/E/03.png",
+          "rawRect": [
+            1344,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "c32456540673f3e2c405af4b850612d3b63ab47944e4ffc94a0f5144c7c10e70",
+          "sha256": "8f03182305af5e9c02dabaed90b85b5a30236ed5742e1ee0f3a1158dd7ca0da0",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 106,
+            "centerX": 232.8391089108911,
+            "bounds": [
+              195,
+              106,
+              265,
+              162
+            ],
+            "componentPixels": 2256
+          },
+          "rawCap": {
+            "top": 102,
+            "centerX": 234.99732620320856,
+            "bounds": [
+              196,
+              102,
+              270,
+              153
+            ],
+            "componentPixels": 2272
+          },
+          "scaledCap": {
+            "top": 98,
+            "centerX": 224.86753246753247,
+            "bounds": [
+              187,
+              98,
+              259,
+              146
+            ],
+            "componentPixels": 2073
+          },
+          "rawBodyHeight": 344,
+          "targetBodyHeight": 321,
+          "integerOffset": [
+            8,
+            8
+          ],
+          "scaledCellSize": [
+            429,
+            520
+          ],
+          "figureBounds": [
+            101,
+            104,
+            348,
+            435
+          ],
+          "capCenterResidualPx": 0.028423556641371306,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawFile": "raw/E/04.png",
+          "file": "frames/E/04.png",
+          "rawRect": [
+            0,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "a5d2c744915b7e0bfe3c4c291d6d18dd400d3365bca382633ea91bdf2df4e6d9",
+          "sha256": "f284512f5853fa6f39cf71f56104e2681b7781d49767eecbea2e5982a2c151f5",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 114,
+            "centerX": 233.85679611650485,
+            "bounds": [
+              195,
+              114,
+              267,
+              171
+            ],
+            "componentPixels": 2453
+          },
+          "rawCap": {
+            "top": 99,
+            "centerX": 235.82321899736147,
+            "bounds": [
+              194,
+              99,
+              270,
+              159
+            ],
+            "componentPixels": 2342
+          },
+          "scaledCap": {
+            "top": 93,
+            "centerX": 226.11,
+            "bounds": [
+              186,
+              93,
+              258,
+              152
+            ],
+            "componentPixels": 2116
+          },
+          "rawBodyHeight": 323,
+          "targetBodyHeight": 301,
+          "integerOffset": [
+            8,
+            21
+          ],
+          "scaledCellSize": [
+            429,
+            520
+          ],
+          "figureBounds": [
+            64,
+            113,
+            345,
+            425
+          ],
+          "capCenterResidualPx": 0.25320388349516065,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawFile": "raw/E/05.png",
+          "file": "frames/E/05.png",
+          "rawRect": [
+            448,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "5fb663050523aa1431618e10f500dc0c7353ff0633d581c5f1165b7d4c30868d",
+          "sha256": "d31b5f5b37e94f2a7b98100ef82da00f538d957ce109717838ec746e583033d0",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 106,
+            "centerX": 234.35714285714286,
+            "bounds": [
+              196,
+              106,
+              267,
+              161
+            ],
+            "componentPixels": 2256
+          },
+          "rawCap": {
+            "top": 99,
+            "centerX": 237.6253369272237,
+            "bounds": [
+              201,
+              99,
+              265,
+              135
+            ],
+            "componentPixels": 1373
+          },
+          "scaledCap": {
+            "top": 95,
+            "centerX": 227.68010752688173,
+            "bounds": [
+              193,
+              95,
+              254,
+              129
+            ],
+            "componentPixels": 1258
+          },
+          "rawBodyHeight": 321,
+          "targetBodyHeight": 302,
+          "integerOffset": [
+            7,
+            11
+          ],
+          "scaledCellSize": [
+            429,
+            520
+          ],
+          "figureBounds": [
+            90,
+            104,
+            349,
+            412
+          ],
+          "capCenterResidualPx": 0.32296466973886595,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawFile": "raw/E/06.png",
+          "file": "frames/E/06.png",
+          "rawRect": [
+            896,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "3a401d25eab405c07f406f84bc3468888a252b68d55c9a463652f8af44371cce",
+          "sha256": "840314215762fe962e1311f5583deaa8b2b15f0b170a576f9581342364e253b8",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 81,
+            "centerX": 236.61576354679804,
+            "bounds": [
+              197,
+              81,
+              271,
+              139
+            ],
+            "componentPixels": 2378
+          },
+          "rawCap": {
+            "top": 80,
+            "centerX": 239.90764331210192,
+            "bounds": [
+              198,
+              80,
+              273,
+              142
+            ],
+            "componentPixels": 1864
+          },
+          "scaledCap": {
+            "top": 91,
+            "centerX": 256.3103448275862,
+            "bounds": [
+              189,
+              91,
+              262,
+              136
+            ],
+            "componentPixels": 896
+          },
+          "rawBodyHeight": 354,
+          "targetBodyHeight": 334,
+          "integerOffset": [
+            -20,
+            -10
+          ],
+          "scaledCellSize": [
+            429,
+            520
+          ],
+          "figureBounds": [
+            81,
+            65,
+            321,
+            405
+          ],
+          "capCenterResidualPx": -0.30541871921181496,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawFile": "raw/E/07.png",
+          "file": "frames/E/07.png",
+          "rawRect": [
+            1344,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "dae4e3c811b363a373df1a2ec7cd1b73cb6b047447b325b894752551e7124485",
+          "sha256": "d778f65a26b9f87dc3c248c0c69e75076d920056acb638e2058b764f8f56a5b1",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 81,
+            "centerX": 236.13106796116506,
+            "bounds": [
+              198,
+              81,
+              269,
+              136
+            ],
+            "componentPixels": 2465
+          },
+          "rawCap": {
+            "top": 84,
+            "centerX": 237.672,
+            "bounds": [
+              201,
+              84,
+              267,
+              120
+            ],
+            "componentPixels": 1414
+          },
+          "scaledCap": {
+            "top": 81,
+            "centerX": 227.3894472361809,
+            "bounds": [
+              193,
+              81,
+              255,
+              115
+            ],
+            "componentPixels": 1281
+          },
+          "rawBodyHeight": 338,
+          "targetBodyHeight": 329,
+          "integerOffset": [
+            9,
+            0
+          ],
+          "scaledCellSize": [
+            429,
+            520
+          ],
+          "figureBounds": [
+            104,
+            79,
+            350,
+            403
+          ],
+          "capCenterResidualPx": 0.2583792750158409,
+          "figureClipped": false
+        }
+      ],
+      "sheet": "sheets/E.png",
+      "sheetSha256": "24484f956d1c0cbd46a57c8f24e7ba2cdd78bca1218e8300ea04b53875a723b1",
+      "reviews": [
+        {
+          "file": "reviews/E-5fps.gif",
+          "fps": 5,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "sha256": "2465668f6ee11eccf7f6ea00846e4637b048161517637163b111b7c776b61dbb"
+        },
+        {
+          "file": "reviews/E-10fps.gif",
+          "fps": 10,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "sha256": "55f4e5ae10099dbca7b7f46b4f9d2451b9d52d884c80bcd796c0f9bc207123e0"
+        }
+      ],
+      "allFiguresInsideCanvas": true
+    },
+    {
+      "id": "SE",
+      "source": "sources/SE.png",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "sourceSha256": "b95246d32914ed8b44eb61ab170dd1477552e116b30fc675b638f60234127498",
+      "sourceMode": "RGB",
+      "normalizedSize": [
+        1792,
+        1088
+      ],
+      "normalizationScaleXY": [
+        1.1130434782608696,
+        1.1136131013306039
+      ],
+      "targetSha256": "f38ddd40194950b69608ee829c288f028087b8c9ebff9e18b0813e3f9f701d91",
+      "sharedBodyScale": 0.9559471365638766,
+      "anchor": [
+        216,
+        400
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rawFile": "raw/SE/00.png",
+          "file": "frames/SE/00.png",
+          "rawRect": [
+            0,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "39d898504d6846471de061085fdb7291b292e6f89b8fd7e69acbebf181a9be10",
+          "sha256": "731cfb8be46b998e63b4e41278835eab9472e3e0536b9d2923b4c304596510ac",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 98,
+            "centerX": 251.16986301369863,
+            "bounds": [
+              216,
+              98,
+              289,
+              154
+            ],
+            "componentPixels": 2604
+          },
+          "rawCap": {
+            "top": 96,
+            "centerX": 245.86797752808988,
+            "bounds": [
+              208,
+              96,
+              285,
+              156
+            ],
+            "componentPixels": 2972
+          },
+          "scaledCap": {
+            "top": 92,
+            "centerX": 234.601108033241,
+            "bounds": [
+              199,
+              92,
+              272,
+              149
+            ],
+            "componentPixels": 2717
+          },
+          "rawBodyHeight": 360,
+          "targetBodyHeight": 337,
+          "integerOffset": [
+            17,
+            6
+          ],
+          "scaledCellSize": [
+            428,
+            520
+          ],
+          "figureBounds": [
+            121,
+            59,
+            335,
+            442
+          ],
+          "capCenterResidualPx": 0.4312450195423594,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawFile": "raw/SE/01.png",
+          "file": "frames/SE/01.png",
+          "rawRect": [
+            448,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "40658b4e980a214df53d45142581bb4dbf923507ce79e59a3e1d3cebb9b1572f",
+          "sha256": "369cab2a13caa53e43380793bb2f9fcf402d1bd83db0cde2d47003994e8e4e42",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 90,
+            "centerX": 242.67885117493472,
+            "bounds": [
+              205,
+              90,
+              280,
+              152
+            ],
+            "componentPixels": 2447
+          },
+          "rawCap": {
+            "top": 93,
+            "centerX": 250.355091383812,
+            "bounds": [
+              218,
+              93,
+              289,
+              146
+            ],
+            "componentPixels": 2693
+          },
+          "scaledCap": {
+            "top": 89,
+            "centerX": 239.07712765957447,
+            "bounds": [
+              208,
+              89,
+              276,
+              140
+            ],
+            "componentPixels": 2458
+          },
+          "rawBodyHeight": 345,
+          "targetBodyHeight": 331,
+          "integerOffset": [
+            4,
+            1
+          ],
+          "scaledCellSize": [
+            428,
+            520
+          ],
+          "figureBounds": [
+            121,
+            60,
+            315,
+            420
+          ],
+          "capCenterResidualPx": 0.3982764846397515,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawFile": "raw/SE/02.png",
+          "file": "frames/SE/02.png",
+          "rawRect": [
+            896,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "e8b50cb6fa5f86bcddabdacccfc7329d81b70dd469eabd57c5bd032fe7f6756c",
+          "sha256": "fb126a3c368f551a1c9cbccd18b2d4fdd4a6dceb144f5c3fdad2cbe8b0ff73e5",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 90,
+            "centerX": 228.44054054054055,
+            "bounds": [
+              189,
+              90,
+              266,
+              153
+            ],
+            "componentPixels": 2650
+          },
+          "rawCap": {
+            "top": 98,
+            "centerX": 239.5825,
+            "bounds": [
+              203,
+              98,
+              277,
+              156
+            ],
+            "componentPixels": 2831
+          },
+          "scaledCap": {
+            "top": 93,
+            "centerX": 228.72131147540983,
+            "bounds": [
+              194,
+              93,
+              264,
+              151
+            ],
+            "componentPixels": 2594
+          },
+          "rawBodyHeight": 341,
+          "targetBodyHeight": 322,
+          "integerOffset": [
+            0,
+            -3
+          ],
+          "scaledCellSize": [
+            428,
+            520
+          ],
+          "figureBounds": [
+            115,
+            65,
+            273,
+            417
+          ],
+          "capCenterResidualPx": 0.28077093486928106,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawFile": "raw/SE/03.png",
+          "file": "frames/SE/03.png",
+          "rawRect": [
+            1344,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "4c9c3255e402bde231a0b11cdb88aedbc4513859beb6d9713296b4cbdd242c2e",
+          "sha256": "a8200113e6544f34523846b043a5d130d196fc8442b75424f855147d397bea3e",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 105,
+            "centerX": 220.59206798866856,
+            "bounds": [
+              181,
+              105,
+              260,
+              170
+            ],
+            "componentPixels": 2714
+          },
+          "rawCap": {
+            "top": 113,
+            "centerX": 247.4655172413793,
+            "bounds": [
+              216,
+              113,
+              283,
+              170
+            ],
+            "componentPixels": 2505
+          },
+          "scaledCap": {
+            "top": 108,
+            "centerX": 236.55588235294118,
+            "bounds": [
+              207,
+              108,
+              271,
+              165
+            ],
+            "componentPixels": 2312
+          },
+          "rawBodyHeight": 319,
+          "targetBodyHeight": 302,
+          "integerOffset": [
+            -16,
+            -3
+          ],
+          "scaledCellSize": [
+            428,
+            520
+          ],
+          "figureBounds": [
+            109,
+            77,
+            300,
+            410
+          ],
+          "capCenterResidualPx": -0.036185635727377985,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawFile": "raw/SE/04.png",
+          "file": "frames/SE/04.png",
+          "rawRect": [
+            0,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "3f07a164a9af16c605203f912354f30fff56178e0322e0607d980eaef20fde71",
+          "sha256": "182e5854034a1da39e3249563d0a9ae6bbcb2a7bceb6464cd5d73eaf32e6dca6",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 122,
+            "centerX": 212.8359375,
+            "bounds": [
+              174,
+              122,
+              251,
+              186
+            ],
+            "componentPixels": 2914
+          },
+          "rawCap": {
+            "top": 114,
+            "centerX": 247.4082191780822,
+            "bounds": [
+              214,
+              114,
+              286,
+              179
+            ],
+            "componentPixels": 2864
+          },
+          "scaledCap": {
+            "top": 109,
+            "centerX": 236.2534435261708,
+            "bounds": [
+              204,
+              109,
+              273,
+              163
+            ],
+            "componentPixels": 2582
+          },
+          "rawBodyHeight": 322,
+          "targetBodyHeight": 306,
+          "integerOffset": [
+            -23,
+            13
+          ],
+          "scaledCellSize": [
+            428,
+            520
+          ],
+          "figureBounds": [
+            63,
+            89,
+            295,
+            430
+          ],
+          "capCenterResidualPx": 0.41750602617079835,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawFile": "raw/SE/05.png",
+          "file": "frames/SE/05.png",
+          "rawRect": [
+            448,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "42658a34784332177c326df3e2cad6ca15d052c4cd9b9a2efca4a5ff49d149af",
+          "sha256": "3ccd806cfca6026287f9ff7acf171b04655417d17197b17fe1062be76f6de65b",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 106,
+            "centerX": 219.94818652849742,
+            "bounds": [
+              182,
+              106,
+              259,
+              160
+            ],
+            "componentPixels": 2482
+          },
+          "rawCap": {
+            "top": 107,
+            "centerX": 251.97421203438395,
+            "bounds": [
+              221,
+              107,
+              289,
+              167
+            ],
+            "componentPixels": 2609
+          },
+          "scaledCap": {
+            "top": 102,
+            "centerX": 240.51951951951952,
+            "bounds": [
+              211,
+              102,
+              277,
+              160
+            ],
+            "componentPixels": 2392
+          },
+          "rawBodyHeight": 330,
+          "targetBodyHeight": 316,
+          "integerOffset": [
+            -21,
+            4
+          ],
+          "scaledCellSize": [
+            428,
+            520
+          ],
+          "figureBounds": [
+            91,
+            78,
+            290,
+            422
+          ],
+          "capCenterResidualPx": -0.42866700897789656,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawFile": "raw/SE/06.png",
+          "file": "frames/SE/06.png",
+          "rawRect": [
+            896,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "37caca8168b14a0e43adf6ee7e5868cace02e89dd1d79ddcd70d3f0f26062a3f",
+          "sha256": "6b01c6817899555589d3188a79e4f579f25d6a1e8549b8f41e342b97ef771c50",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 91,
+            "centerX": 228.8,
+            "bounds": [
+              197,
+              91,
+              259,
+              131
+            ],
+            "componentPixels": 1300
+          },
+          "rawCap": {
+            "top": 106,
+            "centerX": 244.0677966101695,
+            "bounds": [
+              215,
+              106,
+              281,
+              157
+            ],
+            "componentPixels": 2359
+          },
+          "scaledCap": {
+            "top": 101,
+            "centerX": 232.9205882352941,
+            "bounds": [
+              206,
+              101,
+              268,
+              156
+            ],
+            "componentPixels": 2210
+          },
+          "rawBodyHeight": 340,
+          "targetBodyHeight": 335,
+          "integerOffset": [
+            -4,
+            -10
+          ],
+          "scaledCellSize": [
+            428,
+            520
+          ],
+          "figureBounds": [
+            114,
+            58,
+            303,
+            423
+          ],
+          "capCenterResidualPx": 0.12058823529409324,
+          "figureClipped": false,
+          "finalOverride": {
+            "file": "final-frame-overrides/SE/06.png",
+            "sha256": "6b01c6817899555589d3188a79e4f579f25d6a1e8549b8f41e342b97ef771c50",
+            "baseSha256": "ffcbd993763ee95d3cb9f3204454e415fa90ffa2100773ccf2f95d742d23528d",
+            "baselineMeasurement": {
+              "index": 6,
+              "targetCap": {
+                "top": 91,
+                "centerX": 228.8,
+                "bounds": [
+                  197,
+                  91,
+                  259,
+                  131
+                ],
+                "componentPixels": 1300
+              },
+              "rawCap": {
+                "top": 106,
+                "centerX": 244.0677966101695,
+                "bounds": [
+                  215,
+                  106,
+                  281,
+                  157
+                ],
+                "componentPixels": 2359
+              },
+              "scaledCap": {
+                "top": 101,
+                "centerX": 232.9205882352941,
+                "bounds": [
+                  206,
+                  101,
+                  268,
+                  156
+                ],
+                "componentPixels": 2210
+              },
+              "rawBodyHeight": 340,
+              "targetBodyHeight": 335,
+              "integerOffset": [
+                -4,
+                -10
+              ],
+              "scaledCellSize": [
+                428,
+                520
+              ],
+              "figureBounds": [
+                121,
+                55,
+                274,
+                416
+              ],
+              "capCenterResidualPx": 0.12058823529409324,
+              "figureClipped": false
+            },
+            "baselineCapOnFinalCanvas": {
+              "top": 91,
+              "centerX": 228.9205882352941,
+              "bounds": [
+                202,
+                91,
+                264,
+                146
+              ],
+              "componentPixels": 2210
+            },
+            "actualCapOnFinalCanvas": {
+              "top": 91,
+              "centerX": 228.52242744063324,
+              "bounds": [
+                199,
+                91,
+                267,
+                157
+              ],
+              "componentPixels": 2791
+            },
+            "capDeltaPx": [
+              -0.3981607946608676,
+              0
+            ],
+            "capDiagnosticFile": "diagnostics/SE-06-final-override.png",
+            "capMeasurementMeaning": "Measured visible rust crown after replacement; no registration correction applied.",
+            "operation": "Exact final-canvas replacement; no additional scale or translation."
+          },
+          "registrationMeasurementAppliesTo": "baseline-before-final-frame-override"
+        },
+        {
+          "index": 7,
+          "rawFile": "raw/SE/07.png",
+          "file": "frames/SE/07.png",
+          "rawRect": [
+            1344,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "3fc89dc47914dd7495e275efd44efd3762a9ff4227fede17f7d8ea3dd5fb20bc",
+          "sha256": "37e30637d11217f268e48a7177349bb341b9bbb1588685f7f3f5047b1f524573",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 91,
+            "centerX": 241.521327014218,
+            "bounds": [
+              202,
+              91,
+              280,
+              151
+            ],
+            "componentPixels": 2559
+          },
+          "rawCap": {
+            "top": 97,
+            "centerX": 256.2068965517241,
+            "bounds": [
+              222,
+              97,
+              294,
+              157
+            ],
+            "componentPixels": 2851
+          },
+          "scaledCap": {
+            "top": 92,
+            "centerX": 244.5982404692082,
+            "bounds": [
+              210,
+              92,
+              281,
+              148
+            ],
+            "componentPixels": 2612
+          },
+          "rawBodyHeight": 347,
+          "targetBodyHeight": 329,
+          "integerOffset": [
+            -3,
+            -1
+          ],
+          "scaledCellSize": [
+            428,
+            520
+          ],
+          "figureBounds": [
+            125,
+            59,
+            318,
+            429
+          ],
+          "capCenterResidualPx": 0.07691345499020485,
+          "figureClipped": false,
+          "finalOverride": {
+            "file": "final-frame-overrides/SE/07.png",
+            "sha256": "37e30637d11217f268e48a7177349bb341b9bbb1588685f7f3f5047b1f524573",
+            "baseSha256": "57f2ddf775d1f8208d8abb4ed472bcc9005b5835f7710ef3a663d72b83343be3",
+            "baselineMeasurement": {
+              "index": 7,
+              "targetCap": {
+                "top": 91,
+                "centerX": 241.521327014218,
+                "bounds": [
+                  202,
+                  91,
+                  280,
+                  151
+                ],
+                "componentPixels": 2559
+              },
+              "rawCap": {
+                "top": 97,
+                "centerX": 256.2068965517241,
+                "bounds": [
+                  222,
+                  97,
+                  294,
+                  157
+                ],
+                "componentPixels": 2851
+              },
+              "scaledCap": {
+                "top": 92,
+                "centerX": 244.5982404692082,
+                "bounds": [
+                  210,
+                  92,
+                  281,
+                  148
+                ],
+                "componentPixels": 2612
+              },
+              "rawBodyHeight": 347,
+              "targetBodyHeight": 329,
+              "integerOffset": [
+                -3,
+                -1
+              ],
+              "scaledCellSize": [
+                428,
+                520
+              ],
+              "figureBounds": [
+                120,
+                59,
+                311,
+                424
+              ],
+              "capCenterResidualPx": 0.07691345499020485,
+              "figureClipped": false
+            },
+            "baselineCapOnFinalCanvas": {
+              "top": 91,
+              "centerX": 241.5982404692082,
+              "bounds": [
+                207,
+                91,
+                278,
+                147
+              ],
+              "componentPixels": 2612
+            },
+            "actualCapOnFinalCanvas": {
+              "top": 91,
+              "centerX": 241.46027397260275,
+              "bounds": [
+                210,
+                91,
+                280,
+                157
+              ],
+              "componentPixels": 2817
+            },
+            "capDeltaPx": [
+              -0.13796649660545768,
+              0
+            ],
+            "capDiagnosticFile": "diagnostics/SE-07-final-override.png",
+            "capMeasurementMeaning": "Measured visible rust crown after replacement; no registration correction applied.",
+            "operation": "Exact final-canvas replacement; no additional scale or translation."
+          },
+          "registrationMeasurementAppliesTo": "baseline-before-final-frame-override"
+        }
+      ],
+      "sheet": "sheets/SE.png",
+      "sheetSha256": "da182da1265eb14a16ca72de52fc8f0d0a818de5fae75e1c2b46d4966e112f73",
+      "reviews": [
+        {
+          "file": "reviews/SE-5fps.gif",
+          "fps": 5,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "sha256": "2c6dbc67a392d7c0e45e9239f7dd912de017cc3ef69b817454c9bec24bf32bd3"
+        },
+        {
+          "file": "reviews/SE-10fps.gif",
+          "fps": 10,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "sha256": "5a2bd1c57bc7c8ae31c451ca6e16bcff34d8225d07c0809787576c2cb99063ca"
+        }
+      ],
+      "allFiguresInsideCanvas": true
+    },
+    {
+      "id": "S",
+      "source": "sources/S.png",
+      "sourceSize": [
+        1609,
+        977
+      ],
+      "sourceSha256": "58aae404f3ce19abde0b5e73aeda9e6741ed22f182f32e4a32bffb217537fcda",
+      "sourceMode": "RGB",
+      "normalizedSize": [
+        1792,
+        1088
+      ],
+      "normalizationScaleXY": [
+        1.1137352392790554,
+        1.1136131013306039
+      ],
+      "targetSha256": "e74f757ee569977bac3cfe2ac8cec56544144d7f99f01eaaa29a2ebf17594122",
+      "sharedBodyScale": 0.8945945945945946,
+      "anchor": [
+        216,
+        400
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rawFile": "raw/S/00.png",
+          "file": "frames/S/00.png",
+          "rawRect": [
+            0,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "6a7933c2da29c2c06c80e0d59982e97bae95848dcea5b6ff97ac796ba7c96f3f",
+          "sha256": "55c4caa2c127d76745adaf805e57e5e2ca15859a39428b58b2cfd287e023dfd2",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 113,
+            "centerX": 241.49242424242425,
+            "bounds": [
+              213,
+              113,
+              272,
+              148
+            ],
+            "componentPixels": 802
+          },
+          "rawCap": {
+            "top": 111,
+            "centerX": 232.5,
+            "bounds": [
+              201,
+              111,
+              270,
+              167
+            ],
+            "componentPixels": 1407
+          },
+          "scaledCap": {
+            "top": 99,
+            "centerX": 208.05376344086022,
+            "bounds": [
+              175,
+              99,
+              242,
+              150
+            ],
+            "componentPixels": 1373
+          },
+          "rawBodyHeight": 367,
+          "targetBodyHeight": 326,
+          "integerOffset": [
+            33,
+            14
+          ],
+          "scaledCellSize": [
+            401,
+            487
+          ],
+          "figureBounds": [
+            132,
+            91,
+            329,
+            442
+          ],
+          "capCenterResidualPx": -0.4386608015640263,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawFile": "raw/S/01.png",
+          "file": "frames/S/01.png",
+          "rawRect": [
+            448,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "a14bda27c56155534d5875d59b89bc85626c518d1f8f9d9f852f11a6442fb72b",
+          "sha256": "2fb46e692206c787bb4edf19b9606bf259b62406d9bdc8ee1b62720947820457",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 105,
+            "centerX": 232.06810035842295,
+            "bounds": [
+              204,
+              105,
+              260,
+              141
+            ],
+            "componentPixels": 851
+          },
+          "rawCap": {
+            "top": 111,
+            "centerX": 219.62126245847176,
+            "bounds": [
+              182,
+              111,
+              257,
+              166
+            ],
+            "componentPixels": 1548
+          },
+          "scaledCap": {
+            "top": 99,
+            "centerX": 196.4264705882353,
+            "bounds": [
+              163,
+              99,
+              226,
+              148
+            ],
+            "componentPixels": 1219
+          },
+          "rawBodyHeight": 368,
+          "targetBodyHeight": 329,
+          "integerOffset": [
+            36,
+            6
+          ],
+          "scaledCellSize": [
+            401,
+            487
+          ],
+          "figureBounds": [
+            124,
+            80,
+            323,
+            435
+          ],
+          "capCenterResidualPx": 0.3583702298123512,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawFile": "raw/S/02.png",
+          "file": "frames/S/02.png",
+          "rawRect": [
+            896,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "e98f3a3ad64dc303820a15c39434be82822123e1ef5309d594e4b870a3305d1c",
+          "sha256": "c39f3a3ecd7c40abe491143b490af9b161837b91bbf67740c3214e60fd7b84c4",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 98,
+            "centerX": 207.281045751634,
+            "bounds": [
+              182,
+              98,
+              218,
+              147
+            ],
+            "componentPixels": 634
+          },
+          "rawCap": {
+            "top": 109,
+            "centerX": 201.58671586715866,
+            "bounds": [
+              169,
+              109,
+              234,
+              150
+            ],
+            "componentPixels": 1327
+          },
+          "scaledCap": {
+            "top": 98,
+            "centerX": 180.27436823104694,
+            "bounds": [
+              146,
+              98,
+              210,
+              147
+            ],
+            "componentPixels": 1242
+          },
+          "rawBodyHeight": 366,
+          "targetBodyHeight": 326,
+          "integerOffset": [
+            27,
+            0
+          ],
+          "scaledCellSize": [
+            401,
+            487
+          ],
+          "figureBounds": [
+            97,
+            74,
+            302,
+            425
+          ],
+          "capCenterResidualPx": -0.006677520587061281,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawFile": "raw/S/03.png",
+          "file": "frames/S/03.png",
+          "rawRect": [
+            1344,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "456d52d4e183516a006ee7eb6c36e164b06d1e411caab4ccfcba98e267295475",
+          "sha256": "17e548102a9e71f259d84ed653e446f81bf554509d70ae5dec761204a3ddd239",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 105,
+            "centerX": 201.44642857142858,
+            "bounds": [
+              172,
+              105,
+              230,
+              141
+            ],
+            "componentPixels": 962
+          },
+          "rawCap": {
+            "top": 111,
+            "centerX": 207.73758865248226,
+            "bounds": [
+              171,
+              111,
+              246,
+              168
+            ],
+            "componentPixels": 1698
+          },
+          "scaledCap": {
+            "top": 99,
+            "centerX": 185.80933852140078,
+            "bounds": [
+              153,
+              99,
+              220,
+              150
+            ],
+            "componentPixels": 1152
+          },
+          "rawBodyHeight": 369,
+          "targetBodyHeight": 329,
+          "integerOffset": [
+            16,
+            6
+          ],
+          "scaledCellSize": [
+            401,
+            487
+          ],
+          "figureBounds": [
+            93,
+            80,
+            298,
+            436
+          ],
+          "capCenterResidualPx": 0.3629099499721917,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawFile": "raw/S/04.png",
+          "file": "frames/S/04.png",
+          "rawRect": [
+            0,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "5b96b14e787bbcce78ca2e0b1212976ec625377f3e1e7564053896706748afce",
+          "sha256": "cbe02cfaab651e39bd16fa0b44c9815ceafd95b8287d98e00491ebce1a48ddae",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 122,
+            "centerX": 187.96273291925465,
+            "bounds": [
+              167,
+              122,
+              201,
+              155
+            ],
+            "componentPixels": 435
+          },
+          "rawCap": {
+            "top": 88,
+            "centerX": 231.79268292682926,
+            "bounds": [
+              195,
+              88,
+              263,
+              146
+            ],
+            "componentPixels": 1335
+          },
+          "scaledCap": {
+            "top": 79,
+            "centerX": 207.24463519313304,
+            "bounds": [
+              174,
+              79,
+              238,
+              129
+            ],
+            "componentPixels": 1041
+          },
+          "rawBodyHeight": 374,
+          "targetBodyHeight": 338,
+          "integerOffset": [
+            -19,
+            43
+          ],
+          "scaledCellSize": [
+            401,
+            487
+          ],
+          "figureBounds": [
+            78,
+            97,
+            281,
+            456
+          ],
+          "capCenterResidualPx": 0.2819022738783872,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawFile": "raw/S/05.png",
+          "file": "frames/S/05.png",
+          "rawRect": [
+            448,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "a12198ce66c2ad1538fe55d7eb9a4d3308867a98e28bfdba10aaaa39be23e95b",
+          "sha256": "9c48aff8e15e92666604fe85f52ff117d91c5d815b846f6db7b1ead83dbf000f",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 113,
+            "centerX": 204.09448818897638,
+            "bounds": [
+              169,
+              113,
+              232,
+              166
+            ],
+            "componentPixels": 1090
+          },
+          "rawCap": {
+            "top": 83,
+            "centerX": 220.34782608695653,
+            "bounds": [
+              183,
+              83,
+              254,
+              141
+            ],
+            "componentPixels": 1328
+          },
+          "scaledCap": {
+            "top": 76,
+            "centerX": 196.55755395683454,
+            "bounds": [
+              164,
+              76,
+              227,
+              126
+            ],
+            "componentPixels": 1063
+          },
+          "rawBodyHeight": 376,
+          "targetBodyHeight": 333,
+          "integerOffset": [
+            8,
+            37
+          ],
+          "scaledCellSize": [
+            401,
+            487
+          ],
+          "figureBounds": [
+            98,
+            88,
+            291,
+            448
+          ],
+          "capCenterResidualPx": 0.46306576785815423,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawFile": "raw/S/06.png",
+          "file": "frames/S/06.png",
+          "rawRect": [
+            896,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "678dbc9075e082400195baf76ed411f12f6698acde2ebe5ba60d862d1cce6646",
+          "sha256": "d438fc4ba27c351664ed3d00cc618b937f4b201fc65a968426ba37d65f60b6b9",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 97,
+            "centerX": 215.728624535316,
+            "bounds": [
+              187,
+              97,
+              250,
+              150
+            ],
+            "componentPixels": 1113
+          },
+          "rawCap": {
+            "top": 91,
+            "centerX": 206.32944606413994,
+            "bounds": [
+              169,
+              91,
+              240,
+              148
+            ],
+            "componentPixels": 1349
+          },
+          "scaledCap": {
+            "top": 81,
+            "centerX": 184.47936507936507,
+            "bounds": [
+              151,
+              81,
+              215,
+              130
+            ],
+            "componentPixels": 1063
+          },
+          "rawBodyHeight": 371,
+          "targetBodyHeight": 333,
+          "integerOffset": [
+            31,
+            16
+          ],
+          "scaledCellSize": [
+            401,
+            487
+          ],
+          "figureBounds": [
+            107,
+            72,
+            309,
+            430
+          ],
+          "capCenterResidualPx": -0.24925945595092003,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawFile": "raw/S/07.png",
+          "file": "frames/S/07.png",
+          "rawRect": [
+            1344,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "a70a4f1366f0ce1cf27536bd45b0ca0162922452b82dfcdb54c4baeca82c26b3",
+          "sha256": "20558d47bdd1f4ca3e3503733fb18a53d04852aad8425508f002f79ae25e0595",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 105,
+            "centerX": 228.30384615384617,
+            "bounds": [
+              200,
+              105,
+              257,
+              141
+            ],
+            "componentPixels": 849
+          },
+          "rawCap": {
+            "top": 88,
+            "centerX": 211.99640287769785,
+            "bounds": [
+              175,
+              88,
+              246,
+              148
+            ],
+            "componentPixels": 1528
+          },
+          "scaledCap": {
+            "top": 79,
+            "centerX": 189.62545454545455,
+            "bounds": [
+              162,
+              79,
+              219,
+              115
+            ],
+            "componentPixels": 911
+          },
+          "rawBodyHeight": 371,
+          "targetBodyHeight": 345,
+          "integerOffset": [
+            39,
+            26
+          ],
+          "scaledCellSize": [
+            401,
+            487
+          ],
+          "figureBounds": [
+            117,
+            80,
+            318,
+            437
+          ],
+          "capCenterResidualPx": 0.32160839160837895,
+          "figureClipped": false
+        }
+      ],
+      "sheet": "sheets/S.png",
+      "sheetSha256": "9078c5ba577cf444e36f7e082248edcbac55ed82f096af10ce4a46c89399e9b5",
+      "reviews": [
+        {
+          "file": "reviews/S-5fps.gif",
+          "fps": 5,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "sha256": "b9cab4f57830f376d9f2bc55aaf02cf97f4f17c9ec5b55b5e4c89144604e2c9b"
+        },
+        {
+          "file": "reviews/S-10fps.gif",
+          "fps": 10,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "sha256": "883acac5f8a410ae4a5b519667eb3c6aee5a80f83c753315ea8f31c304f74591"
+        }
+      ],
+      "allFiguresInsideCanvas": true
+    },
+    {
+      "id": "SW",
+      "source": "sources/SW.png",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "sourceSha256": "595ce794a42df0982f5f969fe56094b1c90360dd03cae6a984fbc7127faaf096",
+      "sourceMode": "RGB",
+      "normalizedSize": [
+        1792,
+        1088
+      ],
+      "normalizationScaleXY": [
+        1.1130434782608696,
+        1.1136131013306039
+      ],
+      "targetSha256": "64c4a3db93773e37e6ef734fa7ed7cfd4b69df810e40ec3363f574d11b799f60",
+      "sharedBodyScale": 0.8565737051792829,
+      "anchor": [
+        216,
+        400
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rawFile": "raw/SW/00.png",
+          "file": "frames/SW/00.png",
+          "rawRect": [
+            0,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "5e6de32fb892b30c89663b0d578b2d15dc77e1fdd1a673ba485310178133ec0a",
+          "sha256": "6884d8ad0b0923e4a15cb92d5babe9ee154e7acf65f59b828480c7af8f6b2deb",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 135,
+            "centerX": 223.22222222222223,
+            "bounds": [
+              208,
+              135,
+              239,
+              167
+            ],
+            "componentPixels": 518
+          },
+          "rawCap": {
+            "top": 105,
+            "centerX": 216.3047619047619,
+            "bounds": [
+              170,
+              105,
+              258,
+              175
+            ],
+            "componentPixels": 3826
+          },
+          "scaledCap": {
+            "top": 90,
+            "centerX": 185.23744292237444,
+            "bounds": [
+              146,
+              90,
+              221,
+              154
+            ],
+            "componentPixels": 2822
+          },
+          "rawBodyHeight": 371,
+          "targetBodyHeight": 311,
+          "integerOffset": [
+            38,
+            45
+          ],
+          "scaledCellSize": [
+            384,
+            466
+          ],
+          "figureBounds": [
+            91,
+            110,
+            353,
+            453
+          ],
+          "capCenterResidualPx": 0.015220700152212885,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawFile": "raw/SW/01.png",
+          "file": "frames/SW/01.png",
+          "rawRect": [
+            448,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "21170c4d53444789578dd6a3203f0a917a9e5a284a6ec9cca4ca2a3ed2e1fc9d",
+          "sha256": "d1d80390f29e4b2cf07c650457937ef0a9f1fac1234a70eee0f9d30d97f8fb9c",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 114,
+            "centerX": 206.69148936170214,
+            "bounds": [
+              166,
+              114,
+              244,
+              178
+            ],
+            "componentPixels": 2775
+          },
+          "rawCap": {
+            "top": 103,
+            "centerX": 210.61410788381744,
+            "bounds": [
+              164,
+              103,
+              252,
+              177
+            ],
+            "componentPixels": 3851
+          },
+          "scaledCap": {
+            "top": 88,
+            "centerX": 180.11637931034483,
+            "bounds": [
+              141,
+              88,
+              216,
+              153
+            ],
+            "componentPixels": 2832
+          },
+          "rawBodyHeight": 374,
+          "targetBodyHeight": 320,
+          "integerOffset": [
+            27,
+            26
+          ],
+          "scaledCellSize": [
+            384,
+            466
+          ],
+          "figureBounds": [
+            71,
+            87,
+            310,
+            434
+          ],
+          "capCenterResidualPx": 0.4248899486426865,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawFile": "raw/SW/02.png",
+          "file": "frames/SW/02.png",
+          "rawRect": [
+            896,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "d5da246bd852750881feb004bdde46a53872250bc4925bc6906efd903f1116b5",
+          "sha256": "9384e641b36670da9909dcbb88a582f1903a1276a4c7cef13e24862b039a60b9",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 97,
+            "centerX": 200.1640625,
+            "bounds": [
+              159,
+              97,
+              237,
+              161
+            ],
+            "componentPixels": 2750
+          },
+          "rawCap": {
+            "top": 101,
+            "centerX": 203.74180327868854,
+            "bounds": [
+              156,
+              101,
+              246,
+              163
+            ],
+            "componentPixels": 3778
+          },
+          "scaledCap": {
+            "top": 87,
+            "centerX": 173.96153846153845,
+            "bounds": [
+              134,
+              87,
+              211,
+              151
+            ],
+            "componentPixels": 2903
+          },
+          "rawBodyHeight": 377,
+          "targetBodyHeight": 323,
+          "integerOffset": [
+            26,
+            10
+          ],
+          "scaledCellSize": [
+            384,
+            466
+          ],
+          "figureBounds": [
+            67,
+            66,
+            308,
+            419
+          ],
+          "capCenterResidualPx": -0.2025240384615472,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawFile": "raw/SW/03.png",
+          "file": "frames/SW/03.png",
+          "rawRect": [
+            1344,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "92e0f05e405ee7fe7edff6c685c9f3fdf4e9291ed33b438e6627f694cef4109b",
+          "sha256": "ba2645ad85b2332d76a0ae91a9668505b839ebda224cf337e648e2985775297a",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 97,
+            "centerX": 186.1011235955056,
+            "bounds": [
+              145,
+              97,
+              223,
+              162
+            ],
+            "componentPixels": 2847
+          },
+          "rawCap": {
+            "top": 101,
+            "centerX": 210.7429906542056,
+            "bounds": [
+              164,
+              101,
+              252,
+              163
+            ],
+            "componentPixels": 3718
+          },
+          "scaledCap": {
+            "top": 88,
+            "centerX": 180.16491228070174,
+            "bounds": [
+              140,
+              88,
+              216,
+              144
+            ],
+            "componentPixels": 2858
+          },
+          "rawBodyHeight": 380,
+          "targetBodyHeight": 322,
+          "integerOffset": [
+            6,
+            9
+          ],
+          "scaledCellSize": [
+            384,
+            466
+          ],
+          "figureBounds": [
+            51,
+            68,
+            305,
+            421
+          ],
+          "capCenterResidualPx": 0.06378868519612979,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawFile": "raw/SW/04.png",
+          "file": "frames/SW/04.png",
+          "rawRect": [
+            0,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "96e425d08a7937024cd94682e611589b1e1bfb58b52f57a665881eb54882f2b7",
+          "sha256": "4569ef94af72db994910aa30568473b080a9e4bd1badc146ccf74dc98965a78a",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 117,
+            "centerX": 189.20805369127515,
+            "bounds": [
+              158,
+              117,
+              219,
+              178
+            ],
+            "componentPixels": 1183
+          },
+          "rawCap": {
+            "top": 91,
+            "centerX": 220.37556561085972,
+            "bounds": [
+              174,
+              91,
+              261,
+              163
+            ],
+            "componentPixels": 3715
+          },
+          "scaledCap": {
+            "top": 78,
+            "centerX": 188.48888888888888,
+            "bounds": [
+              150,
+              78,
+              224,
+              140
+            ],
+            "componentPixels": 2724
+          },
+          "rawBodyHeight": 377,
+          "targetBodyHeight": 330,
+          "integerOffset": [
+            1,
+            39
+          ],
+          "scaledCellSize": [
+            384,
+            466
+          ],
+          "figureBounds": [
+            56,
+            90,
+            309,
+            440
+          ],
+          "capCenterResidualPx": 0.280835197613726,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawFile": "raw/SW/05.png",
+          "file": "frames/SW/05.png",
+          "rawRect": [
+            448,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "cad38d27e5918d72a4066bb58d15d391280c7173c8c7937ea8d1fa30568c6417",
+          "sha256": "e37de6e37700d1fc8f19e4c7a08116c761196d223e5fc21798fca6a284bdd489",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 105,
+            "centerX": 187.41949152542372,
+            "bounds": [
+              146,
+              105,
+              222,
+              170
+            ],
+            "componentPixels": 2802
+          },
+          "rawCap": {
+            "top": 90,
+            "centerX": 204.68482490272373,
+            "bounds": [
+              158,
+              90,
+              245,
+              165
+            ],
+            "componentPixels": 3812
+          },
+          "scaledCap": {
+            "top": 77,
+            "centerX": 174.796875,
+            "bounds": [
+              135,
+              77,
+              210,
+              136
+            ],
+            "componentPixels": 2774
+          },
+          "rawBodyHeight": 376,
+          "targetBodyHeight": 332,
+          "integerOffset": [
+            13,
+            28
+          ],
+          "scaledCellSize": [
+            384,
+            466
+          ],
+          "figureBounds": [
+            52,
+            77,
+            301,
+            428
+          ],
+          "capCenterResidualPx": 0.37738347457627697,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawFile": "raw/SW/06.png",
+          "file": "frames/SW/06.png",
+          "rawRect": [
+            896,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "9a1c8b969f562289441c254ac4d6a1dfa9912419717f26233ef41aff6d6c9600",
+          "sha256": "aa3ff381627fc986f842095352a3634895854ac22681812597260abf5816aaa2",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 97,
+            "centerX": 195.944,
+            "bounds": [
+              154,
+              97,
+              233,
+              160
+            ],
+            "componentPixels": 2835
+          },
+          "rawCap": {
+            "top": 89,
+            "centerX": 201.14070351758795,
+            "bounds": [
+              154,
+              89,
+              242,
+              163
+            ],
+            "componentPixels": 3811
+          },
+          "scaledCap": {
+            "top": 76,
+            "centerX": 172.0990099009901,
+            "bounds": [
+              132,
+              76,
+              208,
+              141
+            ],
+            "componentPixels": 2793
+          },
+          "rawBodyHeight": 378,
+          "targetBodyHeight": 331,
+          "integerOffset": [
+            24,
+            21
+          ],
+          "scaledCellSize": [
+            384,
+            466
+          ],
+          "figureBounds": [
+            63,
+            70,
+            303,
+            421
+          ],
+          "capCenterResidualPx": 0.15500990099010892,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawFile": "raw/SW/07.png",
+          "file": "frames/SW/07.png",
+          "rawRect": [
+            1344,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "2a03c92e212128cb7b6a124788bfbb23813d4936180068cd85785f45821d0d25",
+          "sha256": "5e2039424739320267bd581a05a763c21bb0043a0259693fbeeec85d5b592f9a",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 105,
+            "centerX": 205.6965811965812,
+            "bounds": [
+              164,
+              105,
+              243,
+              170
+            ],
+            "componentPixels": 2770
+          },
+          "rawCap": {
+            "top": 89,
+            "centerX": 204.8713692946058,
+            "bounds": [
+              158,
+              89,
+              245,
+              158
+            ],
+            "componentPixels": 3752
+          },
+          "scaledCap": {
+            "top": 76,
+            "centerX": 175.04310344827587,
+            "bounds": [
+              135,
+              76,
+              210,
+              135
+            ],
+            "componentPixels": 2737
+          },
+          "rawBodyHeight": 367,
+          "targetBodyHeight": 306,
+          "integerOffset": [
+            31,
+            29
+          ],
+          "scaledCellSize": [
+            384,
+            466
+          ],
+          "figureBounds": [
+            70,
+            77,
+            336,
+            420
+          ],
+          "capCenterResidualPx": 0.34652225169466533,
+          "figureClipped": false
+        }
+      ],
+      "sheet": "sheets/SW.png",
+      "sheetSha256": "aeab810ac9e4d92a1fd38d5d434b431fc33d2f4107a1bfdc73501b7170331994",
+      "reviews": [
+        {
+          "file": "reviews/SW-5fps.gif",
+          "fps": 5,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "sha256": "d6f267f437ab91fc9d388862f1d7669c3bdecd2f0226b8e8f08f38bb92deffa1"
+        },
+        {
+          "file": "reviews/SW-10fps.gif",
+          "fps": 10,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "sha256": "baf9d9d264265d40441eb4c1e7752a2e05891cba1685757aadbaed411df6d859"
+        }
+      ],
+      "allFiguresInsideCanvas": true
+    },
+    {
+      "id": "W",
+      "source": "sources/W.png",
+      "sourceSize": [
+        1609,
+        978
+      ],
+      "sourceSha256": "1ecda59184e1b06de4e59d948126eaa2308c7a27d241b2e6f6042f0c30c6fe84",
+      "sourceMode": "RGB",
+      "normalizedSize": [
+        1792,
+        1088
+      ],
+      "normalizationScaleXY": [
+        1.1137352392790554,
+        1.112474437627812
+      ],
+      "targetSha256": "779fda2ccea08337276581d70d928d00073a617177a5248c3338cc9552d475ba",
+      "sharedBodyScale": 0.9838709677419355,
+      "anchor": [
+        216,
+        400
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rawFile": "raw/W/00.png",
+          "file": "frames/W/00.png",
+          "rawRect": [
+            0,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "b944083057bd06e48b7960d2b0c4f21b9133cad084eb699f33191429afcc1025",
+          "sha256": "ece895e19ed0f76120f745d01216d0993625667d87313c2fa952340f7c23153c",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 121,
+            "centerX": 184.73929961089493,
+            "bounds": [
+              143,
+              121,
+              224,
+              186
+            ],
+            "componentPixels": 3034
+          },
+          "rawCap": {
+            "top": 119,
+            "centerX": 183.82267441860466,
+            "bounds": [
+              142,
+              119,
+              225,
+              184
+            ],
+            "componentPixels": 3260
+          },
+          "scaledCap": {
+            "top": 117,
+            "centerX": 181.18584070796462,
+            "bounds": [
+              140,
+              117,
+              221,
+              181
+            ],
+            "componentPixels": 3153
+          },
+          "rawBodyHeight": 333,
+          "targetBodyHeight": 327,
+          "integerOffset": [
+            4,
+            4
+          ],
+          "scaledCellSize": [
+            441,
+            535
+          ],
+          "figureBounds": [
+            62,
+            118,
+            350,
+            449
+          ],
+          "capCenterResidualPx": 0.4465410970696837,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawFile": "raw/W/01.png",
+          "file": "frames/W/01.png",
+          "rawRect": [
+            448,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "c9867a40c997af0899f56d2be6813659f0b62048472698b46c7b88a2f2b56a3e",
+          "sha256": "1c52aabdc47f421a88cda34516d039d37edb44f46f770046977dc71965d652f9",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 105,
+            "centerX": 185.04895104895104,
+            "bounds": [
+              145,
+              105,
+              224,
+              168
+            ],
+            "componentPixels": 2883
+          },
+          "rawCap": {
+            "top": 103,
+            "centerX": 187.86984126984126,
+            "bounds": [
+              146,
+              103,
+              229,
+              168
+            ],
+            "componentPixels": 3289
+          },
+          "scaledCap": {
+            "top": 101,
+            "centerX": 184.95709570957095,
+            "bounds": [
+              144,
+              101,
+              225,
+              165
+            ],
+            "componentPixels": 3164
+          },
+          "rawBodyHeight": 320,
+          "targetBodyHeight": 312,
+          "integerOffset": [
+            0,
+            4
+          ],
+          "scaledCellSize": [
+            441,
+            535
+          ],
+          "figureBounds": [
+            58,
+            103,
+            336,
+            420
+          ],
+          "capCenterResidualPx": -0.09185533938008916,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawFile": "raw/W/02.png",
+          "file": "frames/W/02.png",
+          "rawRect": [
+            896,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "d5a951f30f363bc3d61346d2ccec9de97d57b95ddf0636c86b8913cbffce672e",
+          "sha256": "3f0b1eee23b0db4cc8a8c158ccb707a05e4d63c68dfa3f2d5b8826d6e35466eb",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 189.82417582417582,
+            "bounds": [
+              150,
+              89,
+              228,
+              152
+            ],
+            "componentPixels": 2791
+          },
+          "rawCap": {
+            "top": 86,
+            "centerX": 190.85393258426967,
+            "bounds": [
+              150,
+              86,
+              230,
+              155
+            ],
+            "componentPixels": 3133
+          },
+          "scaledCap": {
+            "top": 85,
+            "centerX": 188.01374570446737,
+            "bounds": [
+              148,
+              85,
+              226,
+              150
+            ],
+            "componentPixels": 3021
+          },
+          "rawBodyHeight": 339,
+          "targetBodyHeight": 333,
+          "integerOffset": [
+            2,
+            4
+          ],
+          "scaledCellSize": [
+            441,
+            535
+          ],
+          "figureBounds": [
+            70,
+            88,
+            310,
+            422
+          ],
+          "capCenterResidualPx": 0.1895698802915433,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawFile": "raw/W/03.png",
+          "file": "frames/W/03.png",
+          "rawRect": [
+            1344,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "e19c71d82418f7aaf9dac9bdd401e8fbbf3560c35a2df39af83147ac7bbdb617",
+          "sha256": "3db51138b695cf0b7791b5834bf0dc1e5f5aae1280b457d84461414883c750c0",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 187.51736111111111,
+            "bounds": [
+              147,
+              89,
+              226,
+              152
+            ],
+            "componentPixels": 2865
+          },
+          "rawCap": {
+            "top": 88,
+            "centerX": 190.27238805970148,
+            "bounds": [
+              150,
+              88,
+              230,
+              155
+            ],
+            "componentPixels": 3275
+          },
+          "scaledCap": {
+            "top": 86,
+            "centerX": 187.26122448979592,
+            "bounds": [
+              148,
+              86,
+              226,
+              152
+            ],
+            "componentPixels": 3142
+          },
+          "rawBodyHeight": 336,
+          "targetBodyHeight": 330,
+          "integerOffset": [
+            0,
+            3
+          ],
+          "scaledCellSize": [
+            441,
+            535
+          ],
+          "figureBounds": [
+            64,
+            88,
+            317,
+            420
+          ],
+          "capCenterResidualPx": -0.25613662131519277,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawFile": "raw/W/04.png",
+          "file": "frames/W/04.png",
+          "rawRect": [
+            0,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "07d542a355b00d513791dd343bbdccaa3d014ce4e4cf7c669f187f331379af17",
+          "sha256": "4a619138ec7d76c326ea662b6bf04952454209d6b681837ef0526cc9d4a31b94",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 98,
+            "centerX": 183.69360269360268,
+            "bounds": [
+              143,
+              98,
+              222,
+              161
+            ],
+            "componentPixels": 2645
+          },
+          "rawCap": {
+            "top": 93,
+            "centerX": 183.44727272727272,
+            "bounds": [
+              142,
+              93,
+              223,
+              164
+            ],
+            "componentPixels": 3278
+          },
+          "scaledCap": {
+            "top": 92,
+            "centerX": 180.45484949832775,
+            "bounds": [
+              140,
+              92,
+              220,
+              157
+            ],
+            "componentPixels": 3076
+          },
+          "rawBodyHeight": 343,
+          "targetBodyHeight": 340,
+          "integerOffset": [
+            3,
+            6
+          ],
+          "scaledCellSize": [
+            441,
+            535
+          ],
+          "figureBounds": [
+            64,
+            96,
+            351,
+            435
+          ],
+          "capCenterResidualPx": -0.23875319527493843,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawFile": "raw/W/05.png",
+          "file": "frames/W/05.png",
+          "rawRect": [
+            448,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "41b32058329d7fde7ced46dabaea2790b6db428d0575c241cdce83c0a9338959",
+          "sha256": "649b4ae4d7515c1ad21bfeea26fea645ddfed15d071a73194df587839bef96e3",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 182.99616858237547,
+            "bounds": [
+              144,
+              89,
+              222,
+              152
+            ],
+            "componentPixels": 2745
+          },
+          "rawCap": {
+            "top": 87,
+            "centerX": 187.1135531135531,
+            "bounds": [
+              146,
+              87,
+              227,
+              150
+            ],
+            "componentPixels": 3080
+          },
+          "scaledCap": {
+            "top": 86,
+            "centerX": 184.0103448275862,
+            "bounds": [
+              144,
+              86,
+              223,
+              148
+            ],
+            "componentPixels": 2961
+          },
+          "rawBodyHeight": 346,
+          "targetBodyHeight": 344,
+          "integerOffset": [
+            -1,
+            3
+          ],
+          "scaledCellSize": [
+            441,
+            535
+          ],
+          "figureBounds": [
+            67,
+            87,
+            325,
+            429
+          ],
+          "capCenterResidualPx": 0.01417624521073435,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawFile": "raw/W/06.png",
+          "file": "frames/W/06.png",
+          "rawRect": [
+            896,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "35354335987f2b2878ace2ae6dd3965e1b4d9869caf514bb30872c30eec8c5ea",
+          "sha256": "c85539b5bff613fd888edbaf67884d9fd413eb5a06ddf8070d372338879d163a",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 185.62372881355932,
+            "bounds": [
+              146,
+              89,
+              223,
+              152
+            ],
+            "componentPixels": 2690
+          },
+          "rawCap": {
+            "top": 86,
+            "centerX": 186.6643109540636,
+            "bounds": [
+              147,
+              86,
+              225,
+              150
+            ],
+            "componentPixels": 3035
+          },
+          "scaledCap": {
+            "top": 84,
+            "centerX": 183.4346153846154,
+            "bounds": [
+              145,
+              84,
+              222,
+              150
+            ],
+            "componentPixels": 3006
+          },
+          "rawBodyHeight": 348,
+          "targetBodyHeight": 345,
+          "integerOffset": [
+            2,
+            5
+          ],
+          "scaledCellSize": [
+            441,
+            535
+          ],
+          "figureBounds": [
+            75,
+            88,
+            314,
+            432
+          ],
+          "capCenterResidualPx": -0.18911342894392646,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawFile": "raw/W/07.png",
+          "file": "frames/W/07.png",
+          "rawRect": [
+            1344,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "c30197dcace3bb6c89de6cf6fd4170b8f5b40cb6f66d173d4081b5244af537dd",
+          "sha256": "c96ffec9f2df05794987d5e6ce9f46b33c6ee42cefc9953a8a7a4413293779cd",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 97,
+            "centerX": 187.90196078431373,
+            "bounds": [
+              148,
+              97,
+              226,
+              159
+            ],
+            "componentPixels": 2841
+          },
+          "rawCap": {
+            "top": 94,
+            "centerX": 190.5234657039711,
+            "bounds": [
+              150,
+              94,
+              231,
+              163
+            ],
+            "componentPixels": 3156
+          },
+          "scaledCap": {
+            "top": 93,
+            "centerX": 187.524115755627,
+            "bounds": [
+              148,
+              93,
+              227,
+              158
+            ],
+            "componentPixels": 3047
+          },
+          "rawBodyHeight": 343,
+          "targetBodyHeight": 338,
+          "integerOffset": [
+            0,
+            4
+          ],
+          "scaledCellSize": [
+            441,
+            535
+          ],
+          "figureBounds": [
+            67,
+            95,
+            333,
+            434
+          ],
+          "capCenterResidualPx": -0.3778450286867212,
+          "figureClipped": false
+        }
+      ],
+      "sheet": "sheets/W.png",
+      "sheetSha256": "749ae04db152c54b4c51427012f3d7b76a29f191f384e00af6435bbd92268cf5",
+      "reviews": [
+        {
+          "file": "reviews/W-5fps.gif",
+          "fps": 5,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "sha256": "a53da9c94a1ca2f041798f2665d759e21a7f18409e236ff8a0c42488bf870014"
+        },
+        {
+          "file": "reviews/W-10fps.gif",
+          "fps": 10,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "sha256": "14cd1cbbf89023122774a468cef1265b25a589d4bbc94d6ba71ab7f52cdd27fc"
+        }
+      ],
+      "allFiguresInsideCanvas": true
+    },
+    {
+      "id": "NW",
+      "source": "sources/NW.png",
+      "sourceSize": [
+        1609,
+        978
+      ],
+      "sourceSha256": "e3f86a3284e6cc947306c737a041c0a41bdb15e9a5b9861fb0e05c7d3faf8f06",
+      "sourceMode": "RGB",
+      "normalizedSize": [
+        1792,
+        1088
+      ],
+      "normalizationScaleXY": [
+        1.1137352392790554,
+        1.112474437627812
+      ],
+      "targetSha256": "4107a17e9eb9df92bf7b07c209c639340cffa08126f5815fb59152555cc76fe2",
+      "sharedBodyScale": 0.9806896551724138,
+      "anchor": [
+        216,
+        400
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rawFile": "raw/NW/00.png",
+          "file": "frames/NW/00.png",
+          "rawRect": [
+            0,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "7e8bb1d3b7ff0c30a319091ca0a778eab20a8d722aab2a8e8725db1fc55e1261",
+          "sha256": "da2640eb21206a14616bba5d97829d9bbe6e80740dbd6bb24fb061889bcf09a9",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 105,
+            "centerX": 167.46995708154506,
+            "bounds": [
+              130,
+              105,
+              207,
+              170
+            ],
+            "componentPixels": 3196
+          },
+          "rawCap": {
+            "top": 103,
+            "centerX": 168.59555555555556,
+            "bounds": [
+              130,
+              103,
+              207,
+              163
+            ],
+            "componentPixels": 3326
+          },
+          "scaledCap": {
+            "top": 101,
+            "centerX": 165.27777777777777,
+            "bounds": [
+              127,
+              101,
+              203,
+              160
+            ],
+            "componentPixels": 3201
+          },
+          "rawBodyHeight": 370,
+          "targetBodyHeight": 367,
+          "integerOffset": [
+            2,
+            4
+          ],
+          "scaledCellSize": [
+            439,
+            533
+          ],
+          "figureBounds": [
+            80,
+            80,
+            296,
+            467
+          ],
+          "capCenterResidualPx": -0.19217930376728987,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawFile": "raw/NW/01.png",
+          "file": "frames/NW/01.png",
+          "rawRect": [
+            448,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "9856a9c5fd5488e49476f46f8bcb935c70724f390a4de333bd0998440386e244",
+          "sha256": "0d6b665142489485817a2d3a819624a269d8673bc0f7fc242f7edbc79fd3ae52",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 173.73758865248226,
+            "bounds": [
+              136,
+              89,
+              212,
+              149
+            ],
+            "componentPixels": 3169
+          },
+          "rawCap": {
+            "top": 88,
+            "centerX": 174.08843537414967,
+            "bounds": [
+              135,
+              88,
+              212,
+              148
+            ],
+            "componentPixels": 3280
+          },
+          "scaledCap": {
+            "top": 87,
+            "centerX": 170.37130801687763,
+            "bounds": [
+              133,
+              87,
+              208,
+              145
+            ],
+            "componentPixels": 3126
+          },
+          "rawBodyHeight": 362,
+          "targetBodyHeight": 355,
+          "integerOffset": [
+            3,
+            2
+          ],
+          "scaledCellSize": [
+            439,
+            533
+          ],
+          "figureBounds": [
+            93,
+            73,
+            297,
+            443
+          ],
+          "capCenterResidualPx": -0.36628063560462465,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawFile": "raw/NW/02.png",
+          "file": "frames/NW/02.png",
+          "rawRect": [
+            896,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "0c501e581a255b588cbce080f851f2a767abd995b10f0895194388e3e09aaa18",
+          "sha256": "9ecc70d1e0e50d3c5542c41b5f4b44ce9baf32324854aebbbd9685e10714c510",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 74,
+            "centerX": 188.67590618336888,
+            "bounds": [
+              152,
+              74,
+              227,
+              133
+            ],
+            "componentPixels": 3144
+          },
+          "rawCap": {
+            "top": 74,
+            "centerX": 188.3716814159292,
+            "bounds": [
+              150,
+              74,
+              226,
+              134
+            ],
+            "componentPixels": 3241
+          },
+          "scaledCap": {
+            "top": 73,
+            "centerX": 184.23270440251574,
+            "bounds": [
+              147,
+              73,
+              221,
+              131
+            ],
+            "componentPixels": 3119
+          },
+          "rawBodyHeight": 346,
+          "targetBodyHeight": 337,
+          "integerOffset": [
+            4,
+            1
+          ],
+          "scaledCellSize": [
+            439,
+            533
+          ],
+          "figureBounds": [
+            126,
+            70,
+            301,
+            412
+          ],
+          "capCenterResidualPx": -0.4432017808531441,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawFile": "raw/NW/03.png",
+          "file": "frames/NW/03.png",
+          "rawRect": [
+            1344,
+            0,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "a0b6abb6d1b8f7b64d3cd0a3c00f220515764c951d5fec3f98bc387d301a601c",
+          "sha256": "df8c1648014d93a9748bc8b0c31791a291ad981fe7515652881602374af27c71",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 82,
+            "centerX": 197.76623376623377,
+            "bounds": [
+              161,
+              82,
+              236,
+              142
+            ],
+            "componentPixels": 3178
+          },
+          "rawCap": {
+            "top": 82,
+            "centerX": 197.843537414966,
+            "bounds": [
+              160,
+              82,
+              236,
+              142
+            ],
+            "componentPixels": 3271
+          },
+          "scaledCap": {
+            "top": 80,
+            "centerX": 193.88809523809525,
+            "bounds": [
+              157,
+              80,
+              231,
+              139
+            ],
+            "componentPixels": 3152
+          },
+          "rawBodyHeight": 368,
+          "targetBodyHeight": 358,
+          "integerOffset": [
+            4,
+            2
+          ],
+          "scaledCellSize": [
+            439,
+            533
+          ],
+          "figureBounds": [
+            141,
+            67,
+            335,
+            443
+          ],
+          "capCenterResidualPx": 0.12186147186147878,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawFile": "raw/NW/04.png",
+          "file": "frames/NW/04.png",
+          "rawRect": [
+            0,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "81848fc6b324da223a8053c3c92046a3de37f173408aa9222892690f8ac57f46",
+          "sha256": "dd05a3dcc4985bedab9d6c8e44a970f13323acf122380cc6b2d58f1feb3f5fb5",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 203.79039301310044,
+            "bounds": [
+              168,
+              89,
+              242,
+              149
+            ],
+            "componentPixels": 3175
+          },
+          "rawCap": {
+            "top": 87,
+            "centerX": 204.21428571428572,
+            "bounds": [
+              167,
+              87,
+              242,
+              146
+            ],
+            "componentPixels": 3233
+          },
+          "scaledCap": {
+            "top": 85,
+            "centerX": 200.27906976744185,
+            "bounds": [
+              164,
+              85,
+              237,
+              143
+            ],
+            "componentPixels": 3099
+          },
+          "rawBodyHeight": 356,
+          "targetBodyHeight": 348,
+          "integerOffset": [
+            4,
+            4
+          ],
+          "scaledCellSize": [
+            439,
+            533
+          ],
+          "figureBounds": [
+            114,
+            63,
+            359,
+            438
+          ],
+          "capCenterResidualPx": 0.48867675434141233,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawFile": "raw/NW/05.png",
+          "file": "frames/NW/05.png",
+          "rawRect": [
+            448,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "1aa741e054a4eb2f1e59ce93102e05db77cba54a503d4c88660333d5c77c28ce",
+          "sha256": "15fea59d1aef937f5c5849c0a12c409f17c0b6a54683ded528f46d87773e5c40",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 81,
+            "centerX": 198.1208053691275,
+            "bounds": [
+              162,
+              81,
+              236,
+              140
+            ],
+            "componentPixels": 3074
+          },
+          "rawCap": {
+            "top": 78,
+            "centerX": 197.56900726392251,
+            "bounds": [
+              160,
+              78,
+              236,
+              139
+            ],
+            "componentPixels": 3231
+          },
+          "scaledCap": {
+            "top": 77,
+            "centerX": 193.59728506787332,
+            "bounds": [
+              157,
+              77,
+              231,
+              136
+            ],
+            "componentPixels": 3105
+          },
+          "rawBodyHeight": 333,
+          "targetBodyHeight": 321,
+          "integerOffset": [
+            5,
+            4
+          ],
+          "scaledCellSize": [
+            439,
+            533
+          ],
+          "figureBounds": [
+            126,
+            60,
+            325,
+            406
+          ],
+          "capCenterResidualPx": 0.47647969874580554,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawFile": "raw/NW/06.png",
+          "file": "frames/NW/06.png",
+          "rawRect": [
+            896,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "8d182eded8889e039e2ef5a4840c701713256904825a6e997097c6d107c9c8d3",
+          "sha256": "8a19eea166ce28da49db77a849014c2db1475aa7b7ef5617abc4802dd7a2c2a8",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 73,
+            "centerX": 186.64285714285714,
+            "bounds": [
+              149,
+              73,
+              226,
+              135
+            ],
+            "componentPixels": 3352
+          },
+          "rawCap": {
+            "top": 73,
+            "centerX": 186.60676532769557,
+            "bounds": [
+              149,
+              73,
+              226,
+              134
+            ],
+            "componentPixels": 3411
+          },
+          "scaledCap": {
+            "top": 71,
+            "centerX": 182.920814479638,
+            "bounds": [
+              146,
+              71,
+              222,
+              131
+            ],
+            "componentPixels": 3271
+          },
+          "rawBodyHeight": 363,
+          "targetBodyHeight": 356,
+          "integerOffset": [
+            4,
+            2
+          ],
+          "scaledCellSize": [
+            439,
+            533
+          ],
+          "figureBounds": [
+            137,
+            56,
+            304,
+            429
+          ],
+          "capCenterResidualPx": 0.2779573367808723,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawFile": "raw/NW/07.png",
+          "file": "frames/NW/07.png",
+          "rawRect": [
+            1344,
+            544,
+            448,
+            544
+          ],
+          "size": [
+            448,
+            544
+          ],
+          "anchor": [
+            216,
+            400
+          ],
+          "rawSha256": "7170d9adafff971436b62a530fef01460351f4e3094a91a318f84f9cbcf1ef40",
+          "sha256": "4bdb7564c2b87248df2817c0af9267b346f5fb5ed30a9ca58f186dc5e84205a9",
+          "hasAlpha": false,
+          "targetCap": {
+            "top": 89,
+            "centerX": 179.57004830917873,
+            "bounds": [
+              143,
+              89,
+              219,
+              150
+            ],
+            "componentPixels": 3265
+          },
+          "rawCap": {
+            "top": 89,
+            "centerX": 182.34518828451883,
+            "bounds": [
+              145,
+              89,
+              221,
+              155
+            ],
+            "componentPixels": 3431
+          },
+          "scaledCap": {
+            "top": 87,
+            "centerX": 178.7155172413793,
+            "bounds": [
+              142,
+              87,
+              217,
+              153
+            ],
+            "componentPixels": 3296
+          },
+          "rawBodyHeight": 377,
+          "targetBodyHeight": 369,
+          "integerOffset": [
+            1,
+            2
+          ],
+          "scaledCellSize": [
+            439,
+            533
+          ],
+          "figureBounds": [
+            100,
+            61,
+            306,
+            459
+          ],
+          "capCenterResidualPx": 0.145468932200572,
+          "figureClipped": false
+        }
+      ],
+      "sheet": "sheets/NW.png",
+      "sheetSha256": "d3e10647fe7a72298ad0354a96e03c72b6eb969db7221c2769ec94b65429f5eb",
+      "reviews": [
+        {
+          "file": "reviews/NW-5fps.gif",
+          "fps": 5,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "sha256": "bfb3398f9cdb7901289c57b967d445a8789b71a1440423ba50ae35477a2b2e33"
+        },
+        {
+          "file": "reviews/NW-10fps.gif",
+          "fps": 10,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "sha256": "154986116251c9c1c3d7d8074626936e176ee6cbfb5784cfb8046977a9483945"
+        }
+      ],
+      "allFiguresInsideCanvas": true
+    }
+  ],
+  "createdDate": "2026-09-10",
+  "action": "uaWalkTool2",
+  "directionOrder": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "frameCount": 8,
+  "canvas": [
+    448,
+    544
+  ],
+  "anchor": [
+    216,
+    400
+  ],
+  "registrationFile": "registration.json",
+  "totalFrames": 64,
+  "status": "artwork-packed; no-game-integration; not-approved",
+  "notes": [
+    "RGB white background; packer does not extract alpha or repaint pixels. Explicit final-frame overrides are recorded individually.",
+    "Raw crops are exact crops of the normalized sheet, not pixel-exact original-size source crops.",
+    "Sources are preserved; sheet normalization and one shared body scale are Lanczos resampling.",
+    "Review 5/10 FPS is illustrative, not verified game timing."
+  ],
+  "spriteAtlas": {
+    "file": "sprite-atlas.png",
+    "size": [
+      3584,
+      4352
+    ],
+    "rows": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "columns": "phase 00-07",
+    "sha256": "ed53c607dda42df21f4845a1bd6cea792113559020453397c5d9b05e400e78fb"
+  }
+}

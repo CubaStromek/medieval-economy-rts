@@ -1,0 +1,1079 @@
+{
+  "created_at": "2026-09-10T17:16:29.780607+00:00",
+  "manifest": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/manifest.json",
+  "manifest_sha256": "32de64977741a40532c39636a492e14857b1fa902e358081aa7683780293a189",
+  "presentation_only": true,
+  "excerpt_not_loop_acceptance": true,
+  "duration_seconds": 4.0,
+  "start_seconds": 0.0,
+  "preview_fps": 30.0,
+  "apng_delay_numerator_denominator": [
+    1,
+    30
+  ],
+  "preview_frame_count": 120,
+  "dimensions_px": [
+    1390,
+    612
+  ],
+  "source_canvas_px": [
+    256,
+    256
+  ],
+  "display_canvas_px": [
+    128,
+    128
+  ],
+  "display_resampling": "Pillow LANCZOS; full source canvas",
+  "palette_quantization": false,
+  "decoded_apng_exact_presentation_rgb": true,
+  "missing_cells": [
+    "walk_axe/N",
+    "walk_axe/NE",
+    "walk_axe/E",
+    "walk_axe/SE",
+    "walk_axe/SW",
+    "walk_axe/W",
+    "walk_axe/NW",
+    "chop/N",
+    "chop/NE",
+    "chop/E",
+    "chop/SE",
+    "chop/S",
+    "chop/SW",
+    "chop/W",
+    "chop/NW",
+    "walk_log/N",
+    "walk_log/NE",
+    "walk_log/E",
+    "walk_log/SE",
+    "walk_log/S",
+    "walk_log/SW",
+    "walk_log/W",
+    "walk_log/NW"
+  ],
+  "available_cell_count": 1,
+  "effective_direction_fps": {
+    "walk_axe/S": 12.0
+  },
+  "native_inputs_unchanged": true,
+  "input_hashes": {
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/manifest.json": "32de64977741a40532c39636a492e14857b1fa902e358081aa7683780293a189",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/00.png": "856951ed0336c38283657ade00b68ac51d2fa48467e265642f7569002b83b131",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/01.png": "ffbd1eca01fb673ff0a6b7a3fbc6f1af5167db6b249c31840b89385758d59060",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/02.png": "0200bd5d62de0a14ba60f6028b83713fffafe2465833461cf45e0156afc7f9e5",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/03.png": "ed0d1e4d85c0a8ae7c58a5b3d72ad127e5991bfa9b14c8c97f5acc383ccb12b3",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/04.png": "69306f4bdb3d16e038ede8a5828acd0b2f2dc016d9f350b3b479811576a28e40",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/05.png": "ad3639cc334c17e368b43bc3aaf770914f4ddebc2c4047c8c54b0f7a1bbcbe52",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/06.png": "66d33afff5e4fb8f8649071c24aaca8e08514b87c20193a1cfac424eddf29ca7",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/07.png": "e8eedd7c9052e14f42c195c00863bcbfb34aa0c22c90f4caf6a46a11c6162e78",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/08.png": "e7865c702ee04c38f525aabb8aca787d9b7110ec9338d8266f296370e4e42289",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/09.png": "f72d0f2815446aa854caef3491881e7d2c145860017f447fc5567e7c20cb1014",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/10.png": "1904535b360a5d56fe0405951e7c818edf976b81111197b6ecf1a5cc4d06f4e5",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/11.png": "5f89f7d174b42c5e88427192865fab391c8c7883f03e8b561c96aec63aedd909",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/12.png": "1d865d845422739fa21056be82a7f8a1ae0e6d9d7251aa47231f77867e18daec",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/13.png": "2e37c7472b03f1ff21850eade9a01cd7c91c28703f67d5c4854c6beb57c8f09d",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/14.png": "1750318a745eee08ed10365585f313c16fbfad97fa35148ac56d03df05f1263f",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/15.png": "81d9c7d956b2239bd3a0892a87737bd841626e49cac422759e4b0292e443fd8b",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/16.png": "fc75a6a5bf9f3909236375681fdd41e52f3147c4deefba590261e4224fedfab4",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/17.png": "e502cb0e952604e68fd6b627f99bf5317940b89085e9fb5d606e30d2baca62f2",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/18.png": "397471cd4673e302347ea86728f1748994393156e51f3ee63dd58e9adbe9df8a",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/19.png": "00650df37c893ed76a9f320d9dbbd3d165ba76ec313e0e0ffd619e54584cfbf9",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/20.png": "cf80a3f1700f7fa7dd696336c193b158631bfa10da85bbab2320ae1be902b4c3",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/21.png": "8db1fb221d934d8b0b3535c2d0af9e54e024b770c26825b25624c5a4316155a9",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/22.png": "24fb87798710ca3e6078a448305da89be28622749fb6facb249168ef8140a278",
+    "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/package/frames/walk_axe/S/23.png": "dd966df491956be04beee10b63bcabd613611f2f3f8729f95db7edd63b86c07f"
+  },
+  "inputs": [
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 0,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 1,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 2,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 3,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 4,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 5,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 6,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 7,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 8,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 9,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 10,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 11,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 12,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 13,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 14,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 15,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 16,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 17,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 18,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 19,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 20,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 21,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 22,
+      "origin": "source_png"
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "index": 23,
+      "origin": "source_png"
+    }
+  ],
+  "sampling": [
+    {
+      "preview_frame": 0,
+      "seconds": 0.0,
+      "source_indices": {
+        "walk_axe/S": 0
+      }
+    },
+    {
+      "preview_frame": 1,
+      "seconds": 0.03333333333333333,
+      "source_indices": {
+        "walk_axe/S": 0
+      }
+    },
+    {
+      "preview_frame": 2,
+      "seconds": 0.06666666666666667,
+      "source_indices": {
+        "walk_axe/S": 0
+      }
+    },
+    {
+      "preview_frame": 3,
+      "seconds": 0.1,
+      "source_indices": {
+        "walk_axe/S": 1
+      }
+    },
+    {
+      "preview_frame": 4,
+      "seconds": 0.13333333333333333,
+      "source_indices": {
+        "walk_axe/S": 1
+      }
+    },
+    {
+      "preview_frame": 5,
+      "seconds": 0.16666666666666666,
+      "source_indices": {
+        "walk_axe/S": 2
+      }
+    },
+    {
+      "preview_frame": 6,
+      "seconds": 0.2,
+      "source_indices": {
+        "walk_axe/S": 2
+      }
+    },
+    {
+      "preview_frame": 7,
+      "seconds": 0.23333333333333334,
+      "source_indices": {
+        "walk_axe/S": 2
+      }
+    },
+    {
+      "preview_frame": 8,
+      "seconds": 0.26666666666666666,
+      "source_indices": {
+        "walk_axe/S": 3
+      }
+    },
+    {
+      "preview_frame": 9,
+      "seconds": 0.3,
+      "source_indices": {
+        "walk_axe/S": 3
+      }
+    },
+    {
+      "preview_frame": 10,
+      "seconds": 0.3333333333333333,
+      "source_indices": {
+        "walk_axe/S": 4
+      }
+    },
+    {
+      "preview_frame": 11,
+      "seconds": 0.36666666666666664,
+      "source_indices": {
+        "walk_axe/S": 4
+      }
+    },
+    {
+      "preview_frame": 12,
+      "seconds": 0.4,
+      "source_indices": {
+        "walk_axe/S": 4
+      }
+    },
+    {
+      "preview_frame": 13,
+      "seconds": 0.43333333333333335,
+      "source_indices": {
+        "walk_axe/S": 5
+      }
+    },
+    {
+      "preview_frame": 14,
+      "seconds": 0.4666666666666667,
+      "source_indices": {
+        "walk_axe/S": 5
+      }
+    },
+    {
+      "preview_frame": 15,
+      "seconds": 0.5,
+      "source_indices": {
+        "walk_axe/S": 6
+      }
+    },
+    {
+      "preview_frame": 16,
+      "seconds": 0.5333333333333333,
+      "source_indices": {
+        "walk_axe/S": 6
+      }
+    },
+    {
+      "preview_frame": 17,
+      "seconds": 0.5666666666666667,
+      "source_indices": {
+        "walk_axe/S": 6
+      }
+    },
+    {
+      "preview_frame": 18,
+      "seconds": 0.6,
+      "source_indices": {
+        "walk_axe/S": 7
+      }
+    },
+    {
+      "preview_frame": 19,
+      "seconds": 0.6333333333333333,
+      "source_indices": {
+        "walk_axe/S": 7
+      }
+    },
+    {
+      "preview_frame": 20,
+      "seconds": 0.6666666666666666,
+      "source_indices": {
+        "walk_axe/S": 8
+      }
+    },
+    {
+      "preview_frame": 21,
+      "seconds": 0.7,
+      "source_indices": {
+        "walk_axe/S": 8
+      }
+    },
+    {
+      "preview_frame": 22,
+      "seconds": 0.7333333333333333,
+      "source_indices": {
+        "walk_axe/S": 8
+      }
+    },
+    {
+      "preview_frame": 23,
+      "seconds": 0.7666666666666667,
+      "source_indices": {
+        "walk_axe/S": 9
+      }
+    },
+    {
+      "preview_frame": 24,
+      "seconds": 0.8,
+      "source_indices": {
+        "walk_axe/S": 9
+      }
+    },
+    {
+      "preview_frame": 25,
+      "seconds": 0.8333333333333334,
+      "source_indices": {
+        "walk_axe/S": 10
+      }
+    },
+    {
+      "preview_frame": 26,
+      "seconds": 0.8666666666666667,
+      "source_indices": {
+        "walk_axe/S": 10
+      }
+    },
+    {
+      "preview_frame": 27,
+      "seconds": 0.9,
+      "source_indices": {
+        "walk_axe/S": 10
+      }
+    },
+    {
+      "preview_frame": 28,
+      "seconds": 0.9333333333333333,
+      "source_indices": {
+        "walk_axe/S": 11
+      }
+    },
+    {
+      "preview_frame": 29,
+      "seconds": 0.9666666666666667,
+      "source_indices": {
+        "walk_axe/S": 11
+      }
+    },
+    {
+      "preview_frame": 30,
+      "seconds": 1.0,
+      "source_indices": {
+        "walk_axe/S": 12
+      }
+    },
+    {
+      "preview_frame": 31,
+      "seconds": 1.0333333333333334,
+      "source_indices": {
+        "walk_axe/S": 12
+      }
+    },
+    {
+      "preview_frame": 32,
+      "seconds": 1.0666666666666667,
+      "source_indices": {
+        "walk_axe/S": 12
+      }
+    },
+    {
+      "preview_frame": 33,
+      "seconds": 1.1,
+      "source_indices": {
+        "walk_axe/S": 13
+      }
+    },
+    {
+      "preview_frame": 34,
+      "seconds": 1.1333333333333333,
+      "source_indices": {
+        "walk_axe/S": 13
+      }
+    },
+    {
+      "preview_frame": 35,
+      "seconds": 1.1666666666666667,
+      "source_indices": {
+        "walk_axe/S": 14
+      }
+    },
+    {
+      "preview_frame": 36,
+      "seconds": 1.2,
+      "source_indices": {
+        "walk_axe/S": 14
+      }
+    },
+    {
+      "preview_frame": 37,
+      "seconds": 1.2333333333333334,
+      "source_indices": {
+        "walk_axe/S": 14
+      }
+    },
+    {
+      "preview_frame": 38,
+      "seconds": 1.2666666666666666,
+      "source_indices": {
+        "walk_axe/S": 15
+      }
+    },
+    {
+      "preview_frame": 39,
+      "seconds": 1.3,
+      "source_indices": {
+        "walk_axe/S": 15
+      }
+    },
+    {
+      "preview_frame": 40,
+      "seconds": 1.3333333333333333,
+      "source_indices": {
+        "walk_axe/S": 16
+      }
+    },
+    {
+      "preview_frame": 41,
+      "seconds": 1.3666666666666667,
+      "source_indices": {
+        "walk_axe/S": 16
+      }
+    },
+    {
+      "preview_frame": 42,
+      "seconds": 1.4,
+      "source_indices": {
+        "walk_axe/S": 16
+      }
+    },
+    {
+      "preview_frame": 43,
+      "seconds": 1.4333333333333333,
+      "source_indices": {
+        "walk_axe/S": 17
+      }
+    },
+    {
+      "preview_frame": 44,
+      "seconds": 1.4666666666666666,
+      "source_indices": {
+        "walk_axe/S": 17
+      }
+    },
+    {
+      "preview_frame": 45,
+      "seconds": 1.5,
+      "source_indices": {
+        "walk_axe/S": 18
+      }
+    },
+    {
+      "preview_frame": 46,
+      "seconds": 1.5333333333333334,
+      "source_indices": {
+        "walk_axe/S": 18
+      }
+    },
+    {
+      "preview_frame": 47,
+      "seconds": 1.5666666666666667,
+      "source_indices": {
+        "walk_axe/S": 18
+      }
+    },
+    {
+      "preview_frame": 48,
+      "seconds": 1.6,
+      "source_indices": {
+        "walk_axe/S": 19
+      }
+    },
+    {
+      "preview_frame": 49,
+      "seconds": 1.6333333333333333,
+      "source_indices": {
+        "walk_axe/S": 19
+      }
+    },
+    {
+      "preview_frame": 50,
+      "seconds": 1.6666666666666667,
+      "source_indices": {
+        "walk_axe/S": 20
+      }
+    },
+    {
+      "preview_frame": 51,
+      "seconds": 1.7,
+      "source_indices": {
+        "walk_axe/S": 20
+      }
+    },
+    {
+      "preview_frame": 52,
+      "seconds": 1.7333333333333334,
+      "source_indices": {
+        "walk_axe/S": 20
+      }
+    },
+    {
+      "preview_frame": 53,
+      "seconds": 1.7666666666666666,
+      "source_indices": {
+        "walk_axe/S": 21
+      }
+    },
+    {
+      "preview_frame": 54,
+      "seconds": 1.8,
+      "source_indices": {
+        "walk_axe/S": 21
+      }
+    },
+    {
+      "preview_frame": 55,
+      "seconds": 1.8333333333333333,
+      "source_indices": {
+        "walk_axe/S": 22
+      }
+    },
+    {
+      "preview_frame": 56,
+      "seconds": 1.8666666666666667,
+      "source_indices": {
+        "walk_axe/S": 22
+      }
+    },
+    {
+      "preview_frame": 57,
+      "seconds": 1.9,
+      "source_indices": {
+        "walk_axe/S": 22
+      }
+    },
+    {
+      "preview_frame": 58,
+      "seconds": 1.9333333333333333,
+      "source_indices": {
+        "walk_axe/S": 23
+      }
+    },
+    {
+      "preview_frame": 59,
+      "seconds": 1.9666666666666666,
+      "source_indices": {
+        "walk_axe/S": 23
+      }
+    },
+    {
+      "preview_frame": 60,
+      "seconds": 2.0,
+      "source_indices": {
+        "walk_axe/S": 0
+      }
+    },
+    {
+      "preview_frame": 61,
+      "seconds": 2.033333333333333,
+      "source_indices": {
+        "walk_axe/S": 0
+      }
+    },
+    {
+      "preview_frame": 62,
+      "seconds": 2.066666666666667,
+      "source_indices": {
+        "walk_axe/S": 0
+      }
+    },
+    {
+      "preview_frame": 63,
+      "seconds": 2.1,
+      "source_indices": {
+        "walk_axe/S": 1
+      }
+    },
+    {
+      "preview_frame": 64,
+      "seconds": 2.1333333333333333,
+      "source_indices": {
+        "walk_axe/S": 1
+      }
+    },
+    {
+      "preview_frame": 65,
+      "seconds": 2.1666666666666665,
+      "source_indices": {
+        "walk_axe/S": 2
+      }
+    },
+    {
+      "preview_frame": 66,
+      "seconds": 2.2,
+      "source_indices": {
+        "walk_axe/S": 2
+      }
+    },
+    {
+      "preview_frame": 67,
+      "seconds": 2.2333333333333334,
+      "source_indices": {
+        "walk_axe/S": 2
+      }
+    },
+    {
+      "preview_frame": 68,
+      "seconds": 2.2666666666666666,
+      "source_indices": {
+        "walk_axe/S": 3
+      }
+    },
+    {
+      "preview_frame": 69,
+      "seconds": 2.3,
+      "source_indices": {
+        "walk_axe/S": 3
+      }
+    },
+    {
+      "preview_frame": 70,
+      "seconds": 2.3333333333333335,
+      "source_indices": {
+        "walk_axe/S": 4
+      }
+    },
+    {
+      "preview_frame": 71,
+      "seconds": 2.3666666666666667,
+      "source_indices": {
+        "walk_axe/S": 4
+      }
+    },
+    {
+      "preview_frame": 72,
+      "seconds": 2.4,
+      "source_indices": {
+        "walk_axe/S": 4
+      }
+    },
+    {
+      "preview_frame": 73,
+      "seconds": 2.433333333333333,
+      "source_indices": {
+        "walk_axe/S": 5
+      }
+    },
+    {
+      "preview_frame": 74,
+      "seconds": 2.466666666666667,
+      "source_indices": {
+        "walk_axe/S": 5
+      }
+    },
+    {
+      "preview_frame": 75,
+      "seconds": 2.5,
+      "source_indices": {
+        "walk_axe/S": 6
+      }
+    },
+    {
+      "preview_frame": 76,
+      "seconds": 2.533333333333333,
+      "source_indices": {
+        "walk_axe/S": 6
+      }
+    },
+    {
+      "preview_frame": 77,
+      "seconds": 2.566666666666667,
+      "source_indices": {
+        "walk_axe/S": 6
+      }
+    },
+    {
+      "preview_frame": 78,
+      "seconds": 2.6,
+      "source_indices": {
+        "walk_axe/S": 7
+      }
+    },
+    {
+      "preview_frame": 79,
+      "seconds": 2.6333333333333333,
+      "source_indices": {
+        "walk_axe/S": 7
+      }
+    },
+    {
+      "preview_frame": 80,
+      "seconds": 2.6666666666666665,
+      "source_indices": {
+        "walk_axe/S": 8
+      }
+    },
+    {
+      "preview_frame": 81,
+      "seconds": 2.7,
+      "source_indices": {
+        "walk_axe/S": 8
+      }
+    },
+    {
+      "preview_frame": 82,
+      "seconds": 2.7333333333333334,
+      "source_indices": {
+        "walk_axe/S": 8
+      }
+    },
+    {
+      "preview_frame": 83,
+      "seconds": 2.7666666666666666,
+      "source_indices": {
+        "walk_axe/S": 9
+      }
+    },
+    {
+      "preview_frame": 84,
+      "seconds": 2.8,
+      "source_indices": {
+        "walk_axe/S": 9
+      }
+    },
+    {
+      "preview_frame": 85,
+      "seconds": 2.8333333333333335,
+      "source_indices": {
+        "walk_axe/S": 10
+      }
+    },
+    {
+      "preview_frame": 86,
+      "seconds": 2.8666666666666667,
+      "source_indices": {
+        "walk_axe/S": 10
+      }
+    },
+    {
+      "preview_frame": 87,
+      "seconds": 2.9,
+      "source_indices": {
+        "walk_axe/S": 10
+      }
+    },
+    {
+      "preview_frame": 88,
+      "seconds": 2.933333333333333,
+      "source_indices": {
+        "walk_axe/S": 11
+      }
+    },
+    {
+      "preview_frame": 89,
+      "seconds": 2.966666666666667,
+      "source_indices": {
+        "walk_axe/S": 11
+      }
+    },
+    {
+      "preview_frame": 90,
+      "seconds": 3.0,
+      "source_indices": {
+        "walk_axe/S": 12
+      }
+    },
+    {
+      "preview_frame": 91,
+      "seconds": 3.033333333333333,
+      "source_indices": {
+        "walk_axe/S": 12
+      }
+    },
+    {
+      "preview_frame": 92,
+      "seconds": 3.066666666666667,
+      "source_indices": {
+        "walk_axe/S": 12
+      }
+    },
+    {
+      "preview_frame": 93,
+      "seconds": 3.1,
+      "source_indices": {
+        "walk_axe/S": 13
+      }
+    },
+    {
+      "preview_frame": 94,
+      "seconds": 3.1333333333333333,
+      "source_indices": {
+        "walk_axe/S": 13
+      }
+    },
+    {
+      "preview_frame": 95,
+      "seconds": 3.1666666666666665,
+      "source_indices": {
+        "walk_axe/S": 14
+      }
+    },
+    {
+      "preview_frame": 96,
+      "seconds": 3.2,
+      "source_indices": {
+        "walk_axe/S": 14
+      }
+    },
+    {
+      "preview_frame": 97,
+      "seconds": 3.2333333333333334,
+      "source_indices": {
+        "walk_axe/S": 14
+      }
+    },
+    {
+      "preview_frame": 98,
+      "seconds": 3.2666666666666666,
+      "source_indices": {
+        "walk_axe/S": 15
+      }
+    },
+    {
+      "preview_frame": 99,
+      "seconds": 3.3,
+      "source_indices": {
+        "walk_axe/S": 15
+      }
+    },
+    {
+      "preview_frame": 100,
+      "seconds": 3.3333333333333335,
+      "source_indices": {
+        "walk_axe/S": 16
+      }
+    },
+    {
+      "preview_frame": 101,
+      "seconds": 3.3666666666666667,
+      "source_indices": {
+        "walk_axe/S": 16
+      }
+    },
+    {
+      "preview_frame": 102,
+      "seconds": 3.4,
+      "source_indices": {
+        "walk_axe/S": 16
+      }
+    },
+    {
+      "preview_frame": 103,
+      "seconds": 3.433333333333333,
+      "source_indices": {
+        "walk_axe/S": 17
+      }
+    },
+    {
+      "preview_frame": 104,
+      "seconds": 3.466666666666667,
+      "source_indices": {
+        "walk_axe/S": 17
+      }
+    },
+    {
+      "preview_frame": 105,
+      "seconds": 3.5,
+      "source_indices": {
+        "walk_axe/S": 18
+      }
+    },
+    {
+      "preview_frame": 106,
+      "seconds": 3.533333333333333,
+      "source_indices": {
+        "walk_axe/S": 18
+      }
+    },
+    {
+      "preview_frame": 107,
+      "seconds": 3.566666666666667,
+      "source_indices": {
+        "walk_axe/S": 18
+      }
+    },
+    {
+      "preview_frame": 108,
+      "seconds": 3.6,
+      "source_indices": {
+        "walk_axe/S": 19
+      }
+    },
+    {
+      "preview_frame": 109,
+      "seconds": 3.6333333333333333,
+      "source_indices": {
+        "walk_axe/S": 19
+      }
+    },
+    {
+      "preview_frame": 110,
+      "seconds": 3.6666666666666665,
+      "source_indices": {
+        "walk_axe/S": 20
+      }
+    },
+    {
+      "preview_frame": 111,
+      "seconds": 3.7,
+      "source_indices": {
+        "walk_axe/S": 20
+      }
+    },
+    {
+      "preview_frame": 112,
+      "seconds": 3.7333333333333334,
+      "source_indices": {
+        "walk_axe/S": 20
+      }
+    },
+    {
+      "preview_frame": 113,
+      "seconds": 3.7666666666666666,
+      "source_indices": {
+        "walk_axe/S": 21
+      }
+    },
+    {
+      "preview_frame": 114,
+      "seconds": 3.8,
+      "source_indices": {
+        "walk_axe/S": 21
+      }
+    },
+    {
+      "preview_frame": 115,
+      "seconds": 3.8333333333333335,
+      "source_indices": {
+        "walk_axe/S": 22
+      }
+    },
+    {
+      "preview_frame": 116,
+      "seconds": 3.8666666666666667,
+      "source_indices": {
+        "walk_axe/S": 22
+      }
+    },
+    {
+      "preview_frame": 117,
+      "seconds": 3.9,
+      "source_indices": {
+        "walk_axe/S": 22
+      }
+    },
+    {
+      "preview_frame": 118,
+      "seconds": 3.933333333333333,
+      "source_indices": {
+        "walk_axe/S": 23
+      }
+    },
+    {
+      "preview_frame": 119,
+      "seconds": 3.966666666666667,
+      "source_indices": {
+        "walk_axe/S": 23
+      }
+    }
+  ],
+  "outputs": {
+    "overview.png": "94ffb1b22ca4fa57833d9ef1f07813b1613e197002f47bcba7f61495f5a856da",
+    "overview.apng.png": "a643eb196efe91ea58bac725f050539c37f402d18db72d5f55182b4948f48333"
+  }
+}

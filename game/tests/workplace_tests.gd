@@ -173,6 +173,7 @@ static func _test_starvation_releases_the_vacancy(failures: Array[String]) -> vo
 	var owner: int = world.spawn_worker(Vector2i(3, 4), "lumberjack", hut)
 	var waiting: int = world.spawn_worker(Vector2i(8, 4), "lumberjack")
 	world.workers[owner]["hunger"] = 1
+	world.workers[owner]["nutrition_deficit_ticks"] = 41999
 	world.economy_enabled = true
 	_advance(world, int(world.catalog.economy["condition_interval_ticks"]) + 1)
 	_check(not world.workers.has(owner) and _home(world, waiting) == hut,
@@ -332,6 +333,7 @@ static func _test_new_vacancies_wake_failed_searches(failures: Array[String]) ->
 			world.buildings[near_farm]["construction_remaining"] = 0
 		else:
 			world.workers[owner]["hunger"] = 1
+			world.workers[owner]["nutrition_deficit_ticks"] = 41999
 			world.economy_enabled = true
 			world.tick = int(world.catalog.economy["condition_interval_ticks"]) - 1
 			world.step_tick()

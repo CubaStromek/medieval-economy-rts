@@ -1,0 +1,31 @@
+{
+  "frames": [
+    {
+      "index": 0,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/edits/log-S-pro-v4/images/frame_00.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "3cb1231e8109219f5f1da8ae2f26c39af65d247c3558f4dd34c2b44026f9e2ae",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "3cb1231e8109219f5f1da8ae2f26c39af65d247c3558f4dd34c2b44026f9e2ae"
+      }
+    }
+  ],
+  "response_image_location": "last_response.images",
+  "output_contract": {
+    "expected_frames": 1,
+    "synchronous": false,
+    "expected_dimensions": [
+      256,
+      256
+    ],
+    "method": "edit_with_text"
+  },
+  "frame_count_matches_contract": true,
+  "dimensions_match_contract": true,
+  "direction_order": "not_assumed; visually verify rotation indices",
+  "alpha_note": "PNG color type is not proof of actual alpha coverage; measure pixels separately"
+}

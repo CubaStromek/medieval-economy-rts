@@ -6,7 +6,12 @@ saves. Production startup, terrain rendering and simulation are unchanged.
 
 ## Open on Mac
 
-Double-click `Graphics Sandbox.command`. The earlier `Terrain Graphics Sample.command`
+Choose **Grafický sandbox** in the main menu. The **Hlavní menu** button or
+**Esc** returns to it. If a game was already running, it remains paused and
+**Pokračovat ve hře** restores the same session. Opening and closing the sandbox
+does not write game saves or sandbox presets.
+
+You can also double-click `Graphics Sandbox.command`. The earlier `Terrain Graphics Sample.command`
 also opens the sandbox. Godot is the only runtime required; the original Windows
 game does not need to run on this Mac.
 
@@ -21,8 +26,11 @@ The earlier static comparison scene remains available as
 
 - Choose the same two 22 × 18 Mountainous Region crops: meadow/rock or lake shore.
 - View only the working pane, compare with a fixed source-informed terrain
-  reference, or compare with today's four-material production renderer.
-- Toggle original textures, slope lighting, linear filtering and grid lines.
+  reference, or compare with the historical four-material procedural prototype.
+- Switch **SADA TEXTUR** between **Původní KaM** and **Naše malované · v1**.
+  The latter is our own higher-resolution painterly atlas, not original pixels.
+  See [artwork, provenance and prompt](modern-terrain-textures.md).
+- Toggle textures, slope lighting, linear filtering and grid lines.
 - Adjust visual relief and lighting strength independently. Relief also scales
   the slope-light stencil; it never changes source heights or walkability.
 - Optional prototype trees, experimental contact shadows, object-position
@@ -50,7 +58,10 @@ The terrain uses the unmodified local `Tiles1.tga`, raw source heights, tile
 rotations and signed interpolated source lighting described in
 [the terrain study](terrain-graphics-sample.md). The fixed reference pane is
 OUR rendering of that terrain, **not a screenshot of the running original game**.
-Default renderer output is pixel-identical to the preceding terrain study.
+Classic renderer output is pixel-identical to the preceding terrain study.
+New/reset sandbox sessions select our modern painted pack with the fixed
+reference beside it. Existing presets without a texture-pack field keep classic
+mode; explicitly saving a preset also saves the selected pack.
 
 The object fixture preserves source object IDs and cell positions. It contains:
 
@@ -91,14 +102,22 @@ Only data files are needed for that import; a Windows game runtime is not a
 requirement of this native Mac sandbox. No installer, compatibility layer or
 game package has been downloaded or installed by this change.
 
+## Production V1 rollout
+
+As of 2026-09-07, the regular game uses the same authored V1 materials; see
+[production integration](painted-terrain-game.md). Sandbox experiments remain
+isolated. Its procedural comparison is now explicitly labeled as the original
+prototype; original KaM / our V1 pack selection remains unchanged.
+
 ## Verification
 
 ```sh
 godot --headless --path game res://tests/terrain_sandbox_runner.tscn
 ```
 
-- 27 synthetic cases pass: prior reference tests, visual controls, object layer,
-  and versioned state. No original game graphics are needed by these tests.
+- Synthetic cases cover prior reference tests, visual controls, object layer,
+  versioned state/pack migration and modern material semantics/transitions.
+  No original game graphics are needed by these tests.
 - Native old-vs-new default shader comparison: 0 differing pixels. Textures,
   lighting, strength, relief, filtering and reset checked against rendered pixels.
 - Mesh/material identity retained while changing visual settings.

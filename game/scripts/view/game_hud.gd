@@ -31,6 +31,7 @@ signal construction_cancel_requested()
 signal soldier_food_requested(unit_id: int)
 signal army_food_requested()
 signal main_menu_requested()
+signal entity_enabled_requested(entity_type: String, entity_id: int, enabled: bool)
 
 var resource_hud_panel: PanelContainer
 var resource_amount_labels: Dictionary = {}
@@ -75,6 +76,15 @@ var _satiety_label: Label
 var _satiety_bar: ProgressBar
 var _satiety_timing: Label
 var _satiety_fill: StyleBoxFlat
+var _activity_panel: VBoxContainer
+var _activity_button: Button
+var _activity_status: Label
+var _activity_target_type: String = ""
+var _activity_target_id: int = 0
+var _activity_next_enabled: bool = true
+var _thoughts_panel: VBoxContainer
+var _thought_current: Label
+var _thought_next: Label
 var _selected_unit_id: int = 0
 var _last_unit_selection: int = 0
 var _clock_label: Label
@@ -257,6 +267,27 @@ func _build_dock() -> void:
 	_text_label(_empty_selection, "Need more citizens?\nSelect a School to train them.", 13, ACCENT)
 	building_inventory_label = _text_label(inspector, "", 14)
 	building_inventory_label.name = "BuildingInventoryLabel"
+	_activity_panel = VBoxContainer.new()
+	_activity_panel.name = "EntityActivityPanel"
+	_activity_panel.add_theme_constant_override("separation", 5)
+	inspector.add_child(_activity_panel)
+	_activity_button = _button(_activity_panel, "", "ToggleEntityActivity")
+	_activity_button.custom_minimum_size.y = 38
+	_activity_button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_activity_button.pressed.connect(_request_activity_change)
+	_activity_status = _text_label(_activity_panel, "", 12, MUTED)
+	_activity_status.name = "EntityActivityStatus"
+	_activity_panel.visible = false
+	_thoughts_panel = VBoxContainer.new()
+	_thoughts_panel.name = "UnitThoughtsPanel"
+	_thoughts_panel.add_theme_constant_override("separation", 5)
+	inspector.add_child(_thoughts_panel)
+	_text_label(_thoughts_panel, "Co si myslím", 13, ACCENT)
+	_thought_current = _text_label(_thoughts_panel, "", 12, INK)
+	_thought_current.name = "UnitThoughtCurrent"
+	_thought_next = _text_label(_thoughts_panel, "", 12, MUTED)
+	_thought_next.name = "UnitThoughtNext"
+	_thoughts_panel.visible = false
 	_satiety_panel = VBoxContainer.new()
 	_satiety_panel.name = "UnitSatietyPanel"
 	_satiety_panel.add_theme_constant_override("separation", 5)
@@ -276,9 +307,10 @@ func _build_dock() -> void:
 	_satiety_fill.set_corner_radius_all(3)
 	_satiety_bar.add_theme_stylebox_override("fill", _satiety_fill)
 	_satiety_panel.add_child(_satiety_bar)
-	_text_label(_satiety_panel, "0% starving · 100% full", 10, MUTED)
+	_text_label(_satiety_panel, "0% empty · 100% full", 10, MUTED)
 	_satiety_timing = _text_label(_satiety_panel, "", 12, MUTED)
 	_satiety_timing.name = "UnitSatietyTiming"
+	_satiety_timing.mouse_filter = Control.MOUSE_FILTER_PASS
 	_satiety_panel.visible = false
 	_construction_panel = VBoxContainer.new()
 	_construction_panel.name = "ConstructionActions"
@@ -602,8 +634,9 @@ func refresh(world: SimulationWorldClass, selected_cell: Vector2i, build_mode: S
 	if resource_hud_panel == null:
 		return
 	update_sky_time(world.tick)
+	var stocks: Dictionary = world.resource_stocks()
 	for resource_id: String in resource_amount_labels:
-		var stock: Dictionary = world.resource_stock(resource_id)
+		var stock: Dictionary = stocks[resource_id]
 		var total: String = str(stock["total"])
 		var breakdown: String = "Warehouse: %d\nBuildings: %d\nCarried: %d" % [
 			stock["warehouse"], stock["buildings"], stock["carried"],
@@ -617,6 +650,10 @@ func refresh(world: SimulationWorldClass, selected_cell: Vector2i, build_mode: S
 			(_summary_amounts[resource_id] as Label).text = total
 			(_summary_items[resource_id] as Control).tooltip_text = tooltip
 	var selected_unit: Dictionary = world.workers.get(selected_unit_id, {}) as Dictionary
+	if not selected_unit.is_empty() and not can_inspect_worker(world, selected_unit):
+		selected_unit = {}
+	if selected_unit_id != 0 and selected_unit.is_empty():
+		selected_cell = Vector2i(-1, -1) # A hidden unit must not select the building under its feet.
 	_selected_unit_id = selected_unit_id if not selected_unit.is_empty() else 0
 	_refresh_satiety_panel(world, selected_unit, simulation_speed, tick_seconds)
 	var inventory_text: String = _selected_building_inventory_text(world, selected_cell) if selected_unit.is_empty() else _unit_inventory_text(selected_unit)
@@ -626,9 +663,15 @@ func refresh(world: SimulationWorldClass, selected_cell: Vector2i, build_mode: S
 	production_detail_label.visible = not production_detail_label.text.is_empty()
 	var building_id: int = world.building_id_at(selected_cell) if selected_unit.is_empty() else 0
 	var selected_building: Dictionary = world.buildings.get(building_id, {}) as Dictionary
+	if not selected_building.is_empty() and world.fog.enabled \
+			and (not world.is_cell_explored(selected_cell) or not world.is_local_entity(selected_building)):
+		selected_building = {}
+	_refresh_activity_panel(world, selected_unit, selected_building)
+	_refresh_unit_thoughts(world, selected_unit)
 	_construction_panel.visible = int(selected_building.get("construction_remaining", 0)) > 0
 	_actions.refresh(world, selected_building)
-	_actions.visible = not _construction_panel.visible and selected_unit.is_empty()
+	_actions.visible = not _construction_panel.visible and selected_unit.is_empty() \
+		and (not world.fog.enabled or not selected_building.is_empty())
 	_soldier_food_panel.visible = not selected_unit.is_empty() and _catalog.soldiers.has(String(selected_unit["type"]))
 	_soldier_food_button.disabled = not world.economy_enabled or selected_unit.is_empty() or not _can_request_soldier_food(selected_unit)
 	_soldier_food_button.tooltip_text = "Below %.0f%% satiety, request one Bread, Sausage, Wine or Fish. A carrier brings it from a warehouse or producer and restores full satiety. The soldier stays at its post." % _soldier_feeding_percent()
@@ -665,11 +708,11 @@ func refresh(world: SimulationWorldClass, selected_cell: Vector2i, build_mode: S
 		"Simulation paused" if is_zero_approx(simulation_speed) else "Simulation speed: %.1f×" % simulation_speed,
 		seconds / 3600, (seconds / 60) % 60, seconds % 60,
 	]
-	_clock_label.tooltip_text += "\nCivilian work: 05:00–20:00. Sleep: 20:00–05:00.\nSpecialists sleep at their workplace; carriers and builders sleep in a warehouse.\nSoldiers and guards stay active at night."
+	_clock_label.tooltip_text += "\nCivilian work: 05:00–20:00. Sleep: 20:00–05:00.\nSpecialists sleep at their workplace; carriers and builders use assigned Workers' Cottages, with warehouses as overflow shelter.\nSoldiers and guards stay active at night."
 	var counts: Dictionary = _food_summary(world)
 	_citizens_label.text = "%d citizens · %d soldiers" % [counts["citizens"], counts["soldiers"]]
-	_citizens_label.tooltip_text = _worker_summary_text(world)
-	var sleeping: int = _sleeping_count(world)
+	_citizens_label.tooltip_text = _worker_summary_text(world, counts)
+	var sleeping: int = int(counts["sleeping"])
 	if sleeping > 0:
 		_citizens_label.text += " · %d sleeping" % sleeping
 	var hungry: int = int(counts["hungry"])
@@ -681,6 +724,74 @@ func refresh(world: SimulationWorldClass, selected_cell: Vector2i, build_mode: S
 	_supply_army_button.disabled = not world.economy_enabled or int(counts["eligible"]) == 0
 	event_label.text = "" if world.event_log.is_empty() else String(world.event_log.front())
 	event_label.tooltip_text = "\n".join(world.event_log)
+
+
+static func can_inspect_worker(world: SimulationWorldClass, worker: Dictionary) -> bool:
+	if worker.is_empty() or not world.is_local_entity(worker):
+		return false
+	if not world.fog.enabled:
+		return true
+	if not world.is_worker_inside(worker):
+		return world.is_entity_visible(worker)
+	var building: Dictionary = world.buildings.get(int(worker.get("inside_building_id", 0)), {}) as Dictionary
+	if building.is_empty():
+		return false
+	for cell: Vector2i in world.building_cells(building):
+		if world.is_cell_explored(cell):
+			return true
+	return false
+
+
+func _refresh_activity_panel(world: SimulationWorldClass, worker: Dictionary, building: Dictionary) -> void:
+	_activity_target_type = ""
+	_activity_target_id = 0
+	_activity_panel.visible = false
+	_activity_button.disabled = true
+	_activity_status.text = ""
+	if not worker.is_empty() and can_inspect_worker(world, worker):
+		_activity_target_type = "worker"
+		_activity_target_id = int(worker["id"])
+		var enabled: bool = bool(worker.get("enabled", true))
+		_activity_next_enabled = not enabled
+		_activity_button.text = "Pozastavit práci" if enabled else "Pokračovat v práci"
+		_activity_status.text = "Práce této jednotky je povolená." if enabled else "Práce této jednotky je pozastavená."
+		var home: Dictionary = world.buildings.get(int(worker.get("home_id", 0)), {}) as Dictionary
+		if not home.is_empty() and not bool(home.get("enabled", true)) and world.is_worker_work_paused(worker):
+			_activity_status.text += "\nPracoviště je pozastavené. Pro práci obnovte i jeho provoz."
+		_activity_button.tooltip_text = "Mění jen práci této jednotky, ne jejího pracoviště. Jídlo, spánek a uhnutí z cesty zůstávají možné. Již nesený náklad může doručit."
+	elif not building.is_empty() and world.is_local_entity(building):
+		_activity_target_type = "building"
+		_activity_target_id = int(building["id"])
+		var enabled: bool = bool(building.get("enabled", true))
+		var unfinished: bool = int(building.get("construction_remaining", 0)) > 0 or int(building.get("foundation_work_remaining", 0)) > 0
+		_activity_next_enabled = not enabled
+		if unfinished:
+			_activity_button.text = "Pozastavit stavbu" if enabled else "Obnovit stavbu"
+			_activity_status.text = "Stavba je povolená." if enabled else "Stavba je pozastavená."
+		else:
+			_activity_button.text = "Pozastavit provoz" if enabled else "Obnovit provoz"
+			_activity_status.text = "Provoz je povolený." if enabled else "Provoz je pozastavený."
+		_activity_button.tooltip_text = "Pozastaví práci a nové služby této budovy. Zásoby, fronty a rozestavěná práce zůstanou zachované. Hotové zboží mohou nosiči odvézt."
+	_activity_panel.visible = _activity_target_id != 0
+	_activity_button.disabled = _activity_target_id == 0
+
+
+func _request_activity_change() -> void:
+	if _activity_target_id == 0 or _activity_button.disabled or not _activity_panel.visible or not _inspector_scroll.visible:
+		return
+	# The first listener refreshes this HUD synchronously. Snapshot all values
+	# so later listeners still receive the original request, not the next toggle.
+	var target_type: String = _activity_target_type
+	var target_id: int = _activity_target_id
+	var requested_enabled: bool = _activity_next_enabled
+	entity_enabled_requested.emit(target_type, target_id, requested_enabled)
+
+
+func _refresh_unit_thoughts(world: SimulationWorldClass, worker: Dictionary) -> void:
+	var thoughts: Dictionary = world.unit_thoughts(worker) if not worker.is_empty() and can_inspect_worker(world, worker) else {}
+	_thoughts_panel.visible = not thoughts.is_empty()
+	_thought_current.text = "Teď: " + String(thoughts.get("current", "")) if not thoughts.is_empty() else ""
+	_thought_next.text = "Potom: " + String(thoughts.get("next", "")) if not thoughts.is_empty() else ""
 
 
 func _panel(node_name: String, preset: Control.LayoutPreset, offsets: Rect2) -> PanelContainer:
@@ -766,21 +877,14 @@ func _hud_theme() -> Theme:
 	return result
 
 
-func _worker_summary_text(world: SimulationWorldClass) -> String:
-	var counts: Dictionary = _food_summary(world)
-	var summary: String = "Citizens %d • Carriers %d • Gardeners %d\nSoldiers %d • Hungry %d\nArmy food requested %d • Food arriving %d\nBars above people show satiety: 0%% starving, 100%% full. Citizens visit an Inn automatically. Supply soldiers manually below %.0f%% satiety." % [
+func _worker_summary_text(world: SimulationWorldClass, counts: Dictionary = {}) -> String:
+	if counts.is_empty():
+		counts = _food_summary(world)
+	var summary: String = "Citizens %d • Carriers %d • Gardeners %d\nSoldiers %d • Hungry %d\nArmy food requested %d • Food arriving %d\nBars show satiety: 0%% empty, 100%% full. Empty satiety is not immediate starvation. A separate reserve lasts %d game days without food; meals rebuild it gradually. Citizens visit an Inn automatically. Supply soldiers manually below %.0f%% satiety." % [
 		counts["citizens"], counts["carrier"], counts["gardener"], counts["soldiers"], counts["hungry"],
-		counts["requested"], counts["arriving"], _soldier_feeding_percent(),
+		counts["requested"], counts["arriving"], int(_catalog.economy.get("nutrition_survival_days", 7)), _soldier_feeding_percent(),
 	]
-	return summary + "\nSleeping %d • Civilian rest 20:00–05:00." % _sleeping_count(world)
-
-
-func _sleeping_count(world: SimulationWorldClass) -> int:
-	var count: int = 0
-	for worker: Dictionary in world.workers.values():
-		if world.is_worker_sleeping(worker):
-			count += 1
-	return count
+	return summary + "\nSleeping %d • Civilian rest 20:00–05:00. Sleep slows satiety loss, not the long-term reserve clock. Walking is never slowed by hunger." % int(counts["sleeping"])
 
 
 func _soldier_feeding_threshold() -> int:
@@ -799,11 +903,15 @@ func _can_request_soldier_food(worker: Dictionary) -> bool:
 
 
 func _food_summary(world: SimulationWorldClass) -> Dictionary:
-	var counts: Dictionary = {"citizens": 0, "soldiers": 0, "hungry": 0, "requested": 0, "arriving": 0, "eligible": 0, "carrier": 0, "gardener": 0}
+	var counts: Dictionary = {"citizens": 0, "soldiers": 0, "hungry": 0, "requested": 0, "arriving": 0, "eligible": 0, "carrier": 0, "gardener": 0, "sleeping": 0}
 	var arriving: Dictionary = {}
 	for worker: Dictionary in world.workers.values():
+		if world.fog.enabled and not world.is_local_entity(worker):
+			continue
 		var role: String = String(worker["type"])
 		var soldier: bool = _catalog.soldiers.has(role)
+		if world.is_worker_sleeping(worker):
+			counts["sleeping"] = int(counts["sleeping"]) + 1
 		var group: String = "soldiers" if soldier else "citizens"
 		counts[group] = int(counts[group]) + 1
 		if role in ["carrier", "gardener"]:
@@ -850,6 +958,7 @@ func _unit_food_text(world: SimulationWorldClass, worker: Dictionary) -> String:
 static func satiety_color(status: String) -> Color:
 	match status:
 		"Starving": return Color("#ed7665")
+		"Weakened": return Color("#e69462")
 		"Hungry": return Color("#efa85b")
 		"Getting hungry": return Color("#d7c778")
 	return Color("#92bd6b")
@@ -866,32 +975,64 @@ func _refresh_satiety_panel(world: SimulationWorldClass, worker: Dictionary, sim
 	_satiety_bar.value = percent
 	_satiety_fill.bg_color = satiety_color(state)
 	var hungry_percent: float = 100.0 * float(status["hungry_at"]) / float(maxi(1, int(_catalog.economy.get("condition_max", 2700))))
-	_satiety_bar.tooltip_text = "Satiety: 0%% starving, 100%% full.\nCitizens seek food at %.0f%%. Food restores this bar." % hungry_percent
-	if int(worker.get("meal_ticks_left", 0)) > 0:
-		_satiety_timing.text = _meal_description(worker)
-		return
+	_satiety_bar.tooltip_text = "Satiety: 0%% empty, 100%% full. Empty satiety does not mean death.\nCitizens seek food at %.0f%%. A separate long-term reserve lasts %.0f game days without food.\nMeals restore satiety and gradually rebuild the reserve; one small bite does not reset it.\nWork stays at full efficiency for the first %d days of deficit. Walking is never slowed by hunger." % [hungry_percent, float(status["seven_day_limit"]), int(_catalog.economy.get("nutrition_weakening_start_days", 2))]
+	_satiety_timing.tooltip_text = ""
 	if not world.economy_enabled:
 		_satiety_timing.text = "Food needs are disabled in this scenario."
+		return
+	_satiety_timing.tooltip_text = _nutrition_timing_tooltip(status, simulation_speed, tick_seconds)
+	if int(worker.get("meal_ticks_left", 0)) > 0:
+		_satiety_timing.text = _meal_description(worker) + "\n" + _nutrition_summary_text(status)
+		if simulation_speed <= 0.0:
+			_satiety_timing.text += "\nSimulation paused."
 		return
 	var until_hungry: int = int(status["remaining_to_hungry_ticks"])
 	var soldier: bool = _catalog.soldiers.has(String(worker["type"]))
 	if soldier:
 		_satiety_timing.text = "Can request food below %.0f%% satiety." % _soldier_feeding_percent()
 	elif until_hungry > 0:
-		var seconds: int = int(ceil(float(until_hungry) * tick_seconds))
-		_satiety_timing.text = "Food needed in %s of game time." % _game_duration_text(until_hungry)
+		var rate_name: String = "sleeping" if world.is_worker_sleeping(worker) else "awake"
+		_satiety_timing.text = "Estimated hunger in %s of game time at the current %s rate." % [_game_duration_text(until_hungry), rate_name]
 		if simulation_speed > 0.0:
-			_satiety_timing.text += "\nAbout %s at %.1f× speed." % [_duration_text(int(ceil(float(seconds) / simulation_speed))), simulation_speed]
-		else:
-			_satiety_timing.text += "\nSimulation paused."
+			_satiety_timing.text += "\n" + _real_time_estimate(until_hungry, simulation_speed, tick_seconds)
+	elif until_hungry < 0:
+		_satiety_timing.text = "Hunger is not advancing at the current activity rate."
 	elif worker.get("action", "") == "eat":
 		_satiety_timing.text = "Going to an Inn now."
 	elif not String(worker.get("carrying", "")).is_empty():
 		_satiety_timing.text = "Hungry; delivers its cargo before seeking an Inn."
 	else:
 		_satiety_timing.text = "Hungry; seeks a supplied Inn after its current task."
+	_satiety_timing.text += "\n" + _nutrition_summary_text(status)
 	if state == "Starving":
-		_satiety_timing.text += "\nFood urgently needed: %s of game time until starvation." % _game_duration_text(int(status["remaining_to_starve_ticks"]))
+		var remaining: int = int(status["remaining_to_starve_ticks"])
+		if remaining >= 0:
+			_satiety_timing.text += "\nDanger: %s of game time until death without food." % _game_duration_text(remaining)
+			if simulation_speed > 0.0:
+				_satiety_timing.text += "\n" + _real_time_estimate(remaining, simulation_speed, tick_seconds)
+	if simulation_speed <= 0.0:
+		_satiety_timing.text += "\nSimulation paused."
+
+
+static func _nutrition_summary_text(status: Dictionary) -> String:
+	var limit: float = float(status["seven_day_limit"])
+	var remaining_days: float = clampf(limit - float(status["deficit_days"]), 0.0, limit)
+	return "Food reserve: %.1f / %.0f game days\nWork %.0f%% · walking 100%%" % [remaining_days, limit, float(status["work_efficiency_percent"])]
+
+
+static func _nutrition_timing_tooltip(status: Dictionary, simulation_speed: float, tick_seconds: float) -> String:
+	var remaining: int = int(status["remaining_to_starve_ticks"])
+	var text: String = "Long-term reserve is separate from the satiety bar. Meals rebuild it gradually.\nSleep slows satiety loss, but does not extend the reserve clock. Hunger estimates assume the current activity continues."
+	if remaining < 0:
+		return text + "\nThe reserve countdown is paused while eating or food needs are inactive."
+	text += "\nReserve without further food: %s of game time." % _game_duration_text(remaining)
+	return text + "\n" + _real_time_estimate(remaining, simulation_speed, tick_seconds)
+
+
+static func _real_time_estimate(ticks: int, simulation_speed: float, tick_seconds: float) -> String:
+	if simulation_speed <= 0.0:
+		return "Simulation paused."
+	return "About %s at %.1f× speed." % [_duration_text(int(ceil(float(ticks) * tick_seconds / simulation_speed))), simulation_speed]
 
 
 static func _game_duration_text(ticks: int) -> String:
@@ -938,6 +1079,9 @@ func set_placement_preview(tool: String, preview: Dictionary) -> void:
 	if not tool.is_empty():
 		if preview.is_empty():
 			text = "Move onto the map to preview placement."
+		elif bool(preview.get("obscured", false)):
+			text = String(preview.get("reason", "Explore this area first."))
+			color = Color("#ffb39c")
 		else:
 			text = "%s\nHeight %.1f · slope %d" % [
 				String(preview.get("reason", "")), float(preview.get("height", 0.0)), int(preview.get("slope", 0)),
@@ -960,6 +1104,8 @@ func set_terrain_rules(enabled: bool) -> void:
 
 
 func _selected_building_inventory_text(world: SimulationWorldClass, selected_cell: Vector2i) -> String:
+	if world.fog.enabled and not world.is_cell_explored(selected_cell):
+		return ""
 	var building_id: int = world.building_id_at(selected_cell)
 	if building_id == 0:
 		var field_id: int = world.field_id_at(selected_cell)
@@ -991,6 +1137,10 @@ func _selected_building_inventory_text(world: SimulationWorldClass, selected_cel
 	var building_type: String = String(building["type"])
 	var definition: Dictionary = world.catalog.building(building_type)
 	var building_name: String = String(definition.get("display_name", building_type))
+	if world.fog.enabled and not world.is_local_entity(building):
+		return building_name + "\nForeign building"
+	if building_type == "workers_house":
+		return "%s\nResidence for Carriers and Builders" % building_name
 	var inventory: Dictionary
 	var resource_ids: Array[String] = []
 	if building_type == "warehouse":
@@ -1033,6 +1183,8 @@ func _selected_building_inventory_text(world: SimulationWorldClass, selected_cel
 
 
 func _selected_production_text(world: SimulationWorldClass, selected_cell: Vector2i) -> String:
+	if world.fog.enabled and not world.is_cell_explored(selected_cell):
+		return ""
 	var building_id: int = world.building_id_at(selected_cell)
 	if building_id == 0:
 		var field_id: int = world.field_id_at(selected_cell)
@@ -1045,6 +1197,8 @@ func _selected_production_text(world: SimulationWorldClass, selected_cell: Vecto
 				return "Build a Fisherman's Hut beside the water." if String(deposit["resource"]) == "fish" else "Build the matching mine or Quarry near this deposit."
 		return ""
 	var building: Dictionary = world.buildings[building_id] as Dictionary
+	if world.fog.enabled and not world.is_local_entity(building):
+		return ""
 	var definition: Dictionary = world.catalog.building(String(building["type"]))
 	var worker_type: String = WorkplacesClass.profession(world, building_id)
 	var recipe: Dictionary = world.catalog.recipe(String(building.get("recipe_id", definition.get("recipe", ""))))
@@ -1080,6 +1234,8 @@ func _selected_production_text(world: SimulationWorldClass, selected_cell: Vecto
 		return "\n".join(lines)
 	if not worker_type.is_empty():
 		var owner: Dictionary = world.workplace_worker(building_id)
+		if world.fog.enabled and not owner.is_empty() and not world.is_local_entity(owner):
+			owner = {}
 		var profession_name: String = String(world.catalog.unit(worker_type).get("display_name", worker_type))
 		if owner.is_empty():
 			lines.append("Worker: %s • 0/1 • waiting for worker" % profession_name)
@@ -1088,11 +1244,15 @@ func _selected_production_text(world: SimulationWorldClass, selected_cell: Vecto
 			lines.append("Worker: %s #%d • 1/1%s" % [profession_name, int(owner["id"]), location])
 			var satiety: Dictionary = world.hunger_status(owner)
 			lines.append("Satiety %.0f%% · %s" % [float(satiety["satiety_percent"]), String(satiety["state"])])
+			if world.economy_enabled:
+				lines.append(_nutrition_summary_text(satiety))
 			if int(owner.get("meal_ticks_left", 0)) > 0:
 				lines.append(_meal_description(owner))
 	var indoor_count: int = 0
 	var sleeping_count: int = 0
 	for worker: Dictionary in world.workers.values():
+		if world.fog.enabled and not world.is_local_entity(worker):
+			continue
 		if world.is_worker_inside(worker) and int(worker.get("inside_building_id", 0)) == building_id:
 			indoor_count += 1
 			if world.is_worker_sleeping(worker):
@@ -1106,6 +1266,10 @@ func _selected_production_text(world: SimulationWorldClass, selected_cell: Vecto
 	elif String(building["type"]) == "forester_hut":
 		lines.append("Planting radius: %d tiles from the hut" % int(definition.get("planting_radius", 8)))
 		lines.append("Plants saplings on reachable clear ground. Train a Gardener at School.")
+	elif String(building["type"]) == "workers_house":
+		var occupancy: Dictionary = _residence_occupancy(world, building_id, definition)
+		lines.append("Residents: %d/%d occupied" % [int(occupancy["occupied"]), int(occupancy["capacity"])])
+		lines.append("Carriers and Builders return here to sleep; their workplace assignment stays separate.")
 	elif String(building["type"]) == "fisher_hut":
 		lines.append("Fishing radius: %d tiles • reachable fish deposit required" % int(definition.get("extract_radius", 3)))
 		lines.append("Fish are stored here; carriers collect them. Train a Fisherman at School.")
@@ -1117,10 +1281,14 @@ func _selected_production_text(world: SimulationWorldClass, selected_cell: Vecto
 		diner_ids.sort()
 		for diner_id: int in diner_ids:
 			var diner: Dictionary = world.workers[diner_id]
+			if world.fog.enabled and not world.is_local_entity(diner):
+				continue
 			if int(diner.get("inside_building_id", 0)) != building_id or int(diner.get("meal_ticks_left", 0)) <= 0:
 				continue
 			var satiety: Dictionary = world.hunger_status(diner)
 			lines.append("%s #%d · Satiety %.0f%%\n%s" % [String(_catalog.unit(String(diner["type"])).get("display_name", diner["type"])), diner_id, float(satiety["satiety_percent"]), _meal_description(diner)])
+			if world.economy_enabled:
+				lines.append(_nutrition_summary_text(satiety))
 		lines.append("Citizens visit automatically when hungry, eat up to %d different foods, then return to work." % int(_catalog.economy.get("max_meals_per_visit", 3)))
 		lines.append("Keep Bread, Sausages, Wine or Fish supplied by carriers. Soldiers receive food at their posts through Supply food.")
 	elif not recipe.is_empty():
@@ -1161,6 +1329,30 @@ func _world_deposits(world: SimulationWorldClass) -> Dictionary:
 	return value as Dictionary if value is Dictionary else {}
 
 
+func _residence_occupancy(world: SimulationWorldClass, building_id: int, definition: Dictionary) -> Dictionary:
+	var capacity: int = int(definition.get("residence_capacity", 0))
+	if world.has_method("residence_occupancy"):
+		var reported: Variant = world.call("residence_occupancy", building_id)
+		if reported is Dictionary:
+			var details: Dictionary = reported as Dictionary
+			return {
+				"occupied": maxi(0, int(details.get("occupied", 0))),
+				"capacity": maxi(0, int(details.get("capacity", capacity))),
+				"residents": details.get("residents", []),
+			}
+	# Compatibility while a world created by an older embedded client has no
+	# public residence helper. Sleeping-place ownership is the source of truth;
+	# home_id remains the unit's workplace.
+	var resident_types: Array = definition.get("resident_types", []) as Array
+	var residents: Array[int] = []
+	for worker: Dictionary in world.workers.values():
+		if int(worker.get("sleep_home_id", 0)) == building_id \
+				and resident_types.has(String(worker.get("type", ""))):
+			residents.append(int(worker.get("id", 0)))
+	residents.sort()
+	return {"occupied": residents.size(), "capacity": capacity, "residents": residents}
+
+
 func _field_growth_ticks(is_vine: bool) -> int:
 	var value: Variant = _catalog.get("economy")
 	var economy: Dictionary = value as Dictionary if value is Dictionary else {}
@@ -1187,6 +1379,8 @@ func _build_mode_hint(mode: String) -> String:
 			return "Add wheat fields (0) nearby and train a Farmer at School."
 		"forester_hut":
 			return "Train a Gardener at School. Plants trees on reachable clear ground within %d tiles of this hut." % int(_catalog.building(mode).get("planting_radius", 8))
+		"workers_house":
+			return "Homes up to %d Carriers or Builders. Residents keep their workplace assignment and return here to sleep." % int(_catalog.building(mode).get("residence_capacity", 2))
 		"fisher_hut":
 			return "Place near a reachable fish deposit within %d tiles. Train a Fisherman at School; carriers collect fish." % int(_catalog.building(mode).get("extract_radius", 3))
 		"mill", "bakery":
@@ -1201,10 +1395,14 @@ func _build_mode_hint(mode: String) -> String:
 
 
 func _selected_training_text(world: SimulationWorldClass, selected_cell: Vector2i) -> String:
+	if world.fog.enabled and not world.is_cell_explored(selected_cell):
+		return ""
 	var building_id: int = world.building_id_at(selected_cell)
 	if building_id == 0:
 		return ""
 	var building: Dictionary = world.buildings[building_id] as Dictionary
+	if world.fog.enabled and not world.is_local_entity(building):
+		return ""
 	var definition: Dictionary = world.catalog.building(String(building["type"]))
 	if (definition.get("trains", []) as Array).is_empty():
 		return ""

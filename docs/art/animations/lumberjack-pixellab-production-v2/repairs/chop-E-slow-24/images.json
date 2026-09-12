@@ -1,0 +1,340 @@
+{
+  "frames": [
+    {
+      "index": 0,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_00.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "fcd6369d54fd6cd18cb51a8436ea971239266b4dcab6f5886df909720d249689",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "fcd6369d54fd6cd18cb51a8436ea971239266b4dcab6f5886df909720d249689"
+      }
+    },
+    {
+      "index": 1,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_01.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "7af11b8a3eefa61acfd80c82ed2a87523433bab87de7ddf58d874cb17f04f279",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "7af11b8a3eefa61acfd80c82ed2a87523433bab87de7ddf58d874cb17f04f279"
+      }
+    },
+    {
+      "index": 2,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_02.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "931dc91b7e13f9c978f1d0586994b16429f1ae3c8ce013c03280442cb749f99b",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "931dc91b7e13f9c978f1d0586994b16429f1ae3c8ce013c03280442cb749f99b"
+      }
+    },
+    {
+      "index": 3,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_03.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "e09aad1685ce45e059f76a076fdfe956c517ef46713dd0af436666321742f545",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "e09aad1685ce45e059f76a076fdfe956c517ef46713dd0af436666321742f545"
+      }
+    },
+    {
+      "index": 4,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_04.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "d91c9a72b6399f415533ce155e8ea81fe71452f29bc5f861d124e8956513fd17",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "d91c9a72b6399f415533ce155e8ea81fe71452f29bc5f861d124e8956513fd17"
+      }
+    },
+    {
+      "index": 5,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_05.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "cb7481a414e92adae4b284c70ede0c896e9680e1a7fe6b356710516c101a78f8",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "cb7481a414e92adae4b284c70ede0c896e9680e1a7fe6b356710516c101a78f8"
+      }
+    },
+    {
+      "index": 6,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_06.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "babef2f8efe7b41742baae6f493977be73e91a42940d8e6b0001867536c2de6b",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "babef2f8efe7b41742baae6f493977be73e91a42940d8e6b0001867536c2de6b"
+      }
+    },
+    {
+      "index": 7,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_07.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "5531d6e80cdabd765c11cf8ca4d86e7642c2e515363f6e0becc430831f2422bd",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "5531d6e80cdabd765c11cf8ca4d86e7642c2e515363f6e0becc430831f2422bd"
+      }
+    },
+    {
+      "index": 8,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_08.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "e80f0c19ceaed6beb6ce5ee9e2939d6131b264a5b2cad8f591f6a526f45d5ed4",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "e80f0c19ceaed6beb6ce5ee9e2939d6131b264a5b2cad8f591f6a526f45d5ed4"
+      }
+    },
+    {
+      "index": 9,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_09.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "2ede76e70385a9f45fe442bcde1a5b89e804411f08026771b56ca50fc803e802",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "2ede76e70385a9f45fe442bcde1a5b89e804411f08026771b56ca50fc803e802"
+      }
+    },
+    {
+      "index": 10,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_10.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "80fe03a1ccc532baf1414c8b9fd5a188e749fe105499376749197fcf381691a2",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "80fe03a1ccc532baf1414c8b9fd5a188e749fe105499376749197fcf381691a2"
+      }
+    },
+    {
+      "index": 11,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_11.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "50438a80964ca291746dbded4c23109f46598e6d54c1cbe710baa1227497a0f3",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "50438a80964ca291746dbded4c23109f46598e6d54c1cbe710baa1227497a0f3"
+      }
+    },
+    {
+      "index": 12,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_12.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "c34b67c3215f9c0a405369fcbddef99316abfbd6906feaa44a6f969004afb2d6",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "c34b67c3215f9c0a405369fcbddef99316abfbd6906feaa44a6f969004afb2d6"
+      }
+    },
+    {
+      "index": 13,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_13.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "3ea9d439df38d3bd742fe3b2ef3dcece58b2256be464d21730d7a080eeb4d5fb",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "3ea9d439df38d3bd742fe3b2ef3dcece58b2256be464d21730d7a080eeb4d5fb"
+      }
+    },
+    {
+      "index": 14,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_14.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "096ed2bec4c2612c4a8db5961fa29ad7ce7e3760eac8a08478ccba34bf11184e",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "096ed2bec4c2612c4a8db5961fa29ad7ce7e3760eac8a08478ccba34bf11184e"
+      }
+    },
+    {
+      "index": 15,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_15.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "9c7283739ec0bf2963f99ceda3226625de093d91dcda6ddb16d0d409d7474fa2",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "9c7283739ec0bf2963f99ceda3226625de093d91dcda6ddb16d0d409d7474fa2"
+      }
+    },
+    {
+      "index": 16,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_16.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "2501467f078482e25d1dd40345098ac2e2b010a737cf8e16f87f9ce6cf6dd168",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "2501467f078482e25d1dd40345098ac2e2b010a737cf8e16f87f9ce6cf6dd168"
+      }
+    },
+    {
+      "index": 17,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_17.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "203a7f4dfa4fd9b6ea073081f1b3ac09d499f4a986cfa871c9255690a2f806b6",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "203a7f4dfa4fd9b6ea073081f1b3ac09d499f4a986cfa871c9255690a2f806b6"
+      }
+    },
+    {
+      "index": 18,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_18.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "f8c50e4de3f645a985371ce8d40fd32c85f0cba3267acc2b3b4848a2a3bebf73",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "f8c50e4de3f645a985371ce8d40fd32c85f0cba3267acc2b3b4848a2a3bebf73"
+      }
+    },
+    {
+      "index": 19,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_19.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "589291fddb2f937828556329e26f8a4f1914e1b8420833cccbbccc2e1b1aed64",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "589291fddb2f937828556329e26f8a4f1914e1b8420833cccbbccc2e1b1aed64"
+      }
+    },
+    {
+      "index": 20,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_20.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "11173eaafd3130a822fd64cfb04735b6dc6d932792f91928295aea28ecb6d5bc",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "11173eaafd3130a822fd64cfb04735b6dc6d932792f91928295aea28ecb6d5bc"
+      }
+    },
+    {
+      "index": 21,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_21.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "8e65a1d0e036950a1ad49654dced48844bbc682f7a5e2c25665a2393b7fc5259",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "8e65a1d0e036950a1ad49654dced48844bbc682f7a5e2c25665a2393b7fc5259"
+      }
+    },
+    {
+      "index": 22,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_22.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "8a9520b286856bfc8719aab9eaac9c45aa7b8e25dbeec1686d8b2dde65586e18",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "8a9520b286856bfc8719aab9eaac9c45aa7b8e25dbeec1686d8b2dde65586e18"
+      }
+    },
+    {
+      "index": 23,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_23.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "81e3d594dd2d4dc3c1848f37a70f645d7af14f8dfd763bf035a7cb0765d9a900",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "81e3d594dd2d4dc3c1848f37a70f645d7af14f8dfd763bf035a7cb0765d9a900"
+      }
+    },
+    {
+      "index": 24,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/repairs/chop-E-slow-24/images/frame_24.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "1a71cab272b7a6f0e1860543da9b399a54e10af7098e6affda59f39e427d3d41",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "PNG",
+        "base64_ascii_whitespace_removed": 0,
+        "source_decoded_sha256": "1a71cab272b7a6f0e1860543da9b399a54e10af7098e6affda59f39e427d3d41"
+      }
+    }
+  ],
+  "response_image_location": "last_response.images",
+  "output_contract": {
+    "expected_frames": 25,
+    "synchronous": false,
+    "index_zero": "input frame, followed by frame_count generated frames",
+    "opaque_input_note": "no_background may cut out an opaque first frame"
+  },
+  "frame_count_matches_contract": true,
+  "dimensions_match_contract": true,
+  "direction_order": "not_assumed; visually verify rotation indices",
+  "alpha_note": "PNG color type is not proof of actual alpha coverage; measure pixels separately"
+}

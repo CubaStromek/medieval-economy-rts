@@ -1,0 +1,367 @@
+{
+  "manifest_sha256": "7aa01262a49e4e682f87c9a8445f6fc79ec1fd6f18154f34d8a11a320a43fa64",
+  "all_15_captured_png_hashes_match_manifest": true,
+  "rows": [
+    {
+      "clip": "walk_axe",
+      "direction": "N",
+      "selected_frame_count": 24,
+      "fps": 10.0,
+      "duration_seconds": 2.4,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        206,
+        215
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        0.20245398773006135,
+        2.0245398773006134
+      ]
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "NE",
+      "selected_frame_count": 24,
+      "fps": 15.0,
+      "duration_seconds": 1.6,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        201,
+        215
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -0.8098159509202454,
+        2.0245398773006134
+      ]
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "E",
+      "selected_frame_count": 8,
+      "fps": 10.0,
+      "duration_seconds": 0.8,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        203,
+        207
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -0.4049079754601227,
+        0.4049079754601227
+      ]
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "SE",
+      "selected_frame_count": 24,
+      "fps": 15.0,
+      "duration_seconds": 1.6,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        196,
+        213
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -1.822085889570552,
+        1.6196319018404908
+      ]
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "S",
+      "selected_frame_count": 24,
+      "fps": 10.0,
+      "duration_seconds": 2.4,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        199,
+        215
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -1.2147239263803682,
+        2.0245398773006134
+      ]
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "SW",
+      "selected_frame_count": 24,
+      "fps": 15.0,
+      "duration_seconds": 1.6,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        201,
+        213
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -0.8098159509202454,
+        1.6196319018404908
+      ]
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "W",
+      "selected_frame_count": 24,
+      "fps": 15.0,
+      "duration_seconds": 1.6,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        207,
+        218
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        0.4049079754601227,
+        2.6319018404907975
+      ]
+    },
+    {
+      "clip": "walk_axe",
+      "direction": "NW",
+      "selected_frame_count": 24,
+      "fps": 15.0,
+      "duration_seconds": 1.6,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        202,
+        221
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -0.6073619631901841,
+        3.2392638036809815
+      ]
+    },
+    {
+      "clip": "chop",
+      "direction": "N",
+      "selected_frame_count": 12,
+      "fps": 9.0,
+      "duration_seconds": 1.3333333333333333,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        212,
+        212
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        1.4171779141104295,
+        1.4171779141104295
+      ]
+    },
+    {
+      "clip": "chop",
+      "direction": "NE",
+      "selected_frame_count": 16,
+      "fps": 12.0,
+      "duration_seconds": 1.3333333333333333,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        206,
+        206
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        0.20245398773006135,
+        0.20245398773006135
+      ]
+    },
+    {
+      "clip": "chop",
+      "direction": "E",
+      "selected_frame_count": 24,
+      "fps": 18.0,
+      "duration_seconds": 1.3333333333333333,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        206,
+        206
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        0.20245398773006135,
+        0.20245398773006135
+      ]
+    },
+    {
+      "clip": "chop",
+      "direction": "SE",
+      "selected_frame_count": 16,
+      "fps": 12.0,
+      "duration_seconds": 1.3333333333333333,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        213,
+        213
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        1.6196319018404908,
+        1.6196319018404908
+      ]
+    },
+    {
+      "clip": "chop",
+      "direction": "S",
+      "selected_frame_count": 16,
+      "fps": 12.0,
+      "duration_seconds": 1.3333333333333333,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        215,
+        215
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        2.0245398773006134,
+        2.0245398773006134
+      ]
+    },
+    {
+      "clip": "chop",
+      "direction": "SW",
+      "selected_frame_count": 16,
+      "fps": 12.0,
+      "duration_seconds": 1.3333333333333333,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        202,
+        202
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -0.6073619631901841,
+        -0.6073619631901841
+      ]
+    },
+    {
+      "clip": "chop",
+      "direction": "W",
+      "selected_frame_count": 24,
+      "fps": 18.0,
+      "duration_seconds": 1.3333333333333333,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        218,
+        218
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        2.6319018404907975,
+        2.6319018404907975
+      ]
+    },
+    {
+      "clip": "chop",
+      "direction": "NW",
+      "selected_frame_count": 16,
+      "fps": 12.0,
+      "duration_seconds": 1.3333333333333333,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        216,
+        216
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        2.226993865030675,
+        2.226993865030675
+      ]
+    },
+    {
+      "clip": "walk_log",
+      "direction": "N",
+      "selected_frame_count": 11,
+      "fps": 13.75,
+      "duration_seconds": 0.8,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        207,
+        219
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        0.4049079754601227,
+        2.834355828220859
+      ]
+    },
+    {
+      "clip": "walk_log",
+      "direction": "NE",
+      "selected_frame_count": 16,
+      "fps": 20.0,
+      "duration_seconds": 0.8,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        198,
+        214
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -1.4171779141104295,
+        1.822085889570552
+      ]
+    },
+    {
+      "clip": "walk_log",
+      "direction": "E",
+      "selected_frame_count": 16,
+      "fps": 20.0,
+      "duration_seconds": 0.8,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        197,
+        206
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -1.6196319018404908,
+        0.20245398773006135
+      ]
+    },
+    {
+      "clip": "walk_log",
+      "direction": "SE",
+      "selected_frame_count": 16,
+      "fps": 20.0,
+      "duration_seconds": 0.8,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        192,
+        208
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -2.6319018404907975,
+        0.6073619631901841
+      ]
+    },
+    {
+      "clip": "walk_log",
+      "direction": "S",
+      "selected_frame_count": 16,
+      "fps": 20.0,
+      "duration_seconds": 0.8,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        198,
+        214
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -1.4171779141104295,
+        1.822085889570552
+      ]
+    },
+    {
+      "clip": "walk_log",
+      "direction": "SW",
+      "selected_frame_count": 16,
+      "fps": 20.0,
+      "duration_seconds": 0.8,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        194,
+        216
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -2.226993865030675,
+        2.226993865030675
+      ]
+    },
+    {
+      "clip": "walk_log",
+      "direction": "W",
+      "selected_frame_count": 16,
+      "fps": 20.0,
+      "duration_seconds": 0.8,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        197,
+        205
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -1.6196319018404908,
+        0.0
+      ]
+    },
+    {
+      "clip": "walk_log",
+      "direction": "NW",
+      "selected_frame_count": 16,
+      "fps": 20.0,
+      "duration_seconds": 0.8,
+      "alpha_nonzero_bottom_exclusive_range_px": [
+        194,
+        216
+      ],
+      "bottom_minus_anchor_world_px_range": [
+        -2.226993865030675,
+        2.226993865030675
+      ]
+    }
+  ],
+  "note": "Bottom extent at alpha > 0 is not the physical foot anchor and not a slope-contact proof; measurement does not modify registration."
+}

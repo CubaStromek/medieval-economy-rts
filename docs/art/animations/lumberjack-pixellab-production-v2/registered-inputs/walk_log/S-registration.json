@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-10",
+  "source": "edits/log-S-left-holster/images/frame_00.png",
+  "source_sha256": "6bdfea5f24b3d047dae191dc2886d0337b3bb4cdd561be97ba4bdf6342548622",
+  "output": "registered-inputs/walk_log/S.png",
+  "output_sha256": "979e1a464722a1217a3531ccd89ac54976c2471b38d7efb9fbbd778fdc8a1fcd",
+  "canvas_px": [
+    256,
+    256
+  ],
+  "cap_landmark": {
+    "method": "Manually inspected cap-only crown and brim, not full-alpha top (log above head). Crown top y80; orange cap brim horizontal extrema x120..146 inclusive at y89..92. Midpoint x133. Explicit landmark; no pixel edits or segmentation in export.",
+    "measurement_roi_exclusive": [
+      119,
+      79,
+      148,
+      100
+    ],
+    "cap_crown_top_y": 80,
+    "cap_brim_extrema_x_inclusive": [
+      120,
+      146
+    ],
+    "cap_center_x": 133,
+    "visual_uncertainty_source_px": 1
+  },
+  "translation_source_px": [
+    -5,
+    -28
+  ],
+  "registered_cap_top_y": 52,
+  "registered_cap_center_x": 128,
+  "source_alpha_bbox_exclusive": [
+    83,
+    52,
+    175,
+    241
+  ],
+  "output_alpha_bbox_exclusive": [
+    78,
+    24,
+    170,
+    213
+  ],
+  "visible_pixel_count": 7984,
+  "visible_pixels_clipped": 0,
+  "all_visible_source_rgba_pixels_preserved_at_exact_integer_translation": true,
+  "resampling": "none",
+  "physical_ground_anchor": "not inferred; image registration only",
+  "visual_observations": [
+    "Log longitudinal on anatomical RIGHT shoulder (screen left in S)",
+    "Right hand supports log; lower anatomical left hand empty",
+    "Single axe holstered on anatomical LEFT hip (screen right in S)",
+    "Stepped feet inherited; ground contact must be verified in animation"
+  ]
+}

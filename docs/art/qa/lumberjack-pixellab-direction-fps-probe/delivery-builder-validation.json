@@ -1,0 +1,35 @@
+{
+  "date": "2026-09-10",
+  "scope": "Isolated synthetic 24-direction delivery builder probe",
+  "result": {
+    "package": "/private/tmp/pixellab-delivery-builder-probe/package",
+    "preview": "/private/tmp/pixellab-delivery-builder-probe/preview/index.html",
+    "validation": "/private/tmp/pixellab-delivery-builder-probe/pack-validation.json",
+    "backup": "/private/tmp/pixellab-delivery-builder-probe/delivery-backups/20260910T174224Z-55da359a",
+    "selected_frames": 439,
+    "references": 24,
+    "symlinks_in_delivery": 0,
+    "warnings": []
+  },
+  "all_selected_pngs_exact": true,
+  "all_24_references_exact": true,
+  "all_direction_fps_exact": true,
+  "source_file_metadata_maps_to_real_repair_jobs": true,
+  "raw_source_pngs_unchanged": true,
+  "previous_pilots_preserved_in_backup": true,
+  "no_delivery_symlinks": true,
+  "negative_cases": {
+    "draft": {
+      "rejected": true,
+      "existing_delivery_unchanged": true
+    },
+    "missing_record": {
+      "rejected": true,
+      "existing_delivery_unchanged": true
+    },
+    "wrong_source_sha": {
+      "rejected": true,
+      "existing_delivery_unchanged": true
+    }
+  }
+}

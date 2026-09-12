@@ -1,0 +1,109 @@
+{
+  "returned_frames": 9,
+  "unique_rgba_frames": 9,
+  "frame_00_vs_input": {
+    "same_rgba": false,
+    "mean_rgba_delta": 0.788116455078125,
+    "changed_pixels": 94
+  },
+  "frame_08_vs_frame_00": {
+    "same_rgba": false,
+    "mean_rgba_delta": 10.520462036132812,
+    "changed_pixels": 3111
+  },
+  "all_vs_input": [
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 0.788116455078125,
+      "changed_pixels": 94
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 6.41827392578125,
+      "changed_pixels": 2726
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 8.534317016601562,
+      "changed_pixels": 2956
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 8.531692504882812,
+      "changed_pixels": 2869
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 11.218994140625,
+      "changed_pixels": 3156
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 12.600830078125,
+      "changed_pixels": 3206
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 14.862136840820312,
+      "changed_pixels": 3451
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 13.670364379882812,
+      "changed_pixels": 3356
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 10.812515258789062,
+      "changed_pixels": 3165
+    }
+  ],
+  "adjacent_including_wrap": [
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 6.139068603515625,
+      "changed_pixels": 2676
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 5.9235992431640625,
+      "changed_pixels": 2515
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 8.4765625,
+      "changed_pixels": 2971
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 7.5807037353515625,
+      "changed_pixels": 2783
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 6.51129150390625,
+      "changed_pixels": 2719
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 6.0569305419921875,
+      "changed_pixels": 2573
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 4.521636962890625,
+      "changed_pixels": 1854
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 6.4486083984375,
+      "changed_pixels": 2569
+    },
+    {
+      "same_rgba": false,
+      "mean_rgba_delta": 10.520462036132812,
+      "changed_pixels": 3111
+    }
+  ],
+  "all_pairs_rgba_duplicates": []
+}

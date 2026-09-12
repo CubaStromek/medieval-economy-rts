@@ -1,7 +1,7 @@
 # Construction material costs
 
 Verified on **2026-09-05**. The catalog has 28 reference buildings plus the
-project's Forester Hut (29 total). Costs below
+project's Forester Hut and Workers' Cottage extensions (30 total). Costs below
 use the project's resource IDs: `plank` is processed timber, not a raw `log`;
 `stone` is building stone (called bricks in some older English manuals).
 
@@ -34,6 +34,7 @@ with a page number uses the manual linked above.
 | `warehouse` | 6 | 5 | Community: Storehouse |
 | `lumber_hut` | 3 | 2 | Manual p. 23 |
 | `forester_hut` | 3 | 2 | Project balance; [extension rules](forester-and-fisher-huts.md) |
+| `workers_house` | 3 | 2 | Project balance; [housing rules](worker-housing.md) |
 | `sawmill` | 4 | 3 | Manual p. 24 |
 | `school` | 6 | 5 | Manual p. 14 |
 | `quarry` | 3 | 2 | Manual p. 22 |
@@ -69,7 +70,7 @@ Workshop. Marketplace has no counterpart in the original playable catalog.
 
 `game/data/buildings.json` is the runtime authority for these quantities.
 `construction_cost_source` distinguishes `kam_manual`,
-`kam_community_reference` and `kam_source_override`.
+`kam_community_reference`, `kam_source_override` and `project_balance`.
 `construction_cost_reference` holds the supporting URL;
 `construction_cost_reference_page`, when present, holds the printed manual page.
 

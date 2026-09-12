@@ -1,0 +1,120 @@
+{
+  "createdDate": "2026-09-10",
+  "scope": "Carrying-log N, NE and NW only",
+  "instructionsRead": [
+    "AGENTS.md",
+    "docs/art/object-implementation-workflow.md",
+    "docs/art/briefs/lumberjack-v1.md"
+  ],
+  "authoritativeOwnLoadReference": "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png",
+  "excludedOutdatedReferences": "The older own log-ne-v2.png and log-nw-v2.png transverse carries were not used.",
+  "generationTool": "OpenAI built-in image_gen",
+  "totalImageGenerationCalls": 3,
+  "selectedSourcesAreRawToolOutputs": true,
+  "requestedLayout": {
+    "width": 1792,
+    "height": 1088,
+    "columns": 4,
+    "rows": 2,
+    "cellWidth": 448,
+    "cellHeight": 544,
+    "frameCount": 8,
+    "order": "left-to-right, then top-to-bottom"
+  },
+  "actualLayoutNote": "Built-in returned the per-direction dimensions below. Raw output retained without rescaling; packing must account for real dimensions and fractional grid division.",
+  "format": {
+    "mode": "RGB",
+    "pngColourType": 2,
+    "hasAlpha": false,
+    "background": "White prototype background; no exact-uniform-white measurement performed."
+  },
+  "inputRoles": {
+    "image1": "Own eight-frame directional walk target is the edit target; preserve own body, cap, legs, style and phase layout.",
+    "image2": "Original KaM carry guide is a visual motion/upper-body reference, not own artwork or equipment design.",
+    "image3": "Selected own north shoulder carry supplies log material, fore-and-aft shoulder placement and costume; not a substitute north pose for other directions."
+  },
+  "directions": [
+    {
+      "direction": "N",
+      "width": 1608,
+      "height": 978,
+      "sha256": "11a7dee9f37a1c24888667fbbe05119d84895a9f7dfb2cb9a007b94939079658",
+      "promptSha256": "768c150cb86e18f8d11d23ddfd1609b054744051f3be80752a3a87b4faec94e1",
+      "qa": [
+        "All eight phases face away; no face or brown rear apron.",
+        "One fore-and-aft log rests on the image-right/anatomical right shoulder, with raised right support arm.",
+        "One axe hangs on the image-left/anatomical left belt. Its attachment is partly hidden by the empty left arm in phases 7 and 8.",
+        "No separate ground shadow apparent."
+      ],
+      "calls": 1,
+      "prompt": "prompts/N.txt",
+      "selectedSource": "sources/N.png",
+      "generatedSource": "/Users/openclaw/.codex/generated_images/01a087c4-f6f1-7e43-a049-4d32f7bfd169/exec-79f86c7f-d070-4b8e-8b11-2cd36cabd800.png",
+      "references": [
+        "docs/art/animations/lumberjack-with-log-kam-v1/walk-targets/N.png",
+        "original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/N.png",
+        "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png"
+      ]
+    },
+    {
+      "direction": "NE",
+      "width": 1609,
+      "height": 977,
+      "sha256": "94ecebb2d694678205399cf82a70465893e1b1917b4c03c235e11ec1b7e90a38",
+      "promptSha256": "db016ae0fc8ef06688bac6dccbf714b76273220129d5ba9bd8c8a59f42301a1d",
+      "qa": [
+        "All eight phases preserve rear NE facing and recognizable own clothes.",
+        "The log follows the projected northeast travel axis on the nearer anatomical right shoulder; right forearm supports its forward part.",
+        "The left arm remains empty; one belt axe is on the far left side, not the visible near right hip.",
+        "No transverse neck yoke or separate ground shadow apparent."
+      ],
+      "calls": 1,
+      "prompt": "prompts/NE.txt",
+      "selectedSource": "sources/NE.png",
+      "generatedSource": "/Users/openclaw/.codex/generated_images/01a087c4-f6f1-7e43-a049-4d32f7bfd169/exec-cc479e8b-5cfc-4efc-af0f-93cf505f9d41.png",
+      "references": [
+        "docs/art/animations/lumberjack-with-log-kam-v1/walk-targets/NE.png",
+        "original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/NE.png",
+        "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png"
+      ]
+    },
+    {
+      "direction": "NW",
+      "width": 1609,
+      "height": 978,
+      "sha256": "e3f86a3284e6cc947306c737a041c0a41bdb15e9a5b9861fb0e05c7d3faf8f06",
+      "promptSha256": "1c8853f1f8a937cd25de4e703aa8e33dddbfd24e81d8d31df837c0191225bd3b",
+      "qa": [
+        "All eight phases preserve rear NW facing and distinct walking poses.",
+        "One log follows the northwest travel axis on the far anatomical right shoulder; support forearm/hand is partly occluded naturally.",
+        "Near anatomical left arm remains empty and the axe is visibly attached to the near left belt/hip.",
+        "No third arm, duplicate load or separate ground shadow apparent."
+      ],
+      "calls": 1,
+      "prompt": "prompts/NW.txt",
+      "selectedSource": "sources/NW.png",
+      "generatedSource": "/Users/openclaw/.codex/generated_images/01a087c4-f6f1-7e43-a049-4d32f7bfd169/exec-fc16d4f5-92d7-49e2-ace8-f95646a5b1f9.png",
+      "references": [
+        "docs/art/animations/lumberjack-with-log-kam-v1/walk-targets/NW.png",
+        "original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/NW.png",
+        "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png"
+      ]
+    }
+  ],
+  "validation": {
+    "staticSheetsInspected": true,
+    "dimensionsAndPNGColourTypeMeasured": true,
+    "sourceAndPromptSHA256Measured": true,
+    "handedness": "Right shoulder and right support arm carry log; left arm empty, axe hung on left belt.",
+    "pixelEditsOrPackingApplied": false,
+    "playbackPerformed": false,
+    "remaining": "Synchronized playback, registration, loop continuity, load bob and actual in-game contact require separate checks. Static inspection is not proof of rigid 3D consistency, exact KaM pose geometry or non-sliding foot contact."
+  },
+  "status": {
+    "draft": true,
+    "userApproved": false,
+    "gameIntegrated": false,
+    "inGameValidated": false
+  },
+  "changedFiles": "Only prompts/N.txt, prompts/NE.txt, prompts/NW.txt, sources/N.png, sources/NE.png, sources/NW.png and this generation note in lumberjack-with-log-kam-v1."
+}

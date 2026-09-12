@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "building_id": "lumber_hut",
+  "date": "2026-09-10",
+  "style_version": "0.2",
+  "status": "in-game pilot, not an approved building-set reference",
+  "source_to_world": 0.225,
+  "door_threshold": [
+    568,
+    410
+  ],
+  "sort_foot": [
+    568,
+    488.1111111111111
+  ],
+  "sort_foot_basis": "Both masters have exclusive visible bottom577 at alpha>0.1; subtract half cell in source pixels. Shared by all33 steps. See docs/art/kam-object-terrain-rendering-study.md.",
+  "canvas": [
+    640,
+    640
+  ],
+  "wood_phase_fraction": 0.6,
+  "wood_steps": 12,
+  "finished_steps": 21,
+  "wood_image": "wood.png",
+  "finished_image": "finished.png",
+  "wood_mask": "wood-mask.png",
+  "finished_mask": "finished-mask.png",
+  "mask_format": "RGB integer byte1..count; zero never; finishing masks include transparent erasure areas",
+  "anchors": {
+    "stock_origin": {
+      "pixel": [
+        224,
+        514
+      ],
+      "status": "reserved, stock sprites not implemented"
+    },
+    "occupancy_indicator": {
+      "pixel": [
+        614,
+        309
+      ],
+      "status": "empty bracket, no new runtime state"
+    }
+  },
+  "footprint_mask": [
+    "###",
+    "##E"
+  ],
+  "footprint_version": 1,
+  "sources": [
+    {
+      "file": "docs/art/sources/lumber-hut-construction-v1/wood-matte.png",
+      "sha256": "42f9183a9e5d431598cf3d837c689a88a91922d1631a5b72358803ebfc0584e3",
+      "size": [
+        1254,
+        1254
+      ],
+      "removed": 958801,
+      "fringe": 12435,
+      "opaque": 601280
+    },
+    {
+      "file": "docs/art/sources/lumber-hut-construction-v1/finished-matte.png",
+      "sha256": "0bf97a45c81d51566971e4a53b6f3c41f48da15c5e1b69ee904ffd96a3124e8e",
+      "size": [
+        1254,
+        1254
+      ],
+      "removed": 843465,
+      "fringe": 6749,
+      "opaque": 722302
+    }
+  ],
+  "export": {
+    "tool": "tools/pack-lumber-hut-construction.cjs",
+    "method": "Generated magenta matte decoded to straight RGBA, shared Lanczos resize, own spatial integer masks; no source art redrawing in exporter.",
+    "master_to_export": 0.5103668261562998
+  },
+  "validation": {
+    "wood_group_pixels": [
+      16300,
+      18505,
+      1287,
+      4027,
+      5570,
+      6564,
+      8362,
+      8167,
+      7440,
+      21469,
+      23623,
+      45093
+    ],
+    "finished_group_pixels": [
+      3350,
+      9652,
+      3062,
+      5608,
+      9005,
+      8522,
+      10782,
+      6792,
+      6891,
+      6962,
+      7036,
+      7105,
+      19688,
+      8591,
+      9099,
+      9401,
+      9725,
+      6012,
+      4159,
+      35046,
+      9301
+    ],
+    "alpha_background": true,
+    "ground_qa": "2026-09-10: native lower-pixel occlusion test passed; see docs/art/qa/lumber-hut-construction-v1/README.md and capture-manifest.json for matching asset hashes and remaining slope-contact art calibration."
+  },
+  "wood_png_sha256": "ffdaeb73429d0858aadb36ec93217e809f9457f563c1d27add1ecf248fc4658d",
+  "finished_png_sha256": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+  "wood-mask_png_sha256": "7920ca87e09ce0891e0e70c2a0d1a5ca1ee20489fc9241866a9bf9e7c8a377fd",
+  "finished-mask_png_sha256": "f055793a3aed77ee5e530d0bfc1fbcdcb08b42121a68d75018ad8b2219549f8b",
+  "label_anchor": [
+    320,
+    29
+  ]
+}

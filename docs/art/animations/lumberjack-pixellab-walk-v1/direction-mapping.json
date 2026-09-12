@@ -1,0 +1,61 @@
+{
+  "mapping_evidence": "Root visually inspected all eight returned images in rotations/rotations-review.png; not inferred solely from numeric index.",
+  "frames": [
+    {
+      "index": 0,
+      "direction": "S",
+      "source": "rotations/images/frame_00.png",
+      "animation_input": "direction-inputs/S.png",
+      "sha256": "d1284f8474d970cd06fa71bf914b007d3c3b35b31987065bc978c7f877c7ea56"
+    },
+    {
+      "index": 1,
+      "direction": "SE",
+      "source": "rotations/images/frame_01.png",
+      "animation_input": "direction-inputs/SE.png",
+      "sha256": "b36da62f98efd66eb5042e78900834c2a7d6bdd9ba70f2c4b823e2e38b658e12"
+    },
+    {
+      "index": 2,
+      "direction": "E",
+      "source": "rotations/images/frame_02.png",
+      "animation_input": "direction-inputs/E.png",
+      "sha256": "670da2240665e285ce29460b2ac282ecbc615b09006dc32580b62a0e3218dcba"
+    },
+    {
+      "index": 3,
+      "direction": "NE",
+      "source": "rotations/images/frame_03.png",
+      "animation_input": "direction-inputs/NE.png",
+      "sha256": "e467356f315408dde33b783a22d0123ebe17742b159b27bbd9c9e54dc57b7e89"
+    },
+    {
+      "index": 4,
+      "direction": "N",
+      "source": "rotations/images/frame_04.png",
+      "animation_input": "direction-inputs/N.png",
+      "sha256": "0f4669f4d92a004ce9663dfd26ab30beedb401743a2e5f45219c89e4255198c5"
+    },
+    {
+      "index": 5,
+      "direction": "NW",
+      "source": "rotations/images/frame_05.png",
+      "animation_input": "direction-inputs/NW.png",
+      "sha256": "45221df70af1200bb72cd0d22d2cfd064192590a0361638c425ac86c40f4f7c2"
+    },
+    {
+      "index": 6,
+      "direction": "W",
+      "source": "rotations/images/frame_06.png",
+      "animation_input": "direction-inputs/W.png",
+      "sha256": "dc55706cf8d12cbfa4b1d5b64ef236d881655eb53a669735c47748f421418ab8"
+    },
+    {
+      "index": 7,
+      "direction": "SW",
+      "source": "rotations/images/frame_07.png",
+      "animation_input": "direction-inputs/SW.png",
+      "sha256": "c6554c03df78970b02d1359cfe5676dfba21d95b9f142d5958e249a45cba9d16"
+    }
+  ]
+}

@@ -4,7 +4,8 @@ const SessionScene = preload("res://scenes/game_session.tscn")
 const SaveSystemClass = preload("res://scripts/simulation/save_system.gd")
 const WorldClass = preload("res://scripts/simulation/simulation_world.gd")
 const ReliefClass = preload("res://scripts/simulation/relief_demo.gd")
-const TEST_COUNT: int = 9
+const RegionStartClass = preload("res://scripts/simulation/mountainous_region_start.gd")
+const TEST_COUNT: int = 15
 
 
 # Use the production session and viewport dispatch. Save fixtures are isolated
@@ -19,6 +20,12 @@ static func run(host: Node) -> Array[String]:
 	await _test_missing_save(host, failures)
 	await _test_corrupt_save(host, failures)
 	await _test_saved_session(host, failures)
+	await _test_sandbox_navigation(host, false, failures)
+	await _test_sandbox_navigation(host, true, failures)
+	await _test_imported_map_start(host, failures)
+	for failure_kind: String in ["missing", "wrong_identity"]:
+		await _test_imported_map_failure(host, failure_kind, failures)
+	await _test_separate_save_slots(host, failures)
 	return failures
 
 
@@ -35,7 +42,7 @@ static func _test_navigation_and_layout(host: Node, size: Vector2i, failures: Ar
 	_expect(home != null and home.is_visible_in_tree(), "Startup must show the home page", failures)
 	_expect(maps != null and not maps.is_visible_in_tree(), "Startup must hide map selection until New game", failures)
 	_expect(load_game != null and load_game.disabled, "An absent save must disable the load button", failures)
-	_check_layout(session.menu, viewport, ["NewGameButton", "LoadGameButton"], failures)
+	_check_layout(session.menu, viewport, ["NewGameButton", "LoadGameButton", "GraphicsSandboxButton"], failures)
 	if new_game != null and back != null and maps != null and home != null:
 		_click(viewport, new_game)
 		await _settle(host)
@@ -219,6 +226,266 @@ static func _test_saved_session(host: Node, failures: Array[String]) -> void:
 	_cleanup(viewport, path, failures)
 
 
+static func _test_sandbox_navigation(host: Node, has_game: bool, failures: Array[String]) -> void:
+	var viewport: SubViewport = _viewport(host)
+	var session: Variant = _session(viewport, "sandbox_%s" % has_game)
+	var original_game: Variant = null
+	var original_world: Variant = null
+	var original_snapshot: Dictionary = {}
+	if has_game:
+		session._start_new_game("test")
+		original_game = session.game
+		original_game.simulation_speed = 0.0
+		original_game.speed_before_pause = 2.0
+		session._show_main_menu()
+		original_world = original_game.world
+		original_snapshot = original_world.to_data()
+	await _settle(host)
+	var normal_before: String = _file_digest(session.save_path)
+	var region_before: String = _file_digest(session.region_save_path)
+	var sandbox_button: Button = _button(session.menu, "GraphicsSandboxButton", failures)
+	if sandbox_button != null:
+		_click(viewport, sandbox_button)
+		await _settle(host)
+	_expect(session.sandbox != null and not session.menu.visible,
+		"The graphics sandbox button must open the existing workbench", failures)
+	_expect(session.game == original_game,
+		"Opening the graphics sandbox must retain the current game or absence of a game", failures)
+	if session.sandbox != null:
+		# Sandbox assets are optional. Even its missing-data screen must have
+		# working navigation; this test needs no local atlas or map crop.
+		_check_layout(session.sandbox, viewport, ["MenuButton"], failures)
+		_key(viewport, KEY_F5)
+		_key(viewport, KEY_F9)
+		_key(viewport, KEY_R)
+		await _settle(host)
+		if has_game:
+			_expect(original_game.world == original_world and original_world.to_data() == original_snapshot
+				and original_game.simulation_speed == 0.0,
+				"Sandbox interaction must preserve the paused world's identity, tick, inventory and speed", failures)
+		var back: Button = _button(session.sandbox, "MenuButton", failures)
+		if back != null:
+			_click(viewport, back)
+			await _settle(host)
+	_expect(session.sandbox == null and session.menu.visible,
+		"The sandbox's Menu button must return to the main menu", failures)
+	_expect(_file_digest(session.save_path) == normal_before and _file_digest(session.region_save_path) == region_before,
+		"Visiting the graphics sandbox must not create or change either game save slot", failures)
+	if has_game:
+		var resume: Button = _button(session.menu, "ResumeButton", failures)
+		if resume != null:
+			_click(viewport, resume)
+			await _settle(host)
+		_expect(session.game == original_game and original_game.world == original_world
+			and original_world.to_data() == original_snapshot and original_game.simulation_speed == 0.0
+			and original_game.speed_before_pause == 2.0 and not session.menu.visible,
+			"Returning from the sandbox must resume the same session with its previous paused state", failures)
+	else:
+		_expect(session.game == null, "A standalone sandbox visit must not manufacture a game", failures)
+	_cleanup(viewport, session.save_path, failures)
+
+
+static func _test_imported_map_start(host: Node, failures: Array[String]) -> void:
+	var viewport: SubViewport = _viewport(host)
+	var session: Variant = _session(viewport, "imported_start")
+	session.terrain_map_path = _path("imported_start_terrain")
+	if not _write_fixture(viewport, session.terrain_map_path, _region_fixture(), failures):
+		_cleanup(viewport, session.save_path, failures)
+		return
+	await _settle(host)
+	var new_game: Button = _button(session.menu, "NewGameButton", failures)
+	if new_game != null:
+		_click(viewport, new_game)
+		await _settle(host)
+	if _select_map(session.menu, "mountainous-region", failures):
+		var start: Button = _button(session.menu, "StartMapButton", failures)
+		if start != null:
+			_click(viewport, start)
+	if session.game != null:
+		session.game.set_process(false)
+	await _settle(host)
+	_expect(session.game != null, "The fourth map must start from the New game map picker", failures)
+	if session.game != null:
+		var game: Variant = session.game
+		_expect(game.demo_kind == "mountainous-region" and game.terrain_map_path == session.terrain_map_path
+			and game.world.grid.size == RegionStartClass.MAP_SIZE,
+			"The imported menu map must use the requested terrain file and preserve its scenario identity", failures)
+		_expect(RegionStartClass.is_ready(game.world) and game.world.buildings.size() == 2
+			and game.world.workers.is_empty() and game.world.trees.size() == 1,
+			"The imported menu map must apply its two-building start to the synthetic terrain exactly once", failures)
+		_expect(game.world.tick == 1000 and game.world.resource_stock("gold")["total"] == 50
+			and game.world.resource_stock("stone")["total"] == 20,
+			"The imported menu map must retain its morning start and exact starter supplies", failures)
+		_expect(game._save_game_path() == session.region_save_path and not session.menu.visible,
+			"The imported map must use its own save slot and close the menu", failures)
+		game.world.grid.set_vertex_height(Vector2i(0, 0), 2)
+		game._reset_demo()
+		_expect(game.demo_kind == "mountainous-region" and RegionStartClass.is_ready(game.world)
+			and game.world.grid.vertex_height(Vector2i(0, 0)) == 0,
+			"Restarting the imported menu map must reuse its selected source path", failures)
+	_cleanup(viewport, session.save_path, failures)
+
+
+static func _test_imported_map_failure(host: Node, kind: String, failures: Array[String]) -> void:
+	var viewport: SubViewport = _viewport(host)
+	var session: Variant = _session(viewport, "imported_failure_" + kind)
+	session._start_new_game("test")
+	session._show_main_menu()
+	var original_game: Variant = session.game
+	var original_world: Variant = original_game.world
+	var before: Dictionary = original_world.to_data()
+	session.terrain_map_path = _path("imported_failure_terrain_" + kind)
+	_track_file(viewport, session.terrain_map_path)
+	if kind == "wrong_identity":
+		var fixture: Dictionary = _region_fixture()
+		fixture["name"] = "Another landscape"
+		fixture["source"]["sha256"] = "a".repeat(64)
+		if not _write_fixture(viewport, session.terrain_map_path, fixture, failures):
+			_cleanup(viewport, session.save_path, failures)
+			return
+	elif FileAccess.file_exists(session.terrain_map_path):
+		DirAccess.remove_absolute(session.terrain_map_path)
+	await _settle(host)
+	var new_game: Button = _button(session.menu, "NewGameButton", failures)
+	if new_game != null:
+		_click(viewport, new_game)
+		await _settle(host)
+	if _select_map(session.menu, "mountainous-region", failures):
+		var start: Button = _button(session.menu, "StartMapButton", failures)
+		if start != null:
+			_click(viewport, start)
+	await _settle(host)
+	_expect(session.menu.visible and session.game == original_game
+		and original_game.world == original_world and original_world.to_data() == before,
+		"A %s import must keep the menu and existing session intact" % kind, failures)
+	_check_error(session.menu, failures)
+	_expect(not FileAccess.file_exists(session.save_path) and not FileAccess.file_exists(session.region_save_path),
+		"A failed imported-map start must not write a save", failures)
+	_cleanup(viewport, session.save_path, failures)
+
+
+static func _test_separate_save_slots(host: Node, failures: Array[String]) -> void:
+	var viewport: SubViewport = _viewport(host)
+	var session: Variant = _session(viewport, "two_slots")
+	var normal_path: String = session.save_path
+	var region_path: String = session.region_save_path
+	session.terrain_map_path = _path("two_slots_terrain")
+	if not _write_fixture(viewport, session.terrain_map_path, _region_fixture(), failures):
+		_cleanup(viewport, normal_path, failures)
+		return
+	session._start_new_game("test")
+	session.game.set_process(false)
+	session.game.world.tick = 73
+	session._show_main_menu()
+	await _settle(host)
+	var save: Button = _button(session.menu, "SaveGameButton", failures)
+	if save != null:
+		_click(viewport, save)
+		await _settle(host)
+	_expect(FileAccess.file_exists(normal_path) and not FileAccess.file_exists(region_path),
+		"Saving a normal map must write only the normal slot", failures)
+	var normal_digest: String = _file_digest(normal_path)
+	session._start_new_game("mountainous-region")
+	if session.game == null or session.game.demo_kind != "mountainous-region":
+		failures.append("The two-slot fixture must start its imported map")
+		_cleanup(viewport, normal_path, failures)
+		return
+	session.game.set_process(false)
+	session.game.world.tick = 1073
+	session._show_main_menu()
+	await _settle(host)
+	if save != null:
+		_click(viewport, save)
+		await _settle(host)
+	_expect(FileAccess.file_exists(region_path) and _file_digest(normal_path) == normal_digest,
+		"Saving the imported map must create its separate slot without replacing the normal save", failures)
+	_expect(SaveSystemClass.saved_map_id(normal_path) == "test"
+		and SaveSystemClass.saved_map_id(region_path) == "mountainous-region",
+		"Both slots must retain their original scenario metadata", failures)
+	# A new shell must discover both saves with no running game to supply a
+	# current map. This catches routing that works only during the first visit.
+	session.free()
+	session = _session(viewport, "two_slots", false)
+	await _settle(host)
+	for slot_path: String in [normal_path, region_path]:
+		var load_game: Button = _button(session.menu, "LoadGameButton", failures)
+		if load_game != null:
+			_click(viewport, load_game)
+			await _settle(host)
+		var page: Control = _control(session.menu, "SavesPage", failures)
+		_expect(page != null and page.is_visible_in_tree(), "Two saved games must open a save-slot picker", failures)
+		_check_layout(session.menu, viewport, ["SavePicker", "LoadSelectedButton", "SavesBackButton"], failures)
+		if _select_save(session.menu, slot_path, failures):
+			var load_selected: Button = _button(session.menu, "LoadSelectedButton", failures)
+			if load_selected != null:
+				_click(viewport, load_selected)
+		if session.game != null:
+			session.game.set_process(false)
+		await _settle(host)
+		_expect(session.game != null, "Selecting a saved slot must load its game", failures)
+		if session.game == null:
+			continue
+		var expected_tick: int = 1073 if slot_path == region_path else 73
+		var expected_id: String = "mountainous-region" if slot_path == region_path else "test"
+		_expect(session.game.world.tick == expected_tick and session.game.demo_kind == expected_id
+			and session.game._save_game_path() == slot_path and not session.menu.visible,
+			"Loading a chosen slot must restore its tick, map identity and future save destination", failures)
+		var other_path: String = normal_path if slot_path == region_path else region_path
+		var other_before: String = _file_digest(other_path)
+		session.game.world.tick += 1
+		_key(viewport, KEY_F5)
+		var saved := WorldClass.new()
+		_expect(SaveSystemClass.load_world(saved, slot_path) and saved.tick == expected_tick + 1
+			and _file_digest(other_path) == other_before,
+			"F5 after loading must update only the selected save slot", failures)
+		session._show_main_menu()
+		await _settle(host)
+	_cleanup(viewport, normal_path, failures)
+
+
+static func _region_fixture() -> Dictionary:
+	# Synthetic flat ground uses the documented identity solely to exercise
+	# starter dispatch. No original terrain, image or external file is read.
+	var heights: Array = []
+	for _y: int in range(RegionStartClass.MAP_SIZE.y + 1):
+		var row: Array = []
+		row.resize(RegionStartClass.MAP_SIZE.x + 1)
+		row.fill(0)
+		heights.append(row)
+	var terrain: Array = []
+	for _y: int in range(RegionStartClass.MAP_SIZE.y):
+		terrain.append("g".repeat(RegionStartClass.MAP_SIZE.x))
+	return {
+		"format": "medieval-terrain-v1", "name": RegionStartClass.MAP_NAME,
+		"source": {"url": "https://example.test/menu-synthetic-map", "sha256": RegionStartClass.SOURCE_SHA256,
+			"revision": 11222, "vertex_size": [144, 128], "height_scale": 0.15, "height_offset": 0},
+		"map_size": [143, 127], "heights": heights, "terrain": terrain, "trees": [[1, 1, 2]],
+	}
+
+
+static func _write_fixture(viewport: SubViewport, path: String, data: Dictionary, failures: Array[String]) -> bool:
+	_track_file(viewport, path)
+	var file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		failures.append("The menu import fixture must open its own temporary file")
+		return false
+	file.store_string(JSON.stringify(data))
+	file.close()
+	return true
+
+
+static func _select_save(root: Node, path: String, failures: Array[String]) -> bool:
+	var picker := _control(root, "SavePicker", failures) as OptionButton
+	if picker != null:
+		for index: int in range(picker.item_count):
+			if String(picker.get_item_metadata(index)) == path:
+				picker.select(index)
+				picker.item_selected.emit(index)
+				return true
+	failures.append("The save picker must include the requested slot")
+	return false
+
+
 static func _viewport(host: Node, size: Vector2i = Vector2i(1152, 720)) -> SubViewport:
 	var viewport := SubViewport.new()
 	viewport.size = size
@@ -231,8 +498,11 @@ static func _session(viewport: SubViewport, suffix: String, clear_save: bool = t
 	var session: Variant = SessionScene.instantiate()
 	session.honor_launch_arguments = false
 	session.save_path = _path(suffix)
-	if clear_save and FileAccess.file_exists(session.save_path):
-		DirAccess.remove_absolute(session.save_path)
+	session.region_save_path = _path(suffix + "_region")
+	for path: String in [session.save_path, session.region_save_path]:
+		_track_file(viewport, path)
+		if clear_save and FileAccess.file_exists(path):
+			DirAccess.remove_absolute(path)
 	viewport.add_child(session)
 	return session
 
@@ -242,10 +512,24 @@ static func _path(suffix: String) -> String:
 
 
 static func _cleanup(viewport: SubViewport, path: String, failures: Array[String]) -> void:
+	_track_file(viewport, path)
+	var paths: Array = viewport.get_meta("menu_test_paths", [])
 	viewport.free()
-	if FileAccess.file_exists(path):
-		_expect(DirAccess.remove_absolute(path) == OK, "Menu fixture must clean up its temporary save", failures)
-	_expect(not FileAccess.file_exists(path), "No menu save fixture may remain after its test", failures)
+	for fixture_path: String in paths:
+		if FileAccess.file_exists(fixture_path):
+			_expect(DirAccess.remove_absolute(fixture_path) == OK, "Menu fixture must clean up its temporary file", failures)
+		_expect(not FileAccess.file_exists(fixture_path), "No menu fixture may remain after its test", failures)
+
+
+static func _track_file(viewport: SubViewport, path: String) -> void:
+	var paths: Array = viewport.get_meta("menu_test_paths", [])
+	if not paths.has(path):
+		paths.append(path)
+	viewport.set_meta("menu_test_paths", paths)
+
+
+static func _file_digest(path: String) -> String:
+	return FileAccess.get_sha256(path) if FileAccess.file_exists(path) else "missing"
 
 
 static func _default_save_digest() -> String:
@@ -279,7 +563,7 @@ static func _check_error(root: Node, failures: Array[String]) -> void:
 
 static func _select_map(root: Node, map_id: String, failures: Array[String]) -> bool:
 	var picker := _control(root, "MapPicker", failures) as OptionButton
-	var index: int = ["test", "relief", "economy"].find(map_id)
+	var index: int = ["test", "relief", "economy", "mountainous-region"].find(map_id)
 	if picker != null and index >= 0 and index < picker.item_count:
 		picker.select(index)
 		picker.item_selected.emit(index)

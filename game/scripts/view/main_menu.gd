@@ -4,6 +4,7 @@ extends CanvasLayer
 signal new_game_requested(map_id: String)
 signal load_game_requested()
 signal save_game_requested()
+signal graphics_sandbox_requested()
 signal resume_requested()
 signal quit_requested()
 
@@ -23,15 +24,27 @@ const MAPS: Array[Dictionary] = [
 		"id": "economy", "title": "Ekonomická ukázka", "details": "34 × 30 polí  ·  Rozvinuté město",
 		"description": "Prozkoumej rozvinuté město s výrobními řetězci. Sleduj práci obyvatel, tok surovin a fungování ekonomiky.",
 	},
+	{
+		"id": "mountainous-region", "title": "Mountainous Region", "details": "143 × 127 polí  ·  Horská krajina",
+		"description": "Založ osadu v horách. Začínáš se skladem a školou, bez obyvatel, s 50 kusy zlata a po 20 kládách, prknech a kamenech.",
+	},
 ]
 
 var selected_map_id: String:
 	get:
 		return String(MAPS[_map_picker.selected]["id"]) if is_instance_valid(_map_picker) else "test"
 
+var selected_save_path: String:
+	get:
+		if _saved_games.is_empty():
+			return ""
+		var index: int = clampi(_save_picker.selected, 0, _saved_games.size() - 1) if is_instance_valid(_save_picker) else 0
+		return String(_saved_games[index]["path"])
+
 var _root: Control
 var _home_page: VBoxContainer
 var _maps_page: VBoxContainer
+var _saves_page: VBoxContainer
 var _new_game_button: Button
 var _load_game_button: Button
 var _save_game_button: Button
@@ -39,6 +52,8 @@ var _resume_button: Button
 var _save_hint: Label
 var _error_label: Label
 var _map_picker: OptionButton
+var _save_picker: OptionButton
+var _saved_games: Array[Dictionary] = []
 var _map_title: Label
 var _map_details: Label
 var _map_description: Label
@@ -102,6 +117,7 @@ func show_home(has_session: bool, has_save: bool) -> void:
 	visible = true
 	_home_page.show()
 	_maps_page.hide()
+	_saves_page.hide()
 	_resume_button.visible = has_session
 	_save_game_button.visible = has_session
 	_load_game_button.disabled = not has_save
@@ -112,6 +128,24 @@ func show_home(has_session: bool, has_save: bool) -> void:
 		_resume_button.grab_focus()
 	else:
 		_new_game_button.grab_focus()
+
+
+func set_saved_games(entries: Array[Dictionary]) -> void:
+	_saved_games.clear()
+	for entry: Dictionary in entries:
+		_saved_games.append(entry.duplicate())
+	_update_save_picker()
+
+
+func _update_save_picker() -> void:
+	if not is_instance_valid(_save_picker):
+		return
+	_save_picker.clear()
+	for entry: Dictionary in _saved_games:
+		_save_picker.add_item(String(entry["title"]))
+		_save_picker.set_item_metadata(_save_picker.item_count - 1, String(entry["path"]))
+	if not _saved_games.is_empty():
+		_save_picker.select(0)
 
 
 func show_error(message: String) -> void:
@@ -129,7 +163,7 @@ func show_status(message: String) -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not visible or not event.is_action_pressed("ui_cancel"):
 		return
-	if _maps_page.visible:
+	if _maps_page.visible or _saves_page.visible:
 		_back_to_home()
 	elif _has_session:
 		resume_requested.emit()
@@ -172,6 +206,7 @@ func _build_ui() -> void:
 	column.add_child(HSeparator.new())
 	_build_home(column)
 	_build_maps(column)
+	_build_saves(column)
 	_error_label = _label(column, "", 13, Color("#f0ac97"))
 	_error_label.name = "ErrorLabel"
 	_error_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -187,15 +222,17 @@ func _build_home(parent: Control) -> void:
 	parent.add_child(_home_page)
 	_resume_button = _button(_home_page, "Pokračovat ve hře", "ResumeButton", true)
 	_resume_button.pressed.connect(func() -> void: resume_requested.emit())
-	_new_game_button = _button(_home_page, "Nová hra", "NewGameButton", true)
+	_new_game_button = _button(_home_page, "Nová hra · vybrat mapu", "NewGameButton", true)
 	_new_game_button.pressed.connect(_show_maps)
 	_load_game_button = _button(_home_page, "Načíst hru", "LoadGameButton")
-	_load_game_button.pressed.connect(func() -> void: load_game_requested.emit())
+	_load_game_button.pressed.connect(_show_saved_games)
 	_save_hint = _label(_home_page, "Zatím nemáš uloženou hru. Hru uložíš klávesou F5.", 12, MUTED)
 	_save_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_save_hint.custom_minimum_size.y = 34
 	_save_game_button = _button(_home_page, "Uložit hru", "SaveGameButton")
 	_save_game_button.pressed.connect(func() -> void: save_game_requested.emit())
+	var sandbox_button: Button = _button(_home_page, "Grafický sandbox", "GraphicsSandboxButton")
+	sandbox_button.pressed.connect(func() -> void: graphics_sandbox_requested.emit())
 	var quit_button: Button = _button(_home_page, "Ukončit", "QuitButton")
 	quit_button.pressed.connect(func() -> void: quit_requested.emit())
 
@@ -239,18 +276,54 @@ func _build_maps(parent: Control) -> void:
 	back_button.pressed.connect(_back_to_home)
 
 
+func _build_saves(parent: Control) -> void:
+	_saves_page = VBoxContainer.new()
+	_saves_page.name = "SavesPage"
+	_saves_page.add_theme_constant_override("separation", 12)
+	parent.add_child(_saves_page)
+	_label(_saves_page, "Vyber uloženou hru", 22, INK)
+	_label(_saves_page, "Pokračuj v jedné ze svých uložených her.", 13, MUTED)
+	_save_picker = OptionButton.new()
+	_save_picker.name = "SavePicker"
+	_save_picker.custom_minimum_size.y = 46
+	_save_picker.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_saves_page.add_child(_save_picker)
+	_update_save_picker()
+	var load_button: Button = _button(_saves_page, "Načíst hru", "LoadSelectedButton", true)
+	load_button.pressed.connect(func() -> void: load_game_requested.emit())
+	var back_button: Button = _button(_saves_page, "Zpět", "SavesBackButton")
+	back_button.pressed.connect(_back_to_home)
+
+
+func _show_saved_games() -> void:
+	if _saved_games.size() <= 1:
+		load_game_requested.emit()
+		return
+	_home_page.hide()
+	_maps_page.hide()
+	_saves_page.show()
+	_error_label.hide()
+	_save_picker.grab_focus()
+
+
 func _show_maps() -> void:
 	_home_page.hide()
+	_saves_page.hide()
 	_maps_page.show()
 	_error_label.hide()
 	_map_picker.grab_focus()
 
 
 func _back_to_home() -> void:
+	var from_saves: bool = _saves_page.visible
 	_maps_page.hide()
+	_saves_page.hide()
 	_home_page.show()
 	_error_label.hide()
-	_new_game_button.grab_focus()
+	if from_saves:
+		_load_game_button.grab_focus()
+	else:
+		_new_game_button.grab_focus()
 
 
 func _update_map_description(index: int) -> void:

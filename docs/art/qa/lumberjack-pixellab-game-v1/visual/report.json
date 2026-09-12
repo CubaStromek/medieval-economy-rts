@@ -1,0 +1,3791 @@
+{
+	"artificial_states": true,
+	"captured_at_utc": "2026-09-10T19:12:29",
+	"captures": [
+		{
+			"artificial_states": true,
+			"file": "all8-walk_axe-0_75.png",
+			"sha256": "172f67b12c67c94d58d546fd45631a48f050851cc1b0f6ce6186b8fa329a4733",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "SE",
+					"foot_screen": [
+						1098.625,
+						428.625
+					],
+					"foot_world": [
+						563.5,
+						203.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						13.5874996185303,
+						4.58750009536743
+					],
+					"id": 4,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						13.5874996185303,
+						4.67500019073486
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "E",
+					"foot_screen": [
+						1008.625,
+						441.0
+					],
+					"foot_world": [
+						443.5,
+						220.0
+					],
+					"fps": 10.0,
+					"frame_index": 3,
+					"ground": [
+						10.5874996185303,
+						5.0
+					],
+					"id": 3,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						10.5874996185303,
+						5.08750009536743
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "N",
+					"foot_screen": [
+						841.0,
+						453.375
+					],
+					"foot_world": [
+						220.0,
+						236.5
+					],
+					"fps": 10.0,
+					"frame_index": 11,
+					"ground": [
+						5.0,
+						5.41249990463257
+					],
+					"id": 1,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NE",
+					"foot_screen": [
+						918.625,
+						453.375
+					],
+					"foot_world": [
+						323.5,
+						236.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						7.58750009536743,
+						5.41249990463257
+					],
+					"id": 2,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						7.58750009536743,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "S",
+					"foot_screen": [
+						841.0,
+						548.625
+					],
+					"foot_world": [
+						220.0,
+						363.5
+					],
+					"fps": 10.0,
+					"frame_index": 11,
+					"ground": [
+						5.0,
+						8.58749961853027
+					],
+					"id": 5,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "SW",
+					"foot_screen": [
+						943.375,
+						548.625
+					],
+					"foot_world": [
+						356.5,
+						363.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						8.41250038146973,
+						8.58749961853027
+					],
+					"id": 6,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						8.41250038146973,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "W",
+					"foot_screen": [
+						1033.375,
+						561.0
+					],
+					"foot_world": [
+						476.5,
+						380.0
+					],
+					"fps": 15.0,
+					"frame_index": 17,
+					"ground": [
+						11.4125003814697,
+						9.0
+					],
+					"id": 7,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						11.4125003814697,
+						9.08749961853027
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NW",
+					"foot_screen": [
+						1123.375,
+						573.375
+					],
+					"foot_world": [
+						596.5,
+						396.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						14.4125003814697,
+						9.41250038146973
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						14.4125003814697,
+						9.5
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-walk_axe-1_0.png",
+			"sha256": "17806d3dd6398afc689a148391a0deeb0f50f02b39be760dc67edd112b8b1a6b",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "SE",
+					"foot_screen": [
+						1139.5,
+						404.5
+					],
+					"foot_world": [
+						563.5,
+						203.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						13.5874996185303,
+						4.58750009536743
+					],
+					"id": 4,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						13.5874996185303,
+						4.67500019073486
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "E",
+					"foot_screen": [
+						1019.5,
+						421.0
+					],
+					"foot_world": [
+						443.5,
+						220.0
+					],
+					"fps": 10.0,
+					"frame_index": 3,
+					"ground": [
+						10.5874996185303,
+						5.0
+					],
+					"id": 3,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						10.5874996185303,
+						5.08750009536743
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "N",
+					"foot_screen": [
+						796.0,
+						437.5
+					],
+					"foot_world": [
+						220.0,
+						236.5
+					],
+					"fps": 10.0,
+					"frame_index": 11,
+					"ground": [
+						5.0,
+						5.41249990463257
+					],
+					"id": 1,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NE",
+					"foot_screen": [
+						899.5,
+						437.5
+					],
+					"foot_world": [
+						323.5,
+						236.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						7.58750009536743,
+						5.41249990463257
+					],
+					"id": 2,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						7.58750009536743,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "S",
+					"foot_screen": [
+						796.0,
+						564.5
+					],
+					"foot_world": [
+						220.0,
+						363.5
+					],
+					"fps": 10.0,
+					"frame_index": 11,
+					"ground": [
+						5.0,
+						8.58749961853027
+					],
+					"id": 5,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "SW",
+					"foot_screen": [
+						932.5,
+						564.5
+					],
+					"foot_world": [
+						356.5,
+						363.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						8.41250038146973,
+						8.58749961853027
+					],
+					"id": 6,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						8.41250038146973,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "W",
+					"foot_screen": [
+						1052.5,
+						581.0
+					],
+					"foot_world": [
+						476.5,
+						380.0
+					],
+					"fps": 15.0,
+					"frame_index": 17,
+					"ground": [
+						11.4125003814697,
+						9.0
+					],
+					"id": 7,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						11.4125003814697,
+						9.08749961853027
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NW",
+					"foot_screen": [
+						1172.5,
+						597.5
+					],
+					"foot_world": [
+						596.5,
+						396.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						14.4125003814697,
+						9.41250038146973
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						14.4125003814697,
+						9.5
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-walk_axe-2_4.png",
+			"sha256": "fee5dbd439f5c3dcdb86fc5f30c5e2e270235550241e6b085d0fd05f1be38a77",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "SE",
+					"foot_screen": [
+						1368.39990234375,
+						269.399963378906
+					],
+					"foot_world": [
+						563.5,
+						203.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						13.5874996185303,
+						4.58750009536743
+					],
+					"id": 4,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						13.5874996185303,
+						4.67500019073486
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "E",
+					"foot_screen": [
+						1080.39990234375,
+						308.999938964844
+					],
+					"foot_world": [
+						443.5,
+						220.0
+					],
+					"fps": 10.0,
+					"frame_index": 3,
+					"ground": [
+						10.5874996185303,
+						5.0
+					],
+					"id": 3,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						10.5874996185303,
+						5.08750009536743
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "N",
+					"foot_screen": [
+						543.999877929688,
+						348.599975585938
+					],
+					"foot_world": [
+						220.0,
+						236.5
+					],
+					"fps": 10.0,
+					"frame_index": 11,
+					"ground": [
+						5.0,
+						5.41249990463257
+					],
+					"id": 1,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NE",
+					"foot_screen": [
+						792.39990234375,
+						348.599975585938
+					],
+					"foot_world": [
+						323.5,
+						236.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						7.58750009536743,
+						5.41249990463257
+					],
+					"id": 2,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						7.58750009536743,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "S",
+					"foot_screen": [
+						543.999877929688,
+						653.399963378906
+					],
+					"foot_world": [
+						220.0,
+						363.5
+					],
+					"fps": 10.0,
+					"frame_index": 11,
+					"ground": [
+						5.0,
+						8.58749961853027
+					],
+					"id": 5,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "SW",
+					"foot_screen": [
+						871.599914550781,
+						653.399963378906
+					],
+					"foot_world": [
+						356.5,
+						363.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						8.41250038146973,
+						8.58749961853027
+					],
+					"id": 6,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						8.41250038146973,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "W",
+					"foot_screen": [
+						1159.59997558594,
+						693.0
+					],
+					"foot_world": [
+						476.5,
+						380.0
+					],
+					"fps": 15.0,
+					"frame_index": 17,
+					"ground": [
+						11.4125003814697,
+						9.0
+					],
+					"id": 7,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						11.4125003814697,
+						9.08749961853027
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NW",
+					"foot_screen": [
+						1447.59997558594,
+						732.599975585938
+					],
+					"foot_world": [
+						596.5,
+						396.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						14.4125003814697,
+						9.41250038146973
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						14.4125003814697,
+						9.5
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-chop-0_75.png",
+			"sha256": "2cd9a09f3daf57ac43dae0fdbc7b8104f6297f5d10928afdaa93c396c61da11a",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "E",
+					"foot_screen": [
+						1011.88952636719,
+						441.262268066406
+					],
+					"foot_world": [
+						447.852752685547,
+						220.349700927734
+					],
+					"fps": 18.0,
+					"frame_index": 16,
+					"ground": [
+						11.0,
+						5.0
+					],
+					"id": 5,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 6,
+					"visual_depth": [
+						10.6963186264038,
+						5.09624242782593
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SE",
+					"foot_screen": [
+						1103.25610351562,
+						441.7177734375
+					],
+					"foot_world": [
+						569.6748046875,
+						220.957046508789
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						14.0,
+						5.0
+					],
+					"id": 7,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 8,
+					"visual_depth": [
+						13.741870880127,
+						5.11142635345459
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NE",
+					"foot_screen": [
+						924.774536132812,
+						441.86962890625
+					],
+					"foot_world": [
+						331.699371337891,
+						221.159515380859
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						8.0,
+						5.0
+					],
+					"id": 3,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 4,
+					"visual_depth": [
+						7.79248476028442,
+						5.11648797988892
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "N",
+					"foot_screen": [
+						848.288330078125,
+						445.058288574219
+					],
+					"foot_world": [
+						229.717788696289,
+						225.411041259766
+					],
+					"fps": 9.0,
+					"frame_index": 8,
+					"ground": [
+						5.0,
+						5.0
+					],
+					"id": 1,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 2,
+					"visual_depth": [
+						5.24294471740723,
+						5.22277593612671
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "S",
+					"foot_screen": [
+						836.444763183594,
+						559.743896484375
+					],
+					"foot_world": [
+						213.926376342773,
+						378.325164794922
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						5.0,
+						9.0
+					],
+					"id": 9,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 10,
+					"visual_depth": [
+						4.8481593132019,
+						9.04562854766846
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "W",
+					"foot_screen": [
+						1028.74389648438,
+						560.958618164062
+					],
+					"foot_world": [
+						470.325164794922,
+						379.944793701172
+					],
+					"fps": 18.0,
+					"frame_index": 16,
+					"ground": [
+						11.0,
+						9.0
+					],
+					"id": 13,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 14,
+					"visual_depth": [
+						11.258129119873,
+						9.08611965179443
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NW",
+					"foot_screen": [
+						1116.0107421875,
+						561.110412597656
+					],
+					"foot_world": [
+						586.680969238281,
+						380.147247314453
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						14.0,
+						9.0
+					],
+					"id": 15,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 16,
+					"visual_depth": [
+						14.1670246124268,
+						9.0911808013916
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SW",
+					"foot_screen": [
+						926.596618652344,
+						562.325073242188
+					],
+					"foot_world": [
+						334.128845214844,
+						381.766845703125
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						8.0,
+						9.0
+					],
+					"id": 11,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 12,
+					"visual_depth": [
+						7.85322093963623,
+						9.13167095184326
+					],
+					"work_remaining": 20
+				}
+			],
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-chop-1_0.png",
+			"sha256": "26aa1ee05d78578d033916a10940712a2290125400851e4aadfe0f59d6c65658",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "E",
+					"foot_screen": [
+						1023.85278320312,
+						421.349700927734
+					],
+					"foot_world": [
+						447.852752685547,
+						220.349700927734
+					],
+					"fps": 18.0,
+					"frame_index": 16,
+					"ground": [
+						11.0,
+						5.0
+					],
+					"id": 5,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 6,
+					"visual_depth": [
+						10.6963186264038,
+						5.09624242782593
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SE",
+					"foot_screen": [
+						1145.6748046875,
+						421.95703125
+					],
+					"foot_world": [
+						569.6748046875,
+						220.957046508789
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						14.0,
+						5.0
+					],
+					"id": 7,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 8,
+					"visual_depth": [
+						13.741870880127,
+						5.11142635345459
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NE",
+					"foot_screen": [
+						907.699340820312,
+						422.159515380859
+					],
+					"foot_world": [
+						331.699371337891,
+						221.159515380859
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						8.0,
+						5.0
+					],
+					"id": 3,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 4,
+					"visual_depth": [
+						7.79248476028442,
+						5.11648797988892
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "N",
+					"foot_screen": [
+						805.7177734375,
+						426.411041259766
+					],
+					"foot_world": [
+						229.717788696289,
+						225.411041259766
+					],
+					"fps": 9.0,
+					"frame_index": 8,
+					"ground": [
+						5.0,
+						5.0
+					],
+					"id": 1,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 2,
+					"visual_depth": [
+						5.24294471740723,
+						5.22277593612671
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "S",
+					"foot_screen": [
+						789.926391601562,
+						579.3251953125
+					],
+					"foot_world": [
+						213.926376342773,
+						378.325164794922
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						5.0,
+						9.0
+					],
+					"id": 9,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 10,
+					"visual_depth": [
+						4.8481593132019,
+						9.04562854766846
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "W",
+					"foot_screen": [
+						1046.3251953125,
+						580.94482421875
+					],
+					"foot_world": [
+						470.325164794922,
+						379.944793701172
+					],
+					"fps": 18.0,
+					"frame_index": 16,
+					"ground": [
+						11.0,
+						9.0
+					],
+					"id": 13,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 14,
+					"visual_depth": [
+						11.258129119873,
+						9.08611965179443
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NW",
+					"foot_screen": [
+						1162.68090820312,
+						581.147216796875
+					],
+					"foot_world": [
+						586.680969238281,
+						380.147247314453
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						14.0,
+						9.0
+					],
+					"id": 15,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 16,
+					"visual_depth": [
+						14.1670246124268,
+						9.0911808013916
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SW",
+					"foot_screen": [
+						910.128845214844,
+						582.766845703125
+					],
+					"foot_world": [
+						334.128845214844,
+						381.766845703125
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						8.0,
+						9.0
+					],
+					"id": 11,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 12,
+					"visual_depth": [
+						7.85322093963623,
+						9.13167095184326
+					],
+					"work_remaining": 20
+				}
+			],
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-chop-2_4.png",
+			"sha256": "4e23b49a7a7b7be920c411d521f17728f31456ea08e57540d227d54377acbc5b",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "E",
+					"foot_screen": [
+						1090.84655761719,
+						309.839233398438
+					],
+					"foot_world": [
+						447.852752685547,
+						220.349700927734
+					],
+					"fps": 18.0,
+					"frame_index": 16,
+					"ground": [
+						11.0,
+						5.0
+					],
+					"id": 5,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 6,
+					"visual_depth": [
+						10.6963186264038,
+						5.09624242782593
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SE",
+					"foot_screen": [
+						1383.21948242188,
+						311.296875
+					],
+					"foot_world": [
+						569.6748046875,
+						220.957046508789
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						14.0,
+						5.0
+					],
+					"id": 7,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 8,
+					"visual_depth": [
+						13.741870880127,
+						5.11142635345459
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NE",
+					"foot_screen": [
+						812.078430175781,
+						311.782775878906
+					],
+					"foot_world": [
+						331.699371337891,
+						221.159515380859
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						8.0,
+						5.0
+					],
+					"id": 3,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 4,
+					"visual_depth": [
+						7.79248476028442,
+						5.11648797988892
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "N",
+					"foot_screen": [
+						567.322570800781,
+						321.986450195312
+					],
+					"foot_world": [
+						229.717788696289,
+						225.411041259766
+					],
+					"fps": 9.0,
+					"frame_index": 8,
+					"ground": [
+						5.0,
+						5.0
+					],
+					"id": 1,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 2,
+					"visual_depth": [
+						5.24294471740723,
+						5.22277593612671
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "S",
+					"foot_screen": [
+						529.423217773438,
+						688.980346679688
+					],
+					"foot_world": [
+						213.926376342773,
+						378.325164794922
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						5.0,
+						9.0
+					],
+					"id": 9,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 10,
+					"visual_depth": [
+						4.8481593132019,
+						9.04562854766846
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "W",
+					"foot_screen": [
+						1144.7802734375,
+						692.867492675781
+					],
+					"foot_world": [
+						470.325164794922,
+						379.944793701172
+					],
+					"fps": 18.0,
+					"frame_index": 16,
+					"ground": [
+						11.0,
+						9.0
+					],
+					"id": 13,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 14,
+					"visual_depth": [
+						11.258129119873,
+						9.08611965179443
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NW",
+					"foot_screen": [
+						1424.03430175781,
+						693.353393554688
+					],
+					"foot_world": [
+						586.680969238281,
+						380.147247314453
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						14.0,
+						9.0
+					],
+					"id": 15,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 16,
+					"visual_depth": [
+						14.1670246124268,
+						9.0911808013916
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SW",
+					"foot_screen": [
+						817.909118652344,
+						697.240417480469
+					],
+					"foot_world": [
+						334.128845214844,
+						381.766845703125
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						8.0,
+						9.0
+					],
+					"id": 11,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 12,
+					"visual_depth": [
+						7.85322093963623,
+						9.13167095184326
+					],
+					"work_remaining": 20
+				}
+			],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-walk_log-0_75.png",
+			"sha256": "d6c6ed72f58cde3c1fb46bee6d3a1a9e78116ae4cc54bca7ec5dd4f20ac94066",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SE",
+					"foot_screen": [
+						1098.625,
+						428.625
+					],
+					"foot_world": [
+						563.5,
+						203.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						13.5874996185303,
+						4.58750009536743
+					],
+					"id": 4,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						13.5874996185303,
+						4.67500019073486
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "E",
+					"foot_screen": [
+						1008.625,
+						441.0
+					],
+					"foot_world": [
+						443.5,
+						220.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						10.5874996185303,
+						5.0
+					],
+					"id": 3,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						10.5874996185303,
+						5.08750009536743
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "N",
+					"foot_screen": [
+						841.0,
+						453.375
+					],
+					"foot_world": [
+						220.0,
+						236.5
+					],
+					"fps": 13.75,
+					"frame_index": 5,
+					"ground": [
+						5.0,
+						5.41249990463257
+					],
+					"id": 1,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NE",
+					"foot_screen": [
+						918.625,
+						453.375
+					],
+					"foot_world": [
+						323.5,
+						236.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						7.58750009536743,
+						5.41249990463257
+					],
+					"id": 2,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						7.58750009536743,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						841.0,
+						548.625
+					],
+					"foot_world": [
+						220.0,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						5.0,
+						8.58749961853027
+					],
+					"id": 5,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SW",
+					"foot_screen": [
+						943.375,
+						548.625
+					],
+					"foot_world": [
+						356.5,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						8.41250038146973,
+						8.58749961853027
+					],
+					"id": 6,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						8.41250038146973,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "W",
+					"foot_screen": [
+						1033.375,
+						561.0
+					],
+					"foot_world": [
+						476.5,
+						380.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						11.4125003814697,
+						9.0
+					],
+					"id": 7,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						11.4125003814697,
+						9.08749961853027
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NW",
+					"foot_screen": [
+						1123.375,
+						573.375
+					],
+					"foot_world": [
+						596.5,
+						396.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						14.4125003814697,
+						9.41250038146973
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						14.4125003814697,
+						9.5
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-walk_log-1_0.png",
+			"sha256": "74ad49cbd297686bf028b3597ed9cbb02212a52ccf41dfc429f0889194e169ce",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SE",
+					"foot_screen": [
+						1139.5,
+						404.5
+					],
+					"foot_world": [
+						563.5,
+						203.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						13.5874996185303,
+						4.58750009536743
+					],
+					"id": 4,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						13.5874996185303,
+						4.67500019073486
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "E",
+					"foot_screen": [
+						1019.5,
+						421.0
+					],
+					"foot_world": [
+						443.5,
+						220.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						10.5874996185303,
+						5.0
+					],
+					"id": 3,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						10.5874996185303,
+						5.08750009536743
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "N",
+					"foot_screen": [
+						796.0,
+						437.5
+					],
+					"foot_world": [
+						220.0,
+						236.5
+					],
+					"fps": 13.75,
+					"frame_index": 5,
+					"ground": [
+						5.0,
+						5.41249990463257
+					],
+					"id": 1,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NE",
+					"foot_screen": [
+						899.5,
+						437.5
+					],
+					"foot_world": [
+						323.5,
+						236.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						7.58750009536743,
+						5.41249990463257
+					],
+					"id": 2,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						7.58750009536743,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						796.0,
+						564.5
+					],
+					"foot_world": [
+						220.0,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						5.0,
+						8.58749961853027
+					],
+					"id": 5,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SW",
+					"foot_screen": [
+						932.5,
+						564.5
+					],
+					"foot_world": [
+						356.5,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						8.41250038146973,
+						8.58749961853027
+					],
+					"id": 6,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						8.41250038146973,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "W",
+					"foot_screen": [
+						1052.5,
+						581.0
+					],
+					"foot_world": [
+						476.5,
+						380.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						11.4125003814697,
+						9.0
+					],
+					"id": 7,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						11.4125003814697,
+						9.08749961853027
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NW",
+					"foot_screen": [
+						1172.5,
+						597.5
+					],
+					"foot_world": [
+						596.5,
+						396.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						14.4125003814697,
+						9.41250038146973
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						14.4125003814697,
+						9.5
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-walk_log-2_4.png",
+			"sha256": "0f60ab970160e9ae7b93d955f8dabe05551ea56ec588abd7b77dea0cad6a2295",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SE",
+					"foot_screen": [
+						1368.39990234375,
+						269.399963378906
+					],
+					"foot_world": [
+						563.5,
+						203.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						13.5874996185303,
+						4.58750009536743
+					],
+					"id": 4,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						13.5874996185303,
+						4.67500019073486
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "E",
+					"foot_screen": [
+						1080.39990234375,
+						308.999938964844
+					],
+					"foot_world": [
+						443.5,
+						220.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						10.5874996185303,
+						5.0
+					],
+					"id": 3,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						10.5874996185303,
+						5.08750009536743
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "N",
+					"foot_screen": [
+						543.999877929688,
+						348.599975585938
+					],
+					"foot_world": [
+						220.0,
+						236.5
+					],
+					"fps": 13.75,
+					"frame_index": 5,
+					"ground": [
+						5.0,
+						5.41249990463257
+					],
+					"id": 1,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NE",
+					"foot_screen": [
+						792.39990234375,
+						348.599975585938
+					],
+					"foot_world": [
+						323.5,
+						236.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						7.58750009536743,
+						5.41249990463257
+					],
+					"id": 2,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						7.58750009536743,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						543.999877929688,
+						653.399963378906
+					],
+					"foot_world": [
+						220.0,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						5.0,
+						8.58749961853027
+					],
+					"id": 5,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SW",
+					"foot_screen": [
+						871.599914550781,
+						653.399963378906
+					],
+					"foot_world": [
+						356.5,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						8.41250038146973,
+						8.58749961853027
+					],
+					"id": 6,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						8.41250038146973,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "W",
+					"foot_screen": [
+						1159.59997558594,
+						693.0
+					],
+					"foot_world": [
+						476.5,
+						380.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						11.4125003814697,
+						9.0
+					],
+					"id": 7,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						11.4125003814697,
+						9.08749961853027
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NW",
+					"foot_screen": [
+						1447.59997558594,
+						732.599975585938
+					],
+					"foot_world": [
+						596.5,
+						396.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						14.4125003814697,
+						9.41250038146973
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						14.4125003814697,
+						9.5
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-chop-windup-2_4.png",
+			"sha256": "c4020d6076bfedf5d63f0fbbfffeffaf8b95ca037a5f1cfb4f91c1224704580d",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "E",
+					"foot_screen": [
+						1090.84655761719,
+						309.839233398438
+					],
+					"foot_world": [
+						447.852752685547,
+						220.349700927734
+					],
+					"fps": 18.0,
+					"frame_index": 6,
+					"ground": [
+						11.0,
+						5.0
+					],
+					"id": 5,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 6,
+					"visual_depth": [
+						10.6963186264038,
+						5.09624242782593
+					],
+					"work_remaining": 26
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SE",
+					"foot_screen": [
+						1383.21948242188,
+						311.296875
+					],
+					"foot_world": [
+						569.6748046875,
+						220.957046508789
+					],
+					"fps": 12.0,
+					"frame_index": 4,
+					"ground": [
+						14.0,
+						5.0
+					],
+					"id": 7,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 8,
+					"visual_depth": [
+						13.741870880127,
+						5.11142635345459
+					],
+					"work_remaining": 26
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NE",
+					"foot_screen": [
+						812.078430175781,
+						311.782775878906
+					],
+					"foot_world": [
+						331.699371337891,
+						221.159515380859
+					],
+					"fps": 12.0,
+					"frame_index": 4,
+					"ground": [
+						8.0,
+						5.0
+					],
+					"id": 3,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 4,
+					"visual_depth": [
+						7.79248476028442,
+						5.11648797988892
+					],
+					"work_remaining": 26
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "N",
+					"foot_screen": [
+						567.322570800781,
+						321.986450195312
+					],
+					"foot_world": [
+						229.717788696289,
+						225.411041259766
+					],
+					"fps": 9.0,
+					"frame_index": 3,
+					"ground": [
+						5.0,
+						5.0
+					],
+					"id": 1,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 2,
+					"visual_depth": [
+						5.24294471740723,
+						5.22277593612671
+					],
+					"work_remaining": 26
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "S",
+					"foot_screen": [
+						529.423217773438,
+						688.980346679688
+					],
+					"foot_world": [
+						213.926376342773,
+						378.325164794922
+					],
+					"fps": 12.0,
+					"frame_index": 4,
+					"ground": [
+						5.0,
+						9.0
+					],
+					"id": 9,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 10,
+					"visual_depth": [
+						4.8481593132019,
+						9.04562854766846
+					],
+					"work_remaining": 26
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "W",
+					"foot_screen": [
+						1144.7802734375,
+						692.867492675781
+					],
+					"foot_world": [
+						470.325164794922,
+						379.944793701172
+					],
+					"fps": 18.0,
+					"frame_index": 6,
+					"ground": [
+						11.0,
+						9.0
+					],
+					"id": 13,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 14,
+					"visual_depth": [
+						11.258129119873,
+						9.08611965179443
+					],
+					"work_remaining": 26
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NW",
+					"foot_screen": [
+						1424.03430175781,
+						693.353393554688
+					],
+					"foot_world": [
+						586.680969238281,
+						380.147247314453
+					],
+					"fps": 12.0,
+					"frame_index": 4,
+					"ground": [
+						14.0,
+						9.0
+					],
+					"id": 15,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 16,
+					"visual_depth": [
+						14.1670246124268,
+						9.0911808013916
+					],
+					"work_remaining": 26
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SW",
+					"foot_screen": [
+						817.909118652344,
+						697.240417480469
+					],
+					"foot_world": [
+						334.128845214844,
+						381.766845703125
+					],
+					"fps": 12.0,
+					"frame_index": 4,
+					"ground": [
+						8.0,
+						9.0
+					],
+					"id": 11,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 12,
+					"visual_depth": [
+						7.85322093963623,
+						9.13167095184326
+					],
+					"work_remaining": 26
+				}
+			],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-walk_log-night-2_4.png",
+			"sha256": "846b5b6d0cbfa696e1bd896d03b690eeed74426e532adf96fb275cc1dc24fc6b",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SE",
+					"foot_screen": [
+						1368.39990234375,
+						269.399963378906
+					],
+					"foot_world": [
+						563.5,
+						203.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						13.5874996185303,
+						4.58750009536743
+					],
+					"id": 4,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						13.5874996185303,
+						4.67500019073486
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "E",
+					"foot_screen": [
+						1080.39990234375,
+						308.999938964844
+					],
+					"foot_world": [
+						443.5,
+						220.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						10.5874996185303,
+						5.0
+					],
+					"id": 3,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						10.5874996185303,
+						5.08750009536743
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "N",
+					"foot_screen": [
+						543.999877929688,
+						348.599975585938
+					],
+					"foot_world": [
+						220.0,
+						236.5
+					],
+					"fps": 13.75,
+					"frame_index": 5,
+					"ground": [
+						5.0,
+						5.41249990463257
+					],
+					"id": 1,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NE",
+					"foot_screen": [
+						792.39990234375,
+						348.599975585938
+					],
+					"foot_world": [
+						323.5,
+						236.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						7.58750009536743,
+						5.41249990463257
+					],
+					"id": 2,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						7.58750009536743,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						543.999877929688,
+						653.399963378906
+					],
+					"foot_world": [
+						220.0,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						5.0,
+						8.58749961853027
+					],
+					"id": 5,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SW",
+					"foot_screen": [
+						871.599914550781,
+						653.399963378906
+					],
+					"foot_world": [
+						356.5,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						8.41250038146973,
+						8.58749961853027
+					],
+					"id": 6,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						8.41250038146973,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "W",
+					"foot_screen": [
+						1159.59997558594,
+						693.0
+					],
+					"foot_world": [
+						476.5,
+						380.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						11.4125003814697,
+						9.0
+					],
+					"id": 7,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						11.4125003814697,
+						9.08749961853027
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NW",
+					"foot_screen": [
+						1447.59997558594,
+						732.599975585938
+					],
+					"foot_world": [
+						596.5,
+						396.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						14.4125003814697,
+						9.41250038146973
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						14.4125003814697,
+						9.5
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 4500,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-walk_axe-raised-slope-2_4.png",
+			"sha256": "ed38c6f4f5ac44272ad27c0e9286cee5d394826f7d171561a11acb51c90a73e6",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "SE",
+					"foot_screen": [
+						1368.39990234375,
+						232.679977416992
+					],
+					"foot_world": [
+						563.5,
+						188.199996948242
+					],
+					"fps": 15.0,
+					"frame_index": 3,
+					"ground": [
+						13.5874996185303,
+						4.58750009536743
+					],
+					"id": 4,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						13.5874996185303,
+						4.67500019073486
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "E",
+					"foot_screen": [
+						1080.39990234375,
+						280.199951171875
+					],
+					"foot_world": [
+						443.5,
+						208.0
+					],
+					"fps": 10.0,
+					"frame_index": 3,
+					"ground": [
+						10.5874996185303,
+						5.0
+					],
+					"id": 3,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						10.5874996185303,
+						5.08750009536743
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "N",
+					"foot_screen": [
+						543.999877929688,
+						327.719970703125
+					],
+					"foot_world": [
+						220.0,
+						227.800003051758
+					],
+					"fps": 10.0,
+					"frame_index": 14,
+					"ground": [
+						5.0,
+						5.41249990463257
+					],
+					"id": 1,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NE",
+					"foot_screen": [
+						792.39990234375,
+						327.719970703125
+					],
+					"foot_world": [
+						323.5,
+						227.800003051758
+					],
+					"fps": 15.0,
+					"frame_index": 3,
+					"ground": [
+						7.58750009536743,
+						5.41249990463257
+					],
+					"id": 2,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						7.58750009536743,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "S",
+					"foot_screen": [
+						543.999877929688,
+						653.399963378906
+					],
+					"foot_world": [
+						220.0,
+						363.5
+					],
+					"fps": 10.0,
+					"frame_index": 11,
+					"ground": [
+						5.0,
+						8.58749961853027
+					],
+					"id": 5,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "SW",
+					"foot_screen": [
+						871.599914550781,
+						653.399963378906
+					],
+					"foot_world": [
+						356.5,
+						363.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						8.41250038146973,
+						8.58749961853027
+					],
+					"id": 6,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						8.41250038146973,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "W",
+					"foot_screen": [
+						1159.59997558594,
+						693.0
+					],
+					"foot_world": [
+						476.5,
+						380.0
+					],
+					"fps": 15.0,
+					"frame_index": 17,
+					"ground": [
+						11.4125003814697,
+						9.0
+					],
+					"id": 7,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						11.4125003814697,
+						9.08749961853027
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NW",
+					"foot_screen": [
+						1447.59997558594,
+						732.599975585938
+					],
+					"foot_world": [
+						596.5,
+						396.5
+					],
+					"fps": 15.0,
+					"frame_index": 0,
+					"ground": [
+						14.4125003814697,
+						9.41250038146973
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						14.4125003814697,
+						9.5
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "all8-chop-raised-slope-2_4.png",
+			"sha256": "86dd14f97ad70d0842eb9c56221b629031ce380c5f5339ef7d38bb7ffa7393fe",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "E",
+					"foot_screen": [
+						1090.84655761719,
+						281.207153320312
+					],
+					"foot_world": [
+						447.852752685547,
+						208.419647216797
+					],
+					"fps": 18.0,
+					"frame_index": 16,
+					"ground": [
+						11.0,
+						5.0
+					],
+					"id": 5,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 6,
+					"visual_depth": [
+						10.6963186264038,
+						5.09624242782593
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SE",
+					"foot_screen": [
+						1383.21948242188,
+						282.956237792969
+					],
+					"foot_world": [
+						569.6748046875,
+						209.148452758789
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						14.0,
+						5.0
+					],
+					"id": 7,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 8,
+					"visual_depth": [
+						13.741870880127,
+						5.11142635345459
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NE",
+					"foot_screen": [
+						812.078430175781,
+						283.539367675781
+					],
+					"foot_world": [
+						331.699371337891,
+						209.391418457031
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						8.0,
+						5.0
+					],
+					"id": 3,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 4,
+					"visual_depth": [
+						7.79248476028442,
+						5.11648797988892
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "N",
+					"foot_screen": [
+						567.322570800781,
+						295.783752441406
+					],
+					"foot_world": [
+						229.717788696289,
+						214.493255615234
+					],
+					"fps": 9.0,
+					"frame_index": 8,
+					"ground": [
+						5.0,
+						5.0
+					],
+					"id": 1,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 2,
+					"visual_depth": [
+						5.24294471740723,
+						5.22277593612671
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "S",
+					"foot_screen": [
+						529.423217773438,
+						688.980346679688
+					],
+					"foot_world": [
+						213.926376342773,
+						378.325164794922
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						5.0,
+						9.0
+					],
+					"id": 9,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 10,
+					"visual_depth": [
+						4.8481593132019,
+						9.04562854766846
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "W",
+					"foot_screen": [
+						1144.7802734375,
+						692.867492675781
+					],
+					"foot_world": [
+						470.325164794922,
+						379.944793701172
+					],
+					"fps": 18.0,
+					"frame_index": 16,
+					"ground": [
+						11.0,
+						9.0
+					],
+					"id": 13,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 14,
+					"visual_depth": [
+						11.258129119873,
+						9.08611965179443
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "NW",
+					"foot_screen": [
+						1424.03430175781,
+						693.353393554688
+					],
+					"foot_world": [
+						586.680969238281,
+						380.147247314453
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						14.0,
+						9.0
+					],
+					"id": 15,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 16,
+					"visual_depth": [
+						14.1670246124268,
+						9.0911808013916
+					],
+					"work_remaining": 20
+				},
+				{
+					"chopping": true,
+					"clip": "chop",
+					"direction": "SW",
+					"foot_screen": [
+						817.909118652344,
+						697.240417480469
+					],
+					"foot_world": [
+						334.128845214844,
+						381.766845703125
+					],
+					"fps": 12.0,
+					"frame_index": 10,
+					"ground": [
+						8.0,
+						9.0
+					],
+					"id": 11,
+					"moving": false,
+					"renders_cargo": null,
+					"source_id": 12,
+					"visual_depth": [
+						7.85322093963623,
+						9.13167095184326
+					],
+					"work_remaining": 20
+				}
+			],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "visibility-positive-outdoor.png",
+			"sha256": "0f60ab970160e9ae7b93d955f8dabe05551ea56ec588abd7b77dea0cad6a2295",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SE",
+					"foot_screen": [
+						1368.39990234375,
+						269.399963378906
+					],
+					"foot_world": [
+						563.5,
+						203.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						13.5874996185303,
+						4.58750009536743
+					],
+					"id": 4,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						13.5874996185303,
+						4.67500019073486
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "E",
+					"foot_screen": [
+						1080.39990234375,
+						308.999938964844
+					],
+					"foot_world": [
+						443.5,
+						220.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						10.5874996185303,
+						5.0
+					],
+					"id": 3,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						10.5874996185303,
+						5.08750009536743
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "N",
+					"foot_screen": [
+						543.999877929688,
+						348.599975585938
+					],
+					"foot_world": [
+						220.0,
+						236.5
+					],
+					"fps": 13.75,
+					"frame_index": 5,
+					"ground": [
+						5.0,
+						5.41249990463257
+					],
+					"id": 1,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NE",
+					"foot_screen": [
+						792.39990234375,
+						348.599975585938
+					],
+					"foot_world": [
+						323.5,
+						236.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						7.58750009536743,
+						5.41249990463257
+					],
+					"id": 2,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						7.58750009536743,
+						5.5
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						543.999877929688,
+						653.399963378906
+					],
+					"foot_world": [
+						220.0,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						5.0,
+						8.58749961853027
+					],
+					"id": 5,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						5.0,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "SW",
+					"foot_screen": [
+						871.599914550781,
+						653.399963378906
+					],
+					"foot_world": [
+						356.5,
+						363.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						8.41250038146973,
+						8.58749961853027
+					],
+					"id": 6,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						8.41250038146973,
+						8.67499923706055
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "W",
+					"foot_screen": [
+						1159.59997558594,
+						693.0
+					],
+					"foot_world": [
+						476.5,
+						380.0
+					],
+					"fps": 20.0,
+					"frame_index": 7,
+					"ground": [
+						11.4125003814697,
+						9.0
+					],
+					"id": 7,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						11.4125003814697,
+						9.08749961853027
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "NW",
+					"foot_screen": [
+						1447.59997558594,
+						732.599975585938
+					],
+					"foot_world": [
+						596.5,
+						396.5
+					],
+					"fps": 20.0,
+					"frame_index": 1,
+					"ground": [
+						14.4125003814697,
+						9.41250038146973
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						14.4125003814697,
+						9.5
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "visibility-fog-hidden.png",
+			"sha256": "a5e419fc8708aced33f4960fd7249c2610bbf9c460459e54d75511145508d0c7",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "visibility-fog-empty-control.png",
+			"sha256": "a5e419fc8708aced33f4960fd7249c2610bbf9c460459e54d75511145508d0c7",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "visibility-indoor-outside-control.png",
+			"sha256": "e1952e7f5afd7b268058389245b61a3817e7bb096a9f5e205105f586170ce4db",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						975.999938964844,
+						500.999938964844
+					],
+					"foot_world": [
+						100.0,
+						580.0
+					],
+					"fps": 20.0,
+					"frame_index": 0,
+					"ground": [
+						2.0,
+						14.0
+					],
+					"id": 1,
+					"moving": false,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						2.0,
+						14.0874996185303
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						975.999938964844,
+						500.999938964844
+					],
+					"foot_world": [
+						100.0,
+						580.0
+					],
+					"fps": 20.0,
+					"frame_index": 0,
+					"ground": [
+						2.0,
+						14.0
+					],
+					"id": 2,
+					"moving": false,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						2.0,
+						14.0874996185303
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						975.999938964844,
+						500.999938964844
+					],
+					"foot_world": [
+						100.0,
+						580.0
+					],
+					"fps": 20.0,
+					"frame_index": 0,
+					"ground": [
+						2.0,
+						14.0
+					],
+					"id": 3,
+					"moving": false,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						2.0,
+						14.0874996185303
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						975.999938964844,
+						500.999938964844
+					],
+					"foot_world": [
+						100.0,
+						580.0
+					],
+					"fps": 20.0,
+					"frame_index": 0,
+					"ground": [
+						2.0,
+						14.0
+					],
+					"id": 4,
+					"moving": false,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						2.0,
+						14.0874996185303
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						975.999938964844,
+						500.999938964844
+					],
+					"foot_world": [
+						100.0,
+						580.0
+					],
+					"fps": 20.0,
+					"frame_index": 0,
+					"ground": [
+						2.0,
+						14.0
+					],
+					"id": 5,
+					"moving": false,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						2.0,
+						14.0874996185303
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						975.999938964844,
+						500.999938964844
+					],
+					"foot_world": [
+						100.0,
+						580.0
+					],
+					"fps": 20.0,
+					"frame_index": 0,
+					"ground": [
+						2.0,
+						14.0
+					],
+					"id": 6,
+					"moving": false,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						2.0,
+						14.0874996185303
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						975.999938964844,
+						500.999938964844
+					],
+					"foot_world": [
+						100.0,
+						580.0
+					],
+					"fps": 20.0,
+					"frame_index": 0,
+					"ground": [
+						2.0,
+						14.0
+					],
+					"id": 7,
+					"moving": false,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						2.0,
+						14.0874996185303
+					],
+					"work_remaining": 0
+				},
+				{
+					"chopping": false,
+					"clip": "walk_log",
+					"direction": "S",
+					"foot_screen": [
+						975.999938964844,
+						500.999938964844
+					],
+					"foot_world": [
+						100.0,
+						580.0
+					],
+					"fps": 20.0,
+					"frame_index": 0,
+					"ground": [
+						2.0,
+						14.0
+					],
+					"id": 8,
+					"moving": false,
+					"renders_cargo": "log",
+					"source_id": 0,
+					"visual_depth": [
+						2.0,
+						14.0874996185303
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "visibility-indoor-hidden.png",
+			"sha256": "b37739ddfc8ac60ef9605968d4e24c7d92c4a6e78b21a7fd7fa0c570151c49ab",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "visibility-indoor-empty-control.png",
+			"sha256": "b37739ddfc8ac60ef9605968d4e24c7d92c4a6e78b21a7fd7fa0c570151c49ab",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [],
+			"tick": 1750,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "flat-boundary-actual.png",
+			"sha256": "eb10436dcd756ef608d6d5de6b47a9efc21812bd93e69410e10681fc3a5b7ca6",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NW",
+					"foot_screen": [
+						976.0,
+						501.000030517578
+					],
+					"foot_world": [
+						239.199996948242,
+						239.199996948242
+					],
+					"fps": 15.0,
+					"frame_index": 1,
+					"ground": [
+						5.48000001907349,
+						5.48000001907349
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.48000001907349,
+						5.56750011444092
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1751,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "flat-boundary-unobstructed-reference.png",
+			"sha256": "eb10436dcd756ef608d6d5de6b47a9efc21812bd93e69410e10681fc3a5b7ca6",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NW",
+					"foot_screen": [
+						976.0,
+						501.000030517578
+					],
+					"foot_world": [
+						239.199996948242,
+						239.199996948242
+					],
+					"fps": 15.0,
+					"frame_index": 1,
+					"ground": [
+						5.48000001907349,
+						5.48000001907349
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.48000001907349,
+						5.56750011444092
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1751,
+			"zoom": 2.40000009536743
+		},
+		{
+			"artificial_states": true,
+			"file": "flat-boundary-no-sprite-control.png",
+			"sha256": "e26cd4ba65c7a9c8033cb88eeac57127ca596df73c011bb9d7d226484eaf5e03",
+			"size_px": [
+				1600,
+				1000
+			],
+			"states": [
+				{
+					"chopping": false,
+					"clip": "walk_axe",
+					"direction": "NW",
+					"foot_screen": [
+						976.0,
+						501.000030517578
+					],
+					"foot_world": [
+						239.199996948242,
+						239.199996948242
+					],
+					"fps": 15.0,
+					"frame_index": 1,
+					"ground": [
+						5.48000001907349,
+						5.48000001907349
+					],
+					"id": 8,
+					"moving": true,
+					"renders_cargo": null,
+					"source_id": 0,
+					"visual_depth": [
+						5.48000001907349,
+						5.56750011444092
+					],
+					"work_remaining": 0
+				}
+			],
+			"tick": 1751,
+			"zoom": 2.40000009536743
+		}
+	],
+	"code_sha256_at_start": {
+		"res://scripts/view/lumberjack_animation_library.gd": "1c905af5eba53233abaec2581f11701bfa54bbeea598efd693f2cbf276b49628",
+		"res://scripts/view/lumberjack_presentation.gd": "03479574a1dd3acd7ebaf8d4acf65db6b44d9a27e601909ac208520f4ec55b63",
+		"res://scripts/view/lumberjack_work_placement.gd": "297efd69b6e6c9ba38a5787752602ec17714be6515da291b3b909a8d2bd6ef27",
+		"res://scripts/view/main_view.gd": "15e92deebd6012f56ab730f1896727a403555d162ba9614f8f9e67def11990c7",
+		"res://scripts/view/solar_shadows.gd": "33c6e50d880eb833d65e4b3dbf626e2214d1a16ab55150f8ab6db9695d9b4909",
+		"res://scripts/view/terrain_renderer.gd": "b3bff18d7fa389b444904249a52a2c9399d64aa78431fc4c333b5662eb9d2803"
+	},
+	"display_server": "macOS",
+	"engine": "4.7.2-stable (official)",
+	"failures": [],
+	"gpu": "Apple M4",
+	"helper_sha256": "03479574a1dd3acd7ebaf8d4acf65db6b44d9a27e601909ac208520f4ec55b63",
+	"main_view_sha256": "15e92deebd6012f56ab730f1896727a403555d162ba9614f8f9e67def11990c7",
+	"manifest_sha256": "7aa01262a49e4e682f87c9a8445f6fc79ec1fd6f18154f34d8a11a320a43fa64",
+	"normal_game_journey": false,
+	"pixel_checks": [
+		{
+			"check": "fog hidden versus no workers",
+			"different_pixels": 0
+		},
+		{
+			"check": "indoor positive control at identical entrance and camera",
+			"different_pixels": 3320
+		},
+		{
+			"check": "indoor hidden versus no workers",
+			"different_pixels": 0
+		},
+		{
+			"artificial_phase_seed_world_px": 4.0,
+			"check": "flat boundary actual versus identical draw above terrain",
+			"common_anchor_y": 205,
+			"different_pixels": 0,
+			"direction": "NW",
+			"extension_world_px": 3.23926380368098,
+			"frame_index": 1,
+			"roi_screen_px": [
+				947,
+				501,
+				60,
+				11
+			],
+			"same_filter_and_canvas_light": true,
+			"source_alpha_bottom_exclusive": 221
+		},
+		{
+			"check": "boundary lower-pixel positive control against no sprite",
+			"different_pixels": 170,
+			"roi_screen_px": [
+				947,
+				501,
+				60,
+				11
+			]
+		}
+	],
+	"renderer": "res://scenes/main.tscn and its production worker/dynamic-row path",
+	"state_setup": "Authored fixture positions, heading, work_remaining, cargo, tick and relief; camera smoothing disabled only for instantaneous QA jumps; no gameplay progression is claimed."
+}

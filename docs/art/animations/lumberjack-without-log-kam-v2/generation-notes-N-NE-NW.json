@@ -1,0 +1,101 @@
+{
+  "createdDate": "2026-09-10",
+  "scope": "N, NE, NW only",
+  "generationTool": "OpenAI built-in image_gen",
+  "totalImageGenerationCalls": 4,
+  "outputLayout": {
+    "width": 1536,
+    "height": 1024,
+    "columns": 4,
+    "rows": 2,
+    "cellWidth": 384,
+    "cellHeight": 512,
+    "frameCount": 8,
+    "order": "left-to-right, then top-to-bottom",
+    "referencePivot": [
+      184,
+      368
+    ]
+  },
+  "outputFormat": {
+    "mode": "RGB",
+    "pngColourType": 2,
+    "hasAlpha": false,
+    "background": "White prototype background requested. No separate ground shadow apparent in static visual inspection; exact uniform white not measured."
+  },
+  "poseSourceRole": "Original KaM eight phases are pose, phase order, camera and screen-position references; resulting paintings are approximate generative interpretations, not pixel-exact motion transfers.",
+  "identitySourceRole": "Own direction-specific character reference supplies costume, proportions and painted identity, not its single walking pose.",
+  "directions": [
+    {
+      "direction": "N",
+      "calls": 1,
+      "prompt": "prompts/N.txt",
+      "selectedSource": "sources/N.png",
+      "generatedSource": "/Users/openclaw/.codex/generated_images/01a087c4-f6f1-7e43-a049-4d32f7bfd169/exec-f7272f4c-daa5-4291-bbf3-6b2c05c8252a.png",
+      "referenceImages": [
+        "original_game_data/kam-reference-export/lumberjack-full-set/walk-guides-8x/N.png",
+        "docs/art/animation-references/lumberjack-without-log/N.png"
+      ],
+      "sha256": "ebff3fa51d0113e13ffdd0e6919c1081629900f2f3fa2937e4b79cf6c5b64e43",
+      "qa": [
+        "Eight back-facing phases; no face appears on the back of the head.",
+        "Olive tunic back under belt, with no brown apron flap on back.",
+        "Axe stays associated with right arm. In phases 5 and 6 right hand and axe are occluded by the torso; no hand transfer was observed.",
+        "No separate cast/contact ground shadow apparent."
+      ]
+    },
+    {
+      "direction": "NE",
+      "calls": 1,
+      "prompt": "prompts/NE.txt",
+      "selectedSource": "sources/NE.png",
+      "generatedSource": "/Users/openclaw/.codex/generated_images/01a087c4-f6f1-7e43-a049-4d32f7bfd169/exec-3577a858-6ed4-4ddd-9afb-5f1e2388bc06.png",
+      "referenceImages": [
+        "original_game_data/kam-reference-export/lumberjack-full-set/walk-guides-8x/NE.png",
+        "docs/art/animation-references/lumberjack-without-log/NE.png"
+      ],
+      "sha256": "fe498fd0bdc67b957e288ad38e86d0395f90d15789533015c84ffd61d304d306",
+      "qa": [
+        "Eight rear three-quarter phases; own orange cap, olive tunic, cream cuffs and brown boots remain recognizable.",
+        "One axe in right hand, left hand empty; no back apron.",
+        "Source torso rotation is interpreted more gently than in the original guide.",
+        "No separate cast/contact ground shadow apparent."
+      ]
+    },
+    {
+      "direction": "NW",
+      "calls": 2,
+      "prompt": "prompts/NW.txt",
+      "selectedSource": "sources/NW.png",
+      "generatedSource": "/Users/openclaw/.codex/generated_images/01a087c4-f6f1-7e43-a049-4d32f7bfd169/exec-1013b4eb-af13-418a-b395-c32e0d09884c.png",
+      "initialGeneratedSource": "/Users/openclaw/.codex/generated_images/01a087c4-f6f1-7e43-a049-4d32f7bfd169/exec-ce549fcb-98f6-4600-9ea5-7a067b0f18ea.png",
+      "referenceImages": [
+        "original_game_data/kam-reference-export/lumberjack-full-set/walk-guides-8x/NW.png",
+        "docs/art/animation-references/lumberjack-without-log/NW.png"
+      ],
+      "repairInput": "/Users/openclaw/.codex/generated_images/01a087c4-f6f1-7e43-a049-4d32f7bfd169/exec-ce549fcb-98f6-4600-9ea5-7a067b0f18ea.png",
+      "sha256": "3c1e907d91f7150f2588aa1015e515b758ca01056aa9f27f824fffead186e6cb",
+      "qa": [
+        "Initial phase 4 mistakenly held axe in near left hand.",
+        "One targeted built-in edit removed axe from near left hand in phase 4; far right hand/axe is occluded behind torso, with only a small blade edge visible.",
+        "Other visible axe grips remain on right arm; left arm is empty.",
+        "No brown rear apron or separate cast/contact ground shadow apparent."
+      ]
+    }
+  ],
+  "validation": {
+    "selectedImagesInspected": true,
+    "allDimensionsVerified": true,
+    "allPNGColourTypesVerified": true,
+    "sheetCopies": "Byte-for-byte copy from selected built-in output paths; no pixel edits, crops, rescaling or registration applied.",
+    "motionPlayback": "Not performed in this subtask; root is preparing shared playback and comparison.",
+    "remainingQA": "Check alternating legs, loop transition, source phase correspondence and common pivot in synchronized playback. Do not infer final in-game foot contact from static sheets."
+  },
+  "status": {
+    "draft": true,
+    "userApproved": false,
+    "gameIntegrated": false,
+    "inGameValidated": false
+  },
+  "changedFiles": "Only prompts/N.txt, prompts/NE.txt, prompts/NW.txt, sources/N.png, sources/NE.png, sources/NW.png and this note."
+}

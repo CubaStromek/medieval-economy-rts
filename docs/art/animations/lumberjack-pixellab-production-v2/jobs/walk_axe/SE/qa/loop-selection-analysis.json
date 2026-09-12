@@ -1,0 +1,75 @@
+{
+  "loop_selection": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "seam_24_to_1": {
+    "from_index": 24,
+    "to_index": 1,
+    "comparable": true,
+    "raw_rgb_mean_absolute_difference": 1.972636,
+    "composited_rgb_mean_absolute_difference": 1.875738,
+    "alpha_mean_absolute_difference": 2.19841,
+    "changed_composited_pixels": 4573,
+    "changed_composited_fraction": 0.069778
+  },
+  "phase_lag_analysis": [
+    {
+      "lag": 1,
+      "raw_rgb_mean_absolute_difference": 3.229141,
+      "alpha_mean_absolute_difference": 4.525709
+    },
+    {
+      "lag": 4,
+      "raw_rgb_mean_absolute_difference": 5.594843,
+      "alpha_mean_absolute_difference": 11.650739
+    },
+    {
+      "lag": 6,
+      "raw_rgb_mean_absolute_difference": 5.196793,
+      "alpha_mean_absolute_difference": 12.153204
+    },
+    {
+      "lag": 8,
+      "raw_rgb_mean_absolute_difference": 5.460291,
+      "alpha_mean_absolute_difference": 10.870514
+    },
+    {
+      "lag": 12,
+      "raw_rgb_mean_absolute_difference": 2.825409,
+      "alpha_mean_absolute_difference": 3.852381
+    },
+    {
+      "lag": 16,
+      "raw_rgb_mean_absolute_difference": 5.680159,
+      "alpha_mean_absolute_difference": 11.450755
+    },
+    {
+      "lag": 24,
+      "raw_rgb_mean_absolute_difference": 2.124964,
+      "alpha_mean_absolute_difference": 1.536942
+    }
+  ]
+}

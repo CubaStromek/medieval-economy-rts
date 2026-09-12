@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dřevorubec · chůze bez klády</title>
+  <style>
+    :root{color-scheme:light;--paper:#f5f2e9;--ink:#283c33;--muted:#667166;--line:#dcded2;--green:#385b45;--soft:#e9eee4;--ochre:#bd8750}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    button,input,select{font:inherit}button,select,input[type=range]{cursor:pointer}button{color:inherit}button:disabled{cursor:default;opacity:.45}
+    button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+    .page{max-width:1440px;margin:auto;padding:36px 32px 44px}.eyebrow{font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.15em;color:var(--muted)}
+    header{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:25px}h1{font-size:clamp(26px,3vw,38px);line-height:1.15;letter-spacing:-.035em;margin:8px 0 10px;font-weight:650}header p{margin:0;color:var(--muted);max-width:730px}.badge{flex:none;border:1px solid var(--line);border-radius:20px;padding:7px 12px;font-size:12px;margin-top:24px;background:#fffdf7}
+    .layout{display:grid;grid-template-columns:minmax(340px,.95fr) minmax(0,1.35fr);gap:22px;align-items:start}.panel{background:#fffdf8;border:1px solid var(--line);border-radius:15px;overflow:hidden}
+    .panel-title{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:18px 21px;border-bottom:1px solid var(--line)}h2{font-size:16px;line-height:1.2;font-weight:650;margin:0}.small{font-size:12px;color:var(--muted)}
+    .focus-stage{height:440px;background:#fff;position:relative}.focus-stage canvas{width:100%;height:100%;display:block}.stage-message{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:40px;color:var(--muted);pointer-events:none}.stage-message[hidden]{display:none}
+    .stage-footer{padding:13px 21px;background:#fafbf6;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:var(--muted)}
+    .directions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:15px}.direction{padding:0;background:white;border:1px solid var(--line);border-radius:9px;overflow:hidden;transition:border-color .15s,box-shadow .15s;text-align:left;min-width:0}.direction:hover{border-color:#899e87}.direction[aria-pressed=true]{border-color:var(--green);box-shadow:0 0 0 2px var(--green)}
+    .direction canvas{display:block;width:100%;height:168px}.direction-label{border-top:1px solid #edf0e9;display:flex;justify-content:space-between;align-items:center;padding:10px 11px;font-size:12px}.direction-label strong{font-weight:650}.direction-label span{color:var(--muted);font-size:11px}.direction.error{border-color:#b36c47}.direction.error .direction-label span{color:#9d4d2b}
+    .direction-help{padding:0 17px 15px;margin:0;color:var(--muted);font-size:12px}.controls{margin-top:22px;padding:19px 21px}.transport{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.play{background:var(--green);color:white;border:0;border-radius:8px;min-width:112px;padding:10px 16px;font-weight:600}.step{background:#fff;border:1px solid var(--line);border-radius:8px;width:40px;height:42px;font-size:20px}.frame-counter{margin-left:4px;font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}.control-row{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:17px}.timeline{display:flex;align-items:center;gap:15px;flex:1;min-width:200px}.timeline label{font-size:12px;color:var(--muted)}input[type=range]{accent-color:var(--green);width:100%;min-width:90px}input[type=checkbox]{accent-color:var(--green);width:16px;height:16px}.setting{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}select{border:1px solid var(--line);border-radius:7px;background:#fff;padding:6px 8px;color:var(--ink)}.guide-label{display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap}
+    .review-note{display:flex;gap:11px;margin:20px 1px 0;padding:0;color:var(--muted);font-size:13px}.review-note strong{font-weight:600;color:var(--ink)}.review-mark{height:8px;width:8px;border-radius:50%;background:var(--ochre);flex:none;margin-top:6px}.notes{margin:10px 0 0;padding-left:19px;font-size:12px;color:var(--muted)}.notes:empty{display:none}.status{margin:0 0 16px;padding:12px 16px;background:#f5ebd7;color:#78562d;border:1px solid #e2cca6;border-radius:9px;font-size:13px}.status[hidden]{display:none}footer{font-size:11px;color:var(--muted);margin-top:24px;display:flex;justify-content:space-between;gap:16px}
+    @media(min-width:1250px){.direction canvas{height:188px}.focus-stage{height:480px}}
+    @media(max-width:1030px){.layout{grid-template-columns:1fr 1.15fr}.directions{grid-template-columns:repeat(2,minmax(0,1fr))}.direction canvas{height:120px}.focus-stage{height:485px}.direction-label{padding:6px 10px}.controls{position:sticky;bottom:10px;z-index:2;box-shadow:0 5px 20px #2b39221a}}
+    @media(max-width:680px){.page{padding:24px 16px 28px}header{display:block}.badge{display:inline-block;margin-top:16px}.layout{grid-template-columns:1fr}.focus-stage{height:360px}.directions{grid-template-columns:repeat(4,minmax(0,1fr));padding:12px;gap:8px}.direction canvas{height:100px}.direction-label{justify-content:center;padding:6px}.direction-label span{display:none}.controls{padding:14px;position:static}.control-row{gap:13px}.timeline{flex-basis:100%}.review-note{font-size:12px}footer{display:block}footer span{display:block}}
+    @media(prefers-reduced-motion:reduce){.direction{transition:none}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div><div class="eyebrow">Medieval Economy RTS · animace postavy</div><h1>Dřevorubec bez klády</h1><p>Osm směrů, jedna sekera. Prohlédněte si celý krok nebo jednotlivé snímky.</p></div>
+      <span class="badge">Pracovní náhled · v1</span>
+    </header>
+    <p id="status" class="status" role="status" hidden></p>
+    <div class="layout">
+      <section class="panel" aria-labelledby="focus-title">
+        <div class="panel-title"><h2 id="focus-title">Jihovýchod <span class="small">SE ↘</span></h2><span id="focus-frame" class="small">Snímek 1 / 8</span></div>
+        <div class="focus-stage"><canvas id="focus-canvas" aria-label="Zvětšený náhled chůze dřevorubce"></canvas><div class="stage-message" id="stage-message">Načítám snímky…</div></div>
+        <div class="stage-footer"><span id="stage-caption">Detail vybraného směru</span><span>Zvětšený náhled</span></div>
+      </section>
+      <section class="panel" aria-labelledby="directions-title">
+        <div class="panel-title"><h2 id="directions-title">Všechny směry</h2><span class="small">Stejný okamžik kroku</span></div>
+        <div class="directions" id="directions"></div>
+        <p class="direction-help">Kliknutím na směr zobrazíte jeho detail vlevo.</p>
+      </section>
+    </div>
+    <section class="panel controls" aria-label="Ovládání animace">
+      <div class="transport"><button id="play" class="play" type="button" disabled>▶ Přehrát</button><button id="previous" class="step" type="button" aria-label="Předchozí snímek" disabled>‹</button><button id="next" class="step" type="button" aria-label="Následující snímek" disabled>›</button><span id="frame-counter" class="frame-counter">Snímek 1 z 8</span></div>
+      <div class="control-row">
+        <div class="timeline"><label for="frame">Snímek</label><input id="frame" type="range" min="0" max="7" step="1" value="0" disabled></div>
+        <label class="setting" for="fps">Tempo <select id="fps"><option value="6">6 sn./s</option><option value="8">8 sn./s</option><option value="10" selected>10 sn./s</option><option value="12">12 sn./s</option><option value="14">14 sn./s</option><option value="16">16 sn./s</option></select></label>
+        <label class="setting" for="zoom">Detail <select id="zoom"><option value="0.8">80 %</option><option value="1" selected>100 %</option><option value="1.2">120 %</option></select></label>
+        <label class="setting guide-label"><input id="guides" type="checkbox"> Ukázat kotvu chodidel</label>
+      </div>
+    </section>
+    <div class="review-note"><span class="review-mark" aria-hidden="true"></span><div><strong>Animace k prohlédnutí.</strong> Tento náhled není nasazený do hry. Velikost postavy je zvětšená pro kontrolu pohybu; čitelnost a návaznosti přímo ve hře ještě vyžadují ověření.<ul class="notes" id="notes"></ul></div></div>
+    <footer><span>Bez klády · sekera v pravé ruce · osm samostatných směrů</span><span id="technical-note">Místní náhled bez připojení k internetu</span></footer>
+  </main>
+  <script src="manifest.js"></script>
+  <script src="preview.js"></script>
+</body>
+</html>

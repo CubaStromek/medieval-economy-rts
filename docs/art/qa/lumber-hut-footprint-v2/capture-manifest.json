@@ -1,0 +1,2186 @@
+{
+	"art_sha256": {
+		"finished-mask.png": "f055793a3aed77ee5e530d0bfc1fbcdcb08b42121a68d75018ad8b2219549f8b",
+		"finished.png": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+		"wood-mask.png": "7920ca87e09ce0891e0e70c2a0d1a5ca1ee20489fc9241866a9bf9e7c8a377fd",
+		"wood.png": "ffdaeb73429d0858aadb36ec93217e809f9457f563c1d27add1ecf248fc4658d"
+	},
+	"captured_at": "2026-09-10T22:19:04",
+	"captures": [
+		{
+			"anchor": [
+				14,
+				12
+			],
+			"case": "same-door-comparison",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/footprint-v1-logs-0.png",
+			"fog_state": 2,
+			"footprint_version": 1,
+			"foundation_remaining": 0,
+			"occupied_cells": 6,
+			"painted_terrain": true,
+			"sha256": "1ad03cd84ce5d438052c697901d099f56f91ada7a706d7c74b81fdf2199b98b4",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				14,
+				12
+			],
+			"case": "same-door-comparison",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/footprint-v1-logs-6.png",
+			"fog_state": 2,
+			"footprint_version": 1,
+			"foundation_remaining": 0,
+			"occupied_cells": 6,
+			"painted_terrain": true,
+			"sha256": "ebb37cd29a3853d87a68ec67be3e83c3c06fb9bfd5793f597a8b5c64d5c4f8a5",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 6,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "same-door-comparison",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/footprint-v2-logs-0.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "d40a3dc30897181a520e69a3e177990699e6110da5cf557b6f328f96ea3657d5",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "same-door-comparison",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/footprint-v2-logs-6.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "1510eb46f78db313905a9c5879c63cf5898f8f44aeb2be153b2a18811cdb29fc",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 6,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "zoom",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/zoom-0-75.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "90f6ada35060bcf936e15b82a3bff8ba919862678db7a51865885b02f3baed7c",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 6,
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "zoom",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/zoom-1-00.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "ad31e66567884a6ef93075f5c6de95a45328b0b2727c9c47e15e695bebbd5296",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 6,
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 0,
+			"file": "frames/stage-00.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "44dc925cf52ed9cdc6a32c596efcdcfb60b3ba6f8a693e888afb776ecddb7054",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.0,
+				"step": 0,
+				"wood_step": 0
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 1,
+			"file": "frames/stage-01.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "81208fd13cda6a80299bc28329287024659f4c1e91b6596d9f9231af34328aeb",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.00833333333333333,
+				"step": 1,
+				"wood_step": 1
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 2,
+			"file": "frames/stage-02.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "97b65a14e577e5099b915742c0a31c7c49ea83d526821265f8a2f6ab2bc7d8ea",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.0583333333333333,
+				"step": 2,
+				"wood_step": 2
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 3,
+			"file": "frames/stage-03.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "0654157379372c32f41dd4aff3a28832f405092e7ffa67ebbb13b217724d4d23",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.108333333333333,
+				"step": 3,
+				"wood_step": 3
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 4,
+			"file": "frames/stage-04.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "36a4b58d5c7a13f7bae1863106bc33a77d4d96fb30cba23832ebe9872d6e169c",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.158333333333333,
+				"step": 4,
+				"wood_step": 4
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 5,
+			"file": "frames/stage-05.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "b386dc83cfd7c38c12904f80bc358abd91208dc52252ac5f3e7eef391ceb43d6",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.208333333333333,
+				"step": 5,
+				"wood_step": 5
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 6,
+			"file": "frames/stage-06.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "e34b2287eaf5b25d68ba2a6af7d569a85bb8af44c3421fba35f7fd7e1e04f240",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.258333333333333,
+				"step": 6,
+				"wood_step": 6
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 7,
+			"file": "frames/stage-07.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "a40a4b47c91336af5e90bf377d2a7aa3dbd14dc6842fe015e69db25c550eab05",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.308333333333333,
+				"step": 7,
+				"wood_step": 7
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"case": "contact-sheet",
+			"file": "stages-00-07.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 8,
+			"file": "frames/stage-08.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "0dc26f12ebc73e00ae852d833391eb02a563ddd14129dfe3f11cbb44c05aa1bf",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.358333333333333,
+				"step": 8,
+				"wood_step": 8
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 9,
+			"file": "frames/stage-09.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "0960b1757c36be290a96537fe5fd320d8d8a235f21936a55577ab3e4a71d2f34",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.408333333333333,
+				"step": 9,
+				"wood_step": 9
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 10,
+			"file": "frames/stage-10.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "6b9a8884bf4087352a1c07e9be3ee0a44bacae328d3f16e0a5b60f9bf2808de4",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.458333333333333,
+				"step": 10,
+				"wood_step": 10
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 11,
+			"file": "frames/stage-11.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "fcf630fb7a65495df33c07abea23f05c417814fd6a03a9e7694fb4d35c6a3e89",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.508333333333333,
+				"step": 11,
+				"wood_step": 11
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 12,
+			"file": "frames/stage-12.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "e11aecfb3a10688c12f7db6c6970a020b3150dc0d4db5ea9347f12bdbf2f62ba",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.558333333333333,
+				"step": 12,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 13,
+			"file": "frames/stage-13.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "c372770d14e8e01da5af2a4729493bc2d658200748495a59143f33c61c0cad6d",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 1,
+				"phase": "finishing",
+				"progress": 0.608333333333333,
+				"step": 13,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 14,
+			"file": "frames/stage-14.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "1f79a8807109e58b928c4dba6de45ea149c59973a71f1917caf973680165bdef",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 2,
+				"phase": "finishing",
+				"progress": 0.625,
+				"step": 14,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 15,
+			"file": "frames/stage-15.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "ca50eab5b23af71c546d9ec4dea60b3cf4dc676897c15e889eabb7d6e5791726",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 3,
+				"phase": "finishing",
+				"progress": 0.641666666666667,
+				"step": 15,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"case": "contact-sheet",
+			"file": "stages-08-15.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 16,
+			"file": "frames/stage-16.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "853243a5050bee629987d34ea72785d6b46ad71fa00f5ccfdfb6eae443af1253",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 4,
+				"phase": "finishing",
+				"progress": 0.658333333333333,
+				"step": 16,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 17,
+			"file": "frames/stage-17.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "7c18b31a011364b65ee91731c7f9125876480c4ee2b11d4954e70a075c9a1749",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 5,
+				"phase": "finishing",
+				"progress": 0.683333333333333,
+				"step": 17,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 18,
+			"file": "frames/stage-18.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "6bd60000a96194c35a403d5f5975c8f2a23b93f1cbd58b64582355dc5424ed87",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 6,
+				"phase": "finishing",
+				"progress": 0.7,
+				"step": 18,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 19,
+			"file": "frames/stage-19.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "a7669d766ca4514934fa5b36f17f100aecb5462c4a4e2e2f16922439f110dea5",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 7,
+				"phase": "finishing",
+				"progress": 0.716666666666667,
+				"step": 19,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 20,
+			"file": "frames/stage-20.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "93a324cdc786fcd56df08f6f6bef3560babaa7fba9a85b4bea9f6a2569a5a465",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 8,
+				"phase": "finishing",
+				"progress": 0.741666666666667,
+				"step": 20,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 21,
+			"file": "frames/stage-21.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "53490d401a13f4495b66d07c80294c644050a7944fcc104c045206c64c57d396",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 9,
+				"phase": "finishing",
+				"progress": 0.758333333333333,
+				"step": 21,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 22,
+			"file": "frames/stage-22.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "6f4688a758227779a7a5857185dd09990c7895007ab266123a9ab7fdd0d4d3f0",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 10,
+				"phase": "finishing",
+				"progress": 0.775,
+				"step": 22,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 23,
+			"file": "frames/stage-23.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "d5ed3a116a0e2bed1c4006140e5add5489a2beadcb3bf73346e75641c857d1ab",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 11,
+				"phase": "finishing",
+				"progress": 0.791666666666667,
+				"step": 23,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"case": "contact-sheet",
+			"file": "stages-16-23.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 24,
+			"file": "frames/stage-24.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "2a7dc9866fa8881a0ee3d872925c1cb9c2829d4b4aa884b4ace7a4fba2312e46",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 12,
+				"phase": "finishing",
+				"progress": 0.816666666666667,
+				"step": 24,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 25,
+			"file": "frames/stage-25.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "380e22df979b58b86836152f36c9f2182c1e36c89b038c35e1fc2a5efc21b6c3",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 13,
+				"phase": "finishing",
+				"progress": 0.833333333333333,
+				"step": 25,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 26,
+			"file": "frames/stage-26.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "8217c77ca392f3f279987f78091178775acd87096fdddbf173324d657285fc93",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 14,
+				"phase": "finishing",
+				"progress": 0.85,
+				"step": 26,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 27,
+			"file": "frames/stage-27.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "62abceafb3b039b0a20322967f32b5910d88b07b28b7319de1f4d833d1924a7e",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 15,
+				"phase": "finishing",
+				"progress": 0.875,
+				"step": 27,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 28,
+			"file": "frames/stage-28.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "7ea048c61dec2597c06bdd8e3c15dc3e0b2561f97a0eab5564722e8e76be6469",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 16,
+				"phase": "finishing",
+				"progress": 0.891666666666667,
+				"step": 28,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 29,
+			"file": "frames/stage-29.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "1d6c9d982c5450ebd9f6436484ff5fbb37c68d3a30b4ad00bb96d9c53984bbc8",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 17,
+				"phase": "finishing",
+				"progress": 0.908333333333333,
+				"step": 29,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 30,
+			"file": "frames/stage-30.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "5ae33efa0cdab4512eac6eda488f2ce0452a7c2835eda95ceb9bbc36981b821d",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 18,
+				"phase": "finishing",
+				"progress": 0.925,
+				"step": 30,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 31,
+			"file": "frames/stage-31.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "b2128fb47259e3600d1fa9b2277ebdbdda803ee5acdb63f527bbaf3555fa99d6",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 19,
+				"phase": "finishing",
+				"progress": 0.95,
+				"step": 31,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"case": "contact-sheet",
+			"file": "stages-24-31.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 32,
+			"file": "frames/stage-32.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "2c0786be184a7cf94e40cdab2bc786590cd0fc7a37bf679116ef212fdcb3c618",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 20,
+				"phase": "finishing",
+				"progress": 0.966666666666667,
+				"step": 32,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"expected_step": 33,
+			"file": "frames/stage-33.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "d40a3dc30897181a520e69a3e177990699e6110da5cf557b6f328f96ea3657d5",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"case": "contact-sheet",
+			"file": "stages-32-33.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "noon",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/context-noon.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"label": "Den · výběr + člověk u vstupu",
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "d40a3dc30897181a520e69a3e177990699e6110da5cf557b6f328f96ea3657d5",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "dusk",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/context-dusk.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"label": "Soumrak · stejné materiály",
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "5bb615a630d651989a5dd09bf2b8a2924f79cf5f344e3c20113e197f3e814c13",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 3625,
+			"zoom": 2.4
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "night",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/context-night.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"label": "Noc · herní tónování",
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "9fa099353d98707468a5e4c330ed61cdfd0c72c6e622fa840d57dd3f0756e0fd",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 4750,
+			"zoom": 2.4
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "raised",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/context-raised.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"label": "Vyvýšený rovný základ",
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "2321225a06437ce87d48b392af2a75d79703ab2dd25b81c65c36f27ddbceac5b",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "earthwork",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/context-earthwork.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 16,
+			"label": "Srovnávání · bez střechy",
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "129c05e6c82ae5d2c42925faf2da05b75c8756e515b0da5d3db6a34c8ba4e028",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "foundation",
+				"progress": 0.0,
+				"step": 0,
+				"wood_step": 0
+			},
+			"stock": 0,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "occlusion",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/context-occlusion.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"label": "Překrytí stromem a člověkem",
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "c4cd73dd727616da7c6f01ab60bb7f39d893bab63b09e0c15e2a4c2763a8737f",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "fog-explored",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/context-fog-explored.png",
+			"fog_state": 1,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"label": "Cizí dům · prozkoumaná mlha",
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "57e9cee8505cdc1ac8312c2b7a232cd28dabe5623c35646e64b59aaedce8c845",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "fog-unknown",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/context-fog-unknown.png",
+			"fog_state": 0,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"label": "Neznámé území · dům skrytý",
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "7d3527569077c179ec7833290056a4b944efe5ac07403b541dac5300676a00ac",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "contact-sheet",
+			"file": "contexts.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "raised-contact",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "frames/raised-contacts.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "2321225a06437ce87d48b392af2a75d79703ab2dd25b81c65c36f27ddbceac5b",
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "full-game-hud",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "game-construction.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"remaining": 48,
+			"sha256": "a1d5a825a967ea9d52a45f67fb0d89e49c7a7c1e05b60767e4dc83da74d0821f",
+			"size": [
+				1280,
+				800
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.6,
+				"step": 12,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750,
+			"zoom": 1.8
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "full-game-hud",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "game-complete.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"remaining": 0,
+			"sha256": "ce68e2aa8f468e15969288fc2c639355fa9d264dfacda1263fd6e27c4ccce0e8",
+			"size": [
+				1280,
+				800
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750,
+			"zoom": 1.8
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "complete-detail",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "footprint-complete.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "b11973e648691e3674a19986d3048b7ed7992c25f6122282e9e9d0978836f82e",
+			"size": [
+				750,
+				560
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 6,
+			"tick": 1750,
+			"zoom": 3.2
+		},
+		{
+			"anchor": [
+				13,
+				13
+			],
+			"case": "real-pointer-hover",
+			"door_cell": [
+				16,
+				12
+			],
+			"entrance": [
+				16,
+				13
+			],
+			"file": "placement-preview.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"preview_anchor": [
+				6,
+				19
+			],
+			"preview_cells": 9,
+			"sha256": "e65c6cb05b7781c8d004ecf1c8e0ef5d120ec7141c9f0dee646a49e5551f3d7c",
+			"size": [
+				750,
+				560
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 6,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				6,
+				19
+			],
+			"case": "real-pointer-click",
+			"door_cell": [
+				9,
+				18
+			],
+			"entrance": [
+				9,
+				19
+			],
+			"file": "placement-committed.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"matches_preview": true,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "c6d5ef16c6c8801eb1c65ef7d71ed624f88efdd6269572d250e928d18c2c638d",
+			"size": [
+				750,
+				560
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.0,
+				"step": 0,
+				"wood_step": 0
+			},
+			"stock": 0,
+			"tick": 1750
+		},
+		{
+			"anchor": [
+				6,
+				19
+			],
+			"case": "same-position-completion-fixture",
+			"door_cell": [
+				9,
+				18
+			],
+			"entrance": [
+				9,
+				19
+			],
+			"file": "placement-finished-fixture.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"matches_preview": true,
+			"occupied_cells": 9,
+			"painted_terrain": true,
+			"sha256": "12ac859ba9554dfa74dcc3d90d271f464a31e39f1bc5556a226ad2aff634475b",
+			"size": [
+				750,
+				560
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"stock": 0,
+			"tick": 1750
+		}
+	],
+	"contact_checks": [
+		{
+			"contact": "west-bay-stone",
+			"context": "flat",
+			"inside_occupied_ground": true,
+			"source": [
+				44.0,
+				454.0
+			],
+			"world": [
+				542.100036621094,
+				529.900024414062
+			]
+		},
+		{
+			"contact": "front-bay-foot",
+			"context": "flat",
+			"inside_occupied_ground": true,
+			"source": [
+				128.0,
+				548.0
+			],
+			"world": [
+				561.0,
+				551.049987792969
+			]
+		},
+		{
+			"contact": "rack-foot",
+			"context": "flat",
+			"inside_occupied_ground": true,
+			"source": [
+				190.0,
+				576.0
+			],
+			"world": [
+				574.950012207031,
+				557.349975585938
+			]
+		},
+		{
+			"contact": "cabin-front-stone",
+			"context": "flat",
+			"inside_occupied_ground": true,
+			"source": [
+				421.0,
+				468.0
+			],
+			"world": [
+				626.924987792969,
+				533.049987792969
+			]
+		},
+		{
+			"contact": "timber-rear-foot",
+			"context": "flat",
+			"inside_occupied_ground": true,
+			"source": [
+				334.0,
+				405.0
+			],
+			"world": [
+				607.350036621094,
+				518.875
+			]
+		},
+		{
+			"contact": "west-bay-stone",
+			"context": "raised-flat",
+			"inside_occupied_ground": true,
+			"source": [
+				44.0,
+				454.0
+			],
+			"world": [
+				542.100036621094,
+				481.899993896484
+			]
+		},
+		{
+			"contact": "front-bay-foot",
+			"context": "raised-flat",
+			"inside_occupied_ground": true,
+			"source": [
+				128.0,
+				548.0
+			],
+			"world": [
+				561.0,
+				503.049987792969
+			]
+		},
+		{
+			"contact": "rack-foot",
+			"context": "raised-flat",
+			"inside_occupied_ground": true,
+			"source": [
+				190.0,
+				576.0
+			],
+			"world": [
+				574.950012207031,
+				509.349975585938
+			]
+		},
+		{
+			"contact": "cabin-front-stone",
+			"context": "raised-flat",
+			"inside_occupied_ground": true,
+			"source": [
+				421.0,
+				468.0
+			],
+			"world": [
+				626.924987792969,
+				485.049987792969
+			]
+		},
+		{
+			"contact": "timber-rear-foot",
+			"context": "raised-flat",
+			"inside_occupied_ground": true,
+			"source": [
+				334.0,
+				405.0
+			],
+			"world": [
+				607.350036621094,
+				470.875
+			]
+		}
+	],
+	"engine": "4.7.2-stable (official)",
+	"fixture": "Paused isolated forest, unchanged physical door at (16,12); v1anchor(14,12),v2anchor(13,13)",
+	"manifest_sha256": "e475b13ce8a8394b5997231351c3503ced0e667a96634c6c21a2e0b8fef1d1c5",
+	"renderer": "Apple M4",
+	"scene": "res://scenes/main.tscn",
+	"simulation": "Exact construction/inventory/context fixtures; natural gameplay captured separately"
+}

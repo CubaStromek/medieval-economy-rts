@@ -1,0 +1,6 @@
+f055793a3aed77ee5e530d0bfc1fbcdcb08b42121a68d75018ad8b2219549f8b  game/art/buildings/lumber_hut/v1/finished-mask.png
+dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca  game/art/buildings/lumber_hut/v1/finished.png
+7920ca87e09ce0891e0e70c2a0d1a5ca1ee20489fc9241866a9bf9e7c8a377fd  game/art/buildings/lumber_hut/v1/wood-mask.png
+ffdaeb73429d0858aadb36ec93217e809f9457f563c1d27add1ecf248fc4658d  game/art/buildings/lumber_hut/v1/wood.png
+e475b13ce8a8394b5997231351c3503ced0e667a96634c6c21a2e0b8fef1d1c5  game/art/buildings/lumber_hut/v1/manifest.json
+857e3742cfa19e16ec5ffc2ee3a7e3c73b3e7d2bd1c4c40783465904c5cb73a5  game/scripts/view/lumber_hut_sprite_library.gd

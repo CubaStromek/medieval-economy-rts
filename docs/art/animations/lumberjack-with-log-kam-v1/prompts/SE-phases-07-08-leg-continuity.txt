@@ -1,0 +1,17 @@
+Use case: precise-object-edit
+Correct TWO consecutive animation frames together. Image1 is the EDIT TARGET: TWO columns by ONE row, left=phase7, right=phase8, two full-body lumberjacks, original896x544. Preserve the original full canvas layout and the head, cap, torso, apron, arms, hands and log in each cell.
+Other image roles: Image2 is the original KaM phase7 then phase8 motion reference. Image3 is our fixed preceding phase6: RIGHT leg is behind, LEFT leg supports in front. Image4 is our next phase1: RIGHT leg has reached the front, LEFT leg is behind. Your two frames MUST CONNECT Image3 to Image4 with a readable continuous swing, not a change of leg identity.
+
+CRITICAL ANATOMICAL MAP for this south-east view:
+The raised arm holding the log is the anatomical RIGHT arm, the NEAR side on image-left.
+Directly below that arm is the RIGHT hip, and the RIGHT thigh is the NEAR thigh.
+The lowered empty arm is LEFT, the farther side on image-right, above the LEFT hip.
+Do not reverse near/far or left/right. Track the right leg continuously from its right hip through the knee into its own boot. The right thigh passes IN FRONT OF the far left thigh at an overlap.
+
+REDRAW BOTH TROUSER LEGS FROM THE HIPS DOWN in both target cells; their current thigh connection and occlusion are the defect. Merely attaching an extra boot to the old standing leg does not fix it.
+LEFT CELL / PHASE7:
+The far anatomical LEFT leg still bears weight, descending from the FAR/image-right hip into its planted boot at lower-right. The NEAR anatomical RIGHT leg is swinging from its rearward pose in Image3: right thigh comes forward on the visible near side, its knee is flexed and passing by the supporting left knee, right calf folds back slightly with the right boot lifted close underneath the pelvis, visibly image-left of the planted boot. Draw a clear continuous near right hip-to-thigh-to-knee-to-calf contour OVER the far left thigh so that the viewer can trace the same right leg coming forward. Distinct lifted right boot, toes toward down-right, not a backward ankle. This is a compact passing pose with two clearly readable legs, NOT a wide stance and NOT two straight planted legs.
+RIGHT CELL / PHASE8:
+Continue THAT SAME near RIGHT thigh and knee swinging forward: the right calf now unfolds and the right boot reaches toward the lower-right/front, approaching ground contact as in following Image4. The far LEFT leg is behind, still visibly connected to its far hip, with a smaller trailing boot peeking to image-left behind the right leg, heel lifting. Keep right leg in foreground through the overlap, never morph it into the left leg. Two complete plausible legs and two clearly distinguishable boots.
+
+Only redraw trousers/legs/boots beneath the unchanged waist and apron. Keep the upper bodies, log length/angle/contact, right support hands, faces, hat positions, body scale, camera and painting style exactly as Image1. Same brown trousers and cuffed boots. Do not mirror whole sprites, do not shift or enlarge figures to fill margins. White background, NO ground/contact/cast shadow, no checkerboard, text, grid or labels. Output exactly the TWO corrected frames side by side, no other frames.

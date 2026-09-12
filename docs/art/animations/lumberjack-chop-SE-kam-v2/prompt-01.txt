@@ -1,0 +1,17 @@
+Use case: style-transfer / precise pose-preserving restoration.
+EDIT IMAGE 1 ITSELF. It is a three-column, two-row sheet of six original KaM animation poses. Preserve the original six compositions and body/limb/weapon geometry as a strict tracing guide. Paint a higher-resolution version of these SAME original poses, changing their clothing/face/rendering to image 2's costume. The source's camera and limb positions have priority over conventional ideas of how a woodcutter ought to move.
+
+MOST IMPORTANT: In EVERY cell the arm on the LEFT SIDE OF THE IMAGE hangs down alongside the body, with its free hand beside the thigh. This arm NEVER lifts and NEVER joins the axe handle. Only the arm on the RIGHT SIDE OF THE IMAGE operates the axe, as in the source. ONE HAND holds the axe. Do not mirror the source. Do not move the axe to the image-left arm. Do not show two hands together, raised crossed arms, a wide lunge, a walking step or a two-handed swing.
+
+Copy these six corresponding original geometries, A B C / D E F:
+A: upright narrow body, free image-left arm hanging; axe-carrying image-right elbow bent beside the head; axe head just ABOVE and to the RIGHT of the cap, very close to it.
+B: same pose family, axe head a little HIGHER and nearer the cap's center than A; free arm still hanging.
+C: axe arm reaches directly to IMAGE RIGHT at chest/shoulder height; axe head far to the right of the body.
+D: completed low position, axe head to IMAGE RIGHT of the waist/upper thigh; working arm lowered and bent. Do not lower the axe to the ground. Free arm still down beside thigh.
+E: axe arm reaching farther right at waist/lower chest height, lower than C.
+F: axe arm angled up-right, axe head far right at about cap height.
+These are the ORIGINAL positions from image 1. Keep the source's almost front-facing, strongly elevated view, upright torso, narrow fixed stance, front boot at bottom center and rear boot slightly higher/left. Preserve the source head-to-foot line, small natural body shifts and each axe endpoint relative to the cap and waist. No pose re-imagination and no camera change. Same actor, same scale and same fixed ground anchor across all six equal cells.
+
+Image 2 is ONLY a cropped face/costume/color/brushwork swatch. Transfer: short brown beard, round stitched rust-orange cap with rolled brim, muted olive tunic with cream neck lacing and rolled cream sleeves, brown leather belt and FRONT apron, brown trousers and cuffed brown boots. Use its clean matte hand-painted style, not source pixel blocks. Do NOT let image 2 alter the original camera, limb positions or stance. Replace the source's red checked scarf with the olive-and-cream tunic neckline. A single consistent small one-bit iron axe with wooden shaft, matching the original source's weapon span and exact direction in each cell. Do not enlarge it into a long two-handed weapon.
+
+Keep all six whole figures and tools inside their cells; uniformly enlarge the ENTIRE source sheet, rather than repositioning or resizing individual figures. Preserve substantial blank space between cells. Remove all black checkerboard cast shadows, all checkerboard player-color texture, all labels and letters. Plain solid WHITE background, NO ground shadow, contact shadow, drop shadow, checkerboard drawing, floor, tree, stump, log, environment, text, borders or extra props. Retain natural form shading on the figures. Exactly SIX single-hand poses, 3 columns by 2 rows, with the free image-left hand down in all six.

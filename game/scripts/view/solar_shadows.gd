@@ -59,14 +59,26 @@ static func rows_for(terrain: Variant, entry: Dictionary, solar: Dictionary) -> 
 		for clipped: PackedVector2Array in Geometry2D.intersect_polygons(outline, strip):
 			if clipped.size() < 3:
 				continue
+			var points: PackedVector2Array = _project_outline(terrain, clipped)
 			if not rows.has(row):
 				rows[row] = []
 			rows[row].append({
-				"points": _project_outline(terrain, clipped),
+				"points": points,
+				"draw_origin": points[0], "draw_points": _local_outline(points),
 				"color": Color(0.035, 0.045, 0.075, opacity),
 				"kind": kind, "state": state,
 			})
 	return rows
+
+
+static func _local_outline(points: PackedVector2Array) -> PackedVector2Array:
+	# Godot's polygon area/triangulation loses small tangent row clips when
+	# absolute map-coordinate products cancel. Keep the exact same geometry
+	# near the origin for drawing, then place it with the canvas transform.
+	var local := PackedVector2Array()
+	for point: Vector2 in points:
+		local.append(point - points[0])
+	return local
 
 
 static func _project_outline(terrain: Variant, outline: PackedVector2Array) -> PackedVector2Array:

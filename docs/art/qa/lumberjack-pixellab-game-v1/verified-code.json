@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-10",
+  "description": "Local uncommitted integration; source hashes after final shadow precision repair",
+  "files": {
+    "game/scripts/view/main_view.gd": "15e92deebd6012f56ab730f1896727a403555d162ba9614f8f9e67def11990c7",
+    "game/scripts/view/lumberjack_animation_library.gd": "1c905af5eba53233abaec2581f11701bfa54bbeea598efd693f2cbf276b49628",
+    "game/scripts/view/lumberjack_presentation.gd": "03479574a1dd3acd7ebaf8d4acf65db6b44d9a27e601909ac208520f4ec55b63",
+    "game/scripts/view/lumberjack_work_placement.gd": "297efd69b6e6c9ba38a5787752602ec17714be6515da291b3b909a8d2bd6ef27",
+    "game/scripts/view/tree_sprite_library.gd": "7357502d0048cb590725fc8d46b5be43df60cba6121a4f048c515efc41579cbb",
+    "game/scripts/view/solar_shadows.gd": "33c6e50d880eb833d65e4b3dbf626e2214d1a16ab55150f8ab6db9695d9b4909",
+    "game/tests/lumberjack_animation_library_tests.gd": "09000ea605f19b6fd03e24ecb10e3af16fbd5af7b0a689a61b5616300987be5b",
+    "game/tests/lumberjack_presentation_tests.gd": "24d238e31cafe9d00d0db884d5277c8609625f8adce63a141c3199366259b1f9",
+    "game/tests/lumberjack_view_tests.gd": "ab28d82772b76f290227c0cec64d5db2fdeb34a749eb5cdc9af079b8fb74b4fe",
+    "game/tests/solar_lighting_view_tests.gd": "192b8e0225f43148c54b450166c48d66b28a03cb20c6c48ebc92943dd63dd051",
+    "game/tests/test_runner.gd": "7e61bed3c44d1d51a068b31457bdfc1808606b6e6b1243f866008a716d66f888",
+    "game/art/units/lumberjack-pixellab-v2/manifest.json": "7aa01262a49e4e682f87c9a8445f6fc79ec1fd6f18154f34d8a11a320a43fa64"
+  }
+}

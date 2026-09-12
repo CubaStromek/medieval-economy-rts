@@ -33,11 +33,14 @@ static func _check(condition: bool, message: String, failures: Array[String]) ->
 
 static func _fixture(stock: bool = true) -> Dictionary:
 	var world := World.new(Vector2i(24, 18))
+	# Keep the measured historical foundation below: changing the hut's
+	# geometry would also change its independent cut/fill expectation.
+	world.default_footprint_version = 1
 	var store: int = world.place_building("warehouse", Vector2i(2, 5))
 	if stock:
 		world.buildings[store]["storage"]["plank"] = 20
 		world.buildings[store]["storage"]["stone"] = 20
-	# The actual modern hut has 6 cells / 12 shared vertices. The independent
+	# The revision-1 hut has 6 cells / 12 shared vertices. The independent
 	# repeating 0,1,2 terrain has average1 and eight units of cut/fill.
 	for y: int in range(7, 10):
 		for x: int in range(10, 14):
@@ -117,7 +120,7 @@ static func _test_plan_and_placement_are_height_read_only(failures: Array[String
 		return
 	_check(_heights(world) == heights and _remaining(world, site) == 64,
 		"Clicking placement must reserve the site without instantly levelling even one vertex", failures)
-	_check(world.building_cells(world.buildings[site]).size() == 6, "Earthwork must use current production footprints, not a one-cell fixture", failures)
+	_check(world.building_cells(world.buildings[site]).size() == 6, "Earthwork must preserve the revision-1 site's full six-cell foundation", failures)
 	for cell: Vector2i in world.building_cells(world.buildings[site]):
 		_check(world.building_id_at(cell) == site and not world.grid.is_walkable(cell),
 			"Every occupied mask tile remains reserved throughout earthwork", failures)
@@ -245,6 +248,7 @@ static func _test_cancel_during_work(failures: Array[String]) -> void:
 static func _test_protected_neighbors(failures: Array[String]) -> void:
 	for kind: String in ["building", "field", "tree"]:
 		var world := World.new(Vector2i(24, 18))
+		world.default_footprint_version = 1
 		# Six height2 vertices and six height0 vertices imply target1; the
 		# eastern edge currently stays0, so existing content there is level.
 		for y: int in range(7, 10):

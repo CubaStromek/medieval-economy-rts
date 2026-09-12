@@ -1,0 +1,39 @@
+{
+  "created_at": "2026-09-10T17:08:47.803255+00:00",
+  "endpoint": "/animate-pixminimax",
+  "api_schema": "https://api.pixellab.ai/v2/openapi.json",
+  "schema_checked": "2026-09-10",
+  "input": {
+    "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/registered-inputs/chop/NE.png",
+    "sha256": "f7221a4a45612e116242d23310dbd79e1658543383adc966acc68b8f89fd63f1",
+    "width": 256,
+    "height": 256,
+    "png_color_type": 6,
+    "last_frame": {
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/registered-inputs/chop/NE.png",
+      "sha256": "f7221a4a45612e116242d23310dbd79e1658543383adc966acc68b8f89fd63f1",
+      "width": 256,
+      "height": 256,
+      "png_color_type": 6
+    }
+  },
+  "budget": {
+    "budget_file": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/budget.json",
+    "spent_before": 408.0,
+    "remaining_before": 4592.0,
+    "reserve_generations": 12,
+    "max_generations": 800.0,
+    "hard_per_job_cap_available": false,
+    "mode": "subscription-only",
+    "free_only": false,
+    "usd_fallback_allowed": false,
+    "subscription_plan": "Tier 2: Pixel Artisan"
+  },
+  "output_contract": {
+    "expected_frames": 17,
+    "synchronous": false,
+    "index_zero": "input frame, followed by frame_count generated frames",
+    "opaque_input_note": "no_background may cut out an opaque first frame"
+  },
+  "automatic_post_retries": 0
+}

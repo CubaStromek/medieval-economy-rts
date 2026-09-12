@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-09",
+  "direction": "W",
+  "tool": "built-in imagegen",
+  "source": "docs/art/animation-references/lumberjack-without-log/W.png",
+  "sheet_layout": {
+    "columns": 4,
+    "rows": 2
+  },
+  "candidate": "sheets/W-candidate.png",
+  "status": "diagnostic_candidate_incomplete_animation_not_production_ready",
+  "alpha_status": "Measured with sips: 1254x1254 pixels, hasAlpha=no. Opaque white-background preview; not production transparency.",
+  "attempts": [
+    {
+      "id": 1,
+      "prompt": "Use case: stylized-concept. Game walk-cycle sprite sheet: exactly 4 columns x 2 rows, EIGHT sequential distinct walking poses in place on PURE SOLID WHITE background. No checkerboard, text, labels, ground or shadows. Supplied reference image locks this lumberjack's painted style, face, orange cap, olive green shirt, cream rolled sleeves, brown trousers and boots, front brown leather apron, axe, and elevated camera. No log. Keep same direction, same character scale and centered pelvis within each equal cell. Fully contained figures with clear margins.\nCRITICAL: this is TWO DIFFERENT HALF-CYCLES, not eight copies. Frames 1 and 5 are visibly OPPOSITE LEG contacts. Frames 3 and 7 are feet-together passing poses. Animate actual leg and arm motion, including knee bends and heel lifts, with smooth subtle body bob. ALL EIGHT figures face WEST / screen LEFT, exact same elevated left-facing view as the supplied W reference. Axe remains in anatomical RIGHT hand, which is the FAR arm on the opposite side of the torso. The broad visible NEAR arm is the empty anatomical LEFT arm, as in this reference. Keep that near hand EMPTY in all 8 frames. Never simply mirror an east-facing character. Far-hand axe can be partially occluded by torso while it swings; it must never transfer to the near hand.\nTop row frames1-4: 1 NEAR leg extends LEFT heel-first, FAR leg trails RIGHT. 2 near boot plants as far heel lifts. 3 far knee passes BEHIND near straight leg, boots almost together. 4 far knee rises toward LEFT and far boot extends forward, near boot begins trailing.\nBottom row frames5-8: 5 FAR boot extends LEFT heel-first while NEAR leg trails RIGHT: opposite leg contact from frame1. 6 far boot plants as near heel lifts. 7 near knee passes IN FRONT of far straight support leg, boots almost together. 8 near knee rises LEFT and near boot extends ahead, far boot begins trailing. Natural alternating contact/down/passing/up. Frame5 is visibly OPPOSITE LEG contact to frame1. Arm swing counter to legs, axe remains in far anatomical right hand.",
+      "source_images": [
+        "docs/art/animation-references/lumberjack-without-log/W.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-638704bf-384e-46e2-b054-4893aa65a95d.png",
+      "saved": "sheets/W-rejected-attempt-1.png",
+      "selected": false
+    },
+    {
+      "id": 2,
+      "prompt": "Use case: precise-object-edit. Fix only the BOTTOM ROW of this WEST/left-facing walk sheet to be THE OPPOSITE LEG STEP from top row. Preserve top row. Every figure stays facing LEFT and retains same camera and identity. In bottom-row figures1 and4, the FAR anatomical RIGHT leg stretches FORWARD to screen LEFT, while the NEAR anatomical LEFT leg stretches BACK to screen RIGHT. REDRAW the upper thigh overlap: near rearward thigh must pass IN FRONT and OCCLUDE the forward far thigh. The near knee and shin now visibly slant DOWN RIGHT, and its boot is the back boot at RIGHT. The far forward boot at LEFT is slightly higher in the cell due to depth. In bottom figures2 and3, the FAR RIGHT support leg is straight while the NEAR LEFT leg is bent and passes IN FRONT OF it. This must visibly reverse which leg overlaps compared with top row. Counter-swing: empty NEAR left arm swings FORWARD toward screen LEFT; FAR right arm carrying axe swings BACK, partly behind torso; axe can project slightly at rear RIGHT but must remain held by far hand. Do not transfer axe to empty near hand. Same 4 columns x2 rows, pure WHITE background, cap, face, painted style. Change bottom limbs, not merely tiny shading.",
+      "source_images": [
+        "sheets/W-rejected-attempt-1.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-ba8f794f-2126-4281-b348-1d2614d330f0.png",
+      "saved": "sheets/W-candidate.png",
+      "selected": true
+    },
+    {
+      "id": 3,
+      "prompt": "Use case: precise-object-edit. IMAGE 1 is the EDIT TARGET: an existing eight-pose rear-facing lumberjack walk animation sheet. IMAGE 2 is ONLY a character appearance and new VIEWING DIRECTION reference, not the pose reference. ROTATE EACH OF THE EIGHT EXISTING POSES in image1 to the viewing direction of image2. Preserve the EXACT limb pose relationships, knee bends, planted vs lifted feet and all eight distinct phases from image1. Do not replace the poses with copies of image2. In image1 top row is one leg step and bottom row is the opposite leg step; after camera rotation this same alternation MUST remain. Keep frames3 and7 as passing poses. Keep all eight figures, 4 columns x2 rows, identical scale and centered pelvis. Painted rendering, same identity and elevated camera as image2, orange cap, olive green tunic, cream rolled sleeves, brown trousers and boots, leather front apron when visible. Pure WHITE background, no checkerboard, no text or shadows.\nRotate ALL eight posed figures from rear-facing NORTH to WEST, facing screen LEFT exactly as image2. Anatomical LEFT arm is the broad visible NEAR arm and remains EMPTY. Anatomical RIGHT arm is FAR and retains axe in all poses, partially hidden when necessary. Never mirror east sprite. Preserve image1 top-row LEFT leg trailing and RIGHT leg leading: seen from west the NEAR LEFT leg trails to screen RIGHT, and the FAR RIGHT leg extends forward LEFT. Bottom-row contacts reverse: NEAR LEFT leg forward LEFT, FAR RIGHT leg trails RIGHT. Keep original3/7 passing knees crossing with opposite near/far overlap. Rotate original poses, do not copy image2 stance.",
+      "source_images": [
+        "docs/art/animations/lumberjack-without-log-v1/sheets/N-candidate.png",
+        "docs/art/animation-references/lumberjack-without-log/W.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-bdbad418-5f22-4380-98c1-b5aeec185eed.png",
+      "saved": "sheets/W-rejected-attempt-3.png",
+      "selected": false
+    }
+  ],
+  "visual_qa": {
+    "direction": "All figures WEST/screen left. Attempt2 bottom row rotates torso more side-on relative to top.",
+    "identity": "Same painted costume and broad empty near arm; front apron visible.",
+    "axe": "Correct far anatomical right hand: forward at screen left top row, swung behind torso to screen right in bottom row. Near anatomical left hand remains empty.",
+    "phases": "Attempt2 clearly changes arm half-cycle but leg anatomy is still uncertain; top and bottom contact silhouettes remain similar with questionable opposite thigh overlap. Passing phases exist. Do not certify leg alternation or smooth cycle.",
+    "attempts": "Attempt1 repeated stride in bottom row. Attempt2 targeted bottom corrections improve arm opposition and axe occlusion but leg correction cannot be confirmed. Attempt3 N-first rotation makes rearward axe throughout and repeated contact; rejected.",
+    "remaining": "Need unambiguous opposite leg contacts and stable torso camera before production, plus playback QA."
+  },
+  "approval": "No user approval, no in-game QA, no production alpha, no game integration."
+}

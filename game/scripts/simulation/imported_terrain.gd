@@ -82,10 +82,10 @@ static func from_data(value: Variant) -> Dictionary:
 			return _failure("A tree overlaps another tree or unsuitable ground.")
 		occupied[cell] = true
 		world._create_tree(cell, 5, ages[int(entry[2])])
-	world.tick = 1000 # 09:00, readable daylight for this landscape-only scene.
+	world.tick = 1000 # 09:00, readable daylight for the imported landscape.
 	world.grid.restore_trail_clock(world.tick)
 	world.economy_enabled = true
-	world._push_event("%s · terrain study · no starting settlement. Mouse wheel: zoom; arrows or middle drag: explore." % title)
+	world._push_event("%s · imported landscape ready. Mouse wheel: zoom; arrows or middle drag: explore." % title)
 	return {"world": world, "error": "", "name": title, "source": (data["source"] as Dictionary).duplicate(true)}
 
 static func _valid_source(value: Variant, size: Vector2i) -> bool:

@@ -1,0 +1,153 @@
+{
+	"captured_at": "2026-09-10T17:13:15",
+	"captures": [
+		{
+			"background": "dark",
+			"clip": "walk_axe",
+			"elapsed_seconds": 0.0166666666666667,
+			"file": "walk_axe-dark-3x-phase-00.png",
+			"fps_by_direction": {
+				"S": 10.0,
+				"W": 15.0
+			},
+			"frames_zero_based": {
+				"E": -1,
+				"N": -1,
+				"NE": -1,
+				"NW": -1,
+				"S": 0,
+				"SE": -1,
+				"SW": -1,
+				"W": 0
+			},
+			"sha256": "cb0ff5b9ea98a4af70c549a77b8387af8ac65ff8b79d47f8bfc3e49e55f1ac7a",
+			"size_px": [
+				1240,
+				880
+			],
+			"zoom": 3.0
+		},
+		{
+			"background": "dark",
+			"clip": "walk_axe",
+			"elapsed_seconds": 0.616666666666667,
+			"file": "walk_axe-dark-3x-phase-25.png",
+			"fps_by_direction": {
+				"S": 10.0,
+				"W": 15.0
+			},
+			"frames_zero_based": {
+				"E": -1,
+				"N": -1,
+				"NE": -1,
+				"NW": -1,
+				"S": 6,
+				"SE": -1,
+				"SW": -1,
+				"W": 9
+			},
+			"sha256": "4a3d7182e357081b12627029ebd7a28ed6d53ba58809c2ec09bf27ab624e11ea",
+			"size_px": [
+				1240,
+				880
+			],
+			"zoom": 3.0
+		},
+		{
+			"background": "dark",
+			"clip": "walk_axe",
+			"elapsed_seconds": 1.21666666666667,
+			"file": "walk_axe-dark-3x-phase-50.png",
+			"fps_by_direction": {
+				"S": 10.0,
+				"W": 15.0
+			},
+			"frames_zero_based": {
+				"E": -1,
+				"N": -1,
+				"NE": -1,
+				"NW": -1,
+				"S": 12,
+				"SE": -1,
+				"SW": -1,
+				"W": 18
+			},
+			"sha256": "6b8728d8952e7eced82531d4c0a5cad5263ad44a746e4e1a6cfd63f2ae4efedc",
+			"size_px": [
+				1240,
+				880
+			],
+			"zoom": 3.0
+		},
+		{
+			"background": "dark",
+			"clip": "walk_axe",
+			"elapsed_seconds": 1.81666666666667,
+			"file": "walk_axe-dark-3x-phase-75.png",
+			"fps_by_direction": {
+				"S": 10.0,
+				"W": 15.0
+			},
+			"frames_zero_based": {
+				"E": -1,
+				"N": -1,
+				"NE": -1,
+				"NW": -1,
+				"S": 18,
+				"SE": -1,
+				"SW": -1,
+				"W": 3
+			},
+			"sha256": "12f040199d26969a259759818f6139d88059e19291a6fae5bfc59e492e0c6b1a",
+			"size_px": [
+				1240,
+				880
+			],
+			"zoom": 3.0
+		},
+		{
+			"background": "green",
+			"clip": "walk_axe",
+			"elapsed_seconds": 1.81666666666667,
+			"file": "walk_axe-green-1x.png",
+			"fps_by_direction": {
+				"S": 10.0,
+				"W": 15.0
+			},
+			"frames_zero_based": {
+				"E": -1,
+				"N": -1,
+				"NE": -1,
+				"NW": -1,
+				"S": 18,
+				"SE": -1,
+				"SW": -1,
+				"W": 3
+			},
+			"sha256": "834c5e8de7f5083787e33517613e0036cec74756fcbe1ade78a52e5e81773183",
+			"size_px": [
+				1240,
+				880
+			],
+			"zoom": 1.0
+		}
+	],
+	"checks": {
+		"checked_frames": 48,
+		"failures": [],
+		"passed": true,
+		"scope": "atlas regions, alpha, hash, registration, frame selection, loop wrap, rest frame; no visual or gameplay acceptance"
+	},
+	"complete": false,
+	"display_server": "macOS",
+	"engine": "4.7.2-stable (official)",
+	"manifest": "res://art/units/lumberjack-pixellab-v2/manifest.json",
+	"manifest_sha256": "f1c50768f605d26e59dc608838065bb81af575f1a9f1b9be8aae886ef3de4197",
+	"renderer": "Apple M4",
+	"scene": "res://tools/preview_pixellab_lumberjack.tscn",
+	"scope": "Native standalone asset preview; normal game path and user visual approval are not established.",
+	"simulated_gameplay": false,
+	"window_content_scale_factor": 1.0,
+	"window_content_scale_mode": 0,
+	"world_to_capture_px_at_1x": 1.0
+}

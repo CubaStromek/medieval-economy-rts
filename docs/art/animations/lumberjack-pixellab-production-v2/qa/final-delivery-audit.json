@@ -1,0 +1,217 @@
+{
+  "checked_at": "2026-09-10T17:46:27.807943+00:00",
+  "result": "PASS",
+  "scope": "Read-only mechanical audit of installed delivery; visual/native-game acceptance is separate",
+  "delivery_file_ledger_sha256": "06473643c8908641dfbd9e1419a90db472976118effdcd789453204e4d02eb5f",
+  "verified_delivery_files": 498,
+  "symlinks": 0,
+  "clip_direction_records": 24,
+  "selected_frames": 439,
+  "original_raw_frames_across_selected_jobs": 472,
+  "archived_input_reference_pngs": 24,
+  "actual_transparency_all_frames": true,
+  "source_copy_atlas_apng_pixel_equality": true,
+  "all_24_direction_timings_match_selection": true,
+  "exact_selection_copy": true,
+  "packer_warnings": [],
+  "clips": {
+    "walk_axe": {
+      "N": {
+        "selected_frames": 24,
+        "raw_frames": 25,
+        "fps": 10.0,
+        "apng_decoded_total_seconds": 2.4,
+        "source_job": "jobs/walk_axe/N",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "NE": {
+        "selected_frames": 24,
+        "raw_frames": 25,
+        "fps": 15.0,
+        "apng_decoded_total_seconds": 1.6,
+        "source_job": "jobs/walk_axe/NE",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "E": {
+        "selected_frames": 8,
+        "raw_frames": 9,
+        "fps": 10.0,
+        "apng_decoded_total_seconds": 0.8,
+        "source_job": "jobs/walk_axe/E",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "SE": {
+        "selected_frames": 24,
+        "raw_frames": 25,
+        "fps": 15.0,
+        "apng_decoded_total_seconds": 1.6,
+        "source_job": "jobs/walk_axe/SE",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "S": {
+        "selected_frames": 24,
+        "raw_frames": 25,
+        "fps": 10.0,
+        "apng_decoded_total_seconds": 2.4,
+        "source_job": "jobs/walk_axe/S",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "SW": {
+        "selected_frames": 24,
+        "raw_frames": 25,
+        "fps": 15.0,
+        "apng_decoded_total_seconds": 1.6,
+        "source_job": "jobs/walk_axe/SW",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "W": {
+        "selected_frames": 24,
+        "raw_frames": 25,
+        "fps": 15.0,
+        "apng_decoded_total_seconds": 1.6,
+        "source_job": "jobs/walk_axe/W",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "NW": {
+        "selected_frames": 24,
+        "raw_frames": 25,
+        "fps": 15.0,
+        "apng_decoded_total_seconds": 1.6,
+        "source_job": "jobs/walk_axe/NW",
+        "png_atlas_apng_exact_rgba": true
+      }
+    },
+    "chop": {
+      "N": {
+        "selected_frames": 12,
+        "raw_frames": 17,
+        "fps": 9.0,
+        "apng_decoded_total_seconds": 1.3333333333333333,
+        "source_job": "repairs/chop-N-forward",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "NE": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 12.0,
+        "apng_decoded_total_seconds": 1.3333333333333333,
+        "source_job": "jobs/chop/NE",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "E": {
+        "selected_frames": 24,
+        "raw_frames": 25,
+        "fps": 18.0,
+        "apng_decoded_total_seconds": 1.3333333333333333,
+        "source_job": "repairs/chop-E-slow-24",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "SE": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 12.0,
+        "apng_decoded_total_seconds": 1.3333333333333333,
+        "source_job": "jobs/chop/SE",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "S": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 12.0,
+        "apng_decoded_total_seconds": 1.3333333333333333,
+        "source_job": "repairs/chop-S-waist-empty",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "SW": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 12.0,
+        "apng_decoded_total_seconds": 1.3333333333333333,
+        "source_job": "jobs/chop/SW",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "W": {
+        "selected_frames": 24,
+        "raw_frames": 25,
+        "fps": 18.0,
+        "apng_decoded_total_seconds": 1.3333333333333333,
+        "source_job": "repairs/chop-W-slow-24",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "NW": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 12.0,
+        "apng_decoded_total_seconds": 1.3333333333333333,
+        "source_job": "jobs/chop/NW",
+        "png_atlas_apng_exact_rgba": true
+      }
+    },
+    "walk_log": {
+      "N": {
+        "selected_frames": 11,
+        "raw_frames": 17,
+        "fps": 13.75,
+        "apng_decoded_total_seconds": 0.7999999999999999,
+        "source_job": "jobs/walk_log/N",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "NE": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 20.0,
+        "apng_decoded_total_seconds": 0.8,
+        "source_job": "jobs/walk_log/NE",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "E": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 20.0,
+        "apng_decoded_total_seconds": 0.8,
+        "source_job": "jobs/walk_log/E",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "SE": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 20.0,
+        "apng_decoded_total_seconds": 0.8,
+        "source_job": "jobs/walk_log/SE",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "S": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 20.0,
+        "apng_decoded_total_seconds": 0.8,
+        "source_job": "jobs/walk_log/S",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "SW": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 20.0,
+        "apng_decoded_total_seconds": 0.8,
+        "source_job": "jobs/walk_log/SW",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "W": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 20.0,
+        "apng_decoded_total_seconds": 0.8,
+        "source_job": "jobs/walk_log/W",
+        "png_atlas_apng_exact_rgba": true
+      },
+      "NW": {
+        "selected_frames": 16,
+        "raw_frames": 17,
+        "fps": 20.0,
+        "apng_decoded_total_seconds": 0.8,
+        "source_job": "jobs/walk_log/NW",
+        "png_atlas_apng_exact_rgba": true
+      }
+    }
+  }
+}

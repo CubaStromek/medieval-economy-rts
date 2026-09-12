@@ -1,0 +1,75 @@
+{
+  "date": "2026-09-10",
+  "userCorrection": "2026-09-10: Původní KaM sekání používá podle upřesnění uživatele obouruční úchop. Naše dřívější interpretace jedné držící ruky a druhé volné paže byla chybná; v2 proto není věrnou předlohou a byla zamítnuta.",
+  "fragmentPath": "/Users/openclaw/.codex/visualizations/2026/09/09/01a087a4-bf3d-7f70-b463-afa4f5165f3c/lumberjack-chopping-kam-compare.html",
+  "fragmentBytes": 131193,
+  "synchronizedPhaseOrder": [
+    "A",
+    "B",
+    "A",
+    "C",
+    "D",
+    "D",
+    "D",
+    "E",
+    "C",
+    "F"
+  ],
+  "originalPreview": {
+    "rawFrames": [
+      0,
+      1,
+      3,
+      4,
+      7,
+      9
+    ],
+    "rawCanvas": [
+      75,
+      50
+    ],
+    "uniformNearestScale": 8,
+    "sharedOffset": [
+      -64,
+      65
+    ],
+    "sourcePixelsRecoloured": false,
+    "originalShadowRetained": true,
+    "soleMeasurement": {
+      "colorBottomRow": 46,
+      "lastTwoColorRowsXBounds": [
+        37,
+        42
+      ],
+      "sameAcrossAllSix": true
+    }
+  },
+  "ownPreview": {
+    "canvas": [
+      640,
+      480
+    ],
+    "footAnchor": [
+      256,
+      440
+    ],
+    "noCastShadowObserved": true,
+    "background": "RGB near-white, opaque",
+    "webpQuality": 90,
+    "PNGDeliverablesUnchanged": true
+  },
+  "logicValidation": "Passed Node vm with explicit DOM, Image and timer test doubles: synchronized draw rectangles for all10slots, play/pause, wraparound, tempo5/10fps and pause-on-hide.",
+  "browserRuntimeChecked": false,
+  "browserRuntimeLimitation": "Not attempted after prior local-file URL restriction; no browser workaround.",
+  "visualQA": "Correction on 2026-09-10: the earlier claim that source arm-side/free-arm/stance had been restored was incorrect as to the grip. The user clarified original KaM uses both hands on one handle. V2 retains a wrong one-handed grip and is rejected; previous C reach, registration and preview logic checks are not pose acceptance.",
+  "limits": [
+    "Exact pixel/joint correspondence is not asserted.",
+    "No game integration or user approval.",
+    "V2 is rejected for incorrect one-handed grip and superseded by v3 in progress; original-source free-arm/one-handed claims were our error."
+  ],
+  "statusDate": "2026-09-10",
+  "reviewStatus": "rejected-for-incorrect-one-handed-grip",
+  "lifecycleStatus": "superseded-by-v3-awaiting-user-review",
+  "userApproved": false,
+  "replacementApproved": false
+}

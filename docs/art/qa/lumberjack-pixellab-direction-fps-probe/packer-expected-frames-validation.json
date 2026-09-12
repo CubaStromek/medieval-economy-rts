@@ -1,0 +1,122 @@
+{
+  "date": "2026-09-10",
+  "scope": "Synthetic offline per-job provenance count validation",
+  "cases": {
+    "matched": {
+      "warnings": [],
+      "source_pngs_unchanged": true,
+      "raw_frames_kept_in_order": 26,
+      "directions": {
+        "E": {
+          "returned_frame_count": 9,
+          "expected_raw_frame_count": 9,
+          "raw_frame_count_verification": "matched"
+        },
+        "NE": {
+          "returned_frame_count": 17,
+          "expected_raw_frame_count": 17,
+          "raw_frame_count_verification": "matched"
+        }
+      }
+    },
+    "mismatch": {
+      "warnings": [
+        "walk_axe/NE: API returned 17, requested expectation 9; kept explicit sequence of 17."
+      ],
+      "source_pngs_unchanged": true,
+      "raw_frames_kept_in_order": 26,
+      "directions": {
+        "E": {
+          "returned_frame_count": 9,
+          "expected_raw_frame_count": 9,
+          "raw_frame_count_verification": "matched"
+        },
+        "NE": {
+          "returned_frame_count": 17,
+          "expected_raw_frame_count": 9,
+          "raw_frame_count_verification": "mismatch"
+        }
+      }
+    },
+    "missing_file": {
+      "warnings": [
+        "walk_axe/NE: cannot read provenance output_contract.expected_frames (FileNotFoundError); raw count 17 cannot be verified against a declared expectation. No expected count was inferred.",
+        "walk_axe/E: cannot read provenance output_contract.expected_frames (FileNotFoundError); raw count 9 cannot be verified against a declared expectation. No expected count was inferred."
+      ],
+      "source_pngs_unchanged": true,
+      "raw_frames_kept_in_order": 26,
+      "directions": {
+        "E": {
+          "returned_frame_count": 9,
+          "expected_raw_frame_count": null,
+          "raw_frame_count_verification": "not_verified"
+        },
+        "NE": {
+          "returned_frame_count": 17,
+          "expected_raw_frame_count": null,
+          "raw_frame_count_verification": "not_verified"
+        }
+      }
+    },
+    "missing_key": {
+      "warnings": [
+        "walk_axe/NE: provenance lacks a valid positive integer output_contract.expected_frames; raw count 17 cannot be verified against a declared expectation. No expected count was inferred.",
+        "walk_axe/E: provenance lacks a valid positive integer output_contract.expected_frames; raw count 9 cannot be verified against a declared expectation. No expected count was inferred."
+      ],
+      "source_pngs_unchanged": true,
+      "raw_frames_kept_in_order": 26,
+      "directions": {
+        "E": {
+          "returned_frame_count": 9,
+          "expected_raw_frame_count": null,
+          "raw_frame_count_verification": "not_verified"
+        },
+        "NE": {
+          "returned_frame_count": 17,
+          "expected_raw_frame_count": null,
+          "raw_frame_count_verification": "not_verified"
+        }
+      }
+    },
+    "invalid_type": {
+      "warnings": [
+        "walk_axe/NE: provenance lacks a valid positive integer output_contract.expected_frames; raw count 17 cannot be verified against a declared expectation. No expected count was inferred.",
+        "walk_axe/E: provenance lacks a valid positive integer output_contract.expected_frames; raw count 9 cannot be verified against a declared expectation. No expected count was inferred."
+      ],
+      "source_pngs_unchanged": true,
+      "raw_frames_kept_in_order": 26,
+      "directions": {
+        "E": {
+          "returned_frame_count": 9,
+          "expected_raw_frame_count": null,
+          "raw_frame_count_verification": "not_verified"
+        },
+        "NE": {
+          "returned_frame_count": 17,
+          "expected_raw_frame_count": null,
+          "raw_frame_count_verification": "not_verified"
+        }
+      }
+    },
+    "legacy_default": {
+      "warnings": [
+        "walk_axe/NE: API returned 17, requested expectation 24; kept explicit sequence of 17.",
+        "walk_axe/E: API returned 9, requested expectation 24; kept explicit sequence of 9."
+      ],
+      "source_pngs_unchanged": true,
+      "raw_frames_kept_in_order": 26,
+      "directions": {
+        "E": {
+          "returned_frame_count": 9,
+          "expected_raw_frame_count": 24,
+          "raw_frame_count_verification": "mismatch"
+        },
+        "NE": {
+          "returned_frame_count": 17,
+          "expected_raw_frame_count": 24,
+          "raw_frame_count_verification": "mismatch"
+        }
+      }
+    }
+  }
+}

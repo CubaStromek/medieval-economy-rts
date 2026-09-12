@@ -2,6 +2,7 @@ class_name SoldierFoodSupply
 extends RefCounted
 
 const Pathfinder = preload("res://scripts/simulation/grid_pathfinder.gd")
+const NutritionClass = preload("res://scripts/simulation/nutrition.gd")
 const FOOD: Array[String] = ["bread", "sausage", "wine", "fish"]
 const NEIGHBORS: Array[Vector2i] = [
 	Vector2i(0, -1), Vector2i(-1, 0), Vector2i(1, 0), Vector2i(0, 1),
@@ -94,7 +95,7 @@ static func arrive(world: Variant, worker: Dictionary) -> bool:
 		if not _route_deliver(world, worker):
 			_cancel(world, worker)
 		return true
-	soldier["hunger"] = int(world.catalog.economy.get("condition_max", 2700))
+	NutritionClass.restore_food(world, soldier, maxi(0, int(world.catalog.economy.get("condition_max", 2700)) - int(soldier["hunger"])))
 	soldier["food_requested"] = false
 	worker["carrying"] = ""
 	worker["ration_delivery"] = {}
@@ -130,6 +131,8 @@ static func tick(world: Variant) -> void:
 	var assigned: Dictionary = {}
 	for id: int in ids:
 		var worker: Dictionary = world.workers[id]
+		if not world.is_local_entity(worker):
+			continue
 		var mission: Dictionary = worker.get("ration_delivery", {})
 		if mission.is_empty():
 			continue
@@ -173,8 +176,7 @@ static func status(world: Variant, soldier_id: int) -> String:
 
 
 static func _is_soldier(world: Variant, worker: Dictionary) -> bool:
-	return not worker.is_empty() and world.catalog.soldiers.has(String(worker.get("type", ""))) \
-		and int(worker.get("hunger", 0)) > 0
+	return world.is_local_entity(worker) and world.catalog.soldiers.has(String(worker.get("type", "")))
 
 
 static func _request_threshold(world: Variant) -> int:
@@ -198,7 +200,7 @@ static func _assigned_carrier(world: Variant, recipient_id: int) -> int:
 
 
 static func _source_stock(world: Variant, source: Dictionary, ware: String) -> Dictionary:
-	if source.is_empty() or not FOOD.has(ware) or not world.is_building_complete(source) or source["type"] == "inn":
+	if source.is_empty() or not world.is_local_entity(source) or not FOOD.has(ware) or not world.is_building_complete(source) or source["type"] == "inn":
 		return {}
 	return source["storage"] if source["type"] == "warehouse" else source["outputs"]
 

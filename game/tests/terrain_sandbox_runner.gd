@@ -5,6 +5,7 @@ const SUITES: Array = [
 	preload("res://tests/kam_terrain_sandbox_renderer_tests.gd"),
 	preload("res://tests/terrain_sandbox_objects_tests.gd"),
 	preload("res://tests/terrain_sandbox_state_tests.gd"),
+	preload("res://tests/modern_terrain_materials_tests.gd"),
 ]
 
 func _ready() -> void:

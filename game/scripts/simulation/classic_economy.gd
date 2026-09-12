@@ -5,6 +5,7 @@ const Pathfinder = preload("res://scripts/simulation/grid_pathfinder.gd")
 const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
 const InnFeedingClass = preload("res://scripts/simulation/inn_feeding.gd")
 const Foundations = preload("res://scripts/simulation/building_foundations.gd")
+const NutritionClass = preload("res://scripts/simulation/nutrition.gd")
 const QUEUE_CAPACITY: int = 10
 
 
@@ -34,7 +35,7 @@ static func pay_from_warehouses(world: Variant, cost: Dictionary) -> bool:
 		var remaining: int = int(cost[resource])
 		for id: int in ids:
 			var building: Dictionary = world.buildings[id]
-			if building["type"] != "warehouse" or not complete(building):
+			if not world.is_local_entity(building) or building["type"] != "warehouse" or not complete(building):
 				continue
 			var amount: int = mini(remaining, int(building["storage"].get(resource, 0)))
 			building["storage"][resource] = int(building["storage"].get(resource, 0)) - amount
@@ -56,7 +57,7 @@ static func select_next_recipe(world: Variant, building: Dictionary) -> void:
 
 static func queue_production(world: Variant, building_id: int, recipe_id: String) -> bool:
 	var building: Dictionary = world.buildings.get(building_id, {})
-	if building.is_empty():
+	if building.is_empty() or not world.is_local_entity(building):
 		return false
 	var definition: Dictionary = world.catalog.building(building["type"])
 	if not complete(building) or not (definition.get("recipes", []) as Array).has(recipe_id):
@@ -70,7 +71,7 @@ static func queue_production(world: Variant, building_id: int, recipe_id: String
 
 
 static func needs_material(world: Variant, building: Dictionary, resource: String) -> int:
-	if Foundations.pending(building):
+	if not world.is_building_enabled(building) or Foundations.pending(building):
 		return 0
 	var definition: Dictionary = world.catalog.building(building["type"])
 	if not complete(building):
@@ -101,12 +102,12 @@ static func generate_tasks(world: Variant) -> void:
 	ids.sort()
 	for id: int in ids:
 		var building: Dictionary = world.buildings[id]
-		if not complete(building) and (Foundations.pending(building) or materials_ready(world, building)):
+		if world.is_local_entity(building) and world.is_building_enabled(building) and not complete(building) and (Foundations.pending(building) or materials_ready(world, building)):
 			world.task_board.create_task("build_site", "construction:%d" % id, building["entrance"], id)
 
 
 static func tick_construction(world: Variant, building: Dictionary) -> void:
-	if complete(building) or (not Foundations.pending(building) and not materials_ready(world, building)):
+	if not world.is_building_enabled(building) or complete(building) or (not Foundations.pending(building) and not materials_ready(world, building)):
 		return
 	for worker: Dictionary in world.workers.values():
 		if worker["action"] != "build_site" or worker["state"] != "working" or int(worker["source_id"]) != int(building["id"]):
@@ -115,6 +116,8 @@ static func tick_construction(world: Variant, building: Dictionary) -> void:
 			continue
 		if Foundations.pending(building):
 			Foundations.tick(world, building, worker)
+			return
+		if not world.allow_worker_work_tick(worker):
 			return
 		building["construction_remaining"] = int(building["construction_remaining"]) - 1
 		if complete(building):
@@ -140,7 +143,7 @@ static func trade_amounts(world: Variant, give: String, receive: String) -> Dict
 
 static func queue_trade(world: Variant, building_id: int, give: String, receive: String) -> bool:
 	var building: Dictionary = world.buildings.get(building_id, {})
-	if building.is_empty() or building["type"] != "marketplace" or not complete(building) or trade_amounts(world, give, receive).is_empty():
+	if building.is_empty() or not world.is_local_entity(building) or building["type"] != "marketplace" or not complete(building) or trade_amounts(world, give, receive).is_empty():
 		return false
 	if (building["service_queue"] as Array).size() >= QUEUE_CAPACITY:
 		return false
@@ -151,7 +154,7 @@ static func queue_trade(world: Variant, building_id: int, give: String, receive:
 static func queue_recruitment(world: Variant, building_id: int, unit: String) -> bool:
 	var building: Dictionary = world.buildings.get(building_id, {})
 	var definition: Dictionary = world.catalog.soldiers.get(unit, {})
-	if building.is_empty() or not complete(building) or definition.is_empty() or definition.get("building", "") != building["type"]:
+	if building.is_empty() or not world.is_local_entity(building) or not complete(building) or definition.is_empty() or definition.get("building", "") != building["type"]:
 		return false
 	if (building["service_queue"] as Array).size() >= QUEUE_CAPACITY:
 		return false
@@ -161,7 +164,7 @@ static func queue_recruitment(world: Variant, building_id: int, unit: String) ->
 
 static func tick_service(world: Variant, building: Dictionary) -> void:
 	var queue: Array = building.get("service_queue", [])
-	if queue.is_empty() or not complete(building):
+	if queue.is_empty() or not world.is_building_enabled(building) or not complete(building):
 		return
 	var order: Dictionary = queue[0]
 	if order["kind"] == "trade":
@@ -183,7 +186,7 @@ static func tick_service(world: Variant, building: Dictionary) -> void:
 			# Recruits physically report to the barracks; equipment is consumed
 			# only when a recruit has arrived, preserving identity and hunger.
 			for worker: Dictionary in world.workers.values():
-				if worker["type"] == "recruit" and worker["state"] == "idle" and int(worker["home_id"]) == 0 and _at_entrance(worker, building) \
+				if world.is_local_entity(worker) and not world.is_worker_work_paused(worker) and worker["type"] == "recruit" and worker["state"] == "idle" and int(worker["home_id"]) == 0 and _at_entrance(worker, building) \
 						and (not world.is_worker_inside(worker) or int(worker["inside_building_id"]) == int(building["id"])):
 					take_stock(building["inputs"], definition["equipment"])
 					worker["type"] = order["unit"]
@@ -197,7 +200,7 @@ static func tick_service(world: Variant, building: Dictionary) -> void:
 					return
 		else:
 			var spawn: Vector2i = world._find_unit_spawn_cell(building)
-			if spawn == Vector2i(-1, -1) or world.spawn_worker(spawn, order["unit"]) == 0:
+			if spawn == Vector2i(-1, -1) or world.spawn_worker(spawn, order["unit"], 0, true, 0, int(building.get("owner_id", 1))) == 0:
 				return
 			take_stock(building["inputs"], definition["equipment"])
 			queue.pop_front()
@@ -212,18 +215,11 @@ static func _at_entrance(worker: Dictionary, building: Dictionary) -> bool:
 static func tick_needs(world: Variant) -> void:
 	if not world.economy_enabled:
 		return
-	var interval: int = maxi(1, int(world.catalog.economy.get("condition_interval_ticks", 10)))
-	if world.tick % interval != 0:
-		return
-	var loss: int = world.hunger_loss_per_interval()
 	var ids: Array = world.workers.keys()
 	ids.sort()
 	for id: int in ids:
 		var worker: Dictionary = world.workers[id]
-		if int(worker.get("meal_ticks_left", 0)) > 0:
-			continue
-		worker["hunger"] = maxi(0, int(worker["hunger"]) - loss)
-		if int(worker["hunger"]) == 0:
+		if NutritionClass.tick_needs(world, worker):
 			world.task_board.release(int(worker["task_id"]), id)
 			world._release_planting_reservation(worker)
 			world._release_worker_tile(worker)
@@ -237,12 +233,14 @@ static func handle_idle(world: Variant, worker: Dictionary) -> bool:
 		return false
 	if InnFeedingClass.handle_idle(world, worker):
 		return true
+	if world.is_worker_work_paused(worker):
+		return false
 	if worker["type"] == "recruit":
 		var station: int = int(worker["home_id"])
 		if station != 0 and not world.owns_workplace(worker, station):
 			station = 0
 			worker["home_id"] = 0
-		var barracks: int = world._nearest_building("barracks", worker["position"])
+		var barracks: int = world._nearest_building("barracks", worker["position"], {}, true)
 		# Existing tower guards keep their posts. New recruits fill an empty
 		# tower only when no barracks is waiting for equipment recruitment.
 		if station == 0 and (barracks == 0 or (world.buildings[barracks]["service_queue"] as Array).is_empty()):
@@ -250,7 +248,7 @@ static func handle_idle(world: Variant, worker: Dictionary) -> bool:
 			ids.sort()
 			for id: int in ids:
 				var tower: Dictionary = world.buildings[id]
-				if tower["type"] != "watchtower" or not complete(tower):
+				if tower["type"] != "watchtower" or not world.is_building_enabled(tower) or not complete(tower):
 					continue
 				if WorkplacesClass.can_claim(world, worker, id):
 					var route: Array[Vector2i] = Pathfinder.find_path(world.grid, worker["position"], tower["entrance"])

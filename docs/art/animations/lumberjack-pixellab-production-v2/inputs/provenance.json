@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-10",
+  "user_scope": "Paid Tier2 complete same lumberjack in all eight directions: walk with axe, chop, walk with one log; derived PixelLab states are part of the requested production.",
+  "source": "docs/art/animation-references/lumberjack-without-log/S.png",
+  "source_sha256": "61f9ed49dea824a6c1887570cd79f9d0eba40e4772c822d91d4f2c1098a6da86",
+  "source_size": [
+    1254,
+    1254
+  ],
+  "input": "docs/art/animations/lumberjack-pixellab-production-v2/inputs/S-reference-256.png",
+  "input_sha256": "eba373dd8fd1cc41b4a4a33b7b93618bccb8f614ebd6ca243fa5111b5c2fcf90",
+  "mechanical_conversion": {
+    "resize": [
+      192,
+      192
+    ],
+    "filter": "Lanczos",
+    "paste_offset": [
+      32,
+      42
+    ],
+    "canvas": [
+      256,
+      256
+    ],
+    "background": "white RGB, not claimed transparent"
+  },
+  "reason": "Preserve room around the body for overhead axe swings and shoulder cargo with one fixed canvas.",
+  "other_own_directional_references_uploaded": false,
+  "ground_anchor_status": "Measure returned output; input placement is not automatic acceptance."
+}

@@ -1,8 +1,8 @@
 # Den a noc: implementovaný režim a další návrhy
 
-**Stav k 2026-09-06: herní hodiny, noční režim civilních pracovníků a
-zjednodušené denní osvětlení jsou implementované. Celý den trvá 10 minut při
-1×. Civilisté pracují od 05:00 do 20:00 a v noci odcházejí spát. Pohyb slunce
+**Stav aktualizován 2026-09-09: herní hodiny, noční režim civilních pracovníků,
+dvoulůžková Workers' Cottage a zjednodušené denní osvětlení jsou implementované.
+Celý den trvá 10 minut při 1×. Civilisté pracují od 05:00 do 20:00 a v noci odcházejí spát. Pohyb slunce
 mění zabarvení mapy a směr i délku stínů. Volitelné noční směny zatím
 implementované nejsou.**
 
@@ -37,21 +37,23 @@ práce znovu povolí; odchod mohou zdržet obsazené dveře nebo probíhající 
 
 ## 2. Kde jednotky spí
 
-Uživatel pro tuto etapu zvolil spaní v existujících budovách. **Nevznikla
-nová obytná budova ani systém lůžek.**
+Původní etapa používala jen pracoviště a sklady. Nyní je doplněna vlastní
+obytná budova **Workers' Cottage** se dvěma lůžky pro nosiče a stavitele.
 
 | Jednotka | Místo spánku |
 |---|---|
 | Specialista s přiděleným pracovištěm | Jeho vlastní dokončené pracoviště. Dřevorubec spí ve své chatě, lesník v lesnické a rybář v rybářské chatě. Stejné pravidlo platí pro ostatní civilní specialisty. |
-| Nosič a dělník/stavitel | Dokončený sklad. |
+| Nosič a dělník/stavitel | Přednostně dosažitelná dokončená a zapnutá Workers' Cottage s volným lůžkem; jinak dokončený sklad jako nouzové ubytování. |
 | Civilní specialista bez přiděleného pracoviště | Dočasně sklad; po získání pracoviště se místo spánku přesměruje na něj. |
 | Voják nebo rekrut | Civilní rozvrh se na něj nevztahuje. |
 
-Sklad je **dočasné společné ubytování bez limitu počtu spících**. Přiřazený
+Každá Workers' Cottage ubytuje nejvýše **dvě** kompatibilní jednotky. Obsazenost
+se odvozuje z jejich `sleep_home_id`, takže smrt nebo přesměrování jednotky
+lůžko uvolní. Sklad zůstává **nouzovým společným ubytováním bez limitu**. Přiřazený
 sklad zůstává uložený i přes den; nevybírá se bezdůvodně každou noc znovu.
 Chybějící nebo nedosažitelné ubytování nezpůsobí obnovení práce během noci:
-jednotka čeká a zkouší situaci znovu, HUD ukazuje důvod. Neexistuje samostatný
-postih za nedostatek bydlení.
+jednotka čeká a zkouší situaci znovu, HUD ukazuje důvod. Samostatný postih za
+nedostatek bydlení ani domácí spotřeba zatím neexistují.
 
 Tři identifikátory mají odlišný význam:
 
@@ -121,11 +123,12 @@ sledovat více celých cyklů, zásoby hostinců a dopravu u společných sklad�
 |---|---|
 | [day_cycle.gd](../game/scripts/simulation/day_cycle.gd) | Den, hodina a fáze z uloženého ticku; rozlišení noci 20:00–05:00. |
 | [daily_schedule.gd](../game/scripts/simulation/daily_schedule.gd) | Rozsah civilního rozvrhu, zastavení práce, výběr místa spánku, cesta, spánek a návrat po jídle. |
+| [residences.gd](../game/scripts/simulation/residences.gd) | Kompatibilita obyvatel, kapacita dvou lůžek a odvozená obsazenost Workers' Cottage. |
 | [simulation_world.gd](../game/scripts/simulation/simulation_world.gd) | Zapojení rozvrhu před výrobou i do rozhodování a pohybu jednotek; veřejné dotazy na stav rozvrhu. |
 | [workplaces.gd](../game/scripts/simulation/workplaces.gd) | Zachování pracoviště a sladění místa spánku při novém přidělení zaměstnání. |
 | [indoor_workers.gd](../game/scripts/simulation/indoor_workers.gd) | Skutečný vstup a bezpečný výstup bez venkovní rezervace spící jednotky. |
 | [classic_economy.gd](../game/scripts/simulation/classic_economy.gd), [inn_feeding.gd](../game/scripts/simulation/inn_feeding.gd) | Respektování pracovní doby a umožnění jídla během noci se zachováním nákladu. |
-| [world_snapshot.gd](../game/scripts/simulation/world_snapshot.gd) | Save v15: trvalé `sleep_home_id`, validace a obnova nočního režimu. |
+| [world_snapshot.gd](../game/scripts/simulation/world_snapshot.gd) | Od save v15 trvalé `sleep_home_id`; v20 navíc ověřuje typ a kapacitu obytných budov. |
 | [game_hud.gd](../game/scripts/view/game_hud.gd) | Hodiny, rozvrh v detailu jednotky a počet skutečně spících v budově i osadě. |
 | [solar_cycle.gd](../game/scripts/view/solar_cycle.gd) | Poloha slunce a měsíce, barvy oblohy a mapy, směr a intenzita stínů z herního času. |
 | [main_view.gd](../game/scripts/view/main_view.gd), [solar_shadows.gd](../game/scripts/view/solar_shadows.gd) | Zabarvení světa a promítnuté stíny budov, stromů a venkovních jednotek. |
@@ -136,15 +139,17 @@ nová dávka ani nepokračovala další civilní pracovní činnost. Pohyb dále
 využívá současnou mřížku a rezervace. Venkovní jednotka vlastní své pole;
 jednotka uvnitř nemá venkovní rezervaci.
 
-**Aktuální formát uložení je v15.** Vedle času, zaměstnání, nákladu, pobytu
-uvnitř a údajů o jídle ukládá `sleep_home_id`. Při načtení v noci se jednotka
+**Aktuální formát uložení je v20.** Od v15 vedle času, zaměstnání, nákladu,
+pobytu uvnitř a údajů o jídle ukládá `sleep_home_id`. Při načtení v noci se jednotka
 ve svém uloženém místě spánku obnoví jako spící; rozjedená porce se obnoví
 podle systému jídla. Načtení v noci samo neprovede dodávku ani nepřesune
 jednotku. Cesty a další rozhodnutí se obnovují v následujících tickách.
 
 **Starší savy přebírají rozvrh automaticky podle svého zachovaného času.**
 Není zde přepínač pro dodatečné zapnutí funkce ani reset hodin. Starším
-jednotkám bez `sleep_home_id` se ubytování doplní běžným rozhodováním.
+jednotkám bez `sleep_home_id` se ubytování doplní běžným rozhodováním. Workers'
+Cottage nepřidává nové uložené pole; v20 ověřuje kompatibilitu typu obyvatele a
+nejvýše dvě přiřazení na chatu.
 Načtení nevytváří nové budovy a neztrácí nesené zásoby. Uložená přiřazení se
 ověřují proti existujícím dokončeným budovám, profesi a vlastnictví pracoviště;
 vadný save se odmítne bez poškození běžící hry.
@@ -207,7 +212,7 @@ ani schválená další implementace**:
 | Delší denní cyklus | Nahrazen přesně 10 minutami při 1×. |
 | Práce 06–18 a dokončování 18–20 | Nahrazeno prací 05–20 a pevným přerušením ve 20:00. |
 | Dokončení kácení a přednostní večerní doručení | Krátká nedokončená práce se přeruší, náklad zůstane jednotce do rána. |
-| Nové obytné domy, například pro čtyři obyvatele, a `residence_id` | Odloženo; nyní vlastní pracoviště nebo společný sklad a `sleep_home_id`. |
+| Nové obytné domy, například pro čtyři obyvatele, a `residence_id` | Nahrazeno dvoulůžkovou Workers' Cottage pro nosiče a stavitele; používá existující `sleep_home_id`, sklad zůstává nouzový. |
 | Pozastavení školy, obchodu a náboru mimo denní hodiny | Nezavedeno; služby pokračují. |
 | Volitelné zapnutí rozvrhu při načtení staré hry | Nezavedeno; starší savy používají rozvrh automaticky podle uloženého času. |
 | Plynulé denní a noční zabarvení mapy | Implementováno 2026-09-06 spolu s ukazatelem oblohy a směrovými stíny. |

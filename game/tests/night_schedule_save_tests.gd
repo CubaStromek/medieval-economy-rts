@@ -123,7 +123,7 @@ static func _test_legacy_night_saves_keep_goods(failures: Array[String]) -> void
 		if not restored.from_data(legacy):
 			failures.append("Historical v%d nighttime saves must load without sleep-home fields" % version)
 			continue
-		_check(restored.tick == source.tick and restored.to_data() == source.to_data()
+		_check(restored.tick == source.tick and restored.to_data() == LegacyFixture.expected_pre_fog_migration(source.to_data())
 			and restored.workers[worker_id]["sleep_home_id"] == 0
 			and restored.workers[worker_id]["carrying"] == "stone",
 			"Night migration must preserve all original goods and positions without assigning or entering a new home during loading", failures)
@@ -156,7 +156,7 @@ static func _test_legacy_rations_pause_before_resuming(failures: Array[String]) 
 		if not restored.from_data(legacy):
 			failures.append("A historical %s ration mission saved at night must load" % phase)
 			continue
-		_check(restored.to_data() == source.to_data(),
+		_check(restored.to_data() == LegacyFixture.expected_pre_fog_migration(source.to_data()),
 			"Loading a nighttime ration must preserve its original reserved or carried stock without executing the mission", failures)
 		restored.step_tick()
 		_check((restored.workers[carrier]["ration_delivery"] as Dictionary).is_empty()

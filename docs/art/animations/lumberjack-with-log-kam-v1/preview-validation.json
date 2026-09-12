@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-10",
+  "previewFile": "/Users/openclaw/.codex/visualizations/2026/09/09/01a087a4-bf3d-7f70-b463-afa4f5165f3c/lumberjack-carry-eight-directions.html",
+  "sha256": "1bed695cf30de83dc8edff44119d18fcf71880ac3d6e44f3060ca470c425de8d",
+  "bytes": 833824,
+  "inlineImageCount": 16,
+  "allImagesDecoded": true,
+  "originalGuidesExact": true,
+  "ownPreviewSheet": [
+    1120,
+    680
+  ],
+  "ownPreviewWebpQuality": 86,
+  "fullQualityPNGFilesUnchanged": true,
+  "scriptChecks": {
+    "method": "Node vm, explicit DOM/Image/timer test doubles; no browser",
+    "directionCount": 8,
+    "phasePairsVerified": 64,
+    "correctAtlases": true,
+    "synchronizedRects": true,
+    "wraparound": true,
+    "temposVerified": [
+      2,
+      5,
+      10
+    ],
+    "initialDirection": "SE",
+    "initialFrameIndex": 5,
+    "pauseOnDirectionChange": true,
+    "pauseWhenHidden": true
+  },
+  "browserRuntimeVerified": false,
+  "gameIntegrationVerified": false,
+  "scope": "Image decode and explicit Node test doubles; no browser runtime or game testing.",
+  "initialDirection": "SE",
+  "initialFrameIndex": 5,
+  "revision": "SE phases7 and8 hip-to-knee leg continuity and compact proportions",
+  "ownEmbeddedImagesMatchCurrentSheets": true,
+  "initialTempo": 2
+}

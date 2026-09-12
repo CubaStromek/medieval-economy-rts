@@ -1,0 +1,254 @@
+{
+  "count": 25,
+  "loop_24_to_1": {
+    "from_index": 24,
+    "to_index": 1,
+    "comparable": true,
+    "raw_rgb_mean_absolute_difference": 3.217351,
+    "composited_rgb_mean_absolute_difference": 2.968084,
+    "alpha_mean_absolute_difference": 5.213928,
+    "changed_composited_pixels": 5832,
+    "changed_composited_fraction": 0.088989
+  },
+  "median_internal_composited_rgb_delta": 2.752757,
+  "bounds_ranges": [
+    [
+      85,
+      88
+    ],
+    [
+      47,
+      52
+    ],
+    [
+      184,
+      190
+    ],
+    [
+      201,
+      215
+    ]
+  ],
+  "head_region_measurements": [
+    {
+      "index": 1,
+      "head_region_alpha_bbox_y_lt_84": [
+        96,
+        50,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 2,
+      "head_region_alpha_bbox_y_lt_84": [
+        94,
+        49,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 3,
+      "head_region_alpha_bbox_y_lt_84": [
+        94,
+        48,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 4,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        50,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 5,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        51,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 6,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        52,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 7,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        50,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 8,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        49,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 9,
+      "head_region_alpha_bbox_y_lt_84": [
+        94,
+        47,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 10,
+      "head_region_alpha_bbox_y_lt_84": [
+        96,
+        49,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 11,
+      "head_region_alpha_bbox_y_lt_84": [
+        97,
+        51,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 12,
+      "head_region_alpha_bbox_y_lt_84": [
+        97,
+        52,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 13,
+      "head_region_alpha_bbox_y_lt_84": [
+        96,
+        50,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 14,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        49,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 15,
+      "head_region_alpha_bbox_y_lt_84": [
+        94,
+        48,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 16,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        50,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 17,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        51,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 18,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        52,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 19,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        51,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 20,
+      "head_region_alpha_bbox_y_lt_84": [
+        95,
+        49,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 21,
+      "head_region_alpha_bbox_y_lt_84": [
+        94,
+        47,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 22,
+      "head_region_alpha_bbox_y_lt_84": [
+        96,
+        49,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 23,
+      "head_region_alpha_bbox_y_lt_84": [
+        97,
+        51,
+        143,
+        84
+      ]
+    },
+    {
+      "index": 24,
+      "head_region_alpha_bbox_y_lt_84": [
+        97,
+        52,
+        143,
+        84
+      ]
+    }
+  ],
+  "all_visible_and_transparent": true,
+  "nonzero_border_pixels": 0,
+  "source_files_unchanged": true,
+  "identical_rgba_pairs": []
+}

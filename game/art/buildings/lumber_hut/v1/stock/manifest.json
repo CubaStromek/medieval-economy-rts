@@ -1,0 +1,333 @@
+{
+  "version": 1,
+  "building_id": "lumber_hut",
+  "date": "2026-09-10",
+  "canvas": [
+    640,
+    640
+  ],
+  "authored_capacity": 6,
+  "source_canvas": [
+    1254,
+    1254
+  ],
+  "source_cap": [
+    445,
+    900
+  ],
+  "slots": [
+    {
+      "id": "log_slot_1",
+      "pixel": [
+        202.61562998405103,
+        512.9186602870814
+      ]
+    },
+    {
+      "id": "log_slot_2",
+      "pixel": [
+        228.13397129186603,
+        505.77352472089314
+      ]
+    },
+    {
+      "id": "log_slot_3",
+      "pixel": [
+        253.652312599681,
+        498.62838915470496
+      ]
+    },
+    {
+      "id": "log_slot_4",
+      "pixel": [
+        215.37480063795854,
+        485.86921850079744
+      ]
+    },
+    {
+      "id": "log_slot_5",
+      "pixel": [
+        240.89314194577352,
+        478.72408293460927
+      ]
+    },
+    {
+      "id": "log_slot_6",
+      "pixel": [
+        228.13397129186603,
+        458.8197767145136
+      ]
+    }
+  ],
+  "stock_count_label": [
+    310,
+    535
+  ],
+  "unknown_label": [
+    222,
+    510
+  ],
+  "source": "docs/art/concepts/lumber-hut-v3-stock/logs-6.png",
+  "source_sha256": "edddd12a7f53bb29826a29065006520c4ebd5a5fb4f7aef3e28167861bb27d31",
+  "house_sha256": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+  "method": "Existing own painted top log extracted by silhouette, translated without per-state drift; common resize and foreground alpha exclusion. No image generation or house edits.",
+  "extraction_polygon": [
+    [
+      374,
+      806
+    ],
+    [
+      398,
+      826
+    ],
+    [
+      426,
+      853
+    ],
+    [
+      452,
+      877
+    ],
+    [
+      460,
+      884
+    ],
+    [
+      465,
+      892
+    ],
+    [
+      466,
+      903
+    ],
+    [
+      462,
+      914
+    ],
+    [
+      455,
+      922
+    ],
+    [
+      445,
+      926
+    ],
+    [
+      435,
+      924
+    ],
+    [
+      426,
+      919
+    ],
+    [
+      411,
+      902
+    ],
+    [
+      386,
+      878
+    ],
+    [
+      361,
+      855
+    ],
+    [
+      345,
+      839
+    ]
+  ],
+  "foreground_exclusion_polygons": [
+    [
+      [
+        115,
+        412
+      ],
+      [
+        142,
+        406
+      ],
+      [
+        149,
+        493
+      ],
+      [
+        142,
+        503
+      ],
+      [
+        124,
+        494
+      ]
+    ],
+    [
+      [
+        140,
+        441
+      ],
+      [
+        178,
+        410
+      ],
+      [
+        190,
+        412
+      ],
+      [
+        146,
+        459
+      ]
+    ],
+    [
+      [
+        174,
+        526
+      ],
+      [
+        191,
+        516
+      ],
+      [
+        207,
+        525
+      ],
+      [
+        211,
+        565
+      ],
+      [
+        195,
+        577
+      ],
+      [
+        181,
+        568
+      ]
+    ],
+    [
+      [
+        207,
+        548
+      ],
+      [
+        274,
+        524
+      ],
+      [
+        278,
+        536
+      ],
+      [
+        211,
+        560
+      ]
+    ],
+    [
+      [
+        273,
+        497
+      ],
+      [
+        287,
+        490
+      ],
+      [
+        299,
+        498
+      ],
+      [
+        308,
+        546
+      ],
+      [
+        293,
+        552
+      ],
+      [
+        280,
+        541
+      ]
+    ]
+  ],
+  "states": [
+    {
+      "amount": 0,
+      "image": "logs-0.png",
+      "sha256": "66a75452cfc36ad6697e656bc6dfe20addc943356993041404bf6860b69fb977",
+      "alpha_pixels": 0,
+      "alpha_bounds": null
+    },
+    {
+      "amount": 1,
+      "image": "logs-1.png",
+      "sha256": "39be0ba5ef10971e238bbd21a9e2d063a1eeca374afc3bbf48f3832d7090a210",
+      "alpha_pixels": 1593,
+      "alpha_bounds": [
+        151,
+        465,
+        214,
+        525
+      ]
+    },
+    {
+      "amount": 2,
+      "image": "logs-2.png",
+      "sha256": "ff9134b5231751718f52809881d8fadfde7ee40bf81798a65442fce747b66c3c",
+      "alpha_pixels": 3180,
+      "alpha_bounds": [
+        151,
+        458,
+        239,
+        525
+      ]
+    },
+    {
+      "amount": 3,
+      "image": "logs-3.png",
+      "sha256": "2844484c612ddb9b0c776a38d72afd9021973aeccdb70ef30a8deb91082a812c",
+      "alpha_pixels": 4787,
+      "alpha_bounds": [
+        151,
+        450,
+        265,
+        525
+      ]
+    },
+    {
+      "amount": 4,
+      "image": "logs-4.png",
+      "sha256": "7481dfd1ab69ede403a34b0969ec804c21488b4fd631b7dc63b2a155db94f3a1",
+      "alpha_pixels": 5432,
+      "alpha_bounds": [
+        151,
+        438,
+        265,
+        525
+      ]
+    },
+    {
+      "amount": 5,
+      "image": "logs-5.png",
+      "sha256": "fa4188d872111fcaef977f4001994530af5010fb03b302c5abc266970ca9800e",
+      "alpha_pixels": 6186,
+      "alpha_bounds": [
+        151,
+        431,
+        265,
+        525
+      ]
+    },
+    {
+      "amount": 6,
+      "image": "logs-6.png",
+      "sha256": "33c32943d43c27f8a24f5a04f6df21629568deccef976d5b04da16d989a685bb",
+      "alpha_pixels": 6988,
+      "alpha_bounds": [
+        151,
+        411,
+        265,
+        525
+      ]
+    }
+  ]
+}

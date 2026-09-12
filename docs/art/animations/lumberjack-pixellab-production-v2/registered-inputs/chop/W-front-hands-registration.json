@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-10",
+  "source": "edits/chop-W-front-hands/images/frame_00.png",
+  "source_sha256": "ff142452a92e05395f7acc95f88aed707fcde4b71f02aa102b8d7e42a9a78704",
+  "output": "registered-inputs/chop/W-front-hands.png",
+  "output_sha256": "b57fa9847e0f4b386845d2b9e86ba3a57e17c2f7911a930f2d3c667a90eb562b",
+  "source_cap_bounds_exclusive": [
+    151,
+    52,
+    181,
+    73
+  ],
+  "source_cap_top": 52,
+  "source_cap_center_x": 165.5,
+  "translation_px": [
+    -38,
+    0
+  ],
+  "registered_cap_top": 52,
+  "registered_raster_cap_center_x": 128,
+  "visible_pixels_preserved": 6768,
+  "visible_pixels_clipped": 0,
+  "resampling": "none",
+  "physical_ground_anchor": "separate; head registration only",
+  "review": "Root saw both hands clearly in front of torso, one axe; old W references retained."
+}

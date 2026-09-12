@@ -55,7 +55,7 @@ func _label(text: String, size: int, color: Color) -> Label:
 func _build_ui() -> void:
 	heading = _label("Jak může vypadat terén podle KaM", 30, Color("e9eadd"))
 	description = _label("Stejná mapová data · skutečné vykreslení v Godotu", 17, Color("a6b5a8"))
-	before_label = _label("DNEŠNÍ PROTOTYP", 18, Color("d5b878"))
+	before_label = _label("PŮVODNÍ PROTOTYP", 18, Color("d5b878"))
 	after_label = _label("REFERENČNÍ VZOREK KaM", 18, Color("9dd3ad"))
 	footer = _label("22 × 18 polí · místní referenční textury · statická voda · bez objektů a změn běžné hry", 16, Color("a6b5a8"))
 	for index: int in range(2):

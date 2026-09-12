@@ -1,0 +1,98 @@
+{
+  "date": "2026-09-10",
+  "tool": "built-in imagegen",
+  "scope": "E and W carrying-log source sheets only; no packaging or preview export.",
+  "reference_canvas": [
+    1792,
+    1088
+  ],
+  "reference_cell": [
+    448,
+    544
+  ],
+  "background": "Opaque white prototype; no production transparency or approval claimed.",
+  "directions": {
+    "E": {
+      "saved": "sources/E.png",
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-a2b7b6df-c1c5-4d3a-967b-9b276c704788.png",
+      "prompt": "prompts/E.txt",
+      "repair_prompt": "prompts/E-repair-right-shoulder.txt",
+      "references": [
+        {
+          "role": "edit target, body/legs/cap/foot phases",
+          "path": "walk-targets/E.png"
+        },
+        {
+          "role": "carrying upper-body motion and load projection",
+          "path": "original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/E.png"
+        },
+        {
+          "role": "selected own log bark/end-grain/shoulder concept",
+          "path": "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png"
+        }
+      ],
+      "attempts": [
+        {
+          "number": 1,
+          "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-88f93df1-1a92-4965-869a-b6f32310d76b.png",
+          "saved": "rejected/E-wrong-shoulder.png",
+          "outcome": "Rejected: supporting far arm instead of anatomical right near arm; near arm remained low."
+        },
+        {
+          "number": 2,
+          "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-a2b7b6df-c1c5-4d3a-967b-9b276c704788.png",
+          "saved": "sources/E.png",
+          "outcome": "Targeted edit successfully raises near anatomical right forearm to support log; far left hand low/empty. No visible axe, consistent with fully occluded far left-belt location."
+        }
+      ],
+      "visual_qa": {
+        "facing": "All8 face/travel E.",
+        "hands": "Near/right arm raised and visibly connected to supporting palm in all8; far/left arm low and empty. No duplicate hands apparent.",
+        "log": "One lengthwise bark log per figure with near-right shoulder support, stable apparent length/diameter, face and cap readable. Posterior log overlaps upper-shoulder silhouette; playback/close-up review still needed for exact neck-contact interpretation.",
+        "axe": "No visible axe; hidden far-left belt is the explicit intended occlusion.",
+        "motion": "Distinct inherited contact/passing silhouettes preserved, including frames3/7. Upper body changed to support load; cap/feet approximately preserved relative to scaled canvas, not numerically registered here.",
+        "remaining": "Raw generated dimensions differ from requested input. Root handles registration and animated seam QA; no alpha or in-game acceptance."
+      }
+    },
+    "W": {
+      "saved": "sources/W.png",
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-bf3954e9-4af6-4153-bb6a-b4cdf0852653.png",
+      "prompt": "prompts/W.txt",
+      "references": [
+        {
+          "role": "edit target, body/legs/cap/foot phases",
+          "path": "walk-targets/W.png"
+        },
+        {
+          "role": "carrying upper-body motion and load projection",
+          "path": "original_game_data/kam-reference-export/lumberjack-full-set/carry-guides-8x/W.png"
+        },
+        {
+          "role": "selected own log bark/end-grain/shoulder concept",
+          "path": "docs/art/concepts/lumberjack-v1/log-n-shoulder-v1.png"
+        }
+      ],
+      "attempts": [
+        {
+          "number": 1,
+          "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-bf3954e9-4af6-4153-bb6a-b4cdf0852653.png",
+          "saved": "sources/W.png",
+          "outcome": "Selected: far right supporting arm, near left arm empty/low, one axe hung at near left hip. No targeted repair needed."
+        }
+      ],
+      "visual_qa": {
+        "facing": "All8 face/travel W.",
+        "hands": "Far/right palm supports forward underside, partially behind head; near/left arm remains low/empty.",
+        "log": "One lengthwise rigid bark log per figure, far shoulder/head overlap as expected; end grain visible forward screen-left; stable approximate size across phases.",
+        "axe": "One axe visibly hanging from near-left belt, with wooden handle down beside thigh and metal head near hip; not held by empty arm.",
+        "motion": "Distinct inherited leg poses and bob are present, passing phases3/7 preserved approximately. No exact pivot metric performed by this worker.",
+        "remaining": "Raw canvas preserved for root registration. Needs animated playback and final alpha QA; no user approval or in-game acceptance."
+      }
+    }
+  },
+  "measured_raw_outputs": {
+    "E": {"width": 1610, "height": 977, "has_alpha": false},
+    "W": {"width": 1609, "height": 978, "has_alpha": false}
+  },
+  "total_calls": 3
+}

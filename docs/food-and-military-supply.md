@@ -27,8 +27,9 @@ after the player requests supplies.
 
 The Inn has a visible table/food sign and its inspector shows current seating
 and individual diners. Outdoor units have a colored satiety bar. Selecting a
-unit shows its percentage, hunger state and estimated game time until hunger;
-workplace details also expose the assigned worker's satiety while it is indoors.
+unit shows its percentage, hunger state, separate long-term food reserve,
+work efficiency and estimated game time until hunger; workplace details also
+expose the assigned worker's nutrition while it is indoors.
 During meals the inspector shows the current course and its progress. The
 population display separates citizens from soldiers and reports food arriving.
 Recruits posted in Watchtowers remain civilians: they eat at Inns and retain
@@ -89,38 +90,64 @@ keeps the ration and returns it through ordinary physical logistics; there is
 no remote refund. A missing source cancels a pickup, but cannot erase an already
 collected ration. A pending order can subsequently obtain a different offer.
 
-Existing starvation remains: a unit at zero condition dies. Reservations held
-by a dead carrier disappear with its assignment, and a dead soldier's delivery
-is released in the same world tick. As before, cargo carried by a unit that
-itself dies is lost. A hungry carrier still completes an already committed
+Zero satiety means an empty stomach, **not death**. Death occurs only when the
+separate long-term nutrition reserve is exhausted, as described below. A
+soldier's ration still fills its satiety bar, but rebuilds the reserve only in
+proportion to nutrition restored; it does not erase several days of deficit.
+Reservations held by a dead carrier disappear with its assignment, and a dead
+soldier's delivery is released in the same world tick. Cargo carried by a unit
+that itself dies is lost. A hungry carrier still completes an already committed
 delivery before seeking its own meal.
 
-## Timing and saves
+## Current provisional balance — 2026-09-07
 
-Hunger now follows the **6000-tick game day**. The loss per ten ticks is derived
-from a target of at most 0.8 days from full condition to hunger, rounded upward
-to whole condition points. Current values give **five points per ten ticks**.
-Maximum condition is 2700, new-unit condition is 1620, and food seeking begins
-at 360 (13.3%). A warning appears at 50% and the critical state at 120 (4.4%).
-The same hunger clock applies to civilians and soldiers; military supply
-eligibility remains a separate threshold below 55%.
+This is project balance, not a claim of exact original KaM hunger behavior.
+New units start fully fed at **2700 satiety** with a full long-term reserve.
+Food seeking begins at 360 (13.3%); the earlier appetite warning is at 50%.
+Military supply eligibility remains a separate threshold strictly below 55%.
 
-A full unit becomes hungry after **18 h 43 min of game time**. A new unit starts
-seeking food after **10 h 05 min** (4.2 real minutes at 1×, 8.4 at 0.5×), plus
-any remaining work, travel or queue. From the usual hunger threshold, wine alone
-raises satiety to roughly 43% and buys 6 h 29 min until hunger; fish reaches 63%
-and buys 10 h 48 min. Bread + wine + fish fills the unit. These durations exclude
-the time spent eating, when hunger does not decrease. Pause and game speed affect
-food and calendar together; no separate wall-clock timer advances either system.
+Satiety declines at **0.48 points per awake tick**, or **0.24 while actually
+sleeping**. A full citizen following fifteen awake hours and nine sleeping
+hours becomes hungry after about one **6000-tick game day** (10 real minutes
+at 1×, 20 at the default 0.5×), excluding meals and additional work/travel.
+Night alone does not reduce consumption: an awake soldier or a citizen still
+outside uses the awake rate. The inspector's hunger ETA assumes the **current
+activity continues**, not that future sleep or work has been predicted: a fresh
+awake unit shows 19 h 30 min, while the same sleeping unit shows 39 h.
 
-Save **v14** introduced progressive courses; the current v15 sleep schema
-retains these feeding fields:
+The independent long-term deficit grows one tick per simulation tick, awake or
+asleep, and is frozen during an active meal. From a fresh reserve, **seven full
+calendar days without food (42,000 ticks)** cause death: 70 real minutes at 1×,
+140 at 0.5×. Sleep slows satiety loss, **not this seven-day reserve clock**.
+Empty satiety with a healthy reserve is simply **Hungry**. Productive work
+remains at **100% for the first two deficit days**, gradually decreases to
+**80% at four days**, and never falls further. The state is **Weakened** while
+work efficiency is reduced, and **Starving** only in the last reserve day.
+Walking and physical deliveries are never slowed by this hunger penalty.
+
+Paid food restores satiety and rebuilds the reserve proportionally: 2340
+nutrition points repay one deficit day at the current balance. Inn courses
+apply this progressively, so a small bite cannot reset the seven-day clock;
+overeating cannot bank more than the full reserve. Pausing stops both clocks.
+Changing game speed changes real waiting time, not the game-day rules.
+
+## Saves
+
+Save **v14** introduced progressive courses; **v19** adds long-term nutrition
+while retaining the existing meal, sleep and ownership fields:
 
 - `meal_ticks_left`: remaining ticks of the current course;
 - `meal_course`: current food, duration, nutrition, already applied nutrition
   and distinct foods eaten during this visit;
 - `food_requested`: a soldier's pending order;
 - `ration_delivery`: the carrier's recipient, source, food type and pickup/delivery phase.
+- `nutrition_deficit_ticks`: consumed long-term reserve;
+- `condition_decay_remainder` and `nutrition_recovery_remainder`: exact fractional
+  appetite loss and food recovery, so saving cannot create or erase nutrition;
+- `work_effort_remainder`: fractional productive work at reduced efficiency.
+
+Pre-v19 saves receive a fresh long-term reserve without refilling their satiety
+bar, consuming inventory or changing a meal already in progress.
 
 Loading does not eat food, complete a handoff, or withdraw a reserved ration.
 An active meal resumes its exact integer nutrition curve, and a carrier reconstructs
@@ -137,8 +164,9 @@ Validation occurs in a staged world, preserving the live game on rejection.
 
 ## Implementation and verification
 
-The behavior is split between [InnFeeding](../game/scripts/simulation/inn_feeding.gd)
-and [SoldierFoodSupply](../game/scripts/simulation/soldier_food_supply.gd), integrated
+The behavior is split between [Nutrition](../game/scripts/simulation/nutrition.gd),
+[InnFeeding](../game/scripts/simulation/inn_feeding.gd) and
+[SoldierFoodSupply](../game/scripts/simulation/soldier_food_supply.gd), integrated
 through [SimulationWorld](../game/scripts/simulation/simulation_world.gd) and
 [WorldSnapshot](../game/scripts/simulation/world_snapshot.gd). The existing Inn
 catalog ID is preserved; a second overlapping building type is not introduced.

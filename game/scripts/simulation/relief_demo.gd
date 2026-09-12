@@ -16,7 +16,8 @@ const LOWLAND_BUILD_SITE: Vector2i = Vector2i(15, 14)
 const PLATEAU_BUILD_SITE: Vector2i = Vector2i(8, 3)
 const BUILDING_CELLS: Dictionary = {
 	"warehouse": Vector2i(7, 16),
-	"lumber_hut": Vector2i(11, 14),
+	# The v2 notched foundation keeps the former threshold at (13,14).
+	"lumber_hut": Vector2i(10, 15),
 	"forester_hut": Vector2i(10, 19),
 	"sawmill": Vector2i(10, 5),
 	"school": Vector2i(3, 16),
@@ -63,13 +64,21 @@ static func setup_village(world: Variant) -> void:
 		world.grid.add_road(Vector2i(9, y))
 	for x: int in range(9, 12):
 		world.grid.add_road(Vector2i(x, 6))
-	for y: int in range(13, 18):
+	for y: int in [13, 14, 16, 17]:
 		world.grid.add_road(Vector2i(10, y))
 	world.grid.add_road(Vector2i(9, 13))
 	for x: int in range(3, 18):
 		world.grid.add_road(Vector2i(x, 17))
-	for x: int in range(10, 14):
-		world.grid.add_road(Vector2i(x, 15))
+	# The new front shed/rack occupies (10..12,15). Approach the unchanged
+	# doorway from the east, keeping the lowland-to-meadow road connected.
+	for x: int in range(13, 15):
+		assert(world.grid.add_road(Vector2i(x, 15)), "Invalid expanded-hut entrance road")
+	for y: int in range(12, 17):
+		assert(world.grid.add_road(Vector2i(14, y)), "Invalid expanded-hut eastern road")
+	for x: int in range(10, 18):
+		assert(world.grid.add_road(Vector2i(x, 16)), "Invalid expanded-hut lowland connector")
+	for x: int in range(9, 15):
+		assert(world.grid.add_road(Vector2i(x, 12)), "Invalid expanded-hut uphill connector")
 	for y: int in range(17, 21):
 		world.grid.add_road(Vector2i(17, y))
 	for x: int in range(10, 18):

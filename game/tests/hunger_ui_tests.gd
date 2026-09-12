@@ -65,11 +65,12 @@ static func _test_selected_progress_and_states(failures: Array[String]) -> void:
 	main.selected_unit_id = id
 	var bar: ProgressBar = main.hud.find_child("UnitSatietyBar", true, false) as ProgressBar
 	_expect(bar != null, "The selected person's inspector must contain an actual ProgressBar", failures)
-	for row: Array in [[2700, "Fed"], [1350, "Getting hungry"], [360, "Hungry"], [120, "Starving"]]:
+	for row: Array in [[2700, "Fed", 0], [1350, "Getting hungry", 0], [360, "Hungry", 0], [120, "Hungry", 0], [0, "Hungry", 0], [2700, "Weakened", 18000], [0, "Starving", 36000]]:
 		world.workers[id]["hunger"] = int(row[0])
+		world.workers[id]["nutrition_deficit_ticks"] = int(row[2])
 		main._update_ui()
 		_expect(main.hud._satiety_panel.visible and is_equal_approx(bar.value, 100.0 * float(row[0]) / 2700.0) and main.hud._satiety_label.text.contains(String(row[1])), "Inspector satiety must reflect the actual numeric level and state " + String(row[1]), failures)
-	_expect(bar.tooltip_text.contains("0% starving") and bar.tooltip_text.contains("100% full"), "The satiety control must explain both ends of its scale", failures)
+	_expect(bar.tooltip_text.contains("0% empty") and bar.tooltip_text.contains("100% full") and bar.tooltip_text.contains("does not mean death") and not bar.tooltip_text.contains("0% starving"), "The satiety control must distinguish an empty stomach from long-term starvation", failures)
 	main.free()
 
 
@@ -82,10 +83,10 @@ static func _test_game_time_and_speed_estimate(failures: Array[String]) -> void:
 	main.simulation_speed = 0.5
 	main._update_ui()
 	var timing: String = main.hud._satiety_timing.text
-	_expect(timing.contains("10 h 05 min of game time") and timing.contains("8 min 24 s at 0.5×"), "The normal initial citizen must show its first meal against the game-day clock and current real-time speed", failures)
+	_expect(timing.contains("Estimated hunger in 19 h 30 min of game time") and timing.contains("current awake rate") and timing.contains("16 min 15 s at 0.5×"), "A fully fed new citizen must show an explicitly estimated hunger time at its current activity and simulation speed", failures)
 	main.simulation_speed = 1.0
 	main._update_ui()
-	_expect(main.hud._satiety_timing.text.contains("10 h 05 min of game time") and main.hud._satiety_timing.text.contains("4 min 12 s at 1.0×"), "Changing simulation speed must preserve game-time ETA and update the real waiting estimate", failures)
+	_expect(main.hud._satiety_timing.text.contains("19 h 30 min of game time") and main.hud._satiety_timing.text.contains("8 min 08 s at 1.0×"), "Changing simulation speed must preserve game-time ETA and update the real waiting estimate", failures)
 	main.simulation_speed = 0.0
 	main._update_ui()
 	_expect(main.hud._satiety_timing.text.contains("Simulation paused") and not main.hud._satiety_timing.text.contains("at 0.0×"), "Paused food estimates must say paused instead of dividing by zero or promising an active countdown", failures)
@@ -134,7 +135,7 @@ static func _test_progressive_meal_details(failures: Array[String]) -> void:
 	world.step_tick()
 	main._update_ui()
 	var initial: float = main.hud._satiety_bar.value
-	_expect(main.hud._satiety_timing.text.contains("Eating Bread") and not main.hud._satiety_timing.text.contains("Food needed in"), "An eating person's inspector must show its actual food course instead of a hunger ETA", failures)
+	_expect(main.hud._satiety_timing.text.contains("Eating Bread") and not main.hud._satiety_timing.text.contains("Estimated hunger in"), "An eating person's inspector must show its actual food course instead of a hunger ETA", failures)
 	for _tick: int in range(58):
 		world.step_tick()
 	main._update_ui()

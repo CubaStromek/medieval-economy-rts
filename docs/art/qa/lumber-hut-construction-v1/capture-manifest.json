@@ -1,0 +1,1750 @@
+{
+	"art_manifest_sha256": "74dd1ebaf1f483f599f2d2c328f26af4d5fc5c04d9da570611b28b0058e4d78b",
+	"art_sha256": {
+		"finished-mask.png": "f055793a3aed77ee5e530d0bfc1fbcdcb08b42121a68d75018ad8b2219549f8b",
+		"finished.png": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+		"wood-mask.png": "7920ca87e09ce0891e0e70c2a0d1a5ca1ee20489fc9241866a9bf9e7c8a377fd",
+		"wood.png": "ffdaeb73429d0858aadb36ec93217e809f9457f563c1d27add1ecf248fc4658d"
+	},
+	"captured_at": "2026-09-10T12:52:35",
+	"captures": [
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-0-75-00-site.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Připravený základ · 0/33",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.0,
+				"step": 0,
+				"wood_step": 0
+			},
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-0-75-01-wood-01.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dřevěná konstrukce · 1/12",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.00833333333333333,
+				"step": 1,
+				"wood_step": 1
+			},
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-0-75-02-wood-06.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dřevěná konstrukce · 6/12",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.3,
+				"step": 6,
+				"wood_step": 6
+			},
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-0-75-03-wood-12.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dřevěná konstrukce · 12/12",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.6,
+				"step": 12,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-0-75-04-finish-01.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dokončování · 1/21",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 1,
+				"phase": "finishing",
+				"progress": 0.608333333333333,
+				"step": 13,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-0-75-05-finish-11.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dokončování · 11/21",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 11,
+				"phase": "finishing",
+				"progress": 0.8,
+				"step": 23,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-0-75-06-finish-21.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dokončování · 21/21",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "finishing",
+				"progress": 0.991666666666667,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-0-75-07-complete.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Hotová chata",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 0.75
+		},
+		{
+			"case": "contact-sheet",
+			"file": "construction-zoom-0-75.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-1-00-00-site.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Připravený základ · 0/33",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.0,
+				"step": 0,
+				"wood_step": 0
+			},
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-1-00-01-wood-01.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dřevěná konstrukce · 1/12",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.00833333333333333,
+				"step": 1,
+				"wood_step": 1
+			},
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-1-00-02-wood-06.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dřevěná konstrukce · 6/12",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.3,
+				"step": 6,
+				"wood_step": 6
+			},
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-1-00-03-wood-12.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dřevěná konstrukce · 12/12",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.6,
+				"step": 12,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-1-00-04-finish-01.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dokončování · 1/21",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 1,
+				"phase": "finishing",
+				"progress": 0.608333333333333,
+				"step": 13,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-1-00-05-finish-11.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dokončování · 11/21",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 11,
+				"phase": "finishing",
+				"progress": 0.8,
+				"step": 23,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-1-00-06-finish-21.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dokončování · 21/21",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "finishing",
+				"progress": 0.991666666666667,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-1-00-07-complete.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Hotová chata",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"case": "contact-sheet",
+			"file": "construction-zoom-1-00.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-2-40-00-site.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Připravený základ · 0/33",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.0,
+				"step": 0,
+				"wood_step": 0
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-2-40-01-wood-01.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dřevěná konstrukce · 1/12",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.00833333333333333,
+				"step": 1,
+				"wood_step": 1
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-2-40-02-wood-06.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dřevěná konstrukce · 6/12",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.3,
+				"step": 6,
+				"wood_step": 6
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-2-40-03-wood-12.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dřevěná konstrukce · 12/12",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.6,
+				"step": 12,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-2-40-04-finish-01.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dokončování · 1/21",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 1,
+				"phase": "finishing",
+				"progress": 0.608333333333333,
+				"step": 13,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-2-40-05-finish-11.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dokončování · 11/21",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 11,
+				"phase": "finishing",
+				"progress": 0.8,
+				"step": 23,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-2-40-06-finish-21.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Dokončování · 21/21",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "finishing",
+				"progress": 0.991666666666667,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "construction",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/zoom-2-40-07-complete.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Hotová chata",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "contact-sheet",
+			"file": "construction-zoom-2-40.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"case": "noon",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/context-noon.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Den · výběr + člověk u vstupu",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "dusk",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/context-dusk.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Soumrak · stejné materiály",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 3625,
+			"zoom": 2.4
+		},
+		{
+			"case": "night",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/context-night.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Noc · herní tónování",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"zoom": 2.4
+		},
+		{
+			"case": "raised",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/context-raised.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Vyvýšený rovný základ",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "earthwork",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/context-earthwork.png",
+			"fog_state": 2,
+			"foundation_remaining": 16,
+			"label": "Srovnávání · bez střechy",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "foundation",
+				"progress": 0.0,
+				"step": 0,
+				"wood_step": 0
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "occlusion",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/context-occlusion.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"label": "Překrytí stromem a člověkem",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "fog-explored",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/context-fog-explored.png",
+			"fog_state": 1,
+			"foundation_remaining": 0,
+			"label": "Cizí dům · prozkoumaná mlha",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "fog-unknown",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/context-fog-unknown.png",
+			"fog_state": 0,
+			"foundation_remaining": 0,
+			"label": "Neznámé území · dům skrytý",
+			"painted_terrain": true,
+			"size": [
+				480,
+				360
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "contact-sheet",
+			"file": "contexts.png",
+			"size": [
+				1920,
+				872
+			]
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-00.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.0,
+				"step": 0,
+				"wood_step": 0
+			},
+			"step": 0,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-01.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.00833333333333333,
+				"step": 1,
+				"wood_step": 1
+			},
+			"step": 1,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-02.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.0583333333333333,
+				"step": 2,
+				"wood_step": 2
+			},
+			"step": 2,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-03.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.108333333333333,
+				"step": 3,
+				"wood_step": 3
+			},
+			"step": 3,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-04.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.158333333333333,
+				"step": 4,
+				"wood_step": 4
+			},
+			"step": 4,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-05.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.208333333333333,
+				"step": 5,
+				"wood_step": 5
+			},
+			"step": 5,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-06.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.258333333333333,
+				"step": 6,
+				"wood_step": 6
+			},
+			"step": 6,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-07.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.308333333333333,
+				"step": 7,
+				"wood_step": 7
+			},
+			"step": 7,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-08.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.358333333333333,
+				"step": 8,
+				"wood_step": 8
+			},
+			"step": 8,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-09.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.408333333333333,
+				"step": 9,
+				"wood_step": 9
+			},
+			"step": 9,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-10.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.458333333333333,
+				"step": 10,
+				"wood_step": 10
+			},
+			"step": 10,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-11.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.508333333333333,
+				"step": 11,
+				"wood_step": 11
+			},
+			"step": 11,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-12.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.558333333333333,
+				"step": 12,
+				"wood_step": 12
+			},
+			"step": 12,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-13.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 1,
+				"phase": "finishing",
+				"progress": 0.608333333333333,
+				"step": 13,
+				"wood_step": 12
+			},
+			"step": 13,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-14.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 2,
+				"phase": "finishing",
+				"progress": 0.625,
+				"step": 14,
+				"wood_step": 12
+			},
+			"step": 14,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-15.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 3,
+				"phase": "finishing",
+				"progress": 0.641666666666667,
+				"step": 15,
+				"wood_step": 12
+			},
+			"step": 15,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-16.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 4,
+				"phase": "finishing",
+				"progress": 0.658333333333333,
+				"step": 16,
+				"wood_step": 12
+			},
+			"step": 16,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-17.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 5,
+				"phase": "finishing",
+				"progress": 0.683333333333333,
+				"step": 17,
+				"wood_step": 12
+			},
+			"step": 17,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-18.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 6,
+				"phase": "finishing",
+				"progress": 0.7,
+				"step": 18,
+				"wood_step": 12
+			},
+			"step": 18,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-19.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 7,
+				"phase": "finishing",
+				"progress": 0.716666666666667,
+				"step": 19,
+				"wood_step": 12
+			},
+			"step": 19,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-20.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 8,
+				"phase": "finishing",
+				"progress": 0.741666666666667,
+				"step": 20,
+				"wood_step": 12
+			},
+			"step": 20,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-21.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 9,
+				"phase": "finishing",
+				"progress": 0.758333333333333,
+				"step": 21,
+				"wood_step": 12
+			},
+			"step": 21,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-22.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 10,
+				"phase": "finishing",
+				"progress": 0.775,
+				"step": 22,
+				"wood_step": 12
+			},
+			"step": 22,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-23.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 11,
+				"phase": "finishing",
+				"progress": 0.791666666666667,
+				"step": 23,
+				"wood_step": 12
+			},
+			"step": 23,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-24.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 12,
+				"phase": "finishing",
+				"progress": 0.816666666666667,
+				"step": 24,
+				"wood_step": 12
+			},
+			"step": 24,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-25.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 13,
+				"phase": "finishing",
+				"progress": 0.833333333333333,
+				"step": 25,
+				"wood_step": 12
+			},
+			"step": 25,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-26.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 14,
+				"phase": "finishing",
+				"progress": 0.85,
+				"step": 26,
+				"wood_step": 12
+			},
+			"step": 26,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-27.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 15,
+				"phase": "finishing",
+				"progress": 0.875,
+				"step": 27,
+				"wood_step": 12
+			},
+			"step": 27,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-28.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 16,
+				"phase": "finishing",
+				"progress": 0.891666666666667,
+				"step": 28,
+				"wood_step": 12
+			},
+			"step": 28,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-29.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 17,
+				"phase": "finishing",
+				"progress": 0.908333333333333,
+				"step": 29,
+				"wood_step": 12
+			},
+			"step": 29,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-30.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 18,
+				"phase": "finishing",
+				"progress": 0.925,
+				"step": 30,
+				"wood_step": 12
+			},
+			"step": 30,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-31.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 19,
+				"phase": "finishing",
+				"progress": 0.95,
+				"step": 31,
+				"wood_step": 12
+			},
+			"step": 31,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-32.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 20,
+				"phase": "finishing",
+				"progress": 0.966666666666667,
+				"step": 32,
+				"wood_step": 12
+			},
+			"step": 32,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "animation",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "frames/animation-33.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"size": [
+				640,
+				480
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"step": 33,
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"case": "full-game-hud",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "game-construction.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"remaining": 48,
+			"size": [
+				1280,
+				800
+			],
+			"stage": {
+				"finishing_step": 0,
+				"phase": "wood",
+				"progress": 0.6,
+				"step": 12,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 1.8
+		},
+		{
+			"case": "full-game-hud",
+			"door_cell": [
+				16,
+				12
+			],
+			"file": "game-complete.png",
+			"fog_state": 2,
+			"foundation_remaining": 0,
+			"painted_terrain": true,
+			"remaining": 0,
+			"size": [
+				1280,
+				800
+			],
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"zoom": 1.8
+		}
+	],
+	"engine": "4.7.2-stable (official)",
+	"fixture": "Deterministic temporary forest and road; actual Main draw path; HUD hidden in panels",
+	"music": "No game_session or music controller instantiated; no preferences changed",
+	"renderer": "Apple M4",
+	"scene": "res://scenes/main.tscn",
+	"simulation": "paused; existing remaining-work fields authored for exact graphics samples"
+}

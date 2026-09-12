@@ -1,0 +1,55 @@
+{
+  "raw_count": 17,
+  "proposed_loop_raw_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "observed_double_step_cycles": 1,
+  "proposed_fps_for_0_8_seconds_per_cycle": 20,
+  "loop_16_to_1": {
+    "from_index": 16,
+    "to_index": 1,
+    "comparable": true,
+    "raw_rgb_mean_absolute_difference": 2.962326,
+    "composited_rgb_mean_absolute_difference": 2.890569,
+    "alpha_mean_absolute_difference": 4.63028,
+    "changed_composited_pixels": 6052,
+    "changed_composited_fraction": 0.092346
+  },
+  "median_internal_composited_rgb_delta": 2.704229,
+  "alpha_bounds_ranges": [
+    [
+      86,
+      94
+    ],
+    [
+      46,
+      51
+    ],
+    [
+      195,
+      195
+    ],
+    [
+      197,
+      205
+    ]
+  ],
+  "all_visible_and_transparent": true,
+  "nonzero_border_pixels": 0,
+  "source_files_unchanged": true
+}

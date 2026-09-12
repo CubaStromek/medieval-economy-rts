@@ -1,0 +1,1121 @@
+{
+  "date": "2026-09-10",
+  "scope": "Current technical packaging of SE phase06 and07 overrides; not visual approval, browser playback or game integration.",
+  "directions": [
+    {
+      "id": "N",
+      "sourceSha256": "11a7dee9f37a1c24888667fbbe05119d84895a9f7dfb2cb9a007b94939079658",
+      "sourceSize": [
+        1608,
+        978
+      ],
+      "sharedBodyScale": 0.9100126742712294,
+      "bodyHeightMedianRaw": 394.5,
+      "bodyHeightMedianTarget": 359.0,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          81,
+          64,
+          294,
+          450
+        ],
+        [
+          92,
+          58,
+          304,
+          420
+        ],
+        [
+          98,
+          52,
+          319,
+          426
+        ],
+        [
+          126,
+          59,
+          336,
+          442
+        ],
+        [
+          136,
+          76,
+          340,
+          460
+        ],
+        [
+          121,
+          60,
+          336,
+          435
+        ],
+        [
+          115,
+          51,
+          323,
+          430
+        ],
+        [
+          95,
+          60,
+          310,
+          453
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/N-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/N-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "NE",
+      "sourceSha256": "94ecebb2d694678205399cf82a70465893e1b1917b4c03c235e11ec1b7e90a38",
+      "sourceSize": [
+        1609,
+        977
+      ],
+      "sharedBodyScale": 0.9779917469050894,
+      "bodyHeightMedianRaw": 363.5,
+      "bodyHeightMedianTarget": 355.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          73,
+          63,
+          298,
+          434
+        ],
+        [
+          106,
+          64,
+          308,
+          420
+        ],
+        [
+          121,
+          62,
+          317,
+          433
+        ],
+        [
+          110,
+          75,
+          328,
+          452
+        ],
+        [
+          110,
+          87,
+          336,
+          484
+        ],
+        [
+          111,
+          71,
+          330,
+          432
+        ],
+        [
+          124,
+          59,
+          323,
+          419
+        ],
+        [
+          89,
+          57,
+          314,
+          432
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/NE-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/NE-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "sourceSha256": "361a0c06f128b4e60aca07026e5b4bcc6e114cc40b7d326cec180ff927b23020",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "sharedBodyScale": 0.9565846599131693,
+      "bodyHeightMedianRaw": 345.5,
+      "bodyHeightMedianTarget": 330.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          75,
+          87,
+          349,
+          424
+        ],
+        [
+          86,
+          79,
+          350,
+          413
+        ],
+        [
+          107,
+          79,
+          348,
+          421
+        ],
+        [
+          101,
+          104,
+          348,
+          435
+        ],
+        [
+          64,
+          113,
+          345,
+          425
+        ],
+        [
+          90,
+          104,
+          349,
+          412
+        ],
+        [
+          81,
+          65,
+          321,
+          405
+        ],
+        [
+          104,
+          79,
+          350,
+          403
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/E-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/E-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "SE",
+      "sourceSha256": "b95246d32914ed8b44eb61ab170dd1477552e116b30fc675b638f60234127498",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "sharedBodyScale": 0.9559471365638766,
+      "bodyHeightMedianRaw": 340.5,
+      "bodyHeightMedianTarget": 325.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          121,
+          59,
+          335,
+          442
+        ],
+        [
+          121,
+          60,
+          315,
+          420
+        ],
+        [
+          115,
+          65,
+          273,
+          417
+        ],
+        [
+          109,
+          77,
+          300,
+          410
+        ],
+        [
+          63,
+          89,
+          295,
+          430
+        ],
+        [
+          91,
+          78,
+          290,
+          422
+        ],
+        [
+          114,
+          58,
+          303,
+          423
+        ],
+        [
+          125,
+          59,
+          318,
+          429
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/SE-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/SE-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ],
+      "baselineRegistrationReproducedPixelExactlyForNonOverrides": true,
+      "finalOverridesVerifiedExactly": [
+        {
+          "index": 6,
+          "file": "final-frame-overrides/SE/06.png",
+          "sha256": "6b01c6817899555589d3188a79e4f579f25d6a1e8549b8f41e342b97ef771c50",
+          "baseSha256": "ffcbd993763ee95d3cb9f3204454e415fa90ffa2100773ccf2f95d742d23528d",
+          "baselineMeasurement": {
+            "index": 6,
+            "targetCap": {
+              "top": 91,
+              "centerX": 228.8,
+              "bounds": [
+                197,
+                91,
+                259,
+                131
+              ],
+              "componentPixels": 1300
+            },
+            "rawCap": {
+              "top": 106,
+              "centerX": 244.0677966101695,
+              "bounds": [
+                215,
+                106,
+                281,
+                157
+              ],
+              "componentPixels": 2359
+            },
+            "scaledCap": {
+              "top": 101,
+              "centerX": 232.9205882352941,
+              "bounds": [
+                206,
+                101,
+                268,
+                156
+              ],
+              "componentPixels": 2210
+            },
+            "rawBodyHeight": 340,
+            "targetBodyHeight": 335,
+            "integerOffset": [
+              -4,
+              -10
+            ],
+            "scaledCellSize": [
+              428,
+              520
+            ],
+            "figureBounds": [
+              121,
+              55,
+              274,
+              416
+            ],
+            "capCenterResidualPx": 0.12058823529409324,
+            "figureClipped": false
+          },
+          "baselineCapOnFinalCanvas": {
+            "top": 91,
+            "centerX": 228.9205882352941,
+            "bounds": [
+              202,
+              91,
+              264,
+              146
+            ],
+            "componentPixels": 2210
+          },
+          "actualCapOnFinalCanvas": {
+            "top": 91,
+            "centerX": 228.52242744063324,
+            "bounds": [
+              199,
+              91,
+              267,
+              157
+            ],
+            "componentPixels": 2791
+          },
+          "capDeltaPx": [
+            -0.3981607946608676,
+            0
+          ],
+          "capDiagnosticFile": "diagnostics/SE-06-final-override.png",
+          "capMeasurementMeaning": "Measured visible rust crown after replacement; no registration correction applied.",
+          "operation": "Exact final-canvas replacement; no additional scale or translation."
+        },
+        {
+          "index": 7,
+          "file": "final-frame-overrides/SE/07.png",
+          "sha256": "37e30637d11217f268e48a7177349bb341b9bbb1588685f7f3f5047b1f524573",
+          "baseSha256": "57f2ddf775d1f8208d8abb4ed472bcc9005b5835f7710ef3a663d72b83343be3",
+          "baselineMeasurement": {
+            "index": 7,
+            "targetCap": {
+              "top": 91,
+              "centerX": 241.521327014218,
+              "bounds": [
+                202,
+                91,
+                280,
+                151
+              ],
+              "componentPixels": 2559
+            },
+            "rawCap": {
+              "top": 97,
+              "centerX": 256.2068965517241,
+              "bounds": [
+                222,
+                97,
+                294,
+                157
+              ],
+              "componentPixels": 2851
+            },
+            "scaledCap": {
+              "top": 92,
+              "centerX": 244.5982404692082,
+              "bounds": [
+                210,
+                92,
+                281,
+                148
+              ],
+              "componentPixels": 2612
+            },
+            "rawBodyHeight": 347,
+            "targetBodyHeight": 329,
+            "integerOffset": [
+              -3,
+              -1
+            ],
+            "scaledCellSize": [
+              428,
+              520
+            ],
+            "figureBounds": [
+              120,
+              59,
+              311,
+              424
+            ],
+            "capCenterResidualPx": 0.07691345499020485,
+            "figureClipped": false
+          },
+          "baselineCapOnFinalCanvas": {
+            "top": 91,
+            "centerX": 241.5982404692082,
+            "bounds": [
+              207,
+              91,
+              278,
+              147
+            ],
+            "componentPixels": 2612
+          },
+          "actualCapOnFinalCanvas": {
+            "top": 91,
+            "centerX": 241.46027397260275,
+            "bounds": [
+              210,
+              91,
+              280,
+              157
+            ],
+            "componentPixels": 2817
+          },
+          "capDeltaPx": [
+            -0.13796649660545768,
+            0
+          ],
+          "capDiagnosticFile": "diagnostics/SE-07-final-override.png",
+          "capMeasurementMeaning": "Measured visible rust crown after replacement; no registration correction applied.",
+          "operation": "Exact final-canvas replacement; no additional scale or translation."
+        }
+      ]
+    },
+    {
+      "id": "S",
+      "sourceSha256": "58aae404f3ce19abde0b5e73aeda9e6741ed22f182f32e4a32bffb217537fcda",
+      "sourceSize": [
+        1609,
+        977
+      ],
+      "sharedBodyScale": 0.8945945945945946,
+      "bodyHeightMedianRaw": 370.0,
+      "bodyHeightMedianTarget": 331.0,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          132,
+          91,
+          329,
+          442
+        ],
+        [
+          124,
+          80,
+          323,
+          435
+        ],
+        [
+          97,
+          74,
+          302,
+          425
+        ],
+        [
+          93,
+          80,
+          298,
+          436
+        ],
+        [
+          78,
+          97,
+          281,
+          456
+        ],
+        [
+          98,
+          88,
+          291,
+          448
+        ],
+        [
+          107,
+          72,
+          309,
+          430
+        ],
+        [
+          117,
+          80,
+          318,
+          437
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/S-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/S-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "SW",
+      "sourceSha256": "595ce794a42df0982f5f969fe56094b1c90360dd03cae6a984fbc7127faaf096",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "sharedBodyScale": 0.8565737051792829,
+      "bodyHeightMedianRaw": 376.5,
+      "bodyHeightMedianTarget": 322.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          91,
+          110,
+          353,
+          453
+        ],
+        [
+          71,
+          87,
+          310,
+          434
+        ],
+        [
+          67,
+          66,
+          308,
+          419
+        ],
+        [
+          51,
+          68,
+          305,
+          421
+        ],
+        [
+          56,
+          90,
+          309,
+          440
+        ],
+        [
+          52,
+          77,
+          301,
+          428
+        ],
+        [
+          63,
+          70,
+          303,
+          421
+        ],
+        [
+          70,
+          77,
+          336,
+          420
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/SW-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/SW-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "W",
+      "sourceSha256": "1ecda59184e1b06de4e59d948126eaa2308c7a27d241b2e6f6042f0c30c6fe84",
+      "sourceSize": [
+        1609,
+        978
+      ],
+      "sharedBodyScale": 0.9838709677419355,
+      "bodyHeightMedianRaw": 341.0,
+      "bodyHeightMedianTarget": 335.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          62,
+          118,
+          350,
+          449
+        ],
+        [
+          58,
+          103,
+          336,
+          420
+        ],
+        [
+          70,
+          88,
+          310,
+          422
+        ],
+        [
+          64,
+          88,
+          317,
+          420
+        ],
+        [
+          64,
+          96,
+          351,
+          435
+        ],
+        [
+          67,
+          87,
+          325,
+          429
+        ],
+        [
+          75,
+          88,
+          314,
+          432
+        ],
+        [
+          67,
+          95,
+          333,
+          434
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/W-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/W-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "NW",
+      "sourceSha256": "e3f86a3284e6cc947306c737a041c0a41bdb15e9a5b9861fb0e05c7d3faf8f06",
+      "sourceSize": [
+        1609,
+        978
+      ],
+      "sharedBodyScale": 0.9806896551724138,
+      "bodyHeightMedianRaw": 362.5,
+      "bodyHeightMedianTarget": 355.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          80,
+          80,
+          296,
+          467
+        ],
+        [
+          93,
+          73,
+          297,
+          443
+        ],
+        [
+          126,
+          70,
+          301,
+          412
+        ],
+        [
+          141,
+          67,
+          335,
+          443
+        ],
+        [
+          114,
+          63,
+          359,
+          438
+        ],
+        [
+          126,
+          60,
+          325,
+          406
+        ],
+        [
+          137,
+          56,
+          304,
+          429
+        ],
+        [
+          100,
+          61,
+          306,
+          459
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/NW-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/NW-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "frames": 64,
+    "sheets": 8,
+    "gifs": 16,
+    "atlasCells": 64
+  },
+  "capDiagnosticsVisuallyInspected": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "notes": [
+    "Current final overrides replace only SE/06 and SE/07, using the final proportions revision and root-recorded integer offsets. Other62 final PNG and original64 raw crops,8 directional sources and baseline registration are byte-identical to the saved baseline.",
+    "Final override measurements are separate from unchanged body-registration measurements. Baseline body reconstruction is checked only against non-overridden final frames; each override is checked byte-for-byte against its explicit source.",
+    "RGB white background; no true alpha. Diagnostic color masks only measure the image and do not alter raster pixels.",
+    "GIF 5/10fps is illustrative. Matching files, atlas cells and GIF timing does not demonstrate correct leg identity, physical foot contact, visual approval or game integration."
+  ],
+  "atlas": {
+    "file": "sprite-atlas.png",
+    "size": [
+      3584,
+      4352
+    ],
+    "sha256": "ed53c607dda42df21f4845a1bd6cea792113559020453397c5d9b05e400e78fb"
+  },
+  "manifestSha256": "2a7dd55b72fac347cd82e2358ef8855bae6a33aff22513c11f95306f87f0797b",
+  "registrationSha256": "ac602c2ad787bb95c17a1f72a21151d55f9e181924e3005f7e3c4f86c4914173",
+  "result": "passed-current-technical-packaging; visual-approval-not-assessed; game-unverified",
+  "finalOverrideValidation": {
+    "targets": [
+      {
+        "file": "frames/SE/06.png",
+        "sha256": "6b01c6817899555589d3188a79e4f579f25d6a1e8549b8f41e342b97ef771c50",
+        "overrideFile": "final-frame-overrides/SE/06.png",
+        "overrideSha256": "6b01c6817899555589d3188a79e4f579f25d6a1e8549b8f41e342b97ef771c50",
+        "baselineBodyFrameSha256": "ffcbd993763ee95d3cb9f3204454e415fa90ffa2100773ccf2f95d742d23528d",
+        "actualCap": {
+          "top": 91,
+          "centerX": 228.52242744063324,
+          "bounds": [
+            199,
+            91,
+            267,
+            157
+          ],
+          "componentPixels": 2791
+        },
+        "capDeltaFromBaselinePx": [
+          -0.3981607946608676,
+          0
+        ],
+        "figureBounds": [
+          114,
+          58,
+          303,
+          423
+        ]
+      },
+      {
+        "file": "frames/SE/07.png",
+        "sha256": "37e30637d11217f268e48a7177349bb341b9bbb1588685f7f3f5047b1f524573",
+        "overrideFile": "final-frame-overrides/SE/07.png",
+        "overrideSha256": "37e30637d11217f268e48a7177349bb341b9bbb1588685f7f3f5047b1f524573",
+        "baselineBodyFrameSha256": "57f2ddf775d1f8208d8abb4ed472bcc9005b5835f7710ef3a663d72b83343be3",
+        "actualCap": {
+          "top": 91,
+          "centerX": 241.46027397260275,
+          "bounds": [
+            210,
+            91,
+            280,
+            157
+          ],
+          "componentPixels": 2817
+        },
+        "capDeltaFromBaselinePx": [
+          -0.13796649660545768,
+          0
+        ],
+        "figureBounds": [
+          125,
+          59,
+          318,
+          429
+        ]
+      }
+    ],
+    "otherFinalPNGsUnchanged": 62,
+    "rawPNGsUnchanged": 64,
+    "originalDirectionSourcesUnchanged": 8,
+    "registrationBytesUnchanged": true,
+    "protectedFilesMatched": 135,
+    "baselineFile": "override-baseline-SE-06-07.json",
+    "baselineSha256": "0fa374e380e1130de1313d64a5a0277885ef6d03452c4ff0f129af0146755c65",
+    "overrideRegistrationFile": "SE-leg-continuity-registration.json",
+    "overrideRegistrationSha256": "09fe78083fe060b22a0c3c51bad694570825eb8c6d4c9f26986929943848a098",
+    "targetsEqualOverrideBytes": true
+  }
+}

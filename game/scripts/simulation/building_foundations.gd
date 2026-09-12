@@ -134,9 +134,11 @@ static func waiting_reason(world: Variant, building: Dictionary, builder_id: int
 
 
 static func tick(world: Variant, building: Dictionary, worker: Dictionary) -> bool:
-	if not pending(building) or not world.can_worker_work(worker) or not _owns_work(world, building, worker):
+	if not world.is_building_enabled(building) or not pending(building) or not world.can_worker_work(worker) or not _owns_work(world, building, worker):
 		return false
 	if not waiting_reason(world, building, int(worker["id"])).is_empty():
+		return false
+	if not world.allow_worker_work_tick(worker):
 		return false
 	var remaining: int = int(building["foundation_work_remaining"]) - 1
 	if remaining % TICKS_PER_HEIGHT_UNIT == 0:

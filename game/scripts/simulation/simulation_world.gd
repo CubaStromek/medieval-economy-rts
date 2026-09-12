@@ -11,12 +11,17 @@ const ClassicEconomyClass = preload("res://scripts/simulation/classic_economy.gd
 const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
 const DayCycleClass = preload("res://scripts/simulation/day_cycle.gd")
 const DailyScheduleClass = preload("res://scripts/simulation/daily_schedule.gd")
+const ResidencesClass = preload("res://scripts/simulation/residences.gd")
 const IndoorWorkersClass = preload("res://scripts/simulation/indoor_workers.gd")
 const IdleYieldRouteClass = preload("res://scripts/simulation/idle_yield_route.gd")
 const InnFeedingClass = preload("res://scripts/simulation/inn_feeding.gd")
+const NutritionClass = preload("res://scripts/simulation/nutrition.gd")
+const ActivityControlClass = preload("res://scripts/simulation/activity_control.gd")
+const UnitThoughtsClass = preload("res://scripts/simulation/unit_thoughts.gd")
 const SoldierFoodSupplyClass = preload("res://scripts/simulation/soldier_food_supply.gd")
 const BuildingFootprintsClass = preload("res://scripts/simulation/building_footprints.gd")
 const BuildingFoundationsClass = preload("res://scripts/simulation/building_foundations.gd")
+const FogOfWarClass = preload("res://scripts/simulation/fog_of_war.gd")
 
 const DEFAULT_MAP_SIZE := Vector2i(20, 16)
 const TICK_SECONDS: float = DayCycleClass.TICK_SECONDS
@@ -37,6 +42,7 @@ var tick: int = 0
 var catalog: DefinitionCatalogClass
 var grid: GridMapSimClass
 var task_board: TaskBoardClass
+var fog: FogOfWarClass
 var buildings: Dictionary = {}
 # An authoring override for historical fixtures. Every placed building stores
 # its own version, so loading one-cell saves never expands existing buildings.
@@ -65,6 +71,52 @@ func _init(map_size: Vector2i = DEFAULT_MAP_SIZE) -> void:
 	grid = GridMapSimClass.new(map_size)
 	grid.configure_movement(catalog.movement)
 	task_board = TaskBoardClass.new()
+	fog = FogOfWarClass.new(map_size)
+
+
+func enable_fog(local_player_id: int = 1) -> void:
+	if local_player_id < 1 or local_player_id > FogOfWarClass.MAX_PLAYERS:
+		return
+	if fog.local_player_id != local_player_id:
+		var empty: Array[Vector2i] = []
+		fog.restore_explored(empty)
+	fog.local_player_id = local_player_id
+	fog.enabled = true
+	fog.legacy_reveal_pending = false
+	update_visibility()
+
+
+func update_visibility() -> void:
+	fog.update(self)
+
+
+func fog_state(cell: Vector2i) -> int:
+	return fog.state_at(cell)
+
+
+func is_cell_explored(cell: Vector2i) -> bool:
+	return fog.is_explored(cell)
+
+
+func is_cell_visible(cell: Vector2i) -> bool:
+	return fog.is_visible(cell)
+
+
+func is_local_entity(entity: Dictionary) -> bool:
+	return not entity.is_empty() and int(entity.get("owner_id", 1)) == fog.local_player_id
+
+
+func is_entity_visible(entity: Dictionary) -> bool:
+	if entity.is_empty() or is_worker_inside(entity):
+		return false
+	var requires_sight: bool = entity.has("carrying") or (entity.has("owner_id") and not is_local_entity(entity))
+	if entity.has("entrance"):
+		for cell: Vector2i in building_cells(entity):
+			if (is_cell_visible(cell) if requires_sight else is_cell_explored(cell)):
+				return true
+		return false
+	var cell: Vector2i = entity.get("position", Vector2i(-1, -1))
+	return is_cell_visible(cell) if requires_sight else is_cell_explored(cell)
 
 
 func setup_demo() -> void:
@@ -98,7 +150,27 @@ func follows_daily_schedule(worker: Dictionary) -> bool:
 
 
 func can_worker_work(worker: Dictionary) -> bool:
-	return not is_night_rest_time() or not follows_daily_schedule(worker)
+	return is_local_entity(worker) and not is_worker_work_paused(worker) and (not is_night_rest_time() or not follows_daily_schedule(worker))
+
+
+func is_building_enabled(building: Dictionary) -> bool:
+	return ActivityControlClass.building_enabled(building)
+
+
+func is_worker_work_paused(worker: Dictionary) -> bool:
+	return ActivityControlClass.worker_paused(self, worker)
+
+
+func set_worker_enabled(id: int, enabled: bool) -> bool:
+	return ActivityControlClass.set_worker_enabled(self, id, enabled)
+
+
+func set_building_enabled(id: int, enabled: bool) -> bool:
+	return ActivityControlClass.set_building_enabled(self, id, enabled)
+
+
+func unit_thoughts(worker: Dictionary) -> Dictionary:
+	return UnitThoughtsClass.describe(self, worker)
 
 
 func is_worker_sleeping(worker: Dictionary) -> bool:
@@ -109,12 +181,22 @@ func worker_schedule_status(worker: Dictionary) -> String:
 	return DailyScheduleClass.status(self, worker)
 
 
+func residence_occupancy(building_id: int) -> Dictionary:
+	return ResidencesClass.occupancy(self, building_id)
+
+
+func residence_has_room(building_id: int, worker_id: int) -> bool:
+	var worker: Dictionary = workers.get(worker_id, {})
+	return not worker.is_empty() and ResidencesClass.valid_home(self, worker, building_id)
+
+
 func step_tick() -> void:
 	tick += 1
 	grid.tick_trails(tick)
 	_workers_updated_this_tick.clear()
 	_workers_moved_this_tick.clear()
 	_update_worker_visual_progress()
+	ActivityControlClass.prepare_tick(self)
 	DailyScheduleClass.prepare_tick(self)
 	_tick_trees()
 	_tick_fields()
@@ -130,6 +212,7 @@ func step_tick() -> void:
 			continue
 		_workers_updated_this_tick[worker_id] = true
 		_tick_worker(worker_id)
+	update_visibility()
 
 
 func add_tree(cell: Vector2i, amount: int = 3) -> int:
@@ -171,9 +254,10 @@ func _create_tree(cell: Vector2i, amount: int, age_ticks: int) -> int:
 	return entity_id
 
 
-func spawn_worker(cell: Vector2i, unit_type: String = "carrier", home_id: int = 0, assign_home: bool = true, inside_building_id: int = 0) -> int:
+func spawn_worker(cell: Vector2i, unit_type: String = "carrier", home_id: int = 0, assign_home: bool = true, inside_building_id: int = 0, owner_id: int = 1) -> int:
 	if (
 		catalog.unit(unit_type).is_empty()
+		or owner_id < 0 or owner_id > FogOfWarClass.MAX_PLAYERS
 		or not grid.is_walkable(cell)
 		or inside_building_id < 0
 		or (inside_building_id == 0 and (tile_reservations.has(cell) or planting_reservations.has(cell)))
@@ -181,13 +265,15 @@ func spawn_worker(cell: Vector2i, unit_type: String = "carrier", home_id: int = 
 	):
 		return 0
 	if home_id != 0 and not WorkplacesClass.can_claim(self,
-		{"id": _next_entity_id, "type": unit_type, "home_id": 0, "carrying": ""}, home_id):
+		{"id": _next_entity_id, "type": unit_type, "home_id": 0, "carrying": "", "owner_id": owner_id}, home_id):
 		return 0
 	var entity_id: int = _take_entity_id()
 	workers[entity_id] = {
 		"id": entity_id,
 		"type": unit_type,
+		"owner_id": owner_id,
 		"home_id": home_id,
+		"enabled": true,
 		"sleep_home_id": 0,
 		"inside_building_id": inside_building_id,
 		"indoor_wait_ticks": 0,
@@ -209,7 +295,11 @@ func spawn_worker(cell: Vector2i, unit_type: String = "carrier", home_id: int = 
 		"target_cell": cell,
 		"plant_target": Vector2i(-1, -1),
 		"planting_cooldown": 0,
-		"hunger": int(catalog.economy.get("condition_initial", 1620)),
+		"hunger": int(catalog.economy.get("condition_initial", 2700)),
+		"nutrition_deficit_ticks": 0,
+		"condition_decay_remainder": 0,
+		"nutrition_recovery_remainder": 0,
+		"work_effort_remainder": 0,
 		"meal_ticks_left": 0,
 		"meal_course": {},
 		"food_requested": false,
@@ -219,6 +309,7 @@ func spawn_worker(cell: Vector2i, unit_type: String = "carrier", home_id: int = 
 		tile_reservations[cell] = entity_id
 	if assign_home:
 		ensure_workplace(workers[entity_id])
+	update_visibility()
 	return entity_id
 
 
@@ -251,51 +342,18 @@ func inn_occupied_seats(inn_id: int) -> int:
 
 
 func hunger_loss_per_interval() -> int:
-	var maximum: int = maxi(1, int(catalog.economy.get("condition_max", 2700)))
-	var hungry: int = clampi(int(catalog.economy.get("condition_hungry", 360)), 0, maximum)
 	var interval: int = maxi(1, int(catalog.economy.get("condition_interval_ticks", 10)))
-	var day_fraction: float = maxf(0.001, float(catalog.economy.get("condition_daily_hunger_fraction", 0.8)))
-	# Hunger shares the saved simulation calendar, so speed and pause change
-	# real waiting time without changing how often citizens need food per day.
-	return maxi(1, ceili(float((maximum - hungry) * interval) / (float(DayCycleClass.TICKS_PER_DAY) * day_fraction)))
+	# Compatibility/inspection helper: an upper-rounded awake interval. Actual
+	# consumption preserves fractional condition and accounts for real sleep.
+	return ceili(float(NutritionClass.decay_milli_per_tick(self, {}) * interval) / 1000.0)
 
 
 func hunger_status(worker: Dictionary) -> Dictionary:
-	var maximum: int = maxi(1, int(catalog.economy.get("condition_max", 2700)))
-	var condition: int = clampi(int(worker.get("hunger", 0)), 0, maximum)
-	var hungry: int = clampi(int(catalog.economy.get("condition_hungry", 360)), 0, maximum)
-	var warning: int = clampi(int(catalog.economy.get("condition_warning", 1350)), hungry, maximum)
-	var critical: int = clampi(int(catalog.economy.get("condition_critical", 120)), 0, hungry)
-	var state: String = "Fed"
-	if condition <= critical:
-		state = "Starving"
-	elif condition <= hungry:
-		state = "Hungry"
-	elif condition <= warning:
-		state = "Getting hungry"
-	var interval: int = maxi(1, int(catalog.economy.get("condition_interval_ticks", 10)))
-	var loss: int = hunger_loss_per_interval()
-	# tick describes an already completed step. At an exact boundary the next
-	# loss is one full interval away, rather than an immediate second loss.
-	var next_loss_ticks: int = interval - tick % interval
-	var hungry_intervals: int = ceili(float(maxi(0, condition - hungry)) / float(loss))
-	var starve_intervals: int = ceili(float(condition) / float(loss))
-	var hungry_ticks: int = 0 if hungry_intervals == 0 else next_loss_ticks + (hungry_intervals - 1) * interval
-	var starve_ticks: int = 0 if starve_intervals == 0 else next_loss_ticks + (starve_intervals - 1) * interval
-	# During a meal the next serving can change condition again. A negative
-	# estimate means there is no active countdown to present to the player.
-	if not economy_enabled or int(worker.get("meal_ticks_left", 0)) > 0:
-		if hungry_ticks > 0:
-			hungry_ticks = -1
-		if starve_ticks > 0:
-			starve_ticks = -1
-	return {
-		"satiety_percent": 100.0 * float(condition) / float(maximum),
-		"state": state,
-		"hungry_at": hungry,
-		"remaining_to_hungry_ticks": hungry_ticks,
-		"remaining_to_starve_ticks": starve_ticks,
-	}
+	return NutritionClass.status(self, worker)
+
+
+func allow_worker_work_tick(worker: Dictionary) -> bool:
+	return NutritionClass.allow_work_tick(self, worker)
 
 
 func _enter_worker_building(worker: Dictionary, building_id: int, dwell_ticks: int = 0) -> bool:
@@ -331,8 +389,12 @@ func building_cells(building: Dictionary) -> Array[Vector2i]:
 	return BuildingFootprintsClass.cells(catalog.building(String(building["type"])), building["position"], int(building.get("footprint_version", 0)))
 
 
+func placement_footprint_version(building_type: String) -> int:
+	return mini(default_footprint_version, BuildingFootprintsClass.latest_version(catalog.building(building_type)))
+
+
 func placement_cells(building_type: String, anchor: Vector2i) -> Array[Vector2i]:
-	return BuildingFootprintsClass.cells(catalog.building(building_type), anchor, default_footprint_version)
+	return BuildingFootprintsClass.cells(catalog.building(building_type), anchor, placement_footprint_version(building_type))
 
 
 func building_door_cell(building: Dictionary) -> Vector2i:
@@ -342,7 +404,7 @@ func building_door_cell(building: Dictionary) -> Vector2i:
 func placement_entrance(building_type: String, anchor: Vector2i) -> Vector2i:
 	if default_footprint_version == 0:
 		return _find_entrance(anchor)
-	var door: Vector2i = BuildingFootprintsClass.door_cell(catalog.building(building_type), anchor, default_footprint_version)
+	var door: Vector2i = BuildingFootprintsClass.door_cell(catalog.building(building_type), anchor, placement_footprint_version(building_type))
 	return door + Vector2i.DOWN if door != Vector2i(-1, -1) else Vector2i(-1, -1)
 
 
@@ -383,7 +445,7 @@ func can_place_building(building_type: String, cell: Vector2i) -> bool:
 			return false
 		occupied[occupied_cell] = true
 	var entrance: Vector2i = placement_entrance(building_type, cell)
-	var door: Vector2i = BuildingFootprintsClass.door_cell(definition, cell, default_footprint_version)
+	var door: Vector2i = BuildingFootprintsClass.door_cell(definition, cell, placement_footprint_version(building_type))
 	if not grid.can_use_building_exit(door, entrance) or occupied.has(entrance) or not _building_site_cell_clear(entrance):
 		return false
 	# A clear doorway still needs an approach after the new walls are blocked.
@@ -434,8 +496,8 @@ func _can_place_legacy_building(building_type: String, cell: Vector2i) -> bool:
 	return _find_entrance(cell) != Vector2i(-1, -1) and ResourceDepositsClass.placement_valid(self, building_type, cell)
 
 
-func place_building(building_type: String, cell: Vector2i) -> int:
-	if not can_place_building(building_type, cell):
+func place_building(building_type: String, cell: Vector2i, owner_id: int = 1) -> int:
+	if owner_id < 0 or owner_id > FogOfWarClass.MAX_PLAYERS or not can_place_building(building_type, cell):
 		return 0
 	var entrance: Vector2i = placement_entrance(building_type, cell)
 	var foundation: Dictionary = foundation_plan(building_type, cell)
@@ -443,9 +505,11 @@ func place_building(building_type: String, cell: Vector2i) -> int:
 	buildings[entity_id] = {
 		"id": entity_id,
 		"type": building_type,
+		"owner_id": owner_id,
 		"position": cell,
+		"enabled": true,
 		"entrance": entrance,
-		"footprint_version": default_footprint_version,
+		"footprint_version": placement_footprint_version(building_type),
 		"storage": _empty_inventory(),
 		"inputs": _empty_inventory(),
 		"outputs": _empty_inventory(),
@@ -468,6 +532,7 @@ func place_building(building_type: String, cell: Vector2i) -> int:
 		grid.block(occupied, entity_id)
 	var placement_message: String = "Construction site placed: %s." if economy_enabled else "Built %s."
 	_push_event(placement_message % String(catalog.building(building_type).get("display_name", building_type)))
+	update_visibility()
 	return entity_id
 
 
@@ -477,7 +542,7 @@ func construction_cost(building: Dictionary) -> Dictionary:
 
 func cancel_construction(building_id: int) -> bool:
 	var building: Dictionary = buildings.get(building_id, {})
-	if building.is_empty() or is_building_complete(building):
+	if building.is_empty() or not is_local_entity(building) or is_building_complete(building):
 		return false
 	var refund: Dictionary = {}
 	for inventory_key: String in ["construction_delivered", "storage", "inputs", "outputs"]:
@@ -600,41 +665,48 @@ func set_vertex_height(vertex: Vector2i, height: int) -> bool:
 	return grid.set_vertex_height(vertex, height)
 
 
-func stored_amount(resource_id: String) -> int:
+func stored_amount(resource_id: String, owner_id: int = -1) -> int:
+	var owner: int = fog.local_player_id if owner_id < 0 else owner_id
 	var total: int = 0
 	for building_variant: Variant in buildings.values():
 		var building: Dictionary = building_variant as Dictionary
-		if String(building["type"]) == "warehouse" and is_building_complete(building):
+		if int(building.get("owner_id", 1)) == owner and String(building["type"]) == "warehouse" and is_building_complete(building):
 			var storage: Dictionary = building["storage"] as Dictionary
 			total += int(storage.get(resource_id, 0))
 	return total
 
 
-func pipeline_amount(resource_id: String) -> int:
+func pipeline_amount(resource_id: String, owner_id: int = -1) -> int:
+	var owner: int = fog.local_player_id if owner_id < 0 else owner_id
 	var total: int = 0
 	for worker_variant: Variant in workers.values():
 		var worker: Dictionary = worker_variant as Dictionary
-		if String(worker["carrying"]) == resource_id:
+		if int(worker.get("owner_id", 1)) == owner and String(worker["carrying"]) == resource_id:
 			total += 1
 	for building_variant: Variant in buildings.values():
 		var building: Dictionary = building_variant as Dictionary
+		if int(building.get("owner_id", 1)) != owner:
+			continue
 		var inputs: Dictionary = building["inputs"] as Dictionary
 		var outputs: Dictionary = building["outputs"] as Dictionary
 		total += int(inputs.get(resource_id, 0)) + int(outputs.get(resource_id, 0))
 	return total
 
 
-func resource_stock(resource_id: String) -> Dictionary:
+func resource_stock(resource_id: String, owner_id: int = -1) -> Dictionary:
 	# Existing wares across the settlement. Construction deliveries and recipe
 	# inputs already consumed by production are committed, not stock on hand.
-	var warehouse: int = stored_amount(resource_id)
+	var owner: int = fog.local_player_id if owner_id < 0 else owner_id
+	var warehouse: int = stored_amount(resource_id, owner)
 	var building_stock: int = 0
 	var carried: int = 0
 	for building: Dictionary in buildings.values():
+		if int(building.get("owner_id", 1)) != owner:
+			continue
 		building_stock += int(building["inputs"].get(resource_id, 0))
 		building_stock += int(building["outputs"].get(resource_id, 0))
 	for worker: Dictionary in workers.values():
-		if String(worker["carrying"]) == resource_id:
+		if int(worker.get("owner_id", 1)) == owner and String(worker["carrying"]) == resource_id:
 			carried += 1
 	return {
 		"warehouse": warehouse,
@@ -642,6 +714,39 @@ func resource_stock(resource_id: String) -> Dictionary:
 		"carried": carried,
 		"total": warehouse + building_stock + carried,
 	}
+
+
+func resource_stocks(owner_id: int = -1) -> Dictionary:
+	# Bulk HUD query: visit each entity once instead of repeating settlement
+	# scans for every ware. This is a fresh value, so same-tick commands show up.
+	var owner: int = fog.local_player_id if owner_id < 0 else owner_id
+	var stocks: Dictionary = {}
+	for resource: String in catalog.resources:
+		stocks[resource] = {"warehouse": 0, "buildings": 0, "carried": 0, "total": 0}
+	for building: Dictionary in buildings.values():
+		if int(building.get("owner_id", 1)) != owner:
+			continue
+		if String(building["type"]) == "warehouse" and is_building_complete(building):
+			_add_inventory_stock(stocks, building["storage"], "warehouse")
+		_add_inventory_stock(stocks, building["inputs"], "buildings")
+		_add_inventory_stock(stocks, building["outputs"], "buildings")
+	for worker: Dictionary in workers.values():
+		var resource: String = String(worker["carrying"])
+		if int(worker.get("owner_id", 1)) == owner and not resource.is_empty():
+			_add_inventory_stock(stocks, {resource: 1}, "carried")
+	return stocks
+
+
+static func _add_inventory_stock(stocks: Dictionary, inventory: Dictionary, bucket: String) -> void:
+	for resource: String in inventory:
+		var amount: int = int(inventory[resource])
+		if amount == 0:
+			continue
+		if not stocks.has(resource):
+			stocks[resource] = {"warehouse": 0, "buildings": 0, "carried": 0, "total": 0}
+		var stock: Dictionary = stocks[resource]
+		stock[bucket] = int(stock[bucket]) + amount
+		stock["total"] = int(stock["total"]) + amount
 
 
 func has_building(building_type: String) -> bool:
@@ -654,7 +759,7 @@ func building_id_at(cell: Vector2i) -> int:
 
 
 func queue_unit_training(building_id: int, unit_type: String) -> bool:
-	if not buildings.has(building_id) or not is_building_complete(buildings[building_id]):
+	if not buildings.has(building_id) or not is_local_entity(buildings[building_id]) or not is_building_complete(buildings[building_id]):
 		return false
 	var unit_definition: Dictionary = catalog.unit(unit_type)
 	if unit_definition.is_empty():
@@ -694,6 +799,7 @@ func from_data(data: Dictionary) -> bool:
 	tick = staged_world.tick
 	catalog = staged_world.catalog
 	grid = staged_world.grid
+	fog = staged_world.fog
 	task_board = staged_world.task_board
 	buildings = staged_world.buildings
 	trees = staged_world.trees
@@ -737,6 +843,8 @@ func _tick_buildings() -> void:
 	ids.sort()
 	for id: int in ids:
 		var building: Dictionary = buildings[id]
+		if not is_local_entity(building) or not is_building_enabled(building):
+			continue
 		if not is_building_complete(building):
 			ClassicEconomyClass.tick_construction(self, building)
 			continue
@@ -746,9 +854,10 @@ func _tick_buildings() -> void:
 		if not recipe.is_empty() and not (is_night_rest_time() and String(definition.get("worker", "")) != "recruit" \
 				and catalog.units.has(String(definition.get("worker", "")))):
 			var operator: Dictionary = _building_operator(id)
-			if String(definition.get("worker", "")).is_empty() or not operator.is_empty() or (not economy_enabled and building["type"] == "sawmill"):
+			if String(definition.get("worker", "")).is_empty() or not operator.is_empty() \
+					or (not economy_enabled and building["type"] == "sawmill" and not is_worker_work_paused(workplace_worker(id))):
 				var remaining: int = int(building["process_remaining"])
-				if remaining > 0:
+				if remaining > 0 and (operator.is_empty() or allow_worker_work_tick(operator)):
 					building["process_remaining"] = remaining - 1
 					if remaining == 1:
 						for resource: String in recipe["outputs"]:
@@ -759,7 +868,7 @@ func _tick_buildings() -> void:
 						if not operator.is_empty():
 							task_board.complete(int(operator["task_id"]), int(operator["id"]))
 							_reset_worker(operator)
-				elif _recipe_ready(building):
+				elif remaining == 0 and _recipe_ready(building):
 					for resource: String in recipe["inputs"]:
 						building["inputs"][resource] = int(building["inputs"].get(resource, 0)) - int(recipe["inputs"][resource])
 					building["process_remaining"] = int(recipe["duration_ticks"])
@@ -769,6 +878,8 @@ func _tick_buildings() -> void:
 
 
 func _tick_unit_training(building: Dictionary) -> void:
+	if not is_building_enabled(building):
+		return
 	var building_definition: Dictionary = catalog.building(String(building["type"]))
 	if (building_definition.get("trains", []) as Array).is_empty():
 		return
@@ -793,7 +904,7 @@ func _tick_unit_training(building: Dictionary) -> void:
 	if spawn_cell == Vector2i(-1, -1):
 		return
 	var unit_type: String = String(training_queue[0])
-	if spawn_worker(spawn_cell, unit_type) == 0:
+	if spawn_worker(spawn_cell, unit_type, 0, true, 0, int(building.get("owner_id", 1))) == 0:
 		return
 	training_queue.pop_front()
 	building["training_paid"] = false
@@ -826,12 +937,17 @@ func _generate_tasks() -> void:
 
 func _tick_worker(worker_id: int) -> void:
 	var worker: Dictionary = workers[worker_id] as Dictionary
+	# Foreign entities are visibility placeholders, not an implicit enemy AI.
+	if not is_local_entity(worker):
+		return
 	if InnFeedingClass.tick_worker(self, worker):
 		return
 	if DailyScheduleClass.handle_worker(self, worker):
 		return
 	if is_worker_inside(worker) and int(worker.get("indoor_wait_ticks", 0)) > 0:
 		worker["indoor_wait_ticks"] = int(worker["indoor_wait_ticks"]) - 1
+		return
+	if ActivityControlClass.handle_worker(self, worker):
 		return
 	var state: String = String(worker["state"])
 	if state == "idle":
@@ -877,6 +993,8 @@ func _tick_worker(worker_id: int) -> void:
 	elif state == "working":
 		if ["operate", "build_site"].has(String(worker["action"])):
 			return
+		if not allow_worker_work_tick(worker):
+			return
 		var remaining: int = int(worker["work_remaining"]) - 1
 		worker["work_remaining"] = remaining
 		if remaining <= 0:
@@ -886,7 +1004,7 @@ func _tick_worker(worker_id: int) -> void:
 func _tick_idle_gardener(worker: Dictionary) -> void:
 	# Planting is the forester hut's work, not a global task for every trained
 	# gardener. The existing workplace system keeps this claim exclusive.
-	if not owns_workplace(worker, int(worker["home_id"])):
+	if is_worker_work_paused(worker) or not owns_workplace(worker, int(worker["home_id"])):
 		return
 	var cooldown: int = maxi(0, int(worker.get("planting_cooldown", 0)))
 	if cooldown > 0:
@@ -922,7 +1040,7 @@ func _is_available_planting_goal(cell: Vector2i, worker_id: int) -> bool:
 
 
 func gardener_can_plant(worker: Dictionary, cell: Vector2i) -> bool:
-	if String(worker.get("type", "")) != "gardener":
+	if is_worker_work_paused(worker) or String(worker.get("type", "")) != "gardener":
 		return false
 	var home_id: int = int(worker.get("home_id", 0))
 	var home: Dictionary = buildings.get(home_id, {})
@@ -1081,12 +1199,12 @@ func _record_yield_step(worker: Dictionary, from: Vector2i) -> void:
 
 
 func _idle_can_yield(worker: Dictionary) -> bool:
-	return not is_worker_inside(worker) and worker["state"] == "idle" and String(worker["action"]).is_empty() \
+	return is_local_entity(worker) and not is_worker_inside(worker) and worker["state"] == "idle" and String(worker["action"]).is_empty() \
 		and int(worker["task_id"]) == 0 and String(worker["carrying"]).is_empty() \
 		and int(worker["move_cooldown"]) == 0 \
 		and int(worker["visual_progress_ticks"]) >= int(worker["visual_duration_ticks"]) \
 		and tick >= int(worker.get("yield_rest_until", 0)) \
-		and not (worker["type"] == "recruit" and owns_workplace(worker, int(worker["home_id"])))
+		and not (worker["type"] == "recruit" and owns_workplace(worker, int(worker["home_id"])) and not is_worker_work_paused(worker))
 
 
 func _try_yield_idle_worker(requester: Dictionary, other_id: int) -> bool:
@@ -1208,6 +1326,8 @@ func _update_worker_visual_progress() -> void:
 
 
 func _reconsider_blocked_worker(worker: Dictionary) -> void:
+	if ActivityControlClass.reconsider_blocked(self, worker):
+		return
 	if worker["action"] == "yield":
 		# A distant pocket may be occupied or built over during the retreat.
 		# Pick a fresh safe place instead of remaining a busy, unyieldable unit
@@ -1340,11 +1460,13 @@ func _can_interact_from_adjacent(worker: Dictionary, blocked_cell: Vector2i) -> 
 
 func _worker_allows_occupied_target(worker: Dictionary) -> bool:
 	var action: String = String(worker["action"])
-	return action.begins_with("pickup_") or action.begins_with("deliver_") or ["operate", "build_site", "eat", "report_barracks", "go_sleep"].has(action)
+	return action.begins_with("pickup_") or action.begins_with("deliver_") or ["operate", "build_site", "eat", "report_barracks", "go_sleep", "pause_return"].has(action)
 
 
 func _resume_carried_ware(worker: Dictionary) -> void:
-	if not can_worker_work(worker):
+	# Pausing prevents new work, not safe delivery of goods already in hand.
+	# Civilian night rest still defers logistics until the morning.
+	if not is_local_entity(worker) or (is_night_rest_time() and follows_daily_schedule(worker)):
 		return
 	if SoldierFoodSupplyClass.resume(self, worker):
 		return
@@ -1369,6 +1491,8 @@ func _resume_carried_ware(worker: Dictionary) -> void:
 
 
 func _on_worker_arrived(worker: Dictionary) -> void:
+	if ActivityControlClass.arrive(self, worker):
+		return
 	if DailyScheduleClass.arrive(self, worker):
 		return
 	if SoldierFoodSupplyClass.arrive(self, worker):
@@ -1539,10 +1663,6 @@ func _accepted_tasks_for_worker(worker: Dictionary) -> Array[String]:
 	return ["operate_" + type]
 
 
-func _movement_duration_for(worker: Dictionary, destination: Vector2i) -> int:
-	return grid.step_duration_ticks(worker["position"], destination)
-
-
 func _record_worker_traffic(worker: Dictionary, destination: Vector2i) -> void:
 	if String(worker["type"]) == "carrier" and String(worker.get("action", "")) != "yield" \
 		and field_id_at(destination) == 0 and deposit_id_at(destination) == 0:
@@ -1552,21 +1672,11 @@ func _record_worker_traffic(worker: Dictionary, destination: Vector2i) -> void:
 		grid.record_carrier_traffic(destination, from, tick)
 
 
-func _preferred_log_destination(worker: Dictionary, blockers: Dictionary = {}) -> int:
-	var position: Vector2i = worker["position"] as Vector2i
-	if String(worker["type"]) == "lumberjack":
-		return _lumberjack_home(worker, blockers)
-	var destination_id: int = _nearest_building("sawmill", position, blockers)
-	if destination_id == 0:
-		destination_id = _nearest_building("warehouse", position, blockers)
-	return destination_id
-
-
 func _lumberjack_home(worker: Dictionary, blockers: Dictionary = {}) -> int:
 	return _reachable_workplace(worker, blockers)
 
 
-func _nearest_building(building_type: String, from_cell: Vector2i, blockers: Dictionary = {}) -> int:
+func _nearest_building(building_type: String, from_cell: Vector2i, blockers: Dictionary = {}, operational_only: bool = false) -> int:
 	var best_id: int = 0
 	var best_cost: int = 2147483647
 	var ids: Array = buildings.keys()
@@ -1574,7 +1684,7 @@ func _nearest_building(building_type: String, from_cell: Vector2i, blockers: Dic
 	for id_variant: Variant in ids:
 		var building_id: int = int(id_variant)
 		var building: Dictionary = buildings[building_id] as Dictionary
-		if String(building["type"]) != building_type or not is_building_complete(building):
+		if not is_local_entity(building) or String(building["type"]) != building_type or not is_building_complete(building) or (operational_only and not is_building_enabled(building)):
 			continue
 		var target: Vector2i = building["entrance"] as Vector2i
 		var route_blockers: Dictionary = blockers.duplicate()
@@ -1594,7 +1704,7 @@ func _first_building(building_type: String) -> int:
 	ids.sort()
 	for id_variant: Variant in ids:
 		var building_id: int = int(id_variant)
-		if String((buildings[building_id] as Dictionary)["type"]) == building_type and is_building_complete(buildings[building_id]):
+		if is_local_entity(buildings[building_id]) and String((buildings[building_id] as Dictionary)["type"]) == building_type and is_building_complete(buildings[building_id]):
 			return building_id
 	return 0
 
@@ -1767,10 +1877,6 @@ func _tick_fields() -> void:
 			field["age_ticks"] = age + 1
 
 
-func _farmer_home(worker: Dictionary, blockers: Dictionary = {}) -> int:
-	return _reachable_workplace(worker, blockers)
-
-
 func _field_in_farm_range(field: Dictionary, farm_id: int) -> bool:
 	if not buildings.has(farm_id):
 		return false
@@ -1821,7 +1927,8 @@ func _finish_field_work(worker: Dictionary) -> void:
 
 func _building_operator(building_id: int) -> Dictionary:
 	var worker: Dictionary = workplace_worker(building_id)
-	if not worker.is_empty() and int(worker["source_id"]) == building_id and worker["action"] == "operate" and worker["state"] == "working":
+	if not worker.is_empty() and can_worker_work(worker) and is_building_enabled(buildings.get(building_id, {})) \
+			and int(worker["source_id"]) == building_id and worker["action"] == "operate" and worker["state"] == "working":
 		return worker
 	return {}
 
@@ -1843,6 +1950,8 @@ func _recipe_ready(building: Dictionary) -> bool:
 
 
 func production_status(building: Dictionary) -> String:
+	if not is_building_enabled(building):
+		return "Provoz pozastaven — zásoby a rozpracovaná práce zůstávají zachované." if is_building_complete(building) else "Stavba pozastavena — materiál i dokončená práce zůstávají zachované."
 	var type: String = String(building["type"])
 	var definition: Dictionary = catalog.building(type)
 	if not is_building_complete(building):
@@ -1861,6 +1970,8 @@ func production_status(building: Dictionary) -> String:
 				return "Building — %.1f s remaining" % (float(building["construction_remaining"]) / 10.0)
 		return "Materials ready — waiting for a Builder."
 	var assigned_worker: Dictionary = workplace_worker(int(building["id"]))
+	if not assigned_worker.is_empty() and not bool(assigned_worker.get("enabled", true)):
+		return "Pracovník má pozastavenou práci; své místo si ponechává."
 	if not assigned_worker.is_empty() and (int(assigned_worker.get("meal_ticks_left", 0)) > 0 \
 			or assigned_worker["action"] == "eat"):
 		return "Worker is eating at the Inn; this workplace remains assigned."
@@ -1930,13 +2041,16 @@ func _generate_economy_tasks() -> void:
 	ids.sort()
 	for id: int in ids:
 		var building: Dictionary = buildings[id]
+		if not is_local_entity(building):
+			continue
 		var type: String = String(building["type"])
 		if not is_building_complete(building):
 			continue
-		ClassicEconomyClass.select_next_recipe(self, building)
+		if is_building_enabled(building):
+			ClassicEconomyClass.select_next_recipe(self, building)
 		var definition: Dictionary = catalog.building(type)
 		var staff: String = String(definition.get("worker", ""))
-		if not staff.is_empty() and definition.has("recipe") and (int(building["process_remaining"]) > 0 or _recipe_ready(building)):
+		if is_building_enabled(building) and not staff.is_empty() and definition.has("recipe") and (int(building["process_remaining"]) > 0 or _recipe_ready(building)):
 			task_board.create_task("operate_" + staff, "operate:%d" % id, building["entrance"], id)
 		var inventory: Dictionary = building["storage"] if type == "warehouse" else building["outputs"]
 		var resources: Array = inventory.keys()
@@ -1949,7 +2063,7 @@ func _generate_economy_tasks() -> void:
 			# repeating all consumer route searches while their carrier travels.
 			if task_board.has_source(source_key):
 				continue
-			if _ware_destination(resource, building["entrance"], {}, 0, id, type == "warehouse") == 0:
+			if _ware_destination(resource, building["entrance"], {}, 0, id, type == "warehouse", true) == 0:
 				continue
 			task_board.create_task("transport_" + resource, source_key, building["entrance"], id)
 	if has_building("farm") or has_building("vineyard"):
@@ -1965,6 +2079,10 @@ func _generate_economy_tasks() -> void:
 func _task_is_useful(task: Dictionary, worker: Dictionary) -> bool:
 	var kind: String = String(task["kind"])
 	var id: int = int(task["source_id"])
+	if not is_local_entity(worker) or is_worker_work_paused(worker) or (buildings.has(id) and not is_local_entity(buildings[id])):
+		return false
+	if kind in ["build_site", "operate_" + String(worker["type"])] and buildings.has(id) and not is_building_enabled(buildings[id]):
+		return false
 	if kind == "harvest_tree":
 		var home: int = int(worker["home_id"])
 		return owns_workplace(worker, home) and trees.has(id) and is_tree_mature(trees[id]) and int(trees[id]["amount"]) > 0 and int(buildings[home]["outputs"].get("log", 0)) < int(catalog.building("lumber_hut").get("output_capacity", 6))
@@ -1987,7 +2105,7 @@ func _task_is_useful(task: Dictionary, worker: Dictionary) -> bool:
 		var inventory: Dictionary = source["storage"] if from_storage else source["outputs"]
 		var resource: String = kind.trim_prefix("transport_")
 		return int(inventory.get(resource, 0)) > SoldierFoodSupplyClass.source_reserved(self, id, resource) \
-			and _ware_destination(resource, source["entrance"], {}, int(worker["id"]), id, from_storage) != 0
+			and _ware_destination(resource, source["entrance"], {}, int(worker["id"]), id, from_storage, true) != 0
 	return true
 
 
@@ -2008,17 +2126,17 @@ func _incoming_amount(building_id: int, resource: String, except_worker: int = 0
 
 
 func _input_room(building: Dictionary, resource: String, worker_id: int) -> bool:
-	return ClassicEconomyClass.needs_material(self, building, resource) > _incoming_amount(int(building["id"]), resource, worker_id)
+	return is_local_entity(building) and ClassicEconomyClass.needs_material(self, building, resource) > _incoming_amount(int(building["id"]), resource, worker_id)
 
 
 func _warehouse_room(building: Dictionary, resource: String, worker_id: int = 0) -> int:
-	if building["type"] != "warehouse" or not is_building_complete(building) or not (catalog.building("warehouse").get("accepts", []) as Array).has(resource):
+	if not is_local_entity(building) or not is_building_enabled(building) or building["type"] != "warehouse" or not is_building_complete(building) or not (catalog.building("warehouse").get("accepts", []) as Array).has(resource):
 		return 0
 	var capacity: int = int(catalog.economy.get("stock_capacity_per_ware", 99999))
 	return maxi(0, capacity - int(building["storage"].get(resource, 0)) - _incoming_amount(int(building["id"]), resource, worker_id))
 
 
-func _ware_destination(resource: String, from: Vector2i, blockers: Dictionary = {}, worker_id: int = 0, source_id: int = 0, consumers_only: bool = false) -> int:
+func _ware_destination(resource: String, from: Vector2i, blockers: Dictionary = {}, worker_id: int = 0, source_id: int = 0, consumers_only: bool = false, existence_only: bool = false) -> int:
 	var ids: Array = buildings.keys()
 	ids.sort()
 	for consumer: bool in [true, false]:
@@ -2041,6 +2159,10 @@ func _ware_destination(resource: String, from: Vector2i, blockers: Dictionary = 
 			var path: Array[Vector2i] = _path_with_yielding(from, target, route_blockers, worker_id)
 			if from != target and path.is_empty():
 				continue
+			# Task generation/validation only needs a reachable receiver. The real
+			# pickup still ranks all destinations against the current stock/routes.
+			if existence_only:
+				return id
 			var cost: int = GridPathfinderClass.path_cost(grid, path, from)
 			if consumer and economy_enabled:
 				cost += (int(building["inputs"].get(resource, 0)) + _incoming_amount(id, resource, worker_id)) * 40

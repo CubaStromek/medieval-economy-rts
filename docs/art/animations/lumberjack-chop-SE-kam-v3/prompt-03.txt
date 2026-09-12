@@ -1,0 +1,11 @@
+Use case: precise-object-edit
+Edit the TOP-LEFT and TOP-MIDDLE characters ONLY. Keep the other four characters pixel-faithful.
+Rebuild BOTH arms and BOTH hands of these two characters from the shoulders outward. The existing raised grips are malformed: there is a hand grabbing a wrist and the top-left may read as three hands. Erase the existing hands/forearms and replace them with exactly two complete arms and exactly two fists holding one axe.
+
+KEEP both axe blades in their current positions. A rigid straight wooden handle must run diagonally DOWN-LEFT from each blade toward the top-right rim of the hat. Lengthen that wooden handle toward the hat as needed. Put the two fists on this SAME DIAGONAL straight handle, one fist nearer the blade, the other DOWN AND LEFT of that fist along the wood. Separate the fists by a short clearly visible brown wood segment. Show a brown wooden butt beyond the second fist.
+VERY IMPORTANT: the second fist is DOWN-LEFT ALONG THE WOOD AXIS, never vertically under the first wrist! Both palms grasp wood. No fist can touch the other wrist.
+
+For top-left: first fist near the blade above-right of cap, second fist farther DOWN-LEFT toward cap rim. The near forearm rises across the chest to the second fist. Remove the erroneous extra skin/hand beneath the grip. Two fists total.
+For top-middle: same two-handed grip, compact above-right of cap; lower fist must be left of the upper fist and on the brown diagonal shaft. Do not leave a hand to the right below the wrist.
+
+Everything else stays unchanged: face, hat, torso below shoulders, narrow planted legs, boots, axe blade size, 3x2 arrangement, white background, no shadow, same painted design. This is a repair of the two raised grips, not new choreography.

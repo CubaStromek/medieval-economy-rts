@@ -9,6 +9,16 @@ static func evaluate(world: Variant, tool: String, cell: Vector2i) -> Dictionary
 		result["entrance"] = world.placement_entrance(tool, cell)
 	if tool.is_empty() or not world.grid.contains(cell):
 		return result
+	var required: Array = (result["cells"] as Array).duplicate()
+	if world.grid.contains(result["entrance"]):
+		required.append(result["entrance"])
+	for required_cell: Vector2i in required:
+		if world.grid.contains(required_cell) and not world.is_cell_explored(required_cell):
+			result["reason"] = "Unexplored area — send a unit to scout here first"
+			result["obscured"] = true
+			result["cells"] = []
+			result["entrance"] = Vector2i(-1, -1)
+			return result
 	result["height"] = world.grid.cell_height(cell)
 	result["slope"] = world.grid.cell_slope(cell)
 	if tool == "road":

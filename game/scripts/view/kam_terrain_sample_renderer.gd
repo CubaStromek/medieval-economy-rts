@@ -11,8 +11,10 @@ const MAX_SAMPLE_SIDE: int = 64
 const MAX_TILE_ID: int = 237
 const CORNERS := [Vector2.ZERO, Vector2.RIGHT, Vector2.ONE, Vector2.DOWN]
 const TRIANGLES := [0, 1, 2, 0, 2, 3]
+const SharedModernShader = preload("res://scripts/view/modern_terrain_shader.gd")
+const ModernMaterials = preload("res://scripts/view/modern_terrain_materials.gd")
 const DEFAULT_VISUAL_OPTIONS := {"textures": true, "lighting": true,
-	"light_strength": 1.0, "relief_scale": 1.0, "linear_filter": false}
+	"light_strength": 1.0, "relief_scale": 1.0, "linear_filter": false, "texture_pack": "classic"}
 
 # ArrayMesh stores COLOR as UNORM8. Instead of rounding signed light to eight
 # bits, R/G carry the exact integer stencil (2*h - west - south) + 510 and B
@@ -59,6 +61,49 @@ void fragment() {
 }
 """
 
+# Our own continuous material compositor; reference lighting remains identical.
+const MODERN_SHADER: String = """
+shader_type canvas_item;
+render_mode unshaded;
+varying float terrain_light;
+varying vec2 terrain_grid;
+uniform sampler2D material_atlas_nearest : source_color, filter_nearest, repeat_disable;
+uniform sampler2D material_atlas_linear : source_color, filter_linear, repeat_disable;
+uniform sampler2D weights_low : filter_linear, repeat_disable;
+uniform sampler2D weights_high : filter_linear, repeat_disable;
+uniform vec2 atlas_pixels = vec2(1774.0, 887.0);
+uniform vec2 weight_dimensions = vec2(23.0, 19.0);
+uniform float weight_scale = 1.0;
+uniform vec2 source_origin = vec2(0.0);
+uniform bool linear_filter = false;
+uniform bool use_textures = true;
+uniform bool use_lighting = true;
+uniform float light_strength = 1.0;
+uniform float relief_scale = 1.0;
+
+void vertex() {
+    float raw_height = round(COLOR.a * 255.0);
+    // Recover the original grid before visual-only height displacement.
+    terrain_grid = vec2(VERTEX.x, VERTEX.y + raw_height * 40.0 / 33.333) / 40.0;
+    VERTEX.y += raw_height * 40.0 / 33.333 * (1.0 - relief_scale);
+    float stencil = round(COLOR.r * 255.0) * 256.0 + round(COLOR.g * 255.0) - 510.0;
+    terrain_light = clamp(stencil * relief_scale / 44.0, -1.0, 1.0);
+    if (COLOR.b > 0.5) {
+        terrain_light = clamp(terrain_light * 1.3 + 0.1, -1.0, 1.0);
+    }
+    terrain_light *= use_lighting ? light_strength : 0.0;
+}
+
+""" + SharedModernShader.FUNCTIONS + """
+
+void fragment() {
+    vec4 texel = use_textures ? modern_texel() : vec4(0.62, 0.64, 0.60, 1.0);
+    float highlight = light_gradient(terrain_light);
+    float shadow = light_gradient(-terrain_light);
+    COLOR = vec4(clamp(texel.rgb * (1.0 + highlight), vec3(0.0), vec3(1.0)) * (1.0 - shadow), texel.a);
+}
+"""
+
 var last_error: String = ""
 var sample_name: String = ""
 var sample_size := Vector2i.ZERO
@@ -68,6 +113,10 @@ var _batches: Array[Dictionary] = []
 var _textures: Dictionary = {}
 var _height_halo: Array = []
 var _visual_options: Dictionary = DEFAULT_VISUAL_OPTIONS.duplicate()
+var _classic_material: ShaderMaterial
+var _modern_material: ShaderMaterial
+var _configured_patch: Dictionary = {}
+var modern_material_build_count: int = 0
 
 
 func configure(patch: Dictionary, atlas: Image) -> bool:
@@ -116,7 +165,11 @@ func configure(patch: Dictionary, atlas: Image) -> bool:
 	shader.code = LIGHT_SHADER
 	var shader_material := ShaderMaterial.new()
 	shader_material.shader = shader
-	material = shader_material
+	_classic_material = shader_material
+	_modern_material = null
+	_configured_patch = patch.duplicate(true)
+	_visual_options["texture_pack"] = "classic"
+	material = _classic_material
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	texture_repeat = CanvasItem.TEXTURE_REPEAT_DISABLED
 	_textures = textures
@@ -135,11 +188,51 @@ func bounds() -> Rect2:
 	return _bounds
 
 
+# Configure once after the classic geometry. All material and weight textures
+# are retained; changing the selected pack only swaps ShaderMaterial resources.
+# Unsupported data never discards a previously configured, valid modern pack.
+func configure_modern_materials(patch: Dictionary, atlas: Image) -> bool:
+	if _configured_patch.is_empty() or patch != _configured_patch:
+		last_error = "Modern textures must use the same patch as the configured reference geometry."
+		return false
+	if atlas == null or atlas.is_empty() or atlas.get_width() < 256 or atlas.get_height() < 128 or absf(float(atlas.get_width()) / float(atlas.get_height()) - 2.0) > 0.02:
+		last_error = "Modern terrain requires a 4 x 2 material atlas with an approximately 2:1 aspect ratio."
+		return false
+	var result: Dictionary = ModernMaterials.build_weights(patch)
+	last_error = String(result["error"])
+	if not last_error.is_empty():
+		return false
+	var shader := Shader.new()
+	shader.code = MODERN_SHADER
+	var prepared := ShaderMaterial.new()
+	prepared.shader = shader
+	# The Compatibility renderer can share GL sampler state for the same RID.
+	# Separate cached resources let nearest/linear hints remain independent.
+	prepared.set_shader_parameter("material_atlas_nearest", ImageTexture.create_from_image(atlas))
+	prepared.set_shader_parameter("material_atlas_linear", ImageTexture.create_from_image(atlas))
+	prepared.set_shader_parameter("atlas_pixels", Vector2(atlas.get_size()))
+	prepared.set_shader_parameter("weights_low", ImageTexture.create_from_image(result["low"] as Image))
+	prepared.set_shader_parameter("weights_high", ImageTexture.create_from_image(result["high"] as Image))
+	prepared.set_shader_parameter("weight_dimensions", Vector2(sample_size + Vector2i.ONE))
+	prepared.set_shader_parameter("source_origin", Vector2(float(patch["origin"][0]), float(patch["origin"][1])))
+	_modern_material = prepared
+	modern_material_build_count += 1
+	_apply_visual_options()
+	return true
+
+
+func modern_available() -> bool:
+	return _modern_material != null
+
+
 
 # Partial visual-only updates. Invalid types and nonfinite values are ignored.
 # Relief scales both geometry and the slope-light stencil; the source water
 # brightness bias is retained. The default settings reproduce the reference.
 func set_visual_options(options: Dictionary) -> void:
+	if options.get("texture_pack") is String and options["texture_pack"] in ["classic", "modern"]:
+		if options["texture_pack"] == "classic" or modern_available():
+			_visual_options["texture_pack"] = options["texture_pack"]
 	for key: String in ["textures", "lighting", "linear_filter"]:
 		if options.get(key) is bool:
 			_visual_options[key] = options[key]
@@ -175,12 +268,16 @@ func projected_point(grid_position: Vector2) -> Vector2:
 
 
 func _apply_visual_options() -> void:
-	if material is ShaderMaterial:
-		var shader_material: ShaderMaterial = material as ShaderMaterial
+	material = _modern_material if _visual_options["texture_pack"] == "modern" and modern_available() else _classic_material
+	for shader_material: ShaderMaterial in [_classic_material, _modern_material]:
+		if shader_material == null:
+			continue
 		shader_material.set_shader_parameter("use_textures", _visual_options["textures"])
 		shader_material.set_shader_parameter("use_lighting", _visual_options["lighting"])
 		shader_material.set_shader_parameter("light_strength", _visual_options["light_strength"])
 		shader_material.set_shader_parameter("relief_scale", _visual_options["relief_scale"])
+	if _modern_material != null:
+		_modern_material.set_shader_parameter("linear_filter", _visual_options["linear_filter"])
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if bool(_visual_options["linear_filter"]) else CanvasItem.TEXTURE_FILTER_NEAREST
 	if not _height_halo.is_empty():
 		_bounds = Rect2(projected_point(Vector2.ZERO), Vector2.ZERO)

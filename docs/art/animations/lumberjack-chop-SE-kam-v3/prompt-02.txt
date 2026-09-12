@@ -1,0 +1,8 @@
+Use case: precise-object-edit
+Edit target: attached six-pose 3x2 lumberjack sheet. Correct ONLY the grips in A (top-left), B (top-middle), and F (bottom-right). Preserve the other three cells C,D,E unchanged.
+
+The second hand in A/B currently holds the first WRIST. THIS IS WRONG. It must close around WOOD. Move that lower hand onto the axe shaft beside the first hand, and reposition its forearm accordingly. Continue the SAME straight brown wooden handle toward the body enough to pass through both fists. In A, the shaft axis runs from the axe head diagonally down-left toward the cap: BOTH hands must lie on that SAME diagonal axis. In B, both hands must likewise line up on the continuous wooden shaft just above the cap. Move the hand up to the shaft, do not leave it below clutching a wrist. In F, also ensure BOTH fists surround the same continuous shaft; extend its wooden butt toward lower-left beneath the second hand so there is no wrist-holding.
+
+For all three corrected poses make the geometry readable: head -> visible brown shaft -> first fist -> short visible brown shaft -> second fist -> small exposed brown wooden butt. Two fists next to each other along ONE rigid shaft. Keep a little exposed wood between them. No skin-colored rod, no hand around forearm, no detached hand, no extra arms. Each fist has its own forearm leading to its own shoulder. Compact movement only.
+
+Keep current axe-head locations, blade shape, face/cap, stance, body, boots, painting, exact cell composition and white background. NO ground shadow, no labels. Do not introduce a broad over-left-head swing. This is a hand-to-shaft alignment repair, not a new pose sequence.

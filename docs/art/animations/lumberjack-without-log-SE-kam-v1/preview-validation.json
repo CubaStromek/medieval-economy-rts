@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-10",
+  "fragmentPath": "/Users/openclaw/.codex/visualizations/2026/09/09/01a087a4-bf3d-7f70-b463-afa4f5165f3c/lumberjack-own-design.html",
+  "fragmentBytes": 184844,
+  "embeddedAtlasSize": [
+    1536,
+    1024
+  ],
+  "initialState": "paused,frame0",
+  "staticStructureChecked": true,
+  "browserRuntimeChecked": false,
+  "browserRuntimeLimitation": "Browser URL policy blocked local file inspection; no alternate browser or network workaround attempted.",
+  "visualReview": "Static eight-frame sheet reviewed; temporal motion approval and game QA pending.",
+  "alignment": "Exact grid crops, no per-frame repositioning; precise registration not established."
+}

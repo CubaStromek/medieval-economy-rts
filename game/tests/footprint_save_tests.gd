@@ -1,6 +1,7 @@
 extends RefCounted
 
 const World = preload("res://scripts/simulation/simulation_world.gd")
+const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
 const TEST_COUNT: int = 8
 
 
@@ -102,7 +103,7 @@ static func _test_v15_keeps_crowded_settlement(failures: Array[String]) -> void:
 	if not restored.from_data(data):
 		failures.append("A real v15 crowded settlement must load without enlarging its historic buildings")
 		return
-	_check(restored.to_data() == source.to_data() and restored.grid.blocked_by.size() == 2,
+	_check(restored.to_data() == LegacyFixture.expected_pre_fog_migration(source.to_data()) and restored.grid.blocked_by.size() == 2,
 		"V15 migration must preserve every entity, inventory, arbitrary adjacent entrance and tile without shifting or loss", failures)
 	var new_id: int = restored.place_building("warehouse", Vector2i(9, 6))
 	_check(new_id != 0 and int(restored.buildings[new_id]["footprint_version"]) == 1

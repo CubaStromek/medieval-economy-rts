@@ -1,0 +1,15 @@
+Use case: precise-object-edit
+Asset type: six-pose sprite animation sheet, 3 columns by 2 rows.
+Image 1 is the EDIT TARGET: our painted lumberjack chopping sheet.
+Image 2 is the ORIGINAL KaM animation POSE REFERENCE, same six-pose order A B C / D E F. The original uses TWO HANDS holding the axe. Its small green shapes across the front torso are the second bent arm, NOT a hanging free arm.
+
+Primary request: Correct ONLY the arms and axe grip in ALL SIX cells of image 1. Both hands must grip the SAME wooden axe shaft in every pose, adjacent and physically plausible, each hand connected to its own forearm and shoulder. The currently hanging image-left arm must be lifted and bent across the front torso to join the axe grip on image-right. Remove the former hanging hand/forearm completely. Exactly two arms and two hands, both gripping one axe. No free hand, no hand grasping blade or other wrist.
+
+Preserve image 1's axe-head positions and compact poses: A top-left has the head above/right of the cap; B top-middle is a little higher closer to cap center; C top-right reaches to image-right at shoulder/chest height; D bottom-left is the LOW completed strike at waist/upper thigh; E bottom-middle is farther right at lower chest/waist, lower than C; F bottom-right reaches diagonally up-right near cap height. Preserve one continuous compact wooden shaft and the current blade endpoints. Where necessary extend the handle a little toward the body to fit the second hand; do not enlarge the axe head.
+A/B: second forearm crosses upper chest and bends upward, both grips compact beside upper-right of cap.
+C/E: both forearms run forward across chest towards the shaft at image-right.
+D: both hands hold the low shaft together just in front/right of waist.
+F: both arms raised diagonally right, second arm across upper torso.
+Follow the compact two-arm gesture in image 2; NO broad generic over-left-head swing, NO wide lunge.
+
+Hard invariants: keep each figure's head, cap, face, torso, belt, apron, legs, boots, narrow planted stance, camera, scale, location in its cell, painting style, colors and lighting unchanged. Only arms/sleeve articulation and hands/very small shaft accommodation may change. Same stocky brown-bearded craftsman, orange cap, olive tunic, cream rolled sleeves, brown front apron and boots. Keep all 6 poses separate and full-body with exactly the same 3x2 composition and white background. No ground shadow, no contact shadow, no tree, no ground, no labels, no motion lines, no extra props. This is a targeted grip correction, not a new choreography.

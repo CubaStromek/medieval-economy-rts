@@ -17,6 +17,8 @@ static func run(host: Node) -> Array[String]:
 	host.add_child(viewport)
 	var main: MainView = MainScene.instantiate() as MainView
 	viewport.add_child(main)
+	# Share the measured revision-1, eight-height-unit foundation so real
+	# pointer dispatch, stakes and shovel cues retain their 64-tick contract.
 	main.world = Fixture._fixture(false)["world"]
 	main.terrain_renderer.bind_grid(main.world.grid)
 	main.simulation_speed = 0.0

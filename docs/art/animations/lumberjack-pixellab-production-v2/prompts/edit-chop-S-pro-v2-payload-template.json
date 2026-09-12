@@ -1,0 +1,21 @@
+{
+  "method": "edit_with_text",
+  "edit_images": [
+    {
+      "image": {
+        "type": "base64",
+        "base64": "<encode the exact authorized S PNG bytes at submission; this is an unsent template>",
+        "format": "png"
+      },
+      "width": 256,
+      "height": 256
+    }
+  ],
+  "image_size": {
+    "width": 256,
+    "height": 256
+  },
+  "description": "Edit only the arms, hands and existing axe of this ONE south-facing lumberjack into a clear TWO-HANDED wood-chopping ready pose. He is a working lumberjack preparing to chop wood, not a warrior. Preserve the same man, face, orange cap, olive tunic, cream rolled sleeves, front brown apron, trousers, boots, painted matte shading, color palette and elevated camera.\n\nKeep the original 256x256 canvas and every existing margin. Retain the original body height and proportions, crown position, face position, belt position, leg pose and boot positions exactly. Do not zoom, enlarge, recenter, crop, lengthen the legs or redesign the clothing. The original head, torso and planted feet are the registration reference; only the arm and tool pose changes.\n\nShow ONE single-headed woodcutter's axe with ONE continuous wooden handle. BOTH anatomically correct hands firmly encircle that SAME handle at two separated points. One hand grips near the handle end and the other farther up the shaft; neither hand is free. Keep both wrists naturally aligned with their forearms and elbows comfortably bent. The complete shaft is continuous through both grips and reaches the single metal axe head.\n\nHold the axe in a compact raised ready position, diagonally in front of the upper torso, with its metal head clearly outside the body silhouette to one side near shoulder level. Leave the face and cap unobstructed and leave space above for a later backswing. This is one readable starting pose for a subsequent full chopping cycle, not multiple poses on one image. No second axe, detached blade, log, tree, stump, scenery or ground shadow. Remove the plain background to genuine transparency while preserving the original canvas and body registration.",
+  "seed": 20260913,
+  "no_background": true
+}

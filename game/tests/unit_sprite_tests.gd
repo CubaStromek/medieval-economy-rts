@@ -192,12 +192,21 @@ static func _test_actual_view_and_pause(host: Node, roles: Array[String], failur
 		var feet: Vector2 = entry["position"]
 		var presentation: Dictionary = main.worker_presentation(worker, feet)
 		seen[role] = true
-		_expect(presentation.get("texture") == main.unit_sprites.texture_for(role),
-			"The real draw path must use the mapped sprite for " + role, failures)
 		var rect: Rect2 = presentation["rect"]
-		var bob: Vector2 = SpriteLibrary.motion_offset(worker, main.world.tick, 0.25)
-		_expect(is_equal_approx(rect.end.y, feet.y + bob.y),
-			"Actual drawn sprite must remain anchored to its relief-sampled feet", failures)
+		if role == "lumberjack":
+			_expect(bool(presentation.get("animated_lumberjack", false))
+				and presentation.get("clip") == "walk_axe" and presentation.get("direction") == "S"
+				and presentation.get("texture") is AtlasTexture,
+				"The actual lumberjack must use the delivered eight-way animation rather than the old role atlas", failures)
+			var registered: Vector2 = rect.position + Vector2(128.0, 205.0) * (33.0 / 163.0)
+			_expect(registered.is_equal_approx(feet) and not bool(presentation["flip_h"]),
+				"The whole lumberjack canvas must keep its authored anchor on relief-sampled feet without mirroring", failures)
+		else:
+			_expect(presentation.get("texture") == main.unit_sprites.texture_for(role),
+				"The real draw path must use the mapped sprite for " + role, failures)
+			var bob: Vector2 = SpriteLibrary.motion_offset(worker, main.world.tick, 0.25)
+			_expect(is_equal_approx(rect.end.y, feet.y + bob.y),
+				"Actual drawn sprite must remain anchored to its relief-sampled feet", failures)
 		if int(worker["id"]) == carrier_id:
 			carrier_feet = feet
 			var cargo: Vector2 = presentation["cargo_position"]

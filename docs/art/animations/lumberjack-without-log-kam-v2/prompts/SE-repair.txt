@@ -1,0 +1,4 @@
+Use case: precise-object-edit
+Edit target: eight-frame 4x2 painted lumberjack sheet.
+Make ONLY this tiny costume correction: in frame5, BOTTOM-LEFT cell, there is a small unwanted bright red triangular patch just behind the upper LEFT shoulder/back, below the cap. Replace this red fabric sliver with matching OLIVE tunic fabric or white background according to the existing shoulder silhouette. Our lumberjack has no red cape, scarf or red cloth anywhere.
+Preserve the full eight-frame sheet, all poses, faces, cap, arms, hands, axe, feet, scale, placement and every other detail unchanged. Keep plain white background and NO ground shadows. Do not redraw the walk or alter any leg. Only remove the small red shoulder sliver in the bottom-left figure.

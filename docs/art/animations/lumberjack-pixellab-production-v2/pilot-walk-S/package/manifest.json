@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "asset_id": "lumberjack-pixellab-production-v2",
+  "role": "lumberjack",
+  "created_at": "2026-09-10T16:51:18.013327+00:00",
+  "scope_complete_3_clips_8_directions": false,
+  "visual_acceptance": "not established by packaging",
+  "runtime_reader": "not implemented by this tool",
+  "source_canvas_px": [
+    256,
+    256
+  ],
+  "anchor_source_px": [
+    128.0,
+    205.0
+  ],
+  "body_height_source_px": 163.0,
+  "body_height_world_px": 33.0,
+  "world_px_per_source_px": 0.20245398773006135,
+  "registration": {
+    "trim": "none",
+    "frame_offsets": "none",
+    "basis": "explicit common anchor and body height; equipment bounds do not affect scale",
+    "placement_formula": "screen_top_left = projected_physical_foot - anchor_source_px * world_px_per_source_px"
+  },
+  "direction_order": [
+    "S"
+  ],
+  "direction_vectors_screen_y_down": {
+    "S": [
+      0,
+      1
+    ]
+  },
+  "clips": {
+    "walk_axe": {
+      "label": "Chůze se sekerou",
+      "playback": "loop",
+      "fps": 12.0,
+      "fps_authority": "explicit packer configuration; simulation timing not yet validated",
+      "rest_frame": 0,
+      "renders_cargo": null,
+      "tool_grip": "right_hand",
+      "atlas": "atlases/walk_axe.png",
+      "atlas_size_px": [
+        6144,
+        256
+      ],
+      "atlas_sha256": "0c0a704e6a938453e2e0cb76b5f2b0014b2cfcdf545ee4988f09480932ff53eb",
+      "directions": {
+        "S": {
+          "frame_count": 24,
+          "frames": [
+            {
+              "index": 0,
+              "file": "frames/walk_axe/S/00.png",
+              "source_index": 1,
+              "source_file": "jobs/walk_axe/S/images/frame_01.png",
+              "png_sha256": "856951ed0336c38283657ade00b68ac51d2fa48467e265642f7569002b83b131",
+              "rgba_sha256": "153f2fb9441b749cec98ce06d90b7b23f450be20a37bd9b7aff39df8a7f11335",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                0,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 1,
+              "file": "frames/walk_axe/S/01.png",
+              "source_index": 2,
+              "source_file": "jobs/walk_axe/S/images/frame_02.png",
+              "png_sha256": "ffbd1eca01fb673ff0a6b7a3fbc6f1af5167db6b249c31840b89385758d59060",
+              "rgba_sha256": "e15ecb56acf13ff7cd75a6464b8d4c167cb4be2595b2ab1d42a336a2600834c7",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                256,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 2,
+              "file": "frames/walk_axe/S/02.png",
+              "source_index": 3,
+              "source_file": "jobs/walk_axe/S/images/frame_03.png",
+              "png_sha256": "0200bd5d62de0a14ba60f6028b83713fffafe2465833461cf45e0156afc7f9e5",
+              "rgba_sha256": "84d3023916abbce6b45b19c939d76d7017cafe5d385dfb17f7e1dc4cd970b6f6",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                512,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 3,
+              "file": "frames/walk_axe/S/03.png",
+              "source_index": 4,
+              "source_file": "jobs/walk_axe/S/images/frame_04.png",
+              "png_sha256": "ed0d1e4d85c0a8ae7c58a5b3d72ad127e5991bfa9b14c8c97f5acc383ccb12b3",
+              "rgba_sha256": "8e91aef6d5808fed3ee68fcfac95b28a8315815fb4afc54e0ab6ac288e0386b2",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                768,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 4,
+              "file": "frames/walk_axe/S/04.png",
+              "source_index": 5,
+              "source_file": "jobs/walk_axe/S/images/frame_05.png",
+              "png_sha256": "69306f4bdb3d16e038ede8a5828acd0b2f2dc016d9f350b3b479811576a28e40",
+              "rgba_sha256": "cc06b72bb13abec61ecc4fedb6cb014e17044cffb53fdd3a4c5003b09aee3fd6",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                1024,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 5,
+              "file": "frames/walk_axe/S/05.png",
+              "source_index": 6,
+              "source_file": "jobs/walk_axe/S/images/frame_06.png",
+              "png_sha256": "ad3639cc334c17e368b43bc3aaf770914f4ddebc2c4047c8c54b0f7a1bbcbe52",
+              "rgba_sha256": "46feeb8e6ac014a1c32f85fb566348d635366ebd949d56cd9f1a4289bf4eae27",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                1280,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 6,
+              "file": "frames/walk_axe/S/06.png",
+              "source_index": 7,
+              "source_file": "jobs/walk_axe/S/images/frame_07.png",
+              "png_sha256": "66d33afff5e4fb8f8649071c24aaca8e08514b87c20193a1cfac424eddf29ca7",
+              "rgba_sha256": "40899f79b7e86d1bfdd86a6d54d90d7d540eeba38916db08607257f88489db30",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                1536,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 7,
+              "file": "frames/walk_axe/S/07.png",
+              "source_index": 8,
+              "source_file": "jobs/walk_axe/S/images/frame_08.png",
+              "png_sha256": "e8eedd7c9052e14f42c195c00863bcbfb34aa0c22c90f4caf6a46a11c6162e78",
+              "rgba_sha256": "f8ab4b936f144b4c82bd0f22e9b6d6aebdc0a0dd8f6a8f4c87520ae0e425caae",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                1792,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 8,
+              "file": "frames/walk_axe/S/08.png",
+              "source_index": 9,
+              "source_file": "jobs/walk_axe/S/images/frame_09.png",
+              "png_sha256": "e7865c702ee04c38f525aabb8aca787d9b7110ec9338d8266f296370e4e42289",
+              "rgba_sha256": "37196226323711c5d382b84e975e494a7e5c483ed680a39d79be27bdc4c8c86c",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                2048,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 9,
+              "file": "frames/walk_axe/S/09.png",
+              "source_index": 10,
+              "source_file": "jobs/walk_axe/S/images/frame_10.png",
+              "png_sha256": "f72d0f2815446aa854caef3491881e7d2c145860017f447fc5567e7c20cb1014",
+              "rgba_sha256": "caaf16481470a21b3cb3194983d3a032348c82525a169353d61fa335268adbf8",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                2304,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 10,
+              "file": "frames/walk_axe/S/10.png",
+              "source_index": 11,
+              "source_file": "jobs/walk_axe/S/images/frame_11.png",
+              "png_sha256": "1904535b360a5d56fe0405951e7c818edf976b81111197b6ecf1a5cc4d06f4e5",
+              "rgba_sha256": "63f6f5d07213c91a198efd5dae075a1e34657b785170efd379c882276284afdd",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                2560,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 11,
+              "file": "frames/walk_axe/S/11.png",
+              "source_index": 12,
+              "source_file": "jobs/walk_axe/S/images/frame_12.png",
+              "png_sha256": "5f89f7d174b42c5e88427192865fab391c8c7883f03e8b561c96aec63aedd909",
+              "rgba_sha256": "e06cd542f519eb2a091f62653884ca5a6f333dcd844845b39d247f520a52084c",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                2816,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 12,
+              "file": "frames/walk_axe/S/12.png",
+              "source_index": 13,
+              "source_file": "jobs/walk_axe/S/images/frame_13.png",
+              "png_sha256": "1d865d845422739fa21056be82a7f8a1ae0e6d9d7251aa47231f77867e18daec",
+              "rgba_sha256": "b6f855093c03f175bd418893f4af9493f0edab3b6095b4dbb9bc461d3ff6ad40",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                3072,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 13,
+              "file": "frames/walk_axe/S/13.png",
+              "source_index": 14,
+              "source_file": "jobs/walk_axe/S/images/frame_14.png",
+              "png_sha256": "2e37c7472b03f1ff21850eade9a01cd7c91c28703f67d5c4854c6beb57c8f09d",
+              "rgba_sha256": "d86047d66ba7cad3f2d138354b1b95cf1fcc36634d675d65915449ec9693bb38",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                3328,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 14,
+              "file": "frames/walk_axe/S/14.png",
+              "source_index": 15,
+              "source_file": "jobs/walk_axe/S/images/frame_15.png",
+              "png_sha256": "1750318a745eee08ed10365585f313c16fbfad97fa35148ac56d03df05f1263f",
+              "rgba_sha256": "016020d636672c122aec50cd8a7f517ae03656233b70a3cd564b6a3bc9190289",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                3584,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 15,
+              "file": "frames/walk_axe/S/15.png",
+              "source_index": 16,
+              "source_file": "jobs/walk_axe/S/images/frame_16.png",
+              "png_sha256": "81d9c7d956b2239bd3a0892a87737bd841626e49cac422759e4b0292e443fd8b",
+              "rgba_sha256": "252dd07fc8abb5101ba2a094f0239e74206debb97f6660478a0a6790e37b8d1f",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                3840,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 16,
+              "file": "frames/walk_axe/S/16.png",
+              "source_index": 17,
+              "source_file": "jobs/walk_axe/S/images/frame_17.png",
+              "png_sha256": "fc75a6a5bf9f3909236375681fdd41e52f3147c4deefba590261e4224fedfab4",
+              "rgba_sha256": "6111561f09d62a01480e7789e822b047346493561c3283f8787fbf3abeda0fd6",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                4096,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 17,
+              "file": "frames/walk_axe/S/17.png",
+              "source_index": 18,
+              "source_file": "jobs/walk_axe/S/images/frame_18.png",
+              "png_sha256": "e502cb0e952604e68fd6b627f99bf5317940b89085e9fb5d606e30d2baca62f2",
+              "rgba_sha256": "b8e5952f7f1f4950e3104ba38d2314bde86dd61644cfb3d179d497796fc2ff70",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                4352,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 18,
+              "file": "frames/walk_axe/S/18.png",
+              "source_index": 19,
+              "source_file": "jobs/walk_axe/S/images/frame_19.png",
+              "png_sha256": "397471cd4673e302347ea86728f1748994393156e51f3ee63dd58e9adbe9df8a",
+              "rgba_sha256": "decd73cad0b4b3b22c9d12d574390b53bc2b5b0417d83a6fb9bb6fc76f5abd74",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                4608,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 19,
+              "file": "frames/walk_axe/S/19.png",
+              "source_index": 20,
+              "source_file": "jobs/walk_axe/S/images/frame_20.png",
+              "png_sha256": "00650df37c893ed76a9f320d9dbbd3d165ba76ec313e0e0ffd619e54584cfbf9",
+              "rgba_sha256": "ae2be47207d74e9d19fc4ee3240cc8c83491b60edb717d63e702a158ba052f0e",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                4864,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 20,
+              "file": "frames/walk_axe/S/20.png",
+              "source_index": 21,
+              "source_file": "jobs/walk_axe/S/images/frame_21.png",
+              "png_sha256": "cf80a3f1700f7fa7dd696336c193b158631bfa10da85bbab2320ae1be902b4c3",
+              "rgba_sha256": "993bcd383e74b585760801d25b674d6a1630d75cfdfe9eb0538d983eba68ad75",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                5120,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 21,
+              "file": "frames/walk_axe/S/21.png",
+              "source_index": 22,
+              "source_file": "jobs/walk_axe/S/images/frame_22.png",
+              "png_sha256": "8db1fb221d934d8b0b3535c2d0af9e54e024b770c26825b25624c5a4316155a9",
+              "rgba_sha256": "d8b075771520f238a81c2c52af732cb937a6fa4dbc00badfa627513489febb43",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                5376,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 22,
+              "file": "frames/walk_axe/S/22.png",
+              "source_index": 23,
+              "source_file": "jobs/walk_axe/S/images/frame_23.png",
+              "png_sha256": "24fb87798710ca3e6078a448305da89be28622749fb6facb249168ef8140a278",
+              "rgba_sha256": "87f93b766a6ac69bfbf930ae275b67967f7dedcf74b4abef6f89f92ab1e995fc",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                5632,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "index": 23,
+              "file": "frames/walk_axe/S/23.png",
+              "source_index": 24,
+              "source_file": "jobs/walk_axe/S/images/frame_24.png",
+              "png_sha256": "dd966df491956be04beee10b63bcabd613611f2f3f8729f95db7edd63b86c07f",
+              "rgba_sha256": "23db86f9e9139c7cb7f02ef6369de755180e153cf0ef3a9706249575d656c829",
+              "duration_seconds": 0.08333333333333333,
+              "atlas_rect_px": [
+                5888,
+                0,
+                256,
+                256
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "review_note": "DÍLČÍ PILOT: pouze chůze se sekerou na jih; 1 z 24 kombinací. Zbývajících 23 není dodáno. Zvoleny původní snímky 1–24, vstupní 00 zůstává v raw. Kotva je předběžná; běžná hra a vizuální přijetí zatím nejsou ověřené."
+}

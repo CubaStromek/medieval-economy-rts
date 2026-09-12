@@ -44,12 +44,13 @@ static func run(host: Node) -> Array[String]:
 
 
 static func _test_full_size_geometry(main: MainView, ids: Array[int], failures: Array[String]) -> void:
-	var expected_sizes: Array[Vector2] = [Vector2(3, 3), Vector2(3, 2), Vector2(4, 2)]
+	var expected_sizes: Array[Vector2] = [Vector2(3, 3), Vector2(4, 3), Vector2(4, 2)]
+	var expected_cells: Array[int] = [9, 9, 8]
 	for index: int in range(ids.size()):
 		var building: Dictionary = main.world.buildings[ids[index]]
 		var shape: Dictionary = main.building_geometry(building)
 		_expect(shape["ground_size"] == expected_sizes[index]
-			and (shape["foundations"] as Array).size() == int(expected_sizes[index].x * expected_sizes[index].y),
+			and (shape["foundations"] as Array).size() == expected_cells[index],
 			"Actual building foundations must occupy the authored full %s footprint" % building["type"], failures)
 		var approach: Vector2i = building["entrance"]
 		var expected_door: Vector2 = main.terrain_renderer.project_grid_position(Vector2(approach) - Vector2(0, 0.5))
@@ -60,7 +61,7 @@ static func _test_full_size_geometry(main: MainView, ids: Array[int], failures: 
 static func _test_catalog_geometry(main: MainView, failures: Array[String]) -> void:
 	for type: String in main.world.catalog.buildings:
 		var anchor := Vector2i(24, 16)
-		var building: Dictionary = {"type": type, "position": anchor, "footprint_version": 1,
+		var building: Dictionary = {"type": type, "position": anchor, "footprint_version": main.world.placement_footprint_version(type),
 			"entrance": main.world.placement_entrance(type, anchor)}
 		var shape: Dictionary = main.building_geometry(building)
 		var definition: Dictionary = main.world.catalog.building(type)
@@ -98,11 +99,34 @@ static func _test_actual_selection(host: Node, viewport: SubViewport, main: Main
 		var shape: Dictionary = main.building_geometry(building)
 		var roof: PackedVector2Array = shape["roofs"][0]["points"]
 		var roof_point: Vector2 = (roof[0] + roof[1] + roof[2] + roof[3]) * 0.25
+		var sprite: Dictionary = main.building_sprite_presentation(building)
+		if not sprite.is_empty():
+			# The retained vector shell still describes ground/shadow geometry;
+			# bitmap buildings must be clicked on their actual painted roof.
+			roof_point = _bitmap_roof_point(sprite)
+			_expect(roof_point.is_finite(), "The current bitmap must expose a genuine opaque roof target", failures)
+			if not roof_point.is_finite():
+				continue
 		_center_point(main, viewport, roof_point, pointer)
 		await _settle(host)
 		_click(viewport, pointer)
 		_expect(main.world.building_id_at(main.selected_cell) == id,
-			"Clicking the drawn roof beyond the northern foundation must select the building", failures)
+			"Clicking the actual drawn roof must select the building", failures)
+
+
+static func _bitmap_roof_point(sprite: Dictionary) -> Vector2:
+	var texture: Texture2D = sprite["texture"]
+	var image: Image = texture.get_image()
+	if image.is_compressed():
+		image.decompress()
+	var rect: Rect2 = sprite["rect"]
+	var scale: Vector2 = rect.size / Vector2(image.get_size())
+	for y: int in range(4, image.get_height() - 4, 4):
+		for x: int in range(4, image.get_width() - 4, 4):
+			var point: Vector2 = rect.position + (Vector2(x, y) + Vector2.ONE * 0.5) * scale
+			if image.get_pixel(x, y).a >= 0.98:
+				return point
+	return Vector2.INF
 
 
 static func _test_hover_preview(host: Node, viewport: SubViewport, main: MainView, failures: Array[String]) -> void:
@@ -116,9 +140,9 @@ static func _test_hover_preview(host: Node, viewport: SubViewport, main: MainVie
 	motion.global_position = motion.position
 	viewport.push_input(motion, true)
 	await _settle(host)
-	_expect(main.placement_preview.get("valid", false) and (main.placement_preview.get("cells", []) as Array).size() == 6,
-		"A real pointer hover must preview all six occupied lumber-hut tiles", failures)
-	_expect(main.placement_preview.get("entrance") == anchor + Vector2i(2, 1)
+	_expect(main.placement_preview.get("valid", false) and (main.placement_preview.get("cells", []) as Array).size() == 9,
+		"A real pointer hover must preview all nine occupied lumber-hut tiles", failures)
+	_expect(main.placement_preview.get("entrance") == anchor + Vector2i(3, 0)
 		and main._placement_canvas.visible,
 		"Actual placement overlay must expose the fixed right-hand door approach separately", failures)
 	_expect(main.world.to_data() == before,
@@ -132,7 +156,7 @@ static func _test_obstacle_reasons(main: MainView, failures: Array[String]) -> v
 	var result: Dictionary = Preview.evaluate(main.world, "lumber_hut", anchor)
 	_expect(not result["valid"] and String(result["reason"]).to_lower().contains("tree"),
 		"A tree away from the anchor but inside the full footprint must explain rejection", failures)
-	var blocked_approach := Vector2i(17, 17)
+	var blocked_approach := Vector2i(18, 16)
 	main.world.add_tree(blocked_approach)
 	result = Preview.evaluate(main.world, "lumber_hut", Vector2i(15, 16))
 	_expect(not result["valid"] and String(result["reason"]).to_lower().contains("entrance"),
@@ -193,7 +217,7 @@ static func _test_construction_and_legacy(main: MainView, failures: Array[String
 	var center: Vector2 = main.terrain_renderer.cell_center(Vector2i(1, 1))
 	_expect(main._building_id_at_visual_position(center + Vector2(0, -29)) == legacy,
 		"Legacy roof selection must remain aligned with its original one-cell art", failures)
-	main.world.default_footprint_version = 1
+	main.world.default_footprint_version = 2
 	main.queue_redraw()
 
 

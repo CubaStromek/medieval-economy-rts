@@ -1,0 +1,764 @@
+{
+  "version": 1,
+  "revision": "v3",
+  "createdDate": "2026-09-10",
+  "direction": "SE",
+  "frameCount": 10,
+  "uniquePoseCount": 6,
+  "sequence": [
+    "A",
+    "B",
+    "A",
+    "C",
+    "D",
+    "D",
+    "D",
+    "E",
+    "C",
+    "F"
+  ],
+  "originalKaMSpriteIds1Based": [
+    1614,
+    1613,
+    1614,
+    1616,
+    2826,
+    1618,
+    1618,
+    1617,
+    1616,
+    1615
+  ],
+  "repeatedPhaseGroups0Based": [
+    [
+      0,
+      2
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      5,
+      6
+    ]
+  ],
+  "canvas": {
+    "size": [
+      640,
+      480
+    ],
+    "anchor": [
+      256,
+      440
+    ]
+  },
+  "sourceSheets": {
+    "AB": {
+      "path": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-d832e8c3-8471-4b88-acf2-597c84683311.png",
+      "sha256": "f285dd19618202bf899cbdd343b201f26b7677b3395bc15a5e1f2a72111b22e7",
+      "sizeBytes": 911769,
+      "copiedFile": "source-final-AB.png",
+      "size": [
+        2092,
+        752
+      ],
+      "mode": "RGB",
+      "hasAlpha": false
+    },
+    "CDEF": {
+      "path": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-43ac83c4-80e4-486a-9d36-06319ad678fa.png",
+      "sha256": "67a0d54bf104ae40832776ba7cf134ded7b8798038e4875a62b03fafeb3985aa",
+      "sizeBytes": 1400789,
+      "copiedFile": "source-final-CDEF.png",
+      "size": [
+        1808,
+        870
+      ],
+      "mode": "RGB",
+      "hasAlpha": false
+    }
+  },
+  "scaleCalibration": {
+    "method": "Cap-crown-to-front-sole height, narrow manually selected cap ROIs excluding the axe.",
+    "ABMeanHeight": 580.0,
+    "CDEFMeanHeight": 351.25,
+    "sharedABFactor": 0.6056034482758621,
+    "ABResizeDimensions": [
+      633,
+      455
+    ],
+    "ABSameScale": true,
+    "rounding": "Both output dimensions rounded to integer pixels."
+  },
+  "uniquePoses": [
+    {
+      "id": "A",
+      "sourceGroup": "AB",
+      "sourceCellIndex0Based": 0,
+      "rawCellRect": [
+        0,
+        0,
+        1046,
+        752
+      ],
+      "rawFile": "raw-keyposes/A.png",
+      "rawSha256": "d5eda269206d45710fed84477f19a578a27560d5cd24e2b45a37db089f49b98d",
+      "rawPixelsSha256": "1c2f4a9f806a9248a9ca58b6cbe5458459d271052d9dd407ee0614cab24e5511",
+      "rawSize": [
+        1046,
+        752
+      ],
+      "rawFrontSoleAnchor": [
+        615,
+        698
+      ],
+      "capCrownMeasurementROI": [
+        580,
+        90,
+        655,
+        230
+      ],
+      "rawCapTopY": 119,
+      "rawCapToSoleHeight": 580,
+      "file": "unique-frames/A.png",
+      "size": [
+        640,
+        480
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "cb496a7897bc25c991631ec7cfe6c20e2af11fdcd616523090b2131c0ddc48ee",
+      "pixelsSha256": "470aec009356890298650300282133e9f6ff4e10cc13591bb49b4d4c707675f1",
+      "resampled": true,
+      "nominalScale": 0.6056034482758621,
+      "resampling": "Lanczos",
+      "workingSize": [
+        633,
+        455
+      ],
+      "workingPixelsSha256": "b5f7d00b88d902906c74c3a78085b14af587d453fb12916e1aa6f9948b330f2b",
+      "workingSoleAnchor": [
+        372,
+        422
+      ],
+      "integerOffset": [
+        -116,
+        18
+      ],
+      "registeredSoleAnchor": [
+        256,
+        440
+      ],
+      "retainedWorkingRectExclusive": [
+        116,
+        0,
+        633,
+        455
+      ],
+      "registeredFigureBoundsExclusive": [
+        197,
+        38,
+        373,
+        441
+      ],
+      "silhouetteUnclipped": true,
+      "retainedWorkingPixelsUnchangedByTranslation": true,
+      "originalRawRGBPreservedWithoutResampling": false
+    },
+    {
+      "id": "B",
+      "sourceGroup": "AB",
+      "sourceCellIndex0Based": 1,
+      "rawCellRect": [
+        1046,
+        0,
+        1046,
+        752
+      ],
+      "rawFile": "raw-keyposes/B.png",
+      "rawSha256": "e7f9db385c13b1ce183212c2389273d508b2e2dfb744fdb4ea7aae5011a2aed0",
+      "rawPixelsSha256": "f481dc44cc8d7771d32b850f11a706cc56bfe712f11f6a88bb9b51d594adc411",
+      "rawSize": [
+        1046,
+        752
+      ],
+      "rawFrontSoleAnchor": [
+        352,
+        698
+      ],
+      "capCrownMeasurementROI": [
+        317,
+        90,
+        392,
+        230
+      ],
+      "rawCapTopY": 119,
+      "rawCapToSoleHeight": 580,
+      "file": "unique-frames/B.png",
+      "size": [
+        640,
+        480
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "0ca7f39db355799f70689e4fcea312d7d2f54152e35a7980a62a6075c1a7d8f3",
+      "pixelsSha256": "3c64342f1cdafe55e397f3cd18312c721f67a22dae06387a71f0868854296df7",
+      "resampled": true,
+      "nominalScale": 0.6056034482758621,
+      "resampling": "Lanczos",
+      "workingSize": [
+        633,
+        455
+      ],
+      "workingPixelsSha256": "b4f773b1daca29cbe348309d9179a8be5250287d37e38ad40943ccfa7a8d0bb8",
+      "workingSoleAnchor": [
+        214,
+        422
+      ],
+      "integerOffset": [
+        42,
+        18
+      ],
+      "registeredSoleAnchor": [
+        256,
+        440
+      ],
+      "retainedWorkingRectExclusive": [
+        0,
+        0,
+        598,
+        455
+      ],
+      "registeredFigureBoundsExclusive": [
+        195,
+        25,
+        369,
+        441
+      ],
+      "silhouetteUnclipped": true,
+      "retainedWorkingPixelsUnchangedByTranslation": true,
+      "originalRawRGBPreservedWithoutResampling": false
+    },
+    {
+      "id": "C",
+      "sourceGroup": "CDEF",
+      "sourceCellIndex0Based": 2,
+      "rawCellRect": [
+        1205,
+        0,
+        603,
+        435
+      ],
+      "rawFile": "raw-keyposes/C.png",
+      "rawSha256": "78757328a5b6f56b7b816eaca938c3b3723f9d6ba43ab7eb58a6e3ebe5fc8082",
+      "rawPixelsSha256": "60dde68e8ed969bedcaae27ebd17914f64ea901a6c1a57b4f6b9e6fbe8c5fad2",
+      "rawSize": [
+        603,
+        435
+      ],
+      "rawFrontSoleAnchor": [
+        237,
+        402
+      ],
+      "capCrownMeasurementROI": [
+        212,
+        35,
+        272,
+        130
+      ],
+      "rawCapTopY": 51,
+      "rawCapToSoleHeight": 352,
+      "file": "unique-frames/C.png",
+      "size": [
+        640,
+        480
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "ce66663ab89cabe3a497ab3658992ceabcb08661308cc9289fce6d88b35a413a",
+      "pixelsSha256": "67b04673e3b2aa571ca352dc213f02eda166cf961d2d62f3c1cafa3cf1550eb1",
+      "resampled": false,
+      "nominalScale": 1,
+      "resampling": "none",
+      "workingSize": [
+        603,
+        435
+      ],
+      "workingPixelsSha256": "60dde68e8ed969bedcaae27ebd17914f64ea901a6c1a57b4f6b9e6fbe8c5fad2",
+      "workingSoleAnchor": [
+        237,
+        402
+      ],
+      "integerOffset": [
+        19,
+        38
+      ],
+      "registeredSoleAnchor": [
+        256,
+        440
+      ],
+      "retainedWorkingRectExclusive": [
+        0,
+        0,
+        603,
+        435
+      ],
+      "registeredFigureBoundsExclusive": [
+        197,
+        89,
+        508,
+        441
+      ],
+      "silhouetteUnclipped": true,
+      "retainedWorkingPixelsUnchangedByTranslation": true,
+      "originalRawRGBPreservedWithoutResampling": true
+    },
+    {
+      "id": "D",
+      "sourceGroup": "CDEF",
+      "sourceCellIndex0Based": 3,
+      "rawCellRect": [
+        0,
+        435,
+        602,
+        435
+      ],
+      "rawFile": "raw-keyposes/D.png",
+      "rawSha256": "946604d40b71df3f9bf9d28796101bbb3862524d482875bee18a3c75164d95b7",
+      "rawPixelsSha256": "f5e30a0cc710ccb0036299dff17524153bf65c1069c97adf8235336b6042dacd",
+      "rawSize": [
+        602,
+        435
+      ],
+      "rawFrontSoleAnchor": [
+        293,
+        402
+      ],
+      "capCrownMeasurementROI": [
+        268,
+        35,
+        328,
+        130
+      ],
+      "rawCapTopY": 52,
+      "rawCapToSoleHeight": 351,
+      "file": "unique-frames/D.png",
+      "size": [
+        640,
+        480
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "d9939b73c7930aec528f2c18dd66179dc8879329fab475e2ddfaf443d4f07530",
+      "pixelsSha256": "3022a3df8a2e0977b61c66d05329ae008aa6937e11671c2c01b9a802fa1fde80",
+      "resampled": false,
+      "nominalScale": 1,
+      "resampling": "none",
+      "workingSize": [
+        602,
+        435
+      ],
+      "workingPixelsSha256": "f5e30a0cc710ccb0036299dff17524153bf65c1069c97adf8235336b6042dacd",
+      "workingSoleAnchor": [
+        293,
+        402
+      ],
+      "integerOffset": [
+        -37,
+        38
+      ],
+      "registeredSoleAnchor": [
+        256,
+        440
+      ],
+      "retainedWorkingRectExclusive": [
+        37,
+        0,
+        602,
+        435
+      ],
+      "registeredFigureBoundsExclusive": [
+        188,
+        90,
+        413,
+        441
+      ],
+      "silhouetteUnclipped": true,
+      "retainedWorkingPixelsUnchangedByTranslation": true,
+      "originalRawRGBPreservedWithoutResampling": true
+    },
+    {
+      "id": "E",
+      "sourceGroup": "CDEF",
+      "sourceCellIndex0Based": 4,
+      "rawCellRect": [
+        602,
+        435,
+        603,
+        435
+      ],
+      "rawFile": "raw-keyposes/E.png",
+      "rawSha256": "f6190595fbd557419be629643fd642951676ff6db7c6ce42a7bd3ee35950fd7d",
+      "rawPixelsSha256": "06c002a1736bee98a0e4aa1a0a8c1490a7b137ec6bf52b336a47deb2049fc3fd",
+      "rawSize": [
+        603,
+        435
+      ],
+      "rawFrontSoleAnchor": [
+        276,
+        402
+      ],
+      "capCrownMeasurementROI": [
+        251,
+        35,
+        311,
+        130
+      ],
+      "rawCapTopY": 52,
+      "rawCapToSoleHeight": 351,
+      "file": "unique-frames/E.png",
+      "size": [
+        640,
+        480
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "e2197316d2d90ceed68d2f00c7361ec384600d4c556b8777878818b9ac6bfd5e",
+      "pixelsSha256": "c1cbce05e21be17ce2eff13805679b920018b525d0a0e4e66747f807e53e8026",
+      "resampled": false,
+      "nominalScale": 1,
+      "resampling": "none",
+      "workingSize": [
+        603,
+        435
+      ],
+      "workingPixelsSha256": "06c002a1736bee98a0e4aa1a0a8c1490a7b137ec6bf52b336a47deb2049fc3fd",
+      "workingSoleAnchor": [
+        276,
+        402
+      ],
+      "integerOffset": [
+        -20,
+        38
+      ],
+      "registeredSoleAnchor": [
+        256,
+        440
+      ],
+      "retainedWorkingRectExclusive": [
+        20,
+        0,
+        603,
+        435
+      ],
+      "registeredFigureBoundsExclusive": [
+        197,
+        90,
+        494,
+        441
+      ],
+      "silhouetteUnclipped": true,
+      "retainedWorkingPixelsUnchangedByTranslation": true,
+      "originalRawRGBPreservedWithoutResampling": true
+    },
+    {
+      "id": "F",
+      "sourceGroup": "CDEF",
+      "sourceCellIndex0Based": 5,
+      "rawCellRect": [
+        1205,
+        435,
+        603,
+        435
+      ],
+      "rawFile": "raw-keyposes/F.png",
+      "rawSha256": "140122f0508dd7a3a70f236350f3e3abc8c663af4700275bb0ef94915b05370f",
+      "rawPixelsSha256": "f081465ff6a30451b912dc1a6aaa249cf03ba2433e2637978872debb55888ee3",
+      "rawSize": [
+        603,
+        435
+      ],
+      "rawFrontSoleAnchor": [
+        276,
+        402
+      ],
+      "capCrownMeasurementROI": [
+        251,
+        35,
+        311,
+        130
+      ],
+      "rawCapTopY": 52,
+      "rawCapToSoleHeight": 351,
+      "file": "unique-frames/F.png",
+      "size": [
+        640,
+        480
+      ],
+      "mode": "RGB",
+      "hasAlpha": false,
+      "sha256": "501670c8755aa694c7e29e21e9c152c8f358eeaf7bf85f9d462c6180da447153",
+      "pixelsSha256": "a3a9b391c5087ecfe55b6fcc5199c25e2d25bc3d1ea65c75da552f71c367e9a4",
+      "resampled": false,
+      "nominalScale": 1,
+      "resampling": "none",
+      "workingSize": [
+        603,
+        435
+      ],
+      "workingPixelsSha256": "f081465ff6a30451b912dc1a6aaa249cf03ba2433e2637978872debb55888ee3",
+      "workingSoleAnchor": [
+        276,
+        402
+      ],
+      "integerOffset": [
+        -20,
+        38
+      ],
+      "registeredSoleAnchor": [
+        256,
+        440
+      ],
+      "retainedWorkingRectExclusive": [
+        20,
+        0,
+        603,
+        435
+      ],
+      "registeredFigureBoundsExclusive": [
+        197,
+        57,
+        481,
+        441
+      ],
+      "silhouetteUnclipped": true,
+      "retainedWorkingPixelsUnchangedByTranslation": true,
+      "originalRawRGBPreservedWithoutResampling": true
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "pose": "A",
+      "file": "frames/00.png",
+      "originalKaMSpriteId1Based": 1614,
+      "sha256": "cb496a7897bc25c991631ec7cfe6c20e2af11fdcd616523090b2131c0ddc48ee"
+    },
+    {
+      "index": 1,
+      "pose": "B",
+      "file": "frames/01.png",
+      "originalKaMSpriteId1Based": 1613,
+      "sha256": "0ca7f39db355799f70689e4fcea312d7d2f54152e35a7980a62a6075c1a7d8f3"
+    },
+    {
+      "index": 2,
+      "pose": "A",
+      "file": "frames/02.png",
+      "originalKaMSpriteId1Based": 1614,
+      "sha256": "cb496a7897bc25c991631ec7cfe6c20e2af11fdcd616523090b2131c0ddc48ee"
+    },
+    {
+      "index": 3,
+      "pose": "C",
+      "file": "frames/03.png",
+      "originalKaMSpriteId1Based": 1616,
+      "sha256": "ce66663ab89cabe3a497ab3658992ceabcb08661308cc9289fce6d88b35a413a"
+    },
+    {
+      "index": 4,
+      "pose": "D",
+      "file": "frames/04.png",
+      "originalKaMSpriteId1Based": 2826,
+      "sha256": "d9939b73c7930aec528f2c18dd66179dc8879329fab475e2ddfaf443d4f07530"
+    },
+    {
+      "index": 5,
+      "pose": "D",
+      "file": "frames/05.png",
+      "originalKaMSpriteId1Based": 1618,
+      "sha256": "d9939b73c7930aec528f2c18dd66179dc8879329fab475e2ddfaf443d4f07530"
+    },
+    {
+      "index": 6,
+      "pose": "D",
+      "file": "frames/06.png",
+      "originalKaMSpriteId1Based": 1618,
+      "sha256": "d9939b73c7930aec528f2c18dd66179dc8879329fab475e2ddfaf443d4f07530"
+    },
+    {
+      "index": 7,
+      "pose": "E",
+      "file": "frames/07.png",
+      "originalKaMSpriteId1Based": 1617,
+      "sha256": "e2197316d2d90ceed68d2f00c7361ec384600d4c556b8777878818b9ac6bfd5e"
+    },
+    {
+      "index": 8,
+      "pose": "C",
+      "file": "frames/08.png",
+      "originalKaMSpriteId1Based": 1616,
+      "sha256": "ce66663ab89cabe3a497ab3658992ceabcb08661308cc9289fce6d88b35a413a"
+    },
+    {
+      "index": 9,
+      "pose": "F",
+      "file": "frames/09.png",
+      "originalKaMSpriteId1Based": 1615,
+      "sha256": "501670c8755aa694c7e29e21e9c152c8f358eeaf7bf85f9d462c6180da447153"
+    }
+  ],
+  "keyposesSheet": {
+    "file": "keyposes-sheet.png",
+    "grid": [
+      3,
+      2
+    ],
+    "size": [
+      1920,
+      960
+    ],
+    "sha256": "67ce7db8d3035133df55b594734b4521c293da301307c7a4f2eaceeba8d81ebc"
+  },
+  "spriteSheet": {
+    "file": "sprite-sheet.png",
+    "grid": [
+      5,
+      2
+    ],
+    "size": [
+      3200,
+      960
+    ],
+    "sha256": "57fb8d51dd63b3ad45abc4d31089a02216c9dc6321778fb7b892916d98ab9322"
+  },
+  "reviews": [
+    {
+      "file": "review-10fps.gif",
+      "fps": 10,
+      "logicalFrameCount": 10,
+      "encodedFrameCount": 8,
+      "encodedDurationsMs": [
+        100,
+        100,
+        100,
+        100,
+        300,
+        100,
+        100,
+        100
+      ],
+      "totalDurationMs": 1000,
+      "sha256": "f137726c6a531fe0454e832a1e0c0729f8b2cbb3a010dbd8adf6e07b223239d7",
+      "hasTransparency": false
+    },
+    {
+      "file": "review-5fps.gif",
+      "fps": 5,
+      "logicalFrameCount": 10,
+      "encodedFrameCount": 8,
+      "encodedDurationsMs": [
+        200,
+        200,
+        200,
+        200,
+        600,
+        200,
+        200,
+        200
+      ],
+      "totalDurationMs": 2000,
+      "sha256": "288916208e25902fe5fbde1f1ec035971a2408f115af66216ba10c068efa56aa",
+      "hasTransparency": false
+    }
+  ],
+  "gifEncoding": {
+    "palette": "One shared 256-colour median-cut palette; no dithering. PNGs remain RGB."
+  },
+  "provenance": {
+    "generationTool": "OpenAI built-in image_gen",
+    "imageGenerationCalls": 4,
+    "passes": [
+      {
+        "call": 1,
+        "path": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-c388c19b-c33d-494a-a94f-d918544791d7.png",
+        "sha256": "498d2eb14ef9595f444cde4bafacdbd82f26885b549b843ce890ebb357c2acac",
+        "sizeBytes": 1338546,
+        "use": "Rejected A/B grip; not used in final frames."
+      },
+      {
+        "call": 2,
+        "path": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-43ac83c4-80e4-486a-9d36-06319ad678fa.png",
+        "sha256": "67a0d54bf104ae40832776ba7cf134ded7b8798038e4875a62b03fafeb3985aa",
+        "sizeBytes": 1400789,
+        "use": "Final C/D/E/F only, source cell indices 2/3/4/5."
+      },
+      {
+        "call": 3,
+        "path": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-b8725075-032f-4475-8a0a-f8f4ca0ab92b.png",
+        "sha256": "20ec6da354333240fe20a6619e319855863bf7b262ed0a8321e9525f0618043b",
+        "sizeBytes": 1400104,
+        "use": "Rejected A/B grip; not used in final frames."
+      },
+      {
+        "call": 4,
+        "path": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-d832e8c3-8471-4b88-acf2-597c84683311.png",
+        "sha256": "f285dd19618202bf899cbdd343b201f26b7677b3395bc15a5e1f2a72111b22e7",
+        "sizeBytes": 911769,
+        "use": "Final A/B only, source cell indices 0/1."
+      }
+    ],
+    "prompts": [
+      {
+        "file": "prompt-01.txt",
+        "sha256": "2d2b216c036bfb912decd61b6c1b643d9ef3d1957befd10b979343f6d96f2169"
+      },
+      {
+        "file": "prompt-02.txt",
+        "sha256": "f850a6a9cfe7e9da9f0575a3b5fdbe52de05133f1bd57630b3dfa06c58fd5f38"
+      },
+      {
+        "file": "prompt-03.txt",
+        "sha256": "a3757d6e7bad9cf5864e83650badc7fb922b9aba53071ced6b39e69cb41c1479"
+      },
+      {
+        "file": "prompt-04.txt",
+        "sha256": "05e1985fb2e8ce7533b3323b0151da643146a5cac9abbe55259a78d71869bab3"
+      }
+    ],
+    "originalPoseReference": "original_game_data/kam-reference-export/lumberjack-full-set/chop-SE-six-unique-guide.png",
+    "grip": "Both hands visibly hold one axe handle in all six selected final poses.",
+    "poseFidelity": "Source-based generative redraw; approximate, not exact pose tracing or approved geometry."
+  },
+  "status": {
+    "statusDate": "2026-09-10",
+    "reviewStatus": "awaiting-user-review",
+    "supersedes": "v2 rejected for incorrect one-handed grip",
+    "userApproved": false,
+    "gameIntegrated": false,
+    "inGameValidated": false,
+    "trueAlphaAchieved": false,
+    "background": "RGB near-white, opaque; no background removal. Added padding is pure white.",
+    "groundShadow": "No separate ground/contact/cast shadow observed in selected source images."
+  },
+  "validation": {
+    "sourceCopiesByteExact": true,
+    "rawCropsPixelExact": true,
+    "ABResampled": true,
+    "CDEFRawRGBRetained": true,
+    "translationPreservesWorkingPixels": true,
+    "allMeasuredSilhouettesUnclipped": true,
+    "frontBootAnchorsEqual": true,
+    "sixUniquePoses": true,
+    "repeatedFilesBitwiseIdentical": true,
+    "gifTimelineVerifiedAfterDecode": true,
+    "sourceAndPromptsUnchanged": true
+  },
+  "notes": [
+    "A/B use shared Lanczos resampling; it would be incorrect to call all output pixels source-exact or claim no rescaling.",
+    "Only the front plantar anchor is aligned; generated differences in body and boot shapes are preserved.",
+    "Preview FPS is a review choice, not original game timing or game QA."
+  ]
+}

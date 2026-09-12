@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-09",
+  "direction": "NW",
+  "tool": "built-in imagegen",
+  "source": "docs/art/animation-references/lumberjack-without-log/NW.png",
+  "motion_references": [
+    "docs/art/animations/lumberjack-without-log-v1/sheets/N-candidate.png",
+    "docs/art/animations/lumberjack-without-log-v1/sheets/NE-candidate.png"
+  ],
+  "sheet_layout": {
+    "columns": 4,
+    "rows": 2
+  },
+  "candidate": "sheets/NW-candidate.png",
+  "status": "candidate_needs_motion_refinement_not_production_ready",
+  "alpha_status": "Measured with sips: hasAlpha=no; 1254x1254 pixels. Opaque white-background preview, not production transparency.",
+  "attempts": [
+    {
+      "id": 1,
+      "prompt": "Use case: stylized-concept. Render a 4-column 2-row sheet of EIGHT successive walking-animation frames. Pure SOLID WHITE background, no grid, no text. Image1 is the exact NORTHWEST CAMERA/character/painting reference: a lumberjack viewed FROM BEHIND walking AWAY toward screen UPPER LEFT, broad olive-green back visible, nose barely visible at LEFT of head. Image2 is ONLY leg animation reference; reproduce its alternating leg halves and distinct narrow passing poses but turn the animation to the northwest view of image1.\nIdentity locked: orange stitched cap, brown hair and short beard, olive tunic with cream rolled sleeves, belt, brown trousers and boots, same elevated camera and soft hand-painted shading. NO apron on the back. Always hold same axe in ANATOMICAL RIGHT HAND, which is on the SCREEN RIGHT and farther from camera in this view. Anatomical left hand SCREEN LEFT is empty. No mirrored character.\nMake one natural walk IN PLACE. Equal cells, pelvis centered at same position, same scale, no body drifting or crop, no neighboring overlap.\nThe TWO ROWS MUST USE OPPOSITE LEADING LEGS:\nTOP ROW is left-leg-leading half cycle: 1 LEFT foot planted FORWARD (toward screen upper-left), RIGHT leg extended TRAILING BACK (toward screen lower-right), as reference image1. 2 weight settles onto LEFT, trailing RIGHT heel lifts. 3 RIGHT knee raised and RIGHT boot passes next to planted LEFT ankle, feet close together. 4 RIGHT knee swings forward upper-left as LEFT stance extends.\nBOTTOM ROW is right-leg-leading half cycle, NOT A REPEAT OF TOP: 5 RIGHT foot planted FORWARD (toward screen upper-left), LEFT leg extended TRAILING BACK (toward screen lower-right). The two thighs reverse overlap: left thigh and leg are now the large near leg extending down from left hip, right leg is foreshortened away. 6 weight settles onto RIGHT, trailing LEFT heel lifts. 7 LEFT knee raised and LEFT boot passes next to planted RIGHT ankle, feet close together, REVERSE of frame3. 8 LEFT knee swings forward upper-left as RIGHT stance extends, ready for frame1.\nContact figures1 and5 must have visibly exchanged front legs, and passing figures3 and7 must visibly alternate lifted knees. No eight variations of the same extended leg. Subtle bob, empty arm swings opposite to legs, axe arm restrained and always correct. Every frame faces exactly northwest AWAY from viewer, no turning. Full body and axe comfortably within each cell; generous consistent margins.",
+      "referenced_image_paths": [
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animation-references/lumberjack-without-log/NW.png",
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-without-log-v1/sheets/N-candidate.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087af-836c-73a1-b4cf-08dd124ef799/exec-dc63b1a7-90d8-470f-86fe-ac9268836b55.png",
+      "saved": "rejected/NW-one-leg-leading.png",
+      "outcome": "Correct northwest facing and right-hand axe, but repeats same extended right leg in most contact frames in both rows. Distinct passing3/7 insufficient to form a full alternating stride."
+    },
+    {
+      "id": 2,
+      "prompt": "Use case: precise-object-edit. IMAGE1 IS THE EDIT TARGET: an eight-frame back-view walking animation sheet. IMAGE2 is the desired NORTHWEST direction/character style reference ONLY.\nRotate the ENTIRE ANIMATED CHARACTER from facing north to facing NORTHWEST in every frame, so the broad back remains visible but the nose points UPPER-LEFT exactly like IMAGE2. Preserve the eight DIFFERENT WALKING LEG POSES in IMAGE1. In image1 the top row has LEFT boot extending down and RIGHT boot high, and the bottom row has RIGHT boot extending down and LEFT boot high. KEEP THIS LEG EXCHANGE VERY VISIBLE IN THE ROTATED SHEET. The top-row long trailing leg emerges below screen-LEFT hip; bottom-row long trailing leg MUST emerge below screen-RIGHT hip. Do not copy image2's same leg pose eight times.\nKeep the same 4×2 layout, solid WHITE background, full figure and axe, equal scale. No new text, labels, grid or objects.\nAll eight bodies and heads face UPPER-LEFT AWAY FROM VIEWER like image2. Anatomical RIGHT hand (on screen right) always holds the axe, anatomical LEFT hand empty. DO NOT MIRROR the figure or switch hands. Green tunic BACK is visible, no apron on back. Same orange cap, shirt, cream cuff, brown trousers, boots, painterly rendering.\nPreserve top row frame3 and bottom row frame3 as opposite passing poses with feet near each other. Preserve actual opposite contact silhouettes row1 versus row2. Frame4 and8 should show the forward-swinging knee bent, not replicate the contact pose. This is a direction rotation of an existing animation, not eight still copies of image2. Direction and opposite stride halves both mandatory.",
+      "referenced_image_paths": [
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-without-log-v1/sheets/N-candidate.png",
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animation-references/lumberjack-without-log/NW.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087af-836c-73a1-b4cf-08dd124ef799/exec-1dd682b4-99c8-4155-a05d-6f6c4180e61c.png",
+      "saved": "rejected/NW-from-north-one-leg-leading.png",
+      "outcome": "Rotating N sheet to NW still repeats same extended leg through most contact poses; passing silhouettes weak. Rejected."
+    },
+    {
+      "id": 3,
+      "prompt": "Use case: precise-object-edit. Edit IMAGE1 (the existing EIGHT-FRAME northeast walk animation) to turn the character toward NORTHWEST, like IMAGE2. IMAGE2 supplies the desired direction and right-hand axe orientation only. This is still a 4-column by 2-row eight-frame walk cycle on white.\nCRITICAL PRESERVE THE CLEAR OPPOSITE LEG STRIDES OF IMAGE1:\nTop row: the lowest/downward extended boot is on SCREEN LEFT of its figure, emerging from the LEFT hip; the other boot is higher.\nBottom row: the lowest/downward extended boot is on SCREEN RIGHT of its figure, emerging from the RIGHT hip; the other boot is higher.\nThese two rows MUST HAVE DIFFERENT EXTENDED LEGS. Preserve this visible screen-space boot ordering and the narrow passing poses at column3. Do not replace the eight animation poses with copies of image2's single right-extended-leg stance.\nCHANGE the head and body camera-direction to NORTHWEST: every figure shows his BACK, nose peeking at SCREEN LEFT, walks away toward upper-left, exactly the upper-body facing of IMAGE2. Orient the boots' toes upper-left while retaining their differing leg positions and poses. All eight maintain the same upper-left facing.\nKeep ANATOMICAL RIGHT HAND on SCREEN RIGHT holding axe, matching image2. Never flip whole image. Left hand is always empty. Same original orange cap, dark beard, olive tunic BACK with no apron, cream rolled cuffs, brown trousers and boots, painterly rendering and scale.\nDo NOT change sheet layout, frame order, body scale, or white background. No labels, text or grid. Full figures and axes, no overlaps. The point is preserving an actual alternating eight-pose cycle while changing the facing from northeast to northwest.",
+      "referenced_image_paths": [
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-without-log-v1/sheets/NE-candidate.png",
+        "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animation-references/lumberjack-without-log/NW.png"
+      ],
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087af-836c-73a1-b4cf-08dd124ef799/exec-cf5f4bd2-73ed-4019-a97f-bfe165c5b1fe.png",
+      "saved": "sheets/NW-candidate.png",
+      "outcome": "Rotating selected NE sheet while preserving explicit screen-space boot positions produces visible opposite extended legs in frame1 versus frame5. Selected for diagnostic preview, not production acceptance."
+    }
+  ],
+  "visual_qa": {
+    "view": "All eight figures show tunic back, head profile screen-left and northwest upper-body facing. Elevated camera and cap top remain visible. Body/stride-plane coherence needs playback review because NE pose geometry was retained while changing facing.",
+    "identity": "Orange cap, brown beard, olive tunic, cream sleeves, trousers/boots and painted style preserved; no back apron.",
+    "axe": "All eight have axe in anatomical right hand, screen-right, and empty left hand.",
+    "phases": "Frame1 has extended leg/lowest boot at screen-left, frame5 at screen-right: visible opposite contact limbs. Frames3/7 have near-together feet, but weak knee lift and their leg overlap is ambiguous. Phases4/8 still too contact-like, and the original row-major order is not a verified smooth cycle.",
+    "remaining": "Motion requires refinement, especially clear passing and forward swing poses, arm swing and consistency of stride plane with northwest-facing torso. No normalization of anchors/scale done here; no in-game QA, no production alpha, no user approval."
+  }
+}

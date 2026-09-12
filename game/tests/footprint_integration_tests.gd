@@ -18,11 +18,12 @@ static func run() -> Array[String]:
 static func _test_full_catalog_village(failures: Array[String]) -> void:
 	var world := World.new()
 	world.setup_economy_demo()
-	_check(world.buildings.size() == 29 and world.grid.blocked_by.size() == 235,
-		"The production economy demo must author all 29 full masks (235 occupied tiles)", failures)
+	_check(world.buildings.size() == 35 and world.grid.blocked_by.size() == 262,
+		"The production economy demo must represent all 30 types across 35 full masks (262 occupied tiles)", failures)
 	var warehouse: Dictionary = world.buildings[world._first_building("warehouse")]
 	for building: Dictionary in world.buildings.values():
-		_check(int(building["footprint_version"]) == 1, "Every new demo building uses modern geometry", failures)
+		_check(int(building["footprint_version"]) == (2 if building["type"] == "lumber_hut" else 1),
+			"Every new demo building uses its current authored geometry revision", failures)
 		var route: Array[Vector2i] = Pathfinder.find_path(world.grid, warehouse["entrance"], building["entrance"])
 		_check(building["id"] == warehouse["id"] or not route.is_empty(),
 			"Every full-size demo doorway connects to the warehouse: " + building["type"], failures)

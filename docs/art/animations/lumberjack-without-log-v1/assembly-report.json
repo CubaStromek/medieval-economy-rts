@@ -1,0 +1,1862 @@
+{
+  "date": "2026-09-09",
+  "method": "FFmpeg crop, fixed source scale, explicit source registration, RGB canvas, atlas/GIF packing",
+  "frames": [
+    {
+      "direction": "N",
+      "frame": 0,
+      "source": "sheets/N-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "6e0353fb1806afef458204742b34f0eb8cc0565194e170bc1b05333accf86a4c"
+      },
+      "sourceRect": [
+        0,
+        20,
+        337,
+        590
+      ],
+      "sourceAnchor": [
+        169,
+        565
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/N/00.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "cd7117d5eae6acc6863ad9bb56826ebf259140be8b1219eda23ff861950eabc6"
+      }
+    },
+    {
+      "direction": "N",
+      "frame": 1,
+      "source": "sheets/N-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "6e0353fb1806afef458204742b34f0eb8cc0565194e170bc1b05333accf86a4c"
+      },
+      "sourceRect": [
+        337,
+        20,
+        305,
+        590
+      ],
+      "sourceAnchor": [
+        134,
+        565
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/N/01.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "c743a01fc83f3d90075b8d65a318baf837cb7875f2ea9d7c55315750c78b037a"
+      }
+    },
+    {
+      "direction": "N",
+      "frame": 2,
+      "source": "sheets/N-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "6e0353fb1806afef458204742b34f0eb8cc0565194e170bc1b05333accf86a4c"
+      },
+      "sourceRect": [
+        642,
+        20,
+        305,
+        590
+      ],
+      "sourceAnchor": [
+        138,
+        565
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/N/02.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "a864a6ed6689d809c3dda01a08e3c9c7434fb0c456cafd081b3084bc34791faa"
+      }
+    },
+    {
+      "direction": "N",
+      "frame": 3,
+      "source": "sheets/N-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "6e0353fb1806afef458204742b34f0eb8cc0565194e170bc1b05333accf86a4c"
+      },
+      "sourceRect": [
+        947,
+        632,
+        307,
+        600
+      ],
+      "sourceAnchor": [
+        139,
+        560
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/N/03.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "2d08b8bc2bc24496aa534dc17b2a0c778194b5e0f6777aa7519913e69ebb89a9"
+      }
+    },
+    {
+      "direction": "N",
+      "frame": 4,
+      "source": "sheets/N-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "6e0353fb1806afef458204742b34f0eb8cc0565194e170bc1b05333accf86a4c"
+      },
+      "sourceRect": [
+        0,
+        632,
+        337,
+        600
+      ],
+      "sourceAnchor": [
+        167,
+        560
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/N/04.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "028cc6055752b7dfe6f7365fc753cb80b82e3feded93f61fd288033aa6331f46"
+      }
+    },
+    {
+      "direction": "N",
+      "frame": 5,
+      "source": "sheets/N-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "6e0353fb1806afef458204742b34f0eb8cc0565194e170bc1b05333accf86a4c"
+      },
+      "sourceRect": [
+        337,
+        632,
+        305,
+        600
+      ],
+      "sourceAnchor": [
+        130,
+        560
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/N/05.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "6de2bcd84118b0a75d235de6f8fdd4692166f42a7e31c2e38227310513100163"
+      }
+    },
+    {
+      "direction": "N",
+      "frame": 6,
+      "source": "sheets/N-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "6e0353fb1806afef458204742b34f0eb8cc0565194e170bc1b05333accf86a4c"
+      },
+      "sourceRect": [
+        642,
+        632,
+        305,
+        600
+      ],
+      "sourceAnchor": [
+        137,
+        560
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/N/06.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "66ba12a8410892f7a5181ded68d71c1de6af1a646c5ff76ccab868a7fb271c19"
+      }
+    },
+    {
+      "direction": "N",
+      "frame": 7,
+      "source": "sheets/N-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "6e0353fb1806afef458204742b34f0eb8cc0565194e170bc1b05333accf86a4c"
+      },
+      "sourceRect": [
+        947,
+        20,
+        307,
+        590
+      ],
+      "sourceAnchor": [
+        138,
+        565
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/N/07.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "83d7014dc59eb0e9f2bc5febea2ea2b1e23eafb0b8ab7896c6cabac69434585e"
+      }
+    },
+    {
+      "direction": "NE",
+      "frame": 0,
+      "source": "sheets/NE-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "fdf85233285e9f076ae2ea75d598fcece9179e63b5fc84042cfce66863526a5d"
+      },
+      "sourceRect": [
+        0,
+        20,
+        325,
+        590
+      ],
+      "sourceAnchor": [
+        167,
+        556
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NE/00.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "55621ae293b256975c7876d4baa0c5966c09ed26220df64b8430ac33493b5127"
+      }
+    },
+    {
+      "direction": "NE",
+      "frame": 1,
+      "source": "sheets/NE-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "fdf85233285e9f076ae2ea75d598fcece9179e63b5fc84042cfce66863526a5d"
+      },
+      "sourceRect": [
+        325,
+        20,
+        307,
+        590
+      ],
+      "sourceAnchor": [
+        142,
+        556
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NE/01.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "771a6b7cca113b434f761d0eb8ce730c588fe80cccaad80fb133fa4c0ad696b7"
+      }
+    },
+    {
+      "direction": "NE",
+      "frame": 2,
+      "source": "sheets/NE-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "fdf85233285e9f076ae2ea75d598fcece9179e63b5fc84042cfce66863526a5d"
+      },
+      "sourceRect": [
+        632,
+        20,
+        310,
+        590
+      ],
+      "sourceAnchor": [
+        132,
+        556
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NE/02.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "5e17aca3560ffa975c399f3c93acedff3d8488e8009448f2b3a65991ec2fa670"
+      }
+    },
+    {
+      "direction": "NE",
+      "frame": 3,
+      "source": "sheets/NE-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "fdf85233285e9f076ae2ea75d598fcece9179e63b5fc84042cfce66863526a5d"
+      },
+      "sourceRect": [
+        942,
+        625,
+        312,
+        600
+      ],
+      "sourceAnchor": [
+        134,
+        555
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NE/03.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "097a12493a3ea2dd81b35744808099f1d7d9f0655e133c192f82167374165a63"
+      }
+    },
+    {
+      "direction": "NE",
+      "frame": 4,
+      "source": "sheets/NE-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "fdf85233285e9f076ae2ea75d598fcece9179e63b5fc84042cfce66863526a5d"
+      },
+      "sourceRect": [
+        0,
+        625,
+        325,
+        600
+      ],
+      "sourceAnchor": [
+        133,
+        555
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NE/04.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "2ce9c7d8f3ce8732aa9293a4849ac2a56a3eeb005efb0dfce4dba69d9511c6c6"
+      }
+    },
+    {
+      "direction": "NE",
+      "frame": 5,
+      "source": "sheets/NE-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "fdf85233285e9f076ae2ea75d598fcece9179e63b5fc84042cfce66863526a5d"
+      },
+      "sourceRect": [
+        325,
+        625,
+        307,
+        600
+      ],
+      "sourceAnchor": [
+        130,
+        555
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NE/05.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "c25d10ce7d1d6250f478d0fc91685a5d1f516fe0108fa91b78c6b0893b5ac2c7"
+      }
+    },
+    {
+      "direction": "NE",
+      "frame": 6,
+      "source": "sheets/NE-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "fdf85233285e9f076ae2ea75d598fcece9179e63b5fc84042cfce66863526a5d"
+      },
+      "sourceRect": [
+        632,
+        625,
+        310,
+        600
+      ],
+      "sourceAnchor": [
+        131,
+        555
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NE/06.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "94e2d639b72396b250c282642191a4b4bf3f17f8931273d0adebd666e21b2a02"
+      }
+    },
+    {
+      "direction": "NE",
+      "frame": 7,
+      "source": "sheets/NE-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "fdf85233285e9f076ae2ea75d598fcece9179e63b5fc84042cfce66863526a5d"
+      },
+      "sourceRect": [
+        942,
+        20,
+        312,
+        590
+      ],
+      "sourceAnchor": [
+        148,
+        556
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NE/07.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "9f32c14cc76c3b05cb4d15f7c099e822832c23484be5ec8411bf2dba093f7ed2"
+      }
+    },
+    {
+      "direction": "E",
+      "frame": 0,
+      "source": "sheets/E-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "aa485aad3f1f77ed0de0f92caed2c365b0a238e1aba824dfa8a76a50b9a24c61"
+      },
+      "sourceRect": [
+        0,
+        40,
+        345,
+        563
+      ],
+      "sourceAnchor": [
+        161,
+        552
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/E/00.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "38549054f1362fc0dcbc8d4c3baf5b933edf33c6cc1a858c45940a7904b3d15c"
+      }
+    },
+    {
+      "direction": "E",
+      "frame": 1,
+      "source": "sheets/E-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "aa485aad3f1f77ed0de0f92caed2c365b0a238e1aba824dfa8a76a50b9a24c61"
+      },
+      "sourceRect": [
+        345,
+        40,
+        281,
+        563
+      ],
+      "sourceAnchor": [
+        115,
+        552
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/E/01.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "72165c0857bb35c5a719a9b93063910dd9056b43f901a3924e144a3abce85754"
+      }
+    },
+    {
+      "direction": "E",
+      "frame": 2,
+      "source": "sheets/E-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "aa485aad3f1f77ed0de0f92caed2c365b0a238e1aba824dfa8a76a50b9a24c61"
+      },
+      "sourceRect": [
+        626,
+        40,
+        283,
+        563
+      ],
+      "sourceAnchor": [
+        123,
+        552
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/E/02.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "790fe8147c6c642848069bb1f453a13710a4cbb312df07dfda1dd8b74056dc9b"
+      }
+    },
+    {
+      "direction": "E",
+      "frame": 3,
+      "source": "sheets/E-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "aa485aad3f1f77ed0de0f92caed2c365b0a238e1aba824dfa8a76a50b9a24c61"
+      },
+      "sourceRect": [
+        909,
+        635,
+        345,
+        565
+      ],
+      "sourceAnchor": [
+        165,
+        515
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/E/03.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "fb9066a5949343a53ed074f0dbed005fb516c8dc9776a2535204a54e78f25c61"
+      }
+    },
+    {
+      "direction": "E",
+      "frame": 4,
+      "source": "sheets/E-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "aa485aad3f1f77ed0de0f92caed2c365b0a238e1aba824dfa8a76a50b9a24c61"
+      },
+      "sourceRect": [
+        0,
+        635,
+        345,
+        565
+      ],
+      "sourceAnchor": [
+        158,
+        515
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/E/04.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "e3ce87eb015dd2704769ad5edba3e99b852d6a783d954db209ddcef233828b23"
+      }
+    },
+    {
+      "direction": "E",
+      "frame": 5,
+      "source": "sheets/E-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "aa485aad3f1f77ed0de0f92caed2c365b0a238e1aba824dfa8a76a50b9a24c61"
+      },
+      "sourceRect": [
+        345,
+        635,
+        281,
+        565
+      ],
+      "sourceAnchor": [
+        115,
+        515
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/E/05.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "347cbdcd6e3eb292a8b8fff96e5f4d1665be0c149cc75a69add127007c9c5a2f"
+      }
+    },
+    {
+      "direction": "E",
+      "frame": 6,
+      "source": "sheets/E-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "aa485aad3f1f77ed0de0f92caed2c365b0a238e1aba824dfa8a76a50b9a24c61"
+      },
+      "sourceRect": [
+        626,
+        635,
+        283,
+        565
+      ],
+      "sourceAnchor": [
+        122,
+        515
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/E/06.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "13ca58ce2d8d6bc71df4bc5f9eb7af3639ce718a6fc5376e8dba0e94ddde5eef"
+      }
+    },
+    {
+      "direction": "E",
+      "frame": 7,
+      "source": "sheets/E-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "aa485aad3f1f77ed0de0f92caed2c365b0a238e1aba824dfa8a76a50b9a24c61"
+      },
+      "sourceRect": [
+        909,
+        40,
+        345,
+        563
+      ],
+      "sourceAnchor": [
+        170,
+        552
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/E/07.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "1e1ca42523602b89b7dd8644916b8941a8b14baaf7e827c18b988602354f83bc"
+      }
+    },
+    {
+      "direction": "SE",
+      "frame": 0,
+      "source": "sheets/SE-half-A.png",
+      "sourceMetadata": {
+        "width": 1774,
+        "height": 887,
+        "pngColorType": 2,
+        "sha256": "836e67ed9bc3d4ab0704dee8e3acbf9e1663429575c42858e8225f1c6163fb1c"
+      },
+      "sourceRect": [
+        0,
+        20,
+        474,
+        840
+      ],
+      "sourceAnchor": [
+        245,
+        805
+      ],
+      "sourceScale": 0.56,
+      "output": "frames/SE/00.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "30018e51c64bc118d33bf76a34359b0981f4936d14786a22c3e83f95f3bc8dbd"
+      }
+    },
+    {
+      "direction": "SE",
+      "frame": 1,
+      "source": "sheets/SE-half-A.png",
+      "sourceMetadata": {
+        "width": 1774,
+        "height": 887,
+        "pngColorType": 2,
+        "sha256": "836e67ed9bc3d4ab0704dee8e3acbf9e1663429575c42858e8225f1c6163fb1c"
+      },
+      "sourceRect": [
+        474,
+        20,
+        418,
+        840
+      ],
+      "sourceAnchor": [
+        214,
+        805
+      ],
+      "sourceScale": 0.56,
+      "output": "frames/SE/01.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "0674b76c60e7c563fb66985c02b4710def700b0357ef5f934bf5e76ecbe69688"
+      }
+    },
+    {
+      "direction": "SE",
+      "frame": 2,
+      "source": "sheets/SE-half-A.png",
+      "sourceMetadata": {
+        "width": 1774,
+        "height": 887,
+        "pngColorType": 2,
+        "sha256": "836e67ed9bc3d4ab0704dee8e3acbf9e1663429575c42858e8225f1c6163fb1c"
+      },
+      "sourceRect": [
+        892,
+        20,
+        438,
+        840
+      ],
+      "sourceAnchor": [
+        228,
+        805
+      ],
+      "sourceScale": 0.56,
+      "output": "frames/SE/02.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "502c9dd36acd976d5cc16fa10ddbd9fe83e1816266e2fe6e6dff4399c5b1ff8f"
+      }
+    },
+    {
+      "direction": "SE",
+      "frame": 3,
+      "source": "sheets/SE-half-B.png",
+      "sourceMetadata": {
+        "width": 2084,
+        "height": 754,
+        "pngColorType": 2,
+        "sha256": "58d080efe9d68f085eedcba30ce78e53c7374aeefad664f91e5d4cbdff7c4990"
+      },
+      "sourceRect": [
+        0,
+        10,
+        523,
+        735
+      ],
+      "sourceAnchor": [
+        296,
+        707
+      ],
+      "sourceScale": 0.64,
+      "output": "frames/SE/03.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "a49443c15cd7bc5c8e6d38bdecfd88270485e920a845bffff95202853fbf3713"
+      }
+    },
+    {
+      "direction": "SE",
+      "frame": 4,
+      "source": "sheets/SE-half-B.png",
+      "sourceMetadata": {
+        "width": 2084,
+        "height": 754,
+        "pngColorType": 2,
+        "sha256": "58d080efe9d68f085eedcba30ce78e53c7374aeefad664f91e5d4cbdff7c4990"
+      },
+      "sourceRect": [
+        523,
+        10,
+        502,
+        735
+      ],
+      "sourceAnchor": [
+        280,
+        707
+      ],
+      "sourceScale": 0.64,
+      "output": "frames/SE/04.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "e4d19ceeb7fe1fd52491b6387dc16903f94c12fea08fe28300b61bd7dd2bc8c5"
+      }
+    },
+    {
+      "direction": "SE",
+      "frame": 5,
+      "source": "sheets/SE-half-B.png",
+      "sourceMetadata": {
+        "width": 2084,
+        "height": 754,
+        "pngColorType": 2,
+        "sha256": "58d080efe9d68f085eedcba30ce78e53c7374aeefad664f91e5d4cbdff7c4990"
+      },
+      "sourceRect": [
+        1025,
+        10,
+        493,
+        735
+      ],
+      "sourceAnchor": [
+        264,
+        707
+      ],
+      "sourceScale": 0.64,
+      "output": "frames/SE/05.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "906d3799daaf99876d0e005c355fcb5c3c70749c8a1d7da4545f9fafacc42e10"
+      }
+    },
+    {
+      "direction": "SE",
+      "frame": 6,
+      "source": "sheets/SE-half-B.png",
+      "sourceMetadata": {
+        "width": 2084,
+        "height": 754,
+        "pngColorType": 2,
+        "sha256": "58d080efe9d68f085eedcba30ce78e53c7374aeefad664f91e5d4cbdff7c4990"
+      },
+      "sourceRect": [
+        1518,
+        10,
+        534,
+        735
+      ],
+      "sourceAnchor": [
+        256,
+        707
+      ],
+      "sourceScale": 0.64,
+      "output": "frames/SE/06.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "95f3cb0903f79bdb17e45cadb862b348e645580c7546dcc99670f0f76b94e4f2"
+      }
+    },
+    {
+      "direction": "SE",
+      "frame": 7,
+      "source": "sheets/SE-half-A.png",
+      "sourceMetadata": {
+        "width": 1774,
+        "height": 887,
+        "pngColorType": 2,
+        "sha256": "836e67ed9bc3d4ab0704dee8e3acbf9e1663429575c42858e8225f1c6163fb1c"
+      },
+      "sourceRect": [
+        1330,
+        20,
+        444,
+        840
+      ],
+      "sourceAnchor": [
+        230,
+        805
+      ],
+      "sourceScale": 0.56,
+      "output": "frames/SE/07.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "db63f9c8028b3412dfcaf59f1862baf0777f390592e0460a5649844b0eed5819"
+      }
+    },
+    {
+      "direction": "S",
+      "frame": 0,
+      "source": "sheets/S-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "75b55accc05da782d9c8ec216a9cdb1148ce2cb32b4e3179479915cdcde0b7ee"
+      },
+      "sourceRect": [
+        0,
+        20,
+        318,
+        590
+      ],
+      "sourceAnchor": [
+        165,
+        572
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/S/00.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "950fc4666205bdb6e391fad9ada83744556c17eb1540575d7c4f560eb6e11ead"
+      }
+    },
+    {
+      "direction": "S",
+      "frame": 1,
+      "source": "sheets/S-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "75b55accc05da782d9c8ec216a9cdb1148ce2cb32b4e3179479915cdcde0b7ee"
+      },
+      "sourceRect": [
+        318,
+        20,
+        308,
+        590
+      ],
+      "sourceAnchor": [
+        150,
+        572
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/S/01.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "7805ab8de201798feab5750ad9b898278b4612870ab500095a8254344c9284e1"
+      }
+    },
+    {
+      "direction": "S",
+      "frame": 2,
+      "source": "sheets/S-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "75b55accc05da782d9c8ec216a9cdb1148ce2cb32b4e3179479915cdcde0b7ee"
+      },
+      "sourceRect": [
+        626,
+        20,
+        309,
+        590
+      ],
+      "sourceAnchor": [
+        155,
+        572
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/S/02.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "6ec2746b3ee47034eaaaba835f987c8fb06965043b0d24321e072abde6d2e085"
+      }
+    },
+    {
+      "direction": "S",
+      "frame": 3,
+      "source": "sheets/S-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "75b55accc05da782d9c8ec216a9cdb1148ce2cb32b4e3179479915cdcde0b7ee"
+      },
+      "sourceRect": [
+        0,
+        625,
+        318,
+        600
+      ],
+      "sourceAnchor": [
+        164,
+        567
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/S/03.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "0a2eedcadc09238d9052ef1d3778280c3ff5fa0170e66e15510d539f78f18418"
+      }
+    },
+    {
+      "direction": "S",
+      "frame": 4,
+      "source": "sheets/S-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "75b55accc05da782d9c8ec216a9cdb1148ce2cb32b4e3179479915cdcde0b7ee"
+      },
+      "sourceRect": [
+        318,
+        625,
+        308,
+        600
+      ],
+      "sourceAnchor": [
+        150,
+        567
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/S/04.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "f16572c03f83bf0e0854d6ddd3abde45daeaee412221bc9daafc3d8ceb1262dc"
+      }
+    },
+    {
+      "direction": "S",
+      "frame": 5,
+      "source": "sheets/S-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "75b55accc05da782d9c8ec216a9cdb1148ce2cb32b4e3179479915cdcde0b7ee"
+      },
+      "sourceRect": [
+        626,
+        625,
+        309,
+        600
+      ],
+      "sourceAnchor": [
+        156,
+        567
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/S/05.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "7ce1e3d3dc7436ae94447375df1ef3ac2dfe89683ef33e7c044d054ac5ce2546"
+      }
+    },
+    {
+      "direction": "S",
+      "frame": 6,
+      "source": "sheets/S-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "75b55accc05da782d9c8ec216a9cdb1148ce2cb32b4e3179479915cdcde0b7ee"
+      },
+      "sourceRect": [
+        935,
+        625,
+        319,
+        600
+      ],
+      "sourceAnchor": [
+        155,
+        567
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/S/06.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "2b5366c144636abc8ef5932a523fe7114ad799374826850bf9bfada1176ad8ac"
+      }
+    },
+    {
+      "direction": "S",
+      "frame": 7,
+      "source": "sheets/S-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "75b55accc05da782d9c8ec216a9cdb1148ce2cb32b4e3179479915cdcde0b7ee"
+      },
+      "sourceRect": [
+        935,
+        20,
+        319,
+        590
+      ],
+      "sourceAnchor": [
+        154,
+        572
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/S/07.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "3bec54ddf2d8c597bb59186a6570c0fbd36d6b7ca1c0427fd1e91610b41dd933"
+      }
+    },
+    {
+      "direction": "SW",
+      "frame": 0,
+      "source": "sheets/SW-half-A.png",
+      "sourceMetadata": {
+        "width": 2172,
+        "height": 724,
+        "pngColorType": 2,
+        "sha256": "c172a3a1f05e945a5366637eda5fdac1f8834bb6ce4336594dead477b8c122de"
+      },
+      "sourceRect": [
+        60,
+        12,
+        495,
+        700
+      ],
+      "sourceAnchor": [
+        243,
+        682
+      ],
+      "sourceScale": 0.65,
+      "output": "frames/SW/00.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "2d4778f2621d8ebd3025e11598a720e4ae4570ff2e76f9f942d5df1504cca8ea"
+      }
+    },
+    {
+      "direction": "SW",
+      "frame": 1,
+      "source": "sheets/SW-half-A.png",
+      "sourceMetadata": {
+        "width": 2172,
+        "height": 724,
+        "pngColorType": 2,
+        "sha256": "c172a3a1f05e945a5366637eda5fdac1f8834bb6ce4336594dead477b8c122de"
+      },
+      "sourceRect": [
+        555,
+        12,
+        531,
+        700
+      ],
+      "sourceAnchor": [
+        245,
+        682
+      ],
+      "sourceScale": 0.65,
+      "output": "frames/SW/01.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "206d6d533835f15e054ad03f89c5ca281d14315690e9110d28ef4c482702e128"
+      }
+    },
+    {
+      "direction": "SW",
+      "frame": 2,
+      "source": "sheets/SW-half-A.png",
+      "sourceMetadata": {
+        "width": 2172,
+        "height": 724,
+        "pngColorType": 2,
+        "sha256": "c172a3a1f05e945a5366637eda5fdac1f8834bb6ce4336594dead477b8c122de"
+      },
+      "sourceRect": [
+        1086,
+        12,
+        544,
+        700
+      ],
+      "sourceAnchor": [
+        256,
+        682
+      ],
+      "sourceScale": 0.65,
+      "output": "frames/SW/02.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "8f422327dfd4002c18f794ab3c00577175bf07261084571362404896a59da923"
+      }
+    },
+    {
+      "direction": "SW",
+      "frame": 3,
+      "source": "sheets/SW-half-B.png",
+      "sourceMetadata": {
+        "width": 2172,
+        "height": 724,
+        "pngColorType": 2,
+        "sha256": "94614a0b05806224ec4ea3a91d8c0c2ac046d37373070998e9344de8e10b7c39"
+      },
+      "sourceRect": [
+        60,
+        12,
+        495,
+        700
+      ],
+      "sourceAnchor": [
+        248,
+        682
+      ],
+      "sourceScale": 0.65,
+      "output": "frames/SW/03.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "6d6d080df70a8fe66ab17856052fa8b84471d088ed781aa5fca86b1f974613a1"
+      }
+    },
+    {
+      "direction": "SW",
+      "frame": 4,
+      "source": "sheets/SW-half-B.png",
+      "sourceMetadata": {
+        "width": 2172,
+        "height": 724,
+        "pngColorType": 2,
+        "sha256": "94614a0b05806224ec4ea3a91d8c0c2ac046d37373070998e9344de8e10b7c39"
+      },
+      "sourceRect": [
+        555,
+        12,
+        531,
+        700
+      ],
+      "sourceAnchor": [
+        245,
+        682
+      ],
+      "sourceScale": 0.65,
+      "output": "frames/SW/04.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "fb2f558025ebd75f9c1da20800bb9848f336fef779890c4df26625d2a15dbf88"
+      }
+    },
+    {
+      "direction": "SW",
+      "frame": 5,
+      "source": "sheets/SW-half-B.png",
+      "sourceMetadata": {
+        "width": 2172,
+        "height": 724,
+        "pngColorType": 2,
+        "sha256": "94614a0b05806224ec4ea3a91d8c0c2ac046d37373070998e9344de8e10b7c39"
+      },
+      "sourceRect": [
+        1086,
+        12,
+        544,
+        700
+      ],
+      "sourceAnchor": [
+        259,
+        682
+      ],
+      "sourceScale": 0.65,
+      "output": "frames/SW/05.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "a1cfdabcf4fe9e70f13d84c74a138c2ef809e5d046d94dae8adecaeb07c791f9"
+      }
+    },
+    {
+      "direction": "SW",
+      "frame": 6,
+      "source": "sheets/SW-half-B.png",
+      "sourceMetadata": {
+        "width": 2172,
+        "height": 724,
+        "pngColorType": 2,
+        "sha256": "94614a0b05806224ec4ea3a91d8c0c2ac046d37373070998e9344de8e10b7c39"
+      },
+      "sourceRect": [
+        1630,
+        12,
+        490,
+        700
+      ],
+      "sourceAnchor": [
+        255,
+        682
+      ],
+      "sourceScale": 0.65,
+      "output": "frames/SW/06.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "7b1a621f6b088a69887544e52e4109c6a44261f61fb41da6a12dc162a83f515b"
+      }
+    },
+    {
+      "direction": "SW",
+      "frame": 7,
+      "source": "sheets/SW-half-A.png",
+      "sourceMetadata": {
+        "width": 2172,
+        "height": 724,
+        "pngColorType": 2,
+        "sha256": "c172a3a1f05e945a5366637eda5fdac1f8834bb6ce4336594dead477b8c122de"
+      },
+      "sourceRect": [
+        1630,
+        12,
+        490,
+        700
+      ],
+      "sourceAnchor": [
+        249,
+        682
+      ],
+      "sourceScale": 0.65,
+      "output": "frames/SW/07.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "757eea678e92cd25eb533aebd895f9360484ffe969f994e2764d65cab517e9b9"
+      }
+    },
+    {
+      "direction": "W",
+      "frame": 0,
+      "source": "sheets/W-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "c3fca1a35932b73b01ec996130003ac97b9480d737f35a9d2684c23b503e16f6"
+      },
+      "sourceRect": [
+        0,
+        25,
+        323,
+        580
+      ],
+      "sourceAnchor": [
+        172,
+        548
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/W/00.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "ba1028f727d9e4c5b71c2436541e89460db5f2d41efa60ccc8fb082d7e34138c"
+      }
+    },
+    {
+      "direction": "W",
+      "frame": 1,
+      "source": "sheets/W-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "c3fca1a35932b73b01ec996130003ac97b9480d737f35a9d2684c23b503e16f6"
+      },
+      "sourceRect": [
+        323,
+        25,
+        309,
+        580
+      ],
+      "sourceAnchor": [
+        145,
+        548
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/W/01.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "18b02ec6fd2ef4f912e12d286a1974911644196c41a680bf99b0db35d814e985"
+      }
+    },
+    {
+      "direction": "W",
+      "frame": 2,
+      "source": "sheets/W-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "c3fca1a35932b73b01ec996130003ac97b9480d737f35a9d2684c23b503e16f6"
+      },
+      "sourceRect": [
+        632,
+        25,
+        293,
+        580
+      ],
+      "sourceAnchor": [
+        147,
+        548
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/W/02.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "adf8a3f7a5856679e712a9057b77de741f8458ace401ca0e456eec741e8af8be"
+      }
+    },
+    {
+      "direction": "W",
+      "frame": 3,
+      "source": "sheets/W-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "c3fca1a35932b73b01ec996130003ac97b9480d737f35a9d2684c23b503e16f6"
+      },
+      "sourceRect": [
+        940,
+        640,
+        314,
+        575
+      ],
+      "sourceAnchor": [
+        157,
+        545
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/W/03.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "65e6519213f1a5e273fc0900f7fe934060da3e57b4b7bcf5af21fec4bcb2dec6"
+      }
+    },
+    {
+      "direction": "W",
+      "frame": 4,
+      "source": "sheets/W-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "c3fca1a35932b73b01ec996130003ac97b9480d737f35a9d2684c23b503e16f6"
+      },
+      "sourceRect": [
+        0,
+        640,
+        345,
+        575
+      ],
+      "sourceAnchor": [
+        179,
+        545
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/W/04.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "764401a646e08cc7e248f48fd3cdf5a1019ae56ed8896f28ca9d477637aafea5"
+      }
+    },
+    {
+      "direction": "W",
+      "frame": 5,
+      "source": "sheets/W-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "c3fca1a35932b73b01ec996130003ac97b9480d737f35a9d2684c23b503e16f6"
+      },
+      "sourceRect": [
+        345,
+        640,
+        290,
+        575
+      ],
+      "sourceAnchor": [
+        131,
+        545
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/W/05.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "7a926ad0d8219f89ecd9db56b6aa74d683bd0d1d4c1b2e1d265a19aebd9f3fe2"
+      }
+    },
+    {
+      "direction": "W",
+      "frame": 6,
+      "source": "sheets/W-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "c3fca1a35932b73b01ec996130003ac97b9480d737f35a9d2684c23b503e16f6"
+      },
+      "sourceRect": [
+        635,
+        640,
+        305,
+        575
+      ],
+      "sourceAnchor": [
+        151,
+        545
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/W/06.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "8a2b63adb597703ddf1d7b403d835659128dd71569f0f25eef9677ac8ef726ad"
+      }
+    },
+    {
+      "direction": "W",
+      "frame": 7,
+      "source": "sheets/W-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "c3fca1a35932b73b01ec996130003ac97b9480d737f35a9d2684c23b503e16f6"
+      },
+      "sourceRect": [
+        925,
+        25,
+        329,
+        580
+      ],
+      "sourceAnchor": [
+        171,
+        548
+      ],
+      "sourceScale": 0.82,
+      "output": "frames/W/07.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "7aa00324fdf68a3abd6efc6ff4d0fa9eddb0c5767ba4cc158e9edb8a42dd9d5d"
+      }
+    },
+    {
+      "direction": "NW",
+      "frame": 0,
+      "source": "sheets/NW-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "cf4a1d04bb72aa2e9bb47c73c70b74dc950ec06ce37bb925c95bd22142b206aa"
+      },
+      "sourceRect": [
+        0,
+        20,
+        322,
+        590
+      ],
+      "sourceAnchor": [
+        159,
+        564
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NW/00.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "c7769eca570da44c63839a4d781c1a2b64a3c20d4d000bd232698e9404facd72"
+      }
+    },
+    {
+      "direction": "NW",
+      "frame": 1,
+      "source": "sheets/NW-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "cf4a1d04bb72aa2e9bb47c73c70b74dc950ec06ce37bb925c95bd22142b206aa"
+      },
+      "sourceRect": [
+        322,
+        20,
+        306,
+        590
+      ],
+      "sourceAnchor": [
+        134,
+        564
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NW/01.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "5a5ce9235ccb6085845054b00ece8f2c92772f1c8cd4d02cc995cbe04486050b"
+      }
+    },
+    {
+      "direction": "NW",
+      "frame": 2,
+      "source": "sheets/NW-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "cf4a1d04bb72aa2e9bb47c73c70b74dc950ec06ce37bb925c95bd22142b206aa"
+      },
+      "sourceRect": [
+        628,
+        20,
+        322,
+        590
+      ],
+      "sourceAnchor": [
+        131,
+        564
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NW/02.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "165564361239947bbf3cb73b065b398838fd501a0f99d5cee332c56ddbf1bd8d"
+      }
+    },
+    {
+      "direction": "NW",
+      "frame": 3,
+      "source": "sheets/NW-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "cf4a1d04bb72aa2e9bb47c73c70b74dc950ec06ce37bb925c95bd22142b206aa"
+      },
+      "sourceRect": [
+        950,
+        625,
+        304,
+        600
+      ],
+      "sourceAnchor": [
+        147,
+        555
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NW/03.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "77c944e8a4dfd7b8dfd6437ad792de779c7bd61c9ddd3574cbdc3e293c28acf5"
+      }
+    },
+    {
+      "direction": "NW",
+      "frame": 4,
+      "source": "sheets/NW-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "cf4a1d04bb72aa2e9bb47c73c70b74dc950ec06ce37bb925c95bd22142b206aa"
+      },
+      "sourceRect": [
+        0,
+        625,
+        322,
+        600
+      ],
+      "sourceAnchor": [
+        160,
+        555
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NW/04.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "766ba2af387a8b30c0a249db2beb35c290f1eb87f8cc3e5a8f35c53a692897a3"
+      }
+    },
+    {
+      "direction": "NW",
+      "frame": 5,
+      "source": "sheets/NW-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "cf4a1d04bb72aa2e9bb47c73c70b74dc950ec06ce37bb925c95bd22142b206aa"
+      },
+      "sourceRect": [
+        322,
+        625,
+        306,
+        600
+      ],
+      "sourceAnchor": [
+        151,
+        555
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NW/05.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "0f864d9244bc13faf63048f90a54e2d8327c2be43b663f81ef62ad2cc032f6b1"
+      }
+    },
+    {
+      "direction": "NW",
+      "frame": 6,
+      "source": "sheets/NW-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "cf4a1d04bb72aa2e9bb47c73c70b74dc950ec06ce37bb925c95bd22142b206aa"
+      },
+      "sourceRect": [
+        628,
+        625,
+        322,
+        600
+      ],
+      "sourceAnchor": [
+        151,
+        555
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NW/06.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "eeec7c51ce7103e754a7fa1db5149c17d3453dba1b72a709e2a7685c73531c7d"
+      }
+    },
+    {
+      "direction": "NW",
+      "frame": 7,
+      "source": "sheets/NW-candidate.png",
+      "sourceMetadata": {
+        "width": 1254,
+        "height": 1254,
+        "pngColorType": 2,
+        "sha256": "cf4a1d04bb72aa2e9bb47c73c70b74dc950ec06ce37bb925c95bd22142b206aa"
+      },
+      "sourceRect": [
+        950,
+        20,
+        304,
+        590
+      ],
+      "sourceAnchor": [
+        123,
+        564
+      ],
+      "sourceScale": 0.8,
+      "output": "frames/NW/07.png",
+      "outputMetadata": {
+        "width": 384,
+        "height": 512,
+        "pngColorType": 2,
+        "sha256": "52cf1c8e98282c2af96924f81cfd5d7ba4d2e65dc353d6ceda4061a6ec9eefc2"
+      }
+    }
+  ]
+}

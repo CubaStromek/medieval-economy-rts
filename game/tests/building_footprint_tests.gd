@@ -35,7 +35,7 @@ static func _expect(condition: bool, message: String, failures: Array[String]) -
 
 static func _test_source_shapes(failures: Array[String]) -> void:
 	var world := World.new()
-	_expect(world.catalog.buildings.size() == 29, "The footprint catalog covers all 28 classic menu buildings plus the Forester Hut", failures)
+	_expect(world.catalog.buildings.size() == 30, "The footprint catalog covers all 28 classic menu buildings plus the Forester Hut and Workers' Cottage", failures)
 	for type: String in world.catalog.buildings:
 		var definition: Dictionary = world.catalog.building(type)
 		_expect(Footprints.valid_definition(definition), "%s must have a tightly trimmed mask and one southern door" % type, failures)
@@ -44,7 +44,7 @@ static func _test_source_shapes(failures: Array[String]) -> void:
 	# the one-row mines and the two separate recesses of the armour smithy.
 	for entry: Array in [
 		["warehouse", ["###", "###", "#E#"], 9],
-		["lumber_hut", ["###", "##E"], 6],
+		["lumber_hut", [".###", ".##E", "###."], 9],
 		["sawmill", ["####", "#E##"], 8],
 		["farm", ["####", "####", "#E##"], 12],
 		["barracks", ["####", "####", "####", "#E##"], 16],
@@ -56,10 +56,15 @@ static func _test_source_shapes(failures: Array[String]) -> void:
 		var type: String = entry[0]
 		_expect(world.catalog.building(type)["footprint_mask"] == entry[1]
 			and world.placement_cells(type, Vector2i(5, 8)).size() == int(entry[2]),
-			"%s must retain the KaM PlanYX shape and occupied count" % type, failures)
-	_expect(world.catalog.building("forester_hut")["footprint_mask"] == world.catalog.building("lumber_hut")["footprint_mask"]
+			"%s must retain its current authored shape and occupied count" % type, failures)
+	_expect(world.catalog.building("forester_hut")["footprint_mask"] == Footprints.for_version(world.catalog.building("lumber_hut"), 1)["footprint_mask"]
 		and world.catalog.building("forester_hut")["footprint_source"] == "project_forester_woodcutter_shape",
-		"The project Forester borrows the woodcutter shape with explicit project attribution", failures)
+		"The project Forester retains the historic woodcutter shape with explicit project attribution", failures)
+	_expect(world.catalog.building("workers_house")["footprint_mask"] == ["##", "#E"]
+		and world.placement_cells("workers_house", Vector2i(5, 8)).size() == 4
+		and world.catalog.building("workers_house")["footprint_source"] == "project_workers_house"
+		and int(world.catalog.building("workers_house")["residence_capacity"]) == 2,
+		"The project Workers' Cottage must retain its authored four-cell footprint and two-bed capacity", failures)
 
 
 static func _test_irregular_occupancy_and_selection(failures: Array[String]) -> void:
@@ -318,9 +323,9 @@ static func _test_placement_during_visible_steps(failures: Array[String]) -> voi
 		world._commit_worker_step(worker, Vector2i(8, 4))
 		_expect(not world.tile_reservations.has(origin) and int(worker["visual_progress_ticks"]) == 0,
 			"The regression must reach a real in-flight step after releasing its logical origin", failures)
-		_expect(not world.can_place_building("lumber_hut", Vector2i(5, 5)),
+		_expect(not world.can_place_building("lumber_hut", Vector2i(4, 6)),
 			"A future wall must not cover a walking person's visible origin or diagonal crossing flank", failures)
 		for _tick: int in range(int(worker["visual_duration_ticks"])):
 			world.step_tick()
-		_expect(world.can_place_building("lumber_hut", Vector2i(5, 5)),
+		_expect(world.can_place_building("lumber_hut", Vector2i(4, 6)),
 			"The released foundation must become buildable as soon as the person visibly finishes the step", failures)

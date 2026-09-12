@@ -1,0 +1,1241 @@
+{
+  "created_at": "2026-09-10T17:43:52.345159+00:00",
+  "root": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2",
+  "summary": {
+    "unique_server_job_ids": 55,
+    "unique_operations_including_no_id_attempts": 55,
+    "saved_submission_records": 55,
+    "deduplicated_copies": 0,
+    "operations_without_server_job_id": 0,
+    "status_counts": {
+      "completed": 55
+    },
+    "confirmed_charged_generations": 560.0,
+    "confirmed_charged_usd": 0,
+    "completed_operations_with_unknown_cost": 0,
+    "pending_unbilled_reserve_generations": 0,
+    "production_cap_generations": 800.0,
+    "generation_room_after_confirmed_charges": 240.0,
+    "generation_room_after_confirmed_and_pending_reserves": 240.0
+  },
+  "method": [
+    "Count each server job ID once, including all art attempts regardless of acceptance.",
+    "Prefer explicit billing_usage with billing_charged=true; corroborate with completed response.usage.",
+    "Global balance changes are not allocated to individual concurrent jobs.",
+    "USD totals use only explicitly USD-denominated usage; included generations are not converted to money.",
+    "Pending reserves are planning estimates, not charges or server-enforced price caps.",
+    "Uncertain submissions or missing usage may leave additional costs unknown."
+  ],
+  "operations": [
+    {
+      "operation_key": "job:e5580706-d5fb-4d04-9102-42a1489fb650",
+      "job_id": "e5580706-d5fb-4d04-9102-42a1489fb650",
+      "path": "rotations-axe",
+      "endpoint": "/generate-8-rotations-v3",
+      "created_at": "2026-09-10T16:18:40.283993+00:00",
+      "status": "completed",
+      "source_response": "rotations-axe/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 8.0
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12.0,
+      "warnings": [],
+      "all_paths": [
+        "rotations-axe"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:ec7db2fc-9ccf-48d5-aaf1-f62f867b3b31",
+      "job_id": "ec7db2fc-9ccf-48d5-aaf1-f62f867b3b31",
+      "path": "edits/log-S",
+      "endpoint": "/edit-image",
+      "created_at": "2026-09-10T16:23:41.915902+00:00",
+      "status": "completed",
+      "source_response": "edits/log-S/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 1
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/log-S"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:b9b17616-ba39-48f3-9f26-f9bd85e70ff5",
+      "job_id": "b9b17616-ba39-48f3-9f26-f9bd85e70ff5",
+      "path": "edits/chop-S",
+      "endpoint": "/edit-image",
+      "created_at": "2026-09-10T16:23:46.220474+00:00",
+      "status": "completed",
+      "source_response": "edits/chop-S/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 1
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/chop-S"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:07b43f4b-f149-40dc-93dc-25a460fbe88b",
+      "job_id": "07b43f4b-f149-40dc-93dc-25a460fbe88b",
+      "path": "jobs/walk_axe/S",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T16:37:41.500299+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_axe/S/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 7
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12.0,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_axe/S"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:910205dd-3efd-407c-94f9-0786b6ad9041",
+      "job_id": "910205dd-3efd-407c-94f9-0786b6ad9041",
+      "path": "edits/log-S-pro-v2",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:37:45.776288+00:00",
+      "status": "completed",
+      "source_response": "edits/log-S-pro-v2/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/log-S-pro-v2"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:6e094c7e-a644-419a-b4ec-c406df8e24c8",
+      "job_id": "6e094c7e-a644-419a-b4ec-c406df8e24c8",
+      "path": "edits/chop-S-pro-v2",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:37:49.389042+00:00",
+      "status": "completed",
+      "source_response": "edits/chop-S-pro-v2/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/chop-S-pro-v2"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:6c1f82ae-c1de-4d7f-af2d-3ab67bf49332",
+      "job_id": "6c1f82ae-c1de-4d7f-af2d-3ab67bf49332",
+      "path": "edits/axe-low-E-pro",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:39:07.077469+00:00",
+      "status": "completed",
+      "source_response": "edits/axe-low-E-pro/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/axe-low-E-pro"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:e18d49b3-8c1f-45f9-84ab-ac02397ed0a3",
+      "job_id": "e18d49b3-8c1f-45f9-84ab-ac02397ed0a3",
+      "path": "edits/log-S-pro-v3",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:42:26.108610+00:00",
+      "status": "completed",
+      "source_response": "edits/log-S-pro-v3/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/log-S-pro-v3"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:00e1a450-5104-4eaf-a1f0-f2d9602a8704",
+      "job_id": "00e1a450-5104-4eaf-a1f0-f2d9602a8704",
+      "path": "edits/chop-S-pro-v3",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:42:30.051524+00:00",
+      "status": "completed",
+      "source_response": "edits/chop-S-pro-v3/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/chop-S-pro-v3"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:3d35f690-d70e-432c-a81a-56477768cf8e",
+      "job_id": "3d35f690-d70e-432c-a81a-56477768cf8e",
+      "path": "edits/axe-low-SE-pro",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:43:34.642105+00:00",
+      "status": "completed",
+      "source_response": "edits/axe-low-SE-pro/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/axe-low-SE-pro"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:8ee53d61-50cc-4dea-8811-b57d0e11869f",
+      "job_id": "8ee53d61-50cc-4dea-8811-b57d0e11869f",
+      "path": "edits/axe-low-NE-pro",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:43:38.408951+00:00",
+      "status": "completed",
+      "source_response": "edits/axe-low-NE-pro/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/axe-low-NE-pro"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:f53e6e29-14c2-49a9-9bbe-c2daaad2ca84",
+      "job_id": "f53e6e29-14c2-49a9-9bbe-c2daaad2ca84",
+      "path": "edits/axe-low-N-pro",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:43:42.883606+00:00",
+      "status": "completed",
+      "source_response": "edits/axe-low-N-pro/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/axe-low-N-pro"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:2f840ac7-2d0b-4128-b9f9-230c3a60eb20",
+      "job_id": "2f840ac7-2d0b-4128-b9f9-230c3a60eb20",
+      "path": "edits/axe-low-NW-pro",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:43:47.245345+00:00",
+      "status": "completed",
+      "source_response": "edits/axe-low-NW-pro/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/axe-low-NW-pro"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:b215cae7-089f-411e-abbb-2aa49c475f80",
+      "job_id": "b215cae7-089f-411e-abbb-2aa49c475f80",
+      "path": "edits/axe-low-W-pro",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:43:51.278358+00:00",
+      "status": "completed",
+      "source_response": "edits/axe-low-W-pro/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20.0,
+      "warnings": [],
+      "all_paths": [
+        "edits/axe-low-W-pro"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:c14bd1cc-ca46-4414-82e8-e73024412a6b",
+      "job_id": "c14bd1cc-ca46-4414-82e8-e73024412a6b",
+      "path": "edits/log-S-pro-v4",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:48:44.095104+00:00",
+      "status": "completed",
+      "source_response": "edits/log-S-pro-v4/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20,
+      "warnings": [],
+      "all_paths": [
+        "edits/log-S-pro-v4"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:48804688-9bc7-4624-9853-b97e54cf4102",
+      "job_id": "48804688-9bc7-4624-9853-b97e54cf4102",
+      "path": "edits/axe-low-NW-pro-v2",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:48:48.990963+00:00",
+      "status": "completed",
+      "source_response": "edits/axe-low-NW-pro-v2/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20,
+      "warnings": [],
+      "all_paths": [
+        "edits/axe-low-NW-pro-v2"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:8233d0a4-9895-4bb6-994a-4095da9b84b1",
+      "job_id": "8233d0a4-9895-4bb6-994a-4095da9b84b1",
+      "path": "edits/axe-low-W-pro-v2",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:48:53.057157+00:00",
+      "status": "completed",
+      "source_response": "edits/axe-low-W-pro-v2/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20,
+      "warnings": [],
+      "all_paths": [
+        "edits/axe-low-W-pro-v2"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:64feb46b-e4d5-4378-8c1a-7d0179ec1d6d",
+      "job_id": "64feb46b-e4d5-4378-8c1a-7d0179ec1d6d",
+      "path": "edits/log-S-remove-axe",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:51:36.209393+00:00",
+      "status": "completed",
+      "source_response": "edits/log-S-remove-axe/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20,
+      "warnings": [],
+      "all_paths": [
+        "edits/log-S-remove-axe"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:6c230267-aab7-4b17-a885-dcfb739923a1",
+      "job_id": "6c230267-aab7-4b17-a885-dcfb739923a1",
+      "path": "jobs/walk_axe/E",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T16:53:09.888427+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_axe/E/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 3
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_axe/E"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:bba125f7-2220-472a-983d-f04203305500",
+      "job_id": "bba125f7-2220-472a-983d-f04203305500",
+      "path": "rotations-chop",
+      "endpoint": "/generate-8-rotations-v3",
+      "created_at": "2026-09-10T16:53:15.274037+00:00",
+      "status": "completed",
+      "source_response": "rotations-chop/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 8.0
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12.0,
+      "warnings": [],
+      "all_paths": [
+        "rotations-chop"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:d8f93d39-d3cd-44a7-b408-618779cbce5b",
+      "job_id": "d8f93d39-d3cd-44a7-b408-618779cbce5b",
+      "path": "jobs/chop/S",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T16:53:19.477203+00:00",
+      "status": "completed",
+      "source_response": "jobs/chop/S/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/chop/S"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:e05ab2f7-4962-49af-a5bd-a1205e016e35",
+      "job_id": "e05ab2f7-4962-49af-a5bd-a1205e016e35",
+      "path": "edits/log-S-left-holster",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T16:54:06.638713+00:00",
+      "status": "completed",
+      "source_response": "edits/log-S-left-holster/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20,
+      "warnings": [],
+      "all_paths": [
+        "edits/log-S-left-holster"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:ede87e06-8257-4508-a304-52df38c78703",
+      "job_id": "ede87e06-8257-4508-a304-52df38c78703",
+      "path": "jobs/walk_axe/SE",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T16:55:26.287304+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_axe/SE/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 7
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_axe/SE"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:bc5b9908-b5fa-44dc-8171-12e4bf0a0859",
+      "job_id": "bc5b9908-b5fa-44dc-8171-12e4bf0a0859",
+      "path": "jobs/walk_axe/NE",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T16:55:31.461968+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_axe/NE/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 7
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_axe/NE"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:709441ac-fadd-42cd-8f43-81e0c61f0d7d",
+      "job_id": "709441ac-fadd-42cd-8f43-81e0c61f0d7d",
+      "path": "jobs/walk_axe/N",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T16:55:35.611689+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_axe/N/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 7
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_axe/N"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:4ad06b46-d7d9-4af6-a785-caf91a7f480a",
+      "job_id": "4ad06b46-d7d9-4af6-a785-caf91a7f480a",
+      "path": "jobs/walk_axe/NW",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T16:55:40.710991+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_axe/NW/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 7
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_axe/NW"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:d112bb7d-9188-4bfa-a909-f91c2f589f1b",
+      "job_id": "d112bb7d-9188-4bfa-a909-f91c2f589f1b",
+      "path": "jobs/walk_axe/W",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T16:55:45.916652+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_axe/W/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 7
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_axe/W"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:10374b1f-514f-4db0-b21f-f9078e2b9fba",
+      "job_id": "10374b1f-514f-4db0-b21f-f9078e2b9fba",
+      "path": "jobs/walk_axe/SW",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T16:55:50.851258+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_axe/SW/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 7
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_axe/SW"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:6de025ae-f2e3-4ff4-a497-3ee26f1bd984",
+      "job_id": "6de025ae-f2e3-4ff4-a497-3ee26f1bd984",
+      "path": "edits/chop-E-pro",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T17:00:04.023168+00:00",
+      "status": "completed",
+      "source_response": "edits/chop-E-pro/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20,
+      "warnings": [],
+      "all_paths": [
+        "edits/chop-E-pro"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:adee2e51-9bf9-4ab2-b8f0-1ae52c44ea57",
+      "job_id": "adee2e51-9bf9-4ab2-b8f0-1ae52c44ea57",
+      "path": "repairs/chop-S-waist",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:00:56.859859+00:00",
+      "status": "completed",
+      "source_response": "repairs/chop-S-waist/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "repairs/chop-S-waist"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:5c9f4863-ff9c-4f55-a400-1b4b65211021",
+      "job_id": "5c9f4863-ff9c-4f55-a400-1b4b65211021",
+      "path": "rotations-log",
+      "endpoint": "/generate-8-rotations-v3",
+      "created_at": "2026-09-10T17:05:12.522339+00:00",
+      "status": "completed",
+      "source_response": "rotations-log/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 8.0
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12.0,
+      "warnings": [],
+      "all_paths": [
+        "rotations-log"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:9cc9d53e-ee02-4b01-980b-872508d3a51f",
+      "job_id": "9cc9d53e-ee02-4b01-980b-872508d3a51f",
+      "path": "jobs/walk_log/S",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:05:16.846049+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_log/S/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_log/S"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:2ae3d4c6-9ce2-4e6e-b794-4614b1f2cd65",
+      "job_id": "2ae3d4c6-9ce2-4e6e-b794-4614b1f2cd65",
+      "path": "repairs/chop-S-waist-empty",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:06:29.471007+00:00",
+      "status": "completed",
+      "source_response": "repairs/chop-S-waist-empty/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "repairs/chop-S-waist-empty"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:5bd1866e-1827-4f3d-987c-2cc52944e9b1",
+      "job_id": "5bd1866e-1827-4f3d-987c-2cc52944e9b1",
+      "path": "edits/chop-SE-pro",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T17:07:13.411614+00:00",
+      "status": "completed",
+      "source_response": "edits/chop-SE-pro/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20,
+      "warnings": [],
+      "all_paths": [
+        "edits/chop-SE-pro"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:14dfa05d-402e-4e27-8a2c-1e458581ab3d",
+      "job_id": "14dfa05d-402e-4e27-8a2c-1e458581ab3d",
+      "path": "jobs/chop/N",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:08:42.647969+00:00",
+      "status": "completed",
+      "source_response": "jobs/chop/N/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/chop/N"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:da5d4aa1-edaa-4aa3-8c2c-6bb487382d12",
+      "job_id": "da5d4aa1-edaa-4aa3-8c2c-6bb487382d12",
+      "path": "jobs/chop/NE",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:08:47.803255+00:00",
+      "status": "completed",
+      "source_response": "jobs/chop/NE/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/chop/NE"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:cf596511-4e3e-4ded-8fee-0320ec84e233",
+      "job_id": "cf596511-4e3e-4ded-8fee-0320ec84e233",
+      "path": "jobs/chop/E",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:08:52.109118+00:00",
+      "status": "completed",
+      "source_response": "jobs/chop/E/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/chop/E"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:ff24464b-d6e6-4faa-ba9f-f992e33d76b2",
+      "job_id": "ff24464b-d6e6-4faa-ba9f-f992e33d76b2",
+      "path": "jobs/chop/NW",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:08:56.504637+00:00",
+      "status": "completed",
+      "source_response": "jobs/chop/NW/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/chop/NW"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:14893366-7817-4888-abb3-1c02eff48cea",
+      "job_id": "14893366-7817-4888-abb3-1c02eff48cea",
+      "path": "jobs/chop/W",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:09:00.313251+00:00",
+      "status": "completed",
+      "source_response": "jobs/chop/W/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/chop/W"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:8593ab70-5b78-4c3b-a247-1f2d2debefa3",
+      "job_id": "8593ab70-5b78-4c3b-a247-1f2d2debefa3",
+      "path": "jobs/chop/SW",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:09:05.035666+00:00",
+      "status": "completed",
+      "source_response": "jobs/chop/SW/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/chop/SW"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:35891ee7-2064-47ea-8e2c-238ae2c42b43",
+      "job_id": "35891ee7-2064-47ea-8e2c-238ae2c42b43",
+      "path": "jobs/walk_log/N",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:11:59.808349+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_log/N/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_log/N"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:90752d4a-f4de-4b00-ad17-f63b1b148e31",
+      "job_id": "90752d4a-f4de-4b00-ad17-f63b1b148e31",
+      "path": "jobs/walk_log/NE",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:12:03.693234+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_log/NE/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_log/NE"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:688a4bc7-d8f5-4f4c-8301-f91abb255153",
+      "job_id": "688a4bc7-d8f5-4f4c-8301-f91abb255153",
+      "path": "jobs/walk_log/E",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:12:08.291786+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_log/E/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_log/E"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:04c845b7-a54e-49cc-9a51-cd441db3dc42",
+      "job_id": "04c845b7-a54e-49cc-9a51-cd441db3dc42",
+      "path": "jobs/walk_log/SE",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:12:12.432426+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_log/SE/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_log/SE"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:77a773bb-5a3d-4039-8003-f5f7d2ac07ac",
+      "job_id": "77a773bb-5a3d-4039-8003-f5f7d2ac07ac",
+      "path": "jobs/walk_log/NW",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:14:15.023921+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_log/NW/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_log/NW"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:326aee5a-255a-43ee-ac48-0b4c4d5a367a",
+      "job_id": "326aee5a-255a-43ee-ac48-0b4c4d5a367a",
+      "path": "jobs/walk_log/W",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:14:19.292363+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_log/W/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_log/W"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:1d7718f3-3c1b-4ee8-9de6-b65734a2b8ce",
+      "job_id": "1d7718f3-3c1b-4ee8-9de6-b65734a2b8ce",
+      "path": "jobs/walk_log/SW",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:14:23.905835+00:00",
+      "status": "completed",
+      "source_response": "jobs/walk_log/SW/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/walk_log/SW"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:b34db488-24e0-4f0c-9d5a-51cdf2640ebd",
+      "job_id": "b34db488-24e0-4f0c-9d5a-51cdf2640ebd",
+      "path": "jobs/chop/SE",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:14:30.767451+00:00",
+      "status": "completed",
+      "source_response": "jobs/chop/SE/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "jobs/chop/SE"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:42497812-afd6-4b81-a32c-02567fcc0d0d",
+      "job_id": "42497812-afd6-4b81-a32c-02567fcc0d0d",
+      "path": "repairs/chop-N-forward",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:17:34.402680+00:00",
+      "status": "completed",
+      "source_response": "repairs/chop-N-forward/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "repairs/chop-N-forward"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:b12cc5fa-c571-4ed8-a2f3-350d93a2ab69",
+      "job_id": "b12cc5fa-c571-4ed8-a2f3-350d93a2ab69",
+      "path": "repairs/chop-E-forward",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:17:43.628629+00:00",
+      "status": "completed",
+      "source_response": "repairs/chop-E-forward/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "repairs/chop-E-forward"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:8319001f-9d85-48d5-a906-b3e8238b3f15",
+      "job_id": "8319001f-9d85-48d5-a906-b3e8238b3f15",
+      "path": "repairs/chop-W-forward",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:17:48.400739+00:00",
+      "status": "completed",
+      "source_response": "repairs/chop-W-forward/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 5
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "repairs/chop-W-forward"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:d9f51344-261b-40e2-a493-5fc9a1df0846",
+      "job_id": "d9f51344-261b-40e2-a493-5fc9a1df0846",
+      "path": "repairs/chop-E-slow-8",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:27:14.151154+00:00",
+      "status": "completed",
+      "source_response": "repairs/chop-E-slow-8/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 3
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "repairs/chop-E-slow-8"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:61b2086c-b342-423f-8edf-e129de3acd18",
+      "job_id": "61b2086c-b342-423f-8edf-e129de3acd18",
+      "path": "repairs/chop-E-slow-24",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:27:44.659917+00:00",
+      "status": "completed",
+      "source_response": "repairs/chop-E-slow-24/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 7
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "repairs/chop-E-slow-24"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:7e44ce3d-e614-45a9-8c43-9c0c7e20554b",
+      "job_id": "7e44ce3d-e614-45a9-8c43-9c0c7e20554b",
+      "path": "edits/chop-W-front-hands",
+      "endpoint": "/edit-images-v2",
+      "created_at": "2026-09-10T17:30:12.644205+00:00",
+      "status": "completed",
+      "source_response": "edits/chop-W-front-hands/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 20
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 20,
+      "warnings": [],
+      "all_paths": [
+        "edits/chop-W-front-hands"
+      ],
+      "copy_count": 1
+    },
+    {
+      "operation_key": "job:1bea5b7a-8386-44df-bbd5-13978fccc09d",
+      "job_id": "1bea5b7a-8386-44df-bbd5-13978fccc09d",
+      "path": "repairs/chop-W-slow-24",
+      "endpoint": "/animate-pixminimax",
+      "created_at": "2026-09-10T17:35:05.171086+00:00",
+      "status": "completed",
+      "source_response": "repairs/chop-W-slow-24/result.json",
+      "billing_charged": true,
+      "charge": {
+        "type": "generations",
+        "generations": 7
+      },
+      "charge_source": "last_response.billing_usage; billing_charged=true",
+      "charge_evidence_priority": 3,
+      "reserve_generations": 12,
+      "warnings": [],
+      "all_paths": [
+        "repairs/chop-W-slow-24"
+      ],
+      "copy_count": 1
+    }
+  ]
+}

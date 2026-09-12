@@ -1,0 +1,871 @@
+{
+  "date": "2026-09-10",
+  "scope": "technical packaging only; not game integration, browser QA or visual approval",
+  "directions": [
+    {
+      "id": "N",
+      "sourceSha256": "11a7dee9f37a1c24888667fbbe05119d84895a9f7dfb2cb9a007b94939079658",
+      "sourceSize": [
+        1608,
+        978
+      ],
+      "sharedBodyScale": 0.9100126742712294,
+      "bodyHeightMedianRaw": 394.5,
+      "bodyHeightMedianTarget": 359.0,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          81,
+          64,
+          294,
+          450
+        ],
+        [
+          92,
+          58,
+          304,
+          420
+        ],
+        [
+          98,
+          52,
+          319,
+          426
+        ],
+        [
+          126,
+          59,
+          336,
+          442
+        ],
+        [
+          136,
+          76,
+          340,
+          460
+        ],
+        [
+          121,
+          60,
+          336,
+          435
+        ],
+        [
+          115,
+          51,
+          323,
+          430
+        ],
+        [
+          95,
+          60,
+          310,
+          453
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/N-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/N-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "NE",
+      "sourceSha256": "94ecebb2d694678205399cf82a70465893e1b1917b4c03c235e11ec1b7e90a38",
+      "sourceSize": [
+        1609,
+        977
+      ],
+      "sharedBodyScale": 0.9779917469050894,
+      "bodyHeightMedianRaw": 363.5,
+      "bodyHeightMedianTarget": 355.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          73,
+          63,
+          298,
+          434
+        ],
+        [
+          106,
+          64,
+          308,
+          420
+        ],
+        [
+          121,
+          62,
+          317,
+          433
+        ],
+        [
+          110,
+          75,
+          328,
+          452
+        ],
+        [
+          110,
+          87,
+          336,
+          484
+        ],
+        [
+          111,
+          71,
+          330,
+          432
+        ],
+        [
+          124,
+          59,
+          323,
+          419
+        ],
+        [
+          89,
+          57,
+          314,
+          432
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/NE-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/NE-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "sourceSha256": "361a0c06f128b4e60aca07026e5b4bcc6e114cc40b7d326cec180ff927b23020",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "sharedBodyScale": 0.9565846599131693,
+      "bodyHeightMedianRaw": 345.5,
+      "bodyHeightMedianTarget": 330.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          75,
+          87,
+          349,
+          424
+        ],
+        [
+          86,
+          79,
+          350,
+          413
+        ],
+        [
+          107,
+          79,
+          348,
+          421
+        ],
+        [
+          101,
+          104,
+          348,
+          435
+        ],
+        [
+          64,
+          113,
+          345,
+          425
+        ],
+        [
+          90,
+          104,
+          349,
+          412
+        ],
+        [
+          81,
+          65,
+          321,
+          405
+        ],
+        [
+          104,
+          79,
+          350,
+          403
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/E-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/E-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "SE",
+      "sourceSha256": "b95246d32914ed8b44eb61ab170dd1477552e116b30fc675b638f60234127498",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "sharedBodyScale": 0.9559471365638766,
+      "bodyHeightMedianRaw": 340.5,
+      "bodyHeightMedianTarget": 325.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          121,
+          59,
+          335,
+          442
+        ],
+        [
+          121,
+          60,
+          315,
+          420
+        ],
+        [
+          115,
+          65,
+          273,
+          417
+        ],
+        [
+          109,
+          77,
+          300,
+          410
+        ],
+        [
+          63,
+          89,
+          295,
+          430
+        ],
+        [
+          91,
+          78,
+          290,
+          422
+        ],
+        [
+          121,
+          55,
+          274,
+          416
+        ],
+        [
+          120,
+          59,
+          311,
+          424
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/SE-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/SE-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "S",
+      "sourceSha256": "58aae404f3ce19abde0b5e73aeda9e6741ed22f182f32e4a32bffb217537fcda",
+      "sourceSize": [
+        1609,
+        977
+      ],
+      "sharedBodyScale": 0.8945945945945946,
+      "bodyHeightMedianRaw": 370.0,
+      "bodyHeightMedianTarget": 331.0,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          132,
+          91,
+          329,
+          442
+        ],
+        [
+          124,
+          80,
+          323,
+          435
+        ],
+        [
+          97,
+          74,
+          302,
+          425
+        ],
+        [
+          93,
+          80,
+          298,
+          436
+        ],
+        [
+          78,
+          97,
+          281,
+          456
+        ],
+        [
+          98,
+          88,
+          291,
+          448
+        ],
+        [
+          107,
+          72,
+          309,
+          430
+        ],
+        [
+          117,
+          80,
+          318,
+          437
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/S-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/S-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "SW",
+      "sourceSha256": "595ce794a42df0982f5f969fe56094b1c90360dd03cae6a984fbc7127faaf096",
+      "sourceSize": [
+        1610,
+        977
+      ],
+      "sharedBodyScale": 0.8565737051792829,
+      "bodyHeightMedianRaw": 376.5,
+      "bodyHeightMedianTarget": 322.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          91,
+          110,
+          353,
+          453
+        ],
+        [
+          71,
+          87,
+          310,
+          434
+        ],
+        [
+          67,
+          66,
+          308,
+          419
+        ],
+        [
+          51,
+          68,
+          305,
+          421
+        ],
+        [
+          56,
+          90,
+          309,
+          440
+        ],
+        [
+          52,
+          77,
+          301,
+          428
+        ],
+        [
+          63,
+          70,
+          303,
+          421
+        ],
+        [
+          70,
+          77,
+          336,
+          420
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/SW-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/SW-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "W",
+      "sourceSha256": "1ecda59184e1b06de4e59d948126eaa2308c7a27d241b2e6f6042f0c30c6fe84",
+      "sourceSize": [
+        1609,
+        978
+      ],
+      "sharedBodyScale": 0.9838709677419355,
+      "bodyHeightMedianRaw": 341.0,
+      "bodyHeightMedianTarget": 335.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          62,
+          118,
+          350,
+          449
+        ],
+        [
+          58,
+          103,
+          336,
+          420
+        ],
+        [
+          70,
+          88,
+          310,
+          422
+        ],
+        [
+          64,
+          88,
+          317,
+          420
+        ],
+        [
+          64,
+          96,
+          351,
+          435
+        ],
+        [
+          67,
+          87,
+          325,
+          429
+        ],
+        [
+          75,
+          88,
+          314,
+          432
+        ],
+        [
+          67,
+          95,
+          333,
+          434
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/W-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/W-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    },
+    {
+      "id": "NW",
+      "sourceSha256": "e3f86a3284e6cc947306c737a041c0a41bdb15e9a5b9861fb0e05c7d3faf8f06",
+      "sourceSize": [
+        1609,
+        978
+      ],
+      "sharedBodyScale": 0.9806896551724138,
+      "bodyHeightMedianRaw": 362.5,
+      "bodyHeightMedianTarget": 355.5,
+      "sourceAndTargetHashesMatch": true,
+      "rawCropsMatchNormalizedSheet": true,
+      "sheetAndAtlasCellsMatchFinalFrames": true,
+      "registrationReproducedPixelExactly": true,
+      "figuresUnclipped": true,
+      "figureBounds": [
+        [
+          80,
+          80,
+          296,
+          467
+        ],
+        [
+          93,
+          73,
+          297,
+          443
+        ],
+        [
+          126,
+          70,
+          301,
+          412
+        ],
+        [
+          141,
+          67,
+          335,
+          443
+        ],
+        [
+          114,
+          63,
+          359,
+          438
+        ],
+        [
+          126,
+          60,
+          325,
+          406
+        ],
+        [
+          137,
+          56,
+          304,
+          429
+        ],
+        [
+          100,
+          61,
+          306,
+          459
+        ]
+      ],
+      "allFinalPNGMode": "RGB",
+      "trueAlpha": false,
+      "gifs": [
+        {
+          "file": "reviews/NW-5fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ],
+          "totalDurationMs": 1600,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        },
+        {
+          "file": "reviews/NW-10fps.gif",
+          "encodedFrames": 8,
+          "displayPhases": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "totalDurationMs": 800,
+          "pixelsMatchPNGQuantizedWithSharedPalette": true
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "frames": 64,
+    "sheets": 8,
+    "gifs": 16,
+    "atlasCells": 64
+  },
+  "capDiagnosticsVisuallyInspected": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "notes": [
+    "All diagnostic cap components were visually checked on the crown; no log top selected. North-facing crowns use wider hue and stronger saturation thresholds.",
+    "Close inspection of separate S/02.png and S/06.png confirms alternating anatomical right/left legs. A preliminary suspicion from the reduced comparison sheet was incorrect and is withdrawn.",
+    "Full motion fidelity and in-game foot contact remain outside this technical packaging check.",
+    "Root final static review covered all eight sheets. Independent follow-up found opposite support legs in S, SW and SE phases02/06; no demonstrated phase-duplication defect. Static review is not playback or game QA."
+  ],
+  "atlas": {
+    "file": "sprite-atlas.png",
+    "size": [
+      3584,
+      4352
+    ],
+    "sha256": "b11fdad168bea897048b96f5e20f7ae122d540a655939c09489ffb99fba6738a"
+  },
+  "manifestSha256": "21e44943173d709dae00a424a951dad3b3c45a75d5f2e40464b9610ee52f4b5e",
+  "registrationSha256": "ac602c2ad787bb95c17a1f72a21151d55f9e181924e3005f7e3c4f86c4914173",
+  "result": "passed-technical-packaging; game-unverified"
+}

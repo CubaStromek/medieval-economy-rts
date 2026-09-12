@@ -3,7 +3,7 @@ extends RefCounted
 const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
 
 const World = preload("res://scripts/simulation/simulation_world.gd")
-const TEST_COUNT: int = 5
+const TEST_COUNT: int = 7
 
 
 static func run() -> Array[String]:
@@ -14,6 +14,8 @@ static func run() -> Array[String]:
 		_test_warehouse_payment_does_not_spend_total_stock,
 		_test_recipe_consumption_and_completion,
 		_test_construction_and_unfinished_storage_are_excluded,
+		_test_bulk_owner_filter_and_fresh_values,
+		_test_bulk_empty_catalog_stock,
 	]:
 		test.call(failures)
 	return failures
@@ -50,6 +52,7 @@ static func _test_every_catalog_resource(failures: Array[String]) -> void:
 	var fixture: Dictionary = all_resource_fixture()
 	var world: World = fixture["world"]
 	var expected: Dictionary = fixture["expected"]
+	_check(world.resource_stocks() == expected, "Bulk accounting must match independently seeded amounts for every ware", failures)
 	_check(expected.size() >= 28, "Accounting fixture must cover all 28 current catalog resources", failures)
 	for resource: String in expected:
 		var stock: Dictionary = world.resource_stock(resource)
@@ -74,6 +77,7 @@ static func _test_real_carrier_transfer_conserves_stock(failures: Array[String])
 	for _tick: int in range(1200):
 		world.step_tick()
 		var stock: Dictionary = world.resource_stock("log")
+		_check(world.resource_stocks()["log"] == stock, "Bulk accounting must follow each real pickup, move and delivery", failures)
 		_check(int(stock["total"]) == 6, "Pickup, travel and delivery must neither lose nor duplicate logs", failures)
 		if int(stock["carried"]) == 1:
 			observed_carrying = true
@@ -138,6 +142,46 @@ static func _test_construction_and_unfinished_storage_are_excluded(failures: Arr
 	world.buildings[hut]["storage"]["log"] = 51
 	_check(world.resource_stock("log") == {"warehouse": 2, "buildings": 0, "carried": 0, "total": 2},
 		"Totals must exclude spent construction materials, unfinished storage and non-warehouse storage", failures)
+	_check(world.resource_stocks()["log"] == {"warehouse": 2, "buildings": 0, "carried": 0, "total": 2},
+		"Bulk totals must exclude committed construction and unavailable storage", failures)
+
+
+static func _test_bulk_owner_filter_and_fresh_values(failures: Array[String]) -> void:
+	var world := LegacyFixture.create(Vector2i(14, 8))
+	var warehouse: int = world.place_building("warehouse", Vector2i(2, 2))
+	var foreign: int = world.place_building("warehouse", Vector2i(7, 2))
+	var carrier: int = world.spawn_worker(Vector2i(5, 6), "carrier")
+	world.buildings[warehouse]["storage"]["log"] = 3
+	world.buildings[foreign]["owner_id"] = 2
+	world.buildings[foreign]["storage"]["log"] = 40
+	world.buildings[foreign]["inputs"]["log"] = 5
+	world.buildings[foreign]["outputs"]["log"] = 6
+	world.workers[carrier]["owner_id"] = 2
+	world.workers[carrier]["carrying"] = "log"
+	var initial_tick: int = world.tick
+	var first: Dictionary = world.resource_stocks()
+	_check(first["log"] == {"warehouse": 3, "buildings": 0, "carried": 0, "total": 3},
+		"Default bulk stock must exclude foreign stock even before fog is enabled", failures)
+	world.fog.local_player_id = 2
+	_check(world.resource_stocks()["log"] == {"warehouse": 40, "buildings": 11, "carried": 1, "total": 52},
+		"Bulk stock must follow the current local player", failures)
+	_check(world.resource_stocks(1)["log"] == first["log"], "Explicit owner must override local player", failures)
+	world.buildings[warehouse]["storage"]["log"] = 9
+	_check(world.resource_stocks(1)["log"]["total"] == 9 and world.tick == initial_tick,
+		"Same-tick stock edits must be visible without a stale cache", failures)
+	_check(first["log"]["total"] == 3, "Previously returned summaries must remain independent values", failures)
+	first["log"]["total"] = 999
+	_check(world.resource_stocks(1)["log"]["total"] == 9 and world.stored_amount("log", 1) == 9,
+		"Editing a returned summary must not mutate inventories or future queries", failures)
+
+
+static func _test_bulk_empty_catalog_stock(failures: Array[String]) -> void:
+	var world := World.new()
+	var stocks: Dictionary = world.resource_stocks()
+	_check(stocks.size() == world.catalog.resources.size(), "Empty settlement must still include every HUD ware", failures)
+	for resource: String in world.catalog.resources:
+		_check(stocks[resource] == {"warehouse": 0, "buildings": 0, "carried": 0, "total": 0},
+			"Empty bulk stock must report zero for " + resource, failures)
 
 
 static func _check(condition: bool, message: String, failures: Array[String]) -> void:

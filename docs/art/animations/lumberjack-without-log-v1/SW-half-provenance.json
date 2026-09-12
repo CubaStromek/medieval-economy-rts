@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-09",
+  "direction": "SW",
+  "continuationAfterThreeCallCap": "Root explicitly requested two separate half-strips after initial candidate failed temporal continuity.",
+  "method": "Built-in image_gen, two independent calls; source pixels copied without rewriting.",
+  "calls": [
+    {
+      "call": 4,
+      "prompt": "Use case: stylized-concept.\nAsset type: FOUR-FRAME HALF-WALK animation strip of our exact original medieval woodcutter. ONE horizontal row of FOUR equal cells, full complete character in every cell, plain WHITE background. Landscape approximately 1536x512 pixels. Only FOUR figures, no second row, no labels or grid.\nInput image 1 is the sole character and starting-pose reference. Preserve its exact fixed elevated SOUTHWEST/bottom-left view, body identity/proportions, brown beard, rust cap, olive tunic, cream rolled sleeves, brown front apron, belt, trousers and boots. Camera and head angle never rotate. Match softly hand-painted matte material treatment and colors. Same body scale and common ground-root position in every cell. Small natural body rise/fall allowed. This is WALKING IN PLACE, not characters translating across their cells.\nAxe constraint: EXACTLY ONE axe gripped throughout in anatomical RIGHT hand on IMAGE-LEFT/far arm, matching source. Free LEFT arm on image RIGHT counter-swings. Do not mirror source or swap axe to near hand. Keep tool dimensions, rigid grip and all axe/head/boots visible. No log, second axe, shadow, floor, scenery, smoke, text, numbers, outlines around cells or checkerboard.\nThis strip begins with the anatomical LEFT leg leading exactly as in the reference. The NEAR LEFT thigh originates at the image-right hip and reaches across toward the bottom-left forward boot. The FAR RIGHT leg trails initially. Draw four genuinely distinct successive phases of this same LEFT-support half-step, left-to-right:\n1 CONTACT: source left-leg-forward pose; front left heel takes ground, right foot trailing. Faithfully retain source leg overlap.\n2 DOWN: left support knee bends and pelvis dips slightly; trailing RIGHT boot rises, right knee starts moving forward behind supporting leg. Left boot is now planted, body more centered over it.\n3 PASSING: weight on LEFT leg nearly under hips, RIGHT knee bent and lifted forward; right boot passes beside/near left shin, feet are CLOSE together rather than a split stride. Clearly show one foot lifted. Free left arm passes backward as right axe arm passes forward a little.\n4 UP/REACH: LEFT support heel rises behind body, lifted RIGHT leg reaches forward from FAR/image-left hip toward bottom-left. Show far RIGHT thigh emerging below the apron LEFT EDGE toward forward knee; NEAR LEFT thigh now trails toward image RIGHT. This starts the opposite stride: do not reset to reference contact.\nThe four cells must progress through contact/down/passing/up with leg bends and genuine foot passage. Not four copies of the input pose. Use clean white separation and fully contained figures.",
+      "inputs": [
+        "docs/art/animation-references/lumberjack-without-log/SW.png"
+      ],
+      "purpose": "Left support half-cycle A",
+      "output": "sheets/SW-half-A.png",
+      "generatedPath": "/Users/openclaw/.codex/generated_images/01a087a5-729b-7b13-8894-f6285613b519/exec-bc3082e4-312e-4bf6-9869-285c3b0a1c27.png",
+      "qa": {
+        "frame1": "Left/near leg contact, original lead",
+        "frame2": "Left supporting down/bend; right leg lifts",
+        "frame3": "Left support, right leg passes with distinct bent far knee",
+        "frame4": "Resets to left/near-leg forward reach; NOT right-leg-up requested",
+        "overall": "Useful first three frames; fourth is opposite-half ending pose, not first-half up pose"
+      }
+    },
+    {
+      "call": 5,
+      "prompt": "Use case: stylized-concept.\nAsset type: FOUR-FRAME HALF-WALK animation strip of our exact original medieval woodcutter. ONE horizontal row of FOUR equal cells, full complete character in every cell, plain WHITE background. Landscape approximately 1536x512 pixels. Only FOUR figures, no second row, no labels or grid.\nInput image 1 is the sole character and starting-pose reference. Preserve its exact fixed elevated SOUTHWEST/bottom-left view, body identity/proportions, brown beard, rust cap, olive tunic, cream rolled sleeves, brown front apron, belt, trousers and boots. Camera and head angle never rotate. Match softly hand-painted matte material treatment and colors. Same body scale and common ground-root position in every cell. Small natural body rise/fall allowed. This is WALKING IN PLACE, not characters translating across their cells.\nAxe constraint: EXACTLY ONE axe gripped throughout in anatomical RIGHT hand on IMAGE-LEFT/far arm, matching source. Free LEFT arm on image RIGHT counter-swings. Do not mirror source or swap axe to near hand. Keep tool dimensions, rigid grip and all axe/head/boots visible. No log, second axe, shadow, floor, scenery, smoke, text, numbers, outlines around cells or checkerboard.\nThis strip begins with the anatomical RIGHT leg leading exactly as in the reference. The FAR RIGHT thigh originates at the image-left hip, emerges from below the LEFT apron edge and reaches the bottom-left front boot. The NEAR LEFT thigh originates at the image-right hip and trails to the upper-right rear boot. Keep this reversed hip/leg connection from the provided reference; do not silently revert to the other foot.\nDraw four genuinely distinct successive phases of this same RIGHT-support half-step, left-to-right:\n1 CONTACT: faithfully copy the supplied RIGHT-leg-forward contact and opposite leg overlap; front right heel takes ground, left foot trailing to image right.\n2 DOWN: RIGHT support knee bends and pelvis dips slightly; trailing LEFT boot rises, near left knee starts moving forward. Right boot planted left-of-center, supporting far right leg visually continuous to image-left hip; do not swap the supporting legs.\n3 PASSING: weight on RIGHT leg nearly under hips, near LEFT knee bent and lifted forward; LEFT boot passes beside/near right shin. Feet CLOSE together, not a split stride. Right thigh remains the straight support leg; left thigh bends and swings.\n4 UP/REACH: RIGHT support heel rises behind body, lifted LEFT leg reaches forward from NEAR/image-right hip diagonally toward bottom-left. Near left thigh crosses in front toward forward boot; far right thigh now trails. This approaches the opposite LEFT contact: do not reset to provided contact.\nThe four cells must progress through contact/down/passing/up with leg bends and genuine foot passage. Not four copies of the input pose. Use clean white separation and fully contained figures.",
+      "inputs": [
+        "docs/art/animations/lumberjack-without-log-v1/keyframes/SW-opposite-v2.png"
+      ],
+      "purpose": "Right support half-cycle B",
+      "output": "sheets/SW-half-B.png",
+      "generatedPath": "/Users/openclaw/.codex/generated_images/01a087a5-729b-7b13-8894-f6285613b519/exec-d39e7018-40b0-4f69-9fc9-fddce39fb1fa.png",
+      "qa": {
+        "frame1": "Right/far leg contact; real opposite",
+        "frame2": "Right support/down; near left knee and boot raised",
+        "frame3": "Right support/passing, near left leg lifted and bent ahead",
+        "frame4": "Near left leg extends forward approaching next left contact",
+        "overall": "Coherent opposite half; free arm swing more pronounced than A"
+      }
+    }
+  ],
+  "candidates": {
+    "suggestedEightFrameOrder": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "A4"
+    ],
+    "limitation": "Proposed eight-frame review order omits a dedicated right-up frame and places two left-reach frames before loop restart. It is a review candidate, not a calibrated equal-phase cycle. Test actual loop before acceptance.",
+    "avoid": "Do not use [A1,A2,A3,B4,B1,B2,B3,A4] automatically: this SW B4 is left-reaching, so placing it before right contact would revert lead."
+  },
+  "alpha": "Both strips opaque RGB white-background preview candidates; no true-alpha claim",
+  "acceptance": "No animation loop or in-game acceptance performed",
+  "gameModified": false
+}

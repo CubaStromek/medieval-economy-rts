@@ -1,0 +1,1022 @@
+{
+  "date": "2026-09-09",
+  "method": "Manual source measurements; constant scale per source strip; explicit ground anchor rather than auto-fit to tools.",
+  "directions": [
+    {
+      "id": "N",
+      "sourceOrder": [
+        0,
+        1,
+        2,
+        7,
+        4,
+        5,
+        6,
+        3
+      ],
+      "frames": [
+        {
+          "sheet": "sheets/N-candidate.png",
+          "rect": [
+            0,
+            20,
+            337,
+            590
+          ],
+          "anchor": [
+            169,
+            565
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/N-candidate.png",
+          "rect": [
+            337,
+            20,
+            305,
+            590
+          ],
+          "anchor": [
+            134,
+            565
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/N-candidate.png",
+          "rect": [
+            642,
+            20,
+            305,
+            590
+          ],
+          "anchor": [
+            138,
+            565
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/N-candidate.png",
+          "rect": [
+            947,
+            632,
+            307,
+            600
+          ],
+          "anchor": [
+            139,
+            560
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/N-candidate.png",
+          "rect": [
+            0,
+            632,
+            337,
+            600
+          ],
+          "anchor": [
+            167,
+            560
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/N-candidate.png",
+          "rect": [
+            337,
+            632,
+            305,
+            600
+          ],
+          "anchor": [
+            130,
+            560
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/N-candidate.png",
+          "rect": [
+            642,
+            632,
+            305,
+            600
+          ],
+          "anchor": [
+            137,
+            560
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/N-candidate.png",
+          "rect": [
+            947,
+            20,
+            307,
+            590
+          ],
+          "anchor": [
+            138,
+            565
+          ],
+          "scale": 0.8
+        }
+      ]
+    },
+    {
+      "id": "NE",
+      "sourceOrder": [
+        0,
+        1,
+        2,
+        7,
+        4,
+        5,
+        6,
+        3
+      ],
+      "frames": [
+        {
+          "sheet": "sheets/NE-candidate.png",
+          "rect": [
+            0,
+            20,
+            325,
+            590
+          ],
+          "anchor": [
+            167,
+            556
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NE-candidate.png",
+          "rect": [
+            325,
+            20,
+            307,
+            590
+          ],
+          "anchor": [
+            142,
+            556
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NE-candidate.png",
+          "rect": [
+            632,
+            20,
+            310,
+            590
+          ],
+          "anchor": [
+            132,
+            556
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NE-candidate.png",
+          "rect": [
+            942,
+            625,
+            312,
+            600
+          ],
+          "anchor": [
+            134,
+            555
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NE-candidate.png",
+          "rect": [
+            0,
+            625,
+            325,
+            600
+          ],
+          "anchor": [
+            133,
+            555
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NE-candidate.png",
+          "rect": [
+            325,
+            625,
+            307,
+            600
+          ],
+          "anchor": [
+            130,
+            555
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NE-candidate.png",
+          "rect": [
+            632,
+            625,
+            310,
+            600
+          ],
+          "anchor": [
+            131,
+            555
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NE-candidate.png",
+          "rect": [
+            942,
+            20,
+            312,
+            590
+          ],
+          "anchor": [
+            148,
+            556
+          ],
+          "scale": 0.8
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "sourceOrder": [
+        0,
+        1,
+        2,
+        7,
+        4,
+        5,
+        6,
+        3
+      ],
+      "frames": [
+        {
+          "sheet": "sheets/E-candidate.png",
+          "rect": [
+            0,
+            40,
+            345,
+            563
+          ],
+          "anchor": [
+            161,
+            552
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/E-candidate.png",
+          "rect": [
+            345,
+            40,
+            281,
+            563
+          ],
+          "anchor": [
+            115,
+            552
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/E-candidate.png",
+          "rect": [
+            626,
+            40,
+            283,
+            563
+          ],
+          "anchor": [
+            123,
+            552
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/E-candidate.png",
+          "rect": [
+            909,
+            635,
+            345,
+            565
+          ],
+          "anchor": [
+            165,
+            515
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/E-candidate.png",
+          "rect": [
+            0,
+            635,
+            345,
+            565
+          ],
+          "anchor": [
+            158,
+            515
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/E-candidate.png",
+          "rect": [
+            345,
+            635,
+            281,
+            565
+          ],
+          "anchor": [
+            115,
+            515
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/E-candidate.png",
+          "rect": [
+            626,
+            635,
+            283,
+            565
+          ],
+          "anchor": [
+            122,
+            515
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/E-candidate.png",
+          "rect": [
+            909,
+            40,
+            345,
+            563
+          ],
+          "anchor": [
+            170,
+            552
+          ],
+          "scale": 0.82
+        }
+      ]
+    },
+    {
+      "id": "SE",
+      "sourceOrder": [
+        "A0",
+        "A1",
+        "A2",
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "A3"
+      ],
+      "frames": [
+        {
+          "sheet": "sheets/SE-half-A.png",
+          "rect": [
+            0,
+            20,
+            474,
+            840
+          ],
+          "anchor": [
+            245,
+            805
+          ],
+          "scale": 0.56
+        },
+        {
+          "sheet": "sheets/SE-half-A.png",
+          "rect": [
+            474,
+            20,
+            418,
+            840
+          ],
+          "anchor": [
+            214,
+            805
+          ],
+          "scale": 0.56
+        },
+        {
+          "sheet": "sheets/SE-half-A.png",
+          "rect": [
+            892,
+            20,
+            438,
+            840
+          ],
+          "anchor": [
+            228,
+            805
+          ],
+          "scale": 0.56
+        },
+        {
+          "sheet": "sheets/SE-half-B.png",
+          "rect": [
+            0,
+            10,
+            523,
+            735
+          ],
+          "anchor": [
+            296,
+            707
+          ],
+          "scale": 0.64
+        },
+        {
+          "sheet": "sheets/SE-half-B.png",
+          "rect": [
+            523,
+            10,
+            502,
+            735
+          ],
+          "anchor": [
+            280,
+            707
+          ],
+          "scale": 0.64
+        },
+        {
+          "sheet": "sheets/SE-half-B.png",
+          "rect": [
+            1025,
+            10,
+            493,
+            735
+          ],
+          "anchor": [
+            264,
+            707
+          ],
+          "scale": 0.64
+        },
+        {
+          "sheet": "sheets/SE-half-B.png",
+          "rect": [
+            1518,
+            10,
+            534,
+            735
+          ],
+          "anchor": [
+            256,
+            707
+          ],
+          "scale": 0.64
+        },
+        {
+          "sheet": "sheets/SE-half-A.png",
+          "rect": [
+            1330,
+            20,
+            444,
+            840
+          ],
+          "anchor": [
+            230,
+            805
+          ],
+          "scale": 0.56
+        }
+      ]
+    },
+    {
+      "id": "S",
+      "sourceOrder": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        3
+      ],
+      "frames": [
+        {
+          "sheet": "sheets/S-candidate.png",
+          "rect": [
+            0,
+            20,
+            318,
+            590
+          ],
+          "anchor": [
+            165,
+            572
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/S-candidate.png",
+          "rect": [
+            318,
+            20,
+            308,
+            590
+          ],
+          "anchor": [
+            150,
+            572
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/S-candidate.png",
+          "rect": [
+            626,
+            20,
+            309,
+            590
+          ],
+          "anchor": [
+            155,
+            572
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/S-candidate.png",
+          "rect": [
+            0,
+            625,
+            318,
+            600
+          ],
+          "anchor": [
+            164,
+            567
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/S-candidate.png",
+          "rect": [
+            318,
+            625,
+            308,
+            600
+          ],
+          "anchor": [
+            150,
+            567
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/S-candidate.png",
+          "rect": [
+            626,
+            625,
+            309,
+            600
+          ],
+          "anchor": [
+            156,
+            567
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/S-candidate.png",
+          "rect": [
+            935,
+            625,
+            319,
+            600
+          ],
+          "anchor": [
+            155,
+            567
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/S-candidate.png",
+          "rect": [
+            935,
+            20,
+            319,
+            590
+          ],
+          "anchor": [
+            154,
+            572
+          ],
+          "scale": 0.8
+        }
+      ]
+    },
+    {
+      "id": "SW",
+      "sourceOrder": [
+        "A0",
+        "A1",
+        "A2",
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "A3"
+      ],
+      "frames": [
+        {
+          "sheet": "sheets/SW-half-A.png",
+          "rect": [
+            60,
+            12,
+            495,
+            700
+          ],
+          "anchor": [
+            243,
+            682
+          ],
+          "scale": 0.65
+        },
+        {
+          "sheet": "sheets/SW-half-A.png",
+          "rect": [
+            555,
+            12,
+            531,
+            700
+          ],
+          "anchor": [
+            245,
+            682
+          ],
+          "scale": 0.65
+        },
+        {
+          "sheet": "sheets/SW-half-A.png",
+          "rect": [
+            1086,
+            12,
+            544,
+            700
+          ],
+          "anchor": [
+            256,
+            682
+          ],
+          "scale": 0.65
+        },
+        {
+          "sheet": "sheets/SW-half-B.png",
+          "rect": [
+            60,
+            12,
+            495,
+            700
+          ],
+          "anchor": [
+            248,
+            682
+          ],
+          "scale": 0.65
+        },
+        {
+          "sheet": "sheets/SW-half-B.png",
+          "rect": [
+            555,
+            12,
+            531,
+            700
+          ],
+          "anchor": [
+            245,
+            682
+          ],
+          "scale": 0.65
+        },
+        {
+          "sheet": "sheets/SW-half-B.png",
+          "rect": [
+            1086,
+            12,
+            544,
+            700
+          ],
+          "anchor": [
+            259,
+            682
+          ],
+          "scale": 0.65
+        },
+        {
+          "sheet": "sheets/SW-half-B.png",
+          "rect": [
+            1630,
+            12,
+            490,
+            700
+          ],
+          "anchor": [
+            255,
+            682
+          ],
+          "scale": 0.65
+        },
+        {
+          "sheet": "sheets/SW-half-A.png",
+          "rect": [
+            1630,
+            12,
+            490,
+            700
+          ],
+          "anchor": [
+            249,
+            682
+          ],
+          "scale": 0.65
+        }
+      ]
+    },
+    {
+      "id": "W",
+      "sourceOrder": [
+        0,
+        1,
+        2,
+        7,
+        4,
+        5,
+        6,
+        3
+      ],
+      "frames": [
+        {
+          "sheet": "sheets/W-candidate.png",
+          "rect": [
+            0,
+            25,
+            323,
+            580
+          ],
+          "anchor": [
+            172,
+            548
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/W-candidate.png",
+          "rect": [
+            323,
+            25,
+            309,
+            580
+          ],
+          "anchor": [
+            145,
+            548
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/W-candidate.png",
+          "rect": [
+            632,
+            25,
+            293,
+            580
+          ],
+          "anchor": [
+            147,
+            548
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/W-candidate.png",
+          "rect": [
+            940,
+            640,
+            314,
+            575
+          ],
+          "anchor": [
+            157,
+            545
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/W-candidate.png",
+          "rect": [
+            0,
+            640,
+            345,
+            575
+          ],
+          "anchor": [
+            179,
+            545
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/W-candidate.png",
+          "rect": [
+            345,
+            640,
+            290,
+            575
+          ],
+          "anchor": [
+            131,
+            545
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/W-candidate.png",
+          "rect": [
+            635,
+            640,
+            305,
+            575
+          ],
+          "anchor": [
+            151,
+            545
+          ],
+          "scale": 0.82
+        },
+        {
+          "sheet": "sheets/W-candidate.png",
+          "rect": [
+            925,
+            25,
+            329,
+            580
+          ],
+          "anchor": [
+            171,
+            548
+          ],
+          "scale": 0.82
+        }
+      ]
+    },
+    {
+      "id": "NW",
+      "sourceOrder": [
+        0,
+        1,
+        2,
+        7,
+        4,
+        5,
+        6,
+        3
+      ],
+      "frames": [
+        {
+          "sheet": "sheets/NW-candidate.png",
+          "rect": [
+            0,
+            20,
+            322,
+            590
+          ],
+          "anchor": [
+            159,
+            564
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NW-candidate.png",
+          "rect": [
+            322,
+            20,
+            306,
+            590
+          ],
+          "anchor": [
+            134,
+            564
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NW-candidate.png",
+          "rect": [
+            628,
+            20,
+            322,
+            590
+          ],
+          "anchor": [
+            131,
+            564
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NW-candidate.png",
+          "rect": [
+            950,
+            625,
+            304,
+            600
+          ],
+          "anchor": [
+            147,
+            555
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NW-candidate.png",
+          "rect": [
+            0,
+            625,
+            322,
+            600
+          ],
+          "anchor": [
+            160,
+            555
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NW-candidate.png",
+          "rect": [
+            322,
+            625,
+            306,
+            600
+          ],
+          "anchor": [
+            151,
+            555
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NW-candidate.png",
+          "rect": [
+            628,
+            625,
+            322,
+            600
+          ],
+          "anchor": [
+            151,
+            555
+          ],
+          "scale": 0.8
+        },
+        {
+          "sheet": "sheets/NW-candidate.png",
+          "rect": [
+            950,
+            20,
+            304,
+            590
+          ],
+          "anchor": [
+            123,
+            564
+          ],
+          "scale": 0.8
+        }
+      ]
+    }
+  ]
+}

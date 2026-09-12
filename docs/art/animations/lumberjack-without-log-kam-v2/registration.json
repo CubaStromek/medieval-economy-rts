@@ -1,0 +1,5580 @@
+{
+  "version": 1,
+  "date": "2026-09-10",
+  "action": "uaWalkBooty",
+  "canvas": [
+    384,
+    512
+  ],
+  "anchor": [
+    184,
+    368
+  ],
+  "anchorMeaning": "Original render origin [19,41] mapped by originalScale=8 and originalOffset=[32,40]; derived cap calibration, not an anatomical joint guarantee.",
+  "originalScale": 8,
+  "originalOffset": [
+    32,
+    40
+  ],
+  "method": "One direction scale: median(original body heights * 8) / median(own body heights). Each resampled frame is translated by integer pixels to match the corresponding original cap top and upper-band X centroid. Original head bob and lateral motion are retained; feet are not locked.",
+  "diagnostics": {
+    "originalMask": "alpha>0 and maxRGB-minRGB>8 and maxRGB>60",
+    "ownMask": "minRGB<230",
+    "resampling": "Lanczos",
+    "manualFootLock": false
+  },
+  "directions": {
+    "N": {
+      "scale": 0.9587217043941412,
+      "offsets": [
+        [
+          -16,
+          -2
+        ],
+        [
+          -9,
+          -7
+        ],
+        [
+          4,
+          -15
+        ],
+        [
+          2,
+          -11
+        ],
+        [
+          19,
+          11
+        ],
+        [
+          18,
+          -3
+        ],
+        [
+          6,
+          -9
+        ],
+        [
+          -10,
+          -3
+        ]
+      ],
+      "anchor": [
+        184,
+        368
+      ],
+      "originalHeightMedianTimes8": 360.0,
+      "ownHeightMedian": 375.5,
+      "sourceSha256": "ebff3fa51d0113e13ffdd0e6919c1081629900f2f3fa2937e4b79cf6c5b64e43",
+      "measurements": [
+        {
+          "index": 0,
+          "rawRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "originalFrameSha256": "dfcee1c62e078c527fc1c6d478a7372b3a0fc7b8e7066e56079aa514c4e06a16",
+          "original": {
+            "bounds": [
+              7,
+              2,
+              30,
+              49
+            ],
+            "height": 47,
+            "capTop": 2,
+            "capCenterX": 14.142857142857142,
+            "capBandRows": 3,
+            "capSpan": [
+              13,
+              16
+            ],
+            "capWarmColourFraction": 0.5714285714285714
+          },
+          "ownRaw": {
+            "bounds": [
+              79,
+              61,
+              300,
+              439
+            ],
+            "height": 378,
+            "capTop": 61,
+            "capCenterX": 168.4434250764526,
+            "capBandRows": 12,
+            "capSpan": [
+              147,
+              190
+            ],
+            "capWarmColourFraction": 0.9174311926605505
+          },
+          "ownScaled": {
+            "bounds": [
+              75,
+              58,
+              287,
+              421
+            ],
+            "height": 363,
+            "capTop": 58,
+            "capCenterX": 161.3927392739274,
+            "capBandRows": 12,
+            "capSpan": [
+              141,
+              182
+            ],
+            "capWarmColourFraction": 0.9108910891089109
+          },
+          "scaledCellSize": [
+            368,
+            491
+          ],
+          "targetCap": [
+            145.14285714285714,
+            56
+          ],
+          "integerOffset": [
+            -16,
+            -2
+          ],
+          "registeredBounds": [
+            59,
+            56,
+            271,
+            419
+          ],
+          "capXResidualPixels": 0.24988213107025103,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawRect": [
+            384,
+            0,
+            768,
+            512
+          ],
+          "originalFrameSha256": "39300e687bedd58fa2eab7a12d7f3d5db3b5f6e80df178bb62cda25dc843a353",
+          "original": {
+            "bounds": [
+              6,
+              1,
+              31,
+              43
+            ],
+            "height": 42,
+            "capTop": 1,
+            "capCenterX": 15.428571428571429,
+            "capBandRows": 3,
+            "capSpan": [
+              14,
+              17
+            ],
+            "capWarmColourFraction": 0.8571428571428571
+          },
+          "ownRaw": {
+            "bounds": [
+              71,
+              58,
+              304,
+              408
+            ],
+            "height": 350,
+            "capTop": 58,
+            "capCenterX": 171.22865853658536,
+            "capBandRows": 12,
+            "capSpan": [
+              150,
+              193
+            ],
+            "capWarmColourFraction": 0.8932926829268293
+          },
+          "ownScaled": {
+            "bounds": [
+              68,
+              55,
+              292,
+              392
+            ],
+            "height": 337,
+            "capTop": 55,
+            "capCenterX": 164.10963455149502,
+            "capBandRows": 12,
+            "capSpan": [
+              144,
+              185
+            ],
+            "capWarmColourFraction": 0.8737541528239202
+          },
+          "scaledCellSize": [
+            368,
+            491
+          ],
+          "targetCap": [
+            155.42857142857144,
+            48
+          ],
+          "integerOffset": [
+            -9,
+            -7
+          ],
+          "registeredBounds": [
+            59,
+            48,
+            283,
+            385
+          ],
+          "capXResidualPixels": -0.3189368770764247,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawRect": [
+            768,
+            0,
+            1152,
+            512
+          ],
+          "originalFrameSha256": "c2c6e38b52047a622d0b2387f7d02afc506fc2fd5b0921304ff0c8c749467105",
+          "original": {
+            "bounds": [
+              6,
+              0,
+              31,
+              45
+            ],
+            "height": 45,
+            "capTop": 0,
+            "capCenterX": 17.5,
+            "capBandRows": 3,
+            "capSpan": [
+              16,
+              19
+            ],
+            "capWarmColourFraction": 0.875
+          },
+          "ownRaw": {
+            "bounds": [
+              70,
+              58,
+              311,
+              433
+            ],
+            "height": 375,
+            "capTop": 58,
+            "capCenterX": 175.40425531914894,
+            "capBandRows": 12,
+            "capSpan": [
+              154,
+              197
+            ],
+            "capWarmColourFraction": 0.9057750759878419
+          },
+          "ownScaled": {
+            "bounds": [
+              67,
+              55,
+              298,
+              416
+            ],
+            "height": 361,
+            "capTop": 55,
+            "capCenterX": 168.09698996655518,
+            "capBandRows": 12,
+            "capSpan": [
+              148,
+              189
+            ],
+            "capWarmColourFraction": 0.9096989966555183
+          },
+          "scaledCellSize": [
+            368,
+            491
+          ],
+          "targetCap": [
+            172.0,
+            40
+          ],
+          "integerOffset": [
+            4,
+            -15
+          ],
+          "registeredBounds": [
+            71,
+            40,
+            302,
+            401
+          ],
+          "capXResidualPixels": 0.09698996655518499,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawRect": [
+            1152,
+            0,
+            1536,
+            512
+          ],
+          "originalFrameSha256": "bfe587728e3fed0f16897784cd2eb206acfbfcf1dc59cdc2510721f68d2a4b9c",
+          "original": {
+            "bounds": [
+              8,
+              1,
+              29,
+              47
+            ],
+            "height": 46,
+            "capTop": 1,
+            "capCenterX": 19.571428571428573,
+            "capBandRows": 3,
+            "capSpan": [
+              18,
+              21
+            ],
+            "capWarmColourFraction": 0.7142857142857143
+          },
+          "ownRaw": {
+            "bounds": [
+              89,
+              62,
+              292,
+              438
+            ],
+            "height": 376,
+            "capTop": 62,
+            "capCenterX": 194.640243902439,
+            "capBandRows": 12,
+            "capSpan": [
+              173,
+              217
+            ],
+            "capWarmColourFraction": 0.9176829268292683
+          },
+          "ownScaled": {
+            "bounds": [
+              85,
+              59,
+              280,
+              420
+            ],
+            "height": 361,
+            "capTop": 59,
+            "capCenterX": 186.41118421052633,
+            "capBandRows": 12,
+            "capSpan": [
+              166,
+              207
+            ],
+            "capWarmColourFraction": 0.9111842105263158
+          },
+          "scaledCellSize": [
+            368,
+            491
+          ],
+          "targetCap": [
+            188.57142857142858,
+            48
+          ],
+          "integerOffset": [
+            2,
+            -11
+          ],
+          "registeredBounds": [
+            87,
+            48,
+            282,
+            409
+          ],
+          "capXResidualPixels": -0.16024436090225436,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawRect": [
+            0,
+            512,
+            384,
+            1024
+          ],
+          "originalFrameSha256": "1721b68e3bf16409226a6e6dd627ea94e731702a9588aa80b892e0e053f24737",
+          "original": {
+            "bounds": [
+              8,
+              3,
+              29,
+              49
+            ],
+            "height": 46,
+            "capTop": 3,
+            "capCenterX": 20.3,
+            "capBandRows": 3,
+            "capSpan": [
+              18,
+              22
+            ],
+            "capWarmColourFraction": 0.8
+          },
+          "ownRaw": {
+            "bounds": [
+              83,
+              56,
+              265,
+              440
+            ],
+            "height": 384,
+            "capTop": 56,
+            "capCenterX": 183.38297872340425,
+            "capBandRows": 12,
+            "capSpan": [
+              162,
+              205
+            ],
+            "capWarmColourFraction": 0.9148936170212766
+          },
+          "ownScaled": {
+            "bounds": [
+              80,
+              53,
+              254,
+              422
+            ],
+            "height": 369,
+            "capTop": 53,
+            "capCenterX": 175.55852842809364,
+            "capBandRows": 12,
+            "capSpan": [
+              155,
+              196
+            ],
+            "capWarmColourFraction": 0.8896321070234113
+          },
+          "scaledCellSize": [
+            368,
+            491
+          ],
+          "targetCap": [
+            194.4,
+            64
+          ],
+          "integerOffset": [
+            19,
+            11
+          ],
+          "registeredBounds": [
+            99,
+            64,
+            273,
+            433
+          ],
+          "capXResidualPixels": 0.1585284280936321,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawRect": [
+            384,
+            512,
+            768,
+            1024
+          ],
+          "originalFrameSha256": "d121555272adacb1162e25564cdc4077d8b39e93a2f70a1309ff8084ef2dd3af",
+          "original": {
+            "bounds": [
+              7,
+              1,
+              29,
+              42
+            ],
+            "height": 41,
+            "capTop": 1,
+            "capCenterX": 19.571428571428573,
+            "capBandRows": 3,
+            "capSpan": [
+              18,
+              21
+            ],
+            "capWarmColourFraction": 0.5714285714285714
+          },
+          "ownRaw": {
+            "bounds": [
+              78,
+              53,
+              268,
+              412
+            ],
+            "height": 359,
+            "capTop": 53,
+            "capCenterX": 177.8543046357616,
+            "capBandRows": 12,
+            "capSpan": [
+              157,
+              199
+            ],
+            "capWarmColourFraction": 0.9238410596026491
+          },
+          "ownScaled": {
+            "bounds": [
+              74,
+              51,
+              256,
+              395
+            ],
+            "height": 344,
+            "capTop": 51,
+            "capCenterX": 170.35987261146497,
+            "capBandRows": 12,
+            "capSpan": [
+              150,
+              191
+            ],
+            "capWarmColourFraction": 0.89171974522293
+          },
+          "scaledCellSize": [
+            368,
+            491
+          ],
+          "targetCap": [
+            188.57142857142858,
+            48
+          ],
+          "integerOffset": [
+            18,
+            -3
+          ],
+          "registeredBounds": [
+            92,
+            48,
+            274,
+            392
+          ],
+          "capXResidualPixels": -0.21155595996361853,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawRect": [
+            768,
+            512,
+            1152,
+            1024
+          ],
+          "originalFrameSha256": "b7786282e195264c982d52298d9a411491e1511c899331500c6f5500d9c841ba",
+          "original": {
+            "bounds": [
+              6,
+              0,
+              31,
+              44
+            ],
+            "height": 44,
+            "capTop": 0,
+            "capCenterX": 17.666666666666668,
+            "capBandRows": 3,
+            "capSpan": [
+              16,
+              19
+            ],
+            "capWarmColourFraction": 0.8333333333333334
+          },
+          "ownRaw": {
+            "bounds": [
+              79,
+              51,
+              310,
+              418
+            ],
+            "height": 367,
+            "capTop": 51,
+            "capCenterX": 175.0646153846154,
+            "capBandRows": 12,
+            "capSpan": [
+              153,
+              197
+            ],
+            "capWarmColourFraction": 0.9046153846153846
+          },
+          "ownScaled": {
+            "bounds": [
+              76,
+              49,
+              297,
+              401
+            ],
+            "height": 352,
+            "capTop": 49,
+            "capCenterX": 167.7116564417178,
+            "capBandRows": 12,
+            "capSpan": [
+              146,
+              189
+            ],
+            "capWarmColourFraction": 0.8865030674846626
+          },
+          "scaledCellSize": [
+            368,
+            491
+          ],
+          "targetCap": [
+            173.33333333333334,
+            40
+          ],
+          "integerOffset": [
+            6,
+            -9
+          ],
+          "registeredBounds": [
+            82,
+            40,
+            303,
+            392
+          ],
+          "capXResidualPixels": 0.3783231083844498,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawRect": [
+            1152,
+            512,
+            1536,
+            1024
+          ],
+          "originalFrameSha256": "8ea86b134a6708201ad2fc3fd1b66cd95292aef0a6963ce21ca844f9245835ed",
+          "original": {
+            "bounds": [
+              6,
+              1,
+              30,
+              46
+            ],
+            "height": 45,
+            "capTop": 1,
+            "capCenterX": 15.9,
+            "capBandRows": 3,
+            "capSpan": [
+              14,
+              18
+            ],
+            "capWarmColourFraction": 0.8
+          },
+          "ownRaw": {
+            "bounds": [
+              79,
+              54,
+              319,
+              436
+            ],
+            "height": 382,
+            "capTop": 54,
+            "capCenterX": 176.47142857142856,
+            "capBandRows": 12,
+            "capSpan": [
+              154,
+              199
+            ],
+            "capWarmColourFraction": 0.9228571428571428
+          },
+          "ownScaled": {
+            "bounds": [
+              76,
+              51,
+              306,
+              418
+            ],
+            "height": 367,
+            "capTop": 51,
+            "capCenterX": 169.04113924050634,
+            "capBandRows": 12,
+            "capSpan": [
+              148,
+              190
+            ],
+            "capWarmColourFraction": 0.8892405063291139
+          },
+          "scaledCellSize": [
+            368,
+            491
+          ],
+          "targetCap": [
+            159.2,
+            48
+          ],
+          "integerOffset": [
+            -10,
+            -3
+          ],
+          "registeredBounds": [
+            66,
+            48,
+            296,
+            415
+          ],
+          "capXResidualPixels": -0.15886075949364908,
+          "figureClipped": false
+        }
+      ]
+    },
+    "NE": {
+      "scale": 0.9700272479564033,
+      "offsets": [
+        [
+          -14,
+          1
+        ],
+        [
+          -5,
+          4
+        ],
+        [
+          5,
+          -7
+        ],
+        [
+          13,
+          8
+        ],
+        [
+          17,
+          16
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          -12,
+          -9
+        ]
+      ],
+      "anchor": [
+        184,
+        368
+      ],
+      "originalHeightMedianTimes8": 356.0,
+      "ownHeightMedian": 367.0,
+      "sourceSha256": "fe498fd0bdc67b957e288ad38e86d0395f90d15789533015c84ffd61d304d306",
+      "measurements": [
+        {
+          "index": 0,
+          "rawRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "originalFrameSha256": "beddd77eff46a37f1cadbad1c7a1b3d1ea420dd2e1fa9d3a0134d09659251032",
+          "original": {
+            "bounds": [
+              2,
+              1,
+              31,
+              46
+            ],
+            "height": 45,
+            "capTop": 1,
+            "capCenterX": 17.9,
+            "capBandRows": 3,
+            "capSpan": [
+              16,
+              20
+            ],
+            "capWarmColourFraction": 0.8
+          },
+          "ownRaw": {
+            "bounds": [
+              51,
+              49,
+              301,
+              415
+            ],
+            "height": 366,
+            "capTop": 49,
+            "capCenterX": 195.77842003853564,
+            "capBandRows": 12,
+            "capSpan": [
+              166,
+              226
+            ],
+            "capWarmColourFraction": 0.9402697495183044
+          },
+          "ownScaled": {
+            "bounds": [
+              49,
+              47,
+              292,
+              403
+            ],
+            "height": 356,
+            "capTop": 47,
+            "capCenterX": 189.6358024691358,
+            "capBandRows": 12,
+            "capSpan": [
+              161,
+              219
+            ],
+            "capWarmColourFraction": 0.9074074074074074
+          },
+          "scaledCellSize": [
+            372,
+            497
+          ],
+          "targetCap": [
+            175.2,
+            48
+          ],
+          "integerOffset": [
+            -14,
+            1
+          ],
+          "registeredBounds": [
+            35,
+            48,
+            278,
+            404
+          ],
+          "capXResidualPixels": 0.4358024691358082,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawRect": [
+            384,
+            0,
+            768,
+            512
+          ],
+          "originalFrameSha256": "e579bfc8874ded81d8f0572409163f060071206b19b64907bae17cedb224b114",
+          "original": {
+            "bounds": [
+              5,
+              1,
+              31,
+              44
+            ],
+            "height": 43,
+            "capTop": 1,
+            "capCenterX": 18.727272727272727,
+            "capBandRows": 3,
+            "capSpan": [
+              17,
+              21
+            ],
+            "capWarmColourFraction": 0.9090909090909091
+          },
+          "ownRaw": {
+            "bounds": [
+              75,
+              46,
+              304,
+              398
+            ],
+            "height": 352,
+            "capTop": 46,
+            "capCenterX": 192.7980198019802,
+            "capBandRows": 12,
+            "capSpan": [
+              164,
+              223
+            ],
+            "capWarmColourFraction": 0.9405940594059405
+          },
+          "ownScaled": {
+            "bounds": [
+              72,
+              44,
+              295,
+              387
+            ],
+            "height": 343,
+            "capTop": 44,
+            "capCenterX": 186.83617021276595,
+            "capBandRows": 12,
+            "capSpan": [
+              159,
+              216
+            ],
+            "capWarmColourFraction": 0.9148936170212766
+          },
+          "scaledCellSize": [
+            372,
+            497
+          ],
+          "targetCap": [
+            181.8181818181818,
+            48
+          ],
+          "integerOffset": [
+            -5,
+            4
+          ],
+          "registeredBounds": [
+            67,
+            48,
+            290,
+            391
+          ],
+          "capXResidualPixels": 0.017988394584136813,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawRect": [
+            768,
+            0,
+            1152,
+            512
+          ],
+          "originalFrameSha256": "7aa9f35a2e8316adfd4cd81b7a622018e7a254f5adbdeac310abdbfda74a3b85",
+          "original": {
+            "bounds": [
+              8,
+              0,
+              34,
+              45
+            ],
+            "height": 45,
+            "capTop": 0,
+            "capCenterX": 20.0,
+            "capBandRows": 3,
+            "capSpan": [
+              18,
+              22
+            ],
+            "capWarmColourFraction": 0.8888888888888888
+          },
+          "ownRaw": {
+            "bounds": [
+              88,
+              49,
+              306,
+              418
+            ],
+            "height": 369,
+            "capTop": 49,
+            "capCenterX": 193.21073558648112,
+            "capBandRows": 12,
+            "capSpan": [
+              164,
+              223
+            ],
+            "capWarmColourFraction": 0.9184890656063618
+          },
+          "ownScaled": {
+            "bounds": [
+              85,
+              47,
+              297,
+              406
+            ],
+            "height": 359,
+            "capTop": 47,
+            "capCenterX": 187.11563169164882,
+            "capBandRows": 12,
+            "capSpan": [
+              159,
+              216
+            ],
+            "capWarmColourFraction": 0.9122055674518201
+          },
+          "scaledCellSize": [
+            372,
+            497
+          ],
+          "targetCap": [
+            192.0,
+            40
+          ],
+          "integerOffset": [
+            5,
+            -7
+          ],
+          "registeredBounds": [
+            90,
+            40,
+            302,
+            399
+          ],
+          "capXResidualPixels": 0.11563169164881515,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawRect": [
+            1152,
+            0,
+            1536,
+            512
+          ],
+          "originalFrameSha256": "07b9ab5d960399daaf1b84c424646855b595a2829d6a6ae0adda3ed6fafb322f",
+          "original": {
+            "bounds": [
+              4,
+              2,
+              34,
+              47
+            ],
+            "height": 45,
+            "capTop": 2,
+            "capCenterX": 21.5,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              24
+            ],
+            "capWarmColourFraction": 0.9166666666666666
+          },
+          "ownRaw": {
+            "bounds": [
+              69,
+              50,
+              318,
+              433
+            ],
+            "height": 383,
+            "capTop": 50,
+            "capCenterX": 197.65085388994308,
+            "capBandRows": 12,
+            "capSpan": [
+              168,
+              228
+            ],
+            "capWarmColourFraction": 0.9468690702087287
+          },
+          "ownScaled": {
+            "bounds": [
+              66,
+              48,
+              308,
+              421
+            ],
+            "height": 373,
+            "capTop": 48,
+            "capCenterX": 191.38229376257544,
+            "capBandRows": 12,
+            "capSpan": [
+              163,
+              221
+            ],
+            "capWarmColourFraction": 0.9154929577464789
+          },
+          "scaledCellSize": [
+            372,
+            497
+          ],
+          "targetCap": [
+            204.0,
+            56
+          ],
+          "integerOffset": [
+            13,
+            8
+          ],
+          "registeredBounds": [
+            79,
+            56,
+            321,
+            429
+          ],
+          "capXResidualPixels": 0.38229376257544345,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawRect": [
+            0,
+            512,
+            384,
+            1024
+          ],
+          "originalFrameSha256": "2a04ddb615ec9294edf7f639ecfedfd3f730427103c5c981d7b41bcea97a92cc",
+          "original": {
+            "bounds": [
+              3,
+              4,
+              33,
+              49
+            ],
+            "height": 45,
+            "capTop": 4,
+            "capCenterX": 22.0,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              24
+            ],
+            "capWarmColourFraction": 0.8571428571428571
+          },
+          "ownRaw": {
+            "bounds": [
+              54,
+              57,
+              313,
+              454
+            ],
+            "height": 397,
+            "capTop": 57,
+            "capCenterX": 197.56421052631578,
+            "capBandRows": 12,
+            "capSpan": [
+              169,
+              228
+            ],
+            "capWarmColourFraction": 0.9263157894736842
+          },
+          "ownScaled": {
+            "bounds": [
+              52,
+              56,
+              303,
+              441
+            ],
+            "height": 385,
+            "capTop": 56,
+            "capCenterX": 191.3359375,
+            "capBandRows": 12,
+            "capSpan": [
+              162,
+              221
+            ],
+            "capWarmColourFraction": 0.9375
+          },
+          "scaledCellSize": [
+            372,
+            497
+          ],
+          "targetCap": [
+            208.0,
+            72
+          ],
+          "integerOffset": [
+            17,
+            16
+          ],
+          "registeredBounds": [
+            69,
+            72,
+            320,
+            457
+          ],
+          "capXResidualPixels": 0.3359375,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawRect": [
+            384,
+            512,
+            768,
+            1024
+          ],
+          "originalFrameSha256": "0c5f715b948ef6252a4e6a0b653e4ef3b7994c2b7cb050571a6b6a5b98f1c6ef",
+          "original": {
+            "bounds": [
+              4,
+              2,
+              34,
+              43
+            ],
+            "height": 41,
+            "capTop": 2,
+            "capCenterX": 21.5,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              24
+            ],
+            "capWarmColourFraction": 0.8333333333333334
+          },
+          "ownRaw": {
+            "bounds": [
+              72,
+              53,
+              315,
+              408
+            ],
+            "height": 355,
+            "capTop": 53,
+            "capCenterX": 205.1992337164751,
+            "capBandRows": 12,
+            "capSpan": [
+              176,
+              235
+            ],
+            "capWarmColourFraction": 0.946360153256705
+          },
+          "ownScaled": {
+            "bounds": [
+              70,
+              51,
+              305,
+              396
+            ],
+            "height": 345,
+            "capTop": 51,
+            "capCenterX": 198.73293172690762,
+            "capBandRows": 12,
+            "capSpan": [
+              170,
+              228
+            ],
+            "capWarmColourFraction": 0.8975903614457831
+          },
+          "scaledCellSize": [
+            372,
+            497
+          ],
+          "targetCap": [
+            204.0,
+            56
+          ],
+          "integerOffset": [
+            5,
+            5
+          ],
+          "registeredBounds": [
+            75,
+            56,
+            310,
+            401
+          ],
+          "capXResidualPixels": -0.26706827309237724,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawRect": [
+            768,
+            512,
+            1152,
+            1024
+          ],
+          "originalFrameSha256": "462f40f24a0daa4284d91dbc9ef7f8d4775097eeeceef0a79d977cddc56e6768",
+          "original": {
+            "bounds": [
+              6,
+              0,
+              34,
+              42
+            ],
+            "height": 42,
+            "capTop": 0,
+            "capCenterX": 20.272727272727273,
+            "capBandRows": 3,
+            "capSpan": [
+              18,
+              22
+            ],
+            "capWarmColourFraction": 0.8181818181818182
+          },
+          "ownRaw": {
+            "bounds": [
+              88,
+              40,
+              308,
+              394
+            ],
+            "height": 354,
+            "capTop": 40,
+            "capCenterX": 191.43006263048017,
+            "capBandRows": 12,
+            "capSpan": [
+              163,
+              221
+            ],
+            "capWarmColourFraction": 0.9123173277661796
+          },
+          "ownScaled": {
+            "bounds": [
+              85,
+              39,
+              299,
+              382
+            ],
+            "height": 343,
+            "capTop": 39,
+            "capCenterX": 185.5082304526749,
+            "capBandRows": 12,
+            "capSpan": [
+              157,
+              215
+            ],
+            "capWarmColourFraction": 0.8930041152263375
+          },
+          "scaledCellSize": [
+            372,
+            497
+          ],
+          "targetCap": [
+            194.1818181818182,
+            40
+          ],
+          "integerOffset": [
+            9,
+            1
+          ],
+          "registeredBounds": [
+            94,
+            40,
+            308,
+            383
+          ],
+          "capXResidualPixels": 0.3264122708567072,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawRect": [
+            1152,
+            512,
+            1536,
+            1024
+          ],
+          "originalFrameSha256": "a4fedcbae407cb4b50d84843a3412e80dcc5ad92e0826a9ead0768ca96a07371",
+          "original": {
+            "bounds": [
+              6,
+              0,
+              31,
+              44
+            ],
+            "height": 44,
+            "capTop": 0,
+            "capCenterX": 19.0,
+            "capBandRows": 3,
+            "capSpan": [
+              17,
+              21
+            ],
+            "capWarmColourFraction": 0.7777777777777778
+          },
+          "ownRaw": {
+            "bounds": [
+              77,
+              51,
+              310,
+              419
+            ],
+            "height": 368,
+            "capTop": 51,
+            "capCenterX": 202.40980392156862,
+            "capBandRows": 12,
+            "capSpan": [
+              173,
+              233
+            ],
+            "capWarmColourFraction": 0.9215686274509803
+          },
+          "ownScaled": {
+            "bounds": [
+              74,
+              49,
+              300,
+              407
+            ],
+            "height": 358,
+            "capTop": 49,
+            "capCenterX": 195.95257731958762,
+            "capBandRows": 12,
+            "capSpan": [
+              167,
+              225
+            ],
+            "capWarmColourFraction": 0.9092783505154639
+          },
+          "scaledCellSize": [
+            372,
+            497
+          ],
+          "targetCap": [
+            184.0,
+            40
+          ],
+          "integerOffset": [
+            -12,
+            -9
+          ],
+          "registeredBounds": [
+            62,
+            40,
+            288,
+            398
+          ],
+          "capXResidualPixels": -0.047422680412381624,
+          "figureClipped": false
+        }
+      ]
+    },
+    "E": {
+      "scale": 0.9512893982808023,
+      "offsets": [
+        [
+          3,
+          -1
+        ],
+        [
+          7,
+          -7
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          -3,
+          3
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          5,
+          -3
+        ]
+      ],
+      "anchor": [
+        184,
+        368
+      ],
+      "originalHeightMedianTimes8": 332.0,
+      "ownHeightMedian": 349.0,
+      "sourceSha256": "750095fcd7e4ed1500bdfd3e30224aca628491779c4b589d4752b68fbc5cdcf0",
+      "measurements": [
+        {
+          "index": 0,
+          "rawRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "originalFrameSha256": "9f2586287a7bb29549d396bd894f482e6fe1f9bb9cc72fa60055ffb40b81c2eb",
+          "original": {
+            "bounds": [
+              1,
+              2,
+              32,
+              45
+            ],
+            "height": 43,
+            "capTop": 2,
+            "capCenterX": 21.615384615384617,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              24
+            ],
+            "capWarmColourFraction": 0.6923076923076923
+          },
+          "ownRaw": {
+            "bounds": [
+              36,
+              60,
+              282,
+              410
+            ],
+            "height": 350,
+            "capTop": 60,
+            "capCenterX": 212.9014778325123,
+            "capBandRows": 12,
+            "capSpan": [
+              188,
+              237
+            ],
+            "capWarmColourFraction": 0.9384236453201971
+          },
+          "ownScaled": {
+            "bounds": [
+              34,
+              57,
+              268,
+              390
+            ],
+            "height": 333,
+            "capTop": 57,
+            "capCenterX": 202.31392405063292,
+            "capBandRows": 12,
+            "capSpan": [
+              178,
+              226
+            ],
+            "capWarmColourFraction": 0.9341772151898734
+          },
+          "scaledCellSize": [
+            365,
+            487
+          ],
+          "targetCap": [
+            204.92307692307693,
+            56
+          ],
+          "integerOffset": [
+            3,
+            -1
+          ],
+          "registeredBounds": [
+            37,
+            56,
+            271,
+            389
+          ],
+          "capXResidualPixels": 0.39084712755598616,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawRect": [
+            384,
+            0,
+            768,
+            512
+          ],
+          "originalFrameSha256": "2bdc37689223356ab0a84b322fc8b6fe0983047bd1a6d8ba546cb7f3c71ddd4e",
+          "original": {
+            "bounds": [
+              5,
+              1,
+              29,
+              46
+            ],
+            "height": 45,
+            "capTop": 1,
+            "capCenterX": 21.5,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              24
+            ],
+            "capWarmColourFraction": 0.75
+          },
+          "ownRaw": {
+            "bounds": [
+              47,
+              58,
+              278,
+              410
+            ],
+            "height": 352,
+            "capTop": 58,
+            "capCenterX": 207.35140997830803,
+            "capBandRows": 12,
+            "capSpan": [
+              181,
+              236
+            ],
+            "capWarmColourFraction": 0.9349240780911063
+          },
+          "ownScaled": {
+            "bounds": [
+              45,
+              55,
+              264,
+              390
+            ],
+            "height": 335,
+            "capTop": 55,
+            "capCenterX": 197.03153153153153,
+            "capBandRows": 12,
+            "capSpan": [
+              171,
+              225
+            ],
+            "capWarmColourFraction": 0.9324324324324325
+          },
+          "scaledCellSize": [
+            365,
+            487
+          ],
+          "targetCap": [
+            204.0,
+            48
+          ],
+          "integerOffset": [
+            7,
+            -7
+          ],
+          "registeredBounds": [
+            52,
+            48,
+            271,
+            383
+          ],
+          "capXResidualPixels": 0.031531531531527435,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawRect": [
+            768,
+            0,
+            1152,
+            512
+          ],
+          "originalFrameSha256": "5cf7097e59339e632456fd10fee694132aaecb1dd798400518c31775a1a2309a",
+          "original": {
+            "bounds": [
+              11,
+              1,
+              32,
+              45
+            ],
+            "height": 44,
+            "capTop": 1,
+            "capCenterX": 21.272727272727273,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              23
+            ],
+            "capWarmColourFraction": 0.8181818181818182
+          },
+          "ownRaw": {
+            "bounds": [
+              112,
+              51,
+              251,
+              410
+            ],
+            "height": 359,
+            "capTop": 51,
+            "capCenterX": 198.12581344902387,
+            "capBandRows": 12,
+            "capSpan": [
+              171,
+              224
+            ],
+            "capWarmColourFraction": 0.9457700650759219
+          },
+          "ownScaled": {
+            "bounds": [
+              107,
+              48,
+              239,
+              390
+            ],
+            "height": 342,
+            "capTop": 48,
+            "capCenterX": 188.28169014084506,
+            "capBandRows": 12,
+            "capSpan": [
+              163,
+              213
+            ],
+            "capWarmColourFraction": 0.9366197183098591
+          },
+          "scaledCellSize": [
+            365,
+            487
+          ],
+          "targetCap": [
+            202.1818181818182,
+            48
+          ],
+          "integerOffset": [
+            14,
+            0
+          ],
+          "registeredBounds": [
+            121,
+            48,
+            253,
+            390
+          ],
+          "capXResidualPixels": 0.09987195902687063,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawRect": [
+            1152,
+            0,
+            1536,
+            512
+          ],
+          "originalFrameSha256": "d4f0e69e7700f101f8e99b5924d663cfa0ec908ac31c9f36ed0fd9fe9c650658",
+          "original": {
+            "bounds": [
+              6,
+              4,
+              36,
+              45
+            ],
+            "height": 41,
+            "capTop": 4,
+            "capCenterX": 21.055555555555557,
+            "capBandRows": 3,
+            "capSpan": [
+              17,
+              24
+            ],
+            "capWarmColourFraction": 0.9444444444444444
+          },
+          "ownRaw": {
+            "bounds": [
+              68,
+              73,
+              319,
+              412
+            ],
+            "height": 339,
+            "capTop": 73,
+            "capCenterX": 207.9306220095694,
+            "capBandRows": 12,
+            "capSpan": [
+              182,
+              233
+            ],
+            "capWarmColourFraction": 0.9545454545454546
+          },
+          "ownScaled": {
+            "bounds": [
+              65,
+              69,
+              303,
+              392
+            ],
+            "height": 323,
+            "capTop": 69,
+            "capCenterX": 197.76262626262627,
+            "capBandRows": 12,
+            "capSpan": [
+              172,
+              222
+            ],
+            "capWarmColourFraction": 0.9166666666666666
+          },
+          "scaledCellSize": [
+            365,
+            487
+          ],
+          "targetCap": [
+            200.44444444444446,
+            72
+          ],
+          "integerOffset": [
+            3,
+            3
+          ],
+          "registeredBounds": [
+            68,
+            72,
+            306,
+            395
+          ],
+          "capXResidualPixels": 0.318181818181813,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawRect": [
+            0,
+            512,
+            384,
+            1024
+          ],
+          "originalFrameSha256": "ceabe135f03a2dfb97321cb86351a9dd1082ea39a191125d07e30afd8a7f1e9c",
+          "original": {
+            "bounds": [
+              1,
+              5,
+              37,
+              45
+            ],
+            "height": 40,
+            "capTop": 5,
+            "capCenterX": 21.25,
+            "capBandRows": 3,
+            "capSpan": [
+              18,
+              24
+            ],
+            "capWarmColourFraction": 0.9166666666666666
+          },
+          "ownRaw": {
+            "bounds": [
+              35,
+              81,
+              320,
+              399
+            ],
+            "height": 318,
+            "capTop": 81,
+            "capCenterX": 215.33906633906633,
+            "capBandRows": 12,
+            "capSpan": [
+              189,
+              241
+            ],
+            "capWarmColourFraction": 0.9213759213759214
+          },
+          "ownScaled": {
+            "bounds": [
+              34,
+              77,
+              304,
+              380
+            ],
+            "height": 303,
+            "capTop": 77,
+            "capCenterX": 204.56467661691542,
+            "capBandRows": 12,
+            "capSpan": [
+              179,
+              229
+            ],
+            "capWarmColourFraction": 0.9154228855721394
+          },
+          "scaledCellSize": [
+            365,
+            487
+          ],
+          "targetCap": [
+            202.0,
+            80
+          ],
+          "integerOffset": [
+            -3,
+            3
+          ],
+          "registeredBounds": [
+            31,
+            80,
+            301,
+            383
+          ],
+          "capXResidualPixels": -0.4353233830845795,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawRect": [
+            384,
+            512,
+            768,
+            1024
+          ],
+          "originalFrameSha256": "81dea287afa389f83e06bbf786c7490c52ec6adf199e073bf668b7c569b2b569",
+          "original": {
+            "bounds": [
+              5,
+              4,
+              36,
+              41
+            ],
+            "height": 37,
+            "capTop": 4,
+            "capCenterX": 21.294117647058822,
+            "capBandRows": 3,
+            "capSpan": [
+              18,
+              24
+            ],
+            "capWarmColourFraction": 0.8823529411764706
+          },
+          "ownRaw": {
+            "bounds": [
+              66,
+              64,
+              310,
+              382
+            ],
+            "height": 318,
+            "capTop": 64,
+            "capCenterX": 211.6815286624204,
+            "capBandRows": 12,
+            "capSpan": [
+              185,
+              238
+            ],
+            "capWarmColourFraction": 0.9363057324840764
+          },
+          "ownScaled": {
+            "bounds": [
+              63,
+              60,
+              295,
+              364
+            ],
+            "height": 304,
+            "capTop": 60,
+            "capCenterX": 201.13734939759036,
+            "capBandRows": 12,
+            "capSpan": [
+              176,
+              226
+            ],
+            "capWarmColourFraction": 0.9204819277108434
+          },
+          "scaledCellSize": [
+            365,
+            487
+          ],
+          "targetCap": [
+            202.35294117647058,
+            72
+          ],
+          "integerOffset": [
+            1,
+            12
+          ],
+          "registeredBounds": [
+            64,
+            72,
+            296,
+            376
+          ],
+          "capXResidualPixels": -0.21559177888022418,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawRect": [
+            768,
+            512,
+            1152,
+            1024
+          ],
+          "originalFrameSha256": "029fac8014e82b55638cb1b64a69d1a91094bb083b077b4dd624288c1ff0c80e",
+          "original": {
+            "bounds": [
+              11,
+              1,
+              32,
+              41
+            ],
+            "height": 40,
+            "capTop": 1,
+            "capCenterX": 21.545454545454547,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              24
+            ],
+            "capWarmColourFraction": 0.9090909090909091
+          },
+          "ownRaw": {
+            "bounds": [
+              112,
+              43,
+              248,
+              396
+            ],
+            "height": 353,
+            "capTop": 43,
+            "capCenterX": 198.17312072892938,
+            "capBandRows": 12,
+            "capSpan": [
+              171,
+              224
+            ],
+            "capWarmColourFraction": 0.9476082004555809
+          },
+          "ownScaled": {
+            "bounds": [
+              107,
+              41,
+              236,
+              376
+            ],
+            "height": 335,
+            "capTop": 41,
+            "capCenterX": 188.175,
+            "capBandRows": 12,
+            "capSpan": [
+              162,
+              214
+            ],
+            "capWarmColourFraction": 0.9340909090909091
+          },
+          "scaledCellSize": [
+            365,
+            487
+          ],
+          "targetCap": [
+            204.36363636363637,
+            48
+          ],
+          "integerOffset": [
+            16,
+            7
+          ],
+          "registeredBounds": [
+            123,
+            48,
+            252,
+            383
+          ],
+          "capXResidualPixels": -0.1886363636363626,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawRect": [
+            1152,
+            512,
+            1536,
+            1024
+          ],
+          "originalFrameSha256": "a931f2423d74f98d16266130188b4fcb00b5b7534fd46bc7f7c5cb40cdbe7eb2",
+          "original": {
+            "bounds": [
+              5,
+              1,
+              28,
+              43
+            ],
+            "height": 42,
+            "capTop": 1,
+            "capCenterX": 21.5,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              24
+            ],
+            "capWarmColourFraction": 0.9166666666666666
+          },
+          "ownRaw": {
+            "bounds": [
+              68,
+              53,
+              280,
+              401
+            ],
+            "height": 348,
+            "capTop": 53,
+            "capCenterX": 209.32089552238807,
+            "capBandRows": 12,
+            "capSpan": [
+              184,
+              234
+            ],
+            "capWarmColourFraction": 0.9253731343283582
+          },
+          "ownScaled": {
+            "bounds": [
+              64,
+              51,
+              266,
+              381
+            ],
+            "height": 330,
+            "capTop": 51,
+            "capCenterX": 198.98584905660377,
+            "capBandRows": 12,
+            "capSpan": [
+              173,
+              223
+            ],
+            "capWarmColourFraction": 0.9316037735849056
+          },
+          "scaledCellSize": [
+            365,
+            487
+          ],
+          "targetCap": [
+            204.0,
+            48
+          ],
+          "integerOffset": [
+            5,
+            -3
+          ],
+          "registeredBounds": [
+            69,
+            48,
+            271,
+            378
+          ],
+          "capXResidualPixels": -0.014150943396231241,
+          "figureClipped": false
+        }
+      ]
+    },
+    "SE": {
+      "scale": 0.8925170068027211,
+      "offsets": [
+        [
+          26,
+          3
+        ],
+        [
+          17,
+          -2
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          17,
+          4
+        ],
+        [
+          1,
+          22
+        ],
+        [
+          7,
+          18
+        ],
+        [
+          12,
+          12
+        ],
+        [
+          21,
+          7
+        ]
+      ],
+      "anchor": [
+        184,
+        368
+      ],
+      "originalHeightMedianTimes8": 328.0,
+      "ownHeightMedian": 367.5,
+      "sourceSha256": "06dfa675fd3599e1a35270474ff26b1d83c80ce618a53e3e94afbb2f00721b41",
+      "measurements": [
+        {
+          "index": 0,
+          "rawRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "originalFrameSha256": "0aa3ebd907eb0acb8e9b3296d16135bacea0ce4acbc144a51c1b14f4037610b7",
+          "original": {
+            "bounds": [
+              3,
+              3,
+              32,
+              48
+            ],
+            "height": 45,
+            "capTop": 3,
+            "capCenterX": 23.3,
+            "capBandRows": 3,
+            "capSpan": [
+              21,
+              25
+            ],
+            "capWarmColourFraction": 1.0
+          },
+          "ownRaw": {
+            "bounds": [
+              54,
+              69,
+              297,
+              448
+            ],
+            "height": 379,
+            "capTop": 69,
+            "capCenterX": 215.82,
+            "capBandRows": 12,
+            "capSpan": [
+              190,
+              241
+            ],
+            "capWarmColourFraction": 0.9225
+          },
+          "ownScaled": {
+            "bounds": [
+              48,
+              61,
+              265,
+              400
+            ],
+            "height": 339,
+            "capTop": 61,
+            "capCenterX": 192.59002770083103,
+            "capBandRows": 12,
+            "capSpan": [
+              169,
+              216
+            ],
+            "capWarmColourFraction": 0.8919667590027701
+          },
+          "scaledCellSize": [
+            343,
+            457
+          ],
+          "targetCap": [
+            218.4,
+            64
+          ],
+          "integerOffset": [
+            26,
+            3
+          ],
+          "registeredBounds": [
+            74,
+            64,
+            291,
+            403
+          ],
+          "capXResidualPixels": 0.19002770083102405,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawRect": [
+            384,
+            0,
+            768,
+            512
+          ],
+          "originalFrameSha256": "3c9962ea514efb12ecad7ce06670813ea5dd4eb66b586b40daee4073dc98351b",
+          "original": {
+            "bounds": [
+              4,
+              2,
+              31,
+              48
+            ],
+            "height": 46,
+            "capTop": 2,
+            "capCenterX": 22.3,
+            "capBandRows": 3,
+            "capSpan": [
+              20,
+              24
+            ],
+            "capWarmColourFraction": 0.7
+          },
+          "ownRaw": {
+            "bounds": [
+              64,
+              65,
+              291,
+              438
+            ],
+            "height": 373,
+            "capTop": 65,
+            "capCenterX": 216.57323232323233,
+            "capBandRows": 12,
+            "capSpan": [
+              191,
+              241
+            ],
+            "capWarmColourFraction": 0.9292929292929293
+          },
+          "ownScaled": {
+            "bounds": [
+              57,
+              58,
+              260,
+              391
+            ],
+            "height": 333,
+            "capTop": 58,
+            "capCenterX": 193.44358974358974,
+            "capBandRows": 12,
+            "capSpan": [
+              169,
+              217
+            ],
+            "capWarmColourFraction": 0.9
+          },
+          "scaledCellSize": [
+            343,
+            457
+          ],
+          "targetCap": [
+            210.4,
+            56
+          ],
+          "integerOffset": [
+            17,
+            -2
+          ],
+          "registeredBounds": [
+            74,
+            56,
+            277,
+            389
+          ],
+          "capXResidualPixels": 0.04358974358973455,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawRect": [
+            768,
+            0,
+            1152,
+            512
+          ],
+          "originalFrameSha256": "0205d047f212ab1fd9c8746a4c08c8c57c4ff492d8d784b306f20d5347c911bf",
+          "original": {
+            "bounds": [
+              7,
+              2,
+              28,
+              45
+            ],
+            "height": 43,
+            "capTop": 2,
+            "capCenterX": 20.5,
+            "capBandRows": 3,
+            "capSpan": [
+              18,
+              23
+            ],
+            "capWarmColourFraction": 1.0
+          },
+          "ownRaw": {
+            "bounds": [
+              79,
+              61,
+              256,
+              424
+            ],
+            "height": 363,
+            "capTop": 61,
+            "capCenterX": 207.04962779156327,
+            "capBandRows": 12,
+            "capSpan": [
+              181,
+              232
+            ],
+            "capWarmColourFraction": 0.9205955334987593
+          },
+          "ownScaled": {
+            "bounds": [
+              70,
+              54,
+              229,
+              378
+            ],
+            "height": 324,
+            "capTop": 54,
+            "capCenterX": 184.81147540983608,
+            "capBandRows": 12,
+            "capSpan": [
+              161,
+              208
+            ],
+            "capWarmColourFraction": 0.912568306010929
+          },
+          "scaledCellSize": [
+            343,
+            457
+          ],
+          "targetCap": [
+            196.0,
+            56
+          ],
+          "integerOffset": [
+            11,
+            2
+          ],
+          "registeredBounds": [
+            81,
+            56,
+            240,
+            380
+          ],
+          "capXResidualPixels": -0.1885245901639223,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawRect": [
+            1152,
+            0,
+            1536,
+            512
+          ],
+          "originalFrameSha256": "fa914ab8435c21dbbb01c2385fab03b7361b27109bdd366e419bff9b1df14b73",
+          "original": {
+            "bounds": [
+              7,
+              4,
+              29,
+              43
+            ],
+            "height": 39,
+            "capTop": 4,
+            "capCenterX": 19.5,
+            "capBandRows": 3,
+            "capSpan": [
+              17,
+              22
+            ],
+            "capWarmColourFraction": 0.8333333333333334
+          },
+          "ownRaw": {
+            "bounds": [
+              82,
+              76,
+              289,
+              415
+            ],
+            "height": 339,
+            "capTop": 76,
+            "capCenterX": 191.66746987951808,
+            "capBandRows": 12,
+            "capSpan": [
+              165,
+              217
+            ],
+            "capWarmColourFraction": 0.908433734939759
+          },
+          "ownScaled": {
+            "bounds": [
+              73,
+              68,
+              258,
+              371
+            ],
+            "height": 303,
+            "capTop": 68,
+            "capCenterX": 171.10731707317072,
+            "capBandRows": 12,
+            "capSpan": [
+              146,
+              196
+            ],
+            "capWarmColourFraction": 0.8951219512195122
+          },
+          "scaledCellSize": [
+            343,
+            457
+          ],
+          "targetCap": [
+            188.0,
+            72
+          ],
+          "integerOffset": [
+            17,
+            4
+          ],
+          "registeredBounds": [
+            90,
+            72,
+            275,
+            375
+          ],
+          "capXResidualPixels": 0.10731707317071937,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawRect": [
+            0,
+            512,
+            384,
+            1024
+          ],
+          "originalFrameSha256": "745025b8ec9c3633a788591ecd3ad880b9f5db060173e8247ff02c58cbfa850d",
+          "original": {
+            "bounds": [
+              3,
+              6,
+              32,
+              45
+            ],
+            "height": 39,
+            "capTop": 6,
+            "capCenterX": 18.615384615384617,
+            "capBandRows": 3,
+            "capSpan": [
+              16,
+              21
+            ],
+            "capWarmColourFraction": 0.7692307692307693
+          },
+          "ownRaw": {
+            "bounds": [
+              60,
+              74,
+              297,
+              419
+            ],
+            "height": 345,
+            "capTop": 74,
+            "capCenterX": 201.17688679245282,
+            "capBandRows": 12,
+            "capSpan": [
+              175,
+              227
+            ],
+            "capWarmColourFraction": 0.8726415094339622
+          },
+          "ownScaled": {
+            "bounds": [
+              53,
+              66,
+              265,
+              374
+            ],
+            "height": 308,
+            "capTop": 66,
+            "capCenterX": 179.58955223880596,
+            "capBandRows": 12,
+            "capSpan": [
+              155,
+              204
+            ],
+            "capWarmColourFraction": 0.8781094527363185
+          },
+          "scaledCellSize": [
+            343,
+            457
+          ],
+          "targetCap": [
+            180.92307692307693,
+            88
+          ],
+          "integerOffset": [
+            1,
+            22
+          ],
+          "registeredBounds": [
+            54,
+            88,
+            266,
+            396
+          ],
+          "capXResidualPixels": -0.3335246842709694,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawRect": [
+            384,
+            512,
+            768,
+            1024
+          ],
+          "originalFrameSha256": "4f82156ad778e8a86bcb07aa676173652c2408d4b92784aafcd10fb24020e6af",
+          "original": {
+            "bounds": [
+              6,
+              4,
+              30,
+              44
+            ],
+            "height": 40,
+            "capTop": 4,
+            "capCenterX": 19.5,
+            "capBandRows": 3,
+            "capSpan": [
+              17,
+              22
+            ],
+            "capWarmColourFraction": 0.5833333333333334
+          },
+          "ownRaw": {
+            "bounds": [
+              68,
+              60,
+              292,
+              417
+            ],
+            "height": 357,
+            "capTop": 60,
+            "capCenterX": 202.25194805194806,
+            "capBandRows": 12,
+            "capSpan": [
+              177,
+              227
+            ],
+            "capWarmColourFraction": 0.9090909090909091
+          },
+          "ownScaled": {
+            "bounds": [
+              61,
+              54,
+              261,
+              372
+            ],
+            "height": 318,
+            "capTop": 54,
+            "capCenterX": 180.54228855721394,
+            "capBandRows": 12,
+            "capSpan": [
+              156,
+              205
+            ],
+            "capWarmColourFraction": 0.8980099502487562
+          },
+          "scaledCellSize": [
+            343,
+            457
+          ],
+          "targetCap": [
+            188.0,
+            72
+          ],
+          "integerOffset": [
+            7,
+            18
+          ],
+          "registeredBounds": [
+            68,
+            72,
+            268,
+            390
+          ],
+          "capXResidualPixels": -0.45771144278606357,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawRect": [
+            768,
+            512,
+            1152,
+            1024
+          ],
+          "originalFrameSha256": "3f43db0a7eec0d073e141fc0f959d418e64f48817a6f25920ecd3aa1ab32b09c",
+          "original": {
+            "bounds": [
+              7,
+              2,
+              28,
+              42
+            ],
+            "height": 40,
+            "capTop": 2,
+            "capCenterX": 20.555555555555557,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              22
+            ],
+            "capWarmColourFraction": 0.8888888888888888
+          },
+          "ownRaw": {
+            "bounds": [
+              80,
+              50,
+              261,
+              428
+            ],
+            "height": 378,
+            "capTop": 50,
+            "capCenterX": 206.3873417721519,
+            "capBandRows": 12,
+            "capSpan": [
+              181,
+              231
+            ],
+            "capWarmColourFraction": 0.9215189873417722
+          },
+          "ownScaled": {
+            "bounds": [
+              71,
+              44,
+              233,
+              382
+            ],
+            "height": 338,
+            "capTop": 44,
+            "capCenterX": 184.28450704225352,
+            "capBandRows": 12,
+            "capSpan": [
+              161,
+              207
+            ],
+            "capWarmColourFraction": 0.8929577464788733
+          },
+          "scaledCellSize": [
+            343,
+            457
+          ],
+          "targetCap": [
+            196.44444444444446,
+            56
+          ],
+          "integerOffset": [
+            12,
+            12
+          ],
+          "registeredBounds": [
+            83,
+            56,
+            245,
+            394
+          ],
+          "capXResidualPixels": -0.1599374021909341,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawRect": [
+            1152,
+            512,
+            1536,
+            1024
+          ],
+          "originalFrameSha256": "6807cdb513a1f4428307e454e44b6d0321d28e5704fdd7bd5258f7bdd11d5cf3",
+          "original": {
+            "bounds": [
+              4,
+              2,
+              30,
+              44
+            ],
+            "height": 42,
+            "capTop": 2,
+            "capCenterX": 22.1,
+            "capBandRows": 3,
+            "capSpan": [
+              20,
+              24
+            ],
+            "capWarmColourFraction": 0.8
+          },
+          "ownRaw": {
+            "bounds": [
+              65,
+              55,
+              286,
+              427
+            ],
+            "height": 372,
+            "capTop": 55,
+            "capCenterX": 210.52582159624413,
+            "capBandRows": 12,
+            "capSpan": [
+              184,
+              236
+            ],
+            "capWarmColourFraction": 0.9154929577464789
+          },
+          "ownScaled": {
+            "bounds": [
+              58,
+              49,
+              256,
+              381
+            ],
+            "height": 332,
+            "capTop": 49,
+            "capCenterX": 187.99507389162562,
+            "capBandRows": 12,
+            "capSpan": [
+              163,
+              212
+            ],
+            "capWarmColourFraction": 0.9064039408866995
+          },
+          "scaledCellSize": [
+            343,
+            457
+          ],
+          "targetCap": [
+            208.8,
+            56
+          ],
+          "integerOffset": [
+            21,
+            7
+          ],
+          "registeredBounds": [
+            79,
+            56,
+            277,
+            388
+          ],
+          "capXResidualPixels": 0.1950738916256114,
+          "figureClipped": false
+        }
+      ]
+    },
+    "S": {
+      "scale": 0.8320802005012531,
+      "offsets": [
+        [
+          54,
+          35
+        ],
+        [
+          52,
+          29
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          17,
+          27
+        ],
+        [
+          8,
+          59
+        ],
+        [
+          24,
+          51
+        ],
+        [
+          40,
+          35
+        ],
+        [
+          43,
+          44
+        ]
+      ],
+      "anchor": [
+        184,
+        368
+      ],
+      "originalHeightMedianTimes8": 332.0,
+      "ownHeightMedian": 399.0,
+      "sourceSha256": "7209bf3ab4d5545d47d61bb509fe546ee2462cef98937df904db32a4d0c7bfa2",
+      "measurements": [
+        {
+          "index": 0,
+          "rawRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "originalFrameSha256": "8cf3427ab9a860c058ea488de2b06eb0dd0b0cfbbe2a60bdef9251c5fc7ed556",
+          "original": {
+            "bounds": [
+              8,
+              5,
+              30,
+              49
+            ],
+            "height": 44,
+            "capTop": 5,
+            "capCenterX": 22.25,
+            "capBandRows": 3,
+            "capSpan": [
+              20,
+              24
+            ],
+            "capWarmColourFraction": 0.875
+          },
+          "ownRaw": {
+            "bounds": [
+              75,
+              54,
+              287,
+              447
+            ],
+            "height": 393,
+            "capTop": 54,
+            "capCenterX": 187.27616279069767,
+            "capBandRows": 12,
+            "capSpan": [
+              163,
+              211
+            ],
+            "capWarmColourFraction": 0.9331395348837209
+          },
+          "ownScaled": {
+            "bounds": [
+              63,
+              45,
+              239,
+              372
+            ],
+            "height": 327,
+            "capTop": 45,
+            "capCenterX": 155.80769230769232,
+            "capBandRows": 12,
+            "capSpan": [
+              133,
+              178
+            ],
+            "capWarmColourFraction": 0.9171597633136095
+          },
+          "scaledCellSize": [
+            320,
+            426
+          ],
+          "targetCap": [
+            210.0,
+            80
+          ],
+          "integerOffset": [
+            54,
+            35
+          ],
+          "registeredBounds": [
+            117,
+            80,
+            293,
+            407
+          ],
+          "capXResidualPixels": -0.1923076923076792,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawRect": [
+            384,
+            0,
+            768,
+            512
+          ],
+          "originalFrameSha256": "7d8e433d16a0edd14050af92bc09829afe30f63466784e370101ae763fbd8846",
+          "original": {
+            "bounds": [
+              7,
+              4,
+              31,
+              47
+            ],
+            "height": 43,
+            "capTop": 4,
+            "capCenterX": 21.1,
+            "capBandRows": 3,
+            "capSpan": [
+              19,
+              23
+            ],
+            "capWarmColourFraction": 0.8
+          },
+          "ownRaw": {
+            "bounds": [
+              66,
+              51,
+              282,
+              448
+            ],
+            "height": 397,
+            "capTop": 51,
+            "capCenterX": 178.126582278481,
+            "capBandRows": 12,
+            "capSpan": [
+              155,
+              201
+            ],
+            "capWarmColourFraction": 0.9240506329113924
+          },
+          "ownScaled": {
+            "bounds": [
+              55,
+              43,
+              235,
+              373
+            ],
+            "height": 330,
+            "capTop": 43,
+            "capCenterX": 148.375,
+            "capBandRows": 12,
+            "capSpan": [
+              127,
+              170
+            ],
+            "capWarmColourFraction": 0.9196428571428571
+          },
+          "scaledCellSize": [
+            320,
+            426
+          ],
+          "targetCap": [
+            200.8,
+            72
+          ],
+          "integerOffset": [
+            52,
+            29
+          ],
+          "registeredBounds": [
+            107,
+            72,
+            287,
+            402
+          ],
+          "capXResidualPixels": -0.42500000000001137,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawRect": [
+            768,
+            0,
+            1152,
+            512
+          ],
+          "originalFrameSha256": "9584eef2f50c43fdfc559edb02dbf4fcc8ca44dd7cac6205ba6aa0742877e39f",
+          "original": {
+            "bounds": [
+              6,
+              3,
+              32,
+              44
+            ],
+            "height": 41,
+            "capTop": 3,
+            "capCenterX": 19.0,
+            "capBandRows": 3,
+            "capSpan": [
+              17,
+              21
+            ],
+            "capWarmColourFraction": 0.8888888888888888
+          },
+          "ownRaw": {
+            "bounds": [
+              64,
+              51,
+              278,
+              444
+            ],
+            "height": 393,
+            "capTop": 51,
+            "capCenterX": 172.7057142857143,
+            "capBandRows": 12,
+            "capSpan": [
+              148,
+              197
+            ],
+            "capWarmColourFraction": 0.9257142857142857
+          },
+          "ownScaled": {
+            "bounds": [
+              53,
+              42,
+              232,
+              370
+            ],
+            "height": 328,
+            "capTop": 42,
+            "capCenterX": 143.85534591194968,
+            "capBandRows": 12,
+            "capSpan": [
+              122,
+              165
+            ],
+            "capWarmColourFraction": 0.9119496855345912
+          },
+          "scaledCellSize": [
+            320,
+            426
+          ],
+          "targetCap": [
+            184.0,
+            64
+          ],
+          "integerOffset": [
+            40,
+            22
+          ],
+          "registeredBounds": [
+            93,
+            64,
+            272,
+            392
+          ],
+          "capXResidualPixels": -0.14465408805031643,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawRect": [
+            1152,
+            0,
+            1536,
+            512
+          ],
+          "originalFrameSha256": "bbb10a76eb0f9a76dea05c8b8071cfa5b531163087be6d6443b4ab932ec718b0",
+          "original": {
+            "bounds": [
+              7,
+              4,
+              30,
+              43
+            ],
+            "height": 39,
+            "capTop": 4,
+            "capCenterX": 17.125,
+            "capBandRows": 3,
+            "capSpan": [
+              15,
+              19
+            ],
+            "capWarmColourFraction": 0.875
+          },
+          "ownRaw": {
+            "bounds": [
+              73,
+              54,
+              287,
+              451
+            ],
+            "height": 397,
+            "capTop": 54,
+            "capCenterX": 183.01582278481013,
+            "capBandRows": 12,
+            "capSpan": [
+              159,
+              207
+            ],
+            "capWarmColourFraction": 0.9113924050632911
+          },
+          "ownScaled": {
+            "bounds": [
+              61,
+              45,
+              239,
+              375
+            ],
+            "height": 330,
+            "capTop": 45,
+            "capCenterX": 152.23899371069183,
+            "capBandRows": 12,
+            "capSpan": [
+              130,
+              174
+            ],
+            "capWarmColourFraction": 0.8962264150943396
+          },
+          "scaledCellSize": [
+            320,
+            426
+          ],
+          "targetCap": [
+            169.0,
+            72
+          ],
+          "integerOffset": [
+            17,
+            27
+          ],
+          "registeredBounds": [
+            78,
+            72,
+            256,
+            402
+          ],
+          "capXResidualPixels": 0.23899371069182962,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawRect": [
+            0,
+            512,
+            384,
+            1024
+          ],
+          "originalFrameSha256": "74a7070bbd21d0a5824dfeded0dc3313067ab2e4f24c9d7c3d40ec3d1da49024",
+          "original": {
+            "bounds": [
+              8,
+              6,
+              30,
+              48
+            ],
+            "height": 42,
+            "capTop": 6,
+            "capCenterX": 16.5,
+            "capBandRows": 3,
+            "capSpan": [
+              14,
+              19
+            ],
+            "capWarmColourFraction": 0.9166666666666666
+          },
+          "ownRaw": {
+            "bounds": [
+              73,
+              35,
+              292,
+              444
+            ],
+            "height": 409,
+            "capTop": 35,
+            "capCenterX": 187.19753086419752,
+            "capBandRows": 12,
+            "capSpan": [
+              163,
+              211
+            ],
+            "capWarmColourFraction": 0.9104938271604939
+          },
+          "ownScaled": {
+            "bounds": [
+              61,
+              29,
+              244,
+              369
+            ],
+            "height": 340,
+            "capTop": 29,
+            "capCenterX": 155.88141025641025,
+            "capBandRows": 12,
+            "capSpan": [
+              134,
+              178
+            ],
+            "capWarmColourFraction": 0.9102564102564102
+          },
+          "scaledCellSize": [
+            320,
+            426
+          ],
+          "targetCap": [
+            164.0,
+            88
+          ],
+          "integerOffset": [
+            8,
+            59
+          ],
+          "registeredBounds": [
+            69,
+            88,
+            252,
+            428
+          ],
+          "capXResidualPixels": -0.1185897435897516,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawRect": [
+            384,
+            512,
+            768,
+            1024
+          ],
+          "originalFrameSha256": "eb7b006c5abcba7ca2afc4dfe24d65603506d3f30bb45a3179108df48efc09de",
+          "original": {
+            "bounds": [
+              8,
+              5,
+              30,
+              47
+            ],
+            "height": 42,
+            "capTop": 5,
+            "capCenterX": 17.5,
+            "capBandRows": 3,
+            "capSpan": [
+              15,
+              20
+            ],
+            "capWarmColourFraction": 1.0
+          },
+          "ownRaw": {
+            "bounds": [
+              70,
+              35,
+              284,
+              436
+            ],
+            "height": 401,
+            "capTop": 35,
+            "capCenterX": 177.31304347826088,
+            "capBandRows": 12,
+            "capSpan": [
+              153,
+              202
+            ],
+            "capWarmColourFraction": 0.9043478260869565
+          },
+          "ownScaled": {
+            "bounds": [
+              58,
+              29,
+              237,
+              363
+            ],
+            "height": 334,
+            "capTop": 29,
+            "capCenterX": 147.75757575757575,
+            "capBandRows": 12,
+            "capSpan": [
+              126,
+              170
+            ],
+            "capWarmColourFraction": 0.9151515151515152
+          },
+          "scaledCellSize": [
+            320,
+            426
+          ],
+          "targetCap": [
+            172.0,
+            80
+          ],
+          "integerOffset": [
+            24,
+            51
+          ],
+          "registeredBounds": [
+            82,
+            80,
+            261,
+            414
+          ],
+          "capXResidualPixels": -0.24242424242424931,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawRect": [
+            768,
+            512,
+            1152,
+            1024
+          ],
+          "originalFrameSha256": "247522d6b7c69c3a6fe35b467ea16be42543eccf5190ee2d49f52806dbbb5914",
+          "original": {
+            "bounds": [
+              7,
+              3,
+              31,
+              43
+            ],
+            "height": 40,
+            "capTop": 3,
+            "capCenterX": 19.0,
+            "capBandRows": 3,
+            "capSpan": [
+              17,
+              21
+            ],
+            "capWarmColourFraction": 0.7777777777777778
+          },
+          "ownRaw": {
+            "bounds": [
+              62,
+              35,
+              279,
+              436
+            ],
+            "height": 401,
+            "capTop": 35,
+            "capCenterX": 172.83798882681563,
+            "capBandRows": 12,
+            "capSpan": [
+              148,
+              198
+            ],
+            "capWarmColourFraction": 0.9301675977653632
+          },
+          "ownScaled": {
+            "bounds": [
+              51,
+              29,
+              232,
+              363
+            ],
+            "height": 334,
+            "capTop": 29,
+            "capCenterX": 143.7433628318584,
+            "capBandRows": 12,
+            "capSpan": [
+              121,
+              166
+            ],
+            "capWarmColourFraction": 0.9203539823008849
+          },
+          "scaledCellSize": [
+            320,
+            426
+          ],
+          "targetCap": [
+            184.0,
+            64
+          ],
+          "integerOffset": [
+            40,
+            35
+          ],
+          "registeredBounds": [
+            91,
+            64,
+            272,
+            398
+          ],
+          "capXResidualPixels": -0.25663716814159443,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawRect": [
+            1152,
+            512,
+            1536,
+            1024
+          ],
+          "originalFrameSha256": "a792edb55023af2f034c14f3a73886a06a43f59d758be3210399e1135846d61c",
+          "original": {
+            "bounds": [
+              7,
+              4,
+              31,
+              43
+            ],
+            "height": 39,
+            "capTop": 4,
+            "capCenterX": 20.5,
+            "capBandRows": 3,
+            "capSpan": [
+              18,
+              23
+            ],
+            "capWarmColourFraction": 0.75
+          },
+          "ownRaw": {
+            "bounds": [
+              74,
+              34,
+              287,
+              449
+            ],
+            "height": 415,
+            "capTop": 34,
+            "capCenterX": 184.35928143712576,
+            "capBandRows": 12,
+            "capSpan": [
+              160,
+              208
+            ],
+            "capWarmColourFraction": 0.9131736526946108
+          },
+          "ownScaled": {
+            "bounds": [
+              61,
+              28,
+              239,
+              374
+            ],
+            "height": 346,
+            "capTop": 28,
+            "capCenterX": 153.43408360128618,
+            "capBandRows": 12,
+            "capSpan": [
+              132,
+              175
+            ],
+            "capWarmColourFraction": 0.909967845659164
+          },
+          "scaledCellSize": [
+            320,
+            426
+          ],
+          "targetCap": [
+            196.0,
+            72
+          ],
+          "integerOffset": [
+            43,
+            44
+          ],
+          "registeredBounds": [
+            104,
+            72,
+            282,
+            418
+          ],
+          "capXResidualPixels": 0.43408360128617574,
+          "figureClipped": false
+        }
+      ]
+    },
+    "SW": {
+      "scale": 0.927038626609442,
+      "offsets": [
+        [
+          18,
+          25
+        ],
+        [
+          22,
+          14
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          -2,
+          5
+        ],
+        [
+          1,
+          15
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          15,
+          9
+        ]
+      ],
+      "anchor": [
+        184,
+        368
+      ],
+      "originalHeightMedianTimes8": 324.0,
+      "ownHeightMedian": 349.5,
+      "sourceSha256": "4d1f7952147913f224b2d9ea3f9c7f1a1e0f2843931e1971c60ec81fe4daaa63",
+      "measurements": [
+        {
+          "index": 0,
+          "rawRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "originalFrameSha256": "d553924f2956c61a4a2d590021335ab6c7fb05c09a9321a1af6c7f6e76e97d8e",
+          "original": {
+            "bounds": [
+              6,
+              7,
+              35,
+              46
+            ],
+            "height": 39,
+            "capTop": 7,
+            "capCenterX": 18.157894736842106,
+            "capBandRows": 3,
+            "capSpan": [
+              14,
+              22
+            ],
+            "capWarmColourFraction": 0.9473684210526315
+          },
+          "ownRaw": {
+            "bounds": [
+              70,
+              77,
+              311,
+              420
+            ],
+            "height": 343,
+            "capTop": 77,
+            "capCenterX": 171.90301003344482,
+            "capBandRows": 12,
+            "capSpan": [
+              150,
+              192
+            ],
+            "capWarmColourFraction": 0.9498327759197325
+          },
+          "ownScaled": {
+            "bounds": [
+              65,
+              71,
+              289,
+              389
+            ],
+            "height": 318,
+            "capTop": 71,
+            "capCenterX": 159.20494699646642,
+            "capBandRows": 12,
+            "capSpan": [
+              138,
+              179
+            ],
+            "capWarmColourFraction": 0.9257950530035336
+          },
+          "scaledCellSize": [
+            356,
+            475
+          ],
+          "targetCap": [
+            177.26315789473685,
+            96
+          ],
+          "integerOffset": [
+            18,
+            25
+          ],
+          "registeredBounds": [
+            83,
+            96,
+            307,
+            414
+          ],
+          "capXResidualPixels": -0.058210898270431244,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawRect": [
+            384,
+            0,
+            768,
+            512
+          ],
+          "originalFrameSha256": "21dcaa01be344cb528a6e9bf1f2f068a0053a71d0d9d815157ccc130994655cf",
+          "original": {
+            "bounds": [
+              7,
+              5,
+              32,
+              45
+            ],
+            "height": 40,
+            "capTop": 5,
+            "capCenterX": 17.8,
+            "capBandRows": 3,
+            "capSpan": [
+              14,
+              21
+            ],
+            "capWarmColourFraction": 0.8666666666666667
+          },
+          "ownRaw": {
+            "bounds": [
+              73,
+              71,
+              298,
+              418
+            ],
+            "height": 347,
+            "capTop": 71,
+            "capCenterX": 165.05597014925374,
+            "capBandRows": 12,
+            "capSpan": [
+              144,
+              184
+            ],
+            "capWarmColourFraction": 0.9253731343283582
+          },
+          "ownScaled": {
+            "bounds": [
+              68,
+              66,
+              276,
+              388
+            ],
+            "height": 322,
+            "capTop": 66,
+            "capCenterX": 152.72563176895306,
+            "capBandRows": 12,
+            "capSpan": [
+              132,
+              172
+            ],
+            "capWarmColourFraction": 0.9205776173285198
+          },
+          "scaledCellSize": [
+            356,
+            475
+          ],
+          "targetCap": [
+            174.4,
+            80
+          ],
+          "integerOffset": [
+            22,
+            14
+          ],
+          "registeredBounds": [
+            90,
+            80,
+            298,
+            402
+          ],
+          "capXResidualPixels": 0.325631768953059,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawRect": [
+            768,
+            0,
+            1152,
+            512
+          ],
+          "originalFrameSha256": "35f8df457c71ef8a14a0f54d3400b5cf3d5d81764eb829c0eb82b1a935798985",
+          "original": {
+            "bounds": [
+              3,
+              3,
+              30,
+              42
+            ],
+            "height": 39,
+            "capTop": 3,
+            "capCenterX": 17.0,
+            "capBandRows": 3,
+            "capSpan": [
+              15,
+              19
+            ],
+            "capWarmColourFraction": 0.9230769230769231
+          },
+          "ownRaw": {
+            "bounds": [
+              65,
+              62,
+              277,
+              412
+            ],
+            "height": 350,
+            "capTop": 62,
+            "capCenterX": 168.60836501901142,
+            "capBandRows": 12,
+            "capSpan": [
+              148,
+              187
+            ],
+            "capWarmColourFraction": 0.9277566539923955
+          },
+          "ownScaled": {
+            "bounds": [
+              60,
+              58,
+              257,
+              382
+            ],
+            "height": 324,
+            "capTop": 58,
+            "capCenterX": 156.09859154929578,
+            "capBandRows": 12,
+            "capSpan": [
+              135,
+              176
+            ],
+            "capWarmColourFraction": 0.9225352112676056
+          },
+          "scaledCellSize": [
+            356,
+            475
+          ],
+          "targetCap": [
+            168.0,
+            64
+          ],
+          "integerOffset": [
+            12,
+            6
+          ],
+          "registeredBounds": [
+            72,
+            64,
+            269,
+            388
+          ],
+          "capXResidualPixels": 0.09859154929577585,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawRect": [
+            1152,
+            0,
+            1536,
+            512
+          ],
+          "originalFrameSha256": "d1ef3b4546c83316ddfd24701ee8f4d2d6f16530513cf236f5eb054ec01f3f5e",
+          "original": {
+            "bounds": [
+              3,
+              3,
+              33,
+              44
+            ],
+            "height": 41,
+            "capTop": 3,
+            "capCenterX": 15.25,
+            "capBandRows": 3,
+            "capSpan": [
+              14,
+              17
+            ],
+            "capWarmColourFraction": 1.0
+          },
+          "ownRaw": {
+            "bounds": [
+              59,
+              63,
+              319,
+              412
+            ],
+            "height": 349,
+            "capTop": 63,
+            "capCenterX": 168.87084870848707,
+            "capBandRows": 12,
+            "capSpan": [
+              148,
+              188
+            ],
+            "capWarmColourFraction": 0.915129151291513
+          },
+          "ownScaled": {
+            "bounds": [
+              55,
+              59,
+              296,
+              382
+            ],
+            "height": 323,
+            "capTop": 59,
+            "capCenterX": 156.28135593220338,
+            "capBandRows": 12,
+            "capSpan": [
+              135,
+              176
+            ],
+            "capWarmColourFraction": 0.9288135593220339
+          },
+          "scaledCellSize": [
+            356,
+            475
+          ],
+          "targetCap": [
+            154.0,
+            64
+          ],
+          "integerOffset": [
+            -2,
+            5
+          ],
+          "registeredBounds": [
+            53,
+            64,
+            294,
+            387
+          ],
+          "capXResidualPixels": 0.2813559322033825,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawRect": [
+            0,
+            512,
+            384,
+            1024
+          ],
+          "originalFrameSha256": "390636adf8ecb6771811424fec3cc11c36b7fdcb44c9d7352a477383e83719ac",
+          "original": {
+            "bounds": [
+              4,
+              5,
+              34,
+              48
+            ],
+            "height": 43,
+            "capTop": 5,
+            "capCenterX": 14.666666666666666,
+            "capBandRows": 3,
+            "capSpan": [
+              12,
+              17
+            ],
+            "capWarmColourFraction": 0.9333333333333333
+          },
+          "ownRaw": {
+            "bounds": [
+              61,
+              70,
+              311,
+              431
+            ],
+            "height": 361,
+            "capTop": 70,
+            "capCenterX": 159.85714285714286,
+            "capBandRows": 12,
+            "capSpan": [
+              139,
+              179
+            ],
+            "capWarmColourFraction": 0.9157509157509157
+          },
+          "ownScaled": {
+            "bounds": [
+              56,
+              65,
+              289,
+              400
+            ],
+            "height": 335,
+            "capTop": 65,
+            "capCenterX": 148.07168458781362,
+            "capBandRows": 12,
+            "capSpan": [
+              127,
+              167
+            ],
+            "capWarmColourFraction": 0.9139784946236559
+          },
+          "scaledCellSize": [
+            356,
+            475
+          ],
+          "targetCap": [
+            149.33333333333331,
+            80
+          ],
+          "integerOffset": [
+            1,
+            15
+          ],
+          "registeredBounds": [
+            57,
+            80,
+            290,
+            415
+          ],
+          "capXResidualPixels": -0.2616487455196932,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawRect": [
+            384,
+            512,
+            768,
+            1024
+          ],
+          "originalFrameSha256": "78e79410153c4bad857acdbf4e80f78d74363aa6995faceed0af3b6beb5c43b8",
+          "original": {
+            "bounds": [
+              3,
+              4,
+              34,
+              48
+            ],
+            "height": 44,
+            "capTop": 4,
+            "capCenterX": 15.384615384615385,
+            "capBandRows": 3,
+            "capSpan": [
+              13,
+              18
+            ],
+            "capWarmColourFraction": 0.9230769230769231
+          },
+          "ownRaw": {
+            "bounds": [
+              62,
+              67,
+              286,
+              426
+            ],
+            "height": 359,
+            "capTop": 67,
+            "capCenterX": 164.7074829931973,
+            "capBandRows": 12,
+            "capSpan": [
+              143,
+              185
+            ],
+            "capWarmColourFraction": 0.9319727891156463
+          },
+          "ownScaled": {
+            "bounds": [
+              58,
+              62,
+              265,
+              395
+            ],
+            "height": 333,
+            "capTop": 62,
+            "capCenterX": 152.4878892733564,
+            "capBandRows": 12,
+            "capSpan": [
+              131,
+              172
+            ],
+            "capWarmColourFraction": 0.9065743944636678
+          },
+          "scaledCellSize": [
+            356,
+            475
+          ],
+          "targetCap": [
+            155.0769230769231,
+            72
+          ],
+          "integerOffset": [
+            3,
+            10
+          ],
+          "registeredBounds": [
+            61,
+            72,
+            268,
+            405
+          ],
+          "capXResidualPixels": 0.4109661964332929,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawRect": [
+            768,
+            512,
+            1152,
+            1024
+          ],
+          "originalFrameSha256": "37b2ff02eacbf9cf19df72cafd1d99f22b71494e22d8e65821a0444281f4b6dc",
+          "original": {
+            "bounds": [
+              4,
+              3,
+              31,
+              45
+            ],
+            "height": 42,
+            "capTop": 3,
+            "capCenterX": 16.5,
+            "capBandRows": 3,
+            "capSpan": [
+              14,
+              19
+            ],
+            "capWarmColourFraction": 0.9166666666666666
+          },
+          "ownRaw": {
+            "bounds": [
+              67,
+              60,
+              285,
+              417
+            ],
+            "height": 357,
+            "capTop": 60,
+            "capCenterX": 166.11221122112212,
+            "capBandRows": 12,
+            "capSpan": [
+              144,
+              187
+            ],
+            "capWarmColourFraction": 0.933993399339934
+          },
+          "ownScaled": {
+            "bounds": [
+              62,
+              55,
+              265,
+              387
+            ],
+            "height": 332,
+            "capTop": 55,
+            "capCenterX": 153.96762589928056,
+            "capBandRows": 12,
+            "capSpan": [
+              133,
+              173
+            ],
+            "capWarmColourFraction": 0.9100719424460432
+          },
+          "scaledCellSize": [
+            356,
+            475
+          ],
+          "targetCap": [
+            164.0,
+            64
+          ],
+          "integerOffset": [
+            10,
+            9
+          ],
+          "registeredBounds": [
+            72,
+            64,
+            275,
+            396
+          ],
+          "capXResidualPixels": -0.03237410071943714,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawRect": [
+            1152,
+            512,
+            1536,
+            1024
+          ],
+          "originalFrameSha256": "562066f231a250152282c27637e7a6f7981ba5656a7c14486e08e39b961abe6f",
+          "original": {
+            "bounds": [
+              7,
+              4,
+              32,
+              42
+            ],
+            "height": 38,
+            "capTop": 4,
+            "capCenterX": 17.7,
+            "capBandRows": 3,
+            "capSpan": [
+              15,
+              20
+            ],
+            "capWarmColourFraction": 0.8
+          },
+          "ownRaw": {
+            "bounds": [
+              78,
+              68,
+              316,
+              399
+            ],
+            "height": 331,
+            "capTop": 68,
+            "capCenterX": 171.14840989399292,
+            "capBandRows": 12,
+            "capSpan": [
+              150,
+              191
+            ],
+            "capWarmColourFraction": 0.9222614840989399
+          },
+          "ownScaled": {
+            "bounds": [
+              72,
+              63,
+              293,
+              370
+            ],
+            "height": 307,
+            "capTop": 63,
+            "capCenterX": 158.4640287769784,
+            "capBandRows": 12,
+            "capSpan": [
+              138,
+              178
+            ],
+            "capWarmColourFraction": 0.9316546762589928
+          },
+          "scaledCellSize": [
+            356,
+            475
+          ],
+          "targetCap": [
+            173.6,
+            72
+          ],
+          "integerOffset": [
+            15,
+            9
+          ],
+          "registeredBounds": [
+            87,
+            72,
+            308,
+            379
+          ],
+          "capXResidualPixels": -0.13597122302158482,
+          "figureClipped": false
+        }
+      ]
+    },
+    "W": {
+      "scale": 1.0014903129657229,
+      "offsets": [
+        [
+          -6,
+          4
+        ],
+        [
+          -6,
+          -9
+        ],
+        [
+          -4,
+          -15
+        ],
+        [
+          -11,
+          -23
+        ],
+        [
+          -6,
+          -7
+        ],
+        [
+          -7,
+          -12
+        ],
+        [
+          -7,
+          -13
+        ],
+        [
+          -8,
+          -14
+        ]
+      ],
+      "anchor": [
+        184,
+        368
+      ],
+      "originalHeightMedianTimes8": 336.0,
+      "ownHeightMedian": 335.5,
+      "sourceSha256": "cb32a4ac29abc7e3714b2ae84803e62dc7668fb4148857292554b96082363340",
+      "measurements": [
+        {
+          "index": 0,
+          "rawRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "originalFrameSha256": "71b4e710dfbec05d70ed7bdf0f7f0fc68b51b4152b2fe797af2d6893c1d14c57",
+          "original": {
+            "bounds": [
+              6,
+              6,
+              37,
+              46
+            ],
+            "height": 40,
+            "capTop": 6,
+            "capCenterX": 15.0,
+            "capBandRows": 3,
+            "capSpan": [
+              12,
+              18
+            ],
+            "capWarmColourFraction": 0.7333333333333333
+          },
+          "ownRaw": {
+            "bounds": [
+              73,
+              84,
+              320,
+              411
+            ],
+            "height": 327,
+            "capTop": 84,
+            "capCenterX": 158.1593220338983,
+            "capBandRows": 12,
+            "capSpan": [
+              136,
+              180
+            ],
+            "capWarmColourFraction": 0.911864406779661
+          },
+          "ownScaled": {
+            "bounds": [
+              73,
+              84,
+              321,
+              412
+            ],
+            "height": 328,
+            "capTop": 84,
+            "capCenterX": 158.4758620689655,
+            "capBandRows": 12,
+            "capSpan": [
+              136,
+              180
+            ],
+            "capWarmColourFraction": 0.9103448275862069
+          },
+          "scaledCellSize": [
+            385,
+            513
+          ],
+          "targetCap": [
+            152.0,
+            88
+          ],
+          "integerOffset": [
+            -6,
+            4
+          ],
+          "registeredBounds": [
+            67,
+            88,
+            315,
+            416
+          ],
+          "capXResidualPixels": 0.47586206896551175,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawRect": [
+            384,
+            0,
+            768,
+            512
+          ],
+          "originalFrameSha256": "918c0baf83269f9e1ae127bf2290a8a19ce5316f53633b582a0cbc5e7788f3c4",
+          "original": {
+            "bounds": [
+              9,
+              4,
+              33,
+              42
+            ],
+            "height": 38,
+            "capTop": 4,
+            "capCenterX": 15.214285714285714,
+            "capBandRows": 3,
+            "capSpan": [
+              13,
+              18
+            ],
+            "capWarmColourFraction": 0.8571428571428571
+          },
+          "ownRaw": {
+            "bounds": [
+              100,
+              81,
+              302,
+              394
+            ],
+            "height": 313,
+            "capTop": 81,
+            "capCenterX": 158.9104938271605,
+            "capBandRows": 12,
+            "capSpan": [
+              135,
+              181
+            ],
+            "capWarmColourFraction": 0.9166666666666666
+          },
+          "ownScaled": {
+            "bounds": [
+              100,
+              81,
+              303,
+              394
+            ],
+            "height": 313,
+            "capTop": 81,
+            "capCenterX": 159.33644859813083,
+            "capBandRows": 12,
+            "capSpan": [
+              136,
+              181
+            ],
+            "capWarmColourFraction": 0.9034267912772586
+          },
+          "scaledCellSize": [
+            385,
+            513
+          ],
+          "targetCap": [
+            153.71428571428572,
+            72
+          ],
+          "integerOffset": [
+            -6,
+            -9
+          ],
+          "registeredBounds": [
+            94,
+            72,
+            297,
+            385
+          ],
+          "capXResidualPixels": -0.37783711615489324,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawRect": [
+            768,
+            0,
+            1152,
+            512
+          ],
+          "originalFrameSha256": "883fd3f1d4b16972ed25c368a09944c8be50297d91a9e10c4792ce880a50c2df",
+          "original": {
+            "bounds": [
+              6,
+              2,
+              26,
+              42
+            ],
+            "height": 40,
+            "capTop": 2,
+            "capCenterX": 15.666666666666666,
+            "capBandRows": 3,
+            "capSpan": [
+              13,
+              18
+            ],
+            "capWarmColourFraction": 0.8666666666666667
+          },
+          "ownRaw": {
+            "bounds": [
+              88,
+              71,
+              257,
+              404
+            ],
+            "height": 333,
+            "capTop": 71,
+            "capCenterX": 161.28571428571428,
+            "capBandRows": 12,
+            "capSpan": [
+              139,
+              182
+            ],
+            "capWarmColourFraction": 0.9102990033222591
+          },
+          "ownScaled": {
+            "bounds": [
+              88,
+              71,
+              258,
+              405
+            ],
+            "height": 334,
+            "capTop": 71,
+            "capCenterX": 161.83164983164983,
+            "capBandRows": 12,
+            "capSpan": [
+              140,
+              183
+            ],
+            "capWarmColourFraction": 0.9023569023569024
+          },
+          "scaledCellSize": [
+            385,
+            513
+          ],
+          "targetCap": [
+            157.33333333333331,
+            56
+          ],
+          "integerOffset": [
+            -4,
+            -15
+          ],
+          "registeredBounds": [
+            84,
+            56,
+            254,
+            390
+          ],
+          "capXResidualPixels": 0.4983164983165125,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawRect": [
+            1152,
+            0,
+            1536,
+            512
+          ],
+          "originalFrameSha256": "466ff6e6bfeb39ad21acd10fffc9000295190431524b8bd932dde59a243e6137",
+          "original": {
+            "bounds": [
+              2,
+              2,
+              32,
+              43
+            ],
+            "height": 41,
+            "capTop": 2,
+            "capCenterX": 15.384615384615385,
+            "capBandRows": 3,
+            "capSpan": [
+              13,
+              18
+            ],
+            "capWarmColourFraction": 0.9230769230769231
+          },
+          "ownRaw": {
+            "bounds": [
+              59,
+              78,
+              303,
+              409
+            ],
+            "height": 331,
+            "capTop": 78,
+            "capCenterX": 166.14492753623188,
+            "capBandRows": 12,
+            "capSpan": [
+              145,
+              186
+            ],
+            "capWarmColourFraction": 0.9021739130434783
+          },
+          "ownScaled": {
+            "bounds": [
+              60,
+              79,
+              304,
+              410
+            ],
+            "height": 331,
+            "capTop": 79,
+            "capCenterX": 166.51282051282053,
+            "capBandRows": 12,
+            "capSpan": [
+              144,
+              188
+            ],
+            "capWarmColourFraction": 0.9262820512820513
+          },
+          "scaledCellSize": [
+            385,
+            513
+          ],
+          "targetCap": [
+            155.0769230769231,
+            56
+          ],
+          "integerOffset": [
+            -11,
+            -23
+          ],
+          "registeredBounds": [
+            49,
+            56,
+            293,
+            387
+          ],
+          "capXResidualPixels": 0.4358974358974308,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawRect": [
+            0,
+            512,
+            384,
+            1024
+          ],
+          "originalFrameSha256": "254f90083cd14ab55cef9a569db2f12eb2b0a3577d0a6a30b4ca5be601958a2b",
+          "original": {
+            "bounds": [
+              0,
+              3,
+              36,
+              46
+            ],
+            "height": 43,
+            "capTop": 3,
+            "capCenterX": 14.916666666666666,
+            "capBandRows": 3,
+            "capSpan": [
+              13,
+              17
+            ],
+            "capWarmColourFraction": 1.0
+          },
+          "ownRaw": {
+            "bounds": [
+              44,
+              71,
+              321,
+              412
+            ],
+            "height": 341,
+            "capTop": 71,
+            "capCenterX": 156.89583333333334,
+            "capBandRows": 12,
+            "capSpan": [
+              135,
+              178
+            ],
+            "capWarmColourFraction": 0.90625
+          },
+          "ownScaled": {
+            "bounds": [
+              44,
+              71,
+              322,
+              413
+            ],
+            "height": 342,
+            "capTop": 71,
+            "capCenterX": 157.38162544169612,
+            "capBandRows": 12,
+            "capSpan": [
+              136,
+              179
+            ],
+            "capWarmColourFraction": 0.9045936395759717
+          },
+          "scaledCellSize": [
+            385,
+            513
+          ],
+          "targetCap": [
+            151.33333333333331,
+            64
+          ],
+          "integerOffset": [
+            -6,
+            -7
+          ],
+          "registeredBounds": [
+            38,
+            64,
+            316,
+            406
+          ],
+          "capXResidualPixels": 0.0482921083628014,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawRect": [
+            384,
+            512,
+            768,
+            1024
+          ],
+          "originalFrameSha256": "fbc3ff4562932c25a87db10ab63800ec350d2158629eb75e60396149f485a01b",
+          "original": {
+            "bounds": [
+              2,
+              2,
+              32,
+              46
+            ],
+            "height": 44,
+            "capTop": 2,
+            "capCenterX": 14.916666666666666,
+            "capBandRows": 3,
+            "capSpan": [
+              13,
+              17
+            ],
+            "capWarmColourFraction": 0.9166666666666666
+          },
+          "ownRaw": {
+            "bounds": [
+              65,
+              68,
+              295,
+              412
+            ],
+            "height": 344,
+            "capTop": 68,
+            "capCenterX": 157.82608695652175,
+            "capBandRows": 12,
+            "capSpan": [
+              136,
+              179
+            ],
+            "capWarmColourFraction": 0.9230769230769231
+          },
+          "ownScaled": {
+            "bounds": [
+              65,
+              68,
+              295,
+              413
+            ],
+            "height": 345,
+            "capTop": 68,
+            "capCenterX": 158.2915254237288,
+            "capBandRows": 12,
+            "capSpan": [
+              136,
+              179
+            ],
+            "capWarmColourFraction": 0.9152542372881356
+          },
+          "scaledCellSize": [
+            385,
+            513
+          ],
+          "targetCap": [
+            151.33333333333331,
+            56
+          ],
+          "integerOffset": [
+            -7,
+            -12
+          ],
+          "registeredBounds": [
+            58,
+            56,
+            288,
+            401
+          ],
+          "capXResidualPixels": -0.04180790960450054,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawRect": [
+            768,
+            512,
+            1152,
+            1024
+          ],
+          "originalFrameSha256": "4a8707d0f3d590e76970c65a38aa525b8d72a766a318473394acb5f4e839f87b",
+          "original": {
+            "bounds": [
+              6,
+              2,
+              26,
+              46
+            ],
+            "height": 44,
+            "capTop": 2,
+            "capCenterX": 15.214285714285714,
+            "capBandRows": 3,
+            "capSpan": [
+              13,
+              18
+            ],
+            "capWarmColourFraction": 0.9285714285714286
+          },
+          "ownRaw": {
+            "bounds": [
+              80,
+              68,
+              257,
+              414
+            ],
+            "height": 346,
+            "capTop": 68,
+            "capCenterX": 160.46762589928056,
+            "capBandRows": 12,
+            "capSpan": [
+              139,
+              181
+            ],
+            "capWarmColourFraction": 0.9100719424460432
+          },
+          "ownScaled": {
+            "bounds": [
+              80,
+              69,
+              258,
+              415
+            ],
+            "height": 346,
+            "capTop": 69,
+            "capCenterX": 160.76100628930817,
+            "capBandRows": 12,
+            "capSpan": [
+              138,
+              182
+            ],
+            "capWarmColourFraction": 0.9119496855345912
+          },
+          "scaledCellSize": [
+            385,
+            513
+          ],
+          "targetCap": [
+            153.71428571428572,
+            56
+          ],
+          "integerOffset": [
+            -7,
+            -13
+          ],
+          "registeredBounds": [
+            73,
+            56,
+            251,
+            402
+          ],
+          "capXResidualPixels": 0.046720575022447974,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawRect": [
+            1152,
+            512,
+            1536,
+            1024
+          ],
+          "originalFrameSha256": "d0557b876b3fcb6227e49a7153a9320912299438838da09ea59ed7593f2bcc42",
+          "original": {
+            "bounds": [
+              10,
+              3,
+              32,
+              46
+            ],
+            "height": 43,
+            "capTop": 3,
+            "capCenterX": 15.454545454545455,
+            "capBandRows": 3,
+            "capSpan": [
+              13,
+              18
+            ],
+            "capWarmColourFraction": 1.0
+          },
+          "ownRaw": {
+            "bounds": [
+              105,
+              78,
+              305,
+              416
+            ],
+            "height": 338,
+            "capTop": 78,
+            "capCenterX": 163.5474006116208,
+            "capBandRows": 12,
+            "capSpan": [
+              140,
+              185
+            ],
+            "capWarmColourFraction": 0.9235474006116208
+          },
+          "ownScaled": {
+            "bounds": [
+              105,
+              78,
+              306,
+              417
+            ],
+            "height": 339,
+            "capTop": 78,
+            "capCenterX": 164.02173913043478,
+            "capBandRows": 12,
+            "capSpan": [
+              140,
+              185
+            ],
+            "capWarmColourFraction": 0.922360248447205
+          },
+          "scaledCellSize": [
+            385,
+            513
+          ],
+          "targetCap": [
+            155.63636363636363,
+            64
+          ],
+          "integerOffset": [
+            -8,
+            -14
+          ],
+          "registeredBounds": [
+            97,
+            64,
+            298,
+            403
+          ],
+          "capXResidualPixels": 0.38537549407115534,
+          "figureClipped": false
+        }
+      ]
+    },
+    "NW": {
+      "scale": 0.9442970822281167,
+      "offsets": [
+        [
+          -4,
+          11
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          5,
+          -12
+        ],
+        [
+          13,
+          -8
+        ],
+        [
+          26,
+          11
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          1,
+          -2
+        ],
+        [
+          -6,
+          9
+        ]
+      ],
+      "anchor": [
+        184,
+        368
+      ],
+      "originalHeightMedianTimes8": 356.0,
+      "ownHeightMedian": 377.0,
+      "sourceSha256": "3c1e907d91f7150f2588aa1015e515b758ca01056aa9f27f824fffead186e6cb",
+      "measurements": [
+        {
+          "index": 0,
+          "rawRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "originalFrameSha256": "1f7ffd3532c16565764ff10dbb26e525a3b75d8626274a11de0057b4878bbf3d",
+          "original": {
+            "bounds": [
+              5,
+              4,
+              35,
+              49
+            ],
+            "height": 45,
+            "capTop": 4,
+            "capCenterX": 13.0,
+            "capBandRows": 3,
+            "capSpan": [
+              11,
+              16
+            ],
+            "capWarmColourFraction": 0.8333333333333334
+          },
+          "ownRaw": {
+            "bounds": [
+              58,
+              64,
+              291,
+              454
+            ],
+            "height": 390,
+            "capTop": 64,
+            "capCenterX": 148.54732510288065,
+            "capBandRows": 12,
+            "capSpan": [
+              118,
+              177
+            ],
+            "capWarmColourFraction": 0.9300411522633745
+          },
+          "ownScaled": {
+            "bounds": [
+              55,
+              61,
+              275,
+              429
+            ],
+            "height": 368,
+            "capTop": 61,
+            "capCenterX": 140.14901960784314,
+            "capBandRows": 12,
+            "capSpan": [
+              110,
+              168
+            ],
+            "capWarmColourFraction": 0.9509803921568627
+          },
+          "scaledCellSize": [
+            363,
+            483
+          ],
+          "targetCap": [
+            136.0,
+            72
+          ],
+          "integerOffset": [
+            -4,
+            11
+          ],
+          "registeredBounds": [
+            51,
+            72,
+            271,
+            440
+          ],
+          "capXResidualPixels": 0.14901960784314383,
+          "figureClipped": false
+        },
+        {
+          "index": 1,
+          "rawRect": [
+            384,
+            0,
+            768,
+            512
+          ],
+          "originalFrameSha256": "23cd8cf9af293437444c7f6f40dbbccac59b76f550b24869d0db1426e3f81ef3",
+          "original": {
+            "bounds": [
+              6,
+              2,
+              33,
+              44
+            ],
+            "height": 42,
+            "capTop": 2,
+            "capCenterX": 13.727272727272727,
+            "capBandRows": 3,
+            "capSpan": [
+              12,
+              16
+            ],
+            "capWarmColourFraction": 1.0
+          },
+          "ownRaw": {
+            "bounds": [
+              69,
+              61,
+              302,
+              437
+            ],
+            "height": 376,
+            "capTop": 61,
+            "capCenterX": 151.0682261208577,
+            "capBandRows": 12,
+            "capSpan": [
+              120,
+              180
+            ],
+            "capWarmColourFraction": 0.9395711500974658
+          },
+          "ownScaled": {
+            "bounds": [
+              65,
+              57,
+              286,
+              413
+            ],
+            "height": 356,
+            "capTop": 57,
+            "capCenterX": 142.68987341772151,
+            "capBandRows": 12,
+            "capSpan": [
+              113,
+              170
+            ],
+            "capWarmColourFraction": 0.9240506329113924
+          },
+          "scaledCellSize": [
+            363,
+            483
+          ],
+          "targetCap": [
+            141.8181818181818,
+            56
+          ],
+          "integerOffset": [
+            -1,
+            -1
+          ],
+          "registeredBounds": [
+            64,
+            56,
+            285,
+            412
+          ],
+          "capXResidualPixels": -0.12830840046029834,
+          "figureClipped": false
+        },
+        {
+          "index": 2,
+          "rawRect": [
+            768,
+            0,
+            1152,
+            512
+          ],
+          "originalFrameSha256": "ea8fba7d306133e2d5c0e7e11337c8781cca5c96111cb913cec24f1b5d6b7de6",
+          "original": {
+            "bounds": [
+              9,
+              0,
+              30,
+              43
+            ],
+            "height": 43,
+            "capTop": 0,
+            "capCenterX": 15.5,
+            "capBandRows": 3,
+            "capSpan": [
+              14,
+              17
+            ],
+            "capWarmColourFraction": 0.8
+          },
+          "ownRaw": {
+            "bounds": [
+              105,
+              56,
+              284,
+              415
+            ],
+            "height": 359,
+            "capTop": 56,
+            "capCenterX": 160.29282868525897,
+            "capBandRows": 12,
+            "capSpan": [
+              129,
+              189
+            ],
+            "capWarmColourFraction": 0.9382470119521913
+          },
+          "ownScaled": {
+            "bounds": [
+              99,
+              52,
+              268,
+              391
+            ],
+            "height": 339,
+            "capTop": 52,
+            "capCenterX": 151.25892857142858,
+            "capBandRows": 12,
+            "capSpan": [
+              122,
+              178
+            ],
+            "capWarmColourFraction": 0.90625
+          },
+          "scaledCellSize": [
+            363,
+            483
+          ],
+          "targetCap": [
+            156.0,
+            40
+          ],
+          "integerOffset": [
+            5,
+            -12
+          ],
+          "registeredBounds": [
+            104,
+            40,
+            273,
+            379
+          ],
+          "capXResidualPixels": 0.2589285714285836,
+          "figureClipped": false
+        },
+        {
+          "index": 3,
+          "rawRect": [
+            1152,
+            0,
+            1536,
+            512
+          ],
+          "originalFrameSha256": "cf57b7558ed50b69db0ea7705e02b8de9f577266d5a390c46bc989664f6a7ac7",
+          "original": {
+            "bounds": [
+              9,
+              1,
+              31,
+              45
+            ],
+            "height": 44,
+            "capTop": 1,
+            "capCenterX": 16.727272727272727,
+            "capBandRows": 3,
+            "capSpan": [
+              15,
+              19
+            ],
+            "capWarmColourFraction": 0.9090909090909091
+          },
+          "ownRaw": {
+            "bounds": [
+              110,
+              60,
+              306,
+              441
+            ],
+            "height": 381,
+            "capTop": 60,
+            "capCenterX": 161.56147540983608,
+            "capBandRows": 12,
+            "capSpan": [
+              131,
+              190
+            ],
+            "capWarmColourFraction": 0.9487704918032787
+          },
+          "ownScaled": {
+            "bounds": [
+              104,
+              56,
+              290,
+              416
+            ],
+            "height": 360,
+            "capTop": 56,
+            "capCenterX": 152.79596412556054,
+            "capBandRows": 12,
+            "capSpan": [
+              124,
+              180
+            ],
+            "capWarmColourFraction": 0.9282511210762332
+          },
+          "scaledCellSize": [
+            363,
+            483
+          ],
+          "targetCap": [
+            165.8181818181818,
+            48
+          ],
+          "integerOffset": [
+            13,
+            -8
+          ],
+          "registeredBounds": [
+            117,
+            48,
+            303,
+            408
+          ],
+          "capXResidualPixels": -0.02221769262126827,
+          "figureClipped": false
+        },
+        {
+          "index": 4,
+          "rawRect": [
+            0,
+            512,
+            384,
+            1024
+          ],
+          "originalFrameSha256": "ee79128c221a1dc8c025cecb9e6d29ffc2a13697ac81567a93d0bcce2cd5d393",
+          "original": {
+            "bounds": [
+              6,
+              2,
+              35,
+              47
+            ],
+            "height": 45,
+            "capTop": 2,
+            "capCenterX": 17.5,
+            "capBandRows": 3,
+            "capSpan": [
+              16,
+              19
+            ],
+            "capWarmColourFraction": 1.0
+          },
+          "ownRaw": {
+            "bounds": [
+              63,
+              47,
+              319,
+              418
+            ],
+            "height": 371,
+            "capTop": 47,
+            "capCenterX": 154.51391862955032,
+            "capBandRows": 12,
+            "capSpan": [
+              124,
+              183
+            ],
+            "capWarmColourFraction": 0.9571734475374732
+          },
+          "ownScaled": {
+            "bounds": [
+              59,
+              45,
+              302,
+              394
+            ],
+            "height": 349,
+            "capTop": 45,
+            "capCenterX": 145.82376237623762,
+            "capBandRows": 12,
+            "capSpan": [
+              116,
+              174
+            ],
+            "capWarmColourFraction": 0.9425742574257425
+          },
+          "scaledCellSize": [
+            363,
+            483
+          ],
+          "targetCap": [
+            172.0,
+            56
+          ],
+          "integerOffset": [
+            26,
+            11
+          ],
+          "registeredBounds": [
+            85,
+            56,
+            328,
+            405
+          ],
+          "capXResidualPixels": -0.1762376237623755,
+          "figureClipped": false
+        },
+        {
+          "index": 5,
+          "rawRect": [
+            384,
+            512,
+            768,
+            1024
+          ],
+          "originalFrameSha256": "3483f980713ca914de5f2b74c7ca4d1308ebd166e24fa9fe098b8061633d44a2",
+          "original": {
+            "bounds": [
+              8,
+              1,
+              32,
+              44
+            ],
+            "height": 43,
+            "capTop": 1,
+            "capCenterX": 16.727272727272727,
+            "capBandRows": 3,
+            "capSpan": [
+              15,
+              19
+            ],
+            "capWarmColourFraction": 1.0
+          },
+          "ownRaw": {
+            "bounds": [
+              89,
+              44,
+              286,
+              386
+            ],
+            "height": 342,
+            "capTop": 44,
+            "capCenterX": 163.2021505376344,
+            "capBandRows": 12,
+            "capSpan": [
+              134,
+              191
+            ],
+            "capWarmColourFraction": 0.9526881720430107
+          },
+          "ownScaled": {
+            "bounds": [
+              84,
+              42,
+              271,
+              364
+            ],
+            "height": 322,
+            "capTop": 42,
+            "capCenterX": 154.03711340206186,
+            "capBandRows": 12,
+            "capSpan": [
+              125,
+              181
+            ],
+            "capWarmColourFraction": 0.9525773195876288
+          },
+          "scaledCellSize": [
+            363,
+            483
+          ],
+          "targetCap": [
+            165.8181818181818,
+            48
+          ],
+          "integerOffset": [
+            12,
+            6
+          ],
+          "registeredBounds": [
+            96,
+            48,
+            283,
+            370
+          ],
+          "capXResidualPixels": 0.21893158388004963,
+          "figureClipped": false
+        },
+        {
+          "index": 6,
+          "rawRect": [
+            768,
+            512,
+            1152,
+            1024
+          ],
+          "originalFrameSha256": "657e82095c1bef02f53e79d6906e0357b3f8c8c2034f4cb0c4ace50d7986f1f1",
+          "original": {
+            "bounds": [
+              10,
+              0,
+              30,
+              45
+            ],
+            "height": 45,
+            "capTop": 0,
+            "capCenterX": 15.333333333333334,
+            "capBandRows": 3,
+            "capSpan": [
+              14,
+              17
+            ],
+            "capWarmColourFraction": 0.8888888888888888
+          },
+          "ownRaw": {
+            "bounds": [
+              113,
+              45,
+              271,
+              423
+            ],
+            "height": 378,
+            "capTop": 45,
+            "capCenterX": 162.2626459143969,
+            "capBandRows": 12,
+            "capSpan": [
+              132,
+              191
+            ],
+            "capWarmColourFraction": 0.9494163424124513
+          },
+          "ownScaled": {
+            "bounds": [
+              107,
+              42,
+              256,
+              399
+            ],
+            "height": 357,
+            "capTop": 42,
+            "capCenterX": 153.47058823529412,
+            "capBandRows": 12,
+            "capSpan": [
+              124,
+              181
+            ],
+            "capWarmColourFraction": 0.9453781512605042
+          },
+          "scaledCellSize": [
+            363,
+            483
+          ],
+          "targetCap": [
+            154.66666666666669,
+            40
+          ],
+          "integerOffset": [
+            1,
+            -2
+          ],
+          "registeredBounds": [
+            108,
+            40,
+            257,
+            397
+          ],
+          "capXResidualPixels": -0.19607843137256964,
+          "figureClipped": false
+        },
+        {
+          "index": 7,
+          "rawRect": [
+            1152,
+            512,
+            1536,
+            1024
+          ],
+          "originalFrameSha256": "4b249f13d0125d8eaf1ee1e8e35115e219953e2f529f0b2caf710c4a60726a40",
+          "original": {
+            "bounds": [
+              7,
+              2,
+              33,
+              47
+            ],
+            "height": 45,
+            "capTop": 2,
+            "capCenterX": 14.384615384615385,
+            "capBandRows": 3,
+            "capSpan": [
+              12,
+              17
+            ],
+            "capWarmColourFraction": 0.8461538461538461
+          },
+          "ownRaw": {
+            "bounds": [
+              84,
+              50,
+              330,
+              442
+            ],
+            "height": 392,
+            "capTop": 50,
+            "capCenterX": 162.14345991561183,
+            "capBandRows": 12,
+            "capSpan": [
+              132,
+              191
+            ],
+            "capWarmColourFraction": 0.9324894514767933
+          },
+          "ownScaled": {
+            "bounds": [
+              80,
+              47,
+              312,
+              417
+            ],
+            "height": 370,
+            "capTop": 47,
+            "capCenterX": 152.99781181619255,
+            "capBandRows": 12,
+            "capSpan": [
+              124,
+              181
+            ],
+            "capWarmColourFraction": 0.925601750547046
+          },
+          "scaledCellSize": [
+            363,
+            483
+          ],
+          "targetCap": [
+            147.0769230769231,
+            56
+          ],
+          "integerOffset": [
+            -6,
+            9
+          ],
+          "registeredBounds": [
+            74,
+            56,
+            306,
+            426
+          ],
+          "capXResidualPixels": -0.0791112607305422,
+          "figureClipped": false
+        }
+      ]
+    }
+  }
+}

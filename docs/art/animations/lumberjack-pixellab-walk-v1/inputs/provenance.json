@@ -1,0 +1,12 @@
+{
+  "source": "docs/art/animation-references/lumberjack-without-log/S.png",
+  "source_sha256": "61f9ed49dea824a6c1887570cd79f9d0eba40e4772c822d91d4f2c1098a6da86",
+  "source_size": [
+    1254,
+    1254
+  ],
+  "source_mode": "RGB",
+  "prepared": "S-reference-128.png",
+  "operation": "Whole canvas resized 1254x1254 to128x128 with Lanczos. No crop, flip, recolor or manual alpha removal.",
+  "prepared_sha256": "e1ff63164a04d7f520bfa5040c2ab9905b86af688110b6ff28ce127b9907a90f"
+}

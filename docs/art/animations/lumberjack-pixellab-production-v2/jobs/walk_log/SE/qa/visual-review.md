@@ -1,0 +1,3 @@
+# Nesení klády SE — obrazová kontrola
+
+2026-09-10. Prohlédnuto všech17 PNG. Jedna kláda podélně na pravém rameni, pravá ruka podpírá přední konec; levá paže zůstává prázdná. Sekera je u levého boku, bez přehazování do pravé ruky či druhé čepele. Kláda nemění tvar a neprochází obličejem nebo krkem. Pohyb je celý dvojkrok se střídáním obou nohou, 01–16; doporučeno20fps pro0,8s. Horní konec klády i boty zůstávají uvnitř canvas, alfa je skutečná. Zachovat raw00 jako zdroj, žádná per-frame registrace bot. Jemná textura mezi fázemi se proměňuje, nejde o dokonale rigidní3D render. Kontakt na skutečném herním podkladu a předání nákladu bude ověřeno při implementaci.

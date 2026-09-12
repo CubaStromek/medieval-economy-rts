@@ -1,349 +1,284 @@
 # Medieval Economy RTS — handover
 
-Stav k **2026-09-05**. Aktuální souhrn níže má přednost před zachovaným
-historickým kontextem původního milníku. Interní logy a citlivé údaje sem nepatří.
+Stav k **2026-09-12**. Tento dokument je výchozí předání projektu pro další práci.
+Popisuje skutečný lokální stav připravený k publikaci, nikoli jen návrhy z konverzací.
+Předchozí souhrn je v [historickém archivu](docs/handover-archive/2026-09-09.md);
+jeho staré počty testů, save verze a roadmapa nejsou aktuální zadání.
 
-## Pohostinec a zásobování vojáků — 2026-09-05
+## 1. Rychlý přehled
 
-- `Inn` v kategorii Food přijímá čtyři hotové potraviny. Civilisté včetně
-  strážných rekrutů chodí jíst automaticky; pohostinec má šest míst a časovanou
-  návštěvu, nejvýše tři různé chody v pořadí chleba → víno → klobása → ryba.
-  Každý trvá 116 ticků, odečte se na začátku a postupně zvyšuje sytost.
-  Jednotka zůstává skrytá uvnitř celou návštěvu, specialista si ponechá pracoviště.
-- Sytost má venkovní barevný proužek, detail s procentem/stavem/časem do hladu
-  a je vidět i u zaměstnance uvnitř pracoviště a jedlíka v pohostinci.
-  Hlad je navázán na 6000tickový den: úbytek 5/10ticků, plný člověk znovu
-  vyhládne za 18h43 herního času; nová jednotka za 10h05. Chudší jídlo vede
-  k častějším návštěvám. Rychlost i pauza platí společně pro hlad a kalendář.
-- Voják do pohostince nechodí. Výběr spritu → **Supply food**, případně
-  **Military → Supply army**, objedná pod 55 % sytosti jednu fyzickou dávku.
-  Nosič ji rezervuje, vyzvedne ze skladu/výstupu výrobce a předá vedle vojáka.
-  Jedna porce plně nasytí; rozkaz čeká i při dočasném nedostatku zásob.
-- Potravinová pole od save **v14** (zachovaná ve v15): `meal_ticks_left`, `meal_course`, `food_requested`,
-  `ration_delivery`. Načítání neprovádí spotřebu ani nepřipisuje sytost; rozjedený
-  chod pokračuje přesně. V13 už nasycený návštěvník jen dokončí starý odpočet.
-  Validace chrání duplicity, průběh výživnosti a množství rezervací.
-- Implementace: `inn_feeding.gd`, `soldier_food_supply.gd`, napojení na world,
-  snapshot a HUD. Sady pokrývají jídlo, denní hlad, vojenské dodávky,
-  save migrace, UI a viditelnost jednotek.
-- [Pravidla a limity](docs/food-and-military-supply.md),
-  [pohostinec ve hře](docs/previews/food-inn-seating.png),
-  [vojenská donáška](docs/previews/food-soldier-supply.png).
+- **Projekt:** vlastní ekonomická RTS inspirovaná Knights and Merchants, od nuly
+  v Godotu; nejde o port Delphi enginu ani distribuci původní hry.
+- **Repozitář:** [CubaStromek/medieval-economy-rts](https://github.com/CubaStromek/medieval-economy-rts),
+  veřejný, větev `main`, licence AGPL-3.0.
+- **Pracovní adresář:** `/Users/openclaw/AI-Projects/medieval-economy-rts`.
+  Dřívější `Documents/ChatGPT/KaM` není adresář hry. Nepoužívat symlink jako
+  náhradu kořene projektu; aplikace s omezeným zápisem jej nemusí přijmout.
+- **Godot:** ověřen **4.7.2 stable**, OpenGL Compatibility, macOS / Apple M4.
+  Importovat `game/project.godot`; hlavní scéna je `game_session.tscn`.
+- **Simulace:** autoritativní fixed-step **10 Hz**, celočíselná herní mřížka.
+  Aktuální zobrazovací buňka je **40 × 40 world px**, nikoli historických 48.
+- **Save:** **v21**; zpětná validace/migrace v1–20. Půdorys se verzuje také
+  samostatně po jednotlivých budovách.
+- **Katalog:** 30 typů budov, 28 surovin, 15 civilních profesí,
+  19 výrobních receptů a 14 vojenských náborových definic.
+- **Předchozí publikovaný základ:** `7af2a48` z 7. 9.
+  Kontrola `git fetch origin` dne 12. 9. před publikací: lokální HEAD i
+  vzdálená main byly shodné, bez cizích novějších commitů.
+  Nový commit zahrnuje dosavadní lokální práci i toto předání.
+- **Čerstvé ověření:** kompletní herní sada **762/762**, konvertor terénu **6/6**
+  a místní PixelLab klient **16/16**, bez volání generování či nových nákladů.
+  Cílená sada s nativním vykreslováním: **81/81**, bez selhání.
+  Samostatná veřejná kopie bez externích dat: nový import a znovu **762/762**.
+  Podrobnosti a rozsah dalších kontrol: [ověření publikace](docs/release-verification-2026-09-12.md).
 
-## Jednotky uvnitř budov — 2026-09-05
+## 2. Jak navázat a spustit hru
 
-- Skutečný vstup až po dokončení kroku do vchodu; uvnitř se jednotka ani její
-  stín/náklad/hladová značka nekreslí a neblokuje venkovní políčko.
-- Tesař zůstává uvnitř mezi dávkami i při čekání na vstupy. Dřevorubec a ostatní
-  venkovní specialisté po návratu krátce pobudou uvnitř a bezpečně vyjdou na další
-  úkol. Obsazený východ se nepřepisuje; volný člověk může normálně uhnout.
-- Detail domu ukazuje skutečné obyvatele uvnitř; zaměstnání a počet občanů se
-  nemění. Save **v12** uchovává pobyt a zbývající čekání; verze 1–11 se načítají
-  s jednotkami venku. Ověřeno **336/336** headless i nativně, bez chyb skriptů.
+Nejprve přečíst [AGENTS.md](AGENTS.md), tento handover a dokument konkrétní oblasti.
+Nespouštět další generování ani nevracet zamítnutou grafiku jen podle starého názvu souboru.
 
-## Aktuální ekonomika k 2026-09-05
-
-- Godot **4.7.2**, vlastní procedurální 2,5D grafika, mřížka 48 × 48 px a
-  autoritativní simulace na 10 Hz.
-- **29 budov, 28 druhů zboží, 15 civilních profesí, 19 výrobních receptů a
-  14 vojenských náborových definic.** Hratelné větve: dřevo, chléb, víno,
-  ryby, prasata/uzeniny/kůže, koně, uhlí/železo/zlato, zbraně a zbroje.
-- Skutečná konečná ložiska kamene, uhlí, železné a zlaté rudy a ryb. Specialista
-  jde k dosažitelnému místu těžby, odečte jednotku ložiska a odnese ji do své
-  budovy. Nosič zajišťuje další přepravu a zásobování i ze skladu.
-- Pšeničná pole se osévají a po sklizni zůstávají prázdná. Vinice znovu
-  dorůstají. Pole používají skutečné úkoly sedláka a samostatné růstové hodiny.
-- Lesník je **Gardener**: školní tlačítko **Train Gardener** vyškolí autonomního
-  pracovníka sázejícího stromy do osmi polí od své **Forester Hut** (Infrastructure,
-  3 prkna + 2 kameny). Jedna chata = jeden zahradník; bez chaty čeká.
-  Jde o vlastní rozšíření včetně ceny, ne původní KaM profesi/budovu.
-- **Fisherman's Hut** (Food, 4 prkna + 3 kameny) má jednoho rybáře a potřebuje
-  dosažitelné loviště do tří polí. Rybář nosí ryby do chaty, nosič dále.
-  Výchozí jezero má nově konečná loviště; staré savy se automaticky nemění.
-- Nové budovy jsou staveniště: nosiči přivezou prkna/kámen a stavitel dokončí
-  práci. Škola přijímá dodané zlato, každého občana zaplatí jednou a dokončí
-  časovaný výcvik. Pila nyní mění 1 kládu na **2 prkna**; mlýn a pekárnu
-  stále obsluhuje pekař.
-- Jídlo se spotřebovává v hostinci; pracovníci mají kondici a mohou vyhladovět.
-  Tržiště má skutečné směnné nabídky, fyzické dodání a odběr zboží. Dílny
-  zbraní/zbrojí plní hráčem zadanou FIFO frontu receptů.
-- Kasárna vybaví přítomného rekruta dodaným vybavením; radnice přijímá zlato.
-  Volný rekrut může obsadit strážní věž a věž přijímá kámen do zásoby. Nábor
-  nemá další časovač po splnění podmínek. **Boj, vojenské povely, projektily
-  ani obléhací stroje zatím nejsou implementované.**
-- Výchozí `setup_economy_demo()` je vesnice **34 × 24 polí**, má všechny typy
-  dokončených budov, pole/vinice, ložiska, pracovníky, startovní zásoby a
-  ukázkové výrobní/náborové objednávky. Nové hráčovy stavby už stojí materiál.
-  Původní `setup_demo()` zůstává kompaktní testovací/kompatibilitní scénář.
-- UI má čtyři kategorie staveb, samostatně rolovaný detail a školní nabídku,
-  tři skladové kategorie se všemi surovinami a živé požadavky výroby/služeb.
-  Klávesy **1–9** zůstávají, **0** staví pšenici; vinice jsou v kategorii Food.
-- **Save v7**: druh políčka, konečná ložiska, kondice, rozestavěnost/dodaný
-  materiál, zaplacení výcviku, recepty a výrobní/náborové/obchodní fronty.
-  Verze 1–6 se migrací doplní; staré hry nevytvářejí nová ložiska a ponechávají
-  pokročilé náklady/potřeby vypnuté. Načtení je transakční.
-- Ověření na Godotu 4.7.2: **87/87 testů prošlo**. Rozpad sad a pokrytí:
-  `tests/README.md`. Samostatná kontrola UI při
-  1152 × 720 ověřila panel 390 × 696, sklad 392 × 178, všech 28 zboží,
-  15 profesí, přepínání budov a příkazy výroby/náboru/směny. V běžícím Godotu
-  byl ověřen i náhled 1440 × 900 s mapou, ložisky a školní nabídkou.
-
-### Přesné hranice tohoto milníku
-
-Ekonomické vazby vycházejí z KaM Remake, ale pracovní/růstové/stavební časy a
-většina stavebních cen jsou vlastní balance projektu. Chov používá jednu dávku
-čtyř obilí na zvíře; nesimuluje čtyři samostatná krmení a individuální věk.
-Lisování hroznů je sloučené se sklizní. Kamenná cesta a vinice se zaplatí ihned
-ze skladu (1 kámen / 1 prkno) a hned vzniknou. Budovy jsou stále jednopolové,
-neexistuje strom odemykání, bydlení ani boj. Věž má posádku a zásobu kamene,
-ale nestřílí. Podrobnosti: `docs/economy-expansion.md`.
-
-## Zachovaný historický kontext
-
-Následující oddíly popisují původní dřevní/terénní milník z 23. 8. a opravy do
-4. 9. 2026. Dřívější tvrzení o verzi save, počtu testů, neexistujících spotřebách
-nebo plánovaných budovách nejsou aktuálním rozsahem hry. Předchozí první
-rozšíření z 5. 9. (čtyři budovy a pšeničná pole, v6, 67 testů) je popsáno jako
-historie v `docs/economy-expansion.md`; nahradila je výše uvedená v7 ekonomika.
-
-## 1. Vize a mantinely projektu
-
-`Medieval Economy RTS` je fanouškovská open-source ekonomická RTS inspirovaná
-stylem Knights and Merchants. Jde o novou hru napsanou od nuly v Godotu 4.6 a
-typovaném GDScriptu, nikoli o port nebo úpravu původní hry či Delphi enginu.
-
-- Technická reference: [KaM Remake](https://github.com/reyandme/kam_remake),
-  analyzovaný commit `a3b3e5268e1475460e4561f9143df6f1a532e681`.
-- Licence projektu: AGPL-3.0.
-- KaM Remake slouží k pochopení odpovědností, pravidel a invariantů. Delphi kód
-  se nemá mechanicky přepisovat řádek po řádku.
-- Do repozitáře nesmí přijít původní grafika, hudba, zvuky, mapy, kampaně ani
-  jiné proprietární soubory. Případná legálně vlastněná instalace smí být jen
-  externí lokální zdroj pro budoucí nástroje.
-- Prototyp používá vlastní procedurální placeholdery.
-
-## 2. Repozitář a ověřený stav
-
-- GitHub: <https://github.com/CubaStromek/medieval-economy-rts>
-- Lokální cesta: `/Users/openclaw/AI-Projects/medieval-economy-rts`
-- Výchozí větev: `main`
-- Výchozí stav před tímto handoverem: commit `6b2472f` (`Initial Medieval
-  Economy RTS prototype`), shodný s `origin/main`.
-- Cílový Godot: 4.6; původní milestone byl ověřen s 4.6.3 stable.
-- Historické testy ověřené 2026-09-04 Godotem 4.6.1 stable:
-  `TEST RESULT: 50/50 passed`.
-
-Spuštění hry:
+Z kořene repozitáře:
 
 ```sh
+godot --editor --path game
 godot --path game
-```
-
-Testy:
-
-```sh
 ./tests/run-headless.sh
 ```
 
-Testy musí dál běžet přes skutečný headless Godot projekt a scénu, ne přes
-izolované spuštění GDScriptu.
+Na zdejším Macu lze místo `godot` použít
+`/Applications/Godot.app/Contents/MacOS/Godot`. Po čerstvém klonu nejprve
+nechat editor importovat textury; lze i bez okna:
 
-## 3. Co je hotové
+```sh
+godot --headless --editor --path game --import
+```
 
-První hratelný vertikální řez obsahuje:
+Hlavní menu nabízí novou hru, načtení a grafický sandbox. Nová hra má:
 
-- celočíselnou mřížku a autoritativní fixed-step simulaci na 10 Hz, nezávislou
-  na FPS;
-- kameru, posun, zoom, výběr polí a build režimy;
-- kamenné cesty, sklad, dřevorubeckou chatu a pilu;
-- oddělené profese dřevorubce, nosiče a autonomního zahradníka;
-- řetězec strom → dřevorubec → chata → nosič → pila → nosič → sklad;
-- datové definice surovin, budov, receptů, profesí a pohybu v `game/data/`;
-- datově řízenou školu s FIFO výcvikem nosičů, dřevorubců a zahradníků, přesným
-  časováním v tickách a čekáním při obsazených výstupech;
-- autonomní výběr nejbližšího dosažitelného místa, výsadbu, exkluzivní rezervace
-  a cooldown zahradníků; ruční mikromanagement výsadby není potřeba;
-- tři vizuální růstové fáze stromu; těžební úkol vzniká až v dospělé fázi;
-- deterministické vážené A*, rezervace úkolů i polí a replánování při blokaci;
-- hustou autoritativní vrstvu základního terénu (`grass`, `dirt`, `water`,
-  `rock`) oddělenou od stezek, cest a obsazení;
-- pravoúhlou projekci 48 × 48 px a samostatný čtecí `TerrainRenderer` s
-  deterministickými barevnými variantami a automatickými přechody;
-- verzi 5 JSON save/load se stavem terénu, výcviku, růstu stromů a cooldownu
-  zahradníků a zpětným načtením verzí 1 až 4;
-- datově řízený HUD vpravo nahoře s procedurálními ikonami klád, prken a kamene,
-  který odděleně ukazuje skladové a rozpracované množství; kámen je zatím nulová
-  skladová položka bez těžebního řetězce;
-- procedurální vektorovou placeholder grafiku bez externích assetů.
+| Mapa | Stav |
+|---|---|
+| Nová osada | 28 × 22, Warehouse a School; základ pro budování |
+| Osídlené údolí | 28 × 22, osídlený terénní scénář; také běžné QA dřevorubce |
+| Ekonomická ukázka | 34 × 30, 35 dokončených budov všech 30 typů, nyní 262 obsazených polí |
+| Mountainous Region | Volitelná lokální mapa 143 × 127; bez externích dat není dostupná |
 
-Architektura drží simulaci v `game/scripts/simulation/` oddělenou od vstupu,
-kamery, UI a kreslení v `game/scripts/view/`. V prvním milníku nejsou gameplay
-Autoloady; scénu vlastní samostatný `SimulationWorld`, což usnadňuje testy a
-budoucí běh více světů.
+Mountainous Region má školu a sklad, bez lidí a cest, celkem 50 zlata a po
+20 kládách, prknech a kamenech. Jedno zlato je ve škole pro první výcvik,
+49 ve skladu. Má oddělený save slot. Její původní ani převedená mapová data
+nejsou součástí veřejného klonu.
 
-## 4. Důležitá rozhodnutí z ladění pohybu a logistiky
+`Esc` nejprve ruší aktivní nástroj nebo zavírá detail, potom otevírá pauzové
+menu. Testy a QA používají izolované pozice; skutečné hráčovy savy nepřepisovat.
+Další ovládání a spouštěče `.command`: [README](README.md).
 
-Původní vizuální pohyb působil trhaně, protože se interpolace po každém ticku
-znovu rozbíhala ze starého políčka. Oprava drží plynulý průběh celého kroku a
-test hlídá, že vizuální interpolace necouvne.
+## 3. Herní stav a závazná rozhodnutí
 
-Časování původního milníku (historie):
+### Ekonomika, logistika a bydlení
 
-- výchozí rychlost hry `0.5×`; UI nabízí pauzu, `0.5×`, `1×` a `2×`;
-- logický tick je stále 10 Hz; rychlost mění jen tempo požadavků na tick;
-- tráva `6` ticků/pole, hlíněná stezka `4`, kamenná cesta `2`;
-- pokácení stromu `30` ticků;
-- výsadba `20` ticků, opakování po `80` tickách;
-- sazenice přechází v mladý strom v ticku `80` a dospívá v ticku `200`;
-- pila spotřebuje 1 kládu a za `60` ticků vyrobí 1 prkno.
+Fungují řetězce dřeva, chleba, vína, ryb, chovu, kůže, uhlí/rud/hutí,
+zbraní a zbrojí, tržiště, výcvik a vybavení rekrutů. Ložiska včetně ryb jsou
+konečná. Stromy rostou a lesník je sází; pole potřebují skutečnou práci sedláka.
 
-Při blokaci jiným pracovníkem se jednotka nesmí zaseknout ani donekonečna
-opakovat stejný neproveditelný úkol:
+Stavby vznikají z materiálu fyzicky přineseného nosiči a práce stavitele.
+Pila vyrábí **2 prkna z 1 klády**. Škola spotřebuje zlato jednou při výcviku.
+Rezervace, vážené osmicestné A*, uhýbání, přeplánování a interpolace pohybu
+zůstávají součástí běžné simulace.
 
-- ostatní pracovníci se při replánování berou jako dočasné překážky;
-- po omezeném čekání se přepočítá cesta;
-- pokud zdroj zůstává nedosažitelný, nezatížený pracovník úkol uvolní a vybere
-  nejbližší aktuálně dosažitelný zdroj;
-- pracovník s nákladem nejdřív obnoví doručení a nepřijme nový těžební úkol;
-- logistiku lze dokončit ze sousedního pole, když je vstup budovy obsazený;
-- výměna protijdoucích jednotek je atomická a nesmí nastat, dokud oba skutečně
-  nedokončí aktuální krok.
+**Gardener / Forester Hut** je naše vlastní lesnické rozšíření, nikoli
+dřevorubec. **Workers' Cottage** poskytuje přesně dvě lůžka nosičům nebo
+stavitelům, stojí 3 prkna + 2 kameny; sklad je nouzové ubytování.
+Není to obecný rodinný/domácí spotřební systém.
 
-## 5. Cesty, profese a zamýšlená ekonomika
+### Den, hlad, mlha a pozastavení
 
-Uživatel výslovně rozhodl, že prvotní těžbu provádí specialista (například
-dřevorubec), zatímco přepravu z výrobní budovy zajišťuje nosič. Nosiči používáním
-nejefektivnější trasy vytvářejí infrastrukturu:
+- Den má 6000 ticků = **10 minut při 1×**, hra začíná v 05:00.
+  Civilisté od 20:00 do 05:00 nepracují a jdou spát; vojáci a stráže zůstávají aktivní.
+- Civilisté se fyzicky stravují v hostinci; vojákovi musí dávku přinést nosič.
+  Návštěva hostince má až tři různé chody, ne okamžité doplnění při otočení ve dveřích.
+- Aktuální model odděluje sytost od dlouhodobého nedostatku.
+  **Smrt až po sedmi celých herních dnech úplně bez jídla od plného stavu**,
+  tedy 70 minut při 1×. Nové jednotky začínají najedené.
+- Skutečný spánek snižuje úbytek sytosti na polovinu, ale nenatahuje
+  sedmidenní kalendářní rezervu. Nedostatek postupně oslabí produktivní práci
+  nejvýše o 20 %; chůzi a nosičské zásobování nezpomalí.
+  Jídlo rezervu obnovuje poměrně, drobek ji nevynuluje.
+- Neprozkoumaná mapa je černá, prozkoumaná zem mimo dohled tmavší;
+  cizí jednotky se mimo dohled nekreslí a nesmějí prozradit stav přes UI.
+- Detail občana ukazuje **Co si myslím — Teď / Potom** podle jeho skutečného stavu.
+  Jednotku a budovu lze pozastavit nezávisle. Pauza práce zachovává náklad
+  i postup, neblokuje jídlo, spánek a bezpečný pohyb. Není to globální pauza.
+- Jednotka skutečně uvnitř budovy nemá venkovní sprite, stín, náklad ani
+  venkovní blokování. Zaměstnání a aktuální fyzická přítomnost nejsou totéž.
 
-1. na běžné trávě chodí nejpomaleji;
-2. po čtyřech dokončených průchodech nosiče vznikne rychlejší hlíněná stezka;
-3. hráčem postavená kamenná cesta je nejrychlejší.
+Autority: [ekonomika](docs/economy-expansion.md),
+[jídlo](docs/food-and-military-supply.md), [den a noc](docs/day-night-analysis.md),
+[mlha](docs/fog-of-war.md), [pauza a myšlenky](docs/unit-thoughts-and-pause.md),
+[bydlení](docs/worker-housing.md).
 
-Pouze dokončené kroky nosiče přidávají opotřebení; chůze dřevorubce cestu
-nevyšlapává. A* používá stejné náklady jako skutečná délka kroku, takže delší
-trasa po kameni může správně porazit kratší cestu přes trávu.
+## 4. Aktuální grafika: co skutečně používá hra
 
-## 6. Zvolený grafický směr
+### Terén
 
-Uživatel zvolil **moderní malovanou 2,5D grafiku inspirovanou KaM**, ne skutečné
-3D a ne striktní kopii původního vzhledu.
+Běžná hra používá vlastní malovaný **V1 atlas osmi materiálů** a společný
+compositor se sandboxem. Přechody a osvětlení nejsou jen přebarvené staré
+trojúhelníky. Atlas je vlastní generovaný obraz, ne originální KaM textura.
+Původní procedurální renderer zůstává fallbackem a historickou testovací cestou.
 
-Referenční princip KaM:
+Herní terén, kolize a srovnávání země jsou oddělené od vzhledu.
+Voda je **statická**. Rozdíl zaokrouhlení původních výšek proti hernímu terénu
+může být zhruba 4 px při 1×; nejde automaticky o chybu textury.
+Viz [V1 v běžné hře](docs/painted-terrain-game.md) a
+[sandbox](docs/terrain-graphics-sandbox.md).
 
-- pravoúhlá síť čtvercových polí s výškou v rozích;
-- malované 2D povrchy, přechodové masky, dekorace a velké sprity budov;
-- osmisměrné snímkové animace postav;
-- samostatné animační vrstvy budov a maska barvy hráče;
-- 2D řazení objektů podle mapové pozice a jednotný směr světla/stínů.
+### Dřevorubecká chata
 
-Současný základ už používá pravoúhlou projekci 48 × 48 px. Rozlišuje trávu,
-hlínu, vodu a skálu, oddělené stezky/cesty, deterministické varianty a
-automatické procedurální okraje. Jde stále o dočasné barevné textury bez výšky
-a produkčních malovaných assetů; jejich účelem je ověřit projekci, měřítko,
-kameru a datové hranice.
+- Vlastní RGBA budova a **12 dřevěných + 21 dokončovacích kroků**.
+  33 kroků odhaluje skutečná práce stavitele, nejde o nezávislé video.
+- Samostatná vrstva zásob zobrazuje **0–6 klád podle fyzického výstupního
+  inventáře**, nikoli podle rezervací nebo dosud neseného nákladu.
+- Nově stavěná chata má **půdorys v2: 4 × 3, devět obsazených polí**:
+  `.### / .##E / ###.`. Dveře zůstaly ve stejné fyzické pozici vůči kresbě;
+  zářez před vstupem je průchozí. Zachovány obrázky, měřítko a stavební fáze.
+- Staré uložené chaty se **nezvětšují**: v1 zůstává 3 × 2 / šest polí,
+  v0 zachovává původní jednopolovou geometrii. Verze mohou existovat společně.
+  Proto starý save nemusí vypadat jako nově postavená chata.
+- Registrace bitmapy, fyzická poloha, výška terénu a vizuální řazení
+  jsou samostatné veličiny; nepřesouvat fyzické dveře kvůli zakrytým pixelům.
 
-## 7. Schválený plán terénu
+Autority: [stavba](docs/art/briefs/lumber-hut-construction-v1.md),
+[zásoby](docs/art/briefs/lumber-hut-stock-v1-integration.md),
+[půdorys v2](docs/art/briefs/lumber-hut-footprint-v2-integration.md).
+Jejich QA adresáře obsahují skutečné snímky i rozsah měření, nikoli univerzální
+důkaz správného kontaktu na každém možném svahu.
 
-Cílová terénní buňka má oddělit:
+### Dřevorubec
 
-- základní zeminu (`grass`, `dirt`, `sand`, `rock`, `water`);
-- výšku uloženou ve sdílených rozích polí;
-- povrchový overlay (vyšlapaná stezka, kamenná cesta, pole apod.);
-- přechodové masky mezi materiály;
-- deterministickou vizuální variantu a dekorace;
-- herní vlastnosti jako průchodnost, stavitelnost, rychlost, úrodnost nebo
-  těžitelnost.
+**Produkční cesta je PixelLab v2, ne starší imagegen cykly ani Meshy model.**
+V normální hře jsou tři činnosti `walk_axe`, `chop`, `walk_log`,
+každá v osmi skutečných směrech: **439 fází 256 × 256 RGBA**, tři atlasy.
+Dalších 24 vstupních referencí se nepočítá jako animace stání.
 
-Terénní data jsou autorita; renderer je pouze zobrazuje. Cesty se nesmějí dál
-tvářit jako základní druh zeminy.
+- Zdroj, výběr a FPS: `docs/art/animations/lumberjack-pixellab-production-v2/`.
+- Runtime: `game/art/units/lumberjack-pixellab-v2/`.
+- Sdílená knihovna: `lumberjack_animation_library.gd`; pozorovaný stav:
+  `lumberjack_presentation.gd`; pracovní odstup: `lumberjack_work_placement.gd`.
+- Chůze se řídí uraženou vzdáleností, sekání skutečným postupem práce.
+  Nesená kláda se nekreslí podruhé jako generický náklad.
+- Pauza, interiér, mlha, noční tónování, alfa výběr a překrytí korunou
+  jsou pokryté regresními testy. Save neukládá rozpracovanou vizuální pózu;
+  po load se prezentační historie resetuje.
+- Historický běžný průchod menu → Relief → kácení → předání prokázal pokles
+  stromu 5 → 4 a nárůst zásoby chaty 0 → 1.
+- Oprava drobných stínů řeší přesnost triangulace relativními souřadnicemi,
+  nikoli zahazováním platných malých stínů.
 
-Stav plánovaných fází:
+[Herní integrační záznam](docs/art/briefs/lumberjack-pixellab-game-v1-integration.md)
+a [skutečné herní QA](docs/art/qa/lumberjack-pixellab-game-v1/README.md)
+mají přednost před starými větami „dosud neintegrováno“ v produkčních záznamech.
 
-1. datový model a save migrace — hotovo ve verzi 4;
-2. samostatný `TerrainRenderer` — hotovo; cache bloků přibližně 16 × 16 polí
-   zůstává dalším výkonovým krokem;
-3. dočasná sada tráva/hlína/skála/voda + deterministické varianty — hotovo;
-4. procedurální automatické okraje a rohy — základ hotov, malované maskové
-   atlasy teprve vzniknou;
-5. procedurální vyšlapané stezky a napojované kamenné cesty — základ hotov,
-   produkční kresba zbývá;
-6. sdílená výška rohů, svahy a skalní stěny;
-7. voda a pobřeží;
-8. samostatné přírodní dekorace;
-9. interní editor terénu s undo/redo.
+Meshy T-pose je pouze zachovaný statický experiment: bez kostry, animací a
+herní integrace, s přibližně 1,94 milionu trojúhelníků. Uživatel tuto cestu
+pozastavil. Nezahajovat další placené rigování z titulu tohoto handoveru.
 
-Výkonnostní cíl produkčního systému je mapa až 256 × 256 polí s lokálním
-překreslením změněných bloků.
+## 5. Pravidla další grafické produkce
 
-## 8. Dokončený terénní základ
+Závazná jsou [AGENTS.md](AGENTS.md), [manuál budov v0.2](docs/art/building-style-guide.md)
+a [společný postup objektů](docs/art/object-implementation-workflow.md).
 
-První omezený terénní balík nyní obsahuje:
+- **Nejdřív herní půdorys, průchodný vstup a měřítko člověka, potom první obrázek.**
+  Variace vyrábět až po kontrole kontaktů se zemí.
+  Zvětšení současné chaty bylo výslovnou jednorázovou výjimkou.
+- Vlastní architektura a jednotný styl; KaM je inspirace, ne katalog k obkreslení.
+  Mírný pohled zepředu zleva a více shora, nikoli čelní nízká kamera.
+  Neotáčet kvůli tomu herní mřížku a nevymýšlet přesný historický úhel.
+- Zásoby, fyzická přítomnost pracovníka a aktivita jsou různé zdroje stavu.
+  Nekreslit je napevno do základního domu.
+- Technické dokončení ani požadavek na implementaci **neznamenají výtvarné
+  schválení etalonu celé sady**. To u chaty a nové herní jednotky zatím není doloženo.
+  Lesnická chata zůstává další nevyrobený sourozenecký brief.
+- Pro další směrovou jednotku použít dostupný osobní
+  `pixellab-godot-unit-pipeline`. Tento skill žije mimo repo; jeho přítomnost
+  v novém prostředí nelze předpokládat. Projektové postupy a záznamy jsou v repu.
+  Každá profese potřebuje vlastní matici nástrojů, stavů, kontaktů a animací.
+- Historický počet generací ani odsouhlasený rozpočet dřevorubce není
+  oprávnění utrácet na nových úkolech. API klíč ani místní relay nejsou součástí dodávky.
 
-1. přidat datový model pro trávu, hlínu, vodu a skálu;
-2. oddělit základní zeminu od stezky a kamenné cesty;
-3. zavést pravoúhlou projekci blízkou KaM;
-4. přesunout kreslení do samostatného `TerrainRenderer`;
-5. použít dočasné barevné textury a automatické přechody;
-6. migrovat formát uložené hry;
-7. doplnit testy průchodnosti, stavitelnosti, cest a serializace.
+## 6. Refaktor z 11. 9. a architektura
 
-Produkční malované assety se mají vyrábět až po ověření projekce, měřítka,
-kamery a přechodů. Technická kontrola a testy proběhly; před výrobou celé sady
-je vhodné uživatelsky potvrdit náhled měřítka 48 px a celkovou hustotu mapy.
+Herní pravidla a save se tímto refaktorem nezměnily:
 
-Kontrolní milníky jsou: (1) malovaný plochý terén, (2) živá krajina s
-dekoracemi a vodou, (3) reliéf a pravidla svahů, (4) produkční renderer a editor.
+- zásoby všech 28 surovin se agregují jedním průchodem přes budovy a pracovníky;
+  výstup je čerstvý a nezávislý, i po změně ve stejném ticku;
+- panel populace sdílí průchod místo opakovaných přepočtů;
+- kontrola, zda existuje dosažitelný odběratel, končí u prvního vhodného cíle;
+  **skutečné vyzvednutí stále vybírá nejlepší cíl původními pravidly**;
+- odstraněno pět nepoužívaných funkcí a zbytečné eager výřezy atlasu.
 
-## 9. Původní roadmapa (historie)
+Měření z 11. 9. na stejné osadě: HUD **0,983 → 0,382 ms** (−61 %),
+ověření dopravy **8 → 1 hledání cesty**. Není to tvrzení o celkovém zvýšení FPS.
+Zachovaná metodika, reprodukce a další kandidáti:
+[refaktorový audit](docs/refactor-audit-2026-09-11.md).
 
-Původní plán po terénním základu je zachován níže. Materiálové stavění, jídlo,
-farmy, doly a širší výrobní graf už doplnila v7; ostatní body pokračují dál:
+Simulace patří do `game/scripts/simulation/`, vstup a kreslení do
+`game/scripts/view/`. `world_snapshot.gd` provádí transakční validaci a
+migraci: vadný save nesmí změnit rozehraný svět.
+Renderer nesmí spotřebovávat zásoby ani posouvat simulační úkoly.
+Pathfinding a pohyb čtou shodné ceny; rezervace nákladu/cíle jsou jednoznačné.
+Zachovat tyto invarianty i při zmenšování velkých modulů.
 
-- vícepólové a otočné půdorysy budov a skutečné stavební úkoly s materiály;
-- typované stavy entit místo prototypových slovníků;
-- logistický matcher podle ceny trasy, priority, kapacity a stáří nabídky;
-- atomické rezervace zdrojového množství, kapacity cíle a pracovníka;
-- potřeby obyvatel, jídlo a bydlení;
-- širší výrobní graf, farmy, doly, sklady a distribuční politiky;
-- deterministický příkazový log, vlastní PRNG, hash stavu a pozdější lockstep
-  multiplayer;
-- dlouhé invariantní a seedované testy, replay hash a testy poškozených saveů.
+## 7. Co zbývá a bezpečné další kroky
 
-## 10. Rizika a pravidla pro pokračování
+1. Uživatelské zhodnocení současné chaty a dřevorubce v běžné hře;
+   nezaměňovat technické QA za schválení celé výtvarné sady.
+2. Další budovy/jednotky vyrábět podle aktuálních postupů, ne kopírováním
+   konkrétních dřevorubcových kotev, počtů fází a geometrických výjimek.
+3. Zbývající optimalizace nejprve změřit na větší osadě: procházení polí
+   a ložisek po řádcích, opakovaná geometrie/pozorovatelé mlhy,
+   vyhledávání pracovišť a načítání definic. Viz audit, nejde o hotové opravy.
+4. Vojenská část má nábor, vybavení, věž a zásobování, ale **nemá boj,
+   taktické povely, střelbu ani obléhání**. Multiplayer není implementovaný.
+5. Balance není úplná přesná replika KaM: stavební/výrobní časy a některé ceny
+   jsou vlastní; chov ani sklizeň nejsou původní detailní animované procesy.
+   Voda zůstává statická a většina objektů používá starší vlastní placeholdery.
 
-- Fixed-step simulaci a celočíselné rozhodování nepropojovat s FPS nebo
-  vizuální interpolací.
-- UI a renderer nesmí přímo měnit autoritativní inventáře ani terénní pravidla.
-- Pathfinding a reálný pohyb musí číst stejnou cenu povrchu.
-- Každý úkol, předmět, cílové pole a budoucí kapacita musí mít jednoznačnou
-  rezervaci.
-- Entity a definice aktualizovat v kanonickém pořadí; náhodnost smí později
-  pocházet jen z projektového deterministického PRNG.
-- Před rozšířením formátu save přidávat explicitní migraci verze.
-- `reference/kam_remake/` zůstává lokální, neupravovaný a ignorovaný Gitem,
-  pokud se výslovně nezvolí čistý submodul.
-- Po každém významném milníku stručně uvést: co je hotové, co bylo ověřeno, co
-  následuje a která rizika nebo rozhodnutí vyžadují uživatele.
+## 8. Co se publikuje a co zůstává lokální
 
-## 11. Orientace v dokumentaci
+Publikace obsahuje herní kód, data, aktuální vlastní assety, testy, nástroje,
+postupy, původ grafiky a zachované vlastní experimenty/QA.
+Archivní pokusy nejsou runtime závislosti a jejich velikost není spotřeba hry.
 
-Po code review 4. 9. 2026 jsou opravené čtyři integrační chyby: opakovaná
-aktualizace jednotky při výměně míst, neobnovený výběr cíle při zablokovaném
-doručování, přijetí neúplného save a dvojí zpracování mezerníku přes UI focus.
-`WorldSnapshot` nyní vlastní serializaci/validaci/migrace a `GameHud` konstrukci
-a texty UI. Pohybové definice mají společný zdroj v JSON; A* i hledání nejbližšího
-cíle používají společnou haldu. Podrobnosti a testy jsou v architektuře a
-`docs/code-review-fixes.md`.
+Mimo Git zůstávají původní/proprietární data KaM a jejich převody,
+lokální referenční klon, `.godot`, cache, ZIP balíky, logy,
+surová API komunikace/stavy účtu a znovuvytvořitelná Blender QA scéna.
+Z disku se nic z toho nemaže. Produkční atlasy, vybrané jednotlivé snímky,
+mastery a textová evidence původu zůstávají dostupné v repozitáři.
+Starší auditní odkazy na lokální logy, ZIP nebo původní data nejsou
+příslibem jejich přítomnosti ve veřejném klonu.
 
-- `README.md` — spuštění, ovládání, aktuální funkce a právní mantinely.
-- `docs/economy-expansion.md` — aktuální řetězce, ceny/časování a přesné hranice.
-- `docs/reference-analysis.md` — rozbor KaM Remake.
-- `docs/godot-architecture.md` — hranice systémů a plán determinismu.
-- `docs/reference-map.md` — mapování Delphi odpovědností na Godot systémy.
-- `THIRD_PARTY_NOTICES.md` — původ reference a licence.
-- `game/scripts/simulation/` — autoritativní model.
-- `game/scripts/view/main_view.gd` — vstup, UI a kreslení entit;
-- `game/scripts/view/terrain_renderer.gd` — samostatné čtecí zobrazení terénu;
-- `game/scripts/view/map_projection.gd` — sdílená projekce a budoucí hranice pro
-  výšku rohů.
-- `game/tests/test_runner.gd` — současná testovací sada.
+[Pravidla publikace a původ](THIRD_PARTY_NOTICES.md), [ignorované cesty](.gitignore).
+Běžné vestavěné mapy musí fungovat bez původní instalace; volitelný sandbox
+s originální referencí a Mountainous Region vyžadují vlastní lokální podklady.
+
+## 9. Zdroje předání
+
+Souhrn kombinuje aktuální zdrojové soubory, datové definice, uvedené dokumenty
+a dostupné poslední výměny projektových tasků. Není úplným exportem všech zpráv.
+
+- **Refactor codebase for bloat** — provedené optimalizace a hranice měření.
+- **Opravit klády a půdorys hutě** — zásoby 0–6 a výslovná změna na devět polí.
+- **Najdi službu pro animace jednotek** — PixelLab, následná herní integrace,
+  společný postup a osobní skill.
+- **Prozkoumat fáze stavby chatrče** — 12 + 21 kroků a objektové šablony.
+- **GRAFIKA** — identita postavy a historie odmítnutých/zvolených nosných póz.
+- **GAMEPLAY** — sedmidenní rezerva, myšlenky a jednotlivé pozastavení.
+- **Navrhni další ekonomické budovy** — ekonomika a dvoulůžkové obydlí.
+- **Přidej hlavní menu hry**, **Připrav start v Mountains** — menu a mapový start;
+  u druhého byl dostupný požadavek, realizace ověřena v kódu a dokumentaci.
+- **Najdi půdorysy budov Knights**, **Navrhni systém dne a noci**,
+  **Analyzuj systém potravin pro jednoty**, **Vytvoř testovací level**, **UI** —
+  starší rozhodnutí, překonaná novějšími revizemi tam, kde je to výše uvedeno.
+- **Locate repository** a tato předávací konverzace — umístění a Git workflow.
+
+Task **Vytvoř animaci chůze dřevorubce** se při této aktualizaci nepodařilo
+načíst; jeho historické varianty proto nejsou vydávány za nově ověřený obsah chatu.
+Aktuální produkční stav je doložen následnou integrací a soubory v repu.

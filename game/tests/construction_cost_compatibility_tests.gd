@@ -76,13 +76,14 @@ static func _test_current_sites_and_catalog(failures: Array[String]) -> void:
 	var site: Dictionary = world.buildings[fixture["site"]]
 	_check(int(site["construction_cost_revision"]) == 2,
 		"New construction must use the source-backed cost revision", failures)
-	_check(world.catalog.buildings.size() == world.catalog.LEGACY_CONSTRUCTION_COSTS.size() + 1
-		and not world.catalog.LEGACY_CONSTRUCTION_COSTS.has("forester_hut"),
-		"Every pre-revision type needs a frozen cost; the later Forester Hut must not invent legacy history", failures)
+	_check(world.catalog.buildings.size() == world.catalog.LEGACY_CONSTRUCTION_COSTS.size() + 2
+		and not world.catalog.LEGACY_CONSTRUCTION_COSTS.has("forester_hut")
+		and not world.catalog.LEGACY_CONSTRUCTION_COSTS.has("workers_house"),
+		"Every pre-revision type needs a frozen cost; the later project buildings must not invent legacy history", failures)
 	for type: String in world.catalog.buildings:
 		_check(world.catalog.construction_cost(type, 2) == world.catalog.building(type)["construction_cost"],
 			"New site costs must match the build-menu catalog for " + type, failures)
-		if type != "forester_hut":
+		if not ["forester_hut", "workers_house"].has(type):
 			_check(not world.catalog.construction_cost(type, 1).is_empty(),
 				"Legacy migration needs a nonempty material contract for " + type, failures)
 	_check(world.construction_cost(site) == world.catalog.construction_cost("lumber_hut", 2),

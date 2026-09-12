@@ -1,5 +1,7 @@
 extends Control
 
+signal main_menu_requested()
+
 # Native, isolated graphics workbench. Never instantiates the simulation world,
 # writes saves, or changes the production scene. All experiments are local.
 const Terrain = preload("res://scripts/view/kam_terrain_sample_renderer.gd")
@@ -9,6 +11,7 @@ const Objects = preload("res://scripts/view/terrain_sandbox_objects.gd")
 const State = preload("res://scripts/view/terrain_sandbox_state.gd")
 const DATA_PATH: String = "res://external_assets/terrain-sample/patches.json"
 const ATLAS_PATH: String = "res://external_assets/terrain-sample/tiles1.tga"
+const MODERN_ATLAS_PATH: String = "res://art/terrain/modern-materials-v1.png"
 const OBJECT_PATH: String = "res://external_assets/terrain-sample/objects.json"
 const SETTINGS_PATH: String = "res://external_assets/terrain-sandbox/last-settings.json"
 const CAPTURE_DIR: String = "res://external_assets/terrain-sandbox/captures"
@@ -17,6 +20,9 @@ var state := State.new()
 var patches: Array = []
 var object_patches: Array = []
 var atlas := Image.new()
+var modern_atlas: Image
+var texture_choice: OptionButton
+var texture_note: Label
 var before: Node2D
 var after: Terrain
 var objects: Objects
@@ -53,14 +59,23 @@ func _ready() -> void:
 	if not FileAccess.file_exists(ATLAS_PATH) or atlas.load_tga_from_buffer(FileAccess.get_file_as_bytes(ATLAS_PATH)) != OK:
 		_fail("Chybí místní atlas terénu. Běžná hra ho nepotřebuje.")
 		return
+	if ResourceLoader.exists(MODERN_ATLAS_PATH):
+		var modern_texture: Texture2D = load(MODERN_ATLAS_PATH) as Texture2D
+		if modern_texture != null:
+			modern_atlas = modern_texture.get_image()
+			if modern_atlas != null and modern_atlas.is_compressed():
+				modern_atlas.decompress()
 	var object_data: Variant = _read_json(OBJECT_PATH)
 	if object_data is Dictionary and object_data.get("format") == "kam-sandbox-objects-v1" and object_data.get("patches") is Array:
 		object_patches = object_data["patches"]
 	var saved: Variant = _read_json(SETTINGS_PATH)
+	var rejected_preset: bool = FileAccess.file_exists(SETTINGS_PATH) and saved == null
 	if saved != null:
-		state.restore(saved)
+		rejected_preset = not state.restore(saved)
 	_sync_controls()
 	select_patch(int(state.values["patch"]))
+	if rejected_preset and error_message.is_empty():
+		status.text = "Uložený preset není platný; používám výchozí nastavení. Soubor zůstal beze změny."
 	resized.connect(_layout_worlds)
 	_layout_worlds.call_deferred()
 
@@ -106,6 +121,10 @@ func _build_ui() -> void:
 	var title := _label("Grafický sandbox", 28)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
+	var menu_button: Button = _button("Hlavní menu", _request_main_menu)
+	menu_button.name = "MenuButton"
+	menu_button.tooltip_text = "Zpět do hlavního menu (Esc)"
+	header.add_child(menu_button)
 	header.add_child(_button("Uložit nastavení", save_settings))
 	capture_button = _button("Pořídit snímek", capture)
 	header.add_child(capture_button)
@@ -130,7 +149,7 @@ func _build_ui() -> void:
 	comparison_choice = OptionButton.new()
 	comparison_choice.add_item("Jen pracovní verze")
 	comparison_choice.add_item("Vedle terénní reference")
-	comparison_choice.add_item("Vedle dnešní hry")
+	comparison_choice.add_item("Vedle původního prototypu")
 	comparison_choice.item_selected.connect(_comparison_changed)
 	toolbar.add_child(comparison_choice)
 	toolbar.add_child(_button("Vycentrovat", reset_camera))
@@ -143,7 +162,7 @@ func _build_ui() -> void:
 		column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		panels.add_child(column)
 		panel_columns.append(column)
-		var label := _label("DNEŠNÍ PROTOTYP" if index == 0 else "PRACOVNÍ VERZE", 15)
+		var label := _label("PŮVODNÍ PROTOTYP" if index == 0 else "PRACOVNÍ VERZE", 15)
 		column.add_child(label)
 		panel_labels.append(label)
 		var box := SubViewportContainer.new()
@@ -185,8 +204,18 @@ func _build_ui() -> void:
 	settings.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	settings.add_theme_constant_override("separation", 5)
 	scroll.add_child(settings)
+	settings.add_child(_label("SADA TEXTUR", 15))
+	texture_choice = OptionButton.new()
+	texture_choice.add_item("Původní KaM")
+	texture_choice.add_item("Naše malované · v1")
+	texture_choice.item_selected.connect(_texture_pack_changed)
+	settings.add_child(texture_choice)
+	texture_note = _label("", 13, true)
+	texture_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	settings.add_child(texture_note)
+	settings.add_child(HSeparator.new())
 	settings.add_child(_label("TERÉN", 15))
-	_toggle(settings, "Původní textury", "textures")
+	_toggle(settings, "Zobrazit textury", "textures")
 	_toggle(settings, "Stínování svahů", "lighting")
 	_slider(settings, "Síla stínování", "light_strength", 0, 1.5)
 	_slider(settings, "Výraznost výšek", "relief_scale", 0, 1.5)
@@ -204,7 +233,7 @@ func _build_ui() -> void:
 	settings.add_child(HSeparator.new())
 	_slider(settings, "Přiblížení výřezu", "zoom", 0.5, 3)
 	settings.add_child(HSeparator.new())
-	var evidence := _label("PODKLADY\nTerén: původní atlas + výšky\nStromy: naše náhradní sprity\nVoda: statická, snímky chybí\n\nReference není screenshot KaM.\nJe to naše vykreslení jeho terénu.", 13, true)
+	var evidence := _label("PODKLADY\nTerén: původní / vlastní sada\nStromy: naše náhradní sprity\nVoda: statická, snímky chybí\n\nReference není screenshot KaM.\nJe to naše vykreslení jeho terénu.", 13, true)
 	evidence.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	settings.add_child(evidence)
 	status = _label("Připraveno · změny platí jen v tomto sandboxu", 14, true)
@@ -242,11 +271,16 @@ func _sync_controls() -> void:
 			control.set_value_no_signal(float(state.values[key]))
 			var label: Label = value_labels[key]
 			label.text = String(label.get_meta("caption")) + " · %d %%" % roundi(float(state.values[key]) * 100)
+	texture_choice.select(1 if state.values["texture_pack"] == "modern" else 0)
 	crop_choice.select(int(state.values["patch"]))
 	comparison_choice.select(int(state.values["comparison"]))
 	controls["shadows"].disabled = not bool(state.values["trees"])
 
 func _option_changed(value: Variant, key: String) -> void:
+	if key == "texture_pack" and value == "modern" and (after == null or not after.modern_available()):
+		_sync_controls()
+		status.text = "Vlastní sada není dostupná; původní zobrazení zůstává zachováno."
+		return
 	state.set_value(key, value)
 	_sync_controls()
 	_apply_options()
@@ -262,6 +296,11 @@ func select_patch(index: int) -> void:
 		candidate.free()
 		_fail("Výřez obsahuje neplatná data; předchozí zobrazení zůstalo zachováno.")
 		return
+	if modern_atlas != null:
+		candidate.configure_modern_materials(patches[index], modern_atlas)
+	texture_choice.set_item_disabled(1, not candidate.modern_available())
+	if state.values["texture_pack"] == "modern" and not candidate.modern_available():
+		state.set_value("texture_pack", "classic")
 	error_message = ""
 	capture_button.disabled = false
 	state.set_value("patch", index)
@@ -302,8 +341,8 @@ func _rebuild_before() -> void:
 		worlds[0].add_child(renderer)
 		before = renderer
 	panel_columns[0].visible = int(state.values["comparison"]) != 0
-	panel_labels[0].text = "DNEŠNÍ PROTOTYP" if int(state.values["comparison"]) == 2 else "VÝCHOZÍ TERÉNNÍ REFERENCE"
-	panel_labels[1].text = "PRACOVNÍ VERZE · OVLADATELNÉ VRSTVY"
+	panel_labels[0].text = "PŮVODNÍ PROTOTYP" if int(state.values["comparison"]) == 2 else "VÝCHOZÍ TERÉNNÍ REFERENCE"
+	_update_texture_labels()
 	_layout_worlds.call_deferred()
 
 static func _prototype_grid(data: Dictionary) -> Grid:
@@ -335,7 +374,27 @@ func _apply_options() -> void:
 	after.set_visual_options(state.values)
 	objects.set_options(state.values)
 	objects.queue_redraw()
+	_update_texture_labels()
 	_layout_worlds()
+
+func _texture_pack_changed(index: int) -> void:
+	if after == null:
+		return
+	if index == 1 and not after.modern_available():
+		status.text = "Vlastní sada není dostupná; původní zobrazení zůstává zachováno."
+		return
+	set_option("texture_pack", "modern" if index == 1 else "classic")
+	status.text = "Sada textur změněna · výšky, kamera, objekty i stínování zůstaly stejné"
+
+func _update_texture_labels() -> void:
+	var modern: bool = state.values["texture_pack"] == "modern"
+	panel_labels[1].text = "NAŠE MALOVANÉ TEXTURY · v1" if modern else "PŮVODNÍ TEXTURY KaM"
+	if after != null and not after.modern_available():
+		texture_note.text = "Vlastní atlas chybí nebo tento výřez nepodporuje. Původní sada zůstává dostupná."
+	elif modern:
+		texture_note.text = "Vlastní kresba ve vyšším rozlišení. Plynulé přechody mezi materiály; stejné výšky a světlo."
+	else:
+		texture_note.text = "Původní místní atlas KaM. Referenční varianta s 32px texturami."
 
 func _layout_worlds() -> void:
 	if after == null or before == null:
@@ -376,7 +435,7 @@ func _inspect_at(position: Vector2, index: int) -> void:
 	# Picking follows visible deformed triangles, never an undeformed top-down grid.
 	var renderer: Terrain = after if index == 1 else before as Terrain
 	if renderer == null:
-		inspector.text = "Dnešní prototyp · podrobnosti polí zkoumej v pracovní verzi vpravo"
+		inspector.text = "Původní prototyp · podrobnosti polí zkoumej v pracovní verzi vpravo"
 		return
 	for y: int in range(after.sample_size.y - 1, -1, -1):
 		for x: int in range(after.sample_size.x - 1, -1, -1):
@@ -448,6 +507,17 @@ func capture() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
+			KEY_ESCAPE:
+				get_viewport().set_input_as_handled()
+				_request_main_menu()
 			KEY_1: select_patch(0)
 			KEY_2: select_patch(1)
 			KEY_F: reset_camera()
+
+
+func _request_main_menu() -> void:
+	if main_menu_requested.has_connections():
+		main_menu_requested.emit()
+	else:
+		# The existing standalone launcher offers the same way back to the game.
+		get_tree().change_scene_to_file.call_deferred("res://scenes/game_session.tscn")

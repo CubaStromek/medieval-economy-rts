@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-10",
+  "generationTool": "OpenAI built-in image_gen",
+  "imageGenerationCalls": 5,
+  "directions": {
+    "SE": {
+      "generationCalls": 3,
+      "firstSource": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-9c0289fc-3c8e-4f21-b9dc-564df17eb49f.png",
+      "unsuccessfulWholeSheetCostumeRepair": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-d173dad1-d0d6-4a98-becc-3a3dc447a886.png",
+      "finalFrame04Correction": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-1a80c604-6bbb-4e35-bdff-1797d56f55e4.png",
+      "assembly": "First source sheet retained; only cell index4 replaced with corrected generated full-cell image, uniformly resized to384x512 using Lanczos. No hand painting or procedural pose edit.",
+      "correctionNativeSize": [
+        1086,
+        1448
+      ],
+      "prompts": [
+        "prompts/SE.txt",
+        "prompts/SE-repair.txt",
+        "prompts/SE-frame-04-repair.txt"
+      ],
+      "selectedFile": "sources/SE.png",
+      "selectedSha256": "06dfa675fd3599e1a35270474ff26b1d83c80ce618a53e3e94afbb2f00721b41"
+    },
+    "S": {
+      "generationCalls": 1,
+      "source": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-9b1983d4-8c05-4fbd-be6b-ad54dce721be.png",
+      "prompts": [
+        "prompts/S.txt"
+      ],
+      "selectedFile": "sources/S.png",
+      "selectedSha256": "7209bf3ab4d5545d47d61bb509fe546ee2462cef98937df904db32a4d0c7bfa2"
+    },
+    "SW": {
+      "generationCalls": 1,
+      "source": "/Users/openclaw/.codex/generated_images/01a087a4-bf3d-7f70-b463-afa4f5165f3c/exec-3eb179f4-052c-4158-b641-740d895d639f.png",
+      "prompts": [
+        "prompts/SW.txt"
+      ],
+      "selectedFile": "sources/SW.png",
+      "selectedSha256": "4d1f7952147913f224b2d9ea3f9c7f1a1e0f2843931e1971c60ec81fe4daaa63"
+    }
+  },
+  "references": {
+    "motion": "original_game_data/kam-reference-export/lumberjack-full-set/walk-guides-8x/DIR.png",
+    "identity": "docs/art/animation-references/lumberjack-without-log/DIR.png"
+  },
+  "qa": "Selected sheets viewed: one axe in same anatomical right hand, opposite halves of stride, no visible ground shadow. SE cell4 red shoulder artefact removed with targeted image edit. Exact source geometry and in-game non-sliding are not claimed."
+}

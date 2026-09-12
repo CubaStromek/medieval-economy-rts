@@ -1,0 +1,70 @@
+{
+  "frames": [
+    {
+      "index": 0,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-walk-v1/rotations/images/frame_00.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "d1284f8474d970cd06fa71bf914b007d3c3b35b31987065bc978c7f877c7ea56",
+      "png_color_type": 6
+    },
+    {
+      "index": 1,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-walk-v1/rotations/images/frame_01.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "b36da62f98efd66eb5042e78900834c2a7d6bdd9ba70f2c4b823e2e38b658e12",
+      "png_color_type": 6
+    },
+    {
+      "index": 2,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-walk-v1/rotations/images/frame_02.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "670da2240665e285ce29460b2ac282ecbc615b09006dc32580b62a0e3218dcba",
+      "png_color_type": 6
+    },
+    {
+      "index": 3,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-walk-v1/rotations/images/frame_03.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "e467356f315408dde33b783a22d0123ebe17742b159b27bbd9c9e54dc57b7e89",
+      "png_color_type": 6
+    },
+    {
+      "index": 4,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-walk-v1/rotations/images/frame_04.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "0f4669f4d92a004ce9663dfd26ab30beedb401743a2e5f45219c89e4255198c5",
+      "png_color_type": 6
+    },
+    {
+      "index": 5,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-walk-v1/rotations/images/frame_05.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "45221df70af1200bb72cd0d22d2cfd064192590a0361638c425ac86c40f4f7c2",
+      "png_color_type": 6
+    },
+    {
+      "index": 6,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-walk-v1/rotations/images/frame_06.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "dc55706cf8d12cbfa4b1d5b64ef236d881655eb53a669735c47748f421418ab8",
+      "png_color_type": 6
+    },
+    {
+      "index": 7,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-walk-v1/rotations/images/frame_07.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "c6554c03df78970b02d1359cfe5676dfba21d95b9f142d5958e249a45cba9d16",
+      "png_color_type": 6
+    }
+  ],
+  "direction_order": "not_assumed; visually verify rotation indices",
+  "alpha_note": "PNG color type is not proof of actual alpha coverage; measure pixels separately"
+}

@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-09",
+  "direction": "SW",
+  "role": "lumberjack",
+  "state": "walk_without_log",
+  "method": "Built-in image_gen tool; no API fallback",
+  "source": "docs/art/animation-references/lumberjack-without-log/SW.png",
+  "callLimit": 3,
+  "callsMade": 3,
+  "status": "candidate_not_accepted",
+  "runtimeModified": false,
+  "inGameQAPerformed": false,
+  "alpha": "White opaque concept/preview output; no transparency claim",
+  "calls": [
+    {
+      "call": 1,
+      "prompt": "Use case: precise-object-edit.\nAsset type: one opposite-stride walking keyframe of this exact medieval RTS lumberjack; NOT a sprite sheet.\nInput image 1 is the EDIT TARGET and exact identity/camera/style reference.\nPrimary request: change ONLY the walking limb pose to the OPPOSITE footfall half a walk cycle later. The source currently has his anatomical LEFT leg (near-side hip on image RIGHT) reaching forward/down-left, and RIGHT leg trailing behind/up-right. Swap which leg leads: now anatomical RIGHT leg from the FAR hip on image LEFT reaches FORWARD toward bottom-left; anatomical LEFT leg from the NEAR hip on image RIGHT extends BACK toward upper-right. Both boots remain fully visible. Make the crossing/overlap of the trouser legs clearly reverse. This is an ordinary grounded heel-contact walking pose, not running or standing.\nCounter-swing arms naturally: LEFT free arm now forward, RIGHT axe arm now slightly back. EXACTLY ONE axe stays gripped in anatomical RIGHT hand, on the image LEFT/far side as in input. Do not mirror the character; do not give axe to the nearer image-right hand. Axe and right hand move together as a rigid grip.\nLOCK the same fixed elevated SOUTHWEST / bottom-left three-quarter front camera, nose/chest/hips pointing bottom-left, head/hat identity and orientation, adult body proportions and body center, olive tunic, cream cuffs, brown front-only apron, rust cap, trousers, boots, painterly materials and original coloring. Preserve body/head size and ample full-body framing. Original head/torso should remain as close to source as possible; only tiny natural gait shifts.\nPlain solid WHITE background. No environment, ground shadow, ground line, transparent checkerboard, grid, text, labels, numbers, extra tools, log, motion smear or duplicate body. Exactly ONE complete character. Final must visibly have the opposite LEG leading, not the original stance with a shifted hand.",
+      "inputs": [
+        "docs/art/animation-references/lumberjack-without-log/SW.png"
+      ],
+      "purpose": "Opposite-stride keyframe",
+      "outcome": "Failed opposite-leg request: same near-side leading leg persisted; archived input only.",
+      "output": "keyframes/SW-opposite.png",
+      "generatedPath": "/Users/openclaw/.codex/generated_images/01a087a5-729b-7b13-8894-f6285613b519/exec-1c99ca44-5486-4939-ad5e-10a38e16181c.png"
+    },
+    {
+      "call": 2,
+      "prompt": "Use case: precise-object-edit.\nAsset type: single walking keyframe correction of the attached woodcutter, on WHITE.\nInput image is the EDIT TARGET. His legs are in the wrong stance. REDRAW THE WHOLE LOWER BODY from below the belt to the soles to create the OPPOSITE LEG LEADING. Do not keep the source pants silhouette. Keep head and upper torso, camera, clothing identity and axe in his anatomical right hand (image LEFT).\nNEW exact lower-body geometry: the FORWARD leg is his anatomical RIGHT leg, originating from the FAR HIP at the IMAGE-LEFT EDGE of the apron. That thigh emerges visibly under the LEFT lower edge of the apron and runs down-left into a visible knee on image LEFT, then a straight shin to the low forward boot. Front boot must now be clearly LEFT OF THE APRON center, approximately image x=32%, y=87%. His anatomical LEFT leg is the REAR leg: originating from the NEAR HIP at the IMAGE-RIGHT tunic hem, its thigh and knee run DOWN-RIGHT, away from the forward leg, to image x=64%, y=68%; the bent shin ends in a lifted trailing boot around image x=66%, y=77%. The sole of the trailing boot is tipped up. Two legs form a separated stride, NOT the original near thigh sweeping across the middle to the front boot. Anatomical right thigh/front knee must be visually continuous to far left hip, anatomical left thigh/rear knee continuous to near right hip. Do not merely move the existing boots or mirror the whole image.\nHis FREE anatomical LEFT hand on image RIGHT swings forward toward screen bottom-left. His RIGHT hand holding the axe on image LEFT swings backward a little, but axe never changes hands. Ordinary modest walk, not lunge, not run. Body still faces SOUTHWEST bottom-left in exactly the same elevated 3/4 strategy view. Same rustic painted style, same clothes/cap/apron. ONE full body character. White background, no ground shadow, text, grid, log or extra item.",
+      "inputs": [
+        "docs/art/animation-references/lumberjack-without-log/SW.png"
+      ],
+      "purpose": "Correct failed opposite-stride lower body",
+      "outcome": "Opposite lead visibly corrected: far/right thigh now reaches forward from image-left apron edge; near/left thigh trails to image-right.",
+      "output": "keyframes/SW-opposite-v2.png",
+      "generatedPath": "/Users/openclaw/.codex/generated_images/01a087a5-729b-7b13-8894-f6285613b519/exec-78144b3a-6160-4945-95c1-e7d5cc57bbef.png"
+    },
+    {
+      "call": 3,
+      "prompt": "Use case: stylized-concept.\nAsset type: hand-painted medieval RTS walk-cycle sprite sheet. EXACTLY EIGHT full-body poses in a clean FOUR-COLUMN by TWO-ROW equal-cell grid; left-to-right top row frames 1–4, then bottom row frames 5–8. Output landscape approximately 1536x1024 pixels. Each figure is wholly contained in its own cell with white gaps, same body scale, same fixed elevated SOUTHWEST/bottom-left three-quarter front camera and same common root placement. No turnarounds.\nInput image 1: our own exact character identity and LEFT-leg-forward contact pose for FRAME 1. Input image 2: exact same identity in RIGHT-leg-forward contact pose for FRAME 5. The TWO inputs are OPPOSITE contacts of ONE cycle. Preserve their distinct leg/hip connections and opposite leg overlap. Never copy input 1's legs into bottom row. Both images are references, not whole-sheet backgrounds.\nPrimary request: create the in-between poses to walk naturally IN PLACE through a complete two-foot cycle. Feet must actually ALTERNATE leading; body does not slide across cells. Visible knee bend, heel lift, leg passage and counter-swing of arms. Step phases:\n1 top-left: LEFT leg (near/image-right hip) forward, RIGHT trailing, matching reference 1.\n2: LEFT support knee bends slightly in down/recoil; trailing RIGHT heel rises and begins to swing.\n3: LEFT supporting leg under body; lifted RIGHT knee/boot passing closely forward beneath hip. Legs close, clearly different from contact.\n4: LEFT supporting heel rises; RIGHT leg reaches forward toward next contact.\n5 bottom-left: RIGHT leg (far/image-left hip) forward, LEFT trailing, matching reference 2. Near left thigh runs backwards/right; far right thigh reaches forwards/left. This is the OPPOSITE overlap to top-left.\n6: RIGHT support knee bends in down/recoil; trailing LEFT heel rises and begins to swing.\n7: RIGHT supporting leg under body; lifted LEFT knee/boot passing forward beneath hip, different leg supporting from frame 3.\n8: RIGHT supporting heel rises; LEFT leg reaches forward toward frame 1 for a continuous loop.\nLock head/face/rust cap, broad adult proportions, olive tunic and cream rolled cuffs, brown apron only on front, belt, trousers and boots. Same softly painted materials, lighting, palette and high camera in every frame. Tiny body vertical rise/fall only; no bouncing squash, character size changes or camera changes. Hands anatomically correct and stable. Exactly ONE practical woodcutting axe always gripped in anatomical RIGHT hand on the IMAGE-LEFT/far side, with small controlled swing; free LEFT arm on image-right counter-swings. Do not flip/mirror the figure or swap tools to the near hand.\nClean PURE WHITE background, no cast shadow or ground, no checkerboard, no platform, no scenery, no log, no extra tools. No captions, digits, labels, separators, borders, arrows or motion trails. All 8 caps, hands, axes and both soles fully visible inside their separate equal cells. This is a movement sequence, not eight near-identical standing poses.",
+      "inputs": [
+        "docs/art/animation-references/lumberjack-without-log/SW.png",
+        "docs/art/animations/lumberjack-without-log-v1/keyframes/SW-opposite-v2.png"
+      ],
+      "purpose": "8-frame SW walk candidate from two opposite contacts",
+      "output": "sheets/SW-candidate.png",
+      "generatedPath": "/Users/openclaw/.codex/generated_images/01a087a5-729b-7b13-8894-f6285613b519/exec-d94adaae-0190-4ebd-a747-10fd0a0ee962.png",
+      "outcome": "4x2 sheet with fixed SW facing, correct far/right axe hand and distinct opposite contact in frame 5. Temporal limb continuity is not accepted: bottom row frame 6 seems to revert to original near/left leading leg; frame 8 also resembles original lead. No full-loop acceptance."
+    }
+  ],
+  "qa": {
+    "identity": "consistent overall",
+    "facing": "fixed elevated southwest",
+    "axeHand": "anatomical right, far/image-left",
+    "oppositeKeyframe": "SW-opposite-v2.png visibly reverses leading leg and can support a separate half-cycle generation",
+    "sheetLayout": "4 columns x 2 rows, row-major 1-8",
+    "motionConcern": "Frame 5 has opposite leading leg but bottom-row intervening frames are not consistently derived from it. Full-loop anatomical continuity remains unresolved."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-10",
+  "submittedAtApproxUtc": "2026-09-10T05:39:25Z",
+  "status": "paused-by-user-after-generation",
+  "platform": "Meshy web",
+  "workspaceUrl": "https://www.meshy.ai/cs/workspace",
+  "taskId": "01a089d4-e9ad-77cc-9abf-873e892f45b1",
+  "model": "Meshy 7 - Flagship",
+  "resolution": "Standard",
+  "texture": true,
+  "pose": "T-pose",
+  "multiView": false,
+  "imageEnhancement": false,
+  "split": false,
+  "license": "Private",
+  "quotedCredits": 30,
+  "initialCreditBalance": 1150,
+  "finalCreditBalance": 1120,
+  "input": "reference/lumberjack-tpose.png",
+  "scope": "One textured static T-pose model. Empty hands. Rig and animations deferred by user.",
+  "approval": "User explicitly requested creating the textured T-pose lumberjack in Meshy after discussion of the paid workflow. This generation is within the previously quoted 38 credits for model plus rig and animation; only the 30-credit model step was submitted.",
+  "consumedCredits": 30,
+  "geometryPreview": {
+    "vertices": 972000,
+    "triangles": 1944012
+  },
+  "downloadExportId": "01a089d4-e9ad-77cc-9abf-873e892f45b1",
+  "source": "source/Meshy_AI_Medieval_Craftsman_0910054251_texture.glb",
+  "sourceBytes": 61905824,
+  "sourceSha256": "123bfdb63341390146c5ee02bf193bada124b04ff5cf58c414d588a818959d44",
+  "downloadNote": "Browser download interception failed; downloaded the exact Meshy-generated export URL without altering file contents.",
+  "geometryTaskId": "01a089d4-34d0-7594-a973-a7373b697ede",
+  "meshyName": "Lumberjack T-pose v1 — Medieval Economy RTS",
+  "directionChange": {
+    "date": "2026-09-10",
+    "reason": "User paused the Meshy route and asked to investigate KaM Remake animation frames as a redraw reference.",
+    "preserve": "Keep the generated textured GLB and completed QA as a reversible experiment; no further rigging, paid tasks or game integration."
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "date": "2026-09-10",
+  "scope": "Synthetic offline packer timing; not an artistic or in-game acceptance",
+  "apng_manifest_and_source": {
+    "override": {
+      "duration": {
+        "S": {
+          "fps": 10.0,
+          "frame_ms": [
+            100.0,
+            100.0,
+            100.0,
+            100.0,
+            100.0,
+            100.0,
+            100.0,
+            100.0
+          ],
+          "total_ms": 800.0
+        },
+        "SE": {
+          "fps": 15.0,
+          "frame_ms": [
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667,
+            66.66666666666667
+          ],
+          "total_ms": 800.0
+        }
+      },
+      "originals_unchanged": true,
+      "copy_png_exact": true,
+      "frame_order_unchanged": true
+    },
+    "legacy": {
+      "duration": {
+        "S": {
+          "fps": 12.0,
+          "frame_ms": [
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333
+          ],
+          "total_ms": 666.6666666666666
+        },
+        "SE": {
+          "fps": 12.0,
+          "frame_ms": [
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333,
+            83.33333333333333
+          ],
+          "total_ms": 1000.0
+        }
+      },
+      "originals_unchanged": true,
+      "copy_png_exact": true,
+      "frame_order_unchanged": true
+    }
+  },
+  "html_runtime": {
+    "override": {
+      "actual_html_script_executed": true,
+      "controlled_request_animation_frame": true,
+      "checks": [
+        {
+          "ms": 0,
+          "actual": {
+            "SE": 0,
+            "S": 0
+          }
+        },
+        {
+          "ms": 66.66666666666667,
+          "actual": {
+            "SE": 1,
+            "S": 0
+          }
+        },
+        {
+          "ms": 200,
+          "actual": {
+            "SE": 3,
+            "S": 2
+          }
+        },
+        {
+          "ms": 400,
+          "actual": {
+            "SE": 6,
+            "S": 4
+          }
+        },
+        {
+          "ms": 800,
+          "actual": {
+            "SE": 0,
+            "S": 0
+          }
+        },
+        {
+          "ms": 1100,
+          "speed": 2,
+          "actual": {
+            "S": 2,
+            "SE": 3
+          }
+        }
+      ]
+    },
+    "legacy": {
+      "actual_html_script_executed": true,
+      "controlled_request_animation_frame": true,
+      "checks": [
+        {
+          "ms": 83.33333433333333,
+          "actual": {
+            "SE": 1,
+            "S": 1
+          }
+        },
+        {
+          "ms": 166.66666766666665,
+          "actual": {
+            "SE": 2,
+            "S": 2
+          }
+        },
+        {
+          "ms": 1000.000001,
+          "actual": {
+            "SE": 0,
+            "S": 4
+          }
+        }
+      ]
+    }
+  }
+}

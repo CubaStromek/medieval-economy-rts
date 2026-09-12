@@ -1,0 +1,43 @@
+{
+  "frames": [
+    {
+      "index": 0,
+      "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/animations/lumberjack-pixellab-production-v2/edits/chop-S/images/frame_00.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "129f12af7896653ae61cbea9a9593bdb6c18bd32f12da0a8478f76436f947179",
+      "png_color_type": 6,
+      "transport": {
+        "source_encoding": "raw RGBA8, row-major, verified from actual response",
+        "base64_ascii_whitespace_removed": 4600,
+        "source_decoded_sha256": "249065dae91e2c50428c2646ffb44c04fa5af2713ff7dc921472085ccfb01e88",
+        "encoding_documented_in_public_schema": false,
+        "raw_rgba_sha256": "249065dae91e2c50428c2646ffb44c04fa5af2713ff7dc921472085ccfb01e88",
+        "source_byte_count": 262144,
+        "original_color_count": 8523,
+        "provider_original_color_count_matches": true,
+        "quantized_reference_sha256": "1636d938affd944edcff13b0a7ed24faf9acf889a9ace9575d8d5096c615bf1b",
+        "quantized_reference_used_as_output": false,
+        "quantized_reference_alpha_identical": true,
+        "foreground_rgb_mean_difference_to_quantized": 0.488139,
+        "verification_foreground_pixels": 43082,
+        "lossless_png_roundtrip_verified": true,
+        "alpha_min_max": [
+          255,
+          255
+        ],
+        "transparent_pixels": 0,
+        "opaque_pixels": 65536,
+        "background_removed_during_conversion": false
+      }
+    }
+  ],
+  "response_image_location": "last_response.image",
+  "output_contract": {
+    "expected_frames": 1,
+    "synchronous": false
+  },
+  "frame_count_matches_contract": true,
+  "direction_order": "not_assumed; visually verify rotation indices",
+  "alpha_note": "PNG color type is not proof of actual alpha coverage; measure pixels separately"
+}

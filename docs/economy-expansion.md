@@ -1,10 +1,10 @@
 # KaM-style economy expansion
 
-## Current scope — 2026-09-05
+## Current scope — 2026-09-09
 
-The playable catalog contains **29 buildings, 28 wares, 15 civilian professions,
+The playable catalog contains **30 buildings, 28 wares, 15 civilian professions,
 19 processing recipes and 14 military recruitment types**. The starting village
-is **34 × 24 tiles**. The implementation covers the economic branches of the
+is **34 × 30 tiles**. The implementation covers the economic branches of the
 public KaM Remake reference in this project's own fixed-tick simulation. It is
 not a claim of complete KaM behavior, balance, graphics or combat parity.
 
@@ -12,7 +12,7 @@ Buildings are organized as follows:
 
 | Category | Buildings |
 |---|---|
-| Infrastructure | Warehouse, Lumberjack Hut, Forester Hut, Sawmill, School, Marketplace |
+| Infrastructure | Warehouse, Workers' Cottage, Lumberjack Hut, Forester Hut, Sawmill, School, Marketplace |
 | Food | Farm, Mill, Bakery, Vineyard, Fisherman's Hut, Swine Farm, Butcher, Inn |
 | Mining | Quarry, Coal Mine, Iron Mine, Gold Mine, Iron Smithy, Metallurgist |
 | Military | Tannery, Stables, Weapon Workshop, Armour Workshop, Weapon Smithy, Armour Smithy, Barracks, Town Hall, Watchtower |
@@ -23,6 +23,8 @@ Gardeners are an original extension: they act as autonomous foresters and
 plant new trees near their own Forester Hut. They are available through
 **Train Gardener** at a School; a completed vacant hut is required to work.
 The extra hut is project-balanced; see [hut rules](forester-and-fisher-huts.md).
+The project-balanced Workers' Cottage costs 3 planks and 2 stone and houses
+exactly two Carriers or Builders; see [housing rules](worker-housing.md).
 
 ## Fields, trees and finite extraction
 
@@ -148,7 +150,10 @@ without cargo looks for a reachable completed Inn with food. Carriers supply
 Bread, Sausages, Wine and Fish. A visit consumes up to two available food types
 in catalog order, restoring condition up to the configured maximum. A worker
 whose condition reaches zero starves and is removed with reservations released.
-There is no housing or household consumption system.
+Housing is limited to two beds for Carriers or Builders in each completed,
+enabled Workers' Cottage. They prefer reachable free cottage beds and fall back
+to a completed Warehouse when capacity is unavailable. Household consumption
+and broader residential needs are not simulated.
 
 ### Marketplace
 
@@ -197,8 +202,10 @@ Every ware has an original procedural icon. Fields, deposits, scaffolds, special
 building motifs are drawn from authoritative state; visual animation does not
 advance the simulation.
 
-`setup_economy_demo()` creates the 34 × 24 authored village with all 28 building
-types, wheat/vine plots, the five kinds of finite resource deposits, starter
+`setup_economy_demo()` creates the authored village with all 30 building types
+represented by 35 instances and 259 occupied building tiles, including six
+Workers' Cottages, plus wheat/vine plots, the five kinds of finite resource
+deposits, starter
 food/material/gold stocks, specialists, carriers, builders, a gardener and a
 recruit. Example equipment and recruitment orders are queued. The older
 `setup_demo()` remains a compact compatibility/invariant fixture.
@@ -230,9 +237,9 @@ Legacy snapshots still use the current catalog's recipes and professions.
   their historical material price under save v9.
 - Animal development is an aggregate recipe; vine processing is folded into
   harvesting; roads/vines use immediate warehouse payment.
-- Buildings remain one-tile footprints. No KaM unlock tree, demolition,
-  terrain-deformation mining, housing, siege workshop or original campaign is
-  included. Exhausted deposits remain visible; terrain does not erode.
+- No KaM unlock tree, demolition, terrain-deformation mining, broad household
+  economy, siege workshop or original campaign is included. Exhausted deposits
+  remain visible; terrain does not erode.
 - Economic recruitment is available, combat is not. A ready recruit/trade is
   resolved by the next simulation service update, with no separate duration.
 - Gardeners are an original forestry extension. All graphics are original
@@ -297,6 +304,6 @@ weapons/armour, paid school, barracks, town hall, marketplace and material
 construction branches are now implemented within the boundaries above.
 Remaining work includes multi-tile/rotatable buildings, physical road/vine
 construction, detailed per-animal feeding, unlock progression, richer warehouse
-policies, housing, combat/formations/projectiles, siege production, scenario
+policies, broader housing and household consumption, combat/formations/projectiles, siege production, scenario
 scripting and production art. The terrain/lockstep roadmap is retained in
 [godot-architecture.md](godot-architecture.md) and the dated [handover](../HANDOVER.md).

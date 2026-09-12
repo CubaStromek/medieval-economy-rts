@@ -152,7 +152,7 @@ static func _test_v11_remains_outdoors(failures: Array[String]) -> void:
 		return
 	_check(restored.workers.size() == 2 and restored.tile_reservations.size() == 2
 		and not restored.is_worker_inside(restored.workers[owner]) and not restored.is_worker_inside(restored.workers[carrier])
-		and restored.to_data() == source.to_data(),
+		and restored.to_data() == LegacyFixture.expected_pre_fog_migration(source.to_data()),
 		"Legacy outdoor workers, including one already at its hut entrance, must load visibly without fabricated indoor visits", failures)
 
 
@@ -164,6 +164,7 @@ static func _test_indoor_death_preserves_outdoor_reservation(failures: Array[Str
 	var doomed: int = int(fixture["inside"])
 	source.workers[doomed]["carrying"] = ""
 	source.workers[doomed]["hunger"] = 1
+	source.workers[doomed]["nutrition_deficit_ticks"] = 41999
 	source.tick = int(source.catalog.economy.get("condition_interval_ticks", 10)) - 1
 	source.economy_enabled = true
 	var restored = LegacyFixture.create()

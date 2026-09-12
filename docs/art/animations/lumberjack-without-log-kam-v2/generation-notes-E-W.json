@@ -1,0 +1,73 @@
+{
+  "date": "2026-09-10",
+  "tool": "built-in imagegen",
+  "scope": "Only E and W eight-phase 4x2 source sheets; no packing, game edits, rigging or Meshy work.",
+  "generation_count": 2,
+  "repair_count": 0,
+  "canvas": {
+    "width": 1536,
+    "height": 1024,
+    "columns": 4,
+    "rows": 2,
+    "cell": [
+      384,
+      512
+    ],
+    "guide_pivot": [
+      184,
+      368
+    ],
+    "alpha": false,
+    "background": "Opaque white prototype; no alpha-readiness or approval claimed."
+  },
+  "directions": {
+    "E": {
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-a2f852db-65a4-4250-94e9-0b9264775d7e.png",
+      "saved": "sources/E.png",
+      "prompt": "prompts/E.txt",
+      "references": [
+        {
+          "role": "pose, phase order, position, scale, camera, axe occlusion",
+          "path": "original_game_data/kam-reference-export/lumberjack-full-set/walk-guides-8x/E.png"
+        },
+        {
+          "role": "own character identity, costume and painted materials only; not pose",
+          "path": "docs/art/animation-references/lumberjack-without-log/E.png"
+        }
+      ],
+      "qa": {
+        "eight_frames": true,
+        "correct_facing_direction": true,
+        "axe_hand": "Axe consistently in near anatomical right hand.",
+        "appearance": "Orange cap, olive tunic, cream rolled sleeves, brown boots, beard and front-only leather apron retained. No log or dithered ground shadow.",
+        "motion": "Different contact and passing silhouettes track guide, with visible bob; frames4-6 show strong torso/back rotation relative to frames1-3 and7-8. Playback QA needed to assess whether twist is excessive.",
+        "registration": "Canvas and cell dimensions match guide. Position/head bob visually follows guide approximately; exact per-frame pivot and size have not been measured here.",
+        "status": "Generated source candidate; inspect animated playback before acceptance. No user approval, production transparency or in-game QA."
+      }
+    },
+    "W": {
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a087a8-f234-7362-877a-edbe1b3140a1/exec-f6904642-6062-4df5-9f5b-4a8a4027ec76.png",
+      "saved": "sources/W.png",
+      "prompt": "prompts/W.txt",
+      "references": [
+        {
+          "role": "pose, phase order, position, scale, camera, axe occlusion",
+          "path": "original_game_data/kam-reference-export/lumberjack-full-set/walk-guides-8x/W.png"
+        },
+        {
+          "role": "own character identity, costume and painted materials only; not pose",
+          "path": "docs/art/animation-references/lumberjack-without-log/W.png"
+        }
+      ],
+      "qa": {
+        "eight_frames": true,
+        "correct_facing_direction": true,
+        "axe_hand": "Near anatomical left hand empty; axe in far anatomical right hand, head occluded in early/late phases as in guide.",
+        "appearance": "Orange cap, olive tunic, cream rolled sleeves, brown boots, beard and front-only leather apron retained. No log or dithered ground shadow.",
+        "motion": "Different contact/passing silhouettes and axe occlusion track guide; body turns between rear-side and front-side through the step. Playback QA needed to verify actual alternating leg overlap and smooth seam.",
+        "registration": "Canvas and cell dimensions match guide. Position/head bob visually follows guide approximately; exact per-frame pivot and size have not been measured here.",
+        "status": "Generated source candidate; inspect animated playback before acceptance. No user approval, production transparency or in-game QA."
+      }
+    }
+  }
+}

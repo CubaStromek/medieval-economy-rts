@@ -1,0 +1,24 @@
+{
+  "source_report": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/qa/lumberjack-pixellab-game-v1/natural-contact-v3/report.json",
+  "source_report_sha256": "614d32bd7d16e106564c853a83a3b9c8200eee565fd53b403648736202f49497",
+  "source_frames": 60,
+  "decoded_apng_frames": 60,
+  "output": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/qa/lumberjack-pixellab-game-v1/natural-contact-v3/chop-excerpt.apng.png",
+  "sha256": "674c754d8c37f9ce7e5b65bcfa3812ef59e0b89d6f8d35c0de7073bf0b9dff9c",
+  "size": [
+    360,
+    360
+  ],
+  "crop_xywh": [
+    660,
+    140,
+    360,
+    360
+  ],
+  "simulation_time_start": 0.918561555555556,
+  "simulation_time_end": 2.51489855555556,
+  "preview_duration_seconds": 1.6213370087412007,
+  "timing": "Consecutive observed simulation timestamp differences; final frame uses median observed interval.",
+  "interpretation": "Repeated native gameplay excerpt, not a newly authored animation loop.",
+  "pixel_policy": "Lossless region extraction only, no resampling, recoloring, new pixels or source writes."
+}

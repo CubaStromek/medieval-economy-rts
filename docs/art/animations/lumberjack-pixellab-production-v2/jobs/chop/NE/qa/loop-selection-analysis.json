@@ -1,0 +1,294 @@
+{
+  "date": "2026-09-10",
+  "explicit_selection": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "seam": {
+    "from_index": 16,
+    "to_index": 1,
+    "comparable": true,
+    "raw_rgb_mean_absolute_difference": 0.257726,
+    "composited_rgb_mean_absolute_difference": 0.256826,
+    "alpha_mean_absolute_difference": 0.011673,
+    "changed_composited_pixels": 2090,
+    "changed_composited_fraction": 0.031891
+  },
+  "ordinary_adjacent_composited_rgb_mae_min_max": [
+    0.170675,
+    3.30309
+  ],
+  "lower_canvas_measurement_note": "Fixed y>=188 region includes lower legs/boots; this is not a physical anchor inference.",
+  "lower_canvas_bbox_coordinate_ranges": [
+    [
+      85,
+      85
+    ],
+    [
+      188,
+      188
+    ],
+    [
+      158,
+      158
+    ],
+    [
+      206,
+      206
+    ]
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 1,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 2,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 3,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 4,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 5,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 6,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 7,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 8,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 9,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 10,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 11,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 12,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 13,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 14,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 15,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    },
+    {
+      "index": 16,
+      "lower_canvas_alpha_bbox_y_ge_188": [
+        85,
+        188,
+        158,
+        206
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "distinct_alpha_levels": 2
+    }
+  ]
+}

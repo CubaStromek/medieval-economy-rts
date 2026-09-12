@@ -2,23 +2,36 @@ extends Node2D
 
 const SimulationWorldClass = preload("res://scripts/simulation/simulation_world.gd")
 const SaveSystemClass = preload("res://scripts/simulation/save_system.gd")
+const PaintedSourceClass = preload("res://scripts/view/painted_terrain_source.gd")
 const TerrainRendererClass = preload("res://scripts/view/terrain_renderer.gd")
 const MapProjectionClass = preload("res://scripts/view/map_projection.gd")
 const GameHudClass = preload("res://scripts/view/game_hud.gd")
 const ReliefDemoClass = preload("res://scripts/simulation/relief_demo.gd")
 const TestLevelClass = preload("res://scripts/simulation/test_level.gd")
 const ImportedTerrainClass = preload("res://scripts/simulation/imported_terrain.gd")
+const MountainousRegionStartClass = preload("res://scripts/simulation/mountainous_region_start.gd")
 const UnitSpriteLibraryClass = preload("res://scripts/view/unit_sprite_library.gd")
+const LumberjackAnimationLibraryClass = preload("res://scripts/view/lumberjack_animation_library.gd")
+const LumberjackPresentationClass = preload("res://scripts/view/lumberjack_presentation.gd")
+const LumberjackWorkPlacementClass = preload("res://scripts/view/lumberjack_work_placement.gd")
 const TreeSpriteLibraryClass = preload("res://scripts/view/tree_sprite_library.gd")
+const LumberHutSpriteLibraryClass = preload("res://scripts/view/lumber_hut_sprite_library.gd")
+const LumberHutStockLibraryClass = preload("res://scripts/view/lumber_hut_stock_library.gd")
 const PlacementPreviewRulesClass = preload("res://scripts/view/placement_preview_rules.gd")
 const SolarCycleClass = preload("res://scripts/view/solar_cycle.gd")
 const SolarShadowsClass = preload("res://scripts/view/solar_shadows.gd")
 const BuildingFootprintRendererClass = preload("res://scripts/view/building_footprint_renderer.gd")
+const FogRendererClass = preload("res://scripts/view/fog_renderer.gd")
 
 const FIXED_TICK_SECONDS: float = SimulationWorldClass.TICK_SECONDS
 const MAX_TICKS_PER_FRAME: int = 8
 const TERRAIN_STUDY_SAVE_PATH: String = "user://medieval_economy_rts_mountainous_region_save.json"
 const LARGE_MAP_CULL_CELLS: int = 4096
+# Selected frames reach source y=221 below the common y=205 anchor:
+# 16 * 33/163 = 3.24 world px. A stable 3.5 px depth allowance keeps
+# flat foreground rows from shaving soles during a cell-boundary crossing.
+# It does not change foot position, terrain height or shadow receivers.
+const LUMBERJACK_DEPTH_MARGIN_WORLD_PX: float = 3.5
 
 signal main_menu_requested()
 
@@ -32,7 +45,7 @@ var accumulator: float = 0.0
 var dragging_camera: bool = false
 var simulation_speed: float = 0.5
 var speed_before_pause: float = 0.5
-# Populated demos and the external terrain study leave the normal test level intact.
+# Populated demos and the external Mountainous Region leave the normal test level intact.
 @export var demo_kind: String = "test"
 @export var terrain_map_path: String = ImportedTerrainClass.DEFAULT_PATH
 # Embedded/custom scenes can select an isolated save location as well.
@@ -44,7 +57,13 @@ var show_terrain_rules: bool = false
 @onready var terrain_renderer: TerrainRendererClass = $TerrainRenderer
 var hud: GameHudClass
 var unit_sprites := UnitSpriteLibraryClass.new()
+var lumberjack_sprites = LumberjackAnimationLibraryClass.shared()
+var lumberjack_animation := LumberjackPresentationClass.new()
+var lumberjack_work_placement := LumberjackWorkPlacementClass.new()
 var tree_sprites := TreeSpriteLibraryClass.new()
+var lumber_hut_sprites := LumberHutSpriteLibraryClass.new()
+var lumber_hut_stock := LumberHutStockLibraryClass.new()
+var fog_renderer := FogRendererClass.new()
 var _dynamic_rows: Dictionary = {}
 var _row_entries: Dictionary = {}
 var _row_shadows: Dictionary = {}
@@ -90,12 +109,13 @@ func _ready() -> void:
 		demo_kind = "mountainous-region"
 	if world == null:
 		_create_demo_world()
+	_activate_legacy_fog()
 	_update_window_title()
 	if get_viewport() == get_tree().root:
 		_configure_game_window()
 	terrain_renderer.external_painter = true
-	terrain_renderer.bind_grid(world.grid)
-	_center_camera()
+	_bind_terrain_graphics()
+	_set_initial_camera()
 	_build_ui()
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
 	_placement_canvas = Node2D.new()
@@ -108,6 +128,15 @@ func _ready() -> void:
 	queue_redraw()
 
 
+func _bind_terrain_graphics() -> void:
+	# Presentation metadata is deliberately not part of the save format. Restore
+	# it only for the explicitly selected supported map, never by size alone.
+	if demo_kind == "mountainous-region" and terrain_map_path == ImportedTerrainClass.DEFAULT_PATH:
+		PaintedSourceClass.attach(world.grid)
+	terrain_renderer.bind_grid(world.grid)
+	_update_window_title()
+
+
 func _update_window_title() -> void:
 	if get_viewport() != get_tree().root:
 		return
@@ -115,9 +144,11 @@ func _update_window_title() -> void:
 		"test": "Test level · Warehouse + School · Construction supplies ready",
 		"relief": "Roads and trees",
 		"economy": "Economy demo + environment",
-		"mountainous-region": "Mountainous Region · imported terrain study",
+		"mountainous-region": "Mountainous Region · starter settlement",
 	}
 	get_tree().root.title = "Medieval Economy RTS · " + String(level_titles.get(demo_kind, level_titles["test"]))
+	if terrain_renderer != null and terrain_renderer.painted_mode_active():
+		get_tree().root.title += " · Terén V1"
 
 
 func _configure_game_window() -> void:
@@ -139,6 +170,12 @@ func _process(delta: float) -> void:
 	var ticks_run: int = 0
 	while accumulator >= FIXED_TICK_SECONDS and ticks_run < MAX_TICKS_PER_FRAME:
 		world.step_tick()
+		# Observe every real step even when fast play advances several ticks
+		# between draws. This only updates the unsaved animation history.
+		if lumberjack_sprites.is_ready():
+			for worker: Dictionary in world.workers.values():
+				if String(worker.get("type", "")) == "lumberjack":
+					lumberjack_animation.sample(world, worker, 0.0)
 		accumulator -= FIXED_TICK_SECONDS
 		ticks_run += 1
 	_update_ui()
@@ -188,6 +225,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				selected_cell = (world.buildings[clicked_building_id] as Dictionary)["position"] as Vector2i
 			else:
 				selected_cell = terrain_renderer.pick_cell(terrain_renderer.to_local(canvas_position))
+			if not world.is_cell_explored(selected_cell):
+				selected_cell = Vector2i(-1, -1)
+				selected_unit_id = 0
 			var placement_allowed: bool = clicked_building_id != 0 or build_mode.is_empty() or bool(PlacementPreviewRulesClass.evaluate(world, build_mode, selected_cell).get("valid", false))
 			if clicked_building_id == 0:
 				_apply_build_mode(selected_cell)
@@ -247,8 +287,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _draw() -> void:
-	if world == null:
+	# A native window resize/maximize can request one draw from inside _ready()
+	# before the renderer has been bound to the freshly created world.
+	if world == null or terrain_renderer.grid == null:
 		return
+	world.update_visibility()
+	fog_renderer.sync(world, terrain_renderer)
 	_update_day_lighting()
 	# Terrain owns retained even-Z rows; only these odd-Z object rows redraw
 	# with animation. The same ground order preserves foreground occlusion.
@@ -256,7 +300,7 @@ func _draw() -> void:
 	_row_entries.clear()
 	_row_shadows.clear()
 	for entry: Dictionary in _world_draw_entries(true):
-		var row: int = clampi(floori((entry["ground_position"] as Vector2).y + 0.5), 0, world.grid.size.y - 1)
+		var row: int = clampi(floori(_entry_depth_position(entry).y + 0.5), 0, world.grid.size.y - 1)
 		if not _row_entries.has(row):
 			_row_entries[row] = []
 		_row_entries[row].append(entry)
@@ -265,6 +309,11 @@ func _draw() -> void:
 		# Short survey stakes must not cast the silhouette of a full house.
 		if entry["kind"] == "building" and int((entry["state"] as Dictionary).get("foundation_work_remaining", 0)) > 0:
 			continue
+		if entry["kind"] == "building" and lumber_hut_sprites.supports(entry["state"]):
+			var construction_state: Dictionary = LumberHutSpriteLibraryClass.state_for(entry["state"],
+				world.catalog.building(String((entry["state"] as Dictionary)["type"])))
+			if int(construction_state["step"]) == 0:
+				continue
 		var shadows: Dictionary = SolarShadowsClass.rows_for(terrain_renderer, entry, solar_state)
 		for shadow_row: int in shadows:
 			if not _row_shadows.has(shadow_row):
@@ -300,7 +349,7 @@ func _update_placement_preview(screen_position: Vector2 = Vector2.INF) -> void:
 		_clear_placement_preview()
 		return
 	var state_key: Array = [world.get_instance_id(), cell, build_mode, world.tick, world.grid.revision,
-		world.trees.size(), world.fields.size(), world.deposits.size(), world.workers.size()]
+		world.trees.size(), world.fields.size(), world.deposits.size(), world.workers.size(), world.fog.revision]
 	# Resource-dependent road/vine checks are inexpensive and should also notice
 	# stock edits made between ticks. Deposit path searches are cached per state.
 	var cacheable: bool = build_mode not in ["road", "vine_field"]
@@ -328,6 +377,8 @@ func _clear_placement_preview() -> void:
 
 func _draw_placement_preview() -> void:
 	if _placement_canvas == null or placement_preview.is_empty() or not world.grid.contains(hovered_cell):
+		return
+	if bool(placement_preview.get("obscured", false)):
 		return
 	var valid: bool = bool(placement_preview["valid"])
 	var color: Color = Color("#80df91") if valid else Color("#ff8e79")
@@ -394,24 +445,27 @@ func _paint_dynamic_row(canvas: Node2D, row: int) -> void:
 	_draw_fields(row)
 	for shadow: Dictionary in _row_shadows.get(row, []):
 		# Indoor state can change between queuing this row and its draw callback.
-		if shadow["kind"] == "worker" and world.is_worker_inside(shadow["state"]):
+		if not _fog_entry_visible(String(shadow["kind"]), shadow["state"]):
 			continue
-		canvas.draw_colored_polygon(shadow["points"], shadow["color"])
+		canvas.draw_set_transform(shadow["draw_origin"])
+		canvas.draw_colored_polygon(shadow["draw_points"], shadow["color"])
+		canvas.draw_set_transform(Vector2.ZERO)
 	_draw_selection(row)
 	for entry: Dictionary in _row_entries.get(row, []):
 		_draw_world_entry(entry)
+	fog_renderer.draw_row(canvas, row)
 	_draw_canvas = null
 
 
 func _draw_selection(row: int) -> void:
-	if selected_unit_id != 0 or not world.grid.contains(selected_cell):
+	if selected_unit_id != 0 or not world.grid.contains(selected_cell) or not world.is_cell_explored(selected_cell):
 		return
 	var building_id: int = world.building_id_at(selected_cell)
 	var cells: Array[Vector2i] = [selected_cell]
 	if building_id != 0:
 		cells = world.building_cells(world.buildings[building_id])
 	for cell: Vector2i in cells:
-		if cell.y != row:
+		if cell.y != row or not world.is_cell_explored(cell):
 			continue
 		var polygon: PackedVector2Array = terrain_renderer.cell_polygon(cell)
 		polygon.append(polygon[0])
@@ -425,7 +479,7 @@ func _field_point(cell: Vector2i, uv: Vector2) -> Vector2:
 func _draw_fields(terrain_row: int) -> void:
 	for field: Dictionary in world.fields.values():
 		var cell: Vector2i = field["position"] as Vector2i
-		if cell.y != terrain_row:
+		if cell.y != terrain_row or not world.is_cell_explored(cell):
 			continue
 		var polygon: PackedVector2Array = terrain_renderer.cell_polygon(cell)
 		_draw_canvas.draw_colored_polygon(PackedVector2Array([polygon[0], polygon[1], polygon[2]]), Color(0.34, 0.23, 0.12))
@@ -476,7 +530,7 @@ func _draw_deposits(row: int) -> void:
 	if not deposit_value is Dictionary:
 		return
 	for deposit: Dictionary in (deposit_value as Dictionary).values():
-		if (deposit["position"] as Vector2i).y != row:
+		if (deposit["position"] as Vector2i).y != row or not world.is_cell_explored(deposit["position"]):
 			continue
 		var center: Vector2 = terrain_renderer.cell_center(deposit["position"] as Vector2i)
 		var resource_id: String = String(deposit["resource"])
@@ -515,11 +569,14 @@ func _visible_tree_bounds() -> Rect2:
 
 
 func _world_draw_entries(visible_trees_only: bool = false) -> Array[Dictionary]:
+	world.update_visibility()
 	var draw_entries: Array[Dictionary] = []
 	var cull_trees: bool = visible_trees_only and world.grid.size.x * world.grid.size.y > LARGE_MAP_CULL_CELLS
 	var tree_bounds: Rect2 = _visible_tree_bounds() if cull_trees else Rect2()
 	for tree_variant: Variant in world.trees.values():
 		var tree: Dictionary = tree_variant as Dictionary
+		if not _fog_entry_visible("tree", tree):
+			continue
 		var tree_position: Vector2 = terrain_renderer.cell_center(tree["position"] as Vector2i)
 		if cull_trees and not tree_bounds.has_point(tree_position):
 			continue
@@ -533,6 +590,8 @@ func _world_draw_entries(visible_trees_only: bool = false) -> Array[Dictionary]:
 		})
 	for building_variant: Variant in world.buildings.values():
 		var building: Dictionary = building_variant as Dictionary
+		if not _fog_entry_visible("building", building):
+			continue
 		draw_entries.append({
 			"id": int(building["id"]),
 			"kind": "building",
@@ -545,15 +604,21 @@ func _world_draw_entries(visible_trees_only: bool = false) -> Array[Dictionary]:
 			var shape: Dictionary = building_geometry(building)
 			draw_entries[-1]["shadow_ground_position"] = shape["ground_center"]
 			draw_entries[-1]["shadow_radius"] = (shape["ground_size"] as Vector2) * 0.5
+			if lumber_hut_sprites.supports(building):
+				draw_entries[-1]["visual_ground_position"] = lumber_hut_sprites.visual_ground_position(
+					building, shape["door_cell"], MapProjectionClass.CELL_SIZE.y)
 	var frame_alpha: float = clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0)
 	for worker_variant: Variant in world.workers.values():
 		var worker: Dictionary = worker_variant as Dictionary
-		if world.is_worker_inside(worker):
+		if not _fog_entry_visible("worker", worker):
 			continue
 		var previous: Vector2 = Vector2(worker["previous_position"] as Vector2i)
 		var current: Vector2 = Vector2(worker["position"] as Vector2i)
 		var ground_position: Vector2 = previous.lerp(current, worker_lerp_alpha(worker, frame_alpha))
-		var foot_position: Vector2 = terrain_renderer.project_grid_position(ground_position)
+		var contact_ground: Vector2 = ground_position
+		if String(worker.get("type", "")) == "lumberjack" and lumberjack_sprites.is_ready():
+			contact_ground = lumberjack_work_placement.ground_position(world, worker, ground_position)
+		var foot_position: Vector2 = terrain_renderer.project_grid_position(contact_ground)
 		draw_entries.append({
 			"id": int(worker["id"]),
 			"kind": "worker",
@@ -562,9 +627,14 @@ func _world_draw_entries(visible_trees_only: bool = false) -> Array[Dictionary]:
 			"ground_position": ground_position,
 			"state": worker,
 		})
+		if String(worker.get("type", "")) == "lumberjack" and lumberjack_sprites.is_ready():
+			draw_entries[-1]["contact_ground_position"] = contact_ground
+			draw_entries[-1]["shadow_ground_position"] = contact_ground
+			draw_entries[-1]["visual_ground_position"] = contact_ground + Vector2(
+				0.0, LUMBERJACK_DEPTH_MARGIN_WORLD_PX / MapProjectionClass.CELL_SIZE.y)
 	draw_entries.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
-		var a_position: Vector2 = a["ground_position"] as Vector2
-		var b_position: Vector2 = b["ground_position"] as Vector2
+		var a_position: Vector2 = _entry_depth_position(a)
+		var b_position: Vector2 = _entry_depth_position(b)
 		if not is_equal_approx(a_position.y, b_position.y):
 			return a_position.y < b_position.y
 		if not is_equal_approx(a_position.x, b_position.x):
@@ -578,8 +648,17 @@ func _world_draw_entries(visible_trees_only: bool = false) -> Array[Dictionary]:
 	return draw_entries
 
 
+static func _entry_depth_position(entry: Dictionary) -> Vector2:
+	# Bitmap feet affect only ordering and its matching terrain hit test.
+	# Simulation position, drawing registration and shadow receivers retain
+	# the real ground anchor; no artificial elevation is added to the house.
+	return entry.get("visual_ground_position", entry["ground_position"]) as Vector2
+
+
 func _draw_world_entry(draw_entry: Dictionary) -> void:
 	var state: Dictionary = draw_entry["state"] as Dictionary
+	if not _fog_entry_visible(String(draw_entry["kind"]), state):
+		return
 	var position: Vector2 = draw_entry["position"] as Vector2
 	match String(draw_entry["kind"]):
 		"tree":
@@ -590,7 +669,22 @@ func _draw_world_entry(draw_entry: Dictionary) -> void:
 			_draw_worker(state, position)
 
 
+func _fog_entry_visible(kind: String, entity: Dictionary) -> bool:
+	if kind == "worker":
+		return not world.is_worker_inside(entity) and world.is_entity_visible(entity)
+	if not world.fog.enabled:
+		return true
+	if kind == "building":
+		for cell: Vector2i in world.building_cells(entity):
+			if world.is_cell_explored(cell):
+				return true
+		return false
+	return world.is_cell_explored(entity["position"])
+
+
 func _draw_tree(tree: Dictionary, center: Vector2) -> void:
+	if not _fog_entry_visible("tree", tree):
+		return
 	var stage: int = world.tree_growth_stage(tree)
 	var presentation: Dictionary = tree_sprites.presentation_for(tree, stage, center, show_terrain_rules)
 	var sprite: Texture2D = presentation["texture"] as Texture2D
@@ -619,6 +713,8 @@ func _draw_tree_ground_shadow(cell: Vector2i, stage: int) -> void:
 
 
 func _draw_building(building: Dictionary, center: Vector2) -> void:
+	if not _fog_entry_visible("building", building):
+		return
 	var building_type: String = String(building["type"])
 	var definition: Dictionary = world.catalog.building(building_type)
 	var base_color: Color = Color.from_string("#" + String(definition.get("color", "888888")), Color.GRAY)
@@ -638,13 +734,30 @@ func _draw_building(building: Dictionary, center: Vector2) -> void:
 	_draw_canvas.draw_string(ThemeDB.fallback_font, center + Vector2(-30, 22), String(definition.get("display_name", building["type"])), HORIZONTAL_ALIGNMENT_CENTER, 60, 11, Color(0.95, 0.95, 0.86))
 
 
-# Public inspection API: these are the exact polygons painted and hit-tested.
+# Shared footprint geometry remains authoritative for terrain and shadows.
+# Bitmap houses expose their painted rectangle and alpha separately below.
 func building_geometry(building: Dictionary) -> Dictionary:
 	return BuildingFootprintRendererClass.geometry(world, terrain_renderer, building)
 
 
+func building_sprite_presentation(building: Dictionary) -> Dictionary:
+	if not lumber_hut_sprites.supports(building):
+		return {}
+	var shape: Dictionary = building_geometry(building)
+	return lumber_hut_sprites.presentation_for(building,
+		world.catalog.building(String(building["type"])), shape["door"])
+
+
+func building_stock_presentation(building: Dictionary) -> Dictionary:
+	return lumber_hut_stock.presentation_for(world, building, building_sprite_presentation(building))
+
+
 func _draw_footprint_building(building: Dictionary, definition: Dictionary, base_color: Color) -> void:
 	var shape: Dictionary = building_geometry(building)
+	var sprite: Dictionary = lumber_hut_sprites.presentation_for(building, definition, shape["door"])
+	if not sprite.is_empty():
+		_draw_lumber_hut_sprite(building, definition, shape, sprite)
+		return
 	var construction: bool = int(building.get("construction_remaining", 0)) > 0
 	BuildingFootprintRendererClass.draw_shell(_draw_canvas, shape, base_color, construction)
 	var label: Vector2 = shape["label_position"]
@@ -669,11 +782,52 @@ func _draw_footprint_building(building: Dictionary, definition: Dictionary, base
 	_draw_canvas.draw_string(ThemeDB.fallback_font, label + Vector2(-65, 0), String(definition.get("display_name", building["type"])), HORIZONTAL_ALIGNMENT_CENTER, 130, 11, Color(0.97, 0.95, 0.82))
 
 
+func _draw_lumber_hut_sprite(building: Dictionary, definition: Dictionary, shape: Dictionary, sprite: Dictionary) -> void:
+	var construction: bool = not world.is_building_complete(building)
+	var sprite_rect: Rect2 = sprite["rect"]
+	# One measured text baseline above the finished roof serves all phases;
+	# the lower work bay and its eventual stock remain free of overlay text.
+	var label: Vector2 = sprite_rect.position + (sprite["label_anchor"] as Vector2) * float(sprite["source_to_world"])
+	if construction:
+		# Surveying/leveling uses the existing renderer before reaching here.
+		# Once ready, only the real footprint and the earned structure remain;
+		# the old full-height scaffold and its invisible roof hit area are gone.
+		for polygon: PackedVector2Array in shape["foundations"]:
+			_draw_canvas.draw_colored_polygon(polygon, Color(0.28, 0.25, 0.18, 0.50))
+		for edge: PackedVector2Array in shape["boundary"]:
+			_draw_canvas.draw_polyline(edge, Color(0.39, 0.30, 0.17, 0.80), 1.5, true)
+	var selected: bool = selected_unit_id == 0 and world.building_id_at(selected_cell) == int(building["id"])
+	if selected:
+		# Selection marks the real ground behind the architecture; it must
+		# not slice through an obliquely painted roof or foreground wall.
+		for edge: PackedVector2Array in shape["boundary"]:
+			_draw_canvas.draw_polyline(edge, Color(1.0, 0.86, 0.28), 2.5, true)
+	var texture: Texture2D = sprite["texture"] as Texture2D
+	if texture != null:
+		_draw_canvas.draw_texture_rect(texture, sprite_rect, false)
+	# Stock uses the house's existing canvas and painter row. Foreground rack
+	# masks in the overlay preserve its posts; ordinary lighting and fog apply.
+	var stock: Dictionary = lumber_hut_stock.presentation_for(world, building, sprite)
+	var stock_texture: Texture2D = stock.get("texture") as Texture2D
+	if stock_texture != null:
+		_draw_canvas.draw_texture_rect(stock_texture, stock["rect"], false)
+	var stock_label: String = String(stock.get("count_label", ""))
+	if not stock_label.is_empty():
+		_draw_canvas.draw_string(ThemeDB.fallback_font, stock["label_position"], stock_label,
+			HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(0.97, 0.95, 0.82))
+	if construction:
+		_draw_canvas.draw_rect(Rect2(label + Vector2(-36, -18), Vector2(72, 5)), Color(0.12, 0.14, 0.10))
+		_draw_canvas.draw_rect(Rect2(label + Vector2(-36, -18), Vector2(72 * float(sprite["progress"]), 5)), Color(0.88, 0.70, 0.30))
+	_draw_canvas.draw_string(ThemeDB.fallback_font, label + Vector2(-65, 0), String(definition.get("display_name", building["type"])), HORIZONTAL_ALIGNMENT_CENTER, 130, 11, Color(0.97, 0.95, 0.82))
+
+
 func _draw_building_details(building: Dictionary, center: Vector2) -> void:
 	var building_type: String = String(building["type"])
 	var definition: Dictionary = world.catalog.building(building_type)
 	var base_color: Color = Color.from_string("#" + String(definition.get("color", "888888")), Color.GRAY)
 	match building_type:
+		"workers_house":
+			_draw_workers_house_details(center)
 		"farm":
 			_draw_farm_details(center)
 		"mill":
@@ -702,6 +856,31 @@ func _draw_building_details(building: Dictionary, center: Vector2) -> void:
 			_draw_fisher_details(center)
 		_:
 			_draw_workshop_details(center, definition)
+
+
+func _draw_workers_house_details(center: Vector2) -> void:
+	# Warm windows, flowers and a chimney keep the residence readable among
+	# similarly sized workshops even at the overview zoom.
+	var timber := Color(0.35, 0.22, 0.12)
+	var window_glow := Color(0.98, 0.73, 0.31)
+	_draw_canvas.draw_rect(Rect2(center + Vector2(13, -54), Vector2(9, 27)), Color(0.43, 0.31, 0.23))
+	_draw_canvas.draw_rect(Rect2(center + Vector2(11, -56), Vector2(13, 4)), Color(0.61, 0.51, 0.39))
+	_draw_canvas.draw_circle(center + Vector2(19, -61), 4.0, Color(0.76, 0.75, 0.68, 0.25))
+	_draw_canvas.draw_circle(center + Vector2(23, -68), 5.0, Color(0.76, 0.75, 0.68, 0.16))
+	for window_x: float in [-17.0, 7.0]:
+		var window := Rect2(center + Vector2(window_x, -22), Vector2(12, 11))
+		_draw_canvas.draw_rect(window, timber)
+		_draw_canvas.draw_rect(window.grow(-2.0), window_glow)
+		_draw_canvas.draw_line(window.position + Vector2(6, 2), window.position + Vector2(6, 9), timber, 1.0)
+		_draw_canvas.draw_line(window.position + Vector2(2, 5.5), window.position + Vector2(10, 5.5), timber, 1.0)
+		_draw_canvas.draw_rect(Rect2(window.position + Vector2(-1, 11), Vector2(14, 3)), Color(0.47, 0.28, 0.13))
+		for flower: int in range(3):
+			_draw_canvas.draw_circle(window.position + Vector2(2.5 + flower * 4.0, 10.5), 1.8,
+				Color(0.82, 0.30, 0.25) if flower % 2 == 0 else Color(0.92, 0.76, 0.28))
+	for log_index: int in range(3):
+		var log_y: float = float(log_index) * 3.5
+		_draw_canvas.draw_line(center + Vector2(-27, -2 - log_y), center + Vector2(-15, -2 - log_y), Color(0.45, 0.28, 0.13), 3.0, true)
+		_draw_canvas.draw_circle(center + Vector2(-27, -2 - log_y), 1.7, Color(0.70, 0.49, 0.25))
 
 func _draw_ellipse_shadow(center: Vector2) -> void:
 	var points := PackedVector2Array()
@@ -931,14 +1110,19 @@ func _worker_id_at_visual_position(position: Vector2) -> int:
 	var entries: Array[Dictionary] = _world_draw_entries()
 	entries.reverse()
 	for entry: Dictionary in entries:
-		if terrain_renderer.point_occluded(position, entry["ground_position"] as Vector2):
+		if terrain_renderer.point_occluded(position, _entry_depth_position(entry)):
 			continue
 		if entry["kind"] == "worker":
 			var presentation: Dictionary = worker_presentation(entry["state"] as Dictionary, entry["position"] as Vector2)
-			if (presentation["rect"] as Rect2).grow(2.0).has_point(position):
+			var hit: bool = lumberjack_sprites.contains_point(presentation, position) if bool(presentation.get("animated_lumberjack", false)) else (presentation["rect"] as Rect2).grow(2.0).has_point(position)
+			if hit:
 				return int(entry["id"])
 		elif entry["kind"] == "building":
 			if _building_contains_visual_point(entry["state"], position):
+				return 0
+		elif entry["kind"] == "tree":
+			var tree: Dictionary = entry["state"]
+			if tree_sprites.contains_point(tree, world.tree_growth_stage(tree), entry["position"], position):
 				return 0
 	return 0
 
@@ -947,7 +1131,7 @@ func _building_id_at_visual_position(position: Vector2) -> int:
 	var entries: Array[Dictionary] = _world_draw_entries()
 	entries.reverse()
 	for entry: Dictionary in entries:
-		if entry["kind"] != "building" or terrain_renderer.point_occluded(position, entry["ground_position"] as Vector2):
+		if entry["kind"] != "building" or terrain_renderer.point_occluded(position, _entry_depth_position(entry)):
 			continue
 		if _building_contains_visual_point(entry["state"], position):
 			return int(entry["id"])
@@ -958,6 +1142,21 @@ func _building_contains_visual_point(building: Dictionary, position: Vector2) ->
 	var center: Vector2 = terrain_renderer.cell_center(building["position"] as Vector2i)
 	if int(building.get("footprint_version", 0)) > 0:
 		var shape: Dictionary = building_geometry(building)
+		var sprite: Dictionary = lumber_hut_sprites.presentation_for(building,
+			world.catalog.building(String(building["type"])), shape["door"])
+		if not sprite.is_empty():
+			if LumberHutSpriteLibraryClass.contains_point(sprite, position):
+				return true
+			if LumberHutStockLibraryClass.contains_point(lumber_hut_stock.presentation_for(world, building, sprite), position):
+				return true
+			# Every genuinely occupied ground cell remains a building target,
+			# including the empty work bay. The common selection path then
+			# normalizes it to the saved anchor. Alpha governs all extensions
+			# outside this footprint; transparent PNG padding adds no targets.
+			for polygon: PackedVector2Array in shape["foundations"]:
+				if Geometry2D.is_point_in_polygon(position, polygon):
+					return true
+			return false
 		if BuildingFootprintRendererClass.contains_point(shape, position, int(building.get("construction_remaining", 0)) > 0):
 			return true
 		center = shape["detail_center"]
@@ -991,13 +1190,31 @@ static func _building_roof_polygon(center: Vector2) -> PackedVector2Array:
 # Exposes the exact presentation used by drawing without altering the worker.
 func worker_presentation(worker: Dictionary, foot_position: Vector2) -> Dictionary:
 	var frame_alpha: float = clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0)
+	if String(worker.get("type", "")) == "lumberjack" and lumberjack_sprites.is_ready():
+		var sample: Dictionary = lumberjack_animation.sample(world, worker, frame_alpha)
+		if bool(sample.get("visible", false)):
+			var presentation: Dictionary = lumberjack_sprites.presentation_for(
+				String(sample["clip"]), String(sample["direction"]), foot_position,
+				float(sample["elapsed_seconds"]), bool(sample["at_rest"]))
+			if not presentation.has("error"):
+				presentation.merge({
+					"animated_lumberjack": true,
+					"moving": bool(sample["moving"]), "chopping": bool(sample["chopping"]),
+					"work_progress": float(sample.get("work_progress", 0.0)),
+					"cargo_position": foot_position + Vector2(6.5, -14.0),
+					# The log reaches 37.5 world px above the common anchor.
+					# Keep the UI above every clip without following frame bounds.
+					"hunger_position": foot_position + Vector2(0.0, -46.0),
+					"shadow_size": Vector2(13.0, 3.5),
+				})
+				return presentation
 	return unit_sprites.presentation_for(worker, foot_position, world.tick, frame_alpha)
 
 
 func _draw_worker(worker: Dictionary, foot_position: Vector2) -> void:
 	# A retained row may still reference the worker when a tick moves them
 	# indoors. Stop before submitting any sprite, shadow, cargo or hunger mark.
-	if world.is_worker_inside(worker):
+	if not _fog_entry_visible("worker", worker):
 		return
 	var presentation: Dictionary = worker_presentation(worker, foot_position)
 	_draw_unit_shadow(foot_position, presentation["shadow_size"] as Vector2)
@@ -1015,7 +1232,7 @@ func _draw_worker(worker: Dictionary, foot_position: Vector2) -> void:
 	else:
 		_draw_missing_unit(foot_position)
 	var carrying: String = String(worker.get("carrying", ""))
-	if not carrying.is_empty():
+	if not carrying.is_empty() and not worker_sprite_contains_cargo(worker, presentation):
 		var definition: Dictionary = world.catalog.resources.get(carrying, {}) as Dictionary
 		var color: Color = Color.from_string("#" + String(definition.get("color", "d0a966")), Color.TAN)
 		unit_sprites.paint_cargo(_draw_canvas, carrying, presentation["cargo_position"] as Vector2, color)
@@ -1023,11 +1240,17 @@ func _draw_worker(worker: Dictionary, foot_position: Vector2) -> void:
 	_draw_worker_satiety(worker_satiety_presentation(worker, foot_position))
 
 
+static func worker_sprite_contains_cargo(worker: Dictionary, presentation: Dictionary) -> bool:
+	# Only the successfully selected log sprite replaces the old cargo mark.
+	# Missing assets and other wares retain the established drawing fallback.
+	return String(worker.get("carrying", "")) == "log" and presentation.get("renders_cargo") == "log"
+
+
 # Read-only working cue; its phase comes only from simulation ticks, so pausing
 # freezes the shovel and loading the same tick reproduces the same pose.
 func worker_earthwork_presentation(worker: Dictionary, foot_position: Vector2) -> Dictionary:
 	var site: Dictionary = world.buildings.get(int(worker.get("source_id", 0)), {})
-	if world.is_worker_inside(worker) or worker.get("action", "") != "build_site" \
+	if not _fog_entry_visible("worker", worker) or worker.get("action", "") != "build_site" \
 			or worker.get("state", "") != "working" or int(site.get("foundation_work_remaining", 0)) <= 0:
 		return {"visible": false}
 	if not world.can_worker_work(worker) or int(worker.get("visual_progress_ticks", 0)) < int(worker.get("visual_duration_ticks", 0)) \
@@ -1052,7 +1275,7 @@ func _draw_worker_earthwork(presentation: Dictionary) -> void:
 
 
 func worker_satiety_presentation(worker: Dictionary, foot_position: Vector2) -> Dictionary:
-	if world.is_worker_inside(worker):
+	if not _fog_entry_visible("worker", worker):
 		return {"visible": false}
 	var status: Dictionary = world.hunger_status(worker)
 	var unit: Dictionary = worker_presentation(worker, foot_position)
@@ -1129,6 +1352,7 @@ func _build_ui() -> void:
 	hud.soldier_food_requested.connect(_request_soldier_food)
 	hud.army_food_requested.connect(_request_army_food)
 	hud.main_menu_requested.connect(_request_main_menu)
+	hud.entity_enabled_requested.connect(_set_selected_entity_enabled)
 	add_child(hud)
 	hud.configure(world.catalog, main_menu_requested.has_connections())
 
@@ -1185,6 +1409,9 @@ func _toggle_pause() -> void:
 func _apply_build_mode(cell: Vector2i) -> void:
 	if not world.grid.contains(cell) or build_mode.is_empty():
 		return
+	if bool(PlacementPreviewRulesClass.evaluate(world, build_mode, cell).get("obscured", false)):
+		world._push_event("Explore this area before building here.")
+		return
 	if world.building_id_at(cell) != 0:
 		return
 	var success: bool
@@ -1212,7 +1439,7 @@ func _apply_build_mode(cell: Vector2i) -> void:
 
 
 func _cancel_selected_construction() -> void:
-	var building_id: int = world.building_id_at(selected_cell)
+	var building_id: int = _selected_owned_building_id()
 	if world.cancel_construction(building_id):
 		# Clear placement too, so the next click cannot recreate the cancelled site.
 		_set_build_mode("")
@@ -1222,39 +1449,77 @@ func _cancel_selected_construction() -> void:
 
 
 func _queue_selected_unit(unit_type: String) -> void:
-	var building_id: int = world.building_id_at(selected_cell)
+	var building_id: int = _selected_owned_building_id()
 	if building_id == 0 or not world.queue_unit_training(building_id, unit_type):
 		world._push_event("Select a School with room in its training queue.")
 	_update_ui()
 
 
 func _queue_selected_production(recipe_id: String) -> void:
-	var building_id: int = world.building_id_at(selected_cell)
+	var building_id: int = _selected_owned_building_id()
 	if building_id == 0 or not bool(world.call("queue_production", building_id, recipe_id)):
 		world._push_event("Select a completed workshop with room for another order.")
 	_update_ui()
 
 
 func _queue_selected_recruitment(soldier_type: String) -> void:
-	var building_id: int = world.building_id_at(selected_cell)
+	var building_id: int = _selected_owned_building_id()
 	if building_id == 0 or not bool(world.call("queue_recruitment", building_id, soldier_type)):
 		world._push_event("Select completed Barracks or Town Hall with room in its queue.")
 	_update_ui()
 
 
 func _queue_selected_trade(give_resource: String, receive_resource: String) -> void:
-	var building_id: int = world.building_id_at(selected_cell)
+	var building_id: int = _selected_owned_building_id()
 	if building_id == 0 or not bool(world.call("queue_trade", building_id, give_resource, receive_resource)):
 		world._push_event("Select a completed Marketplace and two different wares.")
 	_update_ui()
 
 
+func _selected_owned_building_id() -> int:
+	var id: int = world.building_id_at(selected_cell)
+	if id == 0 or not world.is_local_entity(world.buildings[id]) or not _fog_entry_visible("building", world.buildings[id]):
+		return 0
+	return id
+
+
+func _set_selected_entity_enabled(entity_type: String, entity_id: int, enabled: bool) -> void:
+	# Signals carry the rendered target, never an instruction to toggle whichever
+	# object happens to be selected when a delayed callback finally arrives.
+	if entity_id == 0:
+		return
+	if entity_type == "worker":
+		if selected_unit_id != entity_id:
+			return
+		var worker: Dictionary = world.workers.get(entity_id, {}) as Dictionary
+		if not GameHudClass.can_inspect_worker(world, worker):
+			return
+		world.set_worker_enabled(entity_id, enabled)
+	elif entity_type == "building":
+		if selected_unit_id != 0 or _selected_owned_building_id() != entity_id:
+			return
+		world.set_building_enabled(entity_id, enabled)
+	else:
+		return
+	_update_ui()
+	queue_redraw()
+
+
 func _update_ui() -> void:
+	world.update_visibility()
 	if selected_unit_id != 0:
-		if world.workers.has(selected_unit_id):
+		# Our own selected resident remains inspectable indoors. Only foreign
+		# contacts must disappear from the inspector when sight of them is lost.
+		if world.workers.has(selected_unit_id) and (world.is_local_entity(world.workers[selected_unit_id]) \
+				or _fog_entry_visible("worker", world.workers[selected_unit_id])):
 			selected_cell = (world.workers[selected_unit_id] as Dictionary)["position"] as Vector2i
 		else:
 			selected_unit_id = 0
+			selected_cell = Vector2i(-1, -1)
+	if not world.is_cell_explored(selected_cell):
+		selected_cell = Vector2i(-1, -1)
+	if terrain_renderer != null and terrain_renderer.grid != null:
+		fog_renderer.sync(world, terrain_renderer)
 	if hud != null:
 		hud.refresh(world, selected_cell, build_mode, simulation_speed, FIXED_TICK_SECONDS, selected_unit_id)
 	_update_day_lighting()
@@ -1275,6 +1540,8 @@ func _update_day_lighting() -> void:
 
 
 func _request_soldier_food(unit_id: int) -> void:
+	if not world.workers.has(unit_id) or not world.is_local_entity(world.workers[unit_id]):
+		return
 	if world.request_soldier_food(unit_id):
 		world._push_event("Food requested. A carrier will bring one ration to the soldier.")
 	else:
@@ -1318,6 +1585,10 @@ func _create_demo_world() -> void:
 		var imported: Dictionary = ImportedTerrainClass.load_world(terrain_map_path)
 		world = imported.get("world") as SimulationWorldClass
 		if world != null:
+			MountainousRegionStartClass.apply_if_supported(world, imported)
+			# A terrain-only developer import has no player to explore with.
+			if MountainousRegionStartClass.is_ready(world):
+				world.enable_fog()
 			return
 		terrain_load_error = String(imported.get("error", "Unknown map error"))
 		# Never label fallback terrain as a successful replica of the source map.
@@ -1331,6 +1602,7 @@ func _create_demo_world() -> void:
 	else:
 		world = SimulationWorldClass.new(TestLevelClass.MAP_SIZE)
 		TestLevelClass.setup(world)
+	world.enable_fog()
 	if not terrain_load_error.is_empty():
 		world._push_event("Mountainous Region could not be loaded: %s. Showing the test level." % terrain_load_error)
 
@@ -1341,8 +1613,8 @@ func _reset_demo() -> void:
 	_clear_placement_preview()
 	_create_demo_world()
 	_update_window_title()
-	terrain_renderer.bind_grid(world.grid)
-	_center_camera()
+	_bind_terrain_graphics()
+	_set_initial_camera()
 	accumulator = 0.0
 	selected_cell = Vector2i(-1, -1)
 	selected_unit_id = 0
@@ -1365,17 +1637,26 @@ func _load_game() -> void:
 	var path: String = _save_game_path()
 	var loaded: bool = SaveSystemClass.load_world(world, path)
 	if loaded:
+		lumberjack_animation.reset()
+		lumberjack_work_placement.reset()
+		_activate_legacy_fog()
 		demo_kind = SaveSystemClass.saved_map_id(path)
 		_update_window_title()
 		selected_unit_id = 0
-		terrain_renderer.bind_grid(world.grid)
-		_center_camera()
+		_bind_terrain_graphics()
+		_set_initial_camera()
 		accumulator = 0.0
 		if not world.grid.contains(selected_cell):
 			selected_cell = Vector2i(-1, -1)
 	world._push_event("Game loaded." if loaded else "No valid save found.")
 	_update_ui()
 	queue_redraw()
+
+
+func _activate_legacy_fog() -> void:
+	if world.fog.legacy_reveal_pending:
+		world.enable_fog()
+		world.fog.legacy_reveal_pending = false
 
 
 func _camera_map_rect() -> Rect2:
@@ -1403,6 +1684,19 @@ func _center_camera() -> void:
 	var fit_zoom: float = _camera_fit_zoom()
 	camera.zoom = Vector2(fit_zoom, fit_zoom)
 	camera.position = bounds.get_center() - (_camera_map_rect().get_center() - get_viewport_rect().size * 0.5) / fit_zoom
+
+
+func _set_initial_camera() -> void:
+	_center_camera()
+	if demo_kind != "mountainous-region" or not MountainousRegionStartClass.is_ready(world):
+		return
+	# A full-map overview makes the two starter buildings nearly invisible.
+	# Open on their plateau while retaining wheel zoom and ordinary pan controls.
+	_camera_auto_fit = false
+	var focus_zoom: float = clampf(0.75, _minimum_zoom(), 2.4)
+	camera.zoom = Vector2(focus_zoom, focus_zoom)
+	var focus: Vector2 = terrain_renderer.cell_center(MountainousRegionStartClass.FOCUS_CELL)
+	camera.position = focus - (_camera_map_rect().get_center() - get_viewport_rect().size * 0.5) / focus_zoom
 
 
 func _on_viewport_size_changed() -> void:
