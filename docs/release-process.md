@@ -90,6 +90,10 @@ Releases, commits, tags and pushes happen only when the user asks for them
 9. Tag the release commit with
    `git tag -a vX.Y.Z -m "Medieval Economy RTS X.Y.Z"`.
 10. Push the branch and the tag with `git push origin main vX.Y.Z`.
+11. Publish a GitHub Release for the tag. Use the version's changelog section
+    as the notes, with repository links made absolute and soft line breaks
+    joined, because release notes render every newline:
+    `gh release create vX.Y.Z --verify-tag --latest --title "Medieval Economy RTS X.Y.Z" --notes-file notes.md`.
 
 ## Commit messages
 
