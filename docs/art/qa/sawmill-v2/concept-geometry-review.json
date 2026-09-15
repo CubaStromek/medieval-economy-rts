@@ -1,0 +1,98 @@
+{
+  "date": "2026-09-12",
+  "status": "Read-only image geometry review, no production export, alpha or native game acceptance",
+  "concept_01": {
+    "path": "docs/art/sources/sawmill-v2/concept-01.png",
+    "sha256": "5a952a4f5fe8a1ce698aa01807afbddef629fe6517b511756c2a83876ada7d65",
+    "canvas": [
+      1254,
+      1254
+    ],
+    "door_clear_opening_manual_quad": [
+      [
+        336,
+        786
+      ],
+      [
+        397,
+        768
+      ],
+      [
+        397,
+        904
+      ],
+      [
+        336,
+        920
+      ]
+    ],
+    "door_clear_height_raw": [
+      134,
+      136
+    ],
+    "door_height_at_raw_scale_0_12": [
+      16.08,
+      16.32
+    ],
+    "door_measurement_evidence": "docs/art/qa/sawmill-v2/concept-01-door-ruler.png",
+    "measurement_uncertainty_raw_px": 5
+  },
+  "concept_02": {
+    "path": "docs/art/sources/sawmill-v2/concept-02-key.png",
+    "sha256": "980b26882e30f1005604bdbbb802bce7ba4b3b6524bb2a827bba0d5c9c939782",
+    "canvas": [
+      1254,
+      1254
+    ],
+    "lower_image_non_key_extent_rule": "Only rows y>=740; classify non-key when min(R,B)-G is below cutoff. This measures visible lower silhouette, not hidden wall contacts, roof, or final alpha. No image written by this classification.",
+    "lower_image_non_key_extents": {
+      "20": {
+        "inclusive_bbox": [
+          35,
+          740,
+          1227,
+          1028
+        ],
+        "count": 204315
+      },
+      "60": {
+        "inclusive_bbox": [
+          34,
+          740,
+          1228,
+          1028
+        ],
+        "count": 204818
+      },
+      "100": {
+        "inclusive_bbox": [
+          34,
+          740,
+          1228,
+          1028
+        ],
+        "count": 205184
+      }
+    },
+    "suggested_navigation_threshold_raw": [
+      400,
+      1030
+    ],
+    "suggested_navigation_threshold_note": "At/just south of lowest footing, roughly22rawpx before central bottom step edge. This small real-world gap needs native verification. Do not claim an exact threshold at painted door leaf.",
+    "candidate_raw_source_to_world": [
+      0.1195,
+      0.12
+    ],
+    "candidate_800_canvas_source_to_world": [
+      0.18731625,
+      0.1881
+    ],
+    "revised_door_clear_height_target_raw": 300,
+    "target_door_height_world": [
+      35.85,
+      36
+    ],
+    "first_concept_guide_registration_preserved": false,
+    "actual_ground_contact_review": "All visible footing contacts appear inside unchanged160x80world rectangle with proposed threshold/scale. East and south margins are subpixel to1world; future final alpha/fringe and raised-platform scene must be measured separately."
+  }
+}

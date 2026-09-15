@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-13",
+  "building_id": "warehouse",
+  "status": "CONCEPT ONLY — width/door scale measured; south sill and approach fail ground-fit",
+  "source": {
+    "path": "/Users/openclaw/.codex/generated_images/01a099a3-fa47-7270-a372-93623d3b17e1/exec-b2d61646-c780-4b93-ab23-3f6c1789144e.png",
+    "sha256": "78470ea97013667ed225bf051ee0cb90b699b92b67da4e34d676248c6a19ecf3",
+    "canvas": [
+      1254,
+      1254
+    ],
+    "format": "RGB PNG on white background; no production alpha",
+    "pixels_unmodified": true
+  },
+  "method": "Manual reading of visible source-image architectural contacts; approximate +/-4 source pixels. Uniform registration only. No runtime or alpha validation.",
+  "source_to_world": 0.1,
+  "uniform_scale": true,
+  "measured_landmarks_source_px": {
+    "door_clear_polygon": [
+      [
+        354,
+        733
+      ],
+      [
+        870,
+        656
+      ],
+      [
+        870,
+        1004
+      ],
+      [
+        359,
+        1078
+      ]
+    ],
+    "sill_front_edge": [
+      [
+        358,
+        1152
+      ],
+      [
+        932,
+        1070
+      ]
+    ],
+    "sill_center_threshold": [
+      615,
+      1115
+    ],
+    "ground_leftmost": [
+      36,
+      879
+    ],
+    "ground_rightmost": [
+      1215,
+      947
+    ],
+    "ground_southmost": [
+      358,
+      1152
+    ],
+    "roof_leftmost": [
+      17,
+      475
+    ],
+    "roof_rightmost": [
+      1238,
+      533
+    ]
+  },
+  "door_clear_dimensions": {
+    "width_source_px": 516,
+    "vertical_height_source_px": [
+      345,
+      348
+    ],
+    "width_world_px": 51.6,
+    "vertical_height_world_px": [
+      34.5,
+      34.8
+    ],
+    "actual_carrier_height_world_px": 33,
+    "minimum_headroom_world_px": 1.5,
+    "assessment": "Basic 33px human clearance with modest headroom; less than preliminary 38px guide target. No person is baked into building."
+  },
+  "registration": {
+    "threshold_source_px": [
+      615,
+      1115
+    ],
+    "threshold_relative_world_px": [
+      0,
+      0
+    ],
+    "occupied_ground_source_rect": [
+      15,
+      -85,
+      1200,
+      1200
+    ],
+    "occupied_ground_relative_world_rect": [
+      -60,
+      -120,
+      120,
+      120
+    ],
+    "external_approach_source_rect": [
+      415,
+      1115,
+      400,
+      400
+    ],
+    "external_approach_relative_world_rect": [
+      -20,
+      0,
+      40,
+      40
+    ]
+  },
+  "ground_fit": {
+    "visible_ground_width_source_px": 1179,
+    "visible_ground_width_world_px": 117.9,
+    "left_extent_from_threshold_world_px": -57.9,
+    "right_extent_from_threshold_world_px": 60,
+    "ground_width_fits": true,
+    "right_margin_world_px": 0,
+    "max_south_overhang_source_px": 37,
+    "max_south_overhang_world_px": 3.7,
+    "approach_max_south_overhang_approx_world_px": 2.9,
+    "approach_clear": false,
+    "all_ground_contacts_inside": false,
+    "roof_right_overhang_world_px": 2.3,
+    "roof_overhang_assessed_separately": true,
+    "hidden_back_wall_contacts": "Not observable in source; not validated"
+  },
+  "required_before_integration": [
+    "Flatten or reshape the projecting stone sill toe to the physical south threshold while preserving oblique facade and doorway proportions.",
+    "Keep blocking sill and masonry entirely inside occupied ground; preserve all of the true approach cell.",
+    "Provide actual RGBA and measure production registration, depth and life anchors on that master.",
+    "Recheck native game scale, raised terrain, approach and selection after integration."
+  ],
+  "night_effects": {
+    "status": "Planned, unimplemented",
+    "smoke": "Separate gentle effect at chimney mouth",
+    "light": "Separate warm window effects",
+    "visible_indoor_figures": false,
+    "visible_stock_amounts": false
+  },
+  "runtime_qa": "Not performed; no gameplay or art integration changed",
+  "diagram": {
+    "path": "docs/art/qa/warehouse-v1/ground-fit.png",
+    "source_display_scale": 0.8,
+    "source_display_origin": [
+      60,
+      180
+    ],
+    "meaning": "Technical overlay embeds the entire unmodified source, with true square footprint, source doorway landmarks and current real carrier scale. This is not a production image."
+  }
+}

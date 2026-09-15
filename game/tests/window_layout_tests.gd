@@ -87,7 +87,9 @@ static func _check_layout(main: MainViewClass, viewport: SubViewport, label: Str
 		return
 	_expect(root.get_global_rect().is_equal_approx(expected_view),
 		label + ": HUD must fill the whole logical viewport instead of retaining a fixed rectangle", failures)
-	for node_name: String in ["OverviewBar", "StatusBar", "VillagePanel", "ActivityPanel"]:
+	# The event strip is part of the status bar now, so there is no separate
+	# floating panel for overlays to cover.
+	for node_name: String in ["OverviewBar", "StatusBar", "VillagePanel"]:
 		var panel: Control = main.find_child(node_name, true, false) as Control
 		if panel == null:
 			failures.append(label + ": Missing " + node_name)
@@ -95,21 +97,23 @@ static func _check_layout(main: MainViewClass, viewport: SubViewport, label: Str
 		var rect: Rect2 = panel.get_global_rect()
 		_expect(expected_view.grow(1.0).encloses(rect), label + ": " + node_name + " must stay inside the resized window", failures)
 		if node_name in ["OverviewBar", "StatusBar"]:
-			_expect(absf(rect.position.x - 12.0) < 1.0 and absf(rect.end.x - (viewport.size.x - 12.0)) < 1.0,
+			_expect(absf(rect.position.x - GameHudClass.EDGE) < 1.0
+					and absf(rect.end.x - (viewport.size.x - GameHudClass.EDGE)) < 1.0,
 				label + ": " + node_name + " must span the available width", failures)
 		if node_name == "StatusBar":
-			_expect(absf(rect.position.y - (viewport.size.y - 54.0)) < 1.0,
+			_expect(absf(rect.position.y - (viewport.size.y - GameHudClass.STATUS_TOP)) < 1.0,
 				label + ": Time controls must follow the bottom window edge", failures)
 		if node_name == "VillagePanel":
-			_expect(absf(rect.position.y - GameHudClass.MAP_TOP) < 1.0 and absf(rect.end.y - (viewport.size.y - 66.0)) < 1.0,
+			_expect(absf(rect.position.y - GameHudClass.MAP_TOP) < 1.0
+					and absf(rect.end.y - (viewport.size.y - GameHudClass.DOCK_BOTTOM)) < 1.0,
 				label + ": Sidebar must use the available height", failures)
-			_expect(rect.size.x < float(viewport.size.x) / 3.0,
-				label + ": Sidebar must leave at least two thirds of the width to the map", failures)
+			_expect(rect.size.x < float(viewport.size.x) / 4.0,
+				label + ": Sidebar must leave at least three quarters of the width to the map", failures)
 
 
 static func _check_camera_fit(main: MainViewClass, viewport: SubViewport, label: String, failures: Array[String]) -> void:
 	var available := Rect2(Vector2(GameHudClass.MAP_LEFT, GameHudClass.MAP_TOP),
-		Vector2(viewport.size) - Vector2(GameHudClass.MAP_LEFT + 12.0, GameHudClass.MAP_TOP + GameHudClass.MAP_BOTTOM))
+		Vector2(viewport.size) - Vector2(GameHudClass.MAP_LEFT + GameHudClass.EDGE, GameHudClass.MAP_TOP + GameHudClass.MAP_BOTTOM))
 	var bounds: Rect2 = main.terrain_renderer.map_bounds().grow(44.0)
 	var transform: Transform2D = viewport.get_canvas_transform()
 	var screen_bounds: Rect2 = transform * bounds

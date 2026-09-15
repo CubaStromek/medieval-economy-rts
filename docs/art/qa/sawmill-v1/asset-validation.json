@@ -1,0 +1,200 @@
+{
+  "date": "2026-09-12",
+  "source_sha256": "d88f2fa26a527b889593355b7cd7e481e3edc16ee595a12f6a63e632380566e1",
+  "master_sha256": "5b7fba88507db79e36c4596d27e00253c97a61c59df157d06641fbe8dd973176",
+  "finished_sha256": "349924968b535bf299d9933e00d476bdf357f87a3011b628a420a2d7e06315a4",
+  "finished_rgba_sha256": "d199241761a5a34a1febb87990e165b8f79f868ec16007c5788b5bdfcbda6651",
+  "background": {
+    "modal_rgb": [
+      247,
+      4,
+      250
+    ],
+    "top_region_dominance": [
+      219,
+      247
+    ],
+    "cutoff": 200,
+    "unmatte": "alpha=clamp(1-(min(r,b)-g)/243), measured modal key removal"
+  },
+  "source_canvas": [
+    1254,
+    1254
+  ],
+  "production_canvas": [
+    800,
+    800
+  ],
+  "source_to_production": 0.6379585326953748,
+  "source_to_world": 0.16,
+  "production_to_world": 0.25079999999999997,
+  "alpha_gt_0": {
+    "bbox": [
+      0,
+      193,
+      725,
+      607
+    ],
+    "count": 200426
+  },
+  "alpha_gt_25": {
+    "bbox": [
+      68,
+      196,
+      655,
+      387
+    ],
+    "count": 198023
+  },
+  "no_alpha_source": true,
+  "real_alpha_export": true,
+  "ground_bounds_source": [
+    113,
+    412,
+    1113,
+    912
+  ],
+  "door_threshold_source": [
+    488,
+    912
+  ],
+  "contact_measurement": "Manual visible ground-contact landmarks, conservative southern registration at y912; tolerance ±3source px. Hidden rear contacts require native raised-ground QA.",
+  "measured_contacts": {
+    "west_rear": {
+      "source": [
+        156,
+        792
+      ],
+      "relative_world": [
+        -53.120000000000005,
+        -19.2
+      ],
+      "inside": true
+    },
+    "left_front": {
+      "source": [
+        337,
+        911
+      ],
+      "relative_world": [
+        -24.16,
+        -0.16
+      ],
+      "inside": true
+    },
+    "door_sill": {
+      "source": [
+        488,
+        907
+      ],
+      "relative_world": [
+        0,
+        -0.8
+      ],
+      "inside": true
+    },
+    "front_left_jamb": {
+      "source": [
+        570,
+        889
+      ],
+      "relative_world": [
+        13.120000000000001,
+        -3.68
+      ],
+      "inside": true
+    },
+    "saw_left_leg": {
+      "source": [
+        685,
+        842
+      ],
+      "relative_world": [
+        31.52,
+        -11.200000000000001
+      ],
+      "inside": true
+    },
+    "saw_right_leg": {
+      "source": [
+        833,
+        829
+      ],
+      "relative_world": [
+        55.2,
+        -13.280000000000001
+      ],
+      "inside": true
+    },
+    "center_post": {
+      "source": [
+        885,
+        867
+      ],
+      "relative_world": [
+        63.52,
+        -7.2
+      ],
+      "inside": true
+    },
+    "far_right_post": {
+      "source": [
+        1094,
+        847
+      ],
+      "relative_world": [
+        96.96000000000001,
+        -10.4
+      ],
+      "inside": true
+    },
+    "empty_board_rack": {
+      "source": [
+        1020,
+        843
+      ],
+      "relative_world": [
+        85.12,
+        -11.040000000000001
+      ],
+      "inside": true
+    },
+    "empty_cradle": {
+      "source": [
+        620,
+        846
+      ],
+      "relative_world": [
+        21.12,
+        -10.56
+      ],
+      "inside": true
+    },
+    "paving_south": {
+      "source": [
+        595,
+        885
+      ],
+      "relative_world": [
+        17.12,
+        -4.32
+      ],
+      "inside": true
+    }
+  },
+  "door_clear_opening_source_height": 202,
+  "door_clear_opening_world_height": 32.32,
+  "roof_visual_bounds_source": [
+    109,
+    307,
+    1134,
+    680
+  ],
+  "roof_lateral_overhang_world": {
+    "west": 0.64,
+    "east": 3.36
+  },
+  "conceptual_ground_width_world": 160,
+  "conceptual_ground_depth_world": 80,
+  "runtime_qa": "See README.md and natural/report.json for dated runtime results; this export record verifies source geometry only"
+}

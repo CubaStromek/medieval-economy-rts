@@ -1,0 +1,146 @@
+{
+  "date": "2026-09-13",
+  "building_id": "warehouse",
+  "style_version": "0.2",
+  "deliverable": "concept only; not imported or installed in game",
+  "tool": "built-in image_gen.imagegen",
+  "model": "Not exposed by tool",
+  "references": [
+    "docs/art/sources/warehouse-v1/ground-guide.png",
+    "game/art/buildings/sawmill/v2/finished.png",
+    "game/art/buildings/lumber_hut/v1/finished.png"
+  ],
+  "iterations": [
+    {
+      "prompt": "prompt-01.txt",
+      "output": "concept-01-checker.png",
+      "result": "Rejected fake checkerboard RGB; doorway too small at footprint scale and contact overhang"
+    },
+    {
+      "prompt": "prompt-02-ground-door.txt",
+      "output": "concept-02.png",
+      "result": "Plain white RGB; larger door and shallow sill, entry still too far right"
+    },
+    {
+      "prompt": "prompt-03-entry.txt",
+      "output": "concept-03.png",
+      "result": "Widened cargo gate shifts seam toward footprint center; enlarged clear doorway"
+    },
+    {
+      "prompt": "prompt-04-sill.txt",
+      "output": "concept-04.png",
+      "result": "Selected concept; sill made flatter but final terrain registration still requires correction before production variants"
+    }
+  ],
+  "selected": "docs/art/concepts/warehouse-v1.png",
+  "static_day_art": true,
+  "night_lights_and_smoke": "Architecture and state plan only, not delivered runtime effects",
+  "visual_stock_and_people": "Explicitly excluded by user on2026-09-13",
+  "files": [
+    {
+      "path": "docs/art/sources/warehouse-v1/ground-guide.png",
+      "sha256": "8fbb9d469eab9d5d110ed39e0af3ef3bbfb56532f310be46257c2bd730bc67c7",
+      "size": [
+        1000,
+        1000
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        255,
+        255
+      ]
+    },
+    {
+      "path": "game/art/buildings/sawmill/v2/finished.png",
+      "sha256": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+      "size": [
+        800,
+        800
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "game/art/buildings/lumber_hut/v1/finished.png",
+      "sha256": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+      "size": [
+        640,
+        640
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "docs/art/sources/warehouse-v1/concept-01-checker.png",
+      "sha256": "98e48ad100f199c2a299330e9c6208d6c42fe248aafc9ffcc18bd1dc572d8f09",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "path": "docs/art/sources/warehouse-v1/concept-02.png",
+      "sha256": "3e4c5c0bc15205bc929624be065b776283541682a5ec3152fecbf4ac684a8b91",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "path": "docs/art/sources/warehouse-v1/concept-03.png",
+      "sha256": "e5709feb4a928bcadbec7d6958c92c88c4c3ff017c23b5b4f7b025f0b76be832",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "path": "docs/art/sources/warehouse-v1/concept-04.png",
+      "sha256": "78470ea97013667ed225bf051ee0cb90b699b92b67da4e34d676248c6a19ecf3",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha": null
+    },
+    {
+      "path": "docs/art/sources/warehouse-v1/prompt-01.txt",
+      "sha256": "2a1557affb3c373ffc73c8733f0e8e7f7e71d78f7733c7b2eef18c14998ec396"
+    },
+    {
+      "path": "docs/art/sources/warehouse-v1/prompt-02-ground-door.txt",
+      "sha256": "e1490ba90cd695e2e6dbd0054eb29eb74bba9a233ef0ffccf5f9515fefa89355"
+    },
+    {
+      "path": "docs/art/sources/warehouse-v1/prompt-03-entry.txt",
+      "sha256": "61e5daf43003c762497426cf4d390edd6e7e832c73058af8214346f56125af40"
+    },
+    {
+      "path": "docs/art/sources/warehouse-v1/prompt-04-sill.txt",
+      "sha256": "f54b1082be02b231c75b5edfdea69274e173b8177081913fc038e190a9ce581d"
+    },
+    {
+      "path": "docs/art/concepts/warehouse-v1.png",
+      "sha256": "78470ea97013667ed225bf051ee0cb90b699b92b67da4e34d676248c6a19ecf3",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "alpha": null
+    }
+  ]
+}

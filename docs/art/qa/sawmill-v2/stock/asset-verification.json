@@ -1,0 +1,142 @@
+{
+  "date": "2026-09-12",
+  "scope": "Decoded final PNG and isolated composite, not normal gameplay",
+  "assets": {
+    "log": {
+      "file": "log.png",
+      "sha256": "6e43c9ddf57a66bc261d286104dce502f7853852947608b54b94df85adf9cad8",
+      "canvas": [
+        126,
+        124
+      ],
+      "transparent": 9462,
+      "partial": 0,
+      "opaque": 6162,
+      "alpha_gt25_bounds": [
+        2,
+        2,
+        123,
+        122
+      ],
+      "residual_key": 0
+    },
+    "plank": {
+      "file": "plank.png",
+      "sha256": "4716cfa4dd15232e5cda1803da6b652f9de1ff01f80559365a7972171c0232d3",
+      "canvas": [
+        1299,
+        694
+      ],
+      "transparent": 650476,
+      "partial": 3465,
+      "opaque": 247565,
+      "alpha_gt25_bounds": [
+        2,
+        2,
+        1297,
+        692
+      ],
+      "residual_key": 0
+    },
+    "foreground": {
+      "file": "foreground.png",
+      "sha256": "2d6683bb2b7c0cfa1f402ff9074310f676ccc886ce494987be9fe06dd1167397",
+      "canvas": [
+        800,
+        800
+      ],
+      "transparent": 611966,
+      "partial": 1086,
+      "opaque": 26948,
+      "alpha_gt25_bounds": [
+        292,
+        250,
+        784,
+        608
+      ],
+      "residual_key": 0
+    },
+    "occlusion-mask": {
+      "file": "occlusion-mask.png",
+      "sha256": "7dbb02f8add1e3797c56bffc7e9063800feb2f89dd4c5a93122a1dd3f7ff9b3a",
+      "canvas": [
+        800,
+        800
+      ],
+      "transparent": 611671,
+      "partial": 0,
+      "opaque": 28329,
+      "alpha_gt25_bounds": [
+        292,
+        249,
+        784,
+        608
+      ],
+      "residual_key": 0
+    }
+  },
+  "foreground_exact_original_sample": true,
+  "base_sha_verified": true,
+  "states": [
+    {
+      "kind": "log",
+      "amount": 0,
+      "changed_visible_pixels_from_previous": 0
+    },
+    {
+      "kind": "log",
+      "amount": 1,
+      "changed_visible_pixels_from_previous": 2509
+    },
+    {
+      "kind": "log",
+      "amount": 2,
+      "changed_visible_pixels_from_previous": 2609
+    },
+    {
+      "kind": "log",
+      "amount": 3,
+      "changed_visible_pixels_from_previous": 2640
+    },
+    {
+      "kind": "log",
+      "amount": 4,
+      "changed_visible_pixels_from_previous": 2752
+    },
+    {
+      "kind": "plank",
+      "amount": 0,
+      "changed_visible_pixels_from_previous": 0
+    },
+    {
+      "kind": "plank",
+      "amount": 1,
+      "changed_visible_pixels_from_previous": 1148
+    },
+    {
+      "kind": "plank",
+      "amount": 2,
+      "changed_visible_pixels_from_previous": 1190
+    },
+    {
+      "kind": "plank",
+      "amount": 3,
+      "changed_visible_pixels_from_previous": 1171
+    },
+    {
+      "kind": "plank",
+      "amount": 4,
+      "changed_visible_pixels_from_previous": 1162
+    },
+    {
+      "kind": "plank",
+      "amount": 5,
+      "changed_visible_pixels_from_previous": 1191
+    },
+    {
+      "kind": "plank",
+      "amount": 6,
+      "changed_visible_pixels_from_previous": 1186
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "date": "2026-09-12",
+  "protected_collar_y": 82,
+  "body_region_pixels": 44544,
+  "original_body_sha256": "bed3a02646a17425d0be9f71d129b4692c787f83518a5d8a45e54fb7bd7ca3c6",
+  "frames": {
+    "center": {
+      "canvas": [
+        256,
+        256
+      ],
+      "channels": 4,
+      "changed_pixels": 0,
+      "changed_outside_declared_bounds": 0,
+      "body_sha256": "bed3a02646a17425d0be9f71d129b4692c787f83518a5d8a45e54fb7bd7ca3c6",
+      "feet_sha256": "7fd94d3157665ba1de23398529ac344de63dcf31c22b7bbcdf86c9e74cad109e",
+      "protected_body_pixels_equal": true,
+      "alpha_counts": {
+        "transparent": 59591,
+        "partial": 1326,
+        "opaque": 4619
+      },
+      "alpha_samples": {
+        "outer_corner": 0,
+        "between_legs": 0,
+        "sole": 255,
+        "below_sole": 0
+      },
+      "head_pixels_with_strong_magenta_at_alpha_gt127": 0,
+      "file_sha256": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3"
+    },
+    "left": {
+      "canvas": [
+        256,
+        256
+      ],
+      "channels": 4,
+      "changed_pixels": 821,
+      "changed_outside_declared_bounds": 0,
+      "body_sha256": "bed3a02646a17425d0be9f71d129b4692c787f83518a5d8a45e54fb7bd7ca3c6",
+      "feet_sha256": "7fd94d3157665ba1de23398529ac344de63dcf31c22b7bbcdf86c9e74cad109e",
+      "protected_body_pixels_equal": true,
+      "alpha_counts": {
+        "transparent": 59609,
+        "partial": 1320,
+        "opaque": 4607
+      },
+      "alpha_samples": {
+        "outer_corner": 0,
+        "between_legs": 0,
+        "sole": 255,
+        "below_sole": 0
+      },
+      "head_pixels_with_strong_magenta_at_alpha_gt127": 0,
+      "file_sha256": "e2326ad398e2e7815c5b5ccde6477047e7c765ad61e564777e3adac06269c7a0"
+    },
+    "right": {
+      "canvas": [
+        256,
+        256
+      ],
+      "channels": 4,
+      "changed_pixels": 799,
+      "changed_outside_declared_bounds": 0,
+      "body_sha256": "bed3a02646a17425d0be9f71d129b4692c787f83518a5d8a45e54fb7bd7ca3c6",
+      "feet_sha256": "7fd94d3157665ba1de23398529ac344de63dcf31c22b7bbcdf86c9e74cad109e",
+      "protected_body_pixels_equal": true,
+      "alpha_counts": {
+        "transparent": 59590,
+        "partial": 1329,
+        "opaque": 4617
+      },
+      "alpha_samples": {
+        "outer_corner": 0,
+        "between_legs": 0,
+        "sole": 255,
+        "below_sole": 0
+      },
+      "head_pixels_with_strong_magenta_at_alpha_gt127": 0,
+      "file_sha256": "6310e2e2e0b3746890bf94ab99d2479ba0bf67520a1524be16e0221708c3321f"
+    }
+  },
+  "center_exact_original_file": true
+}

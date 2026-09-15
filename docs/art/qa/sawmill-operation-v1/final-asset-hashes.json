@@ -1,0 +1,62 @@
+{
+  "manifest_sha256": "94b5d13560f8551ed10ebe9b32436fe092d37174ce573121be400fe3ac6af4df",
+  "asset_count": 11,
+  "all_match": true,
+  "assets": [
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/work/backplate.png",
+      "sha256": "37cc6cb1ab8fe4f04d92c49f2d7fbfd068880fbfd7be1d6fc398286bf54e761b",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/work/worker-0.png",
+      "sha256": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/work/worker-1.png",
+      "sha256": "be269ff4b49d2962db4d27d5178c5380e8cb5837e97f36c2f6ce34be61e829e8",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/work/worker-2.png",
+      "sha256": "b2b1eba431e5fcc09a834187578a471b9b6ced0a8fc51336962724303af2a811",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/work/worker-3.png",
+      "sha256": "716654c3de538b8f62d6c731199b7a20d61bd7923454d15085d39bef7da1f7f6",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/work/worker-4.png",
+      "sha256": "2bed208cb822bc002b50fa6d293fb1cab36bf81f1c79993e8ba22693e322f614",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/work/worker-5.png",
+      "sha256": "22c1ce5200883771b9fbe32190e384e3bbddb5080c01aab13beff6c06f0cafb7",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/work/processing-log.png",
+      "sha256": "c618208c02fbd11b08b91b7a246f194079ad103bb936b7a06d7d4e2a2f76c483",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/stock/foreground.png",
+      "sha256": "f36d0f9378e1b1b526ed6c6ef6014f8b1764e9bfd43eb07fef535be5d13f7be5",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/stock/log.png",
+      "sha256": "969d6aa52627c7814188bf7f45f2b8ae2e4d3dbb8b5744b8542af8e799e0777e",
+      "matches_manifest": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/stock/plank.png",
+      "sha256": "f6b9d7e3c9bf5aeb2c20e95fadb0c46c687321c75b4fbe593d435cc6092f1168",
+      "matches_manifest": true
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "date": "2026-09-12",
+  "scope": "Final read-only mathematical source-scale and alpha extent comparison; physical support and approach bounds. No runtime mutation.",
+  "same_art_source": true,
+  "source_sha_matches": true,
+  "hut_raw_source_px_to_world": 0.11483253588516747,
+  "sawmill_v2_raw_source_px_to_world": 0.11483253588516745,
+  "source_scale_absolute_difference": 1.3877787807814457e-17,
+  "hut_one_actual_alpha_gt25": {
+    "canvas": [
+      640,
+      640
+    ],
+    "bbox": [
+      151,
+      465,
+      214,
+      525
+    ],
+    "extent": [
+      63,
+      60
+    ],
+    "world_extent": [
+      14.175,
+      13.5
+    ]
+  },
+  "v2_log_actual_alpha_gt25": {
+    "canvas": [
+      126,
+      124
+    ],
+    "bbox": [
+      2,
+      2,
+      123,
+      122
+    ],
+    "extent": [
+      121,
+      120
+    ],
+    "world_extent": [
+      13.894736842105262,
+      13.779904306220095
+    ]
+  },
+  "world_bbox_extent_difference": [
+    -0.28026315789473877,
+    0.27990430622009477
+  ],
+  "bbox_difference_at_native_zoom2_4": [
+    -0.672631578947373,
+    0.6717703349282275
+  ],
+  "bbox_difference_explanation": "The identical source polygon is registered at exactly identical raw-source/world scale. Hut PNG is already resampled in the full640px canvas and foreground-excluded; v2 standalone log keeps original raw-source silhouette before final draw/filtering and new foreground. The0.28worldpx AABB difference is raster sampling/occlusion, not a scale change.",
+  "all_stock_projections": {
+    "log": {
+      "conservative_all_slot_alpha_bounds_house": [
+        303.69590284603316,
+        425.30040358211335,
+        408.52590897931645,
+        539.9390652600314
+      ],
+      "world_bbox_relative_to_door": [
+        9.087177661483258,
+        -43.65832327751195,
+        28.723541297846882,
+        -22.184639066985635
+      ],
+      "image_bbox_within_occupied_rectangle": true,
+      "nearest_image_to_southern_approach_world": 22.184639066985635
+    },
+    "plank": {
+      "conservative_all_slot_alpha_bounds_house": [
+        631.11701308699,
+        372.51701308698995,
+        706.88298691301,
+        477.48652809853735
+      ],
+      "world_bbox_relative_to_door": [
+        70.41847220265589,
+        -53.54551004734411,
+        84.6106702973441,
+        -33.883014131062346
+      ],
+      "image_bbox_within_occupied_rectangle": true,
+      "nearest_image_to_southern_approach_world": 33.883014131062346
+    }
+  },
+  "support_contacts": [
+    {
+      "id": "cradle_front_left",
+      "pixel": [
+        338,
+        580
+      ],
+      "world_relative_to_door": [
+        15.512892499999998,
+        -14.68057499999999
+      ],
+      "inside_occupied_4x2": true
+    },
+    {
+      "id": "cradle_front_right",
+      "pixel": [
+        427,
+        557
+      ],
+      "world_relative_to_door": [
+        32.18403875,
+        -18.988848749999992
+      ],
+      "inside_occupied_4x2": true
+    },
+    {
+      "id": "rack_back_post",
+      "pixel": [
+        620,
+        472
+      ],
+      "world_relative_to_door": [
+        68.336075,
+        -34.91072999999999
+      ],
+      "inside_occupied_4x2": true
+    },
+    {
+      "id": "rack_front_post",
+      "pixel": [
+        706,
+        518
+      ],
+      "world_relative_to_door": [
+        84.4452725,
+        -26.29418249999999
+      ],
+      "inside_occupied_4x2": true
+    }
+  ],
+  "minimum_support_clearance_to_door_approach_world": 14.68057499999999,
+  "ground_and_approach_passed": true,
+  "production_file_hashes_unchanged": true,
+  "hut_original_pipeline_reconstruction": {
+    "unmasked_resampled_alpha_bounds": [
+      151,
+      465,
+      214,
+      527
+    ],
+    "foreground_excluded_alpha_bounds": [
+      151,
+      465,
+      214,
+      525
+    ],
+    "alpha_pixels_different_from_delivered_hut": 0,
+    "unmasked_resampled_world_extent": [
+      14.175,
+      13.950000000000001
+    ],
+    "foreground_removes_world_height": 0.45
+  }
+}

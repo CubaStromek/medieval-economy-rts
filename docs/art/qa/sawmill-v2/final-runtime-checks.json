@@ -1,0 +1,61 @@
+{
+  "date": "2026-09-12",
+  "captured_at_utc": "2026-09-12T20:39:28.650604+00:00",
+  "active_art": "v2",
+  "godot_version": "4.7.2.stable.official.ed1daf0bf",
+  "runs": [
+    {
+      "log": "final-import.txt",
+      "exit_code": 0,
+      "expected_result": null,
+      "result_present": null,
+      "errors_or_warnings": [],
+      "sha256": "1a99f88aa5d54ebda3fd1e2fc4888eecdf0f7e6f881622f562569a588315ad5c"
+    },
+    {
+      "log": "final-focused-headless.txt",
+      "exit_code": 0,
+      "expected_result": "SAWMILL REVISION v2: 41 cases, 0 failures",
+      "result_present": true,
+      "errors_or_warnings": [],
+      "sha256": "92dc12330971183b2b220a29b7b690030371cc32a6e4ae595804a8de0a40b0e5"
+    },
+    {
+      "log": "final-full-headless.txt",
+      "exit_code": 0,
+      "expected_result": "TEST RESULT: 854/854 passed",
+      "result_present": true,
+      "errors_or_warnings": [],
+      "sha256": "47656c07241291e6af689b363778032f2f864ce3facdea6b9c168fb2e5fd4d93"
+    },
+    {
+      "log": "final-focused-native.txt",
+      "exit_code": 0,
+      "expected_result": "SAWMILL REVISION v2: 41 cases, 0 failures",
+      "result_present": true,
+      "errors_or_warnings": [],
+      "sha256": "da33e8d8107e61ea0af39eb66071e55624040a8a34a7b76f4742a7cfa8e942e6"
+    }
+  ],
+  "identity_negative_control": {
+    "log": "final-revision-identity-negative.txt",
+    "expected_exit_code": 1,
+    "actual_exit_code": 1,
+    "preview_override_cannot_misidentify_default": true
+  },
+  "runtime_and_test_sha256": {
+    "res://scripts/view/sawmill_sprite_library.gd": "54d32da86751184169b2372b4da673f3ae326f83705047222958601cffe810a3",
+    "res://scripts/view/sawmill_operation.gd": "aefa9e0db7f42923b37dcc8b92478927f11a9e4391e0e252d0fd734421f6a31c",
+    "res://scripts/view/sawmill_operation_art.gd": "8cf1ccd34cc05c09337e35e560112c0f472e7d1d271e3a11b128b4b6a9d6f00b",
+    "res://scripts/view/production_building_life.gd": "63b0bce82454869b89d9bd55640785731c1e913796b3d8aa2a6865a47d462ba7",
+    "res://scripts/view/main_view.gd": "a127919bd0ec5019db4b93805b9e027f338620de7bd47a21ed159a3a0d4f1f67",
+    "res://tests/sawmill_sprite_tests.gd": "a5f5c2197e70ed867ba12466f71732cc581ff5c2b723dbb3734a3c4d6685ebe2",
+    "res://tests/production_building_life_tests.gd": "a9d57b2873e2ae655ad9a31fbd8e3bf8fb67f5ba8bebf3962140933d4e232cad",
+    "res://tests/sawmill_operation_tests.gd": "f885237c5b49d94a89e858a889af13d243136939270c8e0da9c61823d7552f4d",
+    "res://tests/sawmill_operation_art_tests.gd": "67299aaefd44bcc27c56748b058464229063d9177a127c68ece16e7d556b6219",
+    "res://tests/sawmill_revision_runner.gd": "52e9d4915873af1d5e66f80f6ff03a50a7a93088afd4d874688891eb91c200d3",
+    "res://tests/sawmill_qa_assets.gd": "51909ed984c2765ce7266a9c065b600827a342fa19439ca575ffc544e5f54c49",
+    "res://tests/test_runner.gd": "e8bf9381806ab1e2fc085730bbfb94d0ee2ad56ae996eca57af67c3a7dc4d74b"
+  },
+  "assets_snapshot": "final-asset-hashes.json"
+}

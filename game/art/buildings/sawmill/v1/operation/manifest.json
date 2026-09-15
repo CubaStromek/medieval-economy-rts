@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "building_id": "sawmill",
+  "asset_version": "operation-v1",
+  "date": "2026-09-12",
+  "canvas": [
+    800,
+    800
+  ],
+  "stock": {
+    "log": {
+      "texture": "res://art/buildings/sawmill/v1/operation/stock/log.png",
+      "capacity": 4,
+      "slots": [
+        [
+          368,
+          482,
+          38,
+          27
+        ],
+        [
+          378,
+          478,
+          38,
+          27
+        ],
+        [
+          368,
+          470,
+          38,
+          27
+        ],
+        [
+          378,
+          466,
+          38,
+          27
+        ]
+      ],
+      "foreground": [],
+      "label": [
+        372,
+        466
+      ]
+    },
+    "plank": {
+      "texture": "res://art/buildings/sawmill/v1/operation/stock/plank.png",
+      "capacity": 6,
+      "slots": [
+        [
+          579,
+          479,
+          76,
+          41
+        ],
+        [
+          579,
+          473,
+          76,
+          41
+        ],
+        [
+          579,
+          467,
+          76,
+          41
+        ],
+        [
+          579,
+          443,
+          76,
+          41
+        ],
+        [
+          579,
+          437,
+          76,
+          41
+        ],
+        [
+          579,
+          431,
+          76,
+          41
+        ]
+      ],
+      "foreground": [],
+      "label": [
+        582,
+        425
+      ]
+    }
+  },
+  "work": {
+    "backplate": "res://art/buildings/sawmill/v1/operation/work/backplate.png",
+    "frames": [
+      "res://art/buildings/sawmill/v1/operation/work/worker-0.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-1.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-2.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-3.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-4.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-5.png"
+    ],
+    "body_height_px": 412,
+    "ground_contact": [
+      374.5,
+      489
+    ],
+    "foot": [
+      521,
+      549
+    ],
+    "cycles_per_batch": 6,
+    "log": {
+      "texture": "res://art/buildings/sawmill/v1/operation/work/processing-log.png",
+      "rect": [
+        429,
+        467,
+        88,
+        22
+      ]
+    },
+    "foreground": [
+      {
+        "texture": "res://art/buildings/sawmill/v1/operation/stock/foreground.png",
+        "rect": [
+          0,
+          0,
+          800,
+          800
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "stock": "stock/geometry.json",
+    "worker": "work/worker-geometry.json",
+    "brief": "docs/art/briefs/sawmill-operation-v1.md",
+    "original_game_role": "Observed behavior only; no original KaM pixels in any production file",
+    "backplate": "Own imagegen edit; only masked wall region from that image is used",
+    "work_log": "Own generated log, trimmed and resampled to an authored bench prop"
+  },
+  "asset_hashes": {
+    "res://art/buildings/sawmill/v1/operation/work/backplate.png": "37cc6cb1ab8fe4f04d92c49f2d7fbfd068880fbfd7be1d6fc398286bf54e761b",
+    "res://art/buildings/sawmill/v1/operation/work/worker-0.png": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861",
+    "res://art/buildings/sawmill/v1/operation/work/worker-1.png": "be269ff4b49d2962db4d27d5178c5380e8cb5837e97f36c2f6ce34be61e829e8",
+    "res://art/buildings/sawmill/v1/operation/work/worker-2.png": "b2b1eba431e5fcc09a834187578a471b9b6ced0a8fc51336962724303af2a811",
+    "res://art/buildings/sawmill/v1/operation/work/worker-3.png": "716654c3de538b8f62d6c731199b7a20d61bd7923454d15085d39bef7da1f7f6",
+    "res://art/buildings/sawmill/v1/operation/work/worker-4.png": "2bed208cb822bc002b50fa6d293fb1cab36bf81f1c79993e8ba22693e322f614",
+    "res://art/buildings/sawmill/v1/operation/work/worker-5.png": "22c1ce5200883771b9fbe32190e384e3bbddb5080c01aab13beff6c06f0cafb7",
+    "res://art/buildings/sawmill/v1/operation/work/processing-log.png": "c618208c02fbd11b08b91b7a246f194079ad103bb936b7a06d7d4e2a2f76c483",
+    "res://art/buildings/sawmill/v1/operation/stock/foreground.png": "f36d0f9378e1b1b526ed6c6ef6014f8b1764e9bfd43eb07fef535be5d13f7be5",
+    "res://art/buildings/sawmill/v1/operation/stock/log.png": "969d6aa52627c7814188bf7f45f2b8ae2e4d3dbb8b5744b8542af8e799e0777e",
+    "res://art/buildings/sawmill/v1/operation/stock/plank.png": "f6b9d7e3c9bf5aeb2c20e95fadb0c46c687321c75b4fbe593d435cc6092f1168"
+  }
+}

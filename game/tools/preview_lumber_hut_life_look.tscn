@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tools/preview_lumber_hut_life_look.gd" id="1_preview"]
+
+[node name="LumberHutLifeLookPreview" type="Node"]
+script = ExtResource("1_preview")

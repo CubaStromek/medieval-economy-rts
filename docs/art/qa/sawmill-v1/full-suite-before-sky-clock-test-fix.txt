@@ -1,0 +1,146 @@
+ERROR: Failed to open 'user://logs/godot2026-09-12T14.17.05.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Condition "ret != noErr" is true. Returning: ""
+   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)
+Imported terrain: 7 cases, 0 failures
+Mountainous Region start: 4 cases, 0 failures
+Imported terrain view: 9 cases, 0 failures
+Main menu and saved sessions: 15 cases, 0 failures
+Foundation presentation: 6 cases, 0 failures
+Foundation preparation: 13 cases, 0 failures
+Foundation saves: 9 cases, 0 failures
+Building footprints: 14 cases, 0 failures
+Lumber hut footprint revision: 12 cases, 0 failures
+Footprint saves: 8 cases, 0 failures
+Footprint economy integration: 3 cases, 0 failures
+Footprint rendering and input: 7 cases, 0 failures
+Worker movement: 6 cases, 0 failures
+Eight-way paths: 10 cases, 0 failures
+Diagonal movement: 9 cases, 0 failures
+Diagonal trails: 6 cases, 0 failures
+Idle yielding: 10 cases, 0 failures
+Narrow-lane yielding: 9 cases, 0 failures
+Idle movement recovery: 4 cases, 0 failures
+Yield destination recovery: 3 cases, 0 failures
+Fog of war: 10 cases, 0 failures
+Fog saves: 9 cases, 0 failures
+Fog presentation and input: 8 cases, 0 failures
+Fog gameplay activation: 4 cases, 0 failures
+Sustained carrier traffic: 7 cases, 0 failures
+Trail save compatibility: 8 cases, 0 failures
+Natural trail wear: 14 cases, 0 failures
+Natural trail rendering: 9 cases, 0 failures
+One worker per workplace: 20 cases, 0 failures
+Workplace save compatibility: 11 cases, 0 failures
+Forester and fisher hut UI: 4 cases, 0 failures
+Forester hut: 11 cases, 0 failures
+Fisher hut: 5 cases, 0 failures
+Indoor save compatibility: 6 cases, 0 failures
+Indoor worker lifecycle: 10 cases, 0 failures
+Calendar clock: 7 cases, 0 failures
+Solar light cycle: 8 cases, 0 failures
+Civilian daily schedule: 10 cases, 0 failures
+Workers' housing: 9 cases, 0 failures
+Night schedule save compatibility: 9 cases, 0 failures
+Night meals and deferred cargo: 6 cases, 0 failures
+Save validation: 4 cases, 0 failures
+Grid configuration: 2 cases, 0 failures
+Economy invariants: 2 cases, 0 failures
+TRANSPORT SEARCH WORK: generation=1, validation=1, pickup=9 route calls for 8 consumers
+Transport destination searches: 5 cases, 0 failures
+Production chains: 15 cases, 0 failures
+Natural deposits and saves: 9 cases, 0 failures
+Classic economy: 11 cases, 0 failures
+Civilian inn meals: 12 cases, 0 failures
+Military food deliveries: 14 cases, 0 failures
+Food save compatibility: 8 cases, 0 failures
+Food controls: 6 cases, 0 failures
+Daily hunger: 8 cases, 0 failures
+Gentle seven-day nutrition: 13 cases, 0 failures
+Seven-day nutrition saves: 8 cases, 0 failures
+Seven-day nutrition indicators: 5 cases, 0 failures
+Visible satiety: 6 cases, 0 failures
+Individual work and building pause: 12 cases, 0 failures
+Pause save compatibility: 9 cases, 0 failures
+Read-only first-person thoughts: 10 cases, 0 failures
+Activity inspector and controls: 7 cases, 0 failures
+KaM construction prices: 3 cases, 0 failures
+Construction cost compatibility: 7 cases, 0 failures
+Construction cancellation: 7 cases, 0 failures
+Resource stock accounting: 7 cases, 0 failures
+Terrain heights: 9 cases, 0 failures
+Terrain rendering: 4 cases, 0 failures
+Terrain change tracking: 6 cases, 0 failures
+Relief demo: 3 cases, 0 failures
+Minimal test level: 4 cases, 0 failures
+Viewport input: 4 cases, 0 failures
+HUD layout and navigation: 16 cases, 0 failures
+Calendar clock HUD: 4 cases, 0 failures
+Night schedule HUD: 5 cases, 0 failures
+SCRIPT ERROR: Cannot call method 'get_global_rect' on a null value.
+          at: _check_layout_and_overlays (res://tests/sky_clock_view_tests.gd:100)
+          GDScript backtrace (most recent call first):
+              [0] _check_layout_and_overlays (res://tests/sky_clock_view_tests.gd:100)
+              [1] _settle (res://tests/sky_clock_view_tests.gd:147)
+Sky clock HUD: 5 cases, 0 failures
+Solar lighting and shadows: 8 cases, 0 failures
+Responsive window layout: 5 cases, 0 failures
+HUD scaling policy: 7 cases, 0 failures
+Czech HUD names and counts: 5 cases, 0 failures
+Night wolves: 13 cases, 0 failures
+Night wolves save: 5 cases, 0 failures
+Construction cancellation UI: 2 cases, 0 failures
+Painted lumber-hut construction: 12 cases, 0 failures
+Painted lumber-hut stock: 8 cases, 0 failures
+Lumber-hut presence and night life: 13 cases, 0 failures
+Painted sawmill integration: 8 cases, 0 failures
+WARNING: Loaded resource as image file, this will not work on export: 'res://art/buildings/sawmill/v1/life/resting_carpenter.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+     at: load_from_file (core/io/image.cpp:2780)
+     GDScript backtrace (most recent call first):
+         [0] _test_imported_rest_body_and_hitmask (res://tests/production_building_life_tests.gd:215)
+         [1] run (res://tests/production_building_life_tests.gd:21)
+         [2] _ready (res://tests/test_runner.gd:246)
+         [3] run (res://tests/lumber_hut_life_tests.gd:23)
+         [4] _test_actual_scene_time_and_pause (res://tests/lumber_hut_life_tests.gd:582)
+WARNING: Loaded resource as image file, this will not work on export: 'res://art/buildings/sawmill/v1/life/resting_carpenter.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+     at: load_from_file (core/io/image.cpp:2780)
+     GDScript backtrace (most recent call first):
+         [0] _test_imported_looks_keep_body (res://tests/production_building_life_tests.gd:233)
+         [1] run (res://tests/production_building_life_tests.gd:21)
+         [2] _ready (res://tests/test_runner.gd:246)
+         [3] run (res://tests/lumber_hut_life_tests.gd:23)
+         [4] _test_actual_scene_time_and_pause (res://tests/lumber_hut_life_tests.gd:582)
+WARNING: Loaded resource as image file, this will not work on export: 'res://art/buildings/sawmill/v1/life/look/left.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+     at: load_from_file (core/io/image.cpp:2780)
+     GDScript backtrace (most recent call first):
+         [0] _test_imported_looks_keep_body (res://tests/production_building_life_tests.gd:235)
+         [1] run (res://tests/production_building_life_tests.gd:21)
+         [2] _ready (res://tests/test_runner.gd:246)
+         [3] run (res://tests/lumber_hut_life_tests.gd:23)
+         [4] _test_actual_scene_time_and_pause (res://tests/lumber_hut_life_tests.gd:582)
+WARNING: Loaded resource as image file, this will not work on export: 'res://art/buildings/sawmill/v1/life/look/right.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+     at: load_from_file (core/io/image.cpp:2780)
+     GDScript backtrace (most recent call first):
+         [0] _test_imported_looks_keep_body (res://tests/production_building_life_tests.gd:235)
+         [1] run (res://tests/production_building_life_tests.gd:21)
+         [2] _ready (res://tests/test_runner.gd:246)
+         [3] run (res://tests/lumber_hut_life_tests.gd:23)
+         [4] _test_actual_scene_time_and_pause (res://tests/lumber_hut_life_tests.gd:582)
+Production-building home life: 12 cases, 0 failures
+Relief viewport: 6 cases, 0 failures
+Square terrain and slope readability: 8 cases, 0 failures
+Unit sprites: 6 cases, 0 failures
+Lumberjack animation assets and alpha: 6 cases, 0 failures
+Lumberjack observed animation state: 10 cases, 0 failures
+Lumberjack game presentation: 13 cases, 0 failures
+Indoor unit visibility: 6 cases, 0 failures
+Environment graphics: 8 cases, 0 failures
+Retained terrain cache: 8 cases, 0 failures
+Painted V1 terrain: 12 cases, 0 failures
+Painted V1 material data: 8 cases, 0 failures
+Painted V1 source metadata: 7 cases, 0 failures
+TEST RESULT: 829/829 passed

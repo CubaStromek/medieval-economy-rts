@@ -100,9 +100,6 @@ static func _test_work_eligibility(failures: Array[String]) -> void:
 	tree["amount"] = 0
 	_expect(not helper.sample(world, worker, 0.0)["chopping"], "Depleted source is not productive work", failures)
 	tree["amount"] = 3
-	world.economy_enabled = true
-	world.tick = 4000
-	_expect(not helper.sample(world, worker, 0.0)["chopping"], "Night work restrictions remain authoritative", failures)
 
 
 static func _test_coincident_tree(failures: Array[String]) -> void:

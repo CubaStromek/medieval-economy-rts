@@ -9,9 +9,6 @@ const WorldSnapshotClass = preload("res://scripts/simulation/world_snapshot.gd")
 const ResourceDepositsClass = preload("res://scripts/simulation/resource_deposits.gd")
 const ClassicEconomyClass = preload("res://scripts/simulation/classic_economy.gd")
 const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
-const DayCycleClass = preload("res://scripts/simulation/day_cycle.gd")
-const DailyScheduleClass = preload("res://scripts/simulation/daily_schedule.gd")
-const ResidencesClass = preload("res://scripts/simulation/residences.gd")
 const IndoorWorkersClass = preload("res://scripts/simulation/indoor_workers.gd")
 const IdleYieldRouteClass = preload("res://scripts/simulation/idle_yield_route.gd")
 const InnFeedingClass = preload("res://scripts/simulation/inn_feeding.gd")
@@ -22,9 +19,11 @@ const SoldierFoodSupplyClass = preload("res://scripts/simulation/soldier_food_su
 const BuildingFootprintsClass = preload("res://scripts/simulation/building_footprints.gd")
 const BuildingFoundationsClass = preload("res://scripts/simulation/building_foundations.gd")
 const FogOfWarClass = preload("res://scripts/simulation/fog_of_war.gd")
+## Shared display-name table; a plain static string map, not a view node.
+const UiTextClass = preload("res://scripts/ui_text.gd")
 
 const DEFAULT_MAP_SIZE := Vector2i(20, 16)
-const TICK_SECONDS: float = DayCycleClass.TICK_SECONDS
+const TICK_SECONDS: float = 0.1
 const LUMBERJACK_TASKS: Array[String] = ["harvest_tree"]
 const FIELD_MATURE_AGE_TICKS: int = 200
 const FARMER_TASKS: Array[String] = ["sow_field", "harvest_field"]
@@ -134,23 +133,25 @@ func setup_demo() -> void:
 	spawn_worker(Vector2i(5, 10), "lumberjack", lumber_hut_id)
 	spawn_worker(Vector2i(7, 10), "carrier")
 	spawn_worker(Vector2i(9, 10), "gardener", forester_hut_id)
-	_push_event("Workers harvest, transport, and autonomously replant the woodland.")
+	_push_event("Dělníci těží, vozí a sami znovu osazují les.")
 
 
-func calendar_time() -> Dictionary:
-	return DayCycleClass.at_tick(tick)
-
-
-func is_night_rest_time() -> bool:
-	return DayCycleClass.is_night(tick)
-
-
-func follows_daily_schedule(worker: Dictionary) -> bool:
-	return DailyScheduleClass.follows(self, worker)
+## The single way a unit leaves the world. Starvation must release
+## exactly the same task, planting reservation and occupied tile; a caller that
+## erased `workers` directly would leave the task board holding a dead id.
+func remove_worker(worker_id: int) -> bool:
+	var worker: Dictionary = workers.get(worker_id, {}) as Dictionary
+	if worker.is_empty():
+		return false
+	task_board.release(int(worker["task_id"]), worker_id)
+	_release_planting_reservation(worker)
+	_release_worker_tile(worker)
+	workers.erase(worker_id)
+	return true
 
 
 func can_worker_work(worker: Dictionary) -> bool:
-	return is_local_entity(worker) and not is_worker_work_paused(worker) and (not is_night_rest_time() or not follows_daily_schedule(worker))
+	return is_local_entity(worker) and not is_worker_work_paused(worker)
 
 
 func is_building_enabled(building: Dictionary) -> bool:
@@ -173,23 +174,6 @@ func unit_thoughts(worker: Dictionary) -> Dictionary:
 	return UnitThoughtsClass.describe(self, worker)
 
 
-func is_worker_sleeping(worker: Dictionary) -> bool:
-	return DailyScheduleClass.sleeping(self, worker)
-
-
-func worker_schedule_status(worker: Dictionary) -> String:
-	return DailyScheduleClass.status(self, worker)
-
-
-func residence_occupancy(building_id: int) -> Dictionary:
-	return ResidencesClass.occupancy(self, building_id)
-
-
-func residence_has_room(building_id: int, worker_id: int) -> bool:
-	var worker: Dictionary = workers.get(worker_id, {})
-	return not worker.is_empty() and ResidencesClass.valid_home(self, worker, building_id)
-
-
 func step_tick() -> void:
 	tick += 1
 	grid.tick_trails(tick)
@@ -197,7 +181,6 @@ func step_tick() -> void:
 	_workers_moved_this_tick.clear()
 	_update_worker_visual_progress()
 	ActivityControlClass.prepare_tick(self)
-	DailyScheduleClass.prepare_tick(self)
 	_tick_trees()
 	_tick_fields()
 	ClassicEconomyClass.tick_needs(self)
@@ -274,7 +257,6 @@ func spawn_worker(cell: Vector2i, unit_type: String = "carrier", home_id: int = 
 		"owner_id": owner_id,
 		"home_id": home_id,
 		"enabled": true,
-		"sleep_home_id": 0,
 		"inside_building_id": inside_building_id,
 		"indoor_wait_ticks": 0,
 		"position": cell,
@@ -329,7 +311,7 @@ func request_army_food() -> int:
 		if request_soldier_food(id):
 			requested += 1
 	if requested > 0:
-		_push_event("Food requested for %d soldiers. Carriers will deliver one ration each." % requested)
+		_push_event("Vyžádáno jídlo pro %d vojáků. Nosiči doručí každému jednu dávku." % requested)
 	return requested
 
 
@@ -344,7 +326,7 @@ func inn_occupied_seats(inn_id: int) -> int:
 func hunger_loss_per_interval() -> int:
 	var interval: int = maxi(1, int(catalog.economy.get("condition_interval_ticks", 10)))
 	# Compatibility/inspection helper: an upper-rounded awake interval. Actual
-	# consumption preserves fractional condition and accounts for real sleep.
+	# consumption preserves fractional condition.
 	return ceili(float(NutritionClass.decay_milli_per_tick(self, {}) * interval) / 1000.0)
 
 
@@ -530,8 +512,8 @@ func place_building(building_type: String, cell: Vector2i, owner_id: int = 1) ->
 	}
 	for occupied: Vector2i in building_cells(buildings[entity_id]):
 		grid.block(occupied, entity_id)
-	var placement_message: String = "Construction site placed: %s." if economy_enabled else "Built %s."
-	_push_event(placement_message % String(catalog.building(building_type).get("display_name", building_type)))
+	var placement_message: String = "Založeno staveniště: %s." if economy_enabled else "Postaveno: %s."
+	_push_event(placement_message % UiTextClass.building_name(catalog, building_type))
 	update_visibility()
 	return entity_id
 
@@ -554,7 +536,7 @@ func cancel_construction(building_id: int) -> bool:
 	# disconnected warehouse must never turn cancellation into lost materials.
 	var transfers: Array[Dictionary] = _construction_refund_plan(refund, building["entrance"])
 	if not refund.is_empty() and transfers.is_empty():
-		_push_event("Cannot cancel construction: reachable completed warehouses need room for the returned materials.")
+		_push_event("Stavbu nelze zrušit: dostupné dokončené sklady nemají místo pro vrácený materiál.")
 		return false
 	for transfer: Dictionary in transfers:
 		var storage: Dictionary = buildings[int(transfer["warehouse_id"])]["storage"]
@@ -565,8 +547,6 @@ func cancel_construction(building_id: int) -> bool:
 	for worker: Dictionary in workers.values():
 		if int(worker["home_id"]) == building_id:
 			worker["home_id"] = 0
-		if int(worker.get("sleep_home_id", 0)) == building_id:
-			worker["sleep_home_id"] = 0
 		if int(worker["source_id"]) == building_id or int(worker["destination_id"]) == building_id or cancelled_tasks.has(int(worker["task_id"])):
 			_release_worker_task(worker)
 			if not String(worker["carrying"]).is_empty():
@@ -578,7 +558,7 @@ func cancel_construction(building_id: int) -> bool:
 	# point at the removed site while carriers choose their replacement routes.
 	for worker: Dictionary in reroute_workers:
 		_resume_carried_ware(worker)
-	_push_event("Construction cancelled: %s. Materials returned; carriers redirected." % String(catalog.building(building["type"]).get("display_name", building["type"])))
+	_push_event("Stavba zrušena: %s. Materiál vrácen, nosiči přesměrováni." % UiTextClass.building_name(catalog, String(building["type"])))
 	return true
 
 
@@ -778,9 +758,9 @@ func queue_unit_training(building_id: int, unit_type: String) -> bool:
 	if training_queue.size() == 1:
 		building["training_remaining"] = _training_ticks_for(unit_type)
 	_push_event(
-		"Queued %s at %s." % [
-			String(unit_definition.get("display_name", unit_type)),
-			String(building_definition.get("display_name", building["type"])),
+		"Do fronty ve stavbě %s zařazen výcvik: %s." % [
+			UiTextClass.building_name(catalog, String(building["type"])),
+			UiTextClass.unit_name(catalog, unit_type),
 		]
 	)
 	return true
@@ -833,9 +813,9 @@ func _tick_trees() -> void:
 		if current_stage == previous_stage:
 			continue
 		if current_stage == TREE_STAGE_YOUNG:
-			_push_event("Sapling #%d grew into a young tree." % tree_id)
+			_push_event("Stromek #%d vyrostl v mladý strom." % tree_id)
 		elif current_stage == TREE_STAGE_MATURE:
-			_push_event("Tree #%d matured and can now be harvested." % tree_id)
+			_push_event("Strom #%d dospěl a lze ho pokácet." % tree_id)
 
 
 func _tick_buildings() -> void:
@@ -851,8 +831,7 @@ func _tick_buildings() -> void:
 		ClassicEconomyClass.select_next_recipe(self, building)
 		var definition: Dictionary = catalog.building(String(building["type"]))
 		var recipe: Dictionary = ClassicEconomyClass.recipe_for(self, building)
-		if not recipe.is_empty() and not (is_night_rest_time() and String(definition.get("worker", "")) != "recruit" \
-				and catalog.units.has(String(definition.get("worker", "")))):
+		if not recipe.is_empty():
 			var operator: Dictionary = _building_operator(id)
 			if String(definition.get("worker", "")).is_empty() or not operator.is_empty() \
 					or (not economy_enabled and building["type"] == "sawmill" and not is_worker_work_paused(workplace_worker(id))):
@@ -913,9 +892,9 @@ func _tick_unit_training(building: Dictionary) -> void:
 		0 if training_queue.is_empty() else _training_ticks_for(String(training_queue[0]))
 	)
 	_push_event(
-		"%s trained a %s." % [
-			String(building_definition.get("display_name", building["type"])),
-			String(catalog.unit(unit_type).get("display_name", unit_type)),
+		"%s vycvičila profesi %s." % [
+			UiTextClass.building_name(catalog, String(building["type"])),
+			UiTextClass.unit_name(catalog, unit_type),
 		]
 	)
 
@@ -941,8 +920,6 @@ func _tick_worker(worker_id: int) -> void:
 	if not is_local_entity(worker):
 		return
 	if InnFeedingClass.tick_worker(self, worker):
-		return
-	if DailyScheduleClass.handle_worker(self, worker):
 		return
 	if is_worker_inside(worker) and int(worker.get("indoor_wait_ticks", 0)) > 0:
 		worker["indoor_wait_ticks"] = int(worker["indoor_wait_ticks"]) - 1
@@ -1342,8 +1319,6 @@ func _reconsider_blocked_worker(worker: Dictionary) -> void:
 		else:
 			_begin_worker_move(worker, route, route.back())
 		return
-	if DailyScheduleClass.reconsider_blocked(self, worker):
-		return
 	if SoldierFoodSupplyClass.reconsider_blocked(self, worker):
 		return
 	var worker_id: int = int(worker["id"])
@@ -1460,13 +1435,12 @@ func _can_interact_from_adjacent(worker: Dictionary, blocked_cell: Vector2i) -> 
 
 func _worker_allows_occupied_target(worker: Dictionary) -> bool:
 	var action: String = String(worker["action"])
-	return action.begins_with("pickup_") or action.begins_with("deliver_") or ["operate", "build_site", "eat", "report_barracks", "go_sleep", "pause_return"].has(action)
+	return action.begins_with("pickup_") or action.begins_with("deliver_") or ["operate", "build_site", "eat", "report_barracks", "pause_return"].has(action)
 
 
 func _resume_carried_ware(worker: Dictionary) -> void:
 	# Pausing prevents new work, not safe delivery of goods already in hand.
-	# Civilian night rest still defers logistics until the morning.
-	if not is_local_entity(worker) or (is_night_rest_time() and follows_daily_schedule(worker)):
+	if not is_local_entity(worker):
 		return
 	if SoldierFoodSupplyClass.resume(self, worker):
 		return
@@ -1492,8 +1466,6 @@ func _resume_carried_ware(worker: Dictionary) -> void:
 
 func _on_worker_arrived(worker: Dictionary) -> void:
 	if ActivityControlClass.arrive(self, worker):
-		return
-	if DailyScheduleClass.arrive(self, worker):
 		return
 	if SoldierFoodSupplyClass.arrive(self, worker):
 		return
@@ -1593,7 +1565,7 @@ func _finish_planting(worker: Dictionary) -> void:
 		var tree_id: int = _create_tree(target, 3, 0)
 		planted = tree_id != 0
 		if planted:
-			_push_event("Gardener planted sapling #%d." % tree_id)
+			_push_event("Lesník zasadil stromek #%d." % tree_id)
 	_reset_worker(worker)
 	worker["planting_cooldown"] = _gardener_timing(
 		worker,
@@ -1798,7 +1770,9 @@ func _take_entity_id() -> int:
 
 
 func _push_event(message: String) -> void:
-	event_log.push_front("[%d] %s" % [tick, message])
+	# The raw tick number meant nothing to a player; the log is ordered newest
+	# first, and the clock already shows the time.
+	event_log.push_front(message)
 	if event_log.size() > 5:
 		event_log.resize(5)
 
@@ -1854,7 +1828,7 @@ func place_field(cell: Vector2i, kind: String = "wheat") -> int:
 	var id: int = _take_entity_id()
 	fields[id] = {"id": id, "position": cell, "kind": kind, "age_ticks": 0 if kind == "vine" else -1}
 	grid.clear_trail(cell)
-	_push_event("Prepared a wheat field. A farmer will sow it.")
+	_push_event("Připraveno obilné pole. Sedlák ho oseje.")
 	return id
 
 
@@ -1959,81 +1933,80 @@ func production_status(building: Dictionary) -> String:
 			for worker: Dictionary in workers.values():
 				if worker["action"] == "build_site" and worker["state"] == "working" and int(worker["source_id"]) == int(building["id"]):
 					if not can_worker_work(worker):
-						return "Ground preparation paused for the Builder's rest."
+						return "Příprava terénu stojí, Stavitel odpočívá."
 					var reason: String = BuildingFoundationsClass.waiting_reason(self, building, int(worker["id"]))
-					return reason if not reason.is_empty() else "Leveling ground — %.1f s of work remaining." % (float(building["foundation_work_remaining"]) * TICK_SECONDS)
-			return "Waiting for a Builder to level the ground; materials follow afterward."
+					return reason if not reason.is_empty() else "Srovnávání terénu — zbývá %.1f s práce." % (float(building["foundation_work_remaining"]) * TICK_SECONDS)
+			return "Čeká na Stavitele, který srovná terén; materiál dorazí potom."
 		if not ClassicEconomyClass.materials_ready(self, building):
-			return "Carriers are bringing construction materials."
+			return "Nosiči vozí stavební materiál."
 		for worker: Dictionary in workers.values():
 			if worker["action"] == "build_site" and worker["state"] == "working" and int(worker["source_id"]) == int(building["id"]):
-				return "Building — %.1f s remaining" % (float(building["construction_remaining"]) / 10.0)
-		return "Materials ready — waiting for a Builder."
+				return "Staví se — zbývá %.1f s" % (float(building["construction_remaining"]) / 10.0)
+		return "Materiál připraven — čeká na Stavitele."
 	var assigned_worker: Dictionary = workplace_worker(int(building["id"]))
 	if not assigned_worker.is_empty() and not bool(assigned_worker.get("enabled", true)):
 		return "Pracovník má pozastavenou práci; své místo si ponechává."
 	if not assigned_worker.is_empty() and (int(assigned_worker.get("meal_ticks_left", 0)) > 0 \
 			or assigned_worker["action"] == "eat"):
-		return "Worker is eating at the Inn; this workplace remains assigned."
+		return "Pracovník jí v hostinci; pracoviště mu zůstává přidělené."
 	if type in ["farm", "vineyard"]:
 		var has_farmer: bool = false
 		for worker: Dictionary in workers.values():
 			if worker["type"] == "farmer" and int(worker["home_id"]) == int(building["id"]):
 				has_farmer = true
 		if not has_farmer:
-			return "Waiting for a Farmer — train one at a school."
+			return "Čeká na Sedláka — vycvič ho ve Škole."
 		for field: Dictionary in fields.values():
 			if _field_in_farm_range(field, int(building["id"])) and String(field.get("kind", "wheat")) == String(definition.get("field_kind", "wheat")):
-				return "Farmers tend and harvest fields within 8 tiles."
-		return "Build %s fields within 8 tiles." % ("vine" if type == "vineyard" else "wheat")
+				return "Sedláci obdělávají a sklízejí pole do 8 polí."
+		return "Postav do 8 polí %s pole." % ("vinná" if type == "vineyard" else "obilná")
 	if definition.has("extract_resource"):
 		var remaining: int = 0
 		for deposit: Dictionary in deposits.values():
 			if deposit["resource"] == definition["extract_resource"] and ResourceDepositsClass._in_range(definition, building["position"], deposit["position"], building_cells(building)):
 				remaining += int(deposit["amount"])
 		if remaining == 0:
-			return "Nearby deposits are exhausted. Build beside a new deposit."
-		return "Nearby reserves: %d %s. A %s gathers them." % [remaining, catalog.resources[definition["extract_resource"]]["display_name"], catalog.unit(definition["worker"])["display_name"]]
+			return "Blízká ložiska jsou vyčerpaná. Postav stavbu u nového ložiska."
+		return "Blízké zásoby: %d %s. Těží je %s." % [remaining, UiTextClass.resource_name(catalog, String(definition["extract_resource"])), UiTextClass.unit_name(catalog, String(definition["worker"]))]
 	if type == "school":
 		if (building["training_queue"] as Array).is_empty():
-			return "Choose a profession below. Each citizen costs 1 Gold."
+			return "Vyber níže profesi. Každý obyvatel stojí 1 zlato."
 		if economy_enabled and not bool(building["training_paid"]):
-			return "Waiting for Gold from a carrier."
-		return "Training paid — %.1f s remaining" % (float(building["training_remaining"]) / 10.0)
+			return "Čeká na zlato od nosiče."
+		return "Výcvik zaplacen — zbývá %.1f s" % (float(building["training_remaining"]) / 10.0)
 	if type == "inn":
-		return "Hungry citizens come here for delivered food."
+		return "Hladoví civilisté si sem chodí pro dovezené jídlo."
 	if type in ["barracks", "town_hall", "marketplace"]:
 		var orders: Array = building["service_queue"]
 		if orders.is_empty():
-			return "Choose an order below."
+			return "Vyber níže objednávku."
 		var order: Dictionary = orders[0]
 		if order["kind"] == "trade":
-			return "Carriers deliver the payment and collect traded wares."
+			return "Nosiči doručí platbu a vyzvednou směněné zboží."
 		var soldier: Dictionary = catalog.soldiers[order["unit"]]
 		for resource: String in soldier["equipment"]:
 			if int(building["inputs"].get(resource, 0)) < int(soldier["equipment"][resource]):
-				return "Waiting for %s" % catalog.resources[resource]["display_name"]
-		return "Equipment ready — waiting for a Recruit from the school." if bool(soldier.get("requires_recruit", false)) else "Gold ready — waiting for a free exit."
+				return "Chybí: %s" % UiTextClass.resource_name(catalog, String(resource))
+		return "Výstroj připravena — čeká na rekruta ze Školy." if bool(soldier.get("requires_recruit", false)) else "Zlato připraveno — čeká na volný východ."
 	if type == "watchtower":
-		return "A Recruit guards the tower; carriers bring stone ammunition."
+		return "Věž hlídá rekrut, nosiči vozí kamennou munici."
 	if bool(definition.get("needs_order", false)) and (building["production_queue"] as Array).is_empty():
-		return "Choose equipment to produce below."
+		return "Vyber níže výzbroj k výrobě."
 	var recipe: Dictionary = ClassicEconomyClass.recipe_for(self, building)
 	if recipe.is_empty():
 		return ""
 	var staff: String = String(definition.get("worker", ""))
 	var staffed: bool = staff.is_empty() or not _building_operator(int(building["id"])).is_empty() or (not economy_enabled and type == "sawmill")
 	if int(building["process_remaining"]) > 0:
-		return "Producing — %.1f s remaining" % (float(building["process_remaining"]) / 10.0) if staffed else "Production paused — waiting for %s" % String(catalog.unit(staff).get("display_name", staff))
+		return "Vyrábí — zbývá %.1f s" % (float(building["process_remaining"]) / 10.0) if staffed else "Výroba stojí — čeká na profesi %s" % UiTextClass.unit_name(catalog, staff)
 	for resource: String in recipe["inputs"]:
 		if int(building["inputs"].get(resource, 0)) < int(recipe["inputs"][resource]):
-			return "Waiting for %s" % String(catalog.resources[resource]["display_name"])
+			return "Chybí: %s" % UiTextClass.resource_name(catalog, String(resource))
 	if not _recipe_ready(building):
-		return "Output full — waiting for a carrier"
+		return "Sklad výstupu je plný — čeká na nosiče"
 	if not staffed:
-		return "Waiting for %s — train one at a school." % String(catalog.unit(staff).get("display_name", staff))
-	return "Ready"
-
+		return "Čeká na profesi %s — vycvič ji ve Škole." % UiTextClass.unit_name(catalog, staff)
+	return "Připraveno"
 
 
 func _generate_economy_tasks() -> void:
@@ -2154,13 +2127,18 @@ func _ware_destination(resource: String, from: Vector2i, blockers: Dictionary = 
 			elif _warehouse_room(building, resource, worker_id) <= 0:
 				continue
 			var target: Vector2i = building["entrance"]
+			if existence_only and blockers.is_empty():
+				# Task generation/validation only needs a reachable receiver, which
+				# static connectivity answers exactly without building a route. The
+				# real pickup still ranks all destinations against current routes.
+				if from == target or _route_exists(from, target):
+					return id
+				continue
 			var route_blockers: Dictionary = blockers.duplicate()
 			route_blockers.erase(target)
 			var path: Array[Vector2i] = _path_with_yielding(from, target, route_blockers, worker_id)
 			if from != target and path.is_empty():
 				continue
-			# Task generation/validation only needs a reachable receiver. The real
-			# pickup still ranks all destinations against the current stock/routes.
 			if existence_only:
 				return id
 			var cost: int = GridPathfinderClass.path_cost(grid, path, from)
@@ -2172,6 +2150,11 @@ func _ware_destination(resource: String, from: Vector2i, blockers: Dictionary = 
 		if best != 0:
 			return best
 	return 0
+
+
+## Same answer as an unblocked route search, without building the route.
+func _route_exists(from: Vector2i, to: Vector2i) -> bool:
+	return GridPathfinderClass.is_reachable(grid, from, to)
 
 
 func _pickup_ware(worker: Dictionary, resource: String) -> void:
@@ -2302,7 +2285,7 @@ func setup_economy_demo() -> void:
 			queue_production(int(ids[type]), recipe)
 	queue_recruitment(int(ids["barracks"]), "axe_fighter")
 	economy_enabled = true
-	_push_event("KaM economy ready: finite deposits, food, construction, gold and equipment.")
+	_push_event("Ekonomika připravena: konečná ložiska, jídlo, stavby, zlato a výzbroj.")
 
 
 func is_building_complete(building: Dictionary) -> bool:

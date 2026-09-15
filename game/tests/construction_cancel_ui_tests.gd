@@ -44,7 +44,7 @@ static func run(host: Node) -> Array[String]:
 		_check(int(main.world.buildings[site_id]["construction_remaining"]) > 0, "Placed school must be unfinished", failures)
 		_check(_on_screen(cancel, viewport), "Cancel construction must be visible in Details without scrolling", failures)
 		_check(not cancel.disabled, "Cancellation must remain enabled while the site is unfinished", failures)
-		_check(stop.text.contains("Stop placing"), "Esc button must clearly describe placement mode, not site removal", failures)
+		_check(stop.text.contains("Přestat umísťovat"), "Esc button must clearly describe placement mode, not site removal", failures)
 		_key(viewport, KEY_ESCAPE)
 		await _settle(host)
 		_check(main.build_mode.is_empty() and main.world.buildings.has(site_id), "Esc must exit placement without deleting the site", failures)

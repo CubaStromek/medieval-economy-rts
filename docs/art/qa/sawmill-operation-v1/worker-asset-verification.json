@@ -1,0 +1,85 @@
+{
+	"body_height_world": 33,
+	"date": "2026-09-12",
+	"engine": "4.7.2-stable (official)",
+	"frames": [
+		{
+			"changed_pixels": 0,
+			"frame": 0,
+			"head_changed": 0,
+			"lower_changed": 0,
+			"opaque": 50135,
+			"partial": 3550,
+			"path": "res://art/buildings/sawmill/v1/operation/work/worker-0.png",
+			"residual_key": 0,
+			"sha256": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861",
+			"transparent": 208459
+		},
+		{
+			"changed_pixels": 17756,
+			"frame": 1,
+			"head_changed": 0,
+			"lower_changed": 0,
+			"opaque": 50399,
+			"partial": 3393,
+			"path": "res://art/buildings/sawmill/v1/operation/work/worker-1.png",
+			"residual_key": 0,
+			"sha256": "be269ff4b49d2962db4d27d5178c5380e8cb5837e97f36c2f6ce34be61e829e8",
+			"transparent": 208352
+		},
+		{
+			"changed_pixels": 17696,
+			"frame": 2,
+			"head_changed": 0,
+			"lower_changed": 0,
+			"opaque": 50477,
+			"partial": 3394,
+			"path": "res://art/buildings/sawmill/v1/operation/work/worker-2.png",
+			"residual_key": 0,
+			"sha256": "b2b1eba431e5fcc09a834187578a471b9b6ced0a8fc51336962724303af2a811",
+			"transparent": 208273
+		},
+		{
+			"changed_pixels": 18806,
+			"frame": 3,
+			"head_changed": 0,
+			"lower_changed": 0,
+			"opaque": 50803,
+			"partial": 3300,
+			"path": "res://art/buildings/sawmill/v1/operation/work/worker-3.png",
+			"residual_key": 0,
+			"sha256": "716654c3de538b8f62d6c731199b7a20d61bd7923454d15085d39bef7da1f7f6",
+			"transparent": 208041
+		},
+		{
+			"changed_pixels": 17075,
+			"frame": 4,
+			"head_changed": 0,
+			"lower_changed": 0,
+			"opaque": 50481,
+			"partial": 3459,
+			"path": "res://art/buildings/sawmill/v1/operation/work/worker-4.png",
+			"residual_key": 0,
+			"sha256": "2bed208cb822bc002b50fa6d293fb1cab36bf81f1c79993e8ba22693e322f614",
+			"transparent": 208204
+		},
+		{
+			"changed_pixels": 16357,
+			"frame": 5,
+			"head_changed": 0,
+			"lower_changed": 0,
+			"opaque": 50126,
+			"partial": 3543,
+			"path": "res://art/buildings/sawmill/v1/operation/work/worker-5.png",
+			"residual_key": 0,
+			"sha256": "22c1ce5200883771b9fbe32190e384e3bbddb5080c01aab13beff6c06f0cafb7",
+			"transparent": 208475
+		}
+	],
+	"passed": true,
+	"production_ground_contact": [
+		374.5,
+		489.0
+	],
+	"scope": "Independent decoded PNG/metadata; not normal gameplay"
+}

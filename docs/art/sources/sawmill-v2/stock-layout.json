@@ -1,0 +1,497 @@
+{
+  "date": "2026-09-12",
+  "status": "Base native geometry and stock composite reviewed by root on2026-09-12; source authoring layout for production export",
+  "house": "game/art/buildings/sawmill/v2/finished.png",
+  "house_sha256": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+  "canvas": [
+    800,
+    800
+  ],
+  "house_to_world": 0.18731625,
+  "log_source": "docs/art/concepts/lumber-hut-v3-stock/logs-6.png",
+  "log_source_sha256": "edddd12a7f53bb29826a29065006520c4ebd5a5fb4f7aef3e28167861bb27d31",
+  "log_raw_to_world": 0.11483253588516745,
+  "log_source_crop": {
+    "left": 343,
+    "top": 804,
+    "width": 126,
+    "height": 124
+  },
+  "log_crop_cap": [
+    102,
+    96
+  ],
+  "log_source_to_house": 0.6130409715396686,
+  "log_cap_positions": [
+    [
+      365,
+      524
+    ],
+    [
+      395.6520485769834,
+      515.4174263984446
+    ],
+    [
+      365,
+      491.5088285083976
+    ],
+    [
+      395.6520485769834,
+      482.9262549068422
+    ]
+  ],
+  "log_draws": [
+    {
+      "kind": "log",
+      "rect": [
+        302.4698209029538,
+        465.1480667321918,
+        77.24316241399825,
+        76.01708047091891
+      ],
+      "cap": [
+        365,
+        524
+      ]
+    },
+    {
+      "kind": "log",
+      "rect": [
+        333.12186947993723,
+        456.5654931306364,
+        77.24316241399825,
+        76.01708047091891
+      ],
+      "cap": [
+        395.6520485769834,
+        515.4174263984446
+      ]
+    },
+    {
+      "kind": "log",
+      "rect": [
+        302.4698209029538,
+        432.6568952405894,
+        77.24316241399825,
+        76.01708047091891
+      ],
+      "cap": [
+        365,
+        491.5088285083976
+      ]
+    },
+    {
+      "kind": "log",
+      "rect": [
+        333.12186947993723,
+        424.074321639034,
+        77.24316241399825,
+        76.01708047091891
+      ],
+      "cap": [
+        395.6520485769834,
+        482.9262549068422
+      ]
+    }
+  ],
+  "plank_source": "docs/art/sources/sawmill-operation-v1/plank-rgba-master.png",
+  "plank_source_sha256": "e46bd4a601837c1aaa4e8b14e7a4f1acdedf0f1e7d99fa5323bf6bcac53dcf55",
+  "plank_source_trim": {
+    "left": 119,
+    "top": 169,
+    "width": 1299,
+    "height": 694
+  },
+  "plank_draws": [
+    [
+      631,
+      437,
+      76,
+      40.60354118552733
+    ],
+    [
+      631,
+      432.2,
+      76,
+      40.60354118552733
+    ],
+    [
+      631,
+      427.4,
+      76,
+      40.60354118552733
+    ],
+    [
+      631,
+      382,
+      76,
+      40.60354118552733
+    ],
+    [
+      631,
+      377.2,
+      76,
+      40.60354118552733
+    ],
+    [
+      631,
+      372.4,
+      76,
+      40.60354118552733
+    ]
+  ],
+  "occlusion_polygons": {
+    "left_room_jamb": [
+      [
+        296,
+        387
+      ],
+      [
+        313,
+        382
+      ],
+      [
+        313,
+        568
+      ],
+      [
+        323,
+        582
+      ],
+      [
+        325,
+        594
+      ],
+      [
+        307,
+        608
+      ],
+      [
+        292,
+        595
+      ]
+    ],
+    "cradle_front_left_post": [
+      [
+        321,
+        527
+      ],
+      [
+        336,
+        523
+      ],
+      [
+        344,
+        531
+      ],
+      [
+        350,
+        575
+      ],
+      [
+        340,
+        582
+      ],
+      [
+        328,
+        577
+      ]
+    ],
+    "cradle_front_rail": [
+      [
+        344,
+        539
+      ],
+      [
+        399,
+        522
+      ],
+      [
+        409,
+        524
+      ],
+      [
+        411,
+        537
+      ],
+      [
+        349,
+        558
+      ]
+    ],
+    "cradle_front_right_post": [
+      [
+        408,
+        507
+      ],
+      [
+        423,
+        501
+      ],
+      [
+        434,
+        509
+      ],
+      [
+        436,
+        551
+      ],
+      [
+        424,
+        560
+      ],
+      [
+        415,
+        555
+      ]
+    ],
+    "center_column": [
+      [
+        455,
+        329
+      ],
+      [
+        481,
+        322
+      ],
+      [
+        481,
+        546
+      ],
+      [
+        458,
+        550
+      ]
+    ],
+    "center_column_stone": [
+      [
+        449,
+        548
+      ],
+      [
+        471,
+        540
+      ],
+      [
+        490,
+        548
+      ],
+      [
+        488,
+        570
+      ],
+      [
+        499,
+        579
+      ],
+      [
+        497,
+        591
+      ],
+      [
+        466,
+        599
+      ],
+      [
+        440,
+        587
+      ],
+      [
+        441,
+        570
+      ]
+    ],
+    "center_left_brace": [
+      [
+        388,
+        348
+      ],
+      [
+        402,
+        344
+      ],
+      [
+        464,
+        413
+      ],
+      [
+        464,
+        438
+      ]
+    ],
+    "center_right_brace": [
+      [
+        480,
+        392
+      ],
+      [
+        532,
+        319
+      ],
+      [
+        554,
+        312
+      ],
+      [
+        480,
+        426
+      ]
+    ],
+    "rack_front_upright": [
+      [
+        698,
+        397
+      ],
+      [
+        710,
+        395
+      ],
+      [
+        713,
+        415
+      ],
+      [
+        718,
+        417
+      ],
+      [
+        715,
+        512
+      ],
+      [
+        705,
+        519
+      ],
+      [
+        697,
+        513
+      ]
+    ],
+    "right_column": [
+      [
+        746,
+        255
+      ],
+      [
+        770,
+        249
+      ],
+      [
+        769,
+        468
+      ],
+      [
+        747,
+        477
+      ]
+    ],
+    "right_column_stone": [
+      [
+        745,
+        467
+      ],
+      [
+        768,
+        462
+      ],
+      [
+        777,
+        474
+      ],
+      [
+        776,
+        492
+      ],
+      [
+        784,
+        501
+      ],
+      [
+        779,
+        518
+      ],
+      [
+        760,
+        524
+      ],
+      [
+        736,
+        513
+      ],
+      [
+        734,
+        493
+      ],
+      [
+        740,
+        482
+      ]
+    ]
+  },
+  "ground_contacts": "Existing cradle/rack support feet only; raw prop cap/bottom is not physical ground",
+  "notes": [
+    "Plank uniform aspect retained from own full-resolution source, no new view generation.",
+    "Stock projections must remain behind measured new posts.",
+    "No old v1 foreground mask or house samples used."
+  ],
+  "support_ground_contacts": [
+    {
+      "id": "cradle_front_left",
+      "pixel": [
+        338,
+        580
+      ],
+      "world_relative_to_door": [
+        15.512892499999998,
+        -14.68057499999999
+      ],
+      "inside_occupied_4x2": true
+    },
+    {
+      "id": "cradle_front_right",
+      "pixel": [
+        427,
+        557
+      ],
+      "world_relative_to_door": [
+        32.18403875,
+        -18.988848749999992
+      ],
+      "inside_occupied_4x2": true
+    },
+    {
+      "id": "rack_back_post",
+      "pixel": [
+        620,
+        472
+      ],
+      "world_relative_to_door": [
+        68.336075,
+        -34.91072999999999
+      ],
+      "inside_occupied_4x2": true
+    },
+    {
+      "id": "rack_front_post",
+      "pixel": [
+        706,
+        518
+      ],
+      "world_relative_to_door": [
+        84.4452725,
+        -26.29418249999999
+      ],
+      "inside_occupied_4x2": true
+    }
+  ],
+  "navigation_contact": [
+    255.18341307814993,
+    658.3732057416267
+  ],
+  "occupied_world_rect_relative_to_door": [
+    -60,
+    -80,
+    160,
+    80
+  ]
+}

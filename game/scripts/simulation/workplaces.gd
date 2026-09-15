@@ -59,10 +59,6 @@ static func claim(world: Variant, worker: Dictionary, building_id: int) -> bool:
 	if not can_claim(world, worker, building_id):
 		return false
 	worker["home_id"] = building_id
-	# An unemployed specialist may have used the communal warehouse last
-	# night. Keep its saved sleeping place consistent with the new workplace.
-	if int(worker.get("sleep_home_id", 0)) != 0:
-		worker["sleep_home_id"] = building_id
 	return true
 
 

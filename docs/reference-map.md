@@ -9,7 +9,7 @@ than mirroring the Delphi structure. “Later” is outside the first milestone.
 
 | Delphi file/class | Responsibility in KaM Remake | Godot target | Choice |
 |---|---|---|---|
-| `KM_Game.pas` / `TKMGame` | Game modes, tick scheduling, top-level update, save orchestration | `SimulationWorld` plus scene-owned fixed-step accumulator | Adapt |
+| `KM_Game.pas` / `TKMGame` | Game modes, tick scheduling, top-level update, save orchestration | `SimulationWorld` plus scene-owned fixed-step accumulator that holds real time with capped catch-up | Adapt |
 | `KM_GameApp.pas` / `TKMGameApp` | Application lifetime and real-time updates | Godot scene tree / project configuration | New |
 | `KM_GameParams.pas` | Authoritative tick and match parameters | Future `MatchConfig` and simulation clock | Adapt later |
 | `game/gip/KM_GameInputProcess.pas` | Validate, store and replay gameplay commands | Future typed `CommandQueue` used by SP and MP | Adapt later |

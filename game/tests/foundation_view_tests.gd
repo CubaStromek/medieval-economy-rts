@@ -39,7 +39,7 @@ static func run(host: Node) -> Array[String]:
 		and int(main.placement_preview.get("foundation_work_ticks", 0)) == 64
 		and main._placement_canvas.visible and main.terrain_renderer.allow_ground_preparation,
 		"Real gentle-slope hover must visibly offer the complete 64-tick foundation", failures)
-	_check(label != null and label.text.contains("Builder will level")
+	_check(label != null and label.text.contains("Stavitel místo srovná")
 		and main.world.to_data() == before["save"] and Fixture._state(main.world) == before,
 		"Preview must explain Builder preparation without changing terrain, tasks, stock or events", failures)
 	# 2. Actual placement creates short stakes following each uneven ground tile.
@@ -65,7 +65,7 @@ static func run(host: Node) -> Array[String]:
 		await FootprintView._settle(host)
 		FootprintView._click(viewport, POINTER)
 		_check(main.selected_cell == Fixture.SITE, "Each visible foundation tile must inspect its single construction site", failures)
-	_check(main.hud._selected_production_text(main.world, Fixture.SITE).contains("ground preparation"),
+	_check(main.hud._selected_production_text(main.world, Fixture.SITE).contains("Příprava terénu"),
 		"Inspector must distinguish waiting for ground preparation from waiting for materials", failures)
 	# 4. Real work changes ground and the shovel cue; paused frames remain read-only.
 	var builder_id: int = main.world.spawn_worker(Vector2i(12, 11), "builder")
@@ -82,21 +82,14 @@ static func run(host: Node) -> Array[String]:
 	await FootprintView._settle(host)
 	_check(main.worker_earthwork_presentation(builder, feet) == cue and Fixture._state(main.world) == before,
 		"Paused real frames must freeze shovel, progress and terrain without synthetic work", failures)
-	# 5. The same citizen's night pause must remove its working cue.
-	main.world.tick = 3749
-	Fixture._advance(main.world, 40)
-	_check(not main.worker_earthwork_presentation(builder, feet).get("visible", false)
-		and int(building["foundation_work_remaining"]) == 40,
-		"Night must pause both the actual earthwork and its visual working cue", failures)
 	# 6. Only real completion reveals the normal construction scaffold and materials stage.
-	main.world.tick = 5999
 	_check(Fixture._until(main.world, func() -> bool: return int(building["foundation_work_remaining"]) == 0, 800),
-		"Builder must resume in the morning and complete the visible foundations", failures)
+		"Builder must continue and complete the visible foundations", failures)
 	await FootprintView._settle(host)
 	shape = main.building_geometry(building)
 	_check(not shape["earthwork"] and not shape["roofs"].is_empty()
 		and not main.worker_earthwork_presentation(builder, feet).get("visible", false)
-		and main.hud._selected_production_text(main.world, Fixture.SITE).contains("Delivered:")
+		and main.hud._selected_production_text(main.world, Fixture.SITE).contains("Dovezeno:")
 		and int(building["construction_remaining"]) > 0,
 		"Prepared ground must transition to material delivery and ordinary scaffold, never a free finished building", failures)
 	viewport.free()

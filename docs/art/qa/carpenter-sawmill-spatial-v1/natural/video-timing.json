@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-13",
+  "observations": 34,
+  "distinct_work_poses": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "wall_span": 3.495506,
+  "sim_span": 3.4508196666666002,
+  "interval_min": 0.090006,
+  "interval_median": 0.101491,
+  "interval_max": 0.29146,
+  "last_hold": 0.101491,
+  "policy": "Actual wall-time intervals; final repeated frame only closes the last duration; no fabricated in-between observations."
+}

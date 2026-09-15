@@ -4,6 +4,50 @@ Run `./tests/run-headless.sh` from the repository root. The launcher loads
 `game/project.godot` and runs `res://tests/test_runner.tscn`; project verification
 does not use isolated `--script` execution.
 
+## Game time held like KaM Remake — 2026-09-14
+
+`timekeeping_tests.gd` adds **5 cases**. They check that a long frame replays
+every owed tick, that uneven frames and speed changes keep exactly the same game
+time, that a stall replays only the capped 100-tick backlog, that an exhausted
+frame budget leaves ticks owed for later frames, and that restart and load do
+not replay loading time. `sawmill_operation_tests.gd` now consumes the scene's
+clock restart before its first `_process()` call. Measured with real frames,
+the economy demo at 2× keeps 100% of game time with both loops. The economy
+demo with 40 extra Carriers at 2× keeps 35% instead of 17%. The full headless
+suite passed **787/787**; native suites were not rerun.
+
+## Retained building layers — 2026-09-14
+
+`building_layer_tests.gd` adds **4 cases**: cached building geometry reuse and
+invalidation by terrain height and ground-preparation progress; procedural
+building layers redrawing only after selection, saved-state or grinding-mill
+tick changes; exact layer order of units before and after a building in the
+same row; and immediate hiding of a removed building's layer. Twenty
+deterministic native captures were pixel-identical before and after the
+change; see [render performance](../docs/render-performance.md).
+The full headless suite passed **782/782**; native test suites were not rerun.
+
+## Packed pathfinding index — 2026-09-14
+
+`fast_path_equivalence_tests.gd` adds **4 cases** that compare the packed A*,
+nearest-goal Dijkstra and reachability against the retained historical
+Dictionary implementation: real economy-demo routes with an established trail
+and worker blockers, local index updates versus a full rebuild, untracked
+revisions, bulk terrain replacement and nested searches. The transport search
+suite now expects existence checks to use one reachability query and no route
+search. See [pathfinding performance](../docs/pathfinding-performance.md).
+The full headless suite passed **778/778**; native rendering checks were not rerun.
+
+## Day/night removal — 2026-09-14
+
+The calendar, solar lighting, sky clock, night schedule, Workers' housing and
+night wolves suites were deleted with their features. Hunger, nutrition, life
+presentation, foundation and footprint suites now expect a constant 390
+milli-condition tick, no night state and a 29-building catalog.
+`day_night_removal_save_tests.gd` adds **4 cases** for loading v22 sleep, wolf
+and cottage data into save v23. The full headless suite passed **774/774**;
+native rendering checks were not rerun. Sections below are historical milestones.
+
 ## Publication verification — 2026-09-12
 
 The current project was rerun with Godot **4.7.2**: **762/762** full headless
@@ -457,16 +501,6 @@ assertions or content entries.
 | Indoor worker lifecycle | 10 | Exact doorway and completed interpolation, indoor production across batches, real lumberjack round trips, busy exits and idle yielding, no fictitious trail wear, Inn visits and guards/Barracks departure |
 | Indoor save compatibility | 6 | V12 indoor work continuation, multiple visitors plus outdoor doorway occupancy in both ID/array orders, 15 atomic corruption rejections, v11 migration, indoor death and blocked saved departures with conserved cargo |
 | Indoor unit visibility | 6 | Actual indoor versus outdoor passerby draw entries, safe reappearance, building/citizen/stock details, read-only selection, live and stale draw callbacks excluding sprite/shadow/cargo/hunger, no base-map rebuild |
-| Calendar clock | 7 | Exact phase/day boundaries, ten-minute cycle, old/current saves and large ticks |
-| Calendar clock HUD | 4 | Actual pause/speed controls, tooltips and responsive clock |
-| Solar light cycle | 8 | Saved-tick solar/moon phases, bounded smooth palette, large ticks, low-sun shadows and cycle continuity |
-| Sky clock HUD | 5 | Sun/moon arc, read-only previews, sub-tick speed/pause, responsive layout and map click-through |
-| Solar lighting and shadows | 7 | Actual ambient light, world immutability, retained terrain, untinted HUD pixels, indoor shadow lifecycle, sampled relief and immediate load/reset |
-| Civilian daily schedule | 10 | Exact work/rest boundaries, owned huts, communal warehouse entry/exit, paused production/construction, no home, blocked cargo, movement continuity and active guards |
-| Workers' housing | 9 | Two-bed cottage assignment for Carriers/Builders, reassignment between houses, warehouse overflow, disabled and unfinished homes, ownership, save/load, and strict v20 type/capacity validation |
-| Night schedule save compatibility | 9 | Actual sleepers, cargo conservation, route rebuilding, v13/v14 migration, malformed bedrooms, shared doorway, night meal and new workplace |
-| Night meals and deferred cargo | 6 | Released military stock reservations, retained loaded ration, night meals across sleep/save/dawn and empty Inn without night logistics |
-| Night schedule HUD | 5 | Selected worker status, building/local/global sleeper counts, preserved cargo/population, military exclusion and 900px layout |
 | Forester hut | 11 | Required completed exclusive home, fixed planting radius, blocked target recovery, arrival/finish validation, save/load, authored demos and actual paid construction/training/planting |
 | Fisher hut | 5 | Existing pond and untouched starter terrain/stock, real player-command construction/training/catch/hut/carrier/storage, exclusive hut ownership, homeless/incomplete-hut waiting, finite stock and mid-catch save/load |
 | Forester and fisher hut UI | 4 | Actual generated menu entries/categories and placement signals, school tooltips and training actions, range/occupancy details and catalog-driven guidance |
@@ -477,7 +511,7 @@ assertions or content entries.
 | Viewport input | 4 | Real keyboard/mouse dispatch, pause/focus, build tools, training and fields |
 | Deposits | 9 | Five finite source types, terrain/reachability, exclusive extraction, depletion, output room and snapshots |
 | Classic economy | 11 | Recipes, FIFO orders, army equipment, payment, construction, vines, food, trade and Watchtower guards |
-| KaM construction prices | 3 | Independent exact costs for all 28 reference buildings, separately attributed Forester Hut and Workers' Cottage project prices, road/vine costs and rejection of raw logs as construction planks |
+| KaM construction prices | 3 | Independent exact costs for all 28 reference buildings, separately attributed Forester Hut project price, road/vine costs and rejection of raw logs as construction planks |
 | Construction cost compatibility | 7 | Price decrease/increase, physical legacy delivery and builder completion, completed-site history, legacy-to-current round trip, conservative refunds, strict revision/material validation and old/new HUD prices |
 | HUD layout and navigation | 12 | Two window sizes, stock/tool tabs, map-input isolation, school selection, repeat selection, help and Escape |
 | Responsive window layout | 5 | Maximized/resizable startup policy, expanding aspect ratio, 16:9 and ultrawide HUD/map fit, real width/height resize signals and retained manual camera zoom |

@@ -10,7 +10,7 @@ static func run() -> Array[String]:
 	var failures: Array[String] = []
 	for test: Callable in [_test_real_tree_walk_and_work, _test_actual_pickup_and_delivery,
 		_test_extraction_field_and_planting, _test_production_and_construction,
-		_test_actual_military_delivery, _test_actual_sleep_and_meal,
+		_test_actual_military_delivery, _test_actual_meal,
 		_test_pause_respects_real_needs_and_cargo, _test_yield_blocked_and_indoor_exit,
 		_test_idle_reasons_without_invented_plans, _test_visibility_and_read_only]:
 		test.call(failures)
@@ -122,43 +122,37 @@ static func _test_actual_military_delivery(failures: Array[String]) -> void:
 	_check(Thoughts.describe(world, world.workers[carrier])["current"] == "Nesu chléb vojákovi č. %d." % soldier, "Ration delivery must retain actual food and recipient", failures)
 
 
-static func _test_actual_sleep_and_meal(failures: Array[String]) -> void:
+static func _test_actual_meal(failures: Array[String]) -> void:
 	var world = Legacy.create(Vector2i(20, 14))
 	world.place_building("warehouse", Vector2i(3, 3))
 	var inn: int = world.place_building("inn", Vector2i(13, 3))
 	world.buildings[inn]["inputs"]["bread"] = 2
 	var id: int = world.spawn_worker(Vector2i(5, 7), "carrier")
-	world.tick = 3750
 	world.economy_enabled = true
 	world.enable_fog()
-	if not _until(world, func() -> bool: return world.is_worker_sleeping(world.workers[id])):
-		failures.append("Sleep thoughts require a genuinely sleeping citizen")
-		return
-	var thought: Dictionary = Thoughts.describe(world, world.workers[id])
-	_check(thought["current"] == "Spím ve skladu." and thought["next"].contains("pět ráno"), "An owned hidden indoor sleeper must still be inspectable through its known building", failures)
 	world.workers[id]["hunger"] = 100
 	if not _until(world, func() -> bool: return int(world.workers[id]["meal_ticks_left"]) > 0):
-		failures.append("Hungry sleeper must reach an actual meal for thought verification")
+		failures.append("A hungry carrier must reach an actual meal for thought verification")
 		return
-	thought = Thoughts.describe(world, world.workers[id])
-	_check(thought["current"] == "Jím chléb v hostinci." and thought["next"].contains("ke spánku"), "Nighttime dining must describe the current paid food and conditional return to sleep", failures)
+	var thought: Dictionary = Thoughts.describe(world, world.workers[id])
+	_check(thought["current"] == "Jím chléb v hostinci." and thought["next"] == "Po jídle se podívám po své práci.", "Dining must describe the current paid food and the return to work", failures)
 	world.economy_enabled = false
 	var tower: int = world.place_building("watchtower", Vector2i(5, 11))
 	world.economy_enabled = true
 	var recruit: int = world.spawn_worker(world.buildings[inn]["entrance"], "recruit", tower)
 	if recruit == 0:
-		failures.append("Nighttime guard meal fixture requires a real assigned recruit")
+		failures.append("Guard meal fixture requires a real assigned recruit")
 		return
 	world.workers[recruit]["hunger"] = 100
 	world.set_worker_enabled(recruit, false)
 	if not _until(world, func() -> bool: return int(world.workers[recruit]["meal_ticks_left"]) > 0):
-		failures.append("A paused recruit must begin an actual nighttime meal")
+		failures.append("A paused recruit must begin an actual meal")
 		return
 	thought = Thoughts.describe(world, world.workers[recruit])
-	_check(thought["current"].contains("Jím") and not thought["next"].contains("spán") and thought["next"].contains("obnovení práce"), "A paused recruit's night meal must not invent civilian sleep afterward", failures)
+	_check(thought["current"].contains("Jím") and not thought["next"].contains("spán") and thought["next"].contains("obnovení práce"), "A paused recruit's meal must not invent civilian sleep afterward", failures)
 	world.set_worker_enabled(recruit, true)
 	thought = Thoughts.describe(world, world.workers[recruit])
-	_check(not thought["next"].contains("spán") and thought["next"].contains("strážní věže"), "An active recruit must plan to return to its known tower after eating, even at night", failures)
+	_check(not thought["next"].contains("spán") and thought["next"].contains("strážní věže"), "An active recruit must plan to return to its known tower after eating", failures)
 
 
 static func _test_pause_respects_real_needs_and_cargo(failures: Array[String]) -> void:
@@ -182,9 +176,6 @@ static func _test_pause_respects_real_needs_and_cargo(failures: Array[String]) -
 	worker["action"] = "eat"
 	worker["destination_id"] = inn
 	_check(Thoughts.describe(world, worker)["current"].contains("Jdu se najíst"), "A paused citizen's real food route must not be described as stopped", failures)
-	worker["action"] = "go_sleep"
-	worker["sleep_home_id"] = hut
-	_check(Thoughts.describe(world, worker)["current"].contains("Jdu spát"), "A paused citizen's real night route must retain priority", failures)
 	worker["action"] = ""
 	worker["state"] = "idle"
 	worker["destination_id"] = 0

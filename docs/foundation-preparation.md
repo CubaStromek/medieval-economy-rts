@@ -20,7 +20,7 @@ are requested only after the whole foundation is level. A flat site skips
 preparation and uses the original delivery/construction sequence.
 
 The inspector separates ground-preparation progress from ordinary construction.
-A working Builder has a simple shovel cue. Night, hunger and occupied ground
+A working Builder has a simple shovel cue. Hunger and occupied ground
 pause real work. Saved games retain partially completed earthwork.
 Cancelling releases the site and worker, using existing material-refund rules;
 already completed soil changes remain. There is no additional soil resource fee.
@@ -70,7 +70,7 @@ remain version 0.
 Dedicated suites add 13 simulation, nine save and six real-scene UI cases.
 Coverage includes real Builder/Carrier completion, no-Builder and no-material
 controls, cancellation before/during preparation, two-Builder exclusivity,
-night pause/resume, dynamic obstructions, future surface reservations, JSON
+dynamic obstructions, future surface reservations, JSON
 checkpoints, malformed saves and actual pointer placement/picking.
 
 Native Godot verification on the unchanged starter landscape placed a Hut at

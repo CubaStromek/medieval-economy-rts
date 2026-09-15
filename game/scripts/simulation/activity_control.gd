@@ -2,8 +2,9 @@ class_name ActivityControl
 extends RefCounted
 
 const Feeding = preload("res://scripts/simulation/inn_feeding.gd")
+const UiTextClass = preload("res://scripts/ui_text.gd")
 const RETRY_TICKS: int = 20
-const PERSONAL_ACTIONS: Array[String] = ["eat", "go_sleep", "yield", "pause_return", "leave_building"]
+const PERSONAL_ACTIONS: Array[String] = ["eat", "yield", "pause_return", "leave_building"]
 
 
 static func building_enabled(building: Dictionary) -> bool:
@@ -27,7 +28,7 @@ static func set_worker_enabled(world: Variant, id: int, enabled: bool) -> bool:
 		return true
 	worker["enabled"] = enabled
 	worker.erase("_pause_retry_until")
-	world._push_event("%s #%d: %s." % [world.catalog.unit(worker["type"])["display_name"], id, "work enabled" if enabled else "work paused"])
+	world._push_event("%s #%d: %s." % [UiTextClass.unit_name(world.catalog, String(worker["type"])), id, "práce povolena" if enabled else "práce pozastavena"])
 	return true
 
 
@@ -38,7 +39,7 @@ static func set_building_enabled(world: Variant, id: int, enabled: bool) -> bool
 	if bool(building.get("enabled", true)) == enabled:
 		return true
 	building["enabled"] = enabled
-	world._push_event("%s #%d: %s." % [world.catalog.building(building["type"])["display_name"], id, "operation enabled" if enabled else "operation paused"])
+	world._push_event("%s #%d: %s." % [UiTextClass.building_name(world.catalog, String(building["type"])), id, "provoz povolen" if enabled else "provoz pozastaven"])
 	return true
 
 
@@ -53,7 +54,7 @@ static func prepare_tick(world: Variant) -> void:
 		var stopped_target: bool = action in ["build_site", "operate"] and not source.is_empty() and not building_enabled(source)
 		if not worker_paused(world, worker) and not stopped_target:
 			continue
-		if int(worker.get("meal_ticks_left", 0)) > 0 or worker["state"] == "sleeping" or action in PERSONAL_ACTIONS:
+		if int(worker.get("meal_ticks_left", 0)) > 0 or action in PERSONAL_ACTIONS:
 			continue
 		if not String(worker["carrying"]).is_empty():
 			continue

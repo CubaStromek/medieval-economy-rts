@@ -1,0 +1,72 @@
+{
+	"asset_hashes_before_after": {
+		"res://art/buildings/sawmill/v1/life/look/left.png": "da4753003c6099874ff646354150d432b1a2459d6efba797e02fd82ac8640f81",
+		"res://art/buildings/sawmill/v1/life/look/right.png": "865878889eba7059f774e4d5a05f690162b6fe20166462cc3fbd98e911291685",
+		"res://art/buildings/sawmill/v1/life/resting_carpenter.png": "48fe91d86381ac36c115038fac987e4694e39d49e10f98aee468fef64805cc7e",
+		"res://art/buildings/sawmill/v1/operation/work/worker-0.png": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861",
+		"res://art/buildings/sawmill/v1/operation/work/worker-1.png": "be269ff4b49d2962db4d27d5178c5380e8cb5837e97f36c2f6ce34be61e829e8",
+		"res://art/buildings/sawmill/v1/operation/work/worker-2.png": "b2b1eba431e5fcc09a834187578a471b9b6ced0a8fc51336962724303af2a811",
+		"res://art/buildings/sawmill/v1/operation/work/worker-3.png": "716654c3de538b8f62d6c731199b7a20d61bd7923454d15085d39bef7da1f7f6",
+		"res://art/buildings/sawmill/v1/operation/work/worker-4.png": "2bed208cb822bc002b50fa6d293fb1cab36bf81f1c79993e8ba22693e322f614",
+		"res://art/buildings/sawmill/v1/operation/work/worker-5.png": "22c1ce5200883771b9fbe32190e384e3bbddb5080c01aab13beff6c06f0cafb7",
+		"res://art/buildings/sawmill/v2/finished.png": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+		"res://art/buildings/sawmill/v2/manifest.json": "4308aa27f9962a2af75644122795a2b5f28435e57151b873b8310bc35e39bc67",
+		"res://art/buildings/sawmill/v2/operation/manifest.json": "147aced8a66ac715a712e919d7295d4458c2f27f0665143686876ea5691b4e85",
+		"res://art/buildings/sawmill/v2/operation/stock/foreground.png": "2d6683bb2b7c0cfa1f402ff9074310f676ccc886ce494987be9fe06dd1167397",
+		"res://art/buildings/sawmill/v2/operation/stock/log.png": "6e43c9ddf57a66bc261d286104dce502f7853852947608b54b94df85adf9cad8",
+		"res://art/buildings/sawmill/v2/operation/stock/plank.png": "4716cfa4dd15232e5cda1803da6b652f9de1ff01f80559365a7972171c0232d3",
+		"res://art/buildings/sawmill/v2/operation/work/processing-log.png": "d55a3238e246075541e93da52dd7eaae4e8958c3e096099aac8489b6a3ad9a68"
+	},
+	"captures": [
+		{
+			"file": "full-pair-zoom-1_0.png",
+			"hut_logs": 6,
+			"sawmill_loaded_layer_paths": [
+				"res://art/buildings/sawmill/v2/operation/stock/log.png",
+				"res://art/buildings/sawmill/v2/operation/stock/log.png",
+				"res://art/buildings/sawmill/v2/operation/stock/log.png",
+				"res://art/buildings/sawmill/v2/operation/stock/log.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/foreground.png"
+			],
+			"sawmill_logs": 4,
+			"sawmill_planks": 6,
+			"sha256": "ba8acefabafc1c7b0a7896db27ecde52b25c6f30badccbf512b56b7afd31cda9",
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"file": "full-pair-zoom-2_4.png",
+			"hut_logs": 6,
+			"sawmill_loaded_layer_paths": [
+				"res://art/buildings/sawmill/v2/operation/stock/log.png",
+				"res://art/buildings/sawmill/v2/operation/stock/log.png",
+				"res://art/buildings/sawmill/v2/operation/stock/log.png",
+				"res://art/buildings/sawmill/v2/operation/stock/log.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/plank.png",
+				"res://art/buildings/sawmill/v2/operation/stock/foreground.png"
+			],
+			"sawmill_logs": 4,
+			"sawmill_planks": 6,
+			"sha256": "e73ea0b1cbf53a2804e58b68405fa3c7cb4f1add9eacce3cd38e8dc46b96d662",
+			"tick": 1750,
+			"zoom": 2.4
+		}
+	],
+	"date": "2026-09-12",
+	"engine": "4.7.2-stable (official)",
+	"fixture": "Same-frame flat noon comparison, fully stocked buildings, no residents; staged inventories, not gameplay",
+	"production_manifest_path": "res://art/buildings/sawmill/v2/manifest.json",
+	"renderer": "Apple M4",
+	"scene": "res://scenes/main.tscn"
+}

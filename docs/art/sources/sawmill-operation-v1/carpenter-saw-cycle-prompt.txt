@@ -1,0 +1,19 @@
+Use case: stylized-concept. Asset: SIX-frame sprite sheet of our own medieval RTS carpenter performing ONE full push-pull hand-sawing cycle. Image 1 is the exact CHARACTER IDENTITY reference. Image 2 is only our HOUSE STYLE and elevated strategy-game camera reference; do not draw the building.
+
+Keep the same adult clean-shaven carpenter with short thick brown hair, cream ochre rolled-sleeve shirt, dark brown leather bib apron, dark trousers and brown boots. Compact adult realistic game proportions, softly hand-painted matte material planes, warm muted colors, elevated front three-quarter view. No hat, beard, helmet, backpack, modern clothing or thick cartoon outline.
+
+CHANGE FROM REST TO WORK: full body planted on BOTH boots, standing at SCREEN RIGHT of an IMPLIED waist-high sawbench, facing SCREEN LEFT in three-quarter view. His feet stay planted and his hips stay in the same place. He leans modestly forward to the LEFT. His anatomical LEFT/far hand extends leftward and stays planted at one fixed support contact at waist height on an IMPLIED log. His anatomical RIGHT/near hand grips the wooden D handle of ONE straight steel hand saw and moves it rhythmically to the left and back right. The blade projects to SCREEN LEFT, angled slightly down toward its left tip, teeth on its bottom edge. The rigid blade slides along its own straight long axis across the implied workpiece. Both hands must be anatomically readable and the near hand must remain attached to the saw handle. The blade never bends, changes size, detaches or swaps hands. Show real elbow flexion and a small coordinated torso lean. This is horizontal sawing, not axe chopping, hammering, waving or lifting a giant frame saw overhead.
+
+DO NOT DRAW the log, board, bench, post, work surface, stool, workshop, cast ground shadow or any scenery. All those are separate runtime layers. Draw ONLY the full character and his SINGLE hand saw, with real transparency around them and in all internal gaps. Preserve dark opaque apron and boots. No checkerboard, gradients, technical key colors, text, labels or panel borders.
+
+LAYOUT: a perfectly regular THREE COLUMNS by TWO ROWS sheet, SIX equally sized square cells on a 1536 x 1024 canvas (each cell 512 x 512). Whole character head-to-boots plus leftward tool fits fully in every cell with margins. Each cell has identical camera, scale, foot coordinates and character identity: head around cell y65, soles y455, body centered around cell x345, saw and forearms project LEFT into the empty area, blade tip never left of x50. Keep boots in precisely identical positions in all SIX cells. Do not draw more than six people. Cells read left-to-right, then top-to-bottom.
+
+The six DISTINCT consecutive phases are exactly:
+0 top-left: forward extreme, right elbow extended, saw pushed furthest LEFT, modest forward lean.
+1 top-middle: return stroke one-third back to the RIGHT, elbow beginning to bend.
+2 top-right: return stroke two-thirds back RIGHT, elbow more bent.
+3 bottom-left: backward extreme, right elbow bent, saw handle closest to torso, torso slightly more upright.
+4 bottom-middle: forward stroke one-third to LEFT, elbow opening.
+5 bottom-right: forward stroke two-thirds to LEFT, reaching toward phase0 so the loop closes.
+
+Work stroke distance is modest, about 60 cell pixels; fixed support hand, hips, knees and soles stay put. Hair shape, head size, face and apron remain consistent. One compact full sawing cycle, no duplicates masquerading as different phases. Transparent background is required.

@@ -51,3 +51,12 @@ __pycache__/
 
 # Pilot-only absolute symlink; production raw images live in jobs/walk_axe/S
 /docs/art/animations/lumberjack-pixellab-production-v2/pilot-walk-S/jobs
+
+# UI review screenshots produced by tests/hud_layout_capture.tscn
+/.ui-review/
+
+# Bulky QA frame sequences stay local (release 0.6.0). Frames referenced from
+# documentation are force-added; MP4 captures, reports and READMEs remain.
+/docs/art/qa/**/frames/
+/docs/art/qa/**/motion/
+/docs/art/qa/**/*-motion/

@@ -69,6 +69,7 @@ static func from_data(value: Variant) -> Dictionary:
 	var world := World.new(size)
 	world.grid._vertex_heights = heights
 	world.grid._base_terrain = terrain
+	world.grid.invalidate_connectivity()
 	world.grid._record_full_render_change()
 	var occupied: Dictionary = {}
 	var ages: Array[int] = [0, World.TREE_YOUNG_AGE_TICKS, World.TREE_MATURE_AGE_TICKS]
@@ -85,7 +86,7 @@ static func from_data(value: Variant) -> Dictionary:
 	world.tick = 1000 # 09:00, readable daylight for the imported landscape.
 	world.grid.restore_trail_clock(world.tick)
 	world.economy_enabled = true
-	world._push_event("%s · imported landscape ready. Mouse wheel: zoom; arrows or middle drag: explore." % title)
+	world._push_event("%s · importovaná krajina připravena. Kolečko myši: přiblížení, šipky nebo tažení prostředním tlačítkem: průzkum." % title)
 	return {"world": world, "error": "", "name": title, "source": (data["source"] as Dictionary).duplicate(true)}
 
 static func _valid_source(value: Variant, size: Vector2i) -> bool:

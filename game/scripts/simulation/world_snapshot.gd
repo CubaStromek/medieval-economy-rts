@@ -2,14 +2,18 @@ class_name WorldSnapshot
 extends RefCounted
 
 const GridMapSimClass = preload("res://scripts/simulation/grid_map_sim.gd")
-const ResidencesClass = preload("res://scripts/simulation/residences.gd")
 const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
 const BuildingFoundationsClass = preload("res://scripts/simulation/building_foundations.gd")
 const BuildingFootprintsClass = preload("res://scripts/simulation/building_footprints.gd")
 const FogOfWarClass = preload("res://scripts/simulation/fog_of_war.gd")
 const NutritionClass = preload("res://scripts/simulation/nutrition.gd")
 
-const SAVE_VERSION: int = 21
+const SAVE_VERSION: int = 23
+## v23 removed the day/night cycle with its cottages, sleeping places and
+## night wolves. Older saves drop that state while loading.
+const REMOVED_BUILDING_TYPES: Array[String] = ["workers_house"]
+## Former cottage residents search this many cells for a free outdoor spot.
+const MAX_RELOCATION_SEARCH: int = 256
 const MAX_OWNER_ID: int = 16
 const MAX_INDOOR_WAIT_TICKS: int = 6
 const MAX_MAP_SIZE := Vector2i(256, 256)
@@ -21,6 +25,7 @@ var _valid: bool = true
 var _version: int = 0
 var _seen_ids: Dictionary = {}
 var _highest_id: int = 0
+var _removed_building_ids: Dictionary = {}
 
 
 static func to_data(world: Variant) -> Dictionary:
@@ -91,7 +96,6 @@ static func to_data(world: Variant) -> Dictionary:
 			"owner_id": int(worker.get("owner_id", 1)),
 			"enabled": worker.get("enabled", true),
 			"home_id": worker["home_id"],
-			"sleep_home_id": worker.get("sleep_home_id", 0),
 			"inside_building_id": worker.get("inside_building_id", 0),
 			"indoor_wait_ticks": worker.get("indoor_wait_ticks", 0),
 			"position": _vector_to_array(worker["position"]),
@@ -151,7 +155,7 @@ func _load(data: Dictionary) -> bool:
 		_read_integer(size_data[0], 1, MAX_MAP_SIZE.x),
 		_read_integer(size_data[1], 1, MAX_MAP_SIZE.y)
 	)
-	var buildings: Array = _read_array(data.get("buildings"))
+	var buildings: Array = _without_removed_buildings(_read_array(data.get("buildings")))
 	var trees: Array = _read_array(data.get("trees"))
 	var fields: Array = _read_array(data.get("fields", [] if _version < 6 else null))
 	var deposits: Array = _read_array(data.get("deposits", [] if _version < 7 else null))
@@ -188,13 +192,6 @@ func _load(data: Dictionary) -> bool:
 			worker["state"] = "working"
 			worker["action"] = "eat"
 			worker["destination_id"] = int(worker["inside_building_id"])
-		elif _world.is_night_rest_time() and _world.follows_daily_schedule(worker):
-			# Keep loading observational: choosing a bedroom, collecting cargo,
-			# cancelling food missions and moving home belong to the next tick.
-			# In particular, resuming cargo at its warehouse door could otherwise
-			# unload a sleeping carrier as a zero-length path side effect.
-			if int(worker["sleep_home_id"]) != 0 and int(worker["inside_building_id"]) == int(worker["sleep_home_id"]):
-				worker["state"] = "sleeping"
 		elif not (worker["ration_delivery"] as Dictionary).is_empty():
 			# Resume on the next simulation tick, never consume/hand over a
 			# ration as a side effect of loading a zero-length path.
@@ -203,7 +200,7 @@ func _load(data: Dictionary) -> bool:
 			_world._resume_carried_ware(worker)
 	if not _load_fog(data.get("fog")):
 		return false
-	_world._push_event("Save loaded at tick %d." % saved_tick)
+	_world._push_event("Uložená hra načtena v ticku %d." % saved_tick)
 	return true
 
 
@@ -669,6 +666,18 @@ func _load_workers(saved_workers: Array) -> bool:
 			return false
 		normalized.append({"id": entity_id, "data": saved})
 	normalized.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return a["id"] < b["id"])
+	# Former cottage residents are restored last, so their new outdoor spot can
+	# never take a cell that an ordinary saved worker still has to claim.
+	var displaced: Dictionary = {}
+	for entry: Dictionary in normalized:
+		var inside_value: Variant = (entry["data"] as Dictionary).get("inside_building_id", 0)
+		if (inside_value is int or inside_value is float) and _removed_building_ids.has(int(inside_value)):
+			displaced[entry["id"]] = true
+	if not displaced.is_empty():
+		normalized.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+			var a_late: bool = displaced.has(a["id"])
+			var b_late: bool = displaced.has(b["id"])
+			return b_late if a_late != b_late else a["id"] < b["id"])
 	for index: int in range(normalized.size()):
 		var saved: Dictionary = normalized[index]["data"]
 		var entity_id: int = normalized[index]["id"]
@@ -678,11 +687,14 @@ func _load_workers(saved_workers: Array) -> bool:
 		var enabled: bool = _read_bool(saved.get("enabled") if _version >= 20 else true)
 		var position: Vector2i = _read_cell(saved.get("position"))
 		var home_id: int = _read_integer(saved.get("home_id", 0 if _version == 1 else null))
-		var sleep_home_id: int = _read_integer(saved.get("sleep_home_id") if _version >= 15 else 0)
 		# Older schemas place everyone outdoors. V12 persists an actual visit,
 		# independently from the worker's permanent workplace ownership.
 		var inside_id: int = _read_integer(saved.get("inside_building_id") if _version >= 12 else 0)
 		var indoor_wait: int = _read_integer(saved.get("indoor_wait_ticks") if _version >= 12 else 0, 0, MAX_INDOOR_WAIT_TICKS)
+		if _valid and _removed_building_ids.has(inside_id):
+			inside_id = 0
+			indoor_wait = 0
+			position = _free_cell_near(position)
 		var carrying: String = _read_string(saved.get("carrying"))
 		var cooldown: int = _read_integer(saved.get("planting_cooldown", 0 if _version < 5 else null))
 		# Very old snapshots had no satiety field. Its historical fallback is
@@ -754,7 +766,6 @@ func _load_workers(saved_workers: Array) -> bool:
 		# Restore policy as data, never invoke live pause setters that cancel
 		# tasks or release reservations. Paid goods and work remain untouched.
 		_world.workers[entity_id]["enabled"] = enabled
-		_world.workers[entity_id]["sleep_home_id"] = sleep_home_id
 		_world.workers[entity_id]["indoor_wait_ticks"] = indoor_wait
 		_world.workers[entity_id]["carrying"] = carrying
 		_world.workers[entity_id]["planting_cooldown"] = cooldown
@@ -767,32 +778,7 @@ func _load_workers(saved_workers: Array) -> bool:
 		_world.workers[entity_id]["meal_course"] = meal_course.duplicate(true)
 		_world.workers[entity_id]["food_requested"] = food_requested
 		_world.workers[entity_id]["ration_delivery"] = ration.duplicate(true)
-	return _validate_sleep_homes() and _validate_feeding()
-
-
-func _validate_sleep_homes() -> bool:
-	var residence_counts: Dictionary = {}
-	for worker: Dictionary in _world.workers.values():
-		var sleep_home_id: int = int(worker["sleep_home_id"])
-		if sleep_home_id == 0:
-			continue
-		var bedroom: Dictionary = _world.buildings.get(sleep_home_id, {})
-		if not _world.follows_daily_schedule(worker) or bedroom.is_empty() or not _world.is_building_complete(bedroom):
-			return false
-		var workplace: int = int(worker["home_id"])
-		if _world.owns_workplace(worker, workplace):
-			if sleep_home_id != workplace:
-				return false
-		elif bedroom["type"] == "warehouse" \
-				and int(bedroom.get("owner_id", 1)) == int(worker.get("owner_id", 1)):
-			continue
-		elif ResidencesClass.supports(_world, sleep_home_id, worker):
-			residence_counts[sleep_home_id] = int(residence_counts.get(sleep_home_id, 0)) + 1
-			if int(residence_counts[sleep_home_id]) > ResidencesClass.capacity(_world, sleep_home_id):
-				return false
-		else:
-			return false
-	return true
+	return _validate_feeding()
 
 
 func _validate_feeding() -> bool:
@@ -810,9 +796,9 @@ func _validate_feeding() -> bool:
 			if soldier or inside == 0 or _world.buildings[inside]["type"] != "inn" \
 					or int(worker["indoor_wait_ticks"]) != 0:
 				return false
-			# Off-duty civilians keep their physical cargo through a meal. The
-			# meal may legitimately remain in progress after the clock hits dawn.
-			if not String(worker["carrying"]).is_empty() and (_version < 15 or not _world.follows_daily_schedule(worker)):
+			# v15-v22 night meals could keep physical cargo. Such a meal may still be
+			# in progress in a newer save; the cargo is delivered after eating.
+			if not String(worker["carrying"]).is_empty() and _version < 15:
 				return false
 			seats[inside] = int(seats.get(inside, 0)) + 1
 			if int(seats[inside]) > int(_world.catalog.building("inn").get("seating_capacity", 6)):
@@ -1076,3 +1062,36 @@ static func _sorted_trail_keys(values: Array) -> Array[Vector4i]:
 		return a.z < b.z
 	)
 	return keys
+
+
+## Drops building types that no longer exist and remembers their IDs, so any
+## former occupant can be moved outdoors instead of failing validation.
+func _without_removed_buildings(saved_buildings: Array) -> Array:
+	var kept: Array = []
+	for value: Variant in saved_buildings:
+		if value is Dictionary and REMOVED_BUILDING_TYPES.has(str((value as Dictionary).get("type", ""))):
+			var saved_id: Variant = (value as Dictionary).get("id")
+			if saved_id is int or saved_id is float:
+				_removed_building_ids[int(saved_id)] = true
+			continue
+		kept.append(value)
+	return kept
+
+
+func _free_cell_near(origin: Vector2i) -> Vector2i:
+	if not _world.grid.contains(origin):
+		return Vector2i(-1, -1)
+	var queue: Array[Vector2i] = [origin]
+	var seen: Dictionary = {origin: true}
+	var index: int = 0
+	while index < queue.size() and index < MAX_RELOCATION_SEARCH:
+		var cell: Vector2i = queue[index]
+		index += 1
+		if _world.grid.is_walkable(cell) and not _world.tile_reservations.has(cell) \
+				and not _world.planting_reservations.has(cell):
+			return cell
+		for next: Vector2i in _world.grid.neighbors8(cell):
+			if not seen.has(next):
+				seen[next] = true
+				queue.append(next)
+	return Vector2i(-1, -1)

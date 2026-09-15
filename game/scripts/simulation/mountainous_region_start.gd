@@ -55,7 +55,7 @@ static func setup(world: Variant) -> void:
 	world.buildings[school_id]["inputs"]["gold"] = 1
 	world.economy_enabled = true
 	world.event_log.clear()
-	world._push_event("Mountainous Region start: Warehouse and School ready; 50 Gold, 20 Logs, 20 Planks and 20 Stone. Train a Carrier first.")
+	world._push_event("Start Mountainous Region: sklad a škola připravené; 50 zlata, 20 klád, 20 prken a 20 kamenů. Nejdřív vycvič Nosiče.")
 
 
 static func is_ready(world: Variant) -> bool:

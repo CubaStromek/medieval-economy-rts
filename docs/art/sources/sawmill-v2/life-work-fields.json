@@ -1,0 +1,133 @@
+{
+  "life": {
+    "door": [
+      [
+        196.49122807017545,
+        416.58692185007976
+      ],
+      [
+        280.06379585326954,
+        394.896331738437
+      ],
+      [
+        280.06379585326954,
+        581.8181818181819
+      ],
+      [
+        196.49122807017545,
+        604.1467304625199
+      ]
+    ],
+    "window": [
+      [
+        72.72727272727273,
+        418.5007974481659
+      ],
+      [
+        108.45295055821373,
+        433.8118022328549
+      ],
+      [
+        108.45295055821373,
+        489.3141945773525
+      ],
+      [
+        72.72727272727273,
+        474.0031897926635
+      ]
+    ],
+    "chimney": [
+      156.29984051036683,
+      93.7799043062201
+    ],
+    "rest_foot": [
+      184.37001594896333,
+      652.6315789473684
+    ],
+    "window_shutters": [],
+    "wood_uv": [
+      [
+        204.14673046251994,
+        453.5885167464115
+      ],
+      [
+        267.9425837320574,
+        437.63955342902716
+      ],
+      [
+        267.9425837320574,
+        556.2998405103668
+      ],
+      [
+        204.14673046251994,
+        573.524720893142
+      ]
+    ],
+    "rest_sprite": {
+      "texture": "res://art/buildings/sawmill/v1/life/resting_carpenter.png",
+      "body_height_px": 165,
+      "ground_contact": [
+        133.02734375,
+        205.1171875
+      ],
+      "look_textures": {
+        "left": "res://art/buildings/sawmill/v1/life/look/left.png",
+        "right": "res://art/buildings/sawmill/v1/life/look/right.png"
+      }
+    }
+  },
+  "work": {
+    "frames": [
+      "res://art/buildings/sawmill/v1/operation/work/worker-0.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-1.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-2.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-3.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-4.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-5.png"
+    ],
+    "body_height_px": 412,
+    "ground_contact": [
+      374.5,
+      489
+    ],
+    "foot": [
+      621.3716108452951,
+      567.7830940988836
+    ],
+    "cycles_per_batch": 6,
+    "log": {
+      "texture": "res://art/buildings/sawmill/v2/operation/work/processing-log.png",
+      "rect": [
+        483.57256778309414,
+        428.0701754385965,
+        133.9712918660287,
+        65.07177033492823
+      ]
+    },
+    "foreground": []
+  },
+  "asset_hashes": {
+    "res://art/buildings/sawmill/v1/operation/work/worker-0.png": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861",
+    "res://art/buildings/sawmill/v1/operation/work/worker-1.png": "be269ff4b49d2962db4d27d5178c5380e8cb5837e97f36c2f6ce34be61e829e8",
+    "res://art/buildings/sawmill/v1/operation/work/worker-2.png": "b2b1eba431e5fcc09a834187578a471b9b6ced0a8fc51336962724303af2a811",
+    "res://art/buildings/sawmill/v1/operation/work/worker-3.png": "716654c3de538b8f62d6c731199b7a20d61bd7923454d15085d39bef7da1f7f6",
+    "res://art/buildings/sawmill/v1/operation/work/worker-4.png": "2bed208cb822bc002b50fa6d293fb1cab36bf81f1c79993e8ba22693e322f614",
+    "res://art/buildings/sawmill/v1/operation/work/worker-5.png": "22c1ce5200883771b9fbe32190e384e3bbddb5080c01aab13beff6c06f0cafb7",
+    "res://art/buildings/sawmill/v2/operation/work/processing-log.png": "d55a3238e246075541e93da52dd7eaae4e8958c3e096099aac8489b6a3ad9a68"
+  },
+  "source_raw_anchors": {
+    "rest_foot": [
+      289,
+      1023
+    ],
+    "work_foot": [
+      974,
+      890
+    ]
+  },
+  "provenance": {
+    "worker": "Exact own six-pose v1 worker reuse, no resculpt/repaint",
+    "rest": "Exact own v1 resting carpenter and head turns",
+    "work_log": "Own v1 working log, rigid 15-degree technical rotation to follow new bench"
+  }
+}

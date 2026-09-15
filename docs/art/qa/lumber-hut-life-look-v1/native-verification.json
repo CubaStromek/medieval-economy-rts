@@ -1,0 +1,100 @@
+{
+  "date": "2026-09-12",
+  "final_capture_project": "/Users/openclaw/AI-Projects/medieval-economy-rts/game/",
+  "capture_time": "2026-09-12T13:43:30",
+  "native_command": "godot --path game --windowed --log-file /tmp/lumber-hut-look-native.log res://tools/preview_lumber_hut_life_look.tscn",
+  "exit_code": 0,
+  "native_pixel_controls_passed": 12,
+  "native_pixel_controls_total": 12,
+  "capture_records": 272,
+  "verified_files": {
+    "res://art/buildings/lumber_hut/v1/life/look/center.png": {
+      "capture_sha256": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+      "workspace_sha256": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+      "matches": true
+    },
+    "res://art/buildings/lumber_hut/v1/life/look/left.png": {
+      "capture_sha256": "e2326ad398e2e7815c5b5ccde6477047e7c765ad61e564777e3adac06269c7a0",
+      "workspace_sha256": "e2326ad398e2e7815c5b5ccde6477047e7c765ad61e564777e3adac06269c7a0",
+      "matches": true
+    },
+    "res://art/buildings/lumber_hut/v1/life/look/look.json": {
+      "capture_sha256": "5f6e62d4e18f8e801cf2fd09ae73a7fbd023eeda57e03c7a3d34fb6e973ce703",
+      "workspace_sha256": "5f6e62d4e18f8e801cf2fd09ae73a7fbd023eeda57e03c7a3d34fb6e973ce703",
+      "matches": true
+    },
+    "res://art/buildings/lumber_hut/v1/life/look/right.png": {
+      "capture_sha256": "6310e2e2e0b3746890bf94ab99d2479ba0bf67520a1524be16e0221708c3321f",
+      "workspace_sha256": "6310e2e2e0b3746890bf94ab99d2479ba0bf67520a1524be16e0221708c3321f",
+      "matches": true
+    },
+    "res://art/buildings/lumber_hut/v1/life/resting_lumberjack.json": {
+      "capture_sha256": "29a5deba2319fa2fe08d817257a48d129791f7a2034b39d8544cb9faa3b31f50",
+      "workspace_sha256": "29a5deba2319fa2fe08d817257a48d129791f7a2034b39d8544cb9faa3b31f50",
+      "matches": true
+    },
+    "res://art/buildings/lumber_hut/v1/life/resting_lumberjack.png": {
+      "capture_sha256": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+      "workspace_sha256": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+      "matches": true
+    },
+    "res://scripts/view/lumber_hut_life.gd": {
+      "capture_sha256": "681345a3bb52fcd0c13cae9779124d20730d278bbbb59482d112902173a23a4b",
+      "workspace_sha256": "681345a3bb52fcd0c13cae9779124d20730d278bbbb59482d112902173a23a4b",
+      "matches": true
+    },
+    "res://scripts/view/main_view.gd": {
+      "capture_sha256": "e30af454cef1d8c6722cfb1ebc5309e71c5225d27242edd17f0ea35787a47e97",
+      "workspace_sha256": "e30af454cef1d8c6722cfb1ebc5309e71c5225d27242edd17f0ea35787a47e97",
+      "matches": true
+    },
+    "res://tools/preview_lumber_hut_life.gd": {
+      "capture_sha256": "dad7352ce37df9d19c5a49dcd5fe47eb4070177a61f8775530535a4f27208500",
+      "workspace_sha256": "dad7352ce37df9d19c5a49dcd5fe47eb4070177a61f8775530535a4f27208500",
+      "matches": true
+    },
+    "res://tools/preview_lumber_hut_life_look.gd": {
+      "capture_sha256": "0bba61ee30fe86985ff0d36808539e81264e5257d5a259c527c35245096e35a0",
+      "workspace_sha256": "ade3fe1af18f96b694d4fd17aedd2e0e7e350f87e1ee959801a7f2ec1271d671",
+      "matches": false,
+      "post_capture_metadata_correction": "Only the lighting_control description was corrected after capture to describe Main._draw solar refresh accurately. Rendering, timing and all assertions are unchanged; original captured runner hash is preserved."
+    }
+  },
+  "rest_gif": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 480,
+        "height": 420,
+        "duration": "12.000000",
+        "nb_read_frames": "240"
+      }
+    ]
+  },
+  "gif_encoding": "ffmpeg shared255color palette plus transparency; rectangle differentials, offsetting+transdiff;240 original native samples20fps12seconds; no generated/interpolated frames",
+  "rest_gif_file": "rest-in-game-preview.gif",
+  "rest_gif_bytes": 498204,
+  "gif_sampled_palette_error": [
+    {
+      "frame": 0,
+      "mean_absolute_rgb_error": 2.5843650793650794
+    },
+    {
+      "frame": 44,
+      "mean_absolute_rgb_error": 2.591374007936508
+    },
+    {
+      "frame": 60,
+      "mean_absolute_rgb_error": 2.5975132275132276
+    },
+    {
+      "frame": 160,
+      "mean_absolute_rgb_error": 2.619611441798942
+    },
+    {
+      "frame": 239,
+      "mean_absolute_rgb_error": 2.642476851851852
+    }
+  ]
+}

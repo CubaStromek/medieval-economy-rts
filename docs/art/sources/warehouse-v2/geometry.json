@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-13",
+  "building_id": "warehouse",
+  "revision": "v2-projection-ground-guide",
+  "status": "Technical proposal only; gameplay mask and native human scale verified, architectural coordinates are generation constraints and must be measured again on output",
+  "canvas": [
+    1000,
+    1000
+  ],
+  "source_to_world": 0.25,
+  "cell_source_px": 160,
+  "cell_world_px": 40,
+  "footprint": {
+    "version": 1,
+    "mask": [
+      "###",
+      "###",
+      "#E#"
+    ],
+    "occupied_cells": 9,
+    "world_size": [
+      120,
+      120
+    ],
+    "source_rect": [
+      220,
+      320,
+      480,
+      480
+    ],
+    "anchor_cell_relative": [
+      0,
+      0
+    ],
+    "anchor_cell_center_source": [
+      300,
+      720
+    ],
+    "door_cell_relative_to_anchor": [
+      1,
+      0
+    ],
+    "external_entrance_relative_to_anchor": [
+      1,
+      1
+    ],
+    "internal_free_cells": [],
+    "cell_rows_relative_to_anchor": [
+      -2,
+      -1,
+      0
+    ]
+  },
+  "grid_world_origin_source": [
+    220,
+    640
+  ],
+  "door_threshold": [
+    460,
+    800
+  ],
+  "external_approach_source_rect": [
+    380,
+    800,
+    160,
+    160
+  ],
+  "projection": {
+    "meaning": "Directions of projected architectural lines measured/approximated from inspected own lumber hut and sawmill. These are 2D image slopes, not inferred 3D camera elevation/azimuth or a rotated game grid.",
+    "reference_assets": [
+      "game/art/buildings/lumber_hut/v1/finished.png",
+      "game/art/buildings/sawmill/v2/finished.png",
+      "docs/art/qa/sawmill-v2/dynamic-native/full-pair-zoom-2_4.png"
+    ],
+    "front_vector": [
+      390,
+      -109
+    ],
+    "front_slope": -0.2794871794871795,
+    "front_image_line_angle_degrees": -15.61499649278704,
+    "left_side_back_to_front_vector": [
+      60,
+      54
+    ],
+    "left_side_slope": 0.9,
+    "left_side_image_line_angle_degrees": 41.987212495816664,
+    "direction_rule": "All corresponding front eaves, ridge, beam, sill and lintel edges rise to the right at the same approximate slope. Left depth edges descend right. Verticals remain vertical; visible left side modest. Preserve original hip-roof storehouse identity."
+  },
+  "proposed_ground": {
+    "front_left": [
+      285,
+      780
+    ],
+    "front_right": [
+      675,
+      671
+    ],
+    "back_left": [
+      225,
+      726
+    ],
+    "back_right": [
+      615,
+      617
+    ],
+    "front_horizontal_width_world_px": 97.5,
+    "left_side_horizontal_depth_world_px": 15,
+    "main_contact_extent_source_px": [
+      225,
+      617,
+      450,
+      163
+    ],
+    "main_contact_extent_world_px": [
+      112.5,
+      40.75
+    ],
+    "note": "A projected contact envelope inside the square collision area, not a replacement gameplay footprint or a requirement to fill every occupied square with visible masonry."
+  },
+  "door": {
+    "clear_opening_polygon": [
+      [
+        392,
+        598.0948717948718
+      ],
+      [
+        528,
+        560.0846153846154
+      ],
+      [
+        528,
+        712.0846153846154
+      ],
+      [
+        392,
+        750.0948717948718
+      ]
+    ],
+    "clear_opening_vertical_height_source_px": 152,
+    "clear_opening_vertical_height_world_px": 38,
+    "clear_opening_horizontal_width_source_px": 136,
+    "clear_opening_horizontal_width_world_px": 34,
+    "leaf_bottom_center": [
+      460,
+      731.0897435897436
+    ],
+    "front_and_door_base_slope": -0.2794871794871795,
+    "opening_rule": "Maintain actual 38worldpx vertical clearance after uniform scaling; do not change people or stretch image axes."
+  },
+  "landing": {
+    "polygon": [
+      [
+        404,
+        746.7410256410257
+      ],
+      [
+        516,
+        715.4384615384615
+      ],
+      [
+        516,
+        800
+      ],
+      [
+        404,
+        800
+      ]
+    ],
+    "toe_line": [
+      [
+        404,
+        800
+      ],
+      [
+        516,
+        800
+      ]
+    ],
+    "center_threshold": [
+      460,
+      800
+    ],
+    "width_world_px": 28,
+    "center_projection_depth_world_px": 17.227564102564088,
+    "note": "Flat low landing tongue connects oblique doorway to the actual middle entrance; it has a horizontal front toe entirely at y800, not a sloping toe extending below the south boundary. Shallow means low height above ground, not a short projected ground span. All stone is within the E cell; none in exterior approach."
+  },
+  "wall_wireframe": {
+    "illustration_height_source_px": 208,
+    "illustration_height_world_px": 52,
+    "status": "Spatial orientation illustration only; not final eave/roof/chimney height"
+  },
+  "human": {
+    "source": "game/art/units/civilians-basic-v1.png",
+    "source_sha256": "5978c8124445e7ef1832d30dce780214b173435f8a4f51e675e6bc716947f176",
+    "role": "carrier",
+    "atlas_canvas": [
+      1536,
+      1024
+    ],
+    "atlas_cell": [
+      307,
+      0,
+      307,
+      341
+    ],
+    "tight_atlas_region": {
+      "left": 400,
+      "top": 24,
+      "width": 159,
+      "height": 307
+    },
+    "alpha_threshold": 0.1,
+    "source_to_world": 0.10749185667752444,
+    "guide_scale": 0.42996742671009774,
+    "guide_foot": [
+      826,
+      800
+    ],
+    "guide_body_size": [
+      68.36482084690554,
+      132
+    ],
+    "world_body_height_px": 33,
+    "meaning": "Same real carrier as v1 verified guide, 132guidepx =33worldpx, separate scale reference only; never put person into warehouse master"
+  },
+  "validation": {
+    "current_catalog_mask_matches": true,
+    "all_proposed_ground_vertices_inside": true,
+    "landing_within_E_cell": true,
+    "flat_landing_toe_at_actual_threshold": true,
+    "external_approach_not_occupied": true,
+    "door_height_exceeds_human_by_world_px": 5
+  },
+  "preserved_state_contract": {
+    "day": "Door open, no indoor figure or stock props",
+    "night": "Same registered geometry, door closed, separate window light/chimney smoke driven by actual legitimate sleeping guests",
+    "fog": "Foreign private state remains neutral",
+    "stock": "No visual amount layers"
+  },
+  "limitations": [
+    "No new raster building is generated by this guide.",
+    "Exact generated doorway, ground contacts and camera direction must be measured before variants.",
+    "The guide does not determine numeric historical KaM camera angles.",
+    "Runtime is not edited or revalidated by creating this technical diagram."
+  ]
+}

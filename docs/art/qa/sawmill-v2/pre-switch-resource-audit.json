@@ -1,0 +1,215 @@
+{
+  "date": "2026-09-12",
+  "scope": "Read-only pre-switch filesystem and manifest audit; not a Godot load or visual acceptance",
+  "active_default_remains": "v1",
+  "base_manifest_sha256": "4308aa27f9962a2af75644122795a2b5f28435e57151b873b8310bc35e39bc67",
+  "operation_manifest_sha256": "147aced8a66ac715a712e919d7295d4458c2f27f0665143686876ea5691b4e85",
+  "referenced_png_count": 14,
+  "all_expected_hashes_match": true,
+  "all_import_remaps_exist": true,
+  "all_pngs_are_rgba8": true,
+  "optional_backplate_absent": true,
+  "stock_slot_counts": {
+    "log": 4,
+    "plank": 6
+  },
+  "worker_count": 6,
+  "assets": [
+    {
+      "path": "res://art/buildings/sawmill/v2/finished.png",
+      "sha256": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+      "expected_sha256": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+      "matches_expected": true,
+      "png_canvas": [
+        800,
+        800
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/finished.png-4c1752c3a6f637d355b165b18c370d64.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v2/operation/stock/log.png",
+      "sha256": "6e43c9ddf57a66bc261d286104dce502f7853852947608b54b94df85adf9cad8",
+      "expected_sha256": "6e43c9ddf57a66bc261d286104dce502f7853852947608b54b94df85adf9cad8",
+      "matches_expected": true,
+      "png_canvas": [
+        126,
+        124
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/log.png-f6d386b0c5373eeab31940376e70db1b.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v2/operation/stock/plank.png",
+      "sha256": "4716cfa4dd15232e5cda1803da6b652f9de1ff01f80559365a7972171c0232d3",
+      "expected_sha256": "4716cfa4dd15232e5cda1803da6b652f9de1ff01f80559365a7972171c0232d3",
+      "matches_expected": true,
+      "png_canvas": [
+        1299,
+        694
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/plank.png-b84f5bb18efe9ea560e8ddf890a06adc.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v1/operation/work/worker-0.png",
+      "sha256": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861",
+      "expected_sha256": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861",
+      "matches_expected": true,
+      "png_canvas": [
+        512,
+        512
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/worker-0.png-cba98ee6c70fc6a05f66d0029575dd58.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v1/operation/work/worker-1.png",
+      "sha256": "be269ff4b49d2962db4d27d5178c5380e8cb5837e97f36c2f6ce34be61e829e8",
+      "expected_sha256": "be269ff4b49d2962db4d27d5178c5380e8cb5837e97f36c2f6ce34be61e829e8",
+      "matches_expected": true,
+      "png_canvas": [
+        512,
+        512
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/worker-1.png-57a20fb4c6ec4a38cd237fea08471774.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v1/operation/work/worker-2.png",
+      "sha256": "b2b1eba431e5fcc09a834187578a471b9b6ced0a8fc51336962724303af2a811",
+      "expected_sha256": "b2b1eba431e5fcc09a834187578a471b9b6ced0a8fc51336962724303af2a811",
+      "matches_expected": true,
+      "png_canvas": [
+        512,
+        512
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/worker-2.png-abf19f5ff7783ce8d88024b5b69df968.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v1/operation/work/worker-3.png",
+      "sha256": "716654c3de538b8f62d6c731199b7a20d61bd7923454d15085d39bef7da1f7f6",
+      "expected_sha256": "716654c3de538b8f62d6c731199b7a20d61bd7923454d15085d39bef7da1f7f6",
+      "matches_expected": true,
+      "png_canvas": [
+        512,
+        512
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/worker-3.png-1adf54bf5b568146ae8162f1b327063b.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v1/operation/work/worker-4.png",
+      "sha256": "2bed208cb822bc002b50fa6d293fb1cab36bf81f1c79993e8ba22693e322f614",
+      "expected_sha256": "2bed208cb822bc002b50fa6d293fb1cab36bf81f1c79993e8ba22693e322f614",
+      "matches_expected": true,
+      "png_canvas": [
+        512,
+        512
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/worker-4.png-75b5b34b6715382da1504eca7674761a.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v1/operation/work/worker-5.png",
+      "sha256": "22c1ce5200883771b9fbe32190e384e3bbddb5080c01aab13beff6c06f0cafb7",
+      "expected_sha256": "22c1ce5200883771b9fbe32190e384e3bbddb5080c01aab13beff6c06f0cafb7",
+      "matches_expected": true,
+      "png_canvas": [
+        512,
+        512
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/worker-5.png-a90c4568624d9fa72b3dce50bcd8aad1.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v2/operation/work/processing-log.png",
+      "sha256": "d55a3238e246075541e93da52dd7eaae4e8958c3e096099aac8489b6a3ad9a68",
+      "expected_sha256": "d55a3238e246075541e93da52dd7eaae4e8958c3e096099aac8489b6a3ad9a68",
+      "matches_expected": true,
+      "png_canvas": [
+        363,
+        176
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/processing-log.png-509c6bdb1e0b2818ada68b92a59ebbe9.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v2/operation/stock/foreground.png",
+      "sha256": "2d6683bb2b7c0cfa1f402ff9074310f676ccc886ce494987be9fe06dd1167397",
+      "expected_sha256": "2d6683bb2b7c0cfa1f402ff9074310f676ccc886ce494987be9fe06dd1167397",
+      "matches_expected": true,
+      "png_canvas": [
+        800,
+        800
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/foreground.png-79de4c439f2571212742aed2582702cb.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v1/life/resting_carpenter.png",
+      "sha256": "48fe91d86381ac36c115038fac987e4694e39d49e10f98aee468fef64805cc7e",
+      "expected_sha256": "48fe91d86381ac36c115038fac987e4694e39d49e10f98aee468fef64805cc7e",
+      "matches_expected": true,
+      "png_canvas": [
+        256,
+        256
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/resting_carpenter.png-6993ffa6107e3a89f2e4dddfd9cb5085.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v1/life/look/left.png",
+      "sha256": "da4753003c6099874ff646354150d432b1a2459d6efba797e02fd82ac8640f81",
+      "expected_sha256": null,
+      "matches_expected": null,
+      "png_canvas": [
+        256,
+        256
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/left.png-5a7c48551a5eda643a52d95f3fcce3da.ctex",
+      "imported_resource_exists": true
+    },
+    {
+      "path": "res://art/buildings/sawmill/v1/life/look/right.png",
+      "sha256": "865878889eba7059f774e4d5a05f690162b6fe20166462cc3fbd98e911291685",
+      "expected_sha256": null,
+      "matches_expected": null,
+      "png_canvas": [
+        256,
+        256
+      ],
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "import_remap": "res://.godot/imported/right.png-b06cb4d293e20460451a43150cc82fff.ctex",
+      "imported_resource_exists": true
+    }
+  ]
+}

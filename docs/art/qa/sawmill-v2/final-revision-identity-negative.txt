@@ -1,0 +1,4 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+SAWMILL REVISION ASSET: v2 · res://art/buildings/sawmill/v2/manifest.json · SHA256 4308aa27f9962a2af75644122795a2b5f28435e57151b873b8310bc35e39bc67
+Expected sawmill artwork v1; active manifest is v2. No passing revision verification claimed.

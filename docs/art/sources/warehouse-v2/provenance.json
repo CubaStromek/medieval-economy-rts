@@ -1,0 +1,191 @@
+{
+  "date": "2026-09-13",
+  "building_id": "warehouse",
+  "asset_version": "v2",
+  "style_version": "0.2",
+  "tool": "built-in image_gen.imagegen",
+  "model": "Not exposed by tool",
+  "authorization": "User requested perspective match with own lumber hut and sawmill, preserving authorized day/night implementation.",
+  "references": {
+    "primary_camera": "game/art/buildings/lumber_hut/v1/finished.png",
+    "secondary_camera_material": "game/art/buildings/sawmill/v2/finished.png",
+    "warehouse_identity": "game/art/buildings/warehouse/v1/finished.png",
+    "measured_ground": "docs/art/sources/warehouse-v2/ground-guide.png"
+  },
+  "iterations": [
+    {
+      "prompt": "docs/art/sources/warehouse-v2/prompt-01-camera.txt",
+      "output": "docs/art/sources/warehouse-v2/concept-01-key.png",
+      "result": "Corrected viewpoint, but doorway too low at ground-fit scale."
+    },
+    {
+      "prompt": "docs/art/sources/warehouse-v2/prompt-02-door-scale.txt",
+      "output": "docs/art/sources/warehouse-v2/concept-02-key.png",
+      "result": "Taller ground floor, central approach still needed extension."
+    },
+    {
+      "prompt": "docs/art/sources/warehouse-v2/prompt-03-entry-tip.txt",
+      "output": "docs/art/sources/warehouse-v2/closed-key-master.png",
+      "result": "Selected closed master; ground and adult door measured before day variant."
+    },
+    {
+      "prompt": "docs/art/sources/warehouse-v2/prompt-04-day-open.txt",
+      "output": "docs/art/sources/warehouse-v2/day-open-key-master.png",
+      "result": "Open door artwork, composited only within registered opening; exterior pixels unchanged."
+    }
+  ],
+  "technical_processing": "Measured key extraction, conservative source door polygon compositing, uniform1254to800resize. No camera warp or independent X/Y scaling. Disconnected residual key pixels removed; retained single connected architecture before resize.",
+  "registration_report": "docs/art/qa/warehouse-v2/production-export.json",
+  "geometry_report": "docs/art/qa/warehouse-v2/concept-measurements.json",
+  "files": [
+    {
+      "path": "docs/art/sources/warehouse-v2/ground-guide.png",
+      "sha256": "aa8ff5be2e2b387fc7e6019486f99259dcddfef7ee79b75c1e2cd530233ecb1b",
+      "canvas": [
+        1000,
+        1000
+      ],
+      "channels": 4,
+      "has_alpha": true
+    },
+    {
+      "path": "game/art/buildings/lumber_hut/v1/finished.png",
+      "sha256": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+      "canvas": [
+        640,
+        640
+      ],
+      "channels": 4,
+      "has_alpha": true
+    },
+    {
+      "path": "game/art/buildings/sawmill/v2/finished.png",
+      "sha256": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+      "canvas": [
+        800,
+        800
+      ],
+      "channels": 4,
+      "has_alpha": true
+    },
+    {
+      "path": "game/art/buildings/warehouse/v1/finished.png",
+      "sha256": "128e8b03237da8442b0a6672a05815c1686aa2bdf59f0a022dd71140fa7b9a91",
+      "canvas": [
+        800,
+        800
+      ],
+      "channels": 4,
+      "has_alpha": true
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/prompt-01-camera.txt",
+      "sha256": "72ee1c6a7fd15eedde821eb4fbc7862b4be10fdc8f2b333b700d7da53948b033"
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/concept-01-key.png",
+      "sha256": "a15630ec5ecb1148954e7760cce6617351a292472dc213e77b8e919d0e79cf79",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "channels": 3,
+      "has_alpha": false
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/prompt-02-door-scale.txt",
+      "sha256": "b20f063460501b418928ff14542e96de19321b935cfa5fd30792ce77147693b0"
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/concept-02-key.png",
+      "sha256": "d454f5a84ee7967621efbf7ba64561511dac345a615468f9bec3e7c236c83699",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "channels": 3,
+      "has_alpha": false
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/prompt-03-entry-tip.txt",
+      "sha256": "bf0a4e34c69640beebd6afd5e3978e3f3e57988fd12992726a8d7e0c0d9bb7d5"
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/closed-key-master.png",
+      "sha256": "1cc484d32c122504405fef05dceb3e79d0a68d6fad2d63bd8c19dfd6cf9599e1",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "channels": 3,
+      "has_alpha": false
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/prompt-04-day-open.txt",
+      "sha256": "6a36c817273edd246dd5ea6139fc1c6e28ddceca9fd0197cf426a09296fe0781"
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/day-open-key-master.png",
+      "sha256": "94c7f441f3cc1dcea2a2d62144942757d90b48a7ede7a9b953ff4a6cfc6c793c",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "channels": 3,
+      "has_alpha": false
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/life-measurements.json",
+      "sha256": "f44cc7dcf145109720fa50c7596a0bb49b5f1c010509cafbedaa7f77394b08d4"
+    },
+    {
+      "path": "docs/art/sources/warehouse-v2/export-production.cjs",
+      "sha256": "0902b1896e10bf34dd85f8b2a6a43c6d8f6ab55c76f2d2a216cb26c4bdf99b55"
+    },
+    {
+      "path": "game/art/buildings/warehouse/v2/finished.png",
+      "sha256": "2758927bd742ac62a88751c4d2f3a787f06f425041003e48f784021976fbcae6",
+      "canvas": [
+        800,
+        800
+      ],
+      "channels": 4,
+      "has_alpha": true
+    },
+    {
+      "path": "game/art/buildings/warehouse/v2/day-open.png",
+      "sha256": "ced48ea8f4fc4239802fca18c992c837f6497392cf03256bd1bad4b5f3abd89e",
+      "canvas": [
+        800,
+        800
+      ],
+      "channels": 4,
+      "has_alpha": true
+    },
+    {
+      "path": "game/art/buildings/warehouse/v2/manifest.json",
+      "sha256": "11e1450b134dbc35833f6485d0048111f1eff0083bfc42d997ff45bfb319c7f3"
+    }
+  ],
+  "status": "Production v2 active in normal game. Focused17/17 and native66/66 passed2026-09-13; native perspective/day/night/ground review completed. Final user acceptance not yet given.",
+  "validation": {
+    "focused_tests": {
+      "passed": 17,
+      "failed": 0,
+      "logs": [
+        "docs/art/qa/warehouse-v2/sprite-tests.log",
+        "docs/art/qa/warehouse-v2/life-tests.log"
+      ]
+    },
+    "native": {
+      "report": "docs/art/qa/warehouse-v2/runtime/report.json",
+      "checks": 66,
+      "failures": 0,
+      "captures": 17,
+      "actual_active_version": "v2",
+      "all_phase_rgba_hashes_match_final_manifest": true,
+      "start_end_asset_hashes_stable": true
+    },
+    "visual_review": "Same-frame own three-building comparison at0.75/1/2.4; real day/night occupancy; raised ground with intact base and clear approach; both panes and chimney effect registered. Architectural image-line family is coherent; no exact common3Dcamera inferred."
+  }
+}

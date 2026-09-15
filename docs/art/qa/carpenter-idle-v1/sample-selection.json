@@ -1,0 +1,46 @@
+{
+  "body_crop_viewport": [
+    557,
+    403,
+    130,
+    130
+  ],
+  "samples": [
+    {
+      "file": "idle-motion/000.png",
+      "look": "left",
+      "amount": 0.0509586214493741,
+      "time": 0.008495
+    },
+    {
+      "file": "idle-motion/175.png",
+      "look": "left",
+      "amount": 0.999835936430751,
+      "time": 11.692237
+    },
+    {
+      "file": "idle-motion/139.png",
+      "look": "center",
+      "amount": 0.000111262449360661,
+      "time": 9.283551
+    },
+    {
+      "file": "idle-motion/031.png",
+      "look": "center",
+      "amount": 0.999992466973854,
+      "time": 2.081608
+    },
+    {
+      "file": "idle-motion/068.png",
+      "look": "right",
+      "amount": 0.00282436666838071,
+      "time": 4.548945
+    },
+    {
+      "file": "idle-motion/096.png",
+      "look": "right",
+      "amount": 0.915982609028049,
+      "time": 6.414592
+    }
+  ]
+}

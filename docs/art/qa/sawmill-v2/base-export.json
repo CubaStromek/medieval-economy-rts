@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-12",
+  "source": "docs/art/sources/sawmill-v2/concept-04-key.png",
+  "source_sha256": "3ff20d909aaa9dd05788c4545a657d2984bb03a8a4ffd7118cb80da506d12115",
+  "finished_sha256": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+  "finished_rgba_sha256": "5fbf68bcf3df8c38c9e8f9d1e29494d605b425e4b986ec923ea2b81c3dee2cd1",
+  "source_canvas": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    800,
+    800
+  ],
+  "raw_to_world": 0.1195,
+  "source_to_production": 0.6379585326953748,
+  "production_to_world": 0.18731625,
+  "navigation_contact_source": [
+    400,
+    1032
+  ],
+  "background_sample": {
+    "pixels": 260604,
+    "minimum_dominance": 192,
+    "p001_dominance": 226,
+    "maximum_dominance": 248,
+    "modal_rgb": [
+      "248,3,246",
+      41811
+    ],
+    "unmatte_key": [
+      248,
+      4,
+      247
+    ],
+    "cutoff": 180,
+    "unmatte": "a=clamp(1-d/243); pure key d>=180 removed"
+  },
+  "alpha_gt_0": {
+    "bbox": [
+      10,
+      32,
+      780,
+      628
+    ],
+    "pixels": 357953
+  },
+  "alpha_gt_25": {
+    "bbox": [
+      12,
+      35,
+      776,
+      623
+    ],
+    "pixels": 354774
+  },
+  "geometry_review": "First concept corrected for adult door height and width before any state layers; source contacts and native ground review recorded separately; nav extends 2 raw pixels past source03 bottom for uniform resize edge coverage",
+  "runtime_qa": "Not proven by export"
+}

@@ -2,7 +2,7 @@ extends RefCounted
 
 const MainViewClass = preload("res://scripts/view/main_view.gd")
 const MainScene = preload("res://scenes/main.tscn")
-const TEST_COUNT: int = 12 # Six player flows at both supported window sizes.
+const TEST_COUNT: int = 16 # Eight player flows at both supported window sizes.
 
 
 # Exercise the rendered controls through viewport dispatch. In particular, the
@@ -39,6 +39,8 @@ static func run(host: Node) -> Array[String]:
 			await _check_school_inspection(host, main, viewport, fixture_failures)
 			await _check_repeated_selection(host, main, viewport, fixture_failures)
 			await _check_overlay_controls(host, main, viewport, fixture_failures)
+			await _check_stable_build_list(host, main, viewport, fixture_failures)
+			await _check_stock_panel_fit(host, main, viewport, fixture_failures)
 		for failure: String in fixture_failures:
 			failures.append("%d×%d: %s" % [window_size.x, window_size.y, failure])
 		viewport.free()
@@ -52,15 +54,15 @@ static func _check_layout(main: MainViewClass, viewport: SubViewport, failures: 
 	_expect(_fully_visible(village, viewport), "Village panel must fit inside the window", failures)
 	_expect(not overview.get_global_rect().intersects(village.get_global_rect()),
 		"Overview and village controls must not overlap", failures)
-	_expect(village.size.x < float(viewport.size.x) / 3.0,
-		"Sidebar must leave at least two thirds of the width for the map", failures)
+	_expect(village.size.x < float(viewport.size.x) / 4.0,
+		"Sidebar must leave at least three quarters of the width for the map", failures)
 	_expect(_control(main, "BuildBody").is_visible_in_tree(), "New games should open the building menu", failures)
 	_expect(not _control(main, "BuildingInspectorScroll").is_visible_in_tree(),
 		"An empty inspector must not compete with the initial building menu", failures)
 	_expect(not main.resource_hud_panel.is_visible_in_tree(), "Detailed stocks should be closed initially", failures)
-	for button: Button in [_button(main, "Pause"), _button(main, "0.5×"), _button(main, "1×"), _button(main, "2×")]:
+	for button: Button in [_button(main, "Pauza"), _button(main, "0,5×"), _button(main, "1×"), _button(main, "2×")]:
 		_expect(button != null and _fully_visible(button, viewport), "Every speed control must be fully visible", failures)
-	var pause: Button = _button(main, "Pause")
+	var pause: Button = _button(main, "Pauza")
 	if pause != null:
 		_click(viewport, pause)
 		_expect(main.simulation_speed == 0.0 and pause.button_pressed,
@@ -99,7 +101,7 @@ static func _check_stocks(host: Node, main: MainViewClass, viewport: SubViewport
 			var stock: Dictionary = main.world.resource_stock(resource_id)
 			_expect(amount.text == str(stock["total"]),
 				"Total amount must match the world for " + resource_id, failures)
-			_expect(breakdown.text == "Warehouse: %d\nBuildings: %d\nCarried: %d" % [
+			_expect(breakdown.text == "Sklad %d · Budovy %d · Neseno %d" % [
 				int(stock["warehouse"]), int(stock["buildings"]), int(stock["carried"]),
 			], "Inventory locations must match the world for " + resource_id, failures)
 			seen[resource_id] = true
@@ -158,10 +160,11 @@ static func _check_school_inspection(host: Node, main: MainViewClass, viewport: 
 	_expect(inspector.is_visible_in_tree() and not _control(main, "BuildBody").is_visible_in_tree(),
 		"Selecting a school must replace the build menu with its inspector", failures)
 	var school: Dictionary = main.world.buildings[school_id] as Dictionary
-	for profession: String in ["Lumberjack", "Carrier"]:
-		var train: Button = _button(main, "Train " + profession)
+	# Look the training actions up by node name: the visible label is localized.
+	for profession: String in ["lumberjack", "carrier"]:
+		var train: Button = _control(main, "Train_" + profession) as Button
 		if train == null:
-			failures.append("School must offer Train " + profession)
+			failures.append("School must offer training for " + profession)
 			continue
 		_expect(_fully_visible(train, viewport),
 			"First school actions must be fully visible without scrolling: " + profession, failures)
@@ -177,7 +180,7 @@ static func _check_school_inspection(host: Node, main: MainViewClass, viewport: 
 	_click(viewport, _control(main, "InspectTab"))
 	await _settle(host)
 	_expect(inspector.is_visible_in_tree(), "Inspect tab must reopen the selected school's details", failures)
-	_expect(_fully_visible(_button(main, "Train Carrier"), viewport),
+	_expect(_fully_visible(_control(main, "Train_carrier"), viewport),
 		"Reopening inspection must retain usable first-row training actions", failures)
 
 
@@ -254,6 +257,57 @@ static func _check_overlay_controls(host: Node, main: MainViewClass, viewport: S
 	await _settle(host)
 	_expect(not main.resource_hud_panel.is_visible_in_tree() and not stocks_toggle.button_pressed,
 		"Escape from focused All stocks must close its panel and reset its toggle", failures)
+
+
+# Picking a tool used to add a preview line, a cost hint and a Cancel button to
+# the same column, which collapsed the building list under the cursor and cut a
+# row in half. The footer now reserves that space at all times.
+static func _check_stable_build_list(host: Node, main: MainViewClass, viewport: SubViewport, failures: Array[String]) -> void:
+	_click(viewport, _control(main, "BuildTab"))
+	await _settle(host)
+	var list: Control = _control(main, "BuildingMenuScroll")
+	var footer: Control = _control(main, "BuildFooter")
+	if list == null or footer == null:
+		failures.append("The build tab must expose its scrolling list and reserved footer")
+		return
+	var idle_rect: Rect2 = list.get_global_rect()
+	var idle_footer: Rect2 = footer.get_global_rect()
+	_click(viewport, _control(main, "Build_road"))
+	await _settle(host)
+	_expect(main.build_mode == "road", "Build-list stability fixture must actually enter placement mode", failures)
+	_expect(list.get_global_rect().is_equal_approx(idle_rect),
+		"Selecting a tool must not resize or move the building list", failures)
+	_expect(footer.get_global_rect().is_equal_approx(idle_footer),
+		"The active-tool footer must keep the same reserved rectangle when a tool is picked", failures)
+	_expect(_control(main, "CancelBuild").is_visible_in_tree()
+			and _fully_visible(_control(main, "CancelBuild"), viewport),
+		"Placement mode must offer a fully visible way out inside that footer", failures)
+	_click(viewport, _control(main, "CancelBuild"))
+	await _settle(host)
+	_expect(main.build_mode.is_empty() and list.get_global_rect().is_equal_approx(idle_rect),
+		"Leaving placement must restore the same list rectangle", failures)
+
+
+# The stock overlay used to reserve a fixed height, so Materials left a third of
+# the panel blank. Its height follows the open category instead.
+static func _check_stock_panel_fit(host: Node, main: MainViewClass, viewport: SubViewport, failures: Array[String]) -> void:
+	_click(viewport, _control(main, "StockpileToggle"))
+	await _settle(host)
+	await _settle(host)
+	var heights: Dictionary = {}
+	for category: String in ["materials", "food", "military"]:
+		_click(viewport, _control(main, "StockCategory_" + category))
+		await _settle(host)
+		await _settle(host)
+		heights[category] = main.resource_hud_panel.get_global_rect().size.y
+		_expect(_fully_visible(main.resource_hud_panel, viewport),
+			"The stock panel must stay inside the window for " + category, failures)
+	_expect(float(heights["materials"]) < float(heights["military"]),
+		"A category with fewer wares must produce a shorter panel than the tallest one", failures)
+	_expect(float(heights["materials"]) > 0.0 and float(heights["military"]) < float(viewport.size.y),
+		"The fitted panel must stay between a usable minimum and the window height", failures)
+	_click(viewport, _control(main, "StockpileToggle"))
+	await _settle(host)
 
 
 static func _clear_cell(main: MainViewClass, kind: String) -> Vector2i:

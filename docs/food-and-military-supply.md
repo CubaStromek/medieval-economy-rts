@@ -13,9 +13,7 @@ after the player requests supplies.
   the existing building logistics. The input buffer holds six of each food.
 - Hungry civilians, including carriers, builders, production specialists and
   tower recruits, find a reachable supplied Inn with an available seat. They
-  normally finish their existing work/delivery before taking a meal. Nightly
-  rest can defer unfinished cargo: a resting civilian can still visit the Inn
-  while retaining that cargo for its next work period.
+  normally finish their existing work/delivery before taking a meal.
 - Click a soldier's visible sprite to select that particular unit, then choose
   **Supply food**. Alternatively open **Military → Supply army** to request food
   for all eligible soldiers. Requests are available strictly below **55%**
@@ -60,9 +58,6 @@ the door, and resumes work. A specialist retains the same workplace throughout;
 its production does not operate without it. An idle person also leaves the Inn
 when no work is available.
 
-Nightly rest does not prevent hungry civilians from eating. They can leave
-their sleeping place for food, then return to sleep until the workday resumes.
-
 The implementation uses the existing indoor-unit system. Seating, temporary
 indoor presence and permanent workplace ownership are three separate concepts.
 
@@ -106,19 +101,17 @@ New units start fully fed at **2700 satiety** with a full long-term reserve.
 Food seeking begins at 360 (13.3%); the earlier appetite warning is at 50%.
 Military supply eligibility remains a separate threshold strictly below 55%.
 
-Satiety declines at **0.48 points per awake tick**, or **0.24 while actually
-sleeping**. A full citizen following fifteen awake hours and nine sleeping
-hours becomes hungry after about one **6000-tick game day** (10 real minutes
-at 1×, 20 at the default 0.5×), excluding meals and additional work/travel.
-Night alone does not reduce consumption: an awake soldier or a citizen still
-outside uses the awake rate. The inspector's hunger ETA assumes the **current
-activity continues**, not that future sleep or work has been predicted: a fresh
-awake unit shows 19 h 30 min, while the same sleeping unit shows 39 h.
+Satiety declines at a constant **0.39 points per tick** for every unit
+(since 2026-09-14, when sleep was removed; the same daily demand as the former
+awake/asleep average). A full citizen becomes hungry after one **6000-tick
+balance day** (10 real minutes at 1×, 20 at the default 0.5×), excluding meals
+and travel. The inspector shows the hunger ETA as simulation time at 1×
+(10 min 00 s for a fresh unit) plus the real waiting time at the current speed.
 
-The independent long-term deficit grows one tick per simulation tick, awake or
-asleep, and is frozen during an active meal. From a fresh reserve, **seven full
-calendar days without food (42,000 ticks)** cause death: 70 real minutes at 1×,
-140 at 0.5×. Sleep slows satiety loss, **not this seven-day reserve clock**.
+The independent long-term deficit grows one tick per simulation tick and is
+frozen during an active meal. From a fresh reserve, **seven balance days
+without food (42,000 ticks)** cause death: 70 real minutes at 1×, 140 at 0.5×.
+The inspector shows this reserve in minutes at 1×.
 Empty satiety with a healthy reserve is simply **Hungry**. Productive work
 remains at **100% for the first two deficit days**, gradually decreases to
 **80% at four days**, and never falls further. The state is **Weakened** while
@@ -134,7 +127,7 @@ Changing game speed changes real waiting time, not the game-day rules.
 ## Saves
 
 Save **v14** introduced progressive courses; **v19** adds long-term nutrition
-while retaining the existing meal, sleep and ownership fields:
+while retaining the existing meal and ownership fields:
 
 - `meal_ticks_left`: remaining ticks of the current course;
 - `meal_course`: current food, duration, nutrition, already applied nutrition

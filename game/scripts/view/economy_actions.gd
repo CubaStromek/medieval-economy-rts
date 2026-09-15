@@ -3,6 +3,7 @@ extends VBoxContainer
 
 const DefinitionCatalogClass = preload("res://scripts/simulation/definition_catalog.gd")
 const SimulationWorldClass = preload("res://scripts/simulation/simulation_world.gd")
+const UiTextClass = preload("res://scripts/ui_text.gd")
 
 signal unit_training_requested(unit_type: String)
 signal production_order_requested(recipe_id: String)
@@ -29,33 +30,34 @@ func configure(catalog: DefinitionCatalogClass) -> void:
 	name = "EconomyActions"
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	add_theme_constant_override("separation", 14)
-	training_panel = _section("SchoolTraining", "TRAIN CITIZENS")
+	training_panel = _section("SchoolTraining", "VÝCVIK OBYVATEL")
 	var school: Dictionary = _catalog.building("school")
 	var cost: Dictionary = school.get("training_cost", {}) as Dictionary
-	_description(training_panel, "Cost per citizen: %s\nSpecialists need a matching workplace." % (_amounts(cost) if not cost.is_empty() else "free"))
+	_description(training_panel, "Cena za obyvatele: %s\nSpecialisté potřebují odpovídající pracoviště." % (_amounts(cost) if not cost.is_empty() else "zdarma"))
 	_training_status = _status_label(training_panel)
 	var grid: GridContainer = _grid(training_panel)
 	for unit_type_variant: Variant in school.get("trains", []) as Array:
 		var unit_type: String = String(unit_type_variant)
 		var definition: Dictionary = _catalog.unit(unit_type)
-		var button: Button = _button(grid, "Train " + String(definition.get("display_name", unit_type.capitalize())))
+		var button: Button = _button(grid, UiTextClass.unit_name(_catalog, unit_type))
 		button.name = "Train_" + unit_type
-		button.tooltip_text = "%s\nCost: %s • %.0f s" % [
+		button.tooltip_text = "Vycvičit: %s\n%s\nCena: %s • %.0f s" % [
+			UiTextClass.unit_name(_catalog, unit_type),
 			_training_description(unit_type, definition),
-			_amounts(cost) if not cost.is_empty() else "free",
+			_amounts(cost) if not cost.is_empty() else "zdarma",
 			float(definition.get("training_ticks", 0)) / 10.0,
 		]
 		button.pressed.connect(unit_training_requested.emit.bind(unit_type))
-	_orders_panel = _section("ProductionOrders", "ORDER EQUIPMENT")
-	_recruitment_panel = _section("Recruitment", "RECRUITMENT")
-	_market_panel = _section("MarketExchange", "EXCHANGE WARES")
-	_description(_market_panel, "Carriers deliver the payment and collect your wares.")
-	_market_give = _ware_selector(_market_panel, "Give")
-	_market_receive = _ware_selector(_market_panel, "Receive")
+	_orders_panel = _section("ProductionOrders", "OBJEDNAT VÝZBROJ")
+	_recruitment_panel = _section("Recruitment", "NÁBOR")
+	_market_panel = _section("MarketExchange", "SMĚNA ZBOŽÍ")
+	_description(_market_panel, "Nosiči doručí platbu a vyzvednou tvé zboží.")
+	_market_give = _ware_selector(_market_panel, "Dám")
+	_market_receive = _ware_selector(_market_panel, "Dostanu")
 	if _market_receive.item_count > 1:
 		_market_receive.select(1)
 	_market_rate = _status_label(_market_panel)
-	_market_button = _button(_market_panel, "Queue exchange")
+	_market_button = _button(_market_panel, "Zařadit směnu")
 	_market_button.pressed.connect(func() -> void:
 		trade_requested.emit(_selected_ware(_market_give), _selected_ware(_market_receive))
 	)
@@ -66,15 +68,15 @@ func configure(catalog: DefinitionCatalogClass) -> void:
 func _training_description(unit_type: String, definition: Dictionary) -> String:
 	if unit_type == "gardener":
 		var hut: Dictionary = _catalog.building("forester_hut")
-		return "Gardener: requires a %s. Plants saplings on reachable clear ground within %d tiles of the hut. One gardener per hut." % [
-			String(hut.get("display_name", "Forester Hut")), int(hut.get("planting_radius", 8)),
+		return "Lesník: potřebuje stavbu %s. Sází stromky na dostupnou volnou zem do %s od chaty. Jeden lesník na chatu." % [
+			UiTextClass.building_name(_catalog, "forester_hut"), UiTextClass.tiles(int(hut.get("planting_radius", 8))),
 		]
 	if unit_type == "fisherman":
 		var hut: Dictionary = _catalog.building("fisher_hut")
-		return "Fisherman: requires a %s near a reachable fish deposit within %d tiles. One fisherman per hut; carriers collect the fish." % [
-			String(hut.get("display_name", "Fisherman's Hut")), int(hut.get("extract_radius", 3)),
+		return "Rybář: potřebuje stavbu %s u dostupného ložiska ryb do %s. Jeden rybář na chatu, ryby odvážejí nosiči." % [
+			UiTextClass.building_name(_catalog, "fisher_hut"), UiTextClass.tiles(int(hut.get("extract_radius", 3))),
 		]
-	return String(definition.get("description", "Train a " + unit_type + "."))
+	return String(definition.get("description", "Vycvičí profesi " + UiTextClass.unit_name(_catalog, unit_type) + "."))
 
 
 func refresh(world: SimulationWorldClass, building: Dictionary) -> void:
@@ -93,22 +95,22 @@ func refresh(world: SimulationWorldClass, building: Dictionary) -> void:
 		(button_node as Button).disabled = construction
 	if training_panel.visible:
 		var queue: Array = building.get("training_queue", []) as Array
-		_training_status.text = "Training queue: %d / %d" % [queue.size(), int(definition.get("queue_capacity", 5))]
+		_training_status.text = "Fronta výcviku: %d / %d" % [queue.size(), int(definition.get("queue_capacity", 5))]
 		if not queue.is_empty():
-			_training_status.text += "\n%s • %.1f s remaining" % [
-				String(_catalog.unit(String(queue[0])).get("display_name", queue[0])),
+			_training_status.text += "\n%s • zbývá %.1f s" % [
+				UiTextClass.unit_name(_catalog, String(queue[0])),
 				float(building.get("training_remaining", 0)) / 10.0,
 			]
 		if construction:
-			_training_status.text = "Training opens when construction is complete."
+			_training_status.text = "Výcvik se otevře po dokončení stavby."
 	if _orders_panel.visible and _order_status != null:
-		_order_status.text = "Orders queued: %d" % (building.get("production_queue", []) as Array).size()
+		_order_status.text = "Objednávek ve frontě: %d" % (building.get("production_queue", []) as Array).size()
 	if _recruitment_panel.visible and _recruitment_status != null:
 		var service_queue: Array = building.get("service_queue", []) as Array
-		_recruitment_status.text = "Recruitment queue: %d" % service_queue.size()
+		_recruitment_status.text = "Fronta náboru: %d" % service_queue.size()
 		if not service_queue.is_empty():
 			var next_unit: String = String((service_queue[0] as Dictionary).get("unit", ""))
-			_recruitment_status.text += " • next: " + String(_catalog.unit(next_unit).get("display_name", next_unit))
+			_recruitment_status.text += " • další: " + UiTextClass.unit_name(_catalog, next_unit)
 	if _market_panel.visible:
 		var give: String = _selected_ware(_market_give)
 		var receive: String = _selected_ware(_market_receive)
@@ -116,8 +118,8 @@ func refresh(world: SimulationWorldClass, building: Dictionary) -> void:
 		if give != receive and world.has_method("trade_amounts"):
 			amounts = world.call("trade_amounts", give, receive) as Dictionary
 		_market_button.disabled = construction or amounts.is_empty()
-		_market_rate.text = "%d %s → %d %s" % [int(amounts.get("give", 0)), _ware_name(give), int(amounts.get("receive", 0)), _ware_name(receive)] if not amounts.is_empty() else "Choose two different wares."
-		_market_rate.text += "\nExchanges queued: %d" % (building.get("service_queue", []) as Array).size()
+		_market_rate.text = "%d %s → %d %s" % [int(amounts.get("give", 0)), _ware_name(give), int(amounts.get("receive", 0)), _ware_name(receive)] if not amounts.is_empty() else "Vyber dvě různá zboží."
+		_market_rate.text += "\nSměn ve frontě: %d" % (building.get("service_queue", []) as Array).size()
 
 
 func _rebuild_orders(definition: Dictionary) -> void:
@@ -129,12 +131,12 @@ func _rebuild_orders(definition: Dictionary) -> void:
 		var outputs: String = _amounts(recipe.get("outputs", {}) as Dictionary)
 		var inputs: String = _amounts(recipe.get("inputs", {}) as Dictionary)
 		var row: VBoxContainer = _action_row(_orders_panel)
-		var button: Button = _button(row, "Order " + outputs)
+		var button: Button = _button(row, "Objednat " + outputs)
 		button.name = "Order_" + recipe_id
 		button.tooltip_text = "%s → %s • %.0f s" % [inputs, outputs, float(recipe.get("duration_ticks", 0)) / 10.0]
 		button.pressed.connect(production_order_requested.emit.bind(recipe_id))
-		var requirement: Label = _description(row, "Needs %s • %.0f s" % [inputs, float(recipe.get("duration_ticks", 0)) / 10.0])
-		requirement.tooltip_text = "Ingredients per order"
+		var requirement: Label = _description(row, "Potřebuje %s • %.0f s" % [inputs, float(recipe.get("duration_ticks", 0)) / 10.0])
+		requirement.tooltip_text = "Suroviny na jednu objednávku"
 
 
 func _rebuild_recruitment(definition: Dictionary) -> void:
@@ -147,13 +149,13 @@ func _rebuild_recruitment(definition: Dictionary) -> void:
 		var soldier: Dictionary = soldiers.get(soldier_id, {}) as Dictionary
 		var cost: String = _amounts(soldier.get("equipment", {}) as Dictionary)
 		if bool(soldier.get("requires_recruit", false)):
-			cost += " + 1 Recruit"
+			cost += " + 1 rekrut"
 		var row: VBoxContainer = _action_row(_recruitment_panel)
-		var button: Button = _button(row, "Recruit " + String(soldier.get("display_name", soldier_id.capitalize())))
+		var button: Button = _button(row, UiTextClass.unit_name(_catalog, soldier_id))
 		button.name = "Recruit_" + soldier_id
-		button.tooltip_text = "Equipped when a Recruit and the required wares reach the Barracks; no extra training delay." if bool(soldier.get("requires_recruit", false)) else "Recruited when payment has arrived and an exit is free; no extra training delay."
+		button.tooltip_text = "Vystrojí se, jakmile do Kasáren dorazí rekrut a potřebné zboží; žádná další prodleva výcviku." if bool(soldier.get("requires_recruit", false)) else "Naverbuje se, jakmile dorazí platba a je volný východ; žádná další prodleva výcviku."
 		button.pressed.connect(recruitment_requested.emit.bind(soldier_id))
-		_description(row, "Needs " + cost)
+		_description(row, "Potřebuje " + cost)
 
 
 func _action_row(parent: Control) -> VBoxContainer:
@@ -249,11 +251,11 @@ func _selected_ware(selector: OptionButton) -> String:
 
 
 func _ware_name(resource_id: String) -> String:
-	return String((_catalog.resources.get(resource_id, {}) as Dictionary).get("display_name", resource_id.capitalize()))
+	return UiTextClass.resource_name(_catalog, resource_id)
 
 
 func _amounts(amounts: Dictionary) -> String:
 	var parts: PackedStringArray = []
 	for resource_id: String in amounts:
-		parts.append("%d %s" % [int(amounts[resource_id]), _ware_name(resource_id)])
+		parts.append(UiTextClass.resource_amount(resource_id, int(amounts[resource_id])))
 	return " + ".join(parts)

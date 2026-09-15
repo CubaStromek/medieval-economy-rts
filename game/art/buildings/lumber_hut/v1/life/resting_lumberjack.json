@@ -1,0 +1,93 @@
+{
+  "date": "2026-09-12",
+  "scope": "Single static leaning rest pose; no directions or motion",
+  "source": "docs/art/sources/lumber-hut-life-v1/resting-lumberjack-key-v3-rgb.png",
+  "master": "docs/art/sources/lumber-hut-life-v1/resting-lumberjack-rgba-master.png",
+  "production": "game/art/buildings/lumber_hut/v1/life/resting_lumberjack.png",
+  "source_sha256": "0a9ef7aa5e4c7ba565248df2088f3d7ad2af5ffbca3793191f093e70042c30e5",
+  "master_sha256": "95913ad0411ee8856e40924c0ee00dbcd7f3bfb8363339a919ba53779564833a",
+  "production_sha256": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+  "trim": {
+    "left": 346,
+    "top": 45,
+    "width": 451,
+    "height": 1273
+  },
+  "resized": {
+    "width": 58,
+    "height": 164
+  },
+  "placement": {
+    "left": 94,
+    "top": 42
+  },
+  "source_ground_contact": [
+    614,
+    1312
+  ],
+  "production_ground_contact": [
+    128.46563192904654,
+    205.229379418696
+  ],
+  "source_cap_top": [
+    542,
+    50
+  ],
+  "source_body_height_px": 1263,
+  "production_body_height_px": 162.71,
+  "source_to_production": [
+    0.1286031042128603,
+    0.12882953652788687
+  ],
+  "recommended_world_body_height_px": 33,
+  "recommended_source_px_to_world": 0.20281482391985742,
+  "anatomy": "Folded empty hands; no axe/log; weight on straight anatomical right leg; anatomical left leg bent. Slight three-quarter facing screen-right.",
+  "technical_alpha": {
+    "observed_empty_dominance_range": [
+      204,
+      251
+    ],
+    "observed_foreground_region_dominance_range": [
+      -103,
+      0
+    ],
+    "measured_modal_background": [
+      251,
+      3,
+      250
+    ],
+    "transparent_dominance_threshold": 196,
+    "antialias_unmatte": "alpha=(247-min(r,b)+g)/247 below key threshold; straight-alpha unmatte with measured modal key"
+  },
+  "asset_measurements": {
+    "canvas": [
+      256,
+      256
+    ],
+    "counts": {
+      "transparent": 59591,
+      "partial": 1326,
+      "opaque": 4619
+    },
+    "alpha_bounds_exclusive": {
+      "0": [
+        94,
+        42,
+        152,
+        206
+      ],
+      "25": [
+        94,
+        42,
+        152,
+        206
+      ],
+      "127": [
+        95,
+        43,
+        151,
+        205
+      ]
+    }
+  }
+}

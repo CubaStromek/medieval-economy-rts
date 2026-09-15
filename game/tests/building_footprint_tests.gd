@@ -35,7 +35,7 @@ static func _expect(condition: bool, message: String, failures: Array[String]) -
 
 static func _test_source_shapes(failures: Array[String]) -> void:
 	var world := World.new()
-	_expect(world.catalog.buildings.size() == 30, "The footprint catalog covers all 28 classic menu buildings plus the Forester Hut and Workers' Cottage", failures)
+	_expect(world.catalog.buildings.size() == 29, "The footprint catalog covers all 28 classic menu buildings plus the Forester Hut", failures)
 	for type: String in world.catalog.buildings:
 		var definition: Dictionary = world.catalog.building(type)
 		_expect(Footprints.valid_definition(definition), "%s must have a tightly trimmed mask and one southern door" % type, failures)
@@ -60,11 +60,6 @@ static func _test_source_shapes(failures: Array[String]) -> void:
 	_expect(world.catalog.building("forester_hut")["footprint_mask"] == Footprints.for_version(world.catalog.building("lumber_hut"), 1)["footprint_mask"]
 		and world.catalog.building("forester_hut")["footprint_source"] == "project_forester_woodcutter_shape",
 		"The project Forester retains the historic woodcutter shape with explicit project attribution", failures)
-	_expect(world.catalog.building("workers_house")["footprint_mask"] == ["##", "#E"]
-		and world.placement_cells("workers_house", Vector2i(5, 8)).size() == 4
-		and world.catalog.building("workers_house")["footprint_source"] == "project_workers_house"
-		and int(world.catalog.building("workers_house")["residence_capacity"]) == 2,
-		"The project Workers' Cottage must retain its authored four-cell footprint and two-bed capacity", failures)
 
 
 static func _test_irregular_occupancy_and_selection(failures: Array[String]) -> void:
@@ -288,7 +283,7 @@ static func _test_quarry_range_from_occupied_edge(failures: Array[String]) -> vo
 	var quarry: int = world.place_building("quarry", anchor)
 	if quarry == 0:
 		return
-	_expect(world.production_status(world.buildings[quarry]).begins_with("Nearby reserves: 8 "),
+	_expect(world.production_status(world.buildings[quarry]).begins_with("Blízké zásoby: 8 "),
 		"Deposits more than three tiles from every occupied cell must remain outside the quarry's range", failures)
 	var store: int = world.place_building("warehouse", Vector2i(10, 16))
 	var mason: int = world.spawn_worker(Vector2i(18, 17), "stonemason", quarry)
@@ -305,7 +300,7 @@ static func _test_quarry_range_from_occupied_edge(failures: Array[String]) -> vo
 		and int(world.deposits[accessible_deposit]["amount"]) < 4
 		and int(world.deposits[closed_deposit]["amount"]) == 4,
 		"The real mason must work the second deposit from (19,17), return through the southern door and supply the warehouse", failures)
-	_expect(world.production_status(world.buildings[quarry]).begins_with("Nearby reserves:"),
+	_expect(world.production_status(world.buildings[quarry]).begins_with("Blízké zásoby:"),
 		"The resource status must use the same occupied-edge range as placement and gathering", failures)
 	var legacy := World.new(Vector2i(26, 22))
 	legacy.default_footprint_version = 0

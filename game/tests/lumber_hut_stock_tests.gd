@@ -283,13 +283,8 @@ static func _test_actual_scene(host: Node, failures: Array[String]) -> void:
 	main.world.tick = 4750
 	main._update_ui()
 	await _settle(host,main)
-	_check(main.building_stock_presentation(building)["amount"] == 6 and main.modulate == main.solar_state["ambient"],
-		"Night lighting must apply to stock through the same parent canvas while preserving quantity", failures)
-	if DisplayServer.get_name() != "headless":
-		var point: Vector2 = rect.position + CAPS[5] * (640.0/1254.0) * 0.225
-		var screen := Vector2i(main.get_global_transform_with_canvas() * point)
-		_check(native[6].get_pixelv(screen).get_luminance() > viewport.get_texture().get_image().get_pixelv(screen).get_luminance() + 0.05,
-			"Actual native log pixels must darken with the house at night", failures)
+	_check(main.building_stock_presentation(building)["amount"] == 6 and main.modulate == Color.WHITE,
+		"Any simulation tick must draw stock untinted through the same parent canvas while preserving quantity", failures)
 	viewport.free()
 
 

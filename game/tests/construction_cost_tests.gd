@@ -30,7 +30,7 @@ static func run() -> Array[String]:
 
 static func _test_all_reference_costs(failures: Array[String]) -> void:
 	var world := LegacyFixture.create()
-	_check(world.catalog.buildings.size() == EXPECTED.size() + 2, "Catalog must retain all reference buildings plus the project's Forester Hut and Workers' Cottage", failures)
+	_check(world.catalog.buildings.size() == EXPECTED.size() + 1, "Catalog must retain all reference buildings plus the project's Forester Hut", failures)
 	for type: String in EXPECTED:
 		var definition: Dictionary = world.catalog.building(type)
 		var amount: Array = EXPECTED[type]
@@ -47,7 +47,7 @@ static func _test_all_reference_costs(failures: Array[String]) -> void:
 
 static func _test_project_extension_prices(failures: Array[String]) -> void:
 	var world := LegacyFixture.create()
-	for type: String in ["forester_hut", "workers_house"]:
+	for type: String in ["forester_hut"]:
 		var definition: Dictionary = world.catalog.building(type)
 		var cost: Dictionary = definition.get("construction_cost", {})
 		_check(cost.size() == 2 and cost.get("plank") == 3 and cost.get("stone") == 2,

@@ -10,8 +10,7 @@ The original 28 reference building masks used `HOUSE_DAT_X.PlanYX` from KaM Rema
 `a3b3e5268e1475460e4561f9143df6f1a532e681`, in
 [`KM_ResHouses.pas`](https://github.com/reyandme/kam_remake/blob/a3b3e5268e1475460e4561f9143df6f1a532e681/src/res/KM_ResHouses.pas).
 Empty outer rows/columns are trimmed, preserving every occupied tile and the
-`2` door marker. The project-specific Forester Hut uses the Woodcutter shape;
-the Workers' Cottage has its own compact 2 × 2 project-authored mask.
+`2` door marker. The project-specific Forester Hut uses the Woodcutter shape.
 The normal-menu catalog includes the Remake Marketplace and excludes its unused
 Siege Workshop. This is verified Remake geometry, not an assertion that every
 original retail edition has identical definitions. Artwork is original to this
@@ -68,7 +67,6 @@ notation below, `/` separates north-to-south rows.
 | `warehouse` | 3 × 3 | 9 | `### / ### / #E#` |
 | `lumber_hut` (v2) | 4 × 3 | 9 | `.### / .##E / ###.` |
 | `forester_hut` | 3 × 2 | 6 | `### / ##E` |
-| `workers_house` | 2 × 2 | 4 | `## / #E` |
 | `sawmill` | 4 × 2 | 8 | `#### / #E##` |
 | `school` | 3 × 3 | 9 | `### / ### / #E#` |
 | `quarry` | 3 × 2 | 6 | `### / #E#` |
@@ -151,7 +149,7 @@ rendering and actual pointer placement were inspected in
 Dedicated suites use default production worlds: source masks and irregular
 notches, all occupied-cell collision checks, blocked doors, slopes, cancellation,
 real transport and indoor work, malformed and historical saves, every production
-recipe, night departure, and actual viewport input/rendering. The real starter
+recipe, and actual viewport input/rendering. The real starter
 scenario still trains paid citizens and builds its wood/stone chain through
 player commands; the relief scenario runs uphill logistics and resumes after load.
 

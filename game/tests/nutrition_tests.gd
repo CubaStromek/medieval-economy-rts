@@ -4,7 +4,6 @@ const World = preload("res://scripts/simulation/simulation_world.gd")
 const Legacy = preload("res://tests/legacy_world_fixture.gd")
 const NutritionModel = preload("res://scripts/simulation/nutrition.gd")
 const Feeding = preload("res://scripts/simulation/inn_feeding.gd")
-const DayCycle = preload("res://scripts/simulation/day_cycle.gd")
 const TEST_COUNT: int = 13
 
 
@@ -12,8 +11,8 @@ static func run() -> Array[String]:
 	var failures: Array[String] = []
 	for test: Callable in [
 		_test_every_new_profession_is_fed,
-		_test_seven_complete_days_with_real_sleep_and_fog,
-		_test_sleep_reduces_appetite_not_calendar_reserve,
+		_test_seven_complete_days_with_fog,
+		_test_constant_appetite_indoors_and_outdoors,
 		_test_small_food_portions_do_not_reset_starvation,
 		_test_work_efficiency_boundaries,
 		_test_hungry_movement_is_unchanged,
@@ -66,7 +65,7 @@ static func _test_every_new_profession_is_fed(failures: Array[String]) -> void:
 			"New %s must start fully fed with a fresh seven-day reserve" % roles[index], failures)
 
 
-static func _test_seven_complete_days_with_real_sleep_and_fog(failures: Array[String]) -> void:
+static func _test_seven_complete_days_with_fog(failures: Array[String]) -> void:
 	var world = World.new(Vector2i(16, 12))
 	var store: int = world.place_building("warehouse", Vector2i(2, 3))
 	var civilian: int = world.spawn_worker(Vector2i(2, 7), "carrier")
@@ -74,41 +73,34 @@ static func _test_seven_complete_days_with_real_sleep_and_fog(failures: Array[St
 	world.tick = 137 # Survival is elapsed time since spawn, not calendar midnight.
 	world.economy_enabled = true
 	world.enable_fog()
-	var slept: bool = false
-	var woke: bool = false
 	for elapsed: int in range(1, 42000):
 		world.step_tick()
 		if not world.workers.has(civilian) or not world.workers.has(soldier):
-			failures.append("Neither sleeping civilians nor awake soldiers may die before seven complete food-free days")
+			failures.append("Neither civilians nor soldiers may die before seven complete food-free days")
 			return
 		var worker: Dictionary = world.workers[civilian]
-		slept = slept or world.is_worker_sleeping(worker)
-		woke = woke or (slept and not world.is_night_rest_time() and worker["state"] != "sleeping")
 		if elapsed % 6000 == 0:
 			_check(int(worker["nutrition_deficit_ticks"]) == elapsed,
-				"A day's real sleep, fog and movement must preserve the exact unfed calendar reserve", failures)
-	_check(slept and woke and store != 0 and int(world.workers[civilian]["hunger"]) == 0,
-		"An empty-stomach civilian must live through real nights and wake again", failures)
+				"A balance day of fog and movement must preserve the exact unfed reserve", failures)
+	_check(store != 0 and int(world.workers[civilian]["hunger"]) == 0,
+		"An empty-stomach civilian must keep living until its reserve is exhausted", failures)
 	world.step_tick()
 	_check(world.tick == 42137 and not world.workers.has(civilian) and not world.workers.has(soldier),
 		"Death must occur on the 42000th unfed tick for both civilians and soldiers", failures)
 	_check(world.tile_reservations.is_empty(), "Seven-day starvation must release all outdoor occupied cells", failures)
 
 
-static func _test_sleep_reduces_appetite_not_calendar_reserve(failures: Array[String]) -> void:
+static func _test_constant_appetite_indoors_and_outdoors(failures: Array[String]) -> void:
 	var world = World.new(Vector2i(16, 12))
 	var store: int = world.place_building("warehouse", Vector2i(2, 3))
-	var sleeper: int = world.spawn_worker(world.buildings[store]["entrance"], "carrier", 0, true, store)
+	var resident: int = world.spawn_worker(world.buildings[store]["entrance"], "carrier", 0, true, store)
 	var guard: int = world.spawn_worker(Vector2i(12, 8), "militia")
-	world.workers[sleeper]["sleep_home_id"] = store
-	world.workers[sleeper]["state"] = "sleeping"
-	world.tick = 4000
 	world.economy_enabled = true
 	_advance(world, 100)
-	_check(int(world.workers[sleeper]["hunger"]) == 2676 and int(world.workers[guard]["hunger"]) == 2652,
-		"One hundred real sleeping ticks must consume 24 condition versus an awake guard's 48", failures)
-	_check(int(world.workers[sleeper]["nutrition_deficit_ticks"]) == 100 and int(world.workers[guard]["nutrition_deficit_ticks"]) == 100,
-		"Night's lower appetite must not silently extend the agreed seven calendar days", failures)
+	_check(int(world.workers[resident]["hunger"]) == 2661 and int(world.workers[guard]["hunger"]) == 2661,
+		"One hundred ticks must consume 39 condition for an indoor civilian and an outdoor guard alike", failures)
+	_check(int(world.workers[resident]["nutrition_deficit_ticks"]) == 100 and int(world.workers[guard]["nutrition_deficit_ticks"]) == 100,
+		"Every unfed tick must count toward the agreed seven-day reserve", failures)
 
 
 static func _test_small_food_portions_do_not_reset_starvation(failures: Array[String]) -> void:

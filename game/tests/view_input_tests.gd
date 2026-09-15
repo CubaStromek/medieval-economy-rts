@@ -20,9 +20,9 @@ static func run(host: Node) -> Array[String]:
 	await host.get_tree().process_frame
 	await host.get_tree().process_frame
 
-	var pause: Button = _button(main, "Pause")
-	var train: Button = _button(main, "Train Carrier")
-	var school_tool: Button = _button(main, "5  School")
+	var pause: Button = _button(main, "Pauza")
+	var train: Button = main.find_child("Train_carrier", true, false) as Button
+	var school_tool: Button = main.find_child("Build_school", true, false) as Button
 	if pause == null or train == null or school_tool == null:
 		failures.append("Input tests require the pause, training and school buttons")
 		viewport.free()
@@ -93,14 +93,14 @@ static func run(host: Node) -> Array[String]:
 	school["training_queue"] = []
 	school["training_remaining"] = 0
 	main._update_ui()
-	for profession: String in ["Farmer", "Baker", "Stonemason"]:
+	for profession: String in ["farmer", "baker", "stonemason"]:
 		# Queue text changes the inspector's wrapped height after each click.
 		# Wait for container layout before scrolling to the next real button.
 		await host.get_tree().process_frame
 		await host.get_tree().process_frame
-		var profession_button: Button = _button(main, "Train " + profession)
+		var profession_button: Button = main.find_child("Train_" + profession, true, false) as Button
 		if profession_button == null:
-			failures.append("School must expose Train " + profession)
+			failures.append("School must expose training for " + profession)
 			continue
 		var ancestor: Node = profession_button.get_parent()
 		while ancestor != null:

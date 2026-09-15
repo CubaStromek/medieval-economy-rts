@@ -32,7 +32,7 @@ static func _test_inn_menu_and_real_occupancy(failures: Array[String]) -> void:
 	var button: Button = hud.find_child("Build_inn", true, false) as Button
 	_expect(button != null and button.get_parent() == hud._build_groups["food"], "The Inn must be reachable in the real Food build menu", failures)
 	hud._category_buttons[Hud.CATEGORIES.find("food")].pressed.emit()
-	_expect((hud._build_groups["food"] as Control).visible and button.tooltip_text.contains("automatically") and button.tooltip_text.contains("carriers"), "The Food category and Inn tooltip must explain automatic meals and carrier supplies", failures)
+	_expect((hud._build_groups["food"] as Control).visible and button.tooltip_text.contains("sami") and button.tooltip_text.contains("nosiči"), "The Food category and Inn tooltip must explain automatic meals and carrier supplies", failures)
 	var placed: Array[String] = []
 	hud.build_mode_requested.connect(func(mode: String) -> void: placed.append(mode))
 	button.pressed.emit()
@@ -42,9 +42,9 @@ static func _test_inn_menu_and_real_occupancy(failures: Array[String]) -> void:
 		if world.inn_occupied_seats(inn) > 0:
 			break
 	hud.refresh(world, Vector2i(4, 3), "", 1.0, World.TICK_SECONDS)
-	_expect(world.inn_occupied_seats(inn) == 1 and hud.production_detail_label.text.contains("1/6 occupied"), "The selected Inn must show a real eating citizen occupying one of six seats", failures)
-	_expect(hud.building_inventory_label.text.contains("Bread: 1") and not hud.building_inventory_label.text.contains("Inventory: empty"), "An Inn's inventory must show its remaining edible input stock after a real meal", failures)
-	_expect(hud.production_detail_label.text.contains("%d different foods" % int(world.catalog.economy["max_meals_per_visit"])) and hud.production_detail_label.text.contains("Supply food"), "Inn guidance must explain civilian meals and soldiers' separate supply command", failures)
+	_expect(world.inn_occupied_seats(inn) == 1 and hud.production_detail_label.text.contains("1/6 obsazeno"), "The selected Inn must show a real eating citizen occupying one of six seats", failures)
+	_expect(hud.building_inventory_label.text.contains("Chléb 1") and not hud.building_inventory_label.text.contains("Zásoby: prázdné"), "An Inn's inventory must show its remaining edible input stock after a real meal", failures)
+	_expect(hud.production_detail_label.text.contains("%d různé chody" % int(world.catalog.economy["max_meals_per_visit"])) and hud.production_detail_label.text.contains("Přinést jídlo"), "Inn guidance must explain civilian meals and soldiers' separate supply command", failures)
 	hud.free()
 
 
@@ -68,10 +68,10 @@ static func _test_soldier_button_dispatch(failures: Array[String]) -> void:
 	_expect(button != null and button.disabled and main.hud._soldier_food_panel.visible, "A selected soldier at exactly 55 percent must show a disabled Supply food button", failures)
 	world.workers[soldier]["hunger"] = 1484
 	main._update_ui()
-	_expect(not button.disabled and button.tooltip_text.contains("restores full satiety"), "Below 55 percent, the real unit button must enable and explain full restoration", failures)
+	_expect(not button.disabled and button.tooltip_text.contains("obnoví plnou sytost"), "Below 55 percent, the real unit button must enable and explain full restoration", failures)
 	button.pressed.emit()
 	_expect(bool(world.workers[soldier].get("food_requested", false)) and button.disabled, "The real HUD-to-main signal must request the selected soldier once and immediately disable repeated requests", failures)
-	_expect(main.hud.production_detail_label.text.contains("Food requested"), "A pending request must remain visible even before a carrier or food is available", failures)
+	_expect(main.hud.production_detail_label.text.contains("Jídlo vyžádáno"), "A pending request must remain visible even before a carrier or food is available", failures)
 	main.selected_unit_id = civilian
 	main._update_ui()
 	_expect(not main.hud._soldier_food_panel.visible and not bool(world.workers[civilian].get("food_requested", false)), "A Recruit remains a civilian and must not receive the soldier supply action", failures)
@@ -137,7 +137,10 @@ static func _test_visible_unit_selection(failures: Array[String]) -> void:
 	_expect(main._worker_id_at_visual_position(rect.get_center()) == soldier, "Clicking the actual drawn soldier body must resolve its stable unit ID", failures)
 	main.selected_unit_id = soldier
 	main._update_ui()
-	_expect(main.hud.building_inventory_label.text.contains("Militia #%d" % soldier) and main.hud._satiety_label.text.contains("Satiety"), "Selected unit details must display the actual soldier and satiety instead of the terrain underneath", failures)
+	# The selected unit's name is the inspector heading now; the inventory line
+	# below it is reserved for actual cargo.
+	_expect(main.hud._detail_title.visible and main.hud._detail_title.text.contains("Domobranec #%d" % soldier)
+		and main.hud._satiety_label.text.contains("Sytost"), "Selected unit details must display the actual soldier and satiety instead of the terrain underneath", failures)
 	main.free()
 
 
@@ -159,8 +162,8 @@ static func _test_delivery_status_and_population(failures: Array[String]) -> voi
 		if (world.workers[carrier].get("ration_delivery", {}) as Dictionary).get("phase", "") == "deliver":
 			break
 	main._update_ui()
-	_expect(main.hud.production_detail_label.text.contains("Food on the way") and main.hud._citizens_label.text.contains("food arriving"), "A real collected ration must update both unit details and the settlement food-arriving status", failures)
-	_expect(main.hud._citizens_label.text.contains("1 citizens") and main.hud._citizens_label.text.contains("1 soldiers"), "The settlement overview must count citizens and soldiers separately", failures)
+	_expect(main.hud.production_detail_label.text.contains("Jídlo je na cestě") and main.hud._citizens_label.text.contains("jídlo na cestě"), "A real collected ration must update both unit details and the settlement food-arriving status", failures)
+	_expect(main.hud._citizens_label.text.contains("1 obyvatel") and main.hud._citizens_label.text.contains("1 voják"), "The settlement overview must count citizens and soldiers separately", failures)
 	main.free()
 
 

@@ -1,0 +1,106 @@
+{
+	"anchor_cell": [
+		10,
+		10
+	],
+	"approach_bounds_source": [
+		352,
+		800,
+		512,
+		960
+	],
+	"building_id": "sawmill",
+	"camera_center_world": [
+		480,
+		368
+	],
+	"canvas": [
+		1024,
+		1024
+	],
+	"catalog_sha256": "b23c16d6212630fb2c285b4c9d84028791afdc9169c53ae31d13a168e444a7c9",
+	"cell_source_px": 160,
+	"checks": {
+		"camera_transform_ground_origin": true,
+		"camera_transform_threshold": true,
+		"image_dimensions": true,
+		"real_entrance": true,
+		"real_placement_cells": true
+	},
+	"date": "2026-09-12",
+	"door_cell": [
+		11,
+		10
+	],
+	"door_threshold_source": [
+		432,
+		800
+	],
+	"door_threshold_world": [
+		460,
+		440
+	],
+	"engine": "4.7.2-stable (official)",
+	"entrance_bounds_world": [
+		440,
+		440,
+		480,
+		480
+	],
+	"entrance_cell": [
+		11,
+		11
+	],
+	"footprint": [
+		4,
+		2
+	],
+	"footprint_version": 1,
+	"ground_bounds_source": [
+		192,
+		480,
+		832,
+		800
+	],
+	"ground_bounds_world": [
+		400,
+		360,
+		560,
+		440
+	],
+	"ground_height": 0,
+	"ground_origin_world": [
+		400,
+		360
+	],
+	"human": {
+		"actual_sprite_size_world": [
+			17.5784320831299,
+			33.0
+		],
+		"cell": [
+			14,
+			11
+		],
+		"feet_source": [
+			912,
+			880
+		],
+		"nominal_human_height_world": 33,
+		"role": "carpenter"
+	},
+	"mask": [
+		"####",
+		"#E##"
+	],
+	"music_or_save_access": false,
+	"no_gameplay_changes": true,
+	"occupied_count": 8,
+	"purpose": "Native ground generation guide, not building artwork or production QA",
+	"renderer": "Apple M4",
+	"scene": "res://scenes/main.tscn",
+	"screenshot_sha256": "6051a75c9f52e1cd3b07e8d199d16f13f1415bf3cfd61cf60786610eb74b8a5f",
+	"source_to_world": 0.25,
+	"tick": 1750,
+	"zoom": 4.0
+}

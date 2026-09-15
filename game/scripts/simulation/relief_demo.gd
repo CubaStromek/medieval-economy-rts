@@ -1,5 +1,7 @@
 class_name ReliefDemo
 extends RefCounted
+const UiTextClass = preload("res://scripts/ui_text.gd")
+
 
 # Authored proof map: logistics climb the meadow, while the eastern ridge can
 # only be crossed through the wide low pass. Heights are shared grid corners.
@@ -99,7 +101,7 @@ static func setup_village(world: Variant) -> void:
 	# Starter buildings/roads are authored complete. Expansion retains the same
 	# delivered construction materials, paid training and hunger rules as economy.
 	world.economy_enabled = true
-	world._push_event("Relief demo: logs climb the meadow to the sawmill; planks return to the lowland warehouse.")
+	world._push_event("Ukázka terénu: klády putují loukou nahoru k pile, prkna se vracejí do skladu v nížině.")
 
 
 static func plant_trees(world: Variant) -> void:

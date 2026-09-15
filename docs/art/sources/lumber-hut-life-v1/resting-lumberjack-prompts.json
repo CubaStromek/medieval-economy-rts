@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-12",
+  "scope": "Single isolated resting lumberjack pose; not a directional animation pack",
+  "tool": "Built-in image_gen",
+  "model": "Not reported by tool response",
+  "purpose": "Daytime physical at-home presence at the existing lumber hut",
+  "user_request": "v chatrci pres den ... mohl by byt treba videt opreny o chatrc",
+  "references": [
+    {
+      "path": "docs/art/animation-references/lumberjack-without-log/S.png",
+      "role": "Own identity master"
+    },
+    {
+      "path": "docs/art/animations/lumberjack-pixellab-production-v2/package/references/walk_axe/SE.png",
+      "role": "Own current in-game painterly projection reference"
+    },
+    {
+      "path": "game/art/buildings/lumber_hut/v1/finished.png",
+      "role": "Own hut camera/lighting context only; excluded from new image"
+    }
+  ],
+  "prompts": [
+    {
+      "id": "resting-lumberjack-v1",
+      "prompt": "Use case: stylized-concept.\nAsset type: ONE isolated full-body 2D medieval RTS lumberjack resting-pose sprite on a genuinely TRANSPARENT background, for compositing in front of an existing hut.\nInput images: Image 1 is the project's OWN identity master and exact clothing/face/palette reference. Image 2 is the project's OWN current in-game directional sprite, reference for elevated camera and compact RTS painted finish. Image 3 is the OWN finished hut, ONLY a camera/lighting/context reference: do not include any part of the building in this output.\nSubject: The same broad-shouldered adult male lumberjack: short dark-brown beard, brown-orange rounded stitched cap, olive-green tunic with cream neckline lacing and rolled cream sleeves, brown leather belt and simple brown front apron, brown trousers and sturdy cuffed brown boots. Preserve this exact identity, clothes and earthy palette.\nPose: Relaxed standing rest, his upper back/shoulders subtly leaning against an INVISIBLE vertical wall behind him. Weight on his anatomical right straight leg, the other knee slightly bent and boot casually placed a little ahead; arms comfortably folded low across his chest. Both hands clearly empty; no held tool, no cargo. There may be ONE small axe securely stowed at his anatomical left hip, blade down. His face/body look generally toward the viewer with only a very slight turn toward screen right. Calm natural expression, no grin.\nCamera/style: orthographic elevated front view matching these references, look down enough to see cap top and upper boot planes. Same hand-painted/faceted-shaded historical strategy-game illustration, simple readable volumes with restrained outlines; no photorealism, no flat cartoon, no pixel-grid treatment. Daylight gently from upper left. Full body, proportionate adult anatomy, complete cap and both soles fully inside image, generous transparent padding.\nOutput constraints: A single character only. REAL RGBA TRANSPARENCY behind and between limbs, no white or checkerboard painted background. No wall, house, door, furniture, ground, base, dirt, floor, stones, cast shadow, light halo, labels, text or watermark. Do not reproduce the hut. No duplicated axe, no extra limbs. Keep the body's scale and face/cap/clothing proportions close to the original master. The lean must be slight and believable when this figure is placed against a facade later.",
+      "output": "resting-lumberjack-rejected-v1-rgb.png",
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a0954c-55c9-7361-a8dc-2369e0d0b590/exec-ccbef2a0-59ed-4e26-8d7d-2295ab361b19.png",
+      "result": "Rejected for RGB painted checkerboard and axe on wrong anatomical hip"
+    },
+    {
+      "id": "resting-lumberjack-v2-alpha-no-axe",
+      "prompt": "Use case: precise-object-edit. Edit ONLY the supplied resting-lumberjack sprite. Preserve the single man's exact face, clothes, cap, folded arms, resting lean, legs, painterly shading and elevated camera unchanged. Fix TWO defects: (1) remove the entire painted checkerboard background and make every background pixel GENUINELY TRANSPARENT RGBA alpha, including the hole between the legs. This must be an actual transparent cutout PNG, not an illustration of transparency; no gray/white checkers may remain. (2) remove the axe and its belt attachment entirely, showing only his olive tunic/leg there. Empty hands remain folded; no tool anywhere. Do not add a wall, house, ground, cast shadow, backdrop, halo, base, props or text. Deliver the isolated full-body man with full cap and soles and generous transparent padding.",
+      "output": "resting-lumberjack-rejected-v2-rgb.png",
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a0954c-55c9-7361-a8dc-2369e0d0b590/exec-189d127d-e6ac-4630-a5cb-4ba8f1b60b36.png",
+      "result": "Axe removal succeeded; rejected as RGBA for painted RGB checkerboard"
+    },
+    {
+      "id": "resting-lumberjack-v3-technical-key",
+      "prompt": "Use case: precise-object-edit. Preserve the supplied single resting lumberjack EXACTLY, including his silhouette, full cap and soles, folded empty hands, no axe, clothing, face, camera, pose and all shading. Change ONLY the background. Replace ALL painted gray/white checkerboard areas with one perfectly flat solid RGB MAGENTA #FF00FF (255,0,255), also in the narrow transparent-looking gap between the legs. This is a technical chroma-key plate for later measured alpha extraction, so the background must have no texture, no grid, no gradients, no shadows and no magenta bounce or tint onto the man. Keep foreground edges sharp. No new objects, no wall, no ground, no shadow, no text. Output the same full-body man on the flat saturated magenta technical background.",
+      "output": "resting-lumberjack-key-v3-rgb.png",
+      "generated_source": "/Users/openclaw/.codex/generated_images/01a0954c-55c9-7361-a8dc-2369e0d0b590/exec-a7ce391f-7f5c-4d08-80a8-6fb664c14192.png",
+      "result": "Selected own RGB technical-key source; measured-alpha production derivative. Flat requested FF00FF varies in actual pixels; measured modal key251,3,250."
+    }
+  ],
+  "production": "game/art/buildings/lumber_hut/v1/life/resting_lumberjack.png",
+  "technical_export": "docs/art/sources/lumber-hut-life-v1/export-resting-lumberjack.cjs",
+  "inspection": "Single correctly clothed, bearded resting man with folded empty hands, slightly bent left leg and no axe. Silhouette/holes checked on three backgrounds. Runtime placement and normal-game visibility remain integration QA responsibilities.",
+  "user_style_approval": "Not granted; usable production candidate within current authorized task"
+}

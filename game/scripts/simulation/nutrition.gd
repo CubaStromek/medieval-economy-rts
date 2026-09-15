@@ -1,20 +1,22 @@
 class_name Nutrition
 extends RefCounted
 
-const DayCycle = preload("res://scripts/simulation/day_cycle.gd")
+## Balance values in economy.json keep their historical "days" of 6,000 ticks
+## (10 minutes at 1x). This is only a time unit: the game has no calendar.
+const BALANCE_DAY_TICKS: int = 6000
 const FIXED_SCALE: int = 1000
 
 
 static func max_deficit_ticks(world: Variant) -> int:
-	return maxi(1, int(world.catalog.economy.get("nutrition_survival_days", 7))) * DayCycle.TICKS_PER_DAY
+	return maxi(1, int(world.catalog.economy.get("nutrition_survival_days", 7))) * BALANCE_DAY_TICKS
 
 
 static func max_recovery_remainder(world: Variant) -> int:
 	return _daily_food_value(world) - 1
 
 
-# Satiety is a daily appetite, not a death countdown. Sleeping citizens use
-# less energy, but every unfed calendar tick still counts toward starvation.
+# Satiety is a daily appetite, not a death countdown. Every unfed tick
+# still counts toward starvation.
 static func tick_needs(world: Variant, worker: Dictionary) -> bool:
 	if not _needs_active(world, worker):
 		return false
@@ -28,14 +30,12 @@ static func tick_needs(world: Variant, worker: Dictionary) -> bool:
 	return int(worker["nutrition_deficit_ticks"]) >= limit
 
 
-static func decay_milli_per_tick(world: Variant, worker: Dictionary) -> int:
-	var sleep_multiplier: float = clampf(float(world.catalog.economy.get("condition_sleep_multiplier", 0.5)), 0.0, 1.0)
+static func decay_milli_per_tick(world: Variant, _worker: Dictionary = {}) -> int:
 	var fraction: float = maxf(0.001, float(world.catalog.economy.get("condition_daily_hunger_fraction", 1.0)))
-	# The existing civilian calendar has fifteen working and nine resting hours.
-	# Default values yield exactly 480/240 milli-condition per awake/asleep tick.
-	var weighted_day: float = float(DayCycle.TICKS_PER_DAY) * fraction * (15.0 / 24.0 + 9.0 / 24.0 * sleep_multiplier)
-	var awake_rate: int = maxi(1, roundi(float(_daily_food_value(world) * FIXED_SCALE) / weighted_day))
-	return roundi(float(awake_rate) * sleep_multiplier) if world.is_worker_sleeping(worker) else awake_rate
+	# One balance day consumes the configured share of the hungry-to-full range
+	# at a constant rate. Defaults yield exactly 390 milli-condition per tick,
+	# the same daily appetite as the removed 15 h awake / 9 h asleep schedule.
+	return maxi(1, roundi(float(_daily_food_value(world) * FIXED_SCALE) / (float(BALANCE_DAY_TICKS) * fraction)))
 
 
 # Use the actual nutrition restored by a paid course, even above the satiety
@@ -46,7 +46,7 @@ static func restore_food(world: Variant, worker: Dictionary, amount: int) -> voi
 	var maximum: int = maxi(1, int(world.catalog.economy.get("condition_max", 2700)))
 	worker["hunger"] = mini(maximum, int(worker.get("hunger", 0)) + amount)
 	var denominator: int = _daily_food_value(world)
-	var recovered: int = int(worker.get("nutrition_recovery_remainder", 0)) + amount * DayCycle.TICKS_PER_DAY
+	var recovered: int = int(worker.get("nutrition_recovery_remainder", 0)) + amount * BALANCE_DAY_TICKS
 	@warning_ignore("integer_division")
 	var restored_ticks: int = recovered / denominator
 	var remaining: int = maxi(0, int(worker.get("nutrition_deficit_ticks", 0)) - restored_ticks)
@@ -58,8 +58,8 @@ static func restore_food(world: Variant, worker: Dictionary, amount: int) -> voi
 static func work_efficiency_permille(world: Variant, worker: Dictionary) -> int:
 	if not world.economy_enabled or not world.is_local_entity(worker):
 		return FIXED_SCALE
-	var start: int = maxi(0, int(world.catalog.economy.get("nutrition_weakening_start_days", 2))) * DayCycle.TICKS_PER_DAY
-	var finish: int = maxi(start + 1, int(world.catalog.economy.get("nutrition_weakening_full_days", 4)) * DayCycle.TICKS_PER_DAY)
+	var start: int = maxi(0, int(world.catalog.economy.get("nutrition_weakening_start_days", 2))) * BALANCE_DAY_TICKS
+	var finish: int = maxi(start + 1, int(world.catalog.economy.get("nutrition_weakening_full_days", 4)) * BALANCE_DAY_TICKS)
 	var minimum: int = clampi(int(world.catalog.economy.get("nutrition_min_work_efficiency_permille", 800)), 1, FIXED_SCALE)
 	var deficit: int = int(worker.get("nutrition_deficit_ticks", 0))
 	if deficit <= start:
@@ -89,7 +89,7 @@ static func status(world: Variant, worker: Dictionary) -> Dictionary:
 	var deficit: int = clampi(int(worker.get("nutrition_deficit_ticks", 0)), 0, limit)
 	var efficiency: int = work_efficiency_permille(world, worker)
 	var state: String = "Fed"
-	if deficit >= maxi(0, limit - DayCycle.TICKS_PER_DAY):
+	if deficit >= maxi(0, limit - BALANCE_DAY_TICKS):
 		state = "Starving"
 	elif efficiency < FIXED_SCALE:
 		state = "Weakened"
@@ -113,9 +113,9 @@ static func status(world: Variant, worker: Dictionary) -> Dictionary:
 		"hungry_at": hungry,
 		"remaining_to_hungry_ticks": hungry_ticks,
 		"remaining_to_starve_ticks": starve_ticks,
-		"deficit_days": float(deficit) / float(DayCycle.TICKS_PER_DAY),
+		"deficit_days": float(deficit) / float(BALANCE_DAY_TICKS),
 		"work_efficiency_percent": float(efficiency) / 10.0,
-		"seven_day_limit": float(limit) / float(DayCycle.TICKS_PER_DAY),
+		"seven_day_limit": float(limit) / float(BALANCE_DAY_TICKS),
 	}
 
 

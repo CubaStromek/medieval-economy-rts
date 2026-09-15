@@ -1,5 +1,7 @@
 # Worker housing
 
+> **Removed on 2026-09-14** together with the day/night cycle; save v23 drops existing cottages. This document is historical.
+
 The project adds a compact **Workers' Cottage** for Carriers and Builders. Each
 cottage has two sleeping places. A residence assignment is separate from the
 unit's workplace, so a resident can continue carrying goods or constructing

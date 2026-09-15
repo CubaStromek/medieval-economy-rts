@@ -65,8 +65,8 @@ static func _test_raised_ground_selection(host: Node, main: MainView, viewport: 
 	await _settle(host)
 	_expect(main.selected_cell == Demo.PLATEAU,
 		"Clicking the raised meadow must select its actual cell, not the flat inverse row", failures)
-	_expect(main.building_inventory_label.text.contains("Height: 4.0")
-		and main.building_inventory_label.text.contains("Walkable"),
+	_expect(main.building_inventory_label.text.contains("Výška 4.0")
+		and main.building_inventory_label.text.contains("průchozí"),
 		"The selected plateau inspector must show its real height and walkability", failures)
 	var foot: Vector2 = main.terrain_renderer.cell_center(Demo.PLATEAU)
 	var flat: Vector2 = MapProjectionClass.cell_center(Demo.PLATEAU)
@@ -98,7 +98,7 @@ static func _test_building_slope_and_plateau(host: Node, main: MainView, viewpor
 	_click_position(viewport, MAP_CLICK)
 	_expect(main.world.buildings.size() == before and main.world.building_id_at(Demo.RAMP) == 0,
 		"The building tool must refuse a walkable but nonlevel slope", failures)
-	_expect(main.event_label.text.contains("level ground"),
+	_expect(main.event_label.text.contains("rovnou zem"),
 		"A rejected sloping building site must explain the level-ground requirement", failures)
 	# Full footprints also reserve a fixed entrance: choose a clear raised plot
 	# beside the authored sawmill, including the approach beyond its walls.

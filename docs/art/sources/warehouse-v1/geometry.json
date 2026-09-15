@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-13",
+  "building_id": "warehouse",
+  "revision": "v1-ground-guide",
+  "status": "Verified gameplay mask and human scale; technical concept guide, not generated or implemented artwork",
+  "canvas": [
+    1000,
+    1000
+  ],
+  "source_to_world": 0.25,
+  "cell_source_px": 160,
+  "cell_world_px": 40,
+  "authoritative_sources": {
+    "catalog": "game/data/buildings.json:2",
+    "footprint": "game/scripts/simulation/building_footprints.gd",
+    "projection": "game/scripts/view/map_projection.gd",
+    "entrance": "game/scripts/simulation/simulation_world.gd:428",
+    "human": "game/scripts/view/unit_sprite_library.gd:20"
+  },
+  "footprint": {
+    "version": 1,
+    "mask": [
+      "###",
+      "###",
+      "#E#"
+    ],
+    "occupied_cells": 9,
+    "world_size": [
+      120,
+      120
+    ],
+    "source_rect": [
+      220,
+      320,
+      480,
+      480
+    ],
+    "anchor_cell_relative": [
+      0,
+      0
+    ],
+    "anchor_cell_center_source": [
+      300,
+      720
+    ],
+    "door_cell_relative_to_anchor": [
+      1,
+      0
+    ],
+    "external_entrance_relative_to_anchor": [
+      1,
+      1
+    ],
+    "internal_free_cells": [],
+    "cell_rows_relative_to_anchor": [
+      -2,
+      -1,
+      0
+    ]
+  },
+  "grid_world_origin_source": [
+    220,
+    640
+  ],
+  "door_threshold": [
+    460,
+    800
+  ],
+  "door_threshold_formula": "terrain.project_grid_position(Vector2(door_cell) + Vector2(0,0.5))",
+  "door_threshold_meaning": "Physical navigation threshold; outer edge of an optional shallow step remains at this point",
+  "external_approach_source_rect": [
+    380,
+    800,
+    160,
+    160
+  ],
+  "external_approach_rule": "Clear exterior cell: no masonry, posts, stock, platform or permanent figures",
+  "door_size_cue": {
+    "status": "Proposed cargo-door scale only; measure both dimensions on first concept",
+    "source_rect": [
+      400,
+      638,
+      120,
+      152
+    ],
+    "world_width": 30,
+    "world_height": 38,
+    "base_center": [
+      460,
+      790
+    ],
+    "step_max_depth_source_px": 10
+  },
+  "human": {
+    "source": "game/art/units/civilians-basic-v1.png",
+    "source_sha256": "5978c8124445e7ef1832d30dce780214b173435f8a4f51e675e6bc716947f176",
+    "role": "carrier",
+    "atlas_canvas": [
+      1536,
+      1024
+    ],
+    "atlas_cell": [
+      307,
+      0,
+      307,
+      341
+    ],
+    "tight_atlas_region": {
+      "left": 400,
+      "top": 24,
+      "width": 159,
+      "height": 307
+    },
+    "alpha_threshold": 0.1,
+    "source_to_world": 0.10749185667752444,
+    "guide_scale": 0.42996742671009774,
+    "guide_foot": [
+      825,
+      800
+    ],
+    "guide_body_size": [
+      68.36482084690554,
+      132
+    ],
+    "world_body_height_px": 33,
+    "meaning": "Existing real-game carrier, exactly current native scale, outside building for size reference only; not an indoor figure"
+  },
+  "roof_rule": "Building height and roof may project above occupied ground. Keep entire chimney and roof inside canvas. Roof overhangs are reviewed separately from wall bases.",
+  "ground_rule": "All ground-contact wall bases, feet and blocking fixtures must fit x220..700 y320..800. No ground envelope or visual camera angle is claimed by this orthogonal collision diagram.",
+  "terrain": {
+    "guide_height": 0,
+    "world_px_per_height_level": 8,
+    "source_px_per_height_level": 32
+  },
+  "validation": {
+    "catalog_mask_matches": true,
+    "external_approach_outside_mask": true,
+    "person_uses_uniform_runtime_scale": true
+  },
+  "limitations": [
+    "Proposed door dimensions are a scale cue, not a measured generated doorway.",
+    "No runtime scene was launched for this technical guide.",
+    "Roof, chimney, windows and depth anchors require measurement on the chosen concept."
+  ]
+}

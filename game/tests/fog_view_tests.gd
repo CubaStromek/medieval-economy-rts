@@ -154,7 +154,7 @@ static func _test_hud_ownership_and_unknown_details(failures: Array[String]) -> 
 	explored.append(foreign["position"])
 	world.fog.restore_explored(explored)
 	hud.refresh(world, foreign["position"], "", 0.0, World.TICK_SECONDS)
-	_check(hud.building_inventory_label.text.contains("Foreign building")
+	_check(hud.building_inventory_label.text.contains("Cizí budova")
 		and not hud.building_inventory_label.text.contains("400") and hud.production_detail_label.text.is_empty()
 		and not hud._actions.visible and hud._selected_training_text(world, foreign["position"]).is_empty(),
 		"A remembered foreign building may keep its name but not disclose its private economy or controls", failures)
@@ -294,14 +294,6 @@ static func _test_actual_input_and_draw(host: Node, failures: Array[String]) -> 
 		await host.get_tree().process_frame
 	_check(callbacks[0] > 0 and spy.ids.has(int(fixture["local"])) and not spy.ids.has(int(fixture["enemy"])),
 		"Real normal and deliberately stale callbacks must draw the local worker but no hidden sprite/cargo/satiety", failures)
-	var leaked_shadow: bool = false
-	var local_shadow: bool = false
-	for shadows: Array in view._row_shadows.values():
-		for shadow: Dictionary in shadows:
-			leaked_shadow = leaked_shadow or (shadow["kind"] == "worker" and int(shadow["state"]["id"]) == int(fixture["enemy"]))
-			local_shadow = local_shadow or (shadow["kind"] == "worker" and int(shadow["state"]["id"]) == int(fixture["local"]))
-	_check(local_shadow and not leaked_shadow,
-		"Real noon shadows must exist for the local worker but not disclose any unseen enemy", failures)
 	_check(world.to_data() == before, "Paused fog/input/drawing checks must not advance or mutate the simulation", failures)
 	viewport.free()
 

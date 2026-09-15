@@ -1,7 +1,7 @@
 extends Node
 
 # Native captures of the real Main scene, including its terrain/object rows,
-# solar lighting, fog, selection and unit drawing. No game session, music
+# fog, selection and unit drawing. No game session, music
 # controller, player settings or save files are loaded or written.
 # godot --path game --windowed res://tools/preview_lumber_hut_construction.tscn
 # Optional: -- --output=/absolute/directory or --validate-only (headless allowed).
@@ -240,8 +240,6 @@ func _capture(name: String, metadata: Dictionary) -> Image:
 func _capture_conditions() -> void:
 	var cases: Array[Dictionary] = [
 		{"id": "noon", "label": "Den · výběr + člověk u vstupu", "tick": 1750},
-		{"id": "dusk", "label": "Soumrak · stejné materiály", "tick": 3625},
-		{"id": "night", "label": "Noc · herní tónování", "tick": 4750},
 		{"id": "raised", "label": "Vyvýšený rovný základ", "raised": true},
 		{"id": "earthwork", "label": "Srovnávání · bez střechy", "earthwork": true},
 		{"id": "occlusion", "label": "Překrytí stromem a člověkem", "occlusion": true},

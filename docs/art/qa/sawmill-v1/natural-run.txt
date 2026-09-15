@@ -1,0 +1,10 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M4
+
+SAWMILL NATURAL: initial tick0
+SAWMILL NATURAL: day-rest tick3
+SAWMILL NATURAL: actual-production tick238
+SAWMILL NATURAL: produced-planks tick296
+SAWMILL NATURAL: night-home tick3750
+SAWMILL NATURAL: loaded-night-home tick3750
+SAWMILL NATURAL QA: 6 phases,8 captures,0 failures

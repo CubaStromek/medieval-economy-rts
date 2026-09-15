@@ -1,0 +1,27 @@
+{
+  "canvas": [
+    800,
+    800
+  ],
+  "polygon": [
+    [
+      409,
+      402
+    ],
+    [
+      538,
+      393
+    ],
+    [
+      540,
+      473
+    ],
+    [
+      412,
+      482
+    ]
+  ],
+  "edge_feather_px": 2,
+  "source": "docs/art/sources/sawmill-operation-v1/workshop-without-saw-raw.png",
+  "note": "Only generated dark wall patch is composited; original structure, bench, ground and all outer alpha remain exact."
+}

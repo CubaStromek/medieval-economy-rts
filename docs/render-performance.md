@@ -80,3 +80,50 @@ milestone covered 154 cases; see `tests/README.md` for the expanded current suit
 including real row-draw reuse on camera motion, partial updates compared against
 a completely rebuilt renderer, road neighbours, shared heights, texture/color
 definitions, save/load rebinds, and retained mesh data/painter order.
+
+## Retained building layers — 2026-09-14
+
+Profiling after the day/night removal showed procedural placeholder buildings
+as the largest remaining map cost. Every frame each one recomputed its terrain
+geometry and re-submitted foundations, walls, roof courses, door, details and
+its label, about 100 draw commands per house.
+
+- `MainView.building_geometry()` caches each building's footprint geometry. The
+  cache key covers the bound world and grids, the connectivity revision (which
+  changes with terrain heights), type, anchor, entrance, footprint version and
+  ground-preparation progress. Callers treat the shared result as read-only.
+- Each object row still draws its ground layer (deposits, fields, selection)
+  first. Its depth-sorted entries are then split into ordered child layers at
+  every procedural building. Trees, units and bitmap houses stay in layers
+  redrawn every frame, and the row's fog is the final layer. Tree order
+  therefore reproduces the original painter order exactly.
+- A procedural building keeps its retained CanvasItem drawing until its visual
+  inputs change. The signature covers the saved building dictionary,
+  selection, a grinding mill's tick, terrain heights and the bound world or
+  terrain grid. Bitmap houses are not retained because doors, residents and
+  stock animate. Fog only decides whether a building is drawn at all.
+- A building that disappears (removal, fog) hides its layer immediately.
+
+This does not reduce GPU draw calls; merging placeholder houses into meshes
+would be the next step for that.
+
+### Verification
+
+- Twenty deterministic native captures cover the player's save, the economy
+  demo, a selected building, zoom, a construction site through its progress,
+  a disabled building and a grinding mill. The simulation was frozen before
+  the first frame and stepped explicitly. The pre-change and changed code were
+  **pixel-identical in all 20 captures**.
+- `building_layer_tests.gd` checks cache reuse and invalidation, redraws only on
+  selection/state/mill-tick changes, the complete layer order around a
+  building, and hiding a removed building's layer.
+
+### Measurements
+
+Local Apple M4, Godot 4.7.2, 1440 × 900 window, vsync off, 1× speed, 400 live
+frames after 100 warm-up ticks.
+
+| Scenario | Frame p50 | Frame mean | Draw calls p50 | Static redraws / 400 frames |
+|---|---:|---:|---:|---:|
+| Player save (9 buildings, 6 procedural) | 13.95 → **9.38 ms** | 14.41 → **9.83 ms** | 1,174 → 1,174 | 7 |
+| Economy demo (29 buildings, 26 procedural) | 38.67 → **18.88 ms** | 41.99 → **21.69 ms** | 4,608 → 4,468 | 41 |

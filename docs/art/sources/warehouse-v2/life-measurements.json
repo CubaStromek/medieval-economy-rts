@@ -1,0 +1,174 @@
+{
+  "date": "2026-09-13",
+  "source": "docs/art/sources/warehouse-v2/closed-key-master.png",
+  "source_sha256": "1cc484d32c122504405fef05dceb3e79d0a68d6fad2d63bd8c19dfd6cf9599e1",
+  "canvas": [
+    1254,
+    1254
+  ],
+  "windows": [
+    [
+      [
+        172,
+        643
+      ],
+      [
+        219,
+        679
+      ],
+      [
+        219,
+        742
+      ],
+      [
+        181,
+        714
+      ]
+    ],
+    [
+      [
+        1007,
+        670
+      ],
+      [
+        1068,
+        653
+      ],
+      [
+        1068,
+        729
+      ],
+      [
+        1007,
+        744
+      ]
+    ]
+  ],
+  "window_panes": [
+    [
+      [
+        [
+          181,
+          653
+        ],
+        [
+          184,
+          655
+        ],
+        [
+          184,
+          710
+        ],
+        [
+          181,
+          708
+        ]
+      ],
+      [
+        [
+          193,
+          662
+        ],
+        [
+          202,
+          669
+        ],
+        [
+          202,
+          725
+        ],
+        [
+          193,
+          720
+        ]
+      ],
+      [
+        [
+          211,
+          677
+        ],
+        [
+          216,
+          681
+        ],
+        [
+          216,
+          736
+        ],
+        [
+          211,
+          731
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          1009,
+          671
+        ],
+        [
+          1022,
+          667
+        ],
+        [
+          1022,
+          738
+        ],
+        [
+          1009,
+          742
+        ]
+      ],
+      [
+        [
+          1032,
+          665
+        ],
+        [
+          1047,
+          661
+        ],
+        [
+          1047,
+          730
+        ],
+        [
+          1032,
+          735
+        ]
+      ],
+      [
+        [
+          1057,
+          660
+        ],
+        [
+          1065,
+          657
+        ],
+        [
+          1065,
+          726
+        ],
+        [
+          1057,
+          728
+        ]
+      ]
+    ]
+  ],
+  "chimney": [
+    316,
+    119
+  ],
+  "manualstatus": "Manually registered to final1254source; enlarged crops and actual pixel samples inspected. Pane quads conservatively inset from painted frames, vertical bars and wooden reveals. No native render claimed by this measurement.",
+  "notes": [
+    "Window order: visible left wall, front wall. Every quad is top-left,top-right,bottom-right,bottom-left.",
+    "The leftmost side-window pane is largely hidden by the deep wooden reveal; its narrow exposed dark strip is intentional. Do not brighten the brown reveal as glass.",
+    "Warm pane overlays preserve both painted vertical bars; the two windows each have three visible glass gaps.",
+    "Overall windows quads locate the opening/glow; only window_panes are solid emission.",
+    "Final source retains improved front-left projection after doorway-height correction. Central landing now reaches below the lowest front-left footing.",
+    "Root must transform all points by the same source-to-production scale used by the registered house; do not inherit v1coordinates."
+  ]
+}

@@ -45,8 +45,14 @@ global state.
 
 ## Fixed simulation time
 
-The view accumulates real seconds and calls `step_tick()` at 10 Hz, with a
-bounded catch-up loop. Tests call the same method directly. Visual workers lerp
+The view accumulates real seconds and calls `step_tick()` at 10 Hz. Like KaM
+Remake (`TKMGame.UpdateGame`), game time is held against real time: a slow frame
+replays every owed tick before the next draw instead of slowing the game. The
+debt is capped at 100 ticks (Remake's `MAX_TICKS_PER_GAME_UPDATE`), so longer
+stalls such as a breakpoint or system sleep are not replayed. Catch-up spends
+at most 100 ms of real time per frame and leaves the remaining ticks owed.
+Starting, loading or resetting a game restarts the clock so loading time is not
+replayed; pause and the main menu owe nothing. Tests call `step_tick()` directly. Visual workers lerp
 between `previous_position` and `position`; interpolation never changes the
 integer logical cell.
 
@@ -382,95 +388,15 @@ edit authoritative inventory dictionaries. Signals or immutable
 presentation snapshots can replace the current polling when the interface
 grows.
 
-## Calendar clock — 2026-09-05
+## Day/night cycle removed — 2026-09-14
 
-`DayCycle.at_tick()` exposes day, hour, minute and phase through
-`SimulationWorld.calendar_time()`. Its fixed policy maps **6,000 simulation
-ticks to one 24-hour cycle**: 10 minutes at 1×, 20 at 0.5×, 5 at 2×. New worlds
-start at Day 1, 05:00; calendar days advance at midnight. The phase boundaries
-are 05:00 Dawn, 06:00 Day, 18:00 Dusk and 20:00 Night.
-
-The simulation owns the shared 0.1-second tick duration used by MainView.
-Pausing or accelerating changes only tick scheduling. The clock reduces the
-tick modulo the cycle before multiplication and uses integer division, keeping
-the calendar exact even for the largest accepted JSON save tick. It has no
-separate mutable state: existing saves already preserve everything through
-`world.tick`. Future configurable calendars must preserve this mapping for old
-saves instead of silently reinterpreting their elapsed ticks.
-
-The HUD shows calendar time and phase; its tooltip retains elapsed simulation
-time and explains speed/pause, the ten-minute cycle and the work/rest hours.
-Clock queries remain read-only; the simulation applies the schedule below.
-
-## Simplified sun and lighting — 2026-09-06
-
-`SolarCycle.sample(tick, fraction)` derives the sun/moon arc, ambient color,
-sky palette and directional shadows from the saved simulation tick and the
-view's clamped fraction of the next tick. It reduces the integer tick before
-converting to floating point, so large saved times repeat the same cycle.
-MainView supplies the fixed-step accumulator fraction and holds it unchanged
-while paused; loading/resetting immediately projects the current clock.
-No lighting state is stored, and neither the economy nor save format changes.
-
-The sun travels left to right from 05:00 to 20:00, reaching its highest point
-at 12:30. Smooth twilight spans 04:00–07:00 and 18:00–21:00 independently of
-the named clock phases and work boundary. Dawn/dusk are warm, midday is near
-neutral white and night retains a readable blue ambient baseline.
-`MainView.modulate` applies the color to the world root and its terrain/entity
-children. GameHud's separate `CanvasLayer` keeps controls unaffected; static
-terrain geometry does not need rebuilding for a change of light.
-
-`SolarShadows` builds simplified projected silhouettes for buildings, trees
-and outdoor units. Shadows point opposite the sun, grow longer near the
-horizon and remain short around midday. Opacity fades to zero at sunrise and
-sunset. Geometry is clipped by grid rows, projected onto the shared heightfield
-and interleaved with the existing terrain/object row drawing. This is an
-art-directed ground projection, not full occlusion or ray tracing between
-objects. Indoor workers cast no outdoor shadow.
-
-`SkyClock` is a decorative 184 × 86-pixel control in the HUD's top-right map
-corner. Its gradient sky and sun/moon arc read the same `SolarCycle` sample;
-it neither advances time nor changes gameplay. The palette, interpolation,
-boundary continuity and large-tick behavior have dedicated tests; the current
-verification status is tracked in [tests/README.md](../tests/README.md).
-
-## Civilian daily schedule — 2026-09-05
-
-`DailySchedule` gives all civilian professions a 05:00–20:00 work window.
-Recruits, Watchtower guards and every soldier definition remain active at night.
-`DayCycle.is_night()` uses integer tick boundaries, including across midnight.
-The schedule applies to both existing saves and new games.
-
-Before military supply replanning, construction and production, the schedule
-releases civilian work tasks and unpicked ration reservations. Carried goods
-stay on the worker. Paid recipe timers and construction progress pause;
-uncommitted gathering/planting work is released and can restart next morning.
-School training and service queues continue, as do passive tree/field growth
-and trail decay. No civilian production inputs are consumed overnight.
-
-The saved `sleep_home_id` differs from employment (`home_id`) and actual
-location (`inside_building_id`). An employed specialist uses its own completed
-workplace. Carriers and builders first choose a reachable, completed and enabled
-Workers' Cottage with one of its two beds free; a completed Warehouse remains
-overflow accommodation when no cottage bed is available. Unemployed specialists
-use a Warehouse. A new workplace claim updates a previous communal sleeping
-assignment. Missing or blocked accommodation causes bounded retries while the
-worker remains off duty.
-
-The transient `go_sleep` action preserves an already committed movement step,
-uses the existing path/yield rules and requires real doorway arrival before
-`IndoorWorkers.enter()`. Adjacent delivery access cannot count as entering a
-home. Sleeping workers release outdoor reservations and share the interior.
-At 05:00 they resume normal job planning and physically leave when needed.
-
-Personal Inn visits may interrupt rest, including with deferred cargo. They
-consume real Inn stock and finish through the shared meal system even across
-dawn. Travel to an Inn or sleeping place does not reserve destination input
-capacity for that cargo. Military requests remain pending while carriers sleep.
-HUD schedule/count queries never mutate the world. Lighting is a separate
-view layer described above. Cottage occupancy is derived from compatible
-workers' `sleep_home_id` assignments, so deaths and reassignment free beds
-without a second persisted resident list.
+The former `DayCycle`, `SolarCycle`, `SolarShadows`, `SkyClock`,
+`DailySchedule`, `Residences` and `NightWolves` modules were removed at the
+user's request. `SimulationWorld.TICK_SECONDS` (0.1 s) is the shared fixed tick.
+There is no calendar or lighting state: `MainView` no longer modulates the map,
+and object rows draw no cast shadows. Civilians are eligible for work at every
+tick. `Nutrition.BALANCE_DAY_TICKS` (6,000) only converts the historical
+"day" balance values in `economy.json` into ticks.
 
 ## Saving
 
@@ -505,11 +431,9 @@ delivery. Sleep is inferred from the saved clock and indoor home; return routes
 are rebuilt on the next tick. Pre-v15 saves start with no sleeping assignment
 and choose one through the same schedule without resetting the clock.
 
-The Workers' Cottage reuses the v15 `sleep_home_id` contract and therefore adds
-no new snapshot field or migration. Version 20 validates that every saved
-cottage sleeper has a compatible type and that no residence exceeds its
-catalog capacity. Pre-cottage saves continue to choose accommodation through
-the normal schedule and may use their completed Warehouse as overflow.
+Version 23 removes `sleep_home_id`, wolves and the Workers' Cottage. Loading
+older saves ignores those fields, drops cottage buildings without refunding
+materials and moves any former resident to the nearest free outdoor cell.
 
 Versions 1–14 remain loadable through explicit defaults and migrations. Pre-v12
 workers restore outdoors instead of inferring a visit from a nearby house. Before

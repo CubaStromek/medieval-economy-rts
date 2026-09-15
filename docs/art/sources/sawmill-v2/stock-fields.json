@@ -1,0 +1,109 @@
+{
+  "stock": {
+    "log": {
+      "texture": "res://art/buildings/sawmill/v2/operation/stock/log.png",
+      "capacity": 4,
+      "slots": [
+        [
+          302.4698209029538,
+          465.1480667321918,
+          77.24316241399825,
+          76.01708047091891
+        ],
+        [
+          333.12186947993723,
+          456.5654931306364,
+          77.24316241399825,
+          76.01708047091891
+        ],
+        [
+          302.4698209029538,
+          432.6568952405894,
+          77.24316241399825,
+          76.01708047091891
+        ],
+        [
+          333.12186947993723,
+          424.074321639034,
+          77.24316241399825,
+          76.01708047091891
+        ]
+      ],
+      "foreground": [],
+      "label": [
+        345,
+        427
+      ]
+    },
+    "plank": {
+      "texture": "res://art/buildings/sawmill/v2/operation/stock/plank.png",
+      "capacity": 6,
+      "slots": [
+        [
+          631,
+          437,
+          76,
+          40.60354118552733
+        ],
+        [
+          631,
+          432.2,
+          76,
+          40.60354118552733
+        ],
+        [
+          631,
+          427.4,
+          76,
+          40.60354118552733
+        ],
+        [
+          631,
+          382,
+          76,
+          40.60354118552733
+        ],
+        [
+          631,
+          377.2,
+          76,
+          40.60354118552733
+        ],
+        [
+          631,
+          372.4,
+          76,
+          40.60354118552733
+        ]
+      ],
+      "foreground": [],
+      "label": [
+        646,
+        358
+      ]
+    }
+  },
+  "work": {
+    "foreground": [
+      {
+        "texture": "res://art/buildings/sawmill/v2/operation/stock/foreground.png",
+        "rect": [
+          0,
+          0,
+          800,
+          800
+        ]
+      }
+    ]
+  },
+  "asset_hashes": {
+    "res://art/buildings/sawmill/v2/operation/stock/log.png": "6e43c9ddf57a66bc261d286104dce502f7853852947608b54b94df85adf9cad8",
+    "res://art/buildings/sawmill/v2/operation/stock/plank.png": "4716cfa4dd15232e5cda1803da6b652f9de1ff01f80559365a7972171c0232d3",
+    "res://art/buildings/sawmill/v2/operation/stock/foreground.png": "2d6683bb2b7c0cfa1f402ff9074310f676ccc886ce494987be9fe06dd1167397"
+  },
+  "provenance": {
+    "stock": "stock/geometry.json",
+    "stock_source": "docs/art/sources/sawmill-v2/stock-layout.json",
+    "stock_method": "Same own high-resolution hut log at unchanged world scale; own plank high-resolution crop with uniform registered draw ratio; exact new-v2-house foreground samples. No new image generation, old foreground reuse or v1 mutation."
+  }
+}

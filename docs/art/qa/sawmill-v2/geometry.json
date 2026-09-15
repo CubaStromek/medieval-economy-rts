@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-12",
+  "building_id": "sawmill",
+  "revision": "v2-ground-guide",
+  "status": "Measured technical guide, not generated building art or accepted production geometry",
+  "canvas": [
+    800,
+    800
+  ],
+  "source_to_world": 0.25,
+  "cell_source_px": 160,
+  "cell_world_px": 40,
+  "footprint": {
+    "version": 1,
+    "mask": [
+      "####",
+      "#E##"
+    ],
+    "occupied_cells": 8,
+    "world_size": [
+      160,
+      80
+    ],
+    "source_rect": [
+      80,
+      320,
+      640,
+      320
+    ],
+    "world_origin_source": [
+      80,
+      320
+    ],
+    "door_cell_relative_to_anchor": [
+      1,
+      0
+    ],
+    "external_entrance_relative_to_anchor": [
+      1,
+      1
+    ]
+  },
+  "door_threshold": [
+    320,
+    640
+  ],
+  "door_threshold_meaning": "Bottom exterior edge of shallow stone entrance step; physical navigation registration point",
+  "door_leaf_bottom_center": [
+    320,
+    610
+  ],
+  "door_leaf_target_height_source_px": [
+    140,
+    148
+  ],
+  "door_leaf_target_height_world_px": [
+    35,
+    37
+  ],
+  "door_leaf_base_guide": [
+    [
+      292,
+      618
+    ],
+    [
+      348,
+      602
+    ]
+  ],
+  "entry_step_ground_polygon": [
+    [
+      292,
+      618
+    ],
+    [
+      348,
+      602
+    ],
+    [
+      348,
+      640
+    ],
+    [
+      292,
+      640
+    ]
+  ],
+  "external_approach_source_rect": [
+    240,
+    640,
+    160,
+    160
+  ],
+  "external_approach_rule": "No walls, feet, stone platform, stock or worker on the free approach cell",
+  "conservative_main_ground_envelope": {
+    "front_left": [
+      284,
+      620
+    ],
+    "front_right": [
+      700,
+      504
+    ],
+    "back_right": [
+      564,
+      356
+    ],
+    "back_left": [
+      148,
+      472
+    ],
+    "front_vector": [
+      416,
+      -116
+    ],
+    "left_side_back_to_front_vector": [
+      136,
+      148
+    ],
+    "meaning": "Proposed blocking ground-contact envelope, not the roof or a rotated gameplay grid"
+  },
+  "front_architectural_direction": {
+    "rise_per_rightward_pixel": 0.27884615384615385,
+    "reference": "Observed current production lumber hut roof/facade directions; a 2D cue, not a recovered 3D camera angle"
+  },
+  "suggested_cabin_front_end": [
+    412,
+    584.3
+  ],
+  "roof_rule": "Roof and height may project above the occupied ground rectangle. Keep the entire finished roof/chimney silhouette inside the 800px canvas with margin. No ground-contact prop outside the occupied cells.",
+  "roof_silhouette_min_y": 72,
+  "roof_silhouette_min_y_meaning": "Suggested upper canvas margin, not a target height or required roof top",
+  "human": {
+    "source": "game/art/buildings/sawmill/v1/life/resting_carpenter.png",
+    "source_sha256": "48fe91d86381ac36c115038fac987e4694e39d49e10f98aee468fef64805cc7e",
+    "source_canvas": [
+      256,
+      256
+    ],
+    "source_body_height_px": 165,
+    "source_ground_contact": [
+      133.02734375,
+      205.1171875
+    ],
+    "guide_scale": 0.8,
+    "guide_foot": [
+      760,
+      640
+    ],
+    "guide_body_height_px": 132,
+    "world_body_height_px": 33,
+    "meaning": "Existing own production carpenter for scale only; not a resident baked into the future house"
+  },
+  "validation": {
+    "main_ground_inside_footprint": true,
+    "step_inside_footprint": true,
+    "complete_external_approach_visible": true
+  },
+  "limitations": [
+    "The guide does not establish or claim an exact historical KaM camera angle.",
+    "No runtime or native scene was launched to create this purely technical diagram.",
+    "Proposed cabin/work zones and door height still require measuring the first actual imagegen output."
+  ]
+}

@@ -12,7 +12,7 @@ first-person sentences, for example “Nesu kládu do pily.” or “Spím ve sk
 
 The text is a read-only view of simulation state. It does not run another job
 search, reserve resources, advance hunger, or invent a successful future route.
-Blocked paths, unavailable ingredients, full output buffers, meals, sleep and
+Blocked paths, unavailable ingredients, full output buffers, meals and
 paused work have their own explanations. Refreshing the panel does not change
 the unit. Its thoughts remain readable when it is inside a known owned building;
 foreign units and hidden contacts do not reveal private thoughts or controls.
@@ -51,7 +51,7 @@ real door and disappears only after going inside. A blocked route or doorway
 causes waiting/retry, not teleportation. Without suitable accommodation it can
 wait outdoors. Soldiers and unassigned guards do not gain a new civilian home.
 
-Food seeking, an active meal, nighttime sleep and safe yielding remain possible.
+Food seeking, an active meal and safe yielding remain possible.
 Satiety and the long-term nutrition reserve continue to follow their normal
 rules: **pausing work does not protect a unit from hunger or starvation**.
 Workplace assignment is retained, and an idle paused citizen can still move

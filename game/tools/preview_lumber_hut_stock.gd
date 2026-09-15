@@ -133,7 +133,6 @@ func _capture(name: String, metadata: Dictionary) -> Image:
 func _capture_stock_conditions() -> void:
 	var cases: Array[Dictionary] = [
 		{"id": "noon", "label": "Den · 6 klád", "tick": 1750},
-		{"id": "night", "label": "Noc · stejné zásoby", "tick": 4750},
 		{"id": "paused", "label": "Provoz i pracovník pozastaven", "paused": true},
 		{"id": "inside", "label": "Pracovník uvnitř · stále 6 klád", "inside": true},
 		{"id": "raised", "label": "Vyvýšený základ · stejné kotvy", "raised": true},

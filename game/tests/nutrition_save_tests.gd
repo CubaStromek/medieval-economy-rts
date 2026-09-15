@@ -10,7 +10,7 @@ const FIELDS: Array[String] = ["nutrition_deficit_ticks", "condition_decay_remai
 
 static func run() -> Array[String]:
 	var failures: Array[String] = []
-	for test: Callable in [_test_exact_fractional_round_trip, _test_sleeping_continuity,
+	for test: Callable in [_test_exact_fractional_round_trip, _test_indoor_continuity,
 		_test_progressive_meal_continuity, _test_v18_preserves_existing_game,
 		_test_ancient_migration, _test_invalid_nutrition_is_transactional,
 		_test_saved_death_boundary, _test_repeated_loading_cannot_extend_survival]:
@@ -70,28 +70,28 @@ static func _test_exact_fractional_round_trip(failures: Array[String]) -> void:
 		"Inclusive maximum nutrition values must load without prematurely executing a death tick", failures)
 
 
-static func _test_sleeping_continuity(failures: Array[String]) -> void:
+static func _test_indoor_continuity(failures: Array[String]) -> void:
 	var source = World.new(Vector2i(24, 18))
 	var hut: int = source.place_building("lumber_hut", Vector2i(6, 4))
 	var id: int = source.spawn_worker(Vector2i(14, 12), "lumberjack", hut)
 	source.economy_enabled = true
-	source.tick = 4000
-	if not _until(source, func() -> bool: return source.is_worker_sleeping(source.workers[id])):
-		failures.append("The nutrition save fixture must physically enter its own hut and fall asleep")
+	source.set_worker_enabled(id, false)
+	if not _until(source, func() -> bool: return source.is_worker_inside(source.workers[id])):
+		failures.append("The nutrition save fixture must physically enter its own hut")
 		return
 	_seed(source.workers[id])
 	var restored = World.new()
 	if not restored.from_data(_json(source)):
-		failures.append("A sleeping citizen's nonzero metabolic and recovery remainders must load")
+		failures.append("An indoor citizen's nonzero metabolic and recovery remainders must load")
 		return
-	_check(restored.to_data() == source.to_data() and restored.is_worker_sleeping(restored.workers[id]),
-		"Loading nutrition must preserve the worker's real bedroom, sleep state and calendar", failures)
+	_check(restored.to_data() == source.to_data() and restored.is_worker_inside(restored.workers[id]),
+		"Loading nutrition must preserve the worker's real indoor location and tick", failures)
 	for _tick: int in range(83):
 		source.step_tick()
 		restored.step_tick()
 	_check(restored.to_data() == source.to_data()
 		and int(restored.workers[id]["nutrition_deficit_ticks"]) == 18083,
-		"Saved sleepers must retain slower satiety loss but count every unfed calendar tick", failures)
+		"Saved indoor citizens must keep the same satiety loss and count every unfed tick", failures)
 
 
 static func _test_progressive_meal_continuity(failures: Array[String]) -> void:

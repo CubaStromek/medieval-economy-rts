@@ -5,7 +5,6 @@ const MainView = preload("res://scripts/view/main_view.gd")
 const MainScene = preload("res://scenes/main.tscn")
 const Library = preload("res://scripts/view/lumberjack_animation_library.gd")
 const SaveSystem = preload("res://scripts/simulation/save_system.gd")
-const SolarShadows = preload("res://scripts/view/solar_shadows.gd")
 const TEST_COUNT: int = 13
 const CENTER := Vector2i(8, 8)
 const VECTORS := {
@@ -286,26 +285,12 @@ static func _test_contact_shadow_depth(main: MainView, worker: Dictionary, tree_
 	var entry: Dictionary = _read_only_entry(main, worker, failures)
 	var contact: Vector2 = entry["contact_ground_position"]
 	var depth: Vector2 = entry["visual_ground_position"]
-	_expect(contact != entry["ground_position"] and entry["shadow_ground_position"] == contact
+	_expect(contact != entry["ground_position"]
 		and (entry["position"] as Vector2).is_equal_approx(main.terrain_renderer.project_grid_position(contact)),
-		"Sprite and shadow receiver must share the terrain-projected work contact, distinct from the simulation path", failures)
+		"The sprite must use the terrain-projected work contact, distinct from the simulation path", failures)
 	_expect(MainView._entry_depth_position(entry) == depth and is_equal_approx(depth.x, contact.x)
 		and depth.y > contact.y and depth.y - contact.y < 0.1,
 		"Painter ordering and terrain picking must use the bounded visual margin beyond physical contact", failures)
-	var solar: Dictionary = {"shadow_opacity": 0.4, "shadow_vector": Vector2(0.8, 0.6)}
-	var control: Dictionary = entry.duplicate()
-	control.erase("shadow_ground_position")
-	control["ground_position"] = contact
-	var actual_rows: Dictionary = SolarShadows.rows_for(main.terrain_renderer, entry, solar)
-	var unplaced: Dictionary = entry.duplicate()
-	unplaced.erase("shadow_ground_position")
-	_expect(not actual_rows.is_empty() and actual_rows == SolarShadows.rows_for(main.terrain_renderer, control, solar)
-		and actual_rows != SolarShadows.rows_for(main.terrain_renderer, unplaced, solar),
-		"Actual cast-shadow polygons must follow the shifted contact; the old logical receiver must give a different result", failures)
-	var depth_only: Dictionary = entry.duplicate()
-	depth_only["visual_ground_position"] = depth + Vector2(0.0, 2.0)
-	_expect(actual_rows == SolarShadows.rows_for(main.terrain_renderer, depth_only, solar)
-		and depth_only["position"] == entry["position"], "Changing sorting metadata must not move the sprite or its cast shadow", failures)
 
 
 static func _test_foreground_tree_alpha(main: MainView, worker: Dictionary, tree_id: int, failures: Array[String]) -> void:

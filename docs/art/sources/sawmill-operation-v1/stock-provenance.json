@@ -1,0 +1,35 @@
+{
+  "date": "2026-09-12",
+  "scope": "Two original isolated stored-goods props: one log and one plank; placed as 4 log slots and 6 plank slots",
+  "provider": "Built-in image_gen",
+  "model": "Not identified by tool",
+  "image_reference": {
+    "path": "game/art/buildings/sawmill/v1/finished.png",
+    "sha256": "349924968b535bf299d9933e00d476bdf357f87a3011b628a420a2d7e06315a4",
+    "role": "Own painted material/camera/storage orientation reference only",
+    "external_images": "None; KaM was not an image input"
+  },
+  "generated": [
+    {
+      "id": "log",
+      "prompt_file": "docs/art/sources/sawmill-operation-v1/log-prompt.txt",
+      "raw": "docs/art/sources/sawmill-operation-v1/log-key.png",
+      "tool_output": "/Users/openclaw/.codex/generated_images/01a0957f-434e-7503-b62f-c71bc1ceb49f/exec-624f547f-aa76-4d6e-b290-f8aeee6f6c7b.png",
+      "selected": true,
+      "inspection": "One short cylindrical bark log, pale cut end toward lower-right; direction agrees with small cradle. No people, extra props or ground. Actual alpha exported from measured key."
+    },
+    {
+      "id": "plank",
+      "prompt_file": "docs/art/sources/sawmill-operation-v1/plank-prompt.txt",
+      "raw": "docs/art/sources/sawmill-operation-v1/plank-key.png",
+      "tool_output": "/Users/openclaw/.codex/generated_images/01a0957f-434e-7503-b62f-c71bc1ceb49f/exec-1f1481a1-0fc9-4443-8678-59650e380055.png",
+      "selected": true,
+      "inspection": "One pale sawn rectangular board with top/side/cut end; axis agrees with storage rails, clean edge. Actual alpha exported from measured key."
+    }
+  ],
+  "source_hashes_and_alpha": "docs/art/sources/sawmill-operation-v1/stock-source-measurements.json",
+  "technical_export": "docs/art/sources/sawmill-operation-v1/export-stock.cjs",
+  "production_metadata": "game/art/buildings/sawmill/v1/operation/stock/geometry.json",
+  "visual_qa": "docs/art/qa/sawmill-operation-v1/stock-art-qa.md",
+  "runtime_qa": "Separate responsibility of sawmill-operation-v1 game integration; this record is asset evidence only"
+}

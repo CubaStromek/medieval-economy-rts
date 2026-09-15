@@ -1,0 +1,47 @@
+{
+	"captures": [
+		{
+			"file": "empty-zoom-1_0.png",
+			"full_stock": false,
+			"size": [
+				1400,
+				720
+			],
+			"tick": 1750,
+			"zoom": 1.0
+		},
+		{
+			"file": "empty-zoom-2_4.png",
+			"full_stock": false,
+			"size": [
+				1400,
+				720
+			],
+			"tick": 1750,
+			"zoom": 2.4
+		},
+		{
+			"file": "full-zoom-2_4.png",
+			"full_stock": true,
+			"size": [
+				1400,
+				720
+			],
+			"tick": 1750,
+			"zoom": 2.4
+		}
+	],
+	"date": "2026-09-12",
+	"engine": "4.7.2-stable (official)",
+	"fixture": "Two current buildings, same flat terrain, tick1750, zoom, no residents; full stock is deliberately staged for comparison",
+	"hashes": {
+		"res://art/buildings/lumber_hut/v1/finished.png": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+		"res://art/buildings/lumber_hut/v1/manifest.json": "e475b13ce8a8394b5997231351c3503ced0e667a96634c6c21a2e0b8fef1d1c5",
+		"res://art/buildings/sawmill/v1/finished.png": "349924968b535bf299d9933e00d476bdf357f87a3011b628a420a2d7e06315a4",
+		"res://art/buildings/sawmill/v1/manifest.json": "93446ddedf3e7b56f299f57f8689d2ee57d1e454c804a8dca0b918666d5b0111",
+		"res://art/buildings/sawmill/v1/operation/manifest.json": "94b5d13560f8551ed10ebe9b32436fe092d37174ce573121be400fe3ac6af4df"
+	},
+	"renderer": "Apple M4",
+	"runtime_or_assets_modified": false,
+	"scene": "res://scenes/main.tscn"
+}

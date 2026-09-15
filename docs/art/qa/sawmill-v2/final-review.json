@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-12",
+  "natural_resources_rechecked": 23,
+  "mismatches": [],
+  "active_v2": true,
+  "canvas": [
+    800,
+    800
+  ],
+  "world_scale": 0.18731625,
+  "house_sha256": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+  "operation_manifest": "res://art/buildings/sawmill/v2/operation/manifest.json",
+  "diff_check": "passed"
+}

@@ -167,12 +167,12 @@ static func status(world: Variant, soldier_id: int) -> String:
 	if bool(soldier.get("food_requested", false)):
 		var carrier_id: int = _assigned_carrier(world, soldier_id)
 		if carrier_id == 0:
-			return "Food requested — waiting for supplies and a carrier"
+			return "Jídlo vyžádáno — čeká na zásoby a nosiče"
 		var mission: Dictionary = world.workers[carrier_id]["ration_delivery"]
-		return "Food on the way" if mission["phase"] == "deliver" else "Carrier collecting food"
+		return "Jídlo je na cestě" if mission["phase"] == "deliver" else "Nosič vyzvedává jídlo"
 	if int(soldier["hunger"]) < _request_threshold(world):
-		return "Ready to request food"
-	return "Sufficiently fed"
+		return "Lze vyžádat jídlo"
+	return "Dostatečně najedený"
 
 
 static func _is_soldier(world: Variant, worker: Dictionary) -> bool:

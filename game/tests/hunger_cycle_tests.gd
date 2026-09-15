@@ -5,7 +5,7 @@ const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Economy = preload("res://scripts/simulation/classic_economy.gd")
 const Feeding = preload("res://scripts/simulation/inn_feeding.gd")
-const DayCycle = preload("res://scripts/simulation/day_cycle.gd")
+const Nutrition = preload("res://scripts/simulation/nutrition.gd")
 const TEST_COUNT: int = 8
 
 
@@ -16,7 +16,7 @@ static func run() -> Array[String]:
 		_test_every_profession_and_soldier, _test_eta_accounts_for_tick_phase,
 		_test_status_boundaries, _test_disabled_economy,
 		_test_meals_pause_daily_decay,
-		_test_two_days_of_work_food_and_sleep,
+		_test_two_days_of_work_and_food,
 	]:
 		test.call(failures)
 	return failures
@@ -34,13 +34,13 @@ static func _advance(world: Variant, ticks: int) -> void:
 
 static func _test_calendar_derived_loss(failures: Array[String]) -> void:
 	var world = LegacyFixture.create()
-	_check(world.hunger_loss_per_interval() == 5,
-		"Awake interval inspection must round up the actual 4.8 condition loss", failures)
+	_check(world.hunger_loss_per_interval() == 4,
+		"Interval inspection must round up the actual 3.9 condition loss", failures)
 	world.catalog.economy["condition_daily_hunger_fraction"] = 2.0
-	_check(world.hunger_loss_per_interval() == 3,
-		"The hunger loss must follow the configured fraction of a calendar day", failures)
+	_check(world.hunger_loss_per_interval() == 2,
+		"The hunger loss must follow the configured fraction of a balance day", failures)
 	world.catalog.economy["condition_interval_ticks"] = 20
-	_check(world.hunger_loss_per_interval() == 5,
+	_check(world.hunger_loss_per_interval() == 4,
 		"Changing the needs-check interval must preserve the intended calendar pace", failures)
 
 
@@ -51,9 +51,9 @@ static func _test_real_daily_hunger_onset(failures: Array[String]) -> void:
 		world.workers[id]["hunger"] = initial
 		world.economy_enabled = true
 		var predicted: int = int(world.hunger_status(world.workers[id])["remaining_to_hungry_ticks"])
-		var expected: int = 4875 if initial == 2700 else 2625
-		_check(predicted == expected and predicted < DayCycle.TICKS_PER_DAY,
-			"A %d-condition citizen must need food within one game day" % initial, failures)
+		var expected: int = 6000 if initial == 2700 else 3231
+		_check(predicted == expected and predicted <= Nutrition.BALANCE_DAY_TICKS,
+			"A %d-condition citizen must need food within one balance day" % initial, failures)
 		_advance(world, predicted - 1)
 		_check(int(world.workers[id]["hunger"]) > 360,
 			"Daily hunger must not reach its threshold before the predicted tick", failures)
@@ -75,7 +75,7 @@ static func _test_every_profession_and_soldier(failures: Array[String]) -> void:
 	world.economy_enabled = true
 	_advance(world, 10)
 	for worker: Dictionary in world.workers.values():
-		_check(int(worker["hunger"]) == 1616 and int(worker["condition_decay_remainder"]) == 800,
+		_check(int(worker["hunger"]) == 1617 and int(worker["condition_decay_remainder"]) == 900,
 			"Daily hunger must apply equally to %s" % worker["type"], failures)
 		_check(not bool(worker["food_requested"]),
 			"Faster hunger must not create automatic military food orders", failures)
@@ -85,13 +85,13 @@ static func _test_eta_accounts_for_tick_phase(failures: Array[String]) -> void:
 	var world = LegacyFixture.create()
 	world.economy_enabled = true
 	var worker: Dictionary = {"hunger": 370, "meal_ticks_left": 0, "condition_decay_remainder": 0}
-	for pair: Array in [[0, 21], [3, 21], [9, 21], [10, 21]]:
+	for pair: Array in [[0, 26], [3, 26], [9, 26], [10, 26]]:
 		world.tick = int(pair[0])
 		_check(int(world.hunger_status(worker)["remaining_to_hungry_ticks"]) == int(pair[1]),
 			"Per-tick hunger ETA must not depend on the old ten-tick global phase %d" % world.tick, failures)
 	world.tick = 3
 	worker["hunger"] = 361
-	worker["condition_decay_remainder"] = 600
+	worker["condition_decay_remainder"] = 700
 	_check(int(world.hunger_status(worker)["remaining_to_hungry_ticks"]) == 1,
 		"A partial condition point must preserve its exact remaining fraction in the ETA", failures)
 	worker["hunger"] = 6
@@ -152,7 +152,7 @@ static func _test_meals_pause_daily_decay(failures: Array[String]) -> void:
 		"An active progressive meal must not advertise a starvation countdown", failures)
 
 
-static func _test_two_days_of_work_food_and_sleep(failures: Array[String]) -> void:
+static func _test_two_days_of_work_and_food(failures: Array[String]) -> void:
 	for menu: Array in [["bread", "sausage"], ["bread", "wine", "fish"]]:
 		var world = LegacyFixture.create(Vector2i(16, 12))
 		var warehouse: int = world.place_building("warehouse", Vector2i(2, 3))
@@ -168,13 +168,13 @@ static func _test_two_days_of_work_food_and_sleep(failures: Array[String]) -> vo
 		world.spawn_worker(Vector2i(1, 8), "carrier")
 		world.spawn_worker(Vector2i(3, 8), "carrier")
 		world.economy_enabled = true
+		# Three full balance days of eating and working, not survival.
 		var last_visit: int = 0
 		var visits: int = 0
 		var returns: int = 0
 		var was_eating: bool = false
 		var awaiting_work_return: bool = false
-		var slept: bool = false
-		for _tick: int in range(DayCycle.TICKS_PER_DAY * 3):
+		for _tick: int in range(Nutrition.BALANCE_DAY_TICKS * 3):
 			world.step_tick()
 			if not world.workers.has(id):
 				failures.append("A daily-fed carpenter must survive two days with menu %s" % str(menu))
@@ -182,7 +182,7 @@ static func _test_two_days_of_work_food_and_sleep(failures: Array[String]) -> vo
 			var worker: Dictionary = world.workers[id]
 			var eating: bool = int(worker["meal_ticks_left"]) > 0
 			if eating and not was_eating:
-				_check(world.tick - last_visit <= DayCycle.TICKS_PER_DAY + 1000,
+				_check(world.tick - last_visit <= Nutrition.BALANCE_DAY_TICKS + 1000,
 					"Daily meals may include travel and the preceding meal's actual duration", failures)
 				last_visit = world.tick
 				visits += 1
@@ -191,14 +191,11 @@ static func _test_two_days_of_work_food_and_sleep(failures: Array[String]) -> vo
 			if awaiting_work_return and worker["action"] == "operate" and int(worker["source_id"]) == sawmill:
 				returns += 1
 				awaiting_work_return = false
-			slept = slept or world.is_worker_sleeping(worker)
 			if int(worker["home_id"]) != sawmill:
-				failures.append("Daily meals and sleep must retain the carpenter's original workplace")
+				failures.append("Daily meals must retain the carpenter's original workplace")
 				break
 			was_eating = eating
-		_check(visits >= 2 and world.tick - last_visit <= DayCycle.TICKS_PER_DAY + 1000,
+		_check(visits >= 2 and world.tick - last_visit <= Nutrition.BALANCE_DAY_TICKS + 1000,
 			"Both two-course and three-course menus must support approximately daily visits", failures)
 		_check(returns >= 1 and world.stored_amount("plank") > 0,
 			"A fed carpenter must resume real production and send its planks to storage", failures)
-		_check(slept,
-			"A daily-fed citizen must still return home for nightly rest", failures)

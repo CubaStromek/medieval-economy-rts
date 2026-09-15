@@ -1,0 +1,520 @@
+{
+  "date": "2026-09-12",
+  "scope": "Actual existing props plus labeled pre-master geometry proposal; no production mutations",
+  "measurements": [
+    {
+      "id": "hut-log",
+      "file": "game/art/buildings/lumber_hut/v1/stock/logs-1.png",
+      "sha256": "39be0ba5ef10971e238bbd21a9e2d063a1eeca374afc3bbf48f3832d7090a210",
+      "canvas": [
+        640,
+        640
+      ],
+      "source_to_world": 0.225,
+      "alpha": [
+        {
+          "threshold": 0,
+          "pixels": 1775,
+          "bounds": [
+            149,
+            463,
+            216,
+            527
+          ],
+          "size": [
+            67,
+            64
+          ],
+          "world_size": [
+            15.075000000000001,
+            14.4
+          ]
+        },
+        {
+          "threshold": 25,
+          "pixels": 1593,
+          "bounds": [
+            151,
+            465,
+            214,
+            525
+          ],
+          "size": [
+            63,
+            60
+          ],
+          "world_size": [
+            14.175,
+            13.5
+          ]
+        },
+        {
+          "threshold": 127,
+          "pixels": 1520,
+          "bounds": [
+            152,
+            465,
+            213,
+            525
+          ],
+          "size": [
+            61,
+            60
+          ],
+          "world_size": [
+            13.725,
+            13.5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hut-four",
+      "file": "game/art/buildings/lumber_hut/v1/stock/logs-4.png",
+      "sha256": "7481dfd1ab69ede403a34b0969ec804c21488b4fd631b7dc63b2a155db94f3a1",
+      "canvas": [
+        640,
+        640
+      ],
+      "source_to_world": 0.225,
+      "alpha": [
+        {
+          "threshold": 0,
+          "pixels": 5809,
+          "bounds": [
+            149,
+            435,
+            267,
+            527
+          ],
+          "size": [
+            118,
+            92
+          ],
+          "world_size": [
+            26.55,
+            20.7
+          ]
+        },
+        {
+          "threshold": 25,
+          "pixels": 5432,
+          "bounds": [
+            151,
+            438,
+            265,
+            525
+          ],
+          "size": [
+            114,
+            87
+          ],
+          "world_size": [
+            25.650000000000002,
+            19.575
+          ]
+        },
+        {
+          "threshold": 127,
+          "pixels": 5277,
+          "bounds": [
+            152,
+            438,
+            264,
+            525
+          ],
+          "size": [
+            112,
+            87
+          ],
+          "world_size": [
+            25.2,
+            19.575
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hut-six",
+      "file": "game/art/buildings/lumber_hut/v1/stock/logs-6.png",
+      "sha256": "33c32943d43c27f8a24f5a04f6df21629568deccef976d5b04da16d989a685bb",
+      "canvas": [
+        640,
+        640
+      ],
+      "source_to_world": 0.225,
+      "alpha": [
+        {
+          "threshold": 0,
+          "pixels": 7436,
+          "bounds": [
+            149,
+            408,
+            267,
+            527
+          ],
+          "size": [
+            118,
+            119
+          ],
+          "world_size": [
+            26.55,
+            26.775000000000002
+          ]
+        },
+        {
+          "threshold": 25,
+          "pixels": 6988,
+          "bounds": [
+            151,
+            411,
+            265,
+            525
+          ],
+          "size": [
+            114,
+            114
+          ],
+          "world_size": [
+            25.650000000000002,
+            25.650000000000002
+          ]
+        },
+        {
+          "threshold": 127,
+          "pixels": 6812,
+          "bounds": [
+            152,
+            411,
+            264,
+            525
+          ],
+          "size": [
+            112,
+            114
+          ],
+          "world_size": [
+            25.2,
+            25.650000000000002
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sawmill-v1-log",
+      "file": "game/art/buildings/sawmill/v1/operation/stock/log.png",
+      "sha256": "969d6aa52627c7814188bf7f45f2b8ae2e4d3dbb8b5744b8542af8e799e0777e",
+      "canvas": [
+        38,
+        27
+      ],
+      "source_to_world": 0.2508,
+      "alpha": [
+        {
+          "threshold": 0,
+          "pixels": 659,
+          "bounds": [
+            0,
+            0,
+            38,
+            27
+          ],
+          "size": [
+            38,
+            27
+          ],
+          "world_size": [
+            9.5304,
+            6.7716
+          ]
+        },
+        {
+          "threshold": 25,
+          "pixels": 560,
+          "bounds": [
+            0,
+            0,
+            38,
+            27
+          ],
+          "size": [
+            38,
+            27
+          ],
+          "world_size": [
+            9.5304,
+            6.7716
+          ]
+        },
+        {
+          "threshold": 127,
+          "pixels": 522,
+          "bounds": [
+            0,
+            0,
+            38,
+            27
+          ],
+          "size": [
+            38,
+            27
+          ],
+          "world_size": [
+            9.5304,
+            6.7716
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sawmill-v1-plank",
+      "file": "game/art/buildings/sawmill/v1/operation/stock/plank.png",
+      "sha256": "f6b9d7e3c9bf5aeb2c20e95fadb0c46c687321c75b4fbe593d435cc6092f1168",
+      "canvas": [
+        76,
+        41
+      ],
+      "source_to_world": 0.2508,
+      "alpha": [
+        {
+          "threshold": 0,
+          "pixels": 1136,
+          "bounds": [
+            0,
+            0,
+            76,
+            41
+          ],
+          "size": [
+            76,
+            41
+          ],
+          "world_size": [
+            19.0608,
+            10.282800000000002
+          ]
+        },
+        {
+          "threshold": 25,
+          "pixels": 932,
+          "bounds": [
+            0,
+            0,
+            76,
+            41
+          ],
+          "size": [
+            76,
+            41
+          ],
+          "world_size": [
+            19.0608,
+            10.282800000000002
+          ]
+        },
+        {
+          "threshold": 127,
+          "pixels": 859,
+          "bounds": [
+            0,
+            0,
+            76,
+            41
+          ],
+          "size": [
+            76,
+            41
+          ],
+          "world_size": [
+            19.0608,
+            10.282800000000002
+          ]
+        }
+      ]
+    }
+  ],
+  "proposal": {
+    "status": "Preflight before sawmill-v2 master; no absolute stock anchor is final",
+    "house_canvas": [
+      800,
+      800
+    ],
+    "house_to_world": 0.25,
+    "log": {
+      "source": "docs/art/concepts/lumber-hut-v3-stock/logs-6.png",
+      "source_sha256": "edddd12a7f53bb29826a29065006520c4ebd5a5fb4f7aef3e28167861bb27d31",
+      "extraction_polygon": [
+        [
+          374,
+          806
+        ],
+        [
+          398,
+          826
+        ],
+        [
+          426,
+          853
+        ],
+        [
+          452,
+          877
+        ],
+        [
+          460,
+          884
+        ],
+        [
+          465,
+          892
+        ],
+        [
+          466,
+          903
+        ],
+        [
+          462,
+          914
+        ],
+        [
+          455,
+          922
+        ],
+        [
+          445,
+          926
+        ],
+        [
+          435,
+          924
+        ],
+        [
+          426,
+          919
+        ],
+        [
+          411,
+          902
+        ],
+        [
+          386,
+          878
+        ],
+        [
+          361,
+          855
+        ],
+        [
+          345,
+          839
+        ]
+      ],
+      "source_cap": [
+        445,
+        900
+      ],
+      "method": "Reuse the exact own hut log through its existing high-resolution source extraction; no camera warp or new generation",
+      "single_alpha_gt25_world": [
+        14.175,
+        13.5
+      ],
+      "cap_offset_world": [
+        [
+          0,
+          0
+        ],
+        [
+          5.7416267942583765,
+          -1.6076555023923518
+        ],
+        [
+          0,
+          -6.086124401913876
+        ],
+        [
+          5.7416267942583765,
+          -7.693779904306228
+        ]
+      ],
+      "cap_offset_house": [
+        [
+          0,
+          0
+        ],
+        [
+          22.966507177033506,
+          -6.430622009569407
+        ],
+        [
+          0,
+          -24.344497607655505
+        ],
+        [
+          22.966507177033506,
+          -30.775119617224913
+        ]
+      ],
+      "layout": "2 lower +2 upper; lower near-left, lower right, upper near-left, upper right",
+      "conservative_stack_world": [
+        19.916626794258377,
+        21.193779904306226
+      ],
+      "reserved_rack_world": [
+        26,
+        27
+      ],
+      "reserved_rack_house": [
+        104,
+        108
+      ],
+      "foreground": "Measure new front posts/rail only after master; never copy v1 occlusion mask"
+    },
+    "plank": {
+      "status": "Proposed size/orientation, not measured new artwork",
+      "single_target_world": [
+        13.5,
+        11
+      ],
+      "single_target_house": [
+        54,
+        44
+      ],
+      "front_edge_direction": [
+        1,
+        -0.28
+      ],
+      "length_direction": "Recede up-left, visually parallel to the reused hut log; expose the top plane",
+      "slot_y_world": [
+        0,
+        -0.9,
+        -1.8,
+        -9.2,
+        -10.1,
+        -11
+      ],
+      "stack_envelope_world": [
+        13.5,
+        22
+      ],
+      "reserved_rack_world": [
+        22,
+        28
+      ],
+      "reserved_rack_house": [
+        88,
+        112
+      ],
+      "export": "Prefer a new own plank matching finished v2 perspective; v1 full-resolution plank may be material reference, not a squeezed production texture"
+    },
+    "worker": {
+      "height_world": 33,
+      "current_source_height": 412,
+      "ground_contact": [
+        374.5,
+        489
+      ],
+      "foot_spread_world": 15.218446601941748,
+      "recommendation": "Try the current six-pose identity first at exactly33worldpx; reassess actual shoulder/top-plane view and hand/tool/bench contacts after v2 master. No independent camera regeneration is established by this preflight."
+    }
+  }
+}

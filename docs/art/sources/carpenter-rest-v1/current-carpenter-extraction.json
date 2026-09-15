@@ -1,0 +1,33 @@
+{
+	"actual_texture_region": [
+		684,
+		676,
+		163,
+		306
+	],
+	"alpha_threshold_for_region": 0.1,
+	"atlas_cell_region": [
+		614,
+		675,
+		308,
+		349
+	],
+	"date": "2026-09-12",
+	"enlargement": "2x nearest-neighbor only, no retouch or generated artwork",
+	"native_canvas": [
+		163,
+		306
+	],
+	"native_sha256": "1de571465978c001f24a2c4eb0f4cfce6b2ae4934bb74ad2a3203a1ff28f8947",
+	"normal_game_verified": false,
+	"reader": "game/scripts/view/unit_sprite_library.gd",
+	"reference_2x_sha256": "bd7570561eb193cda2748c1d1ec6db5377064cf29f0ab69082b9e486d207977d",
+	"role": "carpenter",
+	"scope": "Technical extraction of existing original carpenter; no art changes",
+	"source": "game/art/units/civilians-basic-v1.png",
+	"source_sha256": "5978c8124445e7ef1832d30dce780214b173435f8a4f51e675e6bc716947f176",
+	"world_size": [
+		17.5784320831299,
+		33.0
+	]
+}

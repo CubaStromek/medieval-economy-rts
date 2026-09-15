@@ -7,10 +7,15 @@ const TEST_COUNT: int = 5
 class CountingWorld:
 	extends World
 	var route_searches: int = 0
+	var route_checks: int = 0
 
 	func _path_with_yielding(from: Vector2i, to: Vector2i, blockers: Dictionary, worker_id: int) -> Array[Vector2i]:
 		route_searches += 1
 		return super._path_with_yielding(from, to, blockers, worker_id)
+
+	func _route_exists(from: Vector2i, to: Vector2i) -> bool:
+		route_checks += 1
+		return super._route_exists(from, to)
 
 
 static func run() -> Array[String]:
@@ -55,12 +60,16 @@ static func _test_existence_stops_early_but_pickup_still_ranks(failures: Array[S
 	var targets: Array[int] = fixture["targets"]
 	_check(source != 0 and not targets.has(0), "Transport fixture must place every production footprint", failures)
 	world.route_searches = 0
+	world.route_checks = 0
 	world._generate_economy_tasks()
 	var generation_searches: int = world.route_searches
+	var generation_checks: int = world.route_checks
 	_check(world.task_board.has_source("lumber_hut:%d:log" % source), "Reachable consumer must create a transport task", failures)
 	world.route_searches = 0
+	world.route_checks = 0
 	_check(_available(fixture), "Carrier must accept a transport task with reachable consumers", failures)
 	var validation_searches: int = world.route_searches
+	var validation_checks: int = world.route_checks
 	world.route_searches = 0
 	var worker: Dictionary = world.workers[fixture["carrier"]]
 	worker["source_id"] = source
@@ -68,9 +77,9 @@ static func _test_existence_stops_early_but_pickup_still_ranks(failures: Array[S
 	_check(worker["destination_id"] == targets.back() and worker["carrying"] == "log",
 		"Real pickup must still choose the nearest consumer even when its ID is last", failures)
 	_check(int(world.buildings[source]["outputs"]["log"]) == 1, "Real pickup must transfer exactly one physical log", failures)
-	print("TRANSPORT SEARCH WORK: generation=%d, validation=%d, pickup=%d route calls for 8 consumers" % [generation_searches, validation_searches, world.route_searches])
-	_check(generation_searches == 1 and validation_searches == 1,
-		"Existence checks must stop after the first reachable consumer", failures)
+	print("TRANSPORT SEARCH WORK: generation=%d/%d, validation=%d/%d, pickup=%d route searches/reachability checks for 8 consumers" % [generation_searches, generation_checks, validation_searches, validation_checks, world.route_searches])
+	_check(generation_searches == 0 and validation_searches == 0 and generation_checks == 1 and validation_checks == 1,
+		"Existence checks must stop after the first reachable consumer without building routes", failures)
 	_check(world.route_searches >= targets.size(), "Pickup must retain full destination ranking", failures)
 
 

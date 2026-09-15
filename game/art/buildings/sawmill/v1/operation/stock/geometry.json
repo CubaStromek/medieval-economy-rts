@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-12",
+  "building_id": "sawmill",
+  "asset_version": "operation-v1",
+  "scope": "Stored inputs.log and outputs.plank only; not work in process",
+  "house_canvas": [
+    800,
+    800
+  ],
+  "house_image": "res://art/buildings/sawmill/v1/finished.png",
+  "house_sha256": "349924968b535bf299d9933e00d476bdf357f87a3011b628a420a2d7e06315a4",
+  "house_to_world": 0.2508,
+  "draw_policy": "Draw slots1..N in stored order into transparent canvas, remove pixels under occlusion_mask, composite in building row. Foreground PNG is exact original house sample if renderer instead uses foreground redraw.",
+  "occlusion_mask": "occlusion-mask.png",
+  "occlusion_mask_sha256": "96c826f2776686d15b65c477f74394e08e9ca3c503ad46ea8a64f032afd4d855",
+  "foreground_image": "foreground.png",
+  "foreground_sha256": "f36d0f9378e1b1b526ed6c6ef6014f8b1764e9bfd43eb07fef535be5d13f7be5",
+  "foreground_pixels": 22968,
+  "occlusion_polygons": {
+    "left_jamb": [
+      [
+        356,
+        409
+      ],
+      [
+        373,
+        403
+      ],
+      [
+        373,
+        535
+      ],
+      [
+        364,
+        552
+      ],
+      [
+        350,
+        551
+      ]
+    ],
+    "cradle_front_left_post": [
+      [
+        376,
+        496
+      ],
+      [
+        387,
+        495
+      ],
+      [
+        388,
+        539
+      ],
+      [
+        377,
+        542
+      ]
+    ],
+    "cradle_front_rail": [
+      [
+        379,
+        508
+      ],
+      [
+        423,
+        505
+      ],
+      [
+        425,
+        516
+      ],
+      [
+        381,
+        520
+      ]
+    ],
+    "cradle_front_right_post": [
+      [
+        414,
+        492
+      ],
+      [
+        425,
+        493
+      ],
+      [
+        426,
+        535
+      ],
+      [
+        416,
+        539
+      ]
+    ],
+    "center_post": [
+      [
+        553,
+        383
+      ],
+      [
+        576,
+        379
+      ],
+      [
+        578,
+        517
+      ],
+      [
+        582,
+        521
+      ],
+      [
+        582,
+        548
+      ],
+      [
+        548,
+        555
+      ],
+      [
+        546,
+        527
+      ],
+      [
+        552,
+        516
+      ]
+    ],
+    "rack_front_left_post": [
+      [
+        633,
+        467
+      ],
+      [
+        647,
+        468
+      ],
+      [
+        647,
+        537
+      ],
+      [
+        634,
+        540
+      ]
+    ],
+    "rack_front_right_post": [
+      [
+        650,
+        470
+      ],
+      [
+        660,
+        470
+      ],
+      [
+        661,
+        533
+      ],
+      [
+        650,
+        536
+      ]
+    ],
+    "rack_upper_front_cap": [
+      [
+        637,
+        480
+      ],
+      [
+        657,
+        477
+      ],
+      [
+        660,
+        488
+      ],
+      [
+        639,
+        492
+      ]
+    ],
+    "rack_lower_front_cap": [
+      [
+        636,
+        511
+      ],
+      [
+        657,
+        508
+      ],
+      [
+        660,
+        519
+      ],
+      [
+        638,
+        523
+      ]
+    ],
+    "right_front_post": [
+      [
+        676,
+        379
+      ],
+      [
+        694,
+        376
+      ],
+      [
+        696,
+        502
+      ],
+      [
+        704,
+        505
+      ],
+      [
+        703,
+        540
+      ],
+      [
+        672,
+        544
+      ],
+      [
+        670,
+        513
+      ],
+      [
+        676,
+        504
+      ]
+    ],
+    "roof_front_band": [
+      [
+        356,
+        378
+      ],
+      [
+        690,
+        357
+      ],
+      [
+        722,
+        380
+      ],
+      [
+        723,
+        389
+      ],
+      [
+        704,
+        393
+      ],
+      [
+        696,
+        382
+      ],
+      [
+        376,
+        402
+      ],
+      [
+        369,
+        420
+      ],
+      [
+        350,
+        427
+      ]
+    ]
+  },
+  "groups": {
+    "log": {
+      "resource": "log",
+      "inventory": "inputs",
+      "capacity": 4,
+      "image": "log.png",
+      "image_sha256": "969d6aa52627c7814188bf7f45f2b8ae2e4d3dbb8b5744b8542af8e799e0777e",
+      "canvas": [
+        38,
+        27
+      ],
+      "source_origin": [
+        0,
+        0
+      ],
+      "source_to_house_scale": 1,
+      "ground_contact": [
+        31.359639233370913,
+        26.8704
+      ],
+      "ground_contact_meaning": "Bottom-facing prop contact in its own canvas; rests on its rack, not on terrain",
+      "slots": [
+        {
+          "id": "log_slot_1",
+          "draw_rect": [
+            368,
+            482,
+            38,
+            27
+          ],
+          "draw_order": 0
+        },
+        {
+          "id": "log_slot_2",
+          "draw_rect": [
+            378,
+            478,
+            38,
+            27
+          ],
+          "draw_order": 1
+        },
+        {
+          "id": "log_slot_3",
+          "draw_rect": [
+            368,
+            470,
+            38,
+            27
+          ],
+          "draw_order": 2
+        },
+        {
+          "id": "log_slot_4",
+          "draw_rect": [
+            378,
+            466,
+            38,
+            27
+          ],
+          "draw_order": 3
+        }
+      ],
+      "support_ground_points_house": [
+        [
+          382,
+          540
+        ],
+        [
+          426,
+          533
+        ]
+      ],
+      "measurement": {
+        "canvas": [
+          38,
+          27
+        ],
+        "transparent": 367,
+        "partial": 311,
+        "opaque": 348,
+        "residual_magenta_pixels": 0,
+        "alpha_bounds_exclusive": {
+          "0": [
+            0,
+            0,
+            38,
+            27
+          ],
+          "25": [
+            0,
+            0,
+            38,
+            27
+          ],
+          "127": [
+            0,
+            0,
+            38,
+            27
+          ]
+        }
+      }
+    },
+    "plank": {
+      "resource": "plank",
+      "inventory": "outputs",
+      "capacity": 6,
+      "image": "plank.png",
+      "image_sha256": "f6b9d7e3c9bf5aeb2c20e95fadb0c46c687321c75b4fbe593d435cc6092f1168",
+      "canvas": [
+        76,
+        41
+      ],
+      "source_origin": [
+        0,
+        0
+      ],
+      "source_to_house_scale": 1,
+      "ground_contact": [
+        66.75596612779061,
+        40.82276657060519
+      ],
+      "ground_contact_meaning": "Bottom-facing prop contact in its own canvas; rests on its rack, not on terrain",
+      "slots": [
+        {
+          "id": "plank_slot_1",
+          "draw_rect": [
+            579,
+            479,
+            76,
+            41
+          ],
+          "draw_order": 0
+        },
+        {
+          "id": "plank_slot_2",
+          "draw_rect": [
+            579,
+            473,
+            76,
+            41
+          ],
+          "draw_order": 1
+        },
+        {
+          "id": "plank_slot_3",
+          "draw_rect": [
+            579,
+            467,
+            76,
+            41
+          ],
+          "draw_order": 2
+        },
+        {
+          "id": "plank_slot_4",
+          "draw_rect": [
+            579,
+            443,
+            76,
+            41
+          ],
+          "draw_order": 3
+        },
+        {
+          "id": "plank_slot_5",
+          "draw_rect": [
+            579,
+            437,
+            76,
+            41
+          ],
+          "draw_order": 4
+        },
+        {
+          "id": "plank_slot_6",
+          "draw_rect": [
+            579,
+            431,
+            76,
+            41
+          ],
+          "draw_order": 5
+        }
+      ],
+      "support_ground_points_house": [
+        [
+          586,
+          524
+        ],
+        [
+          656,
+          539
+        ]
+      ],
+      "measurement": {
+        "canvas": [
+          76,
+          41
+        ],
+        "transparent": 1980,
+        "partial": 612,
+        "opaque": 524,
+        "residual_magenta_pixels": 0,
+        "alpha_bounds_exclusive": {
+          "0": [
+            0,
+            0,
+            76,
+            41
+          ],
+          "25": [
+            0,
+            0,
+            76,
+            41
+          ],
+          "127": [
+            0,
+            0,
+            76,
+            41
+          ]
+        }
+      }
+    }
+  }
+}

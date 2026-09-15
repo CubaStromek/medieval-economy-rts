@@ -1,5 +1,7 @@
 # Den a noc: implementovaný režim a další návrhy
 
+> **Odstraněno 14. 9. 2026.** Uživatel zrušil celý cyklus dne a noci včetně spánku, Workers' Cottage, nočních vlků, tónování mapy a vržených stínů. Dokument níže je historický a nepopisuje současnou hru.
+
 **Stav aktualizován 2026-09-09: herní hodiny, noční režim civilních pracovníků,
 dvoulůžková Workers' Cottage a zjednodušené denní osvětlení jsou implementované.
 Celý den trvá 10 minut při 1×. Civilisté pracují od 05:00 do 20:00 a v noci odcházejí spát. Pohyb slunce

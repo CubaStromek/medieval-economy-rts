@@ -1,0 +1,295 @@
+{
+  "date": "2026-09-12",
+  "house_sha256": "349924968b535bf299d9933e00d476bdf357f87a3011b628a420a2d7e06315a4",
+  "groups": {
+    "log": {
+      "resource": "log",
+      "inventory": "inputs",
+      "capacity": 4,
+      "image": "log.png",
+      "image_sha256": "969d6aa52627c7814188bf7f45f2b8ae2e4d3dbb8b5744b8542af8e799e0777e",
+      "canvas": [
+        38,
+        27
+      ],
+      "source_origin": [
+        0,
+        0
+      ],
+      "source_to_house_scale": 1,
+      "ground_contact": [
+        31.359639233370913,
+        26.8704
+      ],
+      "ground_contact_meaning": "Bottom-facing prop contact in its own canvas; rests on its rack, not on terrain",
+      "slots": [
+        {
+          "id": "log_slot_1",
+          "draw_rect": [
+            368,
+            482,
+            38,
+            27
+          ],
+          "draw_order": 0
+        },
+        {
+          "id": "log_slot_2",
+          "draw_rect": [
+            378,
+            478,
+            38,
+            27
+          ],
+          "draw_order": 1
+        },
+        {
+          "id": "log_slot_3",
+          "draw_rect": [
+            368,
+            470,
+            38,
+            27
+          ],
+          "draw_order": 2
+        },
+        {
+          "id": "log_slot_4",
+          "draw_rect": [
+            378,
+            466,
+            38,
+            27
+          ],
+          "draw_order": 3
+        }
+      ],
+      "support_ground_points_house": [
+        [
+          382,
+          540
+        ],
+        [
+          426,
+          533
+        ]
+      ],
+      "measurement": {
+        "canvas": [
+          38,
+          27
+        ],
+        "transparent": 367,
+        "partial": 311,
+        "opaque": 348,
+        "residual_magenta_pixels": 0,
+        "alpha_bounds_exclusive": {
+          "0": [
+            0,
+            0,
+            38,
+            27
+          ],
+          "25": [
+            0,
+            0,
+            38,
+            27
+          ],
+          "127": [
+            0,
+            0,
+            38,
+            27
+          ]
+        }
+      }
+    },
+    "plank": {
+      "resource": "plank",
+      "inventory": "outputs",
+      "capacity": 6,
+      "image": "plank.png",
+      "image_sha256": "f6b9d7e3c9bf5aeb2c20e95fadb0c46c687321c75b4fbe593d435cc6092f1168",
+      "canvas": [
+        76,
+        41
+      ],
+      "source_origin": [
+        0,
+        0
+      ],
+      "source_to_house_scale": 1,
+      "ground_contact": [
+        66.75596612779061,
+        40.82276657060519
+      ],
+      "ground_contact_meaning": "Bottom-facing prop contact in its own canvas; rests on its rack, not on terrain",
+      "slots": [
+        {
+          "id": "plank_slot_1",
+          "draw_rect": [
+            579,
+            479,
+            76,
+            41
+          ],
+          "draw_order": 0
+        },
+        {
+          "id": "plank_slot_2",
+          "draw_rect": [
+            579,
+            473,
+            76,
+            41
+          ],
+          "draw_order": 1
+        },
+        {
+          "id": "plank_slot_3",
+          "draw_rect": [
+            579,
+            467,
+            76,
+            41
+          ],
+          "draw_order": 2
+        },
+        {
+          "id": "plank_slot_4",
+          "draw_rect": [
+            579,
+            443,
+            76,
+            41
+          ],
+          "draw_order": 3
+        },
+        {
+          "id": "plank_slot_5",
+          "draw_rect": [
+            579,
+            437,
+            76,
+            41
+          ],
+          "draw_order": 4
+        },
+        {
+          "id": "plank_slot_6",
+          "draw_rect": [
+            579,
+            431,
+            76,
+            41
+          ],
+          "draw_order": 5
+        }
+      ],
+      "support_ground_points_house": [
+        [
+          586,
+          524
+        ],
+        [
+          656,
+          539
+        ]
+      ],
+      "measurement": {
+        "canvas": [
+          76,
+          41
+        ],
+        "transparent": 1980,
+        "partial": 612,
+        "opaque": 524,
+        "residual_magenta_pixels": 0,
+        "alpha_bounds_exclusive": {
+          "0": [
+            0,
+            0,
+            76,
+            41
+          ],
+          "25": [
+            0,
+            0,
+            76,
+            41
+          ],
+          "127": [
+            0,
+            0,
+            76,
+            41
+          ]
+        }
+      }
+    }
+  },
+  "all_count_states": {
+    "log_0": {
+      "image": "log-0.png",
+      "changed_pixels_from_previous": 0,
+      "sha256": "3a826b47985bf3cbe2e4ea82da4e7a6fb1633a310680d31748f9adf74a19e5c4"
+    },
+    "log_1": {
+      "image": "log-1.png",
+      "changed_pixels_from_previous": 496,
+      "sha256": "48b9a55a90c6d55c1ef29c4438b523041cea6d5ca50e7bf53854b275b500284c"
+    },
+    "log_2": {
+      "image": "log-2.png",
+      "changed_pixels_from_previous": 632,
+      "sha256": "6c49061c6623011d6ae87c04ab693d70c63ae9cc4fc5980c61428f8cbfd4444d"
+    },
+    "log_3": {
+      "image": "log-3.png",
+      "changed_pixels_from_previous": 577,
+      "sha256": "1c3b6438013ca05ed84ee0bd7baa8323ed01bd6450cb66bbda4460eff947fb05"
+    },
+    "log_4": {
+      "image": "log-4.png",
+      "changed_pixels_from_previous": 650,
+      "sha256": "bff6c0f5b5fee9b511f52c479f189a05459e4af1351f41d76d66918d7ec7a57e"
+    },
+    "plank_0": {
+      "image": "plank-0.png",
+      "changed_pixels_from_previous": 0,
+      "sha256": "3a826b47985bf3cbe2e4ea82da4e7a6fb1633a310680d31748f9adf74a19e5c4"
+    },
+    "plank_1": {
+      "image": "plank-1.png",
+      "changed_pixels_from_previous": 802,
+      "sha256": "f57cb9a2ee323f321fb2c8e4abcd91c060454d891a05485ea19b6e1b6cf3b80a"
+    },
+    "plank_2": {
+      "image": "plank-2.png",
+      "changed_pixels_from_previous": 817,
+      "sha256": "c83be5a81469227bd8b0ba42624a168f7c8e9731f1cec985ba61284f0f5bfdf8"
+    },
+    "plank_3": {
+      "image": "plank-3.png",
+      "changed_pixels_from_previous": 825,
+      "sha256": "834d12f4568c752a7e7b1cb4a2dacf2abe6c26f86b31b7d80a63945749704e3c"
+    },
+    "plank_4": {
+      "image": "plank-4.png",
+      "changed_pixels_from_previous": 837,
+      "sha256": "5e67397300158b9a0962cc0bb64afbc6be07e5fe90deab15916d8fc8508ebb87"
+    },
+    "plank_5": {
+      "image": "plank-5.png",
+      "changed_pixels_from_previous": 962,
+      "sha256": "efa37ac288b7652753324eb86fe6552c0ab688d267ae2d86164b89b0bca117bc"
+    },
+    "plank_6": {
+      "image": "plank-6.png",
+      "changed_pixels_from_previous": 1070,
+      "sha256": "e542fe801e04a9874df5df298dfca686834d8a52afab55950960fc10e6d81597"
+    }
+  },
+  "scope": "Offline decoded pixels plus labeled composites; native runtime/actual resource transfers not tested here"
+}

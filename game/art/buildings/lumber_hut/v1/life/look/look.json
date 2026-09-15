@@ -1,0 +1,135 @@
+{
+  "date": "2026-09-12",
+  "scope": "Three head-yaw poses on exact original resting body",
+  "frames": {
+    "center": "center.png",
+    "left": "left.png",
+    "right": "right.png"
+  },
+  "size": [
+    256,
+    256
+  ],
+  "production_ground_contact": [
+    128.46563192904654,
+    205.229379418696
+  ],
+  "production_body_height_px": 162.71,
+  "source_px_to_world": 0.20281482391985742,
+  "collar_y": 82,
+  "changed_bounds": [
+    104,
+    42,
+    136,
+    81
+  ],
+  "changed_bounds_convention": "left,top,right-exclusive,bottom-exclusive",
+  "body_policy": "Every RGBA pixel at y>=collar_y and outside the head replacement polygon is byte-identical to resting_lumberjack.png; center is exact original file.",
+  "source_head_polygon_master": [
+    [
+      400,
+      0
+    ],
+    [
+      690,
+      0
+    ],
+    [
+      690,
+      208
+    ],
+    [
+      635,
+      208
+    ],
+    [
+      627,
+      238
+    ],
+    [
+      621,
+      277
+    ],
+    [
+      607,
+      311
+    ],
+    [
+      590,
+      351
+    ],
+    [
+      582,
+      330
+    ],
+    [
+      554,
+      320
+    ],
+    [
+      514,
+      307
+    ],
+    [
+      486,
+      283
+    ],
+    [
+      469,
+      255
+    ],
+    [
+      465,
+      229
+    ],
+    [
+      444,
+      221
+    ],
+    [
+      400,
+      221
+    ]
+  ],
+  "original_sha256": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+  "measurements": {
+    "left": {
+      "source_sha256": "4757bea8ad3fa22403e60a3620b425f8ca6186b5c32e81c47154cfaee74151df",
+      "production_sha256": "e2326ad398e2e7815c5b5ccde6477047e7c765ad61e564777e3adac06269c7a0",
+      "changed_bounds_exclusive": [
+        104,
+        42,
+        136,
+        81
+      ],
+      "changed_pixels": 821,
+      "body_different_pixels_below_collar": 0,
+      "feet_different_pixels": 0,
+      "alpha_bounds_gt25_exclusive": [
+        94,
+        42,
+        152,
+        206
+      ]
+    },
+    "right": {
+      "source_sha256": "9df0ebc4c1cb2d6a1d97c2be6e46f633b2e1879086df84d0ebb11bcb727db785",
+      "production_sha256": "6310e2e2e0b3746890bf94ab99d2479ba0bf67520a1524be16e0221708c3321f",
+      "changed_bounds_exclusive": [
+        104,
+        42,
+        136,
+        81
+      ],
+      "changed_pixels": 799,
+      "body_different_pixels_below_collar": 0,
+      "feet_different_pixels": 0,
+      "alpha_bounds_gt25_exclusive": [
+        94,
+        42,
+        152,
+        206
+      ]
+    }
+  }
+}

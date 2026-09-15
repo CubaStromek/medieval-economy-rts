@@ -1,0 +1,33 @@
+{
+  "source_sha256": "0a9ef7aa5e4c7ba565248df2088f3d7ad2af5ffbca3793191f093e70042c30e5",
+  "master_sha256": "95913ad0411ee8856e40924c0ee00dbcd7f3bfb8363339a919ba53779564833a",
+  "canvas": [
+    1145,
+    1374
+  ],
+  "counts": {
+    "transparent": 1249810,
+    "partial": 5847,
+    "opaque": 317573
+  },
+  "alpha_bounds_exclusive": {
+    "0": [
+      350,
+      49,
+      793,
+      1314
+    ],
+    "25": [
+      350,
+      49,
+      793,
+      1314
+    ],
+    "127": [
+      351,
+      50,
+      793,
+      1314
+    ]
+  }
+}

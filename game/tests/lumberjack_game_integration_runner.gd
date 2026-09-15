@@ -30,7 +30,6 @@ var code_sha256: Dictionary = {}
 var burst_target_frames: int = 0
 var burst_frames: Array[Dictionary] = []
 var burst_images: Array[Image] = []
-var invalid_shadow_polygons: Array[Dictionary] = []
 
 
 func _ready() -> void:
@@ -38,7 +37,6 @@ func _ready() -> void:
 	for source: String in ["res://tests/lumberjack_game_integration_runner.gd", "res://scripts/view/main_view.gd",
 			"res://scripts/view/game_session.gd", "res://scripts/view/lumberjack_presentation.gd",
 			"res://scripts/view/lumberjack_animation_library.gd", "res://scripts/view/lumberjack_work_placement.gd",
-			"res://scripts/view/solar_shadows.gd",
 			"res://scripts/simulation/simulation_world.gd"]:
 		code_sha256[source] = FileAccess.get_sha256(source)
 	_mute_music_bus_only()
@@ -115,7 +113,6 @@ func _observe_real_cycle() -> void:
 	var had_log: bool = false
 	while int(game.world.tick) < max_ticks and Time.get_ticks_msec() - started_at_ms < 240000:
 		await get_tree().process_frame
-		_check_actual_shadow_geometry()
 		if capture_enabled and phases.has("chop-start") and burst_frames.size() < burst_target_frames:
 			await _capture_chop_burst_frame()
 		if int(game.world.tick) == last_tick:
@@ -211,7 +208,6 @@ func _snapshot() -> Dictionary:
 		"presentation": retained_pose, "draw_entry_present": not entry.is_empty(),
 		"ground_position": _vector_array(entry.get("ground_position", Vector2(worker["position"] as Vector2i))),
 		"contact_ground_position": _vector_array(entry.get("contact_ground_position", entry.get("ground_position", Vector2(worker["position"] as Vector2i)))),
-		"shadow_ground_position": _vector_array(entry.get("shadow_ground_position", entry.get("ground_position", Vector2(worker["position"] as Vector2i)))),
 		"foot_world": [foot.x, foot.y], "foot_screen": [screen_foot.x, screen_foot.y],
 		"camera_zoom": game.camera.zoom.x, "accumulator": game.accumulator,
 		"tree_id": source_id, "tree_amount": int(game.world.trees.get(source_id, {}).get("amount", 0)),
@@ -292,35 +288,6 @@ func _flush_burst_images() -> void:
 	burst_images.clear()
 
 
-func _check_actual_shadow_geometry() -> void:
-	# Inspect the actual retained polygons sent to the production CanvasItem,
-	# so a zero-triangle runtime error cannot hide behind a passing work cycle.
-	for row: Variant in game._row_shadows:
-		for shadow: Dictionary in game._row_shadows[row]:
-			if not game._fog_entry_visible(String(shadow["kind"]), shadow["state"]):
-				continue
-			var points: PackedVector2Array = shadow.get("draw_points", shadow["points"])
-			if Geometry2D.triangulate_polygon(points).is_empty():
-				_expect(false, "Actual production shadow polygon must triangulate.")
-				var coordinates: Array = []
-				for point: Vector2 in points:
-					coordinates.append(_vector_array(point))
-				var map_coordinates: Array = []
-				for point: Vector2 in shadow["points"]:
-					map_coordinates.append(_vector_array(point))
-				var entity_id: int = int(shadow.get("state", {}).get("id", 0))
-				var record: Dictionary = {"tick": int(game.world.tick), "accumulator": game.accumulator,
-					"row": row, "kind": shadow.get("kind"), "entity_id": entity_id,
-					"points": map_coordinates, "draw_points": coordinates,
-					"draw_origin": _vector_array(shadow.get("draw_origin", Vector2.ZERO))}
-				for entry: Dictionary in game._world_draw_entries():
-					if entry.get("kind") == shadow.get("kind") and int(entry.get("id", 0)) == entity_id:
-						for key: String in ["ground_position", "contact_ground_position", "shadow_ground_position", "visual_ground_position", "position"]:
-							if entry.has(key):
-								record[key] = _vector_array(entry[key])
-				invalid_shadow_polygons.append(record)
-
-
 func _press_menu_button(node_name: String) -> bool:
 	var button: Button = session.menu.find_child(node_name, true, false) as Button
 	if button == null or not button.is_visible_in_tree() or button.disabled:
@@ -392,9 +359,8 @@ func _finish() -> void:
 		"source_amount_before": source_amount_before, "home_output_before": home_output_before,
 		"natural_directions_observed": natural_directions.keys(), "phases": phases,
 		"captures": captures, "chop_burst": burst_frames, "chop_burst_target": burst_target_frames,
-		"invalid_shadow_polygons": invalid_shadow_polygons,
 		"observations": observations, "failures": failures,
-		"coverage_limit": "Only authored normal simulation at its natural dawn lighting and visibility. All-eight-direction, fog and lighting fixtures are separate tests; screenshots require visual review."}
+		"coverage_limit": "Only authored normal simulation and visibility. All-eight-direction and fog fixtures are separate tests; screenshots require visual review."}
 	var file: FileAccess = FileAccess.open(output_path.path_join("report.json"), FileAccess.WRITE)
 	if file != null:
 		file.store_string(JSON.stringify(report, "  "))

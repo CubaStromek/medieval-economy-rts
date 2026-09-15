@@ -16,17 +16,29 @@ known limits, artwork acceptance status and next steps. The previous handover
 is preserved as history, not current requirements.
 
 This milestone includes painted V1 terrain, fog of war, seven-day nutrition,
-individual work pause, two-bed worker housing and the normal-game PixelLab
+individual work pause and the normal-game PixelLab
 lumberjack (three activities × eight directions, 439 animation frames).
 The lumber hut has 33 construction steps, visible 0–6 stored logs, and a
 new nine-cell footprint; old saved huts retain their old geometry. Current
-save format is **v21**. The 11 September refactor improves HUD aggregation and
+save format is **v23**. The 11 September refactor improves HUD aggregation and
 transport availability checks without changing actual destination ranking.
+The 12 September work rebuilt the HUD in Czech. On **14 September** the whole
+day/night cycle was removed, including sleep, the Workers' Cottage, night
+wolves, map tinting and moving sun shadows; see
+[the removal notes](#daynight-cycle-removed--2026-09-14). The same day,
+route searching moved to a packed index with identical routes: simulation
+ticks on the player's save are about 5× cheaper and no longer spike above
+16 ms; see [pathfinding performance](docs/pathfinding-performance.md).
+Placeholder buildings now keep retained drawing and cached geometry, roughly
+halving map frame time in the economy demo with pixel-identical captures; see
+[render performance](docs/render-performance.md#retained-building-layers--2026-09-14).
 
-Fresh Godot 4.7.2 checks: **762/762 headless** and **81/81 native rendering
-checks**. See the [publication verification](docs/release-verification-2026-09-12.md)
-for commands, tool tests and clean-checkout status. Historical test counts in
-the feature sections below describe their original milestones.
+Fresh Godot 4.7.2 checks after the day/night removal, pathfinding index and
+retained building layers (2026-09-14): **782/782 headless**; the earlier **85/85 native rendering checks** were not rerun. The [publication verification](docs/release-verification-2026-09-12.md)
+is a dated record of the earlier v21 publication pass, so its own counts are
+historical; use it for commands, tool tests and clean-checkout status.
+Historical test counts in the feature sections below describe their original
+milestones.
 
 Runtime assets live in `game/art/`; `docs/art/` also retains original project
 concepts, rejected experiments and QA evidence. They are not all loaded by the
@@ -38,7 +50,7 @@ excluded from Git; see [publication scope](HANDOVER.md#8-co-se-publikuje-a-co-z�
 
 The normal game now draws the Lumberjack Hut with its own transparent artwork
 and **12 timber + 21 finishing steps**, matching the counts measured in the
-original KaM graphics. Place a Lumberjack Hut through **Build** or shortcut
+original KaM graphics. Place a Lumberjack Hut through **Stavět** or shortcut
 **3**; after ground preparation and material delivery, actual Builder work
 reveals the structure. This is enabled automatically on current footprints,
 including existing saved construction, with unchanged costs and duration.
@@ -60,7 +72,7 @@ by the existing art guide.
 
 Select a citizen to see **Co si myslím**: short Czech first-person descriptions
 of what they are doing now and what comes next. Pause/resume that unit's work,
-or independently pause a building's operation or construction. Food, sleep and
+or independently pause a building's operation or construction. Food and
 safe movement continue; already-carried goods and paid work are preserved.
 Save **v20** remembers each unit and building's separate setting. See
 [controls, exact pause rules and compatibility](docs/unit-thoughts-and-pause.md).
@@ -144,7 +156,7 @@ The current map shape is unchanged. See [rules and verification](docs/foundation
 
 New buildings now occupy their KaM Remake tile shapes: for example a Warehouse
 is **3 × 3**, a Lumberjack Hut **3 × 2**, a Sawmill **4 × 2** and Barracks
-**4 × 4**. All 28 reference types plus the Forester Hut and Workers' Cottage
+**4 × 4**. All 28 reference types plus the Forester Hut
 have their own masks,
 including irregular corners and fixed southern doors. The building preview
 shows the full area and a blue entrance tile. Citizens walk around the entire
@@ -159,16 +171,16 @@ Save **v17** preserves both, including new ground-preparation progress. See [geo
 Build an **Inn** under **Food** and keep it supplied with Bread, Sausages, Wine
 or Fish. Hungry civilians eat there automatically, occupying one of six seats,
 then leave and return to their own work. Specialists retain their workplaces.
-Satiety is visible above outdoor units and in their details. Hunger follows the
-game day: a full civilian needs food again after approximately one normal
-work/sleep day. Diners remain
+Satiety is visible above outdoor units and in their details. Hunger declines at a
+steady rate: a full civilian needs food again after about 10 minutes at 1×
+(6,000 ticks). Diners remain
 hidden inside while eating up to three different courses; bread, wine and fish
 fill them more than a single food, with nutrition increasing during each course.
 
 An empty satiety bar is **not an immediate death sentence**. New units start
-fully fed; a separate long-term reserve allows **seven full game days without
-food** (70 minutes at 1×, 35 at 2×). Sleeping halves appetite loss, not that
-calendar reserve. After two days of nutritional deficit, productive work
+fully fed; a separate long-term reserve allows **70 minutes without
+food** at 1× (35 at 2×), counted by the balance data as seven 10-minute days.
+After two days of nutritional deficit, productive work
 gradually falls to a minimum of 80% by day four; walking never slows. Paid meals
 rebuild the reserve proportionally and restore strength gradually, rather than
 resetting seven days with one bite. Save v19 preserves the exact remaining
@@ -182,52 +194,35 @@ the soldier. Each ration fully feeds one soldier; orders remain pending when
 supplies are unavailable. Saves preserve partial courses and military deliveries
 without double consumption. See [food and military supply rules](docs/food-and-military-supply.md).
 
-## In-game calendar — 2026-09-05
+## Day/night cycle removed — 2026-09-14
 
-The status bar shows the calendar day, 24-hour time and Dawn / Day / Dusk /
-Night. A full day takes **10 minutes at 1×** (20 minutes at the default 0.5×,
-5 minutes at 2×). New games start at **Day 1, 05:00**, and the date advances
-at midnight. Pausing freezes the clock together with the economy.
+The complete day/night mechanic has been removed at the user's request.
+There is no calendar clock, sky display, map tinting or moving sun shadow,
+and civilians no longer stop work at night or go to sleep. The Workers'
+Cottage (which only provided beds) and the night wolves (which only existed
+between dusk and dawn) were removed with it. Small fixed ground shadows under
+trees and units remain; cast shadows are not drawn for now.
 
-The clock follows the existing saved simulation tick, so loading restores
-the same calendar time without additional clock state or resetting progress.
-Older saves gain the corresponding calendar display from their elapsed ticks.
-Civilian workers stop work at **20:00** and resume at **05:00**. Specialists
-sleep inside their own workplace, including lumber, forester and fisher huts.
-Each completed, enabled **Workers' Cottage** houses exactly two Carriers or
-Builders; they prefer a reachable cottage with a free bed and use a completed
-Warehouse only as overflow accommodation. Unemployed specialists also use a
-Warehouse. Soldiers and Watchtower guards remain active.
-
-Workers walk to the door before disappearing inside. They keep carried goods
-overnight and deliver them after dawn; paid production and construction retain
-their progress. Hungry civilians can visit an Inn during the night and then
-return to sleep. The HUD shows their schedule and the number sleeping.
-Save v15 preserves sleeping places and supports earlier saves. Cottage capacity
-is rebuilt from those assignments, so the residence extension needs no new save
-field. Other night professions remain future extensions described
-in [the day/night analysis](docs/day-night-analysis.md).
-
-## Sunlight and moving shadows — 2026-09-06
-
-A small sky display shows the sun travelling east to west from **05:00 to
-20:00**, with a moon after sunset. The map gradually changes from warm dawn
-to daylight, sunset and a readable blue night. Trees, buildings and outdoor
-units cast simplified shadows that change direction and become longer when
-the sun is low. Shadows follow the terrain; the interface keeps its normal
-brightness.
-
-The visual cycle follows the saved game clock, including pause and game speed,
-without changing the ten-minute day, unit schedules or saved-game format.
-It uses light tint and projected silhouettes rather than physical ray tracing.
+Simulation time still advances in 0.1-second ticks. Satiety declines at a
+constant 390 milli-points per tick, the same daily food demand as the former
+awake/asleep average; the seven-day nutrition reserve is shown in minutes at
+1×. Save format **v23** stops writing sleeping places and wolves. Older saves
+still load: their sleep and wolf data are ignored, and any Workers' Cottage is
+dropped (its materials are not refunded) while former residents move to the
+nearest free outdoor cell. The historical design notes remain in
+[day/night analysis](docs/day-night-analysis.md),
+[night wolves](docs/night-wolves.md) and [worker housing](docs/worker-housing.md).
 
 ## Adaptive game window — 2026-09-05
 
 Standalone play starts maximized on the current monitor. The 1152 × 720 base
 is a logical UI design size, not a fixed physical window: the viewport expands
 to the available aspect ratio, without letterboxing or stretching the artwork.
-The HUD follows the window edges. The initial map overview refits on resize;
-after manually panning or zooming, resizing preserves the chosen camera view.
+The HUD follows the window edges and grows more slowly than the window, so a
+larger monitor buys visible map rather than larger panels: roughly 1.2x at
+1080p and 1.4x at 1440p instead of the raw 1.5x / 2.0x stretch. The initial map
+overview refits on resize; after manually panning or zooming, resizing
+preserves the chosen camera view.
 Explicit `--windowed` / `--resolution` launch options remain available.
 
 Godot's embedded Game view has its own sizing policy. In its top-right **⋮**
@@ -324,8 +319,8 @@ Construction uses finished **planks**, not raw **logs**. The original KaM
 Lumberjack Hut and Quarry each cost **3 planks + 2 stone**, and the Sawmill
 costs **4 + 3**. Starter supplies cover all three, an Inn and a reserve;
 their quantities are this prototype's scenario balance, not a claimed universal
-KaM starting inventory. All 28 reference prices and the project-balanced prices
-of the Forester Hut and Workers' Cottage are listed in
+KaM starting inventory. All 28 reference prices and the project-balanced price
+of the Forester Hut are listed in
 [construction costs](docs/construction-costs.md). Materials still require
 physical carrier deliveries before a Builder can finish a site.
 
@@ -422,14 +417,16 @@ weapons and armour branches of the KaM-style economy.
 - Barracks turn arriving recruits and delivered equipment into soldiers;
   Town Halls recruit with gold. These are economic consumers, with no combat
   or military movement orders yet.
-- The temporary HUD has a top bar for key supplies and a narrower sidebar
-  switching between Build and Details. Visible category buttons organize
-  construction; selecting a building opens its inventory and relevant actions.
-  All stocks opens Materials, Food and Equipment with total stock and a
-  warehouse / buildings / carried breakdown. Overview totals include goods
-  waiting in production buildings, including lumberjack huts. Roads and vine
-  fields still spend warehouse stock. Time controls, citizen/hunger status and
-  Controls stay at the bottom.
+- The HUD is in Czech and has a top bar for key supplies and population, plus a
+  280 px sidebar switching between **Stavět** (build) and **Detail**. A single
+  row of category buttons organizes construction; selecting a building opens its
+  inventory, progress and relevant actions. **Vše** opens Materiál, Jídlo and
+  Výzbroj with total stock and a warehouse / buildings / carried breakdown, in a
+  panel sized to the open category. Overview totals include goods waiting in
+  production buildings, including lumberjack huts. Roads and vine fields still
+  spend warehouse stock. The clock, latest event, time controls and **Ovládání**
+  stay at the bottom. Catalog `display_name` values stay English: the Czech names
+  live in `game/scripts/ui_text.gd`. See [HUD layout](docs/hud-layout.md).
 - Deterministic 10 Hz simulation, weighted pathfinding, exclusive task/tile
   reservations, blocked-route recovery and three movement tiers remain shared
   across these systems. Carrier traffic creates dirt trails.
@@ -452,9 +449,8 @@ Mills and bakeries both employ bakers.
 This implements the economic branches in this prototype's own simulation,
 not full behavioral or timing parity with KaM. Work durations are project
 balance values; reference-building construction prices follow the
-[documented KaM table](docs/construction-costs.md). The extra Forester Hut and
-Workers' Cottage prices are explicitly project-balanced; the cottage costs
-**3 planks + 2 stone**. Livestock uses one aggregate four-grain
+[documented KaM table](docs/construction-costs.md). The extra Forester Hut
+price is explicitly project-balanced. Livestock uses one aggregate four-grain
 recipe per animal. Roads and vine fields pay directly from warehouse stock
 and appear immediately. Military recruitment has no extra timer once its
 requirements are present; combat, siege engines, unlock progression and
@@ -484,14 +480,14 @@ Or import `game/project.godot` in the Godot editor and run the project.
 | WASD / arrows | Pan camera |
 | 1 / 2 / 3 / 4 / 5 | Stone road / warehouse / lumberjack hut / sawmill / school |
 | 6 / 7 / 8 / 9 / 0 | Quarry / farm / mill / bakery / wheat field |
-| Build category menu | All 30 buildings, wheat fields and vine fields |
+| Build category menu (Obec / Jídlo / Těžba / Armáda) | All 30 buildings, wheat fields and vine fields |
 | School UI buttons | Queue one of 15 professions; each citizen costs 1 gold |
 | Selected workshop / Barracks / Town Hall | Queue equipment production or recruitment |
 | Selected Marketplace | Choose two wares, inspect the quote and queue an exchange |
-| Unfinished building → Details → Cancel construction | Remove its site and return delivered materials to storage |
-| Stop placing / Escape | Leave placement mode, close a panel, or open the main menu |
+| Unfinished building → Detail → Zrušit stavbu | Remove its site and return delivered materials to storage |
+| Přestat umísťovat / Escape | Leave placement mode, close a panel, or open the main menu |
 | Menu | Pause and open the main menu; resume or save there |
-| Terrain / F2 | Show level ground, walkable slopes and blocked terrain |
+| Terén / F2 | Show level ground, walkable slopes and blocked terrain |
 | F5 / F9 | Save / load |
 | R | Restart the current level |
 | Space | Pause/resume simulation |
@@ -528,9 +524,7 @@ covers terrain/projection, weighted movement and reservations,
 blocked deliveries, citizen training and tree growth, the production graph,
 finite deposits and fishing, wheat/vine cycles, carrier-supplied construction,
 paid training, food and starvation, production/recruitment/trade orders and
-version 15 snapshots with migrations from versions 1–14. Daily-schedule tests
-cover exact work/rest boundaries, shared accommodation, paused production,
-night meals, military exceptions and cargo conservation. Indoor-worker tests
+version 15 snapshots with migrations from versions 1–14. Indoor-worker tests
 cover entry/exit visibility, production, shared doorway safety and saved visits.
 Natural-trail tests cover
 sustained traffic, regrowth, directional connections and exact save/load timing.

@@ -47,7 +47,7 @@ static func _test_bars_for_every_profession(failures: Array[String]) -> void:
 		_expect(is_equal_approx(fill.size.x, rect.size.x * 0.5) and bar["caption"] == "", "Unselected units must show their actual half-full bar without a percentage label: " + role, failures)
 		main.selected_unit_id = id
 		bar = main.worker_satiety_presentation(worker, feet)
-		_expect(bar["caption"] == "Satiety 50%", "Only the selected unit should display a clearly named map percentage", failures)
+		_expect(bar["caption"] == "Sytost 50 %", "Only the selected unit should display a clearly named map percentage", failures)
 		main.selected_unit_id = 0
 	var before: Dictionary = world.to_data()
 	var workers_before: Dictionary = world.workers.duplicate(true)
@@ -65,12 +65,15 @@ static func _test_selected_progress_and_states(failures: Array[String]) -> void:
 	main.selected_unit_id = id
 	var bar: ProgressBar = main.hud.find_child("UnitSatietyBar", true, false) as ProgressBar
 	_expect(bar != null, "The selected person's inspector must contain an actual ProgressBar", failures)
-	for row: Array in [[2700, "Fed", 0], [1350, "Getting hungry", 0], [360, "Hungry", 0], [120, "Hungry", 0], [0, "Hungry", 0], [2700, "Weakened", 18000], [0, "Starving", 36000]]:
+	# Simulation state id, the Czech label the inspector shows, deficit ticks.
+	for row: Array in [[2700, "Fed", "Najedený", 0], [1350, "Getting hungry", "Dostává hlad", 0],
+			[360, "Hungry", "Hladový", 0], [120, "Hungry", "Hladový", 0], [0, "Hungry", "Hladový", 0],
+			[2700, "Weakened", "Zesláblý", 18000], [0, "Starving", "Hladoví", 36000]]:
 		world.workers[id]["hunger"] = int(row[0])
-		world.workers[id]["nutrition_deficit_ticks"] = int(row[2])
+		world.workers[id]["nutrition_deficit_ticks"] = int(row[3])
 		main._update_ui()
-		_expect(main.hud._satiety_panel.visible and is_equal_approx(bar.value, 100.0 * float(row[0]) / 2700.0) and main.hud._satiety_label.text.contains(String(row[1])), "Inspector satiety must reflect the actual numeric level and state " + String(row[1]), failures)
-	_expect(bar.tooltip_text.contains("0% empty") and bar.tooltip_text.contains("100% full") and bar.tooltip_text.contains("does not mean death") and not bar.tooltip_text.contains("0% starving"), "The satiety control must distinguish an empty stomach from long-term starvation", failures)
+		_expect(main.hud._satiety_panel.visible and is_equal_approx(bar.value, 100.0 * float(row[0]) / 2700.0) and main.hud._satiety_label.text.contains(String(row[2])), "Inspector satiety must reflect the actual numeric level and state " + String(row[1]), failures)
+	_expect(bar.tooltip_text.contains("0 % prázdno") and bar.tooltip_text.contains("100 % plno") and bar.tooltip_text.contains("neznamená smrt") and not bar.tooltip_text.contains("0 % hladoví"), "The satiety control must distinguish an empty stomach from long-term starvation", failures)
 	main.free()
 
 
@@ -83,17 +86,17 @@ static func _test_game_time_and_speed_estimate(failures: Array[String]) -> void:
 	main.simulation_speed = 0.5
 	main._update_ui()
 	var timing: String = main.hud._satiety_timing.text
-	_expect(timing.contains("Estimated hunger in 19 h 30 min of game time") and timing.contains("current awake rate") and timing.contains("16 min 15 s at 0.5×"), "A fully fed new citizen must show an explicitly estimated hunger time at its current activity and simulation speed", failures)
+	_expect(timing.contains("Hlad odhadem za 10 min 00 s při 1×") and timing.contains("20 min 00 s při rychlosti 0.5×"), "A fully fed new citizen must show an explicitly estimated hunger time and its real waiting time at the simulation speed", failures)
 	main.simulation_speed = 1.0
 	main._update_ui()
-	_expect(main.hud._satiety_timing.text.contains("19 h 30 min of game time") and main.hud._satiety_timing.text.contains("8 min 08 s at 1.0×"), "Changing simulation speed must preserve game-time ETA and update the real waiting estimate", failures)
+	_expect(main.hud._satiety_timing.text.contains("Hlad odhadem za 10 min 00 s při 1×") and main.hud._satiety_timing.text.contains("10 min 00 s při rychlosti 1.0×"), "Changing simulation speed must preserve game-time ETA and update the real waiting estimate", failures)
 	main.simulation_speed = 0.0
 	main._update_ui()
-	_expect(main.hud._satiety_timing.text.contains("Simulation paused") and not main.hud._satiety_timing.text.contains("at 0.0×"), "Paused food estimates must say paused instead of dividing by zero or promising an active countdown", failures)
+	_expect(main.hud._satiety_timing.text.contains("Simulace je pozastavená") and not main.hud._satiety_timing.text.contains("rychlosti 0.0×"), "Paused food estimates must say paused instead of dividing by zero or promising an active countdown", failures)
 	world.workers[id]["hunger"] = 200
 	world.workers[id]["carrying"] = "log"
 	main._update_ui()
-	_expect(main.hud._satiety_timing.text.contains("delivers its cargo"), "A hungry loaded carrier's inspector must explain why it finishes delivery before seeking food", failures)
+	_expect(main.hud._satiety_timing.text.contains("doručí náklad"), "A hungry loaded carrier's inspector must explain why it finishes delivery before seeking food", failures)
 	main.free()
 
 
@@ -109,7 +112,7 @@ static func _test_indoor_worker_inspection(failures: Array[String]) -> void:
 	main.selected_unit_id = id
 	world._enter_worker_building(world.workers[id], home)
 	main._update_ui()
-	_expect(main.selected_unit_id == id and main.hud._satiety_label.text.contains("Satiety 50%"), "Following a selected worker indoors must keep the same person's live satiety inspector", failures)
+	_expect(main.selected_unit_id == id and main.hud._satiety_label.text.contains("Sytost 50 %"), "Following a selected worker indoors must keep the same person's live satiety inspector", failures)
 	_expect(not bool(main.worker_satiety_presentation(world.workers[id], Vector2.ZERO)["visible"]), "An indoor person must have no outdoor satiety bar", failures)
 	var drawn: bool = false
 	for entry: Dictionary in main._world_draw_entries():
@@ -118,7 +121,7 @@ static func _test_indoor_worker_inspection(failures: Array[String]) -> void:
 	main.selected_unit_id = 0
 	main.selected_cell = world.buildings[home]["position"]
 	main._update_ui()
-	_expect(main.hud.production_detail_label.text.contains("Carpenter #%d" % id) and main.hud.production_detail_label.text.contains("Satiety 50% · Getting hungry"), "A workplace inspector must expose its indoor employee's actual satiety", failures)
+	_expect(main.hud.production_detail_label.text.contains("Truhlář #%d" % id) and main.hud.production_detail_label.text.contains("Sytost 50 % · Dostává hlad"), "A workplace inspector must expose its indoor employee's actual satiety", failures)
 	main.free()
 
 
@@ -135,16 +138,16 @@ static func _test_progressive_meal_details(failures: Array[String]) -> void:
 	world.step_tick()
 	main._update_ui()
 	var initial: float = main.hud._satiety_bar.value
-	_expect(main.hud._satiety_timing.text.contains("Eating Bread") and not main.hud._satiety_timing.text.contains("Estimated hunger in"), "An eating person's inspector must show its actual food course instead of a hunger ETA", failures)
+	_expect(main.hud._satiety_timing.text.contains("Jí Chléb") and not main.hud._satiety_timing.text.contains("Hlad odhadem za"), "An eating person's inspector must show its actual food course instead of a hunger ETA", failures)
 	for _tick: int in range(58):
 		world.step_tick()
 	main._update_ui()
-	_expect(main.hud._satiety_bar.value > initial and main.hud._satiety_bar.value < 45.0 and main.hud._satiety_timing.text.contains("5.8 s left at 1× speed"), "Halfway through a real bread course the satiety bar must visibly rise, with remaining time explicitly measured at 1× speed", failures)
+	_expect(main.hud._satiety_bar.value > initial and main.hud._satiety_bar.value < 45.0 and main.hud._satiety_timing.text.contains("zbývá 5.8 s při 1×"), "Halfway through a real bread course the satiety bar must visibly rise, with remaining time explicitly measured at 1× speed", failures)
 	main.selected_unit_id = 0
 	main.selected_cell = world.buildings[inn]["position"]
 	main._update_ui()
 	var details: String = main.hud.production_detail_label.text
-	_expect(details.contains("Baker #%d" % id) and details.contains("Satiety") and details.contains("Eating Bread") and details.contains("5.8 s left at 1× speed"), "The Inn inspector must list each actual diner, its satiety, current food and remaining course time at an explicit speed", failures)
+	_expect(details.contains("Pekař #%d" % id) and details.contains("Sytost") and details.contains("Jí Chléb") and details.contains("zbývá 5.8 s při 1×"), "The Inn inspector must list each actual diner, its satiety, current food and remaining course time at an explicit speed", failures)
 	var before: Dictionary = world.to_data()
 	for _frame: int in range(5):
 		main._update_ui()
@@ -161,11 +164,11 @@ static func _test_shared_hunger_and_supply_summary(failures: Array[String]) -> v
 	world.economy_enabled = true
 	var main: Main = _main(world)
 	main._update_ui()
-	_expect(not main.hud._citizens_label.text.contains("hungry") and not main.hud._supply_army_button.disabled, "A soldier eligible for an early ration must not count as actually hungry before the shared hunger threshold", failures)
+	_expect(not main.hud._citizens_label.text.contains("hladoví") and not main.hud._supply_army_button.disabled, "A soldier eligible for an early ration must not count as actually hungry before the shared hunger threshold", failures)
 	world.workers[citizen]["hunger"] = 360
 	world.workers[soldier]["hunger"] = 360
 	main._update_ui()
-	_expect(main.hud._citizens_label.text.contains("2 hungry"), "The shared hunger threshold must count both civilian and soldier needs consistently", failures)
+	_expect(main.hud._citizens_label.text.contains("2 hladoví"), "The shared hunger threshold must count both civilian and soldier needs consistently", failures)
 	main.free()
 
 

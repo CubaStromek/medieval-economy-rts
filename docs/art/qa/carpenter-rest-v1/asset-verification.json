@@ -1,0 +1,58 @@
+{
+	"body_height_world": 33,
+	"date": "2026-09-12",
+	"engine": "4.7.2-stable (official)",
+	"frames": {
+		"center": {
+			"changed_pixels_from_base": 0,
+			"opaque": 4601,
+			"partial": 1320,
+			"path": "res://art/buildings/sawmill/v1/life/look/center.png",
+			"positive_controls": {
+				"sole_134_203": true,
+				"torso_128_112": true
+			},
+			"residual_key_pixels_dominance_gt45_alpha_gt25": 0,
+			"same_body_y_ge_79": true,
+			"same_feet_y_ge_160": true,
+			"sha256": "48fe91d86381ac36c115038fac987e4694e39d49e10f98aee468fef64805cc7e",
+			"transparent": 59615
+		},
+		"left": {
+			"changed_pixels_from_base": 906,
+			"opaque": 4565,
+			"partial": 1324,
+			"path": "res://art/buildings/sawmill/v1/life/look/left.png",
+			"positive_controls": {
+				"sole_134_203": true,
+				"torso_128_112": true
+			},
+			"residual_key_pixels_dominance_gt45_alpha_gt25": 0,
+			"same_body_y_ge_79": true,
+			"same_feet_y_ge_160": true,
+			"sha256": "da4753003c6099874ff646354150d432b1a2459d6efba797e02fd82ac8640f81",
+			"transparent": 59647
+		},
+		"right": {
+			"changed_pixels_from_base": 945,
+			"opaque": 4594,
+			"partial": 1336,
+			"path": "res://art/buildings/sawmill/v1/life/look/right.png",
+			"positive_controls": {
+				"sole_134_203": true,
+				"torso_128_112": true
+			},
+			"residual_key_pixels_dominance_gt45_alpha_gt25": 0,
+			"same_body_y_ge_79": true,
+			"same_feet_y_ge_160": true,
+			"sha256": "865878889eba7059f774e4d5a05f690162b6fe20166462cc3fbd98e911291685",
+			"transparent": 59606
+		}
+	},
+	"passed": true,
+	"production_ground_contact": [
+		133.02734375,
+		205.1171875
+	],
+	"scope": "Independent decoded PNG/metadata, not rendering or normal game"
+}

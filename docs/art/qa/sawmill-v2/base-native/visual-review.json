@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-12",
+  "final_exit_code": 0,
+  "final_log_errors": 0,
+  "final_log_warnings": 0,
+  "captures_verified": 7,
+  "all_capture_hashes_and_dimensions_match": true,
+  "actual_loaded_texture_rgba_sha256": "5fbf68bcf3df8c38c9e8f9d1e29494d605b425e4b986ec923ea2b81c3dee2cd1",
+  "asset_hashes_before_after_equal": true,
+  "images_visually_reviewed": [
+    "flat-pair-zoom-0_75.png",
+    "flat-pair-zoom-1_0.png",
+    "flat-pair-zoom-2_4.png",
+    "flat-door-human.png",
+    "raised-footprint.png",
+    "raised-footprint-guide.png",
+    "raised-door-human.png"
+  ],
+  "visual_result": "Visible solid footings, walls, step and furniture fit the unchanged4x2 on flat and raised ground. Door height and width fit33world adult scale. Sawmill and lumber hut show related perspective and materials, retaining separate silhouettes. Near-transparent resampling fringe documented separately.",
+  "normal_gameplay_or_dynamic_state_acceptance": false
+}

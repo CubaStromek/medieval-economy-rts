@@ -8,6 +8,7 @@ const SaveSystemClass = preload("res://scripts/simulation/save_system.gd")
 const ImportedTerrain = preload("res://scripts/simulation/imported_terrain.gd")
 const RegionStart = preload("res://scripts/simulation/mountainous_region_start.gd")
 const SandboxScene = preload("res://scenes/terrain_graphics_sandbox.tscn")
+const UiScaleClass = preload("res://scripts/view/ui_scale.gd")
 
 var game: MainView
 var menu: MainMenu
@@ -46,12 +47,21 @@ func _ready() -> void:
 func _configure_window() -> void:
 	if get_parent() != get_tree().root or Engine.is_embedded_in_editor() or DisplayServer.get_name() == "headless":
 		return
+	var window: Window = get_tree().root
+	# A larger monitor has to buy visible map, not proportionally larger panels.
+	UiScaleClass.apply(window)
+	if not window.size_changed.is_connected(_apply_ui_scale):
+		window.size_changed.connect(_apply_ui_scale)
 	var arguments: PackedStringArray = OS.get_cmdline_args()
 	if arguments.has("--windowed") or arguments.has("-w") or arguments.has("--resolution"):
 		return
-	var window: Window = get_tree().root
 	if window.mode == Window.MODE_WINDOWED:
 		window.mode = ProjectSettings.get_setting("display/window/size/mode", Window.MODE_MAXIMIZED) as Window.Mode
+
+
+func _apply_ui_scale() -> void:
+	if is_inside_tree():
+		UiScaleClass.apply(get_tree().root)
 
 
 func _show_main_menu() -> void:

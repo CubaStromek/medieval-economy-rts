@@ -52,6 +52,13 @@ var definition_revision: int = 0
 # Failed workplace searches depend on reachability, not painted road wear.
 # Keep this transient revision separate from the render/surface revision.
 var connectivity_revision: int = 0
+## Cells whose walkability inputs changed since GridPathfinder last updated its
+## packed index. A revision bumped without tracking forces a full rebuild.
+var _path_dirty_cells: Dictionary = {}
+var _path_dirty_full: bool = true
+var _path_tracked_revision: int = 0
+## Owned by GridPathfinder; untyped so the grid does not depend on it.
+var path_index: Variant = null
 # Presentation invalidation is bounded by map size, not by elapsed play time.
 # Each reader keeps its own revision; reading never consumes another's changes.
 var _terrain_change_revisions: PackedInt64Array = PackedInt64Array()
@@ -121,7 +128,7 @@ func configure_movement(definitions: Dictionary) -> void:
 	_trail_retention_passes = maxi(1, int(trail.get("established_min_wear", _trail_retention_passes)))
 	_normalize_trail_profile()
 	definition_revision += 1
-	connectivity_revision += 1
+	invalidate_connectivity()
 	_record_full_render_change()
 
 
@@ -209,6 +216,7 @@ func _set_vertex_height(vertex: Vector2i, height: int, allowed_owner: int) -> bo
 			return false
 	_vertex_heights[vertex.y * (size.x + 1) + vertex.x] = height
 	connectivity_revision += 1
+	_mark_path_cells(affected)
 	var trail_changes: Dictionary = {}
 	for cell: Vector2i in affected:
 		if not is_walkable(cell) or not is_roadable(cell):
@@ -345,6 +353,7 @@ func set_base_terrain(cell: Vector2i, terrain_id: String) -> bool:
 		return true
 	_base_terrain[index] = terrain_code
 	connectivity_revision += 1
+	_mark_path_cells([cell])
 	var trail_changes: Dictionary = {}
 	if not bool(terrain_definition(terrain_id).get("roadable", false)):
 		roads.erase(cell)
@@ -677,11 +686,31 @@ func _mark_trail_changes(changes: Dictionary) -> void:
 		_record_render_change(cells)
 
 
+## Call after replacing dense terrain/height arrays directly.
+func invalidate_connectivity() -> void:
+	connectivity_revision += 1
+	_path_dirty_cells.clear()
+	_path_dirty_full = true
+	_path_tracked_revision = connectivity_revision
+
+
+func _mark_path_cells(cells: Array) -> void:
+	# A pending full rebuild already covers every cell; keep bulk loads cheap.
+	if not _path_dirty_full:
+		for cell: Vector2i in cells:
+			_path_dirty_cells[cell] = true
+		if _path_dirty_cells.size() > maxi(64, size.x * size.y / 8):
+			_path_dirty_cells.clear()
+			_path_dirty_full = true
+	_path_tracked_revision = connectivity_revision
+
+
 func block(cell: Vector2i, entity_id: int) -> void:
 	if not contains(cell):
 		return
 	if not blocked_by.has(cell):
 		connectivity_revision += 1
+		_mark_path_cells([cell])
 	blocked_by[cell] = entity_id
 	roads.erase(cell)
 	var trail_changes: Dictionary = {}
@@ -694,6 +723,7 @@ func block(cell: Vector2i, entity_id: int) -> void:
 func unblock(cell: Vector2i) -> void:
 	if blocked_by.erase(cell):
 		connectivity_revision += 1
+		_mark_path_cells([cell])
 		_record_render_change([cell])
 
 

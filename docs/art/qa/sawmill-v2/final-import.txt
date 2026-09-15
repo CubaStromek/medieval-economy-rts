@@ -1,0 +1,27 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Inicializace projektu (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Prohledávání struktury souborů...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Načítání názvů globálních tříd...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Ověřování GDExtension rozšíření...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Vytváření autoload skriptů...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Inicializace zásuvných modulů...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Spouštení prohledávání souborů...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registrace globálních tříd... (4 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | SawmillSpriteLibrary[39m[0m
+[  20% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  40% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  60% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Načítání editoru (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Načítání rozvržení editoru...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Načítání doků...[39m[0m
+[  33% ] [90m[1mloading_editor_layout[22m | Opětovné otevírání scén...[39m[0m
+[  50% ] [90m[1mloading_editor_layout[22m | Načítání rozvržení středu editoru...[39m[0m
+[  66% ] [90m[1mloading_editor_layout[22m | Načítání rozvržení okna zásuvných modulů...[39m[0m
+[  83% ] [90m[1mloading_editor_layout[22m | Rozvržení editoru připraveno.[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

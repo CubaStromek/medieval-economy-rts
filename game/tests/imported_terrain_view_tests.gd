@@ -113,7 +113,7 @@ static func _test_save_load_input(host: Node, main: MainView, viewport: SubViewp
 	var before: Dictionary = main.world.to_data()
 	_key(viewport, KEY_F5)
 	await _settle(host)
-	_expect(FileAccess.file_exists(path) and main.event_label.text.contains("Game saved."),
+	_expect(FileAccess.file_exists(path) and main.event_label.text.contains("Hra uložena."),
 		"F5 through normal viewport dispatch must write the selected isolated save path", failures)
 	if FileAccess.file_exists(path):
 		var saved: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
@@ -160,8 +160,8 @@ static func _test_failure(host: Node, main: MainView, missing_path: String, fail
 	_expect(main.demo_kind == "test" and not main.terrain_load_error.is_empty()
 		and main.world.grid.size == TestLevel.MAP_SIZE,
 		"A missing source must explicitly reset the scenario identity and use the existing test level", failures)
-	_expect(main.event_label.text.contains("Mountainous Region could not be loaded")
-		and main.event_label.text.contains("Showing the test level"),
+	_expect(main.event_label.text.contains("Mountainous Region se nepodařilo načíst")
+		and main.event_label.text.contains("Zobrazuji testovací mapu"),
 		"The actual visible HUD must explain missing source data rather than claiming the replica loaded", failures)
 
 
@@ -219,8 +219,6 @@ static func _test_large_map_tree_culling(host: Node, main: MainView, viewport: S
 	var caster: int = main.world.add_tree(Vector2i(55, 60))
 	var distant: int = main.world.add_tree(Vector2i(4, 5))
 	var worker: int = main.world.spawn_worker(Vector2i(5, 5), "carrier")
-	main.world.tick = 1000
-	main._update_day_lighting()
 	main._set_zoom(1.0)
 	main.camera.position = main.terrain_renderer.cell_center(Vector2i(70, 60))
 	main.camera.force_update_scroll()
@@ -237,7 +235,7 @@ static func _test_large_map_tree_culling(host: Node, main: MainView, viewport: S
 	var caster_point: Vector2 = viewport.get_canvas_transform() * main.terrain_renderer.cell_center(Vector2i(55, 60))
 	_expect(not Rect2(Vector2.ZERO, Vector2(viewport.size)).has_point(caster_point)
 		and filtered_ids.has(caster) and filtered_ids.has(visible) and not filtered_ids.has(distant),
-		"Culling must omit distant trees while retaining a visible tree and an offscreen caster near the edge", failures)
+		"Culling must omit distant trees while retaining a visible tree and an offscreen canopy near the edge", failures)
 	var retained_worker: bool = false
 	for entry: Dictionary in filtered:
 		retained_worker = retained_worker or (entry["kind"] == "worker" and int(entry["id"]) == worker)

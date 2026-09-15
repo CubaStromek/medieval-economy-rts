@@ -16,6 +16,7 @@ const MapProjectionClass = preload("res://scripts/view/map_projection.gd")
 const TerrainRendererClass = preload("res://scripts/view/terrain_renderer.gd")
 const WorkerMovementTests = preload("res://tests/worker_movement_tests.gd")
 const EightWayPathTests = preload("res://tests/eight_way_path_tests.gd")
+const FastPathEquivalenceTests = preload("res://tests/fast_path_equivalence_tests.gd")
 const DiagonalMovementTests = preload("res://tests/diagonal_movement_tests.gd")
 const DiagonalTrailTests = preload("res://tests/diagonal_trail_tests.gd")
 const IdleYieldTests = preload("res://tests/idle_yield_tests.gd")
@@ -38,17 +39,8 @@ const FisherHutTests = preload("res://tests/fisher_hut_tests.gd")
 const IndoorSaveTests = preload("res://tests/indoor_save_tests.gd")
 const IndoorViewTests = preload("res://tests/indoor_view_tests.gd")
 const IndoorWorkerTests = preload("res://tests/indoor_worker_tests.gd")
-const DayCycleTests = preload("res://tests/day_cycle_tests.gd")
-const DayClockViewTests = preload("res://tests/day_clock_view_tests.gd")
-const NightScheduleSaveTests = preload("res://tests/night_schedule_save_tests.gd")
-const NightFoodTests = preload("res://tests/night_food_tests.gd")
-const NightScheduleViewTests = preload("res://tests/night_schedule_view_tests.gd")
-const NightScheduleTests = preload("res://tests/night_schedule_tests.gd")
-const HousingTests = preload("res://tests/housing_tests.gd")
-const SolarCycleTests = preload("res://tests/solar_cycle_tests.gd")
-const SkyClockViewTests = preload("res://tests/sky_clock_view_tests.gd")
-const SolarLightingViewTests = preload("res://tests/solar_lighting_view_tests.gd")
 const SaveValidationTests = preload("res://tests/save_validation_tests.gd")
+const DayNightRemovalSaveTests = preload("res://tests/day_night_removal_save_tests.gd")
 const GridConfigTests = preload("res://tests/grid_config_tests.gd")
 const ViewInputTests = preload("res://tests/view_input_tests.gd")
 const EconomyInvariantTests = preload("res://tests/economy_invariant_tests.gd")
@@ -57,6 +49,8 @@ const DepositsTests = preload("res://tests/deposits_tests.gd")
 const ClassicEconomyTests = preload("res://tests/classic_economy_tests.gd")
 const HudLayoutTests = preload("res://tests/hud_layout_tests.gd")
 const WindowLayoutTests = preload("res://tests/window_layout_tests.gd")
+const UiScaleTests = preload("res://tests/ui_scale_tests.gd")
+const UiTextTests = preload("res://tests/ui_text_tests.gd")
 const MainMenuTests = preload("res://tests/main_menu_tests.gd")
 const TerrainHeightTests = preload("res://tests/terrain_height_tests.gd")
 const TerrainRenderTests = preload("res://tests/terrain_render_tests.gd")
@@ -82,6 +76,14 @@ const ConstructionCostTests = preload("res://tests/construction_cost_tests.gd")
 const ConstructionCostCompatibilityTests = preload("res://tests/construction_cost_compatibility_tests.gd")
 const LumberHutConstructionTests = preload("res://tests/lumber_hut_construction_tests.gd")
 const LumberHutStockTests = preload("res://tests/lumber_hut_stock_tests.gd")
+const LumberHutLifeTests = preload("res://tests/lumber_hut_life_tests.gd")
+const SawmillSpriteTests = preload("res://tests/sawmill_sprite_tests.gd")
+const WarehouseSpriteTests = preload("res://tests/warehouse_sprite_tests.gd")
+const WarehouseLifeTests = preload("res://tests/warehouse_life_tests.gd")
+const ProductionBuildingLifeTests = preload("res://tests/production_building_life_tests.gd")
+const SawmillOperationTests = preload("res://tests/sawmill_operation_tests.gd")
+const BuildingWorkerAppearanceTests = preload("res://tests/building_worker_appearance_tests.gd")
+const BuildingWorkerIdleTests = preload("res://tests/building_worker_idle_tests.gd")
 const LumberHutFootprintTests = preload("res://tests/lumber_hut_footprint_tests.gd")
 const InnFeedingTests = preload("res://tests/inn_feeding_tests.gd")
 const SoldierFoodTests = preload("res://tests/soldier_food_tests.gd")
@@ -104,6 +106,8 @@ const FoundationViewTests = preload("res://tests/foundation_view_tests.gd")
 const FoundationTests = preload("res://tests/foundation_tests.gd")
 const FoundationSaveTests = preload("res://tests/foundation_save_tests.gd")
 const FootprintViewTests = preload("res://tests/footprint_view_tests.gd")
+const BuildingLayerTests = preload("res://tests/building_layer_tests.gd")
+const TimekeepingTests = preload("res://tests/timekeeping_tests.gd")
 
 var failures: Array[String] = []
 var test_count: int = 0
@@ -161,8 +165,11 @@ func _ready() -> void:
 	_record_suite("Footprint saves", FootprintSaveTests.TEST_COUNT, FootprintSaveTests.run())
 	_record_suite("Footprint economy integration", FootprintIntegrationTests.TEST_COUNT, FootprintIntegrationTests.run())
 	_record_suite("Footprint rendering and input", FootprintViewTests.TEST_COUNT, await FootprintViewTests.run(self))
+	_record_suite("Retained building layers", BuildingLayerTests.TEST_COUNT, await BuildingLayerTests.run(self))
+	_record_suite("Real-time tick catch-up", TimekeepingTests.TEST_COUNT, TimekeepingTests.run(self))
 	_record_suite("Worker movement", WorkerMovementTests.TEST_COUNT, WorkerMovementTests.run())
 	_record_suite("Eight-way paths", EightWayPathTests.TEST_COUNT, EightWayPathTests.run())
+	_record_suite("Packed path index equivalence", FastPathEquivalenceTests.TEST_COUNT, FastPathEquivalenceTests.run())
 	_record_suite("Diagonal movement", DiagonalMovementTests.TEST_COUNT, DiagonalMovementTests.run())
 	_record_suite("Diagonal trails", DiagonalTrailTests.TEST_COUNT, DiagonalTrailTests.run())
 	_record_suite("Idle yielding", IdleYieldTests.TEST_COUNT, IdleYieldTests.run())
@@ -184,13 +191,8 @@ func _ready() -> void:
 	_record_suite("Fisher hut", FisherHutTests.TEST_COUNT, FisherHutTests.run())
 	_record_suite("Indoor save compatibility", IndoorSaveTests.TEST_COUNT, IndoorSaveTests.run())
 	_record_suite("Indoor worker lifecycle", IndoorWorkerTests.TEST_COUNT, IndoorWorkerTests.run())
-	_record_suite("Calendar clock", DayCycleTests.TEST_COUNT, DayCycleTests.run())
-	_record_suite("Solar light cycle", SolarCycleTests.TEST_COUNT, SolarCycleTests.run())
-	_record_suite("Civilian daily schedule", NightScheduleTests.TEST_COUNT, NightScheduleTests.run())
-	_record_suite("Workers' housing", HousingTests.TEST_COUNT, HousingTests.run())
-	_record_suite("Night schedule save compatibility", NightScheduleSaveTests.TEST_COUNT, NightScheduleSaveTests.run())
-	_record_suite("Night meals and deferred cargo", NightFoodTests.TEST_COUNT, NightFoodTests.run())
 	_record_suite("Save validation", SaveValidationTests.TEST_COUNT, SaveValidationTests.run())
+	_record_suite("Day/night removal save compatibility", DayNightRemovalSaveTests.TEST_COUNT, DayNightRemovalSaveTests.run())
 	_record_suite("Grid configuration", GridConfigTests.TEST_COUNT, GridConfigTests.run())
 	_record_suite("Economy invariants", EconomyInvariantTests.TEST_COUNT, EconomyInvariantTests.run())
 	_record_suite("Transport destination searches", TransportSearchTests.TEST_COUNT, TransportSearchTests.run())
@@ -222,14 +224,24 @@ func _ready() -> void:
 	var input_failures: Array[String] = await ViewInputTests.run(self)
 	_record_suite("Viewport input", ViewInputTests.TEST_COUNT, input_failures)
 	_record_suite("HUD layout and navigation", HudLayoutTests.TEST_COUNT, await HudLayoutTests.run(self))
-	_record_suite("Calendar clock HUD", DayClockViewTests.TEST_COUNT, await DayClockViewTests.run(self))
-	_record_suite("Night schedule HUD", NightScheduleViewTests.TEST_COUNT, await NightScheduleViewTests.run(self))
-	_record_suite("Sky clock HUD", SkyClockViewTests.TEST_COUNT, await SkyClockViewTests.run(self))
-	_record_suite("Solar lighting and shadows", SolarLightingViewTests.TEST_COUNT, await SolarLightingViewTests.run(self))
 	_record_suite("Responsive window layout", WindowLayoutTests.TEST_COUNT, await WindowLayoutTests.run(self))
+	_record_suite("HUD scaling policy", UiScaleTests.TEST_COUNT, UiScaleTests.run())
+	_record_suite("Czech HUD names and counts", UiTextTests.TEST_COUNT, UiTextTests.run())
 	_record_suite("Construction cancellation UI", ConstructionCancelUiTests.TEST_COUNT, await ConstructionCancelUiTests.run(self))
 	_record_suite("Painted lumber-hut construction", LumberHutConstructionTests.TEST_COUNT, await LumberHutConstructionTests.run(self))
 	_record_suite("Painted lumber-hut stock", LumberHutStockTests.TEST_COUNT, await LumberHutStockTests.run(self))
+	_record_suite("Lumber-hut presence life", LumberHutLifeTests.TEST_COUNT, await LumberHutLifeTests.run(self))
+	_record_suite("Painted sawmill integration", SawmillSpriteTests.TEST_COUNT, await SawmillSpriteTests.run(self))
+	_record_suite("Painted warehouse integration", WarehouseSpriteTests.TEST_COUNT, await WarehouseSpriteTests.run(self))
+	_record_suite("Warehouse door life", WarehouseLifeTests.TEST_COUNT, WarehouseLifeTests.run())
+	_record_suite("Production-building home life", ProductionBuildingLifeTests.TEST_COUNT, ProductionBuildingLifeTests.run())
+	_record_suite("Physical sawmill stocks and productive clock", SawmillOperationTests.TEST_COUNT, await SawmillOperationTests.run(self))
+	var appearance_count: int = BuildingWorkerAppearanceTests.TEST_COUNT - BuildingWorkerAppearanceTests.NATIVE_PIXEL_TEST_COUNT \
+		if DisplayServer.get_name() == "headless" else BuildingWorkerAppearanceTests.TEST_COUNT
+	_record_suite("Building worker contact and sheltered light", appearance_count, await BuildingWorkerAppearanceTests.run(self))
+	var idle_count: int = BuildingWorkerIdleTests.TEST_COUNT - BuildingWorkerIdleTests.NATIVE_PIXEL_TEST_COUNT \
+		if DisplayServer.get_name() == "headless" else BuildingWorkerIdleTests.TEST_COUNT
+	_record_suite("Building worker quiet idle motion", idle_count, await BuildingWorkerIdleTests.run(self))
 	_record_suite("Relief viewport", ReliefViewTests.TEST_COUNT, await ReliefViewTests.run(self))
 	_record_suite("Square terrain and slope readability", SlopeReadabilityTests.TEST_COUNT, await SlopeReadabilityTests.run(self))
 	_record_suite("Unit sprites", UnitSpriteTests.TEST_COUNT, await UnitSpriteTests.run(self))
@@ -964,14 +976,13 @@ func _test_school_ui_command_path() -> void:
 	var carrier_button: Button = null
 	var lumberjack_button: Button = null
 	var gardener_button: Button = null
+	# Node names are the stable handle; the visible label is localized.
 	for node: Node in main_view.find_children("*", "Button", true, false):
 		var button: Button = node as Button
-		if button.text == "Train Carrier":
-			carrier_button = button
-		elif button.text == "Train Lumberjack":
-			lumberjack_button = button
-		elif button.text == "Train Gardener":
-			gardener_button = button
+		match button.name:
+			"Train_carrier": carrier_button = button
+			"Train_lumberjack": lumberjack_button = button
+			"Train_gardener": gardener_button = button
 	_expect(carrier_button != null, "School UI should expose the carrier training button")
 	_expect(lumberjack_button != null, "School UI should expose the lumberjack training button")
 	_expect(gardener_button != null, "School UI should expose the gardener training button")
@@ -1019,7 +1030,7 @@ func _test_resource_hud() -> void:
 		"Six logs in the lumberjack hut must show LOGS 6 in detailed stocks")
 	_expect((main_view.hud._summary_amounts["log"] as Label).text == "6",
 		"Six logs in the lumberjack hut must also show LOGS 6 in the overview")
-	_expect((main_view.resource_breakdown_labels["log"] as Label).text == "Warehouse: 0\nBuildings: 6\nCarried: 0",
+	_expect((main_view.resource_breakdown_labels["log"] as Label).text == "Sklad 0 · Budovy 6 · Neseno 0",
 		"The log detail must explicitly locate all six logs in buildings")
 
 	var fixture: Dictionary = ResourceStockTests.all_resource_fixture()
@@ -1029,7 +1040,7 @@ func _test_resource_hud() -> void:
 	main_view._update_ui()
 	for resource: String in expected:
 		var stock: Dictionary = expected[resource]
-		var breakdown: String = "Warehouse: %d\nBuildings: %d\nCarried: %d" % [
+		var breakdown: String = "Sklad %d · Budovy %d · Neseno %d" % [
 			int(stock["warehouse"]), int(stock["buildings"]), int(stock["carried"]),
 		]
 		_expect((main_view.resource_amount_labels[resource] as Label).text == str(stock["total"]),
@@ -1074,9 +1085,9 @@ func _test_building_inventory_ui() -> void:
 	(sawmill["outputs"] as Dictionary)["plank"] = 11
 
 	var expected_inventory_text: Dictionary = {
-		"warehouse": "Warehouse\nInventory: Logs: 3  •  Planks: 5  •  Stone: 2",
-		"lumber_hut": "Lumberjack Hut\nInventory: Logs: 7",
-		"sawmill": "Sawmill\nInventory: Planks: 11",
+		"warehouse": "Zásoby: Klády 3  •  Prkna 5  •  Kámen 2",
+		"lumber_hut": "Zásoby: Klády 7",
+		"sawmill": "Zásoby: Prkna 11",
 	}
 	main_view._set_build_mode("road")
 	var event_count_before_selection: int = main_view.world.event_log.size()
@@ -1109,14 +1120,14 @@ func _test_building_inventory_ui() -> void:
 	(sawmill["outputs"] as Dictionary)["plank"] = 12
 	main_view._process(0.0)
 	_expect(
-		main_view.building_inventory_label.text == "Sawmill\nInventory: Planks: 12",
+		main_view.building_inventory_label.text == "Zásoby: Prkna 12",
 		"Selected building inventory should refresh when its stock changes"
 	)
 
 	main_view.selected_cell = Vector2i(0, 0)
 	main_view._update_ui()
 	_expect(main_view.building_inventory_label.visible
-		and main_view.building_inventory_label.text == "Grass terrain\nHeight: 0.0 • slope: 0\nWalkable • Level, buildable ground",
+		and main_view.building_inventory_label.text == "Tráva\nVýška 0.0 • sklon 0\nprůchozí • rovná, zastavitelná zem",
 		"Selecting empty level grass should show its height, slope, walking and foundation rules")
 	main_view.selected_cell = Vector2i(-1, -1)
 	main_view._update_ui()

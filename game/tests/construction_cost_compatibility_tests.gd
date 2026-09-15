@@ -76,14 +76,13 @@ static func _test_current_sites_and_catalog(failures: Array[String]) -> void:
 	var site: Dictionary = world.buildings[fixture["site"]]
 	_check(int(site["construction_cost_revision"]) == 2,
 		"New construction must use the source-backed cost revision", failures)
-	_check(world.catalog.buildings.size() == world.catalog.LEGACY_CONSTRUCTION_COSTS.size() + 2
-		and not world.catalog.LEGACY_CONSTRUCTION_COSTS.has("forester_hut")
-		and not world.catalog.LEGACY_CONSTRUCTION_COSTS.has("workers_house"),
-		"Every pre-revision type needs a frozen cost; the later project buildings must not invent legacy history", failures)
+	_check(world.catalog.buildings.size() == world.catalog.LEGACY_CONSTRUCTION_COSTS.size() + 1
+		and not world.catalog.LEGACY_CONSTRUCTION_COSTS.has("forester_hut"),
+		"Every pre-revision type needs a frozen cost; the later project building must not invent legacy history", failures)
 	for type: String in world.catalog.buildings:
 		_check(world.catalog.construction_cost(type, 2) == world.catalog.building(type)["construction_cost"],
 			"New site costs must match the build-menu catalog for " + type, failures)
-		if not ["forester_hut", "workers_house"].has(type):
+		if type != "forester_hut":
 			_check(not world.catalog.construction_cost(type, 1).is_empty(),
 				"Legacy migration needs a nonempty material contract for " + type, failures)
 	_check(world.construction_cost(site) == world.catalog.construction_cost("lumber_hut", 2),
@@ -215,11 +214,11 @@ static func _test_hud_uses_site_contract(failures: Array[String]) -> void:
 	var hud := Hud.new()
 	hud._catalog = restored.catalog
 	var old_text: String = hud._selected_production_text(restored, Vector2i(9, 3))
-	_check(old_text.contains("Planks 1/5") and old_text.contains("Stone 4/4") and old_text.contains("Legacy site"),
+	_check(old_text.contains("Prkna 1/5") and old_text.contains("Kámen 4/4") and old_text.contains("Starší staveniště"),
 		"Inspector counters must show the actual legacy contract and explain why it differs from the menu", failures)
 	var new_site: int = restored.place_building("lumber_hut", Vector2i(12, 7))
 	var new_text: String = hud._selected_production_text(restored, Vector2i(12, 7))
-	_check(new_site != 0 and not new_text.contains("Legacy site")
+	_check(new_site != 0 and not new_text.contains("Starší staveniště")
 		and hud._build_cost("lumber_hut") == restored.construction_cost(restored.buildings[new_site]),
 		"Build menu and new-site inspector must use the same current price", failures)
 	hud.free()

@@ -1,0 +1,26 @@
+{
+  "footprint_world_size": [
+    160.0,
+    80.0
+  ],
+  "ground_vertices_inside": true,
+  "step_vertices_inside": true,
+  "person_world_height": 33.0,
+  "original_generation_input": {
+    "path": "docs/art/qa/sawmill-v2/ground-guide.png",
+    "sha256": "430d05965aee4c3bce7e33e866c35caa66301d2802a7094cca610ee35eef9136",
+    "size": [
+      800,
+      800
+    ]
+  },
+  "reconstructed_technical_guide": {
+    "path": "docs/art/qa/sawmill-v2/ground-guide-rebuilt.png",
+    "sha256": "15c350b44e3d8b3149bc27c99af1d4bcb003e5bd3cf284412858201191bf1bb3",
+    "size": [
+      800,
+      800
+    ],
+    "note": "Vector source reconstructed after parallel filename collision. Geometry and existing person registration preserved; original generation input PNG remains unchanged."
+  }
+}

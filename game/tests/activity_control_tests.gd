@@ -13,7 +13,7 @@ static func run() -> Array[String]:
 		_test_independent_huts_and_vacancies, _test_committed_step,
 		_test_held_goods_deliver, _test_cancel_uncollected_pickup,
 		_test_closed_destination_reroutes, _test_closed_producer_exports,
-		_test_paused_unit_lives_and_sleeps, _test_paused_inn_finishes_only_paid_course,
+		_test_paused_unit_keeps_living, _test_paused_inn_finishes_only_paid_course,
 		_test_paused_idle_yields, _test_market_and_recruitment]:
 		test.call(failures)
 	return failures
@@ -214,7 +214,7 @@ static func _test_closed_producer_exports(failures: Array[String]) -> void:
 		"The historical automatic-sawmill fallback cannot bypass a real employee's explicit pause", failures)
 
 
-static func _test_paused_unit_lives_and_sleeps(failures: Array[String]) -> void:
+static func _test_paused_unit_keeps_living(failures: Array[String]) -> void:
 	var world := Legacy.create(Vector2i(18, 12))
 	var hut: int = world.place_building("forester_hut", Vector2i(4, 3))
 	var inn: int = world.place_building("inn", Vector2i(12, 3))
@@ -229,17 +229,9 @@ static func _test_paused_unit_lives_and_sleeps(failures: Array[String]) -> void:
 		"A voluntarily paused gardener still walks to an open inn and begins a real meal", failures)
 	_check(_until(world, func() -> bool: return int(worker["meal_ticks_left"]) == 0 and int(worker["hunger"]) > 1000)
 		and world.trees.is_empty(), "Paused work does not freeze paid feeding or resume planting", failures)
-	world.tick = 3750
-	_check(_until(world, func() -> bool: return world.is_worker_sleeping(worker)),
-		"A paused gardener still sleeps at night in its own hut", failures)
-	world.tick = 5999
-	_advance(world, 120)
-	_check(not world.is_worker_sleeping(worker) and world.is_worker_work_paused(worker)
-		and world.trees.is_empty() and world.is_worker_inside(worker),
-		"Morning wakes the sleeper but does not silently enable the player's manually paused work", failures)
 	world.set_worker_enabled(id, true)
 	_check(_until(world, func() -> bool: return not world.trees.is_empty()),
-		"Explicit resume after sleep restores actual planting", failures)
+		"Explicit resume after a paused meal restores actual planting", failures)
 
 
 static func _test_paused_inn_finishes_only_paid_course(failures: Array[String]) -> void:

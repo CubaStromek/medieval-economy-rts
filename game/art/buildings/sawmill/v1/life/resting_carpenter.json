@@ -1,0 +1,107 @@
+{
+  "date": "2026-09-12",
+  "scope": "One resting carpenter body with three head yaw poses, not a directional movement pack",
+  "source": "docs/art/sources/carpenter-rest-v1/resting-carpenter-key-master.png",
+  "source_sha256": "dba577e3f2faf6b4f6cfababbf7d3617e9e8e5102e4d13f6390bd5d2aa22534c",
+  "master_sha256": "c8b02e57300639ecdd2fb168206d57e3de59466fe180f275a4b9228a42a0199a",
+  "production_sha256": "48fe91d86381ac36c115038fac987e4694e39d49e10f98aee468fef64805cc7e",
+  "canvas": [
+    256,
+    256
+  ],
+  "full_source_canvas": [
+    1024,
+    1536
+  ],
+  "trim": null,
+  "resized": {
+    "width": 132,
+    "height": 198
+  },
+  "placement": {
+    "left": 62,
+    "top": 28
+  },
+  "source_to_production": 0.12890625,
+  "source_ground_contact": [
+    551,
+    1374
+  ],
+  "source_hair_top": [
+    484,
+    94
+  ],
+  "source_body_height_px": 1280,
+  "production_ground_contact": [
+    133.02734375,
+    205.1171875
+  ],
+  "production_body_height_px": 165,
+  "recommended_world_body_height_px": 33,
+  "recommended_source_px_to_world": 0.2,
+  "technical_alpha": {
+    "measured_modal_key": [
+      252,
+      4,
+      251
+    ],
+    "known_empty_left_band_dominance_range": [
+      206,
+      251
+    ],
+    "known_empty_top_dominance_range": [
+      223,
+      251
+    ],
+    "known_hair_patch_dominance_range": [
+      -77,
+      -10
+    ],
+    "transparent_dominance_threshold": 198,
+    "method": "Magenta dominance key with straight-alpha unmatte; foreground dominance<=0 fully opaque"
+  },
+  "asset_measurements": {
+    "canvas": [
+      256,
+      256
+    ],
+    "counts": {
+      "transparent": 59615,
+      "partial": 1320,
+      "opaque": 4601
+    },
+    "alpha_bounds_exclusive": {
+      "0": [
+        96,
+        37,
+        156,
+        208
+      ],
+      "25": [
+        99,
+        40,
+        154,
+        206
+      ],
+      "127": [
+        99,
+        40,
+        154,
+        205
+      ]
+    }
+  },
+  "rest_sprite": {
+    "texture": "res://art/buildings/sawmill/v1/life/resting_carpenter.png",
+    "body_height_px": 165,
+    "ground_contact": [
+      133.02734375,
+      205.1171875
+    ],
+    "look_textures": {
+      "left": "res://art/buildings/sawmill/v1/life/look/left.png",
+      "right": "res://art/buildings/sawmill/v1/life/look/right.png"
+    }
+  },
+  "anatomy": "Bare brown hair, clean shaven, cream rolled-sleeve shirt, dark brown apron, folded empty arms. Weight on anatomical right leg, left boot crossed behind; no held/stowed tool or goods."
+}

@@ -30,7 +30,7 @@ assets or `houses.dat`/`units.dat` files are copied or distributed.
 | File | Responsibility |
 |---|---|
 | `game/data/resources.json` | All 28 wares, display metadata, category, market value and food restoration |
-| `game/data/buildings.json` | 28 reference buildings plus the project Forester Hut and Workers' Cottage; inputs/outputs, professions, residences, location requirements, recipe choices, capacities and construction costs |
+| `game/data/buildings.json` | 28 reference buildings plus the project Forester Hut; inputs/outputs, professions, location requirements, recipe choices, capacities and construction costs |
 | `game/data/recipes.json` | Material quantities and project work durations for 19 processing recipes |
 | `game/data/units.json` | 15 civilian professions including the retained gardener, training times and compatible workplaces |
 | `game/data/soldiers.json` | Nine barracks units and five town-hall units with economic recruitment requirements |
@@ -40,8 +40,7 @@ Existing IDs are retained: `warehouse`, `lumber_hut`, `sawmill`, `school`,
 `quarry`, `farm`, `mill`, `bakery`; and `log`, `plank`, `stone`, `grain`,
 `flour`, `bread`. The gardener remains a separate trainable profession and
 continues to replenish trees near its own Forester Hut. This additional hut and
-forester role are project extensions; see [hut rules](forester-and-fisher-huts.md). The
-two-bed Workers' Cottage is also a project extension; see [housing rules](worker-housing.md). KaM's
+forester role are project extensions; see [hut rules](forester-and-fisher-huts.md). KaM's
 woodcutter normally combines tree cutting and planting.
 
 Processing buildings define both `recipes: Array[String]` and `recipe` as the

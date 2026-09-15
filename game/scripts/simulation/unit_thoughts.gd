@@ -61,16 +61,11 @@ static func describe(world: Variant, worker: Dictionary) -> Dictionary:
 		var course: Dictionary = worker.get("meal_course", {})
 		var meal: String = "Jím %s v hostinci." % _ware(String(course.get("food", ""))) if not course.is_empty() else "Dokončuji jídlo v hostinci."
 		return _result(meal, _after_meal(world, worker, paused))
-	if state == "sleeping" and world.is_night_rest_time():
-		return _result("Spím %s." % _place(_building(world, worker.get("inside_building_id", 0)), 1),
-			"V pět ráno vstanu; práci pak nechám pozastavenou." if paused else "V pět ráno vstanu a podle potřeby se najím nebo vrátím k práci.")
 	var plan: Dictionary = {}
 	if action == "eat":
 		if destination.is_empty():
 			return _missing_target()
 		plan = _result("Jdu se najíst %s." % _place(destination, 0), "Až se dostanu k jídlu, najím se.")
-	elif action == "go_sleep":
-		plan = _result("Jdu spát %s." % _place(_building(world, worker.get("sleep_home_id", 0)), 0), "Až dorazím, uložím se ke spánku.")
 	elif action == "yield":
 		plan = _result("Uhýbám, abych uvolnil cestu.", after)
 	elif action == "pause_return":
@@ -91,8 +86,6 @@ static func describe(world: Variant, worker: Dictionary) -> Dictionary:
 			return _ration_thought(worker, true)
 		if _hungry(world, worker):
 			return _result("Mám hlad, i když je moje práce pozastavená.", "Pokud najdu dostupný hostinec s jídlem, zkusím se najíst.")
-		if world.is_night_rest_time() and world.follows_daily_schedule(worker):
-			return _result("Mám pozastavenou práci a chystám se na noc odpočívat.", "Zkusím se dostat na místo ke spánku.")
 		return _result("Čekám, protože mám pozastavenou práci." if not bool(worker.get("enabled", true)) else "Čekám; moje pracoviště má pozastavený provoz.", "Až práci znovu povolíš, zkusím pokračovat.")
 	elif action == "pickup_ration":
 		if source.is_empty():
@@ -147,10 +140,6 @@ static func describe(world: Variant, worker: Dictionary) -> Dictionary:
 static func _idle(world: Variant, worker: Dictionary, home: Dictionary) -> Dictionary:
 	if _needs_ration(world, worker):
 		return _ration_thought(worker)
-	if world.is_night_rest_time() and world.follows_daily_schedule(worker):
-		if bool(worker.get("_sleep_route_blocked", false)):
-			return _result("Nemohu se dostat na své místo ke spánku.", "Za chvíli zkusím cestu ke spánku znovu.")
-		return _result("Chystám se odpočívat; je noc.", "Zkusím se dostat na místo ke spánku, případně se nejdřív najíst.")
 	if _hungry(world, worker):
 		if world.tick < int(worker.get("_meal_retry_until", 0)):
 			return _result("Zatím se mi nepodařilo dostat k jídlu.", "Za chvíli zkusím najít dostupný hostinec znovu.")
@@ -190,8 +179,6 @@ static func _inspectable(world: Variant, worker: Dictionary) -> bool:
 
 
 static func _after_meal(world: Variant, worker: Dictionary, paused: bool) -> String:
-	if world.is_night_rest_time() and world.follows_daily_schedule(worker):
-		return "Po jídle se zkusím vrátit ke spánku."
 	if not String(worker.get("carrying", "")).is_empty():
 		return "Po jídle zkusím doručit náklad, který stále nesu."
 	if paused:

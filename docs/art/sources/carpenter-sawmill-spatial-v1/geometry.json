@@ -1,0 +1,191 @@
+{
+  "date": "2026-09-13",
+  "scope": "Runtime presentation only; own existing six worker PNGs preserved.",
+  "source_canvas": [
+    512,
+    512
+  ],
+  "source_body_height_px": 412,
+  "source_ground_contact": [
+    374.5,
+    489
+  ],
+  "source_support_hand_contact": [
+    160,
+    246
+  ],
+  "support_contact_method": "Visual landmark on retained supporting palm; same source pixels in all six poses. Preserve this point during uniform scale adjustment.",
+  "house_source_to_world": 0.18731625,
+  "before_work": {
+    "frames": [
+      "res://art/buildings/sawmill/v1/operation/work/worker-0.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-1.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-2.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-3.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-4.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-5.png"
+    ],
+    "body_height_px": 412,
+    "ground_contact": [
+      374.5,
+      489
+    ],
+    "foot": [
+      621.3716108452951,
+      567.7830940988836
+    ],
+    "cycles_per_batch": 6,
+    "log": {
+      "texture": "res://art/buildings/sawmill/v2/operation/work/processing-log.png",
+      "rect": [
+        483.57256778309414,
+        428.0701754385965,
+        133.9712918660287,
+        65.07177033492823
+      ]
+    },
+    "foreground": [
+      {
+        "texture": "res://art/buildings/sawmill/v2/operation/stock/foreground.png",
+        "rect": [
+          0,
+          0,
+          800,
+          800
+        ]
+      }
+    ]
+  },
+  "candidate_work": {
+    "frames": [
+      "res://art/buildings/sawmill/v1/operation/work/worker-0.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-1.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-2.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-3.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-4.png",
+      "res://art/buildings/sawmill/v1/operation/work/worker-5.png"
+    ],
+    "body_height_px": 412,
+    "ground_contact": [
+      374.5,
+      489
+    ],
+    "foot": [
+      615.8127651182301,
+      561.4856604780127
+    ],
+    "cycles_per_batch": 6,
+    "log": {
+      "texture": "res://art/buildings/sawmill/v2/operation/work/processing-log.png",
+      "rect": [
+        483.57256778309414,
+        428.0701754385965,
+        133.9712918660287,
+        65.07177033492823
+      ]
+    },
+    "foreground": [
+      {
+        "texture": "res://art/buildings/sawmill/v2/operation/stock/foreground.png",
+        "rect": [
+          0,
+          0,
+          800,
+          800
+        ]
+      }
+    ],
+    "body_height_world": 31.0,
+    "appearance": {
+      "shade_top": [
+        0.78,
+        0.82,
+        0.86
+      ],
+      "shade_bottom": [
+        0.94,
+        0.96,
+        0.98
+      ],
+      "contact_shadows": [
+        {
+          "center": [
+            373,
+            484
+          ],
+          "size": [
+            224,
+            48
+          ],
+          "opacity": 0.2
+        },
+        {
+          "center": [
+            303,
+            485
+          ],
+          "size": [
+            83,
+            24
+          ],
+          "opacity": 0.56
+        },
+        {
+          "center": [
+            443,
+            485
+          ],
+          "size": [
+            77,
+            24
+          ],
+          "opacity": 0.56
+        }
+      ]
+    }
+  },
+  "support_contact_house_source_px": [
+    529.6506563487234,
+    463.8754393545156
+  ],
+  "body_height_world_before": 33,
+  "body_height_world_candidate": 31,
+  "status": "implemented; native visuals and real gameplay verified 2026-09-13",
+  "rest_appearance": {
+    "shade_top": [
+      0.9,
+      0.92,
+      0.94
+    ],
+    "shade_bottom": [
+      0.97,
+      0.98,
+      1.0
+    ],
+    "contact_shadows": [
+      {
+        "center": [
+          129.0,
+          205.0
+        ],
+        "size": [
+          44.0,
+          11.0
+        ],
+        "opacity": 0.15
+      },
+      {
+        "center": [
+          133.0,
+          205.0
+        ],
+        "size": [
+          22.0,
+          7.0
+        ],
+        "opacity": 0.36
+      }
+    ]
+  },
+  "rest_height_world": 33
+}

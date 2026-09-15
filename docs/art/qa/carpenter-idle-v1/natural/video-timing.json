@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-13",
+  "source": "report.json#idle_frames",
+  "source_observations": 181,
+  "camera_zoom": 2.40000009536743,
+  "simulation_speed": 1,
+  "observed_wall_seconds": 12.017413,
+  "observed_simulation_seconds": 12.001925333333332,
+  "interval_min_seconds": 0.030878999999999657,
+  "interval_max_seconds": 0.10308600000000023,
+  "interval_median_seconds": 0.06504699999999985,
+  "last_frame_hold_seconds": 0.06504699999999985,
+  "detail_crop_viewport": [
+    507,
+    353,
+    230,
+    210
+  ],
+  "detail_scale": 3,
+  "scaling_filter": "nearest",
+  "timing": "Each captured observation retains its measured wall-clock timestamp; final duplicate closes the final median hold.",
+  "encoded_videos": {
+    "idle-at-1x.mp4": {
+      "sha256": "03ae518c6b002687d2c7a17f5e946709e28aae940806b0ab184e8d015262eaf1",
+      "encoded_frames": 182,
+      "max_timestamp_error_seconds": 0.0004970000000010799
+    },
+    "idle-detail-at-1x.mp4": {
+      "sha256": "0ab879318714ac7d5faa54356fc20392e0496f76696a0e113541be6f3906852c",
+      "encoded_frames": 182,
+      "max_timestamp_error_seconds": 0.0004970000000010799
+    }
+  }
+}

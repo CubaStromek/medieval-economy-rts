@@ -1,7 +1,7 @@
 extends RefCounted
 
 const LegacyFixture = preload("res://tests/legacy_world_fixture.gd")
-const TEST_COUNT: int = 4
+const TEST_COUNT: int = 3
 
 
 static func run() -> Array[String]:
@@ -9,7 +9,6 @@ static func run() -> Array[String]:
 	_test_cancelled_movement_clock_finishes_while_idle(failures)
 	_test_cancelled_builder_yields_only_after_landing(failures)
 	_test_new_work_waits_for_the_committed_step(failures)
-	_test_idle_cooldown_survives_dawn(failures)
 	return failures
 
 
@@ -95,26 +94,6 @@ static func _test_new_work_waits_for_the_committed_step(failures: Array[String])
 			break
 	_check(world.is_building_complete(world.buildings[replacement]),
 		"After landing, the same released builder must accept and finish replacement work", failures)
-
-
-static func _test_idle_cooldown_survives_dawn(failures: Array[String]) -> void:
-	var fixture: Dictionary = _cancel_fixture(false, failures)
-	if fixture.is_empty():
-		return
-	var world: Variant = fixture["world"]
-	var builder: Dictionary = world.workers[int(fixture["builder"])]
-	var position: Vector2i = builder["position"]
-	# Keep the real just-cancelled step across the final nighttime update.
-	# Night owns one cooldown tick, and daytime must finish the remaining ones.
-	world.tick = 5998
-	world.step_tick()
-	_check(world.is_night_rest_time() and int(builder["move_cooldown"]) > 0 and builder["state"] == "idle",
-		"Dawn fixture must reach the boundary with a genuinely unfinished idle movement", failures)
-	for _tick: int in range(12):
-		world.step_tick()
-	_check(not world.is_night_rest_time() and builder["position"] == position
-		and int(builder["move_cooldown"]) == 0 and world._idle_can_yield(builder),
-		"Dawn must not strand a visually finished idle civilian with a permanent movement cooldown", failures)
 
 
 static func _cancel_fixture(carrier_first: bool, failures: Array[String]) -> Dictionary:

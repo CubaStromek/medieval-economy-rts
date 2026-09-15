@@ -5,6 +5,7 @@ extends RefCounted
 const Grid = preload("res://scripts/simulation/grid_map_sim.gd")
 const Footprints = preload("res://scripts/simulation/building_footprints.gd")
 const Deposits = preload("res://scripts/simulation/resource_deposits.gd")
+const UiTextClass = preload("res://scripts/ui_text.gd")
 const MAX_HEIGHT_SPAN: int = 2
 const TICKS_PER_HEIGHT_UNIT: int = 8
 
@@ -29,22 +30,22 @@ static func plan(world: Variant, type: String, anchor: Vector2i) -> Dictionary:
 	var result: Dictionary = {"valid": false, "reason": "", "target_height": -1, "work_ticks": 0, "cells": cells, "vertices": vertices_for_cells(cells)}
 	if world.default_footprint_version == 0 or not world.economy_enabled:
 		result["valid"] = world.can_place_building(type, anchor)
-		result["reason"] = "" if result["valid"] else "This building needs clear, level ground and an accessible entrance."
+		result["reason"] = "" if result["valid"] else "Tato budova potřebuje volnou rovnou zem a dostupný vstup."
 		return result
 	var definition: Dictionary = world.catalog.building(type)
 	if definition.is_empty() or cells.is_empty() or not world._building_terrain_valid(type, anchor):
-		return _invalid(result, "The building does not have the required terrain here.")
+		return _invalid(result, "Budova zde nemá potřebný terén.")
 	var occupied: Dictionary = {}
 	var allowed: Array = definition.get("allowed_terrain", [])
 	for cell: Vector2i in cells:
 		if not world.grid.contains(cell):
-			return _invalid(result, "The whole building must fit inside the map.")
+			return _invalid(result, "Celá budova se musí vejít na mapu.")
 		if not world.grid.is_walkable(cell) or not bool(world.grid.terrain_definition(world.grid.base_terrain_at(cell)).get("buildable", false)):
-			return _invalid(result, "Buildings cannot be founded on water, rock, blocked or very steep ground.")
+			return _invalid(result, "Budovy nelze zakládat na vodě, skále, neprůchodné ani velmi strmé zemi.")
 		if not allowed.is_empty() and not allowed.has(world.grid.base_terrain_at(cell)):
-			return _invalid(result, "The whole building needs suitable ground.")
+			return _invalid(result, "Celá budova potřebuje vhodnou zem.")
 		if not world._building_site_cell_clear(cell):
-			return _invalid(result, "The building area contains an object, worker or reserved space.")
+			return _invalid(result, "V ploše budovy je objekt, člověk nebo rezervované místo.")
 		occupied[cell] = true
 	var vertices: Array[Vector2i] = result["vertices"]
 	var lowest: int = Grid.MAX_HEIGHT
@@ -56,14 +57,14 @@ static func plan(world: Variant, type: String, anchor: Vector2i) -> Dictionary:
 		highest = maxi(highest, height)
 		sum += height
 	if highest - lowest > MAX_HEIGHT_SPAN:
-		return _invalid(result, "The terrain is too uneven: a Builder can level at most 2 height units across a building.")
+		return _invalid(result, "Nerovné místo: stavitel srovná nejvýše 2 výškové jednotky pod budovou.")
 	var target: int = roundi(float(sum) / float(vertices.size()))
 	result["target_height"] = target
 	for vertex: Vector2i in vertices:
 		result["work_ticks"] = int(result["work_ticks"]) + absi(world.grid.vertex_height(vertex) - target) * TICKS_PER_HEIGHT_UNIT
 	var entrance: Vector2i = world.placement_entrance(type, anchor)
 	if occupied.has(entrance) or not world.grid.is_walkable(entrance) or not world._building_site_cell_clear(entrance):
-		return _invalid(result, "The building entrance must stay clear and walkable.")
+		return _invalid(result, "Vstup do budovy musí zůstat volný a průchozí.")
 	var reason: String = _sequence_reason(world, vertices, target, 0, occupied, entrance)
 	if not reason.is_empty():
 		return _invalid(result, reason)
@@ -71,11 +72,11 @@ static func plan(world: Variant, type: String, anchor: Vector2i) -> Dictionary:
 	for vertex: Vector2i in vertices:
 		final_heights[vertex] = target
 	if not _approach_exists(world, entrance, occupied, final_heights):
-		return _invalid(result, "The building needs an accessible approach after its ground is leveled.")
+		return _invalid(result, "Budova potřebuje dostupný přístup i po srovnání terénu.")
 	# All exterior walkable connections and resource cells remain unchanged or
 	# traversable, so the existing resource route remains valid after earthwork.
 	if not Deposits.placement_valid(world, type, anchor, entrance, occupied):
-		return _invalid(result, "No suitable resource can be reached from this building.")
+		return _invalid(result, "Z této budovy není dostupná žádná vhodná surovina.")
 	result["valid"] = true
 	return result
 
@@ -108,7 +109,7 @@ static func _sequence_reason(world: Variant, vertices: Array[Vector2i], target: 
 				return reason
 			heights[vertex] = current
 	if not _approach_exists(world, entrance, occupied, heights):
-		return "Leveling would obstruct the building entrance."
+		return "Srovnání terénu by zablokovalo vstup do budovy."
 	return ""
 
 
@@ -153,7 +154,7 @@ static func tick(world: Variant, building: Dictionary, worker: Dictionary) -> bo
 	if remaining == 0:
 		world.task_board.complete(int(worker["task_id"]), int(worker["id"]))
 		world._reset_worker(worker)
-		world._push_event("Ground leveled: %s. Carriers can now bring construction materials." % world.catalog.building(building["type"])["display_name"])
+		world._push_event("Terén srovnán: %s. Nosiči mohou vozit stavební materiál." % UiTextClass.building_name(world.catalog, String(building["type"])))
 	return true
 
 
@@ -177,24 +178,24 @@ static func _change_reason(world: Variant, vertex: Vector2i, height: int, owner:
 	for cell: Vector2i in affected:
 		var blocking: int = int(world.grid.blocked_by.get(cell, 0))
 		if blocking != 0 and (blocking != owner or not occupied.has(cell)):
-			return "Leveling would move the foundation of a neighboring building."
+			return "Srovnání terénu by posunulo základy sousední budovy."
 		if world._tree_at(cell) != 0 or world.field_id_at(cell) != 0 or world.deposit_id_at(cell) != 0:
-			return "Leveling would disturb a neighboring tree, field or resource."
+			return "Srovnání terénu by narušilo sousední strom, pole nebo surovinu."
 		if world.grid.base_terrain_at(cell) in ["water", "rock"]:
-			return "Leveling must not reshape neighboring water or rock."
+			return "Srovnání terénu nesmí přetvářet sousední vodu ani skálu."
 		for other: Dictionary in world.buildings.values():
 			if int(other["id"]) != owner and other["entrance"] == cell:
-				return "Leveling would move a neighboring building entrance."
+				return "Srovnání terénu by posunulo vstup do sousední budovy."
 		if dynamic and _occupied_by_other(world, cell, builder_id):
-			return "Waiting for workers to clear the ground."
+			return "Čeká, až lidé uvolní plochu."
 		if occupied.has(cell):
 			continue
 		if _walkable(world, cell, previous, occupied) and not _walkable(world, cell, after, occupied):
-			return "Leveling would make neighboring ground or a road impassable."
+			return "Srovnání terénu by znepřístupnilo sousední zem nebo cestu."
 		for direction: Vector2i in Grid.MOVEMENT_DIRECTIONS:
 			var neighbor: Vector2i = cell + direction
 			if _traverse(world, cell, neighbor, previous, occupied) and not _traverse(world, cell, neighbor, after, occupied):
-				return "Leveling would break an existing path or road connection."
+				return "Srovnání terénu by přerušilo stávající cestu nebo spojení."
 	return ""
 
 

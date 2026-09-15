@@ -1,7 +1,7 @@
 # Forester and Fisherman's Huts
 
 Implemented on **2026-09-05**. The catalog now contains 28 reference buildings
-plus the project's Forester Hut and Workers' Cottage extensions (30 total).
+plus the project's Forester Hut extension (29 total; the Workers' Cottage was removed on 2026-09-14).
 
 | Building | Build menu | Materials | School profession | Work area |
 |---|---|---|---|---|

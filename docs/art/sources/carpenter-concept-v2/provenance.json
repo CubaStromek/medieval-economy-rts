@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-13",
+  "asset_id": "carpenter-concept-v2",
+  "status": "concept; awaiting user feedback",
+  "scope": "One static S-facing full-body concept. No directional animation pack or runtime integration.",
+  "generation": {
+    "mode": "built-in ImageGen",
+    "tool": "image_gen.imagegen",
+    "model": "not reported by tool",
+    "original_output": "/Users/openclaw/.codex/generated_images/01a0956f-1307-7fd1-b9e3-00cabcf52ae1/exec-94afdf90-f58f-411f-9eb8-81e90329f600.png",
+    "selected_attempt": 1,
+    "prompt_file": "prompt-01.txt"
+  },
+  "output": {
+    "path": "docs/art/sources/carpenter-concept-v2/carpenter-master.png",
+    "sha256": "0db9e01ddd17928be012987d36b906a66b67fafaa6fd0c047bd3513764029bc4",
+    "width": 1254,
+    "height": 1254,
+    "png_bit_depth": 8,
+    "png_color_type": 2,
+    "background": "warm off-white; not a transparent production sprite"
+  },
+  "references": [
+    {
+      "path": "docs/art/animation-references/lumberjack-without-log/S.png",
+      "role": "Own lumberjack: elevated camera, painted materials and adult proportions only",
+      "sha256": "61f9ed49dea824a6c1887570cd79f9d0eba40e4772c822d91d4f2c1098a6da86"
+    },
+    {
+      "path": "docs/art/sources/carpenter-rest-v1/resting-carpenter-rgba-master.png",
+      "role": "Own existing carpenter: identity and costume continuity",
+      "sha256": "c8b02e57300639ecdd2fb168206d57e3de59466fe180f275a4b9228a42a0199a"
+    },
+    {
+      "path": "game/art/buildings/sawmill/v1/operation/work/worker-0.png",
+      "role": "Own sawmill worker: hand-saw design only",
+      "sha256": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861"
+    }
+  ],
+  "implementation": "No game files changed for this concept."
+}

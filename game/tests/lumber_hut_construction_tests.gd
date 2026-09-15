@@ -326,29 +326,14 @@ static func _test_paused_scene_and_lighting(host: Node, failures: Array[String])
 	main.camera.zoom = Vector2.ONE
 	main.camera.position = main.building_geometry(building)["door"] - Vector2(0, 50)
 	main.camera.force_update_scroll()
-	var colors: Array[Color] = []
-	var native_luminance: Array[float] = []
 	for tick: int in [1750, 3375, 4750]:
 		main.world.tick = tick
 		var before: Dictionary = main.world.to_data()
 		main._update_ui()
 		await _settle(host, main)
-		colors.append(main.modulate)
-		_check(main.modulate == main.solar_state["ambient"] and main.building_sprite_presentation(building) == presentation
+		_check(main.modulate == Color.WHITE and main.building_sprite_presentation(building) == presentation
 			and main.world.to_data() == before,
-			"Day, dusk and night must tint the same actual construction state without changing simulation work", failures)
-		if DisplayServer.get_name() != "headless" and not presentation.is_empty():
-			await RenderingServer.frame_post_draw
-			var probe: Vector2 = _source_probe(presentation, main.building_geometry(building), true)
-			var screen: Vector2 = main.get_global_transform_with_canvas() * probe
-			var pixels: Image = viewport.get_texture().get_image()
-			if probe.is_finite() and Rect2(Vector2.ZERO, Vector2(viewport.size)).has_point(screen):
-				native_luminance.append(pixels.get_pixelv(Vector2i(screen)).get_luminance())
-	_check(colors[0].get_luminance() > colors[2].get_luminance() + 0.2 and colors[1] != colors[0],
-		"The integrated painted structure must share distinguishable existing day/dusk/night map lighting", failures)
-	if DisplayServer.get_name() != "headless":
-		_check(native_luminance.size() == 3 and native_luminance[0] > native_luminance[2] + 0.02,
-			"Native rendered construction pixels must actually darken at night, not merely expose lighting metadata", failures)
+			"Any simulation tick must draw the same actual construction state untinted without changing simulation work", failures)
 	viewport.free()
 
 

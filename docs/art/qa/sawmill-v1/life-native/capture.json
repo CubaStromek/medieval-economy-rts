@@ -1,0 +1,19 @@
+{
+	"date": "2026-09-12",
+	"engine": "4.7.2-stable (official)",
+	"files": [
+		"day-rest.png",
+		"day-working.png",
+		"day-empty.png",
+		"night-home.png"
+	],
+	"house_manifest_sha256": "2fd8576ff77e4eaa63ea78a9c8ba9eeb82938d50f8083c72340f836024def74d",
+	"image_size": [
+		960,
+		760
+	],
+	"music_or_save_access": false,
+	"purpose": "Native aperture coverage and household-state fixtures",
+	"scale": 4.0,
+	"scene": "res://scenes/main.tscn"
+}

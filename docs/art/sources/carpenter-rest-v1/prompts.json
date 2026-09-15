@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-12",
+  "scope": "One resting carpenter plus isolated left/right head-yaw variants",
+  "provider": "Built-in image_gen",
+  "model": "Not identified by tool",
+  "identity_reference": "docs/art/sources/carpenter-rest-v1/current-carpenter-reference-2x.png",
+  "master": {
+    "source": "docs/art/sources/carpenter-rest-v1/resting-carpenter-key-master.png",
+    "generated_output": "/Users/openclaw/.codex/generated_images/01a0956f-1307-7fd1-b9e3-00cabcf52ae1/exec-2e1c86d2-625e-4f32-b390-83d6f464cb05.png",
+    "prompt_file": "docs/art/sources/carpenter-rest-v1/center-prompt.txt",
+    "prompt": "Use case: stylized-concept / original game character rest sprite.\nCreate ONE full-body resting CARPENTER for our Medieval Economy RTS hand-painted game. Image1 is the OWN CARPENTER IDENTITY reference: keep this profession's thick short brown hair, clean-shaven face, warm ochre cream rolled-sleeve shirt, dark brown leather bib apron with shoulder straps, dark trousers and sturdy brown boots. He is a different person/profession from image2. Image2 is ONLY a pose/rendering-coherence reference for our existing lumberjack's resting system; do not inherit the lumberjack's cap, beard, green vest, belt pouch or costume.\nHuman adult with readable compact game proportions and a clear face, approximately seven heads tall, sturdy modest build. Clean softly painted edges, broad material planes and restrained detail; match the building world's matte wood/stone palette and the supplied game unit family. Elevated three-quarter strategy-game view, body facing gently screen-right, modest view from above including tops of shoulders and boots. Not eye-level photographic portrait, not flat frontal, not chibi, not glossy plastic, no thick black outline.\nPOSE: taking a quiet break leaning with upper back/shoulder against an IMPLIED vertical wooden post immediately behind him to screen-left. DO NOT DRAW the post, wall, chair or any building. His empty forearms are loosely folded across the apron below chest; both hands anatomically sensible, no tool in either hand. Weight on one straight planted leg, other knee bent with the boot lightly resting back as if against the support. Calm face, head initially looking mildly forward/right. Body is fully visible from top of hair to soles, no clipping. Both legs/boots distinguishable. This is one stable resting body that will later get only tiny head turns.\nNo hand saw, axe, hammer, nails, tool belt, lumber, cargo, work action, smoke, text, UI, shadow, scenery or ground under his feet. No duplicate limbs or apron straps.\nCanvas portrait1024x1536, whole body centered with generous empty margin, head about10% from top, soles around88% down. Body should fill most vertical space so registration can be measured.\nBackground a PERFECTLY FLAT SOLID saturated magenta #FF00FF including spaces between arms/legs, not a gradient or fake checkerboard; preserve dark opaque apron and hair. This technical key color must not appear in costume or skin. One character only.\n",
+    "input_images": [
+      "docs/art/sources/carpenter-rest-v1/current-carpenter-reference-2x.png",
+      "game/art/buildings/lumber_hut/v1/life/resting_lumberjack.png"
+    ],
+    "source_sha256": "dba577e3f2faf6b4f6cfababbf7d3617e9e8e5102e4d13f6390bd5d2aa22534c"
+  },
+  "edits": [
+    {
+      "id": "left",
+      "input": "docs/art/sources/carpenter-rest-v1/head-edit-reference.png",
+      "prompt": "Use case: precise-object-edit. Asset: one head-turn variation of the project's own painted medieval RTS resting carpenter. Input image is the EDIT TARGET, an exactly registered upper-body crop. Keep the same framing and scale. Change ONLY the head above the collar: the same adult clean-shaven man with tousled brown hair and no hat now gently turns his head to look toward SCREEN LEFT (the left edge of this picture). Make an unmistakable but modest three-quarter actual head yaw, nose/face oriented screen-left, not just eyes and not full profile. Keep neck rooted at exactly the same cream collar point; retain head height, hair volume, skin color, elevated camera and soft upper-left light. Preserve all torso, cream rolled-sleeve shirt, dark brown apron straps, shoulders and folded empty arms exactly. No cap, beard, tools or cargo. Background must remain perfectly flat technical MAGENTA #FF00FF, no patterns, gradients, cast shadows, reflection or halo. No house, wall, post, ground or text. Return one cropped image at the same composition, not a sheet.",
+      "output": "docs/art/sources/carpenter-rest-v1/head-left-key.png",
+      "generated_output": "/Users/openclaw/.codex/generated_images/01a0957f-434e-7503-b62f-c71bc1ceb49f/exec-66276fec-c64c-45ce-a1c1-e4e19574c72c.png"
+    },
+    {
+      "id": "right",
+      "input": "docs/art/sources/carpenter-rest-v1/head-edit-reference.png",
+      "prompt": "Use case: precise-object-edit. Asset: one head-turn variation of the project's own painted medieval RTS resting carpenter. Input image is the EDIT TARGET, an exactly registered upper-body crop. Keep the same framing and scale. Change ONLY the head above the collar: the same adult clean-shaven man with tousled brown hair and no hat turns his head slightly FARTHER toward SCREEN RIGHT (the right edge of this picture) than in the reference. His nose and face clearly watch screen-right, modest three-quarter yaw approaching but not reaching profile. Keep neck rooted at exactly the same cream collar point; retain head height, hair volume, skin color, elevated camera and soft upper-left light. Preserve all torso, cream rolled-sleeve shirt, dark brown apron straps, shoulders and folded empty arms exactly. No cap, beard, tools or cargo. Background must remain perfectly flat technical MAGENTA #FF00FF, no patterns, gradients, cast shadows, reflection or halo. No house, wall, post, ground or text. Return one cropped image at the same composition, not a sheet.",
+      "output": "docs/art/sources/carpenter-rest-v1/head-right-key.png",
+      "generated_output": "/Users/openclaw/.codex/generated_images/01a0957f-434e-7503-b62f-c71bc1ceb49f/exec-8b64dc25-9ff6-49c0-9766-41679b5ecaed.png"
+    }
+  ],
+  "technical_export": "docs/art/sources/carpenter-rest-v1/export-resting-carpenter.cjs",
+  "production": "game/art/buildings/sawmill/v1/life/resting_carpenter.png",
+  "look": "game/art/buildings/sawmill/v1/life/look/look.json",
+  "inspection": "Master and all three head directions viewed; preserved carpenter identity without cap/beard/tools/cargo. Dark/light/olive QA inspected and 33 world-pixel scale preview. Runtime support placement and native normal-game tests remain root integration responsibility.",
+  "source_hashes": {
+    "docs/art/sources/carpenter-rest-v1/current-carpenter-reference-2x.png": "bd7570561eb193cda2748c1d1ec6db5377064cf29f0ab69082b9e486d207977d",
+    "game/art/buildings/lumber_hut/v1/life/resting_lumberjack.png": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+    "docs/art/sources/carpenter-rest-v1/resting-carpenter-key-master.png": "dba577e3f2faf6b4f6cfababbf7d3617e9e8e5102e4d13f6390bd5d2aa22534c",
+    "docs/art/sources/carpenter-rest-v1/head-edit-reference.png": "8bb58be9f1a8a0c0f2c5bb5c06e9c2a46b010a5f61e6978df344fb3c46a2d54b",
+    "docs/art/sources/carpenter-rest-v1/head-left-key.png": "4415f4f1ba8d9f8ef2f31020b58de824309425b908fd796687a048585b548722",
+    "docs/art/sources/carpenter-rest-v1/head-right-key.png": "efa21908c9ccb476221431f2f1b3d3b93d6c39cbd3a988b6244e818ec079b357"
+  }
+}

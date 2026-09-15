@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-13",
+  "building_id": "warehouse",
+  "asset_version": "v2",
+  "status": "Final closed source: manual geometry supports day derivative and production registration; native integration still needs validation",
+  "source": {
+    "path": "/Users/openclaw/AI-Projects/medieval-economy-rts/docs/art/sources/warehouse-v2/closed-key-master.png",
+    "sha256": "1cc484d32c122504405fef05dceb3e79d0a68d6fad2d63bd8c19dfd6cf9599e1",
+    "canvas": [
+      1254,
+      1254
+    ],
+    "format": "RGB on magenta technical key; not the production alpha export",
+    "pixels_unmodified": true
+  },
+  "method": {
+    "landmarks": "Manual visual measurements, approximately +/-4 source px",
+    "firm_contact_check": "Read-only sampled-color scan: green>55 and red-green<140, restricted y>=800. Conservative indicator of firm stone; not a complete alpha extraction or production collision proof."
+  },
+  "source_to_world": 0.095,
+  "uniform_scale": true,
+  "registration": {
+    "door_threshold_source_px": [
+      670,
+      1190
+    ],
+    "occupied_ground_source_rect": [
+      38.42105263157896,
+      -73.15789473684208,
+      1263.157894736842,
+      1263.157894736842
+    ],
+    "occupied_ground_relative_world_rect": [
+      -60,
+      -120,
+      120,
+      120
+    ],
+    "external_approach_source_rect": [
+      459.47368421052636,
+      1190,
+      421.05263157894734,
+      421.05263157894734
+    ],
+    "external_approach_relative_world_rect": [
+      -20,
+      0,
+      40,
+      40
+    ]
+  },
+  "measured_landmarks_source_px": {
+    "door_outer_clear_polygon": [
+      [
+        457,
+        704
+      ],
+      [
+        878,
+        611
+      ],
+      [
+        878,
+        1039
+      ],
+      [
+        463,
+        1128
+      ]
+    ],
+    "central_doorway_x": 670,
+    "central_landing_contact": [
+      670,
+      1189
+    ],
+    "southmost_firm_contact_y": 1189,
+    "visual_ground_x_range": [
+      48,
+      1219
+    ],
+    "conservative_firm_ground_x_range": [
+      50,
+      1215
+    ],
+    "front_ground_guide_line": [
+      [
+        400,
+        1168
+      ],
+      [
+        1215,
+        951
+      ]
+    ],
+    "left_side_ground_guide_line": [
+      [
+        50,
+        876
+      ],
+      [
+        400,
+        1168
+      ]
+    ],
+    "roof_ridge_guide_line": [
+      [
+        428,
+        158
+      ],
+      [
+        829,
+        48
+      ]
+    ]
+  },
+  "door": {
+    "width_source_px": 421,
+    "outer_vertical_height_source_px": [
+      424,
+      428
+    ],
+    "width_world_px": 39.995,
+    "outer_vertical_height_world_px": [
+      40.28,
+      40.66
+    ],
+    "conservative_clear_height_beneath_corner_brace_source_px": 390,
+    "conservative_clear_height_beneath_corner_brace_world_px": 37.05,
+    "actual_carrier_world_height_px": 33,
+    "min_conservative_headroom_world_px": 4.05,
+    "assessment": "The central usable opening clears the 38px target. Corner braces locally reduce clearance to about37px, still above33px adult. Do not present the full421pxwidth as unobstructed at every vertical height."
+  },
+  "projection": {
+    "meaning": "Approximate 2D architectural image-line directions, not inferred camera elevation/azimuth",
+    "front_ground_slope": -0.26625766871165646,
+    "left_side_ground_slope": 0.8342857142857143,
+    "roof_ridge_slope": -0.2743142144638404,
+    "target_front_slope": -0.28,
+    "target_left_side_slope": 0.9,
+    "assessment": "Close to inspected own hut/sawmill directional family; modest left side and elevated roof view retained. Painted edge variation remains; final same-scene comparison required."
+  },
+  "ground_fit": {
+    "left_relative_world_px": -59.09,
+    "right_relative_world_px": 52.155,
+    "visible_ground_width_world_px": 111.245,
+    "left_margin_world_px": 0.9099999999999966,
+    "right_margin_world_px": 7.844999999999999,
+    "central_toe_north_of_threshold_world_px": 0.095,
+    "max_firm_south_overhang_world_px": 0,
+    "all_measured_visible_ground_contacts_inside": true,
+    "external_approach_clear_at_measured_contacts": true,
+    "hidden_ground_contacts": "Not visible in source; not measured",
+    "roof_overhangs": "Roof and chimney reviewed separately; no gameplay footprint changes authorized"
+  },
+  "limitations": [
+    "Manual ±0.38worldpx boundary uncertainty; source-key fringes must be checked after RGBA export.",
+    "Day-open derivative must preserve all ground contacts, camera and registered scale.",
+    "Native raised-terrain, alpha-picking, window/smoke, and normal game tests not established by this diagram."
+  ]
+}

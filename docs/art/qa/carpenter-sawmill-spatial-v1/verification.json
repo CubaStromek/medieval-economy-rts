@@ -1,0 +1,92 @@
+{
+  "date": "2026-09-13",
+  "capture_report_embedded_date_note": "Reused runners still label template date 2026-09-12; this verification records the actual 2026-09-13 run.",
+  "full_headless": {
+    "executed": 856,
+    "failed": 0,
+    "new_native_pixel_cases_explicitly_skipped": 2
+  },
+  "focused_native": {
+    "executed": 45,
+    "failed": 0,
+    "includes_actual_pixel_cases": 2
+  },
+  "native_state_captures": 94,
+  "baseline_captures": 94,
+  "natural": {
+    "phases": 6,
+    "screenshots": 8,
+    "motion_observations": 34,
+    "failures": []
+  },
+  "asset_changed_between_before_after": [
+    "res://art/buildings/sawmill/v2/manifest.json",
+    "res://art/buildings/sawmill/v2/operation/manifest.json"
+  ],
+  "all_art_pngs_unchanged": true,
+  "assets_stable_during_each_capture": true,
+  "final_code_hashes": {
+    "game/scripts/view/building_worker_appearance.gd": "7489702357c2b4dd0bd9f927d51169d8fb319ebefb64b2dd4ee21ed6ef2f17b1",
+    "game/scripts/view/production_building_life.gd": "9f0968876ffdedcbd97e5300176dc89c04dfc5d336b63782241894d2817cb289",
+    "game/scripts/view/sawmill_operation_art.gd": "3fb9bcf092a871b50c3a7ccc9f54c72542dead260ca39af2a45ca04a8e24a8b5",
+    "game/scripts/view/sawmill_operation.gd": "aefa9e0db7f42923b37dcc8b92478927f11a9e4391e0e252d0fd734421f6a31c",
+    "game/scripts/view/main_view.gd": "a127919bd0ec5019db4b93805b9e027f338620de7bd47a21ed159a3a0d4f1f67",
+    "game/tests/building_worker_appearance_tests.gd": "1cfdb0fc77c00fd64b8a79c391d93f4c7cf259519ede7610a6e09e7fc12c22f1",
+    "game/tests/sawmill_operation_art_tests.gd": "a6fffc66dcc4ffa867d87c2947c07a84adcdb6f8f7af57a81149de7f83df0aa1",
+    "game/tests/sawmill_operation_tests.gd": "f96e36de6a62c0bcfe6d0fab8c5ad6f7637fb4be1ad30aabc54844ed848d864d",
+    "game/tests/test_runner.gd": "1865b6b5afbb12c6881213a90a9b69e358408791e767a5ed88c4a2e019083f33",
+    "game/tests/sawmill_revision_runner.gd": "dfbb06b8457335e33bac0c92ae6f94e7092f23467a3f2f98e2a0680b4acc3c9e"
+  },
+  "final_asset_hashes": {
+    "res://art/buildings/sawmill/v1/life/look/left.png": "da4753003c6099874ff646354150d432b1a2459d6efba797e02fd82ac8640f81",
+    "res://art/buildings/sawmill/v1/life/look/right.png": "865878889eba7059f774e4d5a05f690162b6fe20166462cc3fbd98e911291685",
+    "res://art/buildings/sawmill/v1/life/resting_carpenter.png": "48fe91d86381ac36c115038fac987e4694e39d49e10f98aee468fef64805cc7e",
+    "res://art/buildings/sawmill/v1/operation/work/worker-0.png": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861",
+    "res://art/buildings/sawmill/v1/operation/work/worker-1.png": "be269ff4b49d2962db4d27d5178c5380e8cb5837e97f36c2f6ce34be61e829e8",
+    "res://art/buildings/sawmill/v1/operation/work/worker-2.png": "b2b1eba431e5fcc09a834187578a471b9b6ced0a8fc51336962724303af2a811",
+    "res://art/buildings/sawmill/v1/operation/work/worker-3.png": "716654c3de538b8f62d6c731199b7a20d61bd7923454d15085d39bef7da1f7f6",
+    "res://art/buildings/sawmill/v1/operation/work/worker-4.png": "2bed208cb822bc002b50fa6d293fb1cab36bf81f1c79993e8ba22693e322f614",
+    "res://art/buildings/sawmill/v1/operation/work/worker-5.png": "22c1ce5200883771b9fbe32190e384e3bbddb5080c01aab13beff6c06f0cafb7",
+    "res://art/buildings/sawmill/v2/finished.png": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+    "res://art/buildings/sawmill/v2/manifest.json": "324686f69bb3528ce33487330082cd40a835bde421db83ac846f528d0bce912d",
+    "res://art/buildings/sawmill/v2/operation/manifest.json": "3062808ed10255e044b24214d7bf840eebcebc9f2791889f79a03c07dc630bd4",
+    "res://art/buildings/sawmill/v2/operation/stock/foreground.png": "2d6683bb2b7c0cfa1f402ff9074310f676ccc886ce494987be9fe06dd1167397",
+    "res://art/buildings/sawmill/v2/operation/stock/log.png": "6e43c9ddf57a66bc261d286104dce502f7853852947608b54b94df85adf9cad8",
+    "res://art/buildings/sawmill/v2/operation/stock/plank.png": "4716cfa4dd15232e5cda1803da6b652f9de1ff01f80559365a7972171c0232d3",
+    "res://art/buildings/sawmill/v2/operation/work/processing-log.png": "d55a3238e246075541e93da52dd7eaae4e8958c3e096099aac8489b6a3ad9a68"
+  },
+  "video": {
+    "source_frames": 34,
+    "encoded_frames": 35,
+    "max_timestamp_error_seconds": 0.0004940000000002165,
+    "files": {
+      "docs/art/qa/carpenter-sawmill-spatial-v1/natural/work-at-1x.mp4": "33eb10e4eb1b622ac0d7820263db9f1329f66d6afb2dbed038fa107bcb4ea1e2",
+      "docs/art/qa/carpenter-sawmill-spatial-v1/natural/work-detail-at-1x.mp4": "16619776e1c5cac089b10c76ba69539c620629291417a780eff0e12cf31733d4"
+    }
+  },
+  "native_game_runtime_hashes": {
+    "res://art/buildings/sawmill/v1/life/look/left.png": "da4753003c6099874ff646354150d432b1a2459d6efba797e02fd82ac8640f81",
+    "res://art/buildings/sawmill/v1/life/look/right.png": "865878889eba7059f774e4d5a05f690162b6fe20166462cc3fbd98e911291685",
+    "res://art/buildings/sawmill/v1/life/resting_carpenter.png": "48fe91d86381ac36c115038fac987e4694e39d49e10f98aee468fef64805cc7e",
+    "res://art/buildings/sawmill/v1/operation/work/worker-0.png": "5001dc2ab8d09a1ad6610c5bac40f3da76a6a34d44fd59cb39a19659ad98b861",
+    "res://art/buildings/sawmill/v1/operation/work/worker-1.png": "be269ff4b49d2962db4d27d5178c5380e8cb5837e97f36c2f6ce34be61e829e8",
+    "res://art/buildings/sawmill/v1/operation/work/worker-2.png": "b2b1eba431e5fcc09a834187578a471b9b6ced0a8fc51336962724303af2a811",
+    "res://art/buildings/sawmill/v1/operation/work/worker-3.png": "716654c3de538b8f62d6c731199b7a20d61bd7923454d15085d39bef7da1f7f6",
+    "res://art/buildings/sawmill/v1/operation/work/worker-4.png": "2bed208cb822bc002b50fa6d293fb1cab36bf81f1c79993e8ba22693e322f614",
+    "res://art/buildings/sawmill/v1/operation/work/worker-5.png": "22c1ce5200883771b9fbe32190e384e3bbddb5080c01aab13beff6c06f0cafb7",
+    "res://art/buildings/sawmill/v2/finished.png": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+    "res://art/buildings/sawmill/v2/manifest.json": "324686f69bb3528ce33487330082cd40a835bde421db83ac846f528d0bce912d",
+    "res://art/buildings/sawmill/v2/operation/manifest.json": "3062808ed10255e044b24214d7bf840eebcebc9f2791889f79a03c07dc630bd4",
+    "res://art/buildings/sawmill/v2/operation/stock/foreground.png": "2d6683bb2b7c0cfa1f402ff9074310f676ccc886ce494987be9fe06dd1167397",
+    "res://art/buildings/sawmill/v2/operation/stock/log.png": "6e43c9ddf57a66bc261d286104dce502f7853852947608b54b94df85adf9cad8",
+    "res://art/buildings/sawmill/v2/operation/stock/plank.png": "4716cfa4dd15232e5cda1803da6b652f9de1ff01f80559365a7972171c0232d3",
+    "res://art/buildings/sawmill/v2/operation/work/processing-log.png": "d55a3238e246075541e93da52dd7eaae4e8958c3e096099aac8489b6a3ad9a68",
+    "res://scripts/view/main_view.gd": "a127919bd0ec5019db4b93805b9e027f338620de7bd47a21ed159a3a0d4f1f67",
+    "res://scripts/view/production_building_life.gd": "9f0968876ffdedcbd97e5300176dc89c04dfc5d336b63782241894d2817cb289",
+    "res://scripts/view/sawmill_operation.gd": "aefa9e0db7f42923b37dcc8b92478927f11a9e4391e0e252d0fd734421f6a31c",
+    "res://scripts/view/sawmill_operation_art.gd": "3fb9bcf092a871b50c3a7ccc9f54c72542dead260ca39af2a45ca04a8e24a8b5",
+    "res://scripts/view/sawmill_sprite_library.gd": "54d32da86751184169b2372b4da673f3ae326f83705047222958601cffe810a3",
+    "res://tests/sawmill_operation_game_runner.gd": "7c9e092686f159b12d194bee9f975b4d80eb837e6909a70cfcf29e2619fef0f8",
+    "res://tests/sawmill_qa_assets.gd": "51909ed984c2765ce7266a9c065b600827a342fa19439ca575ffc544e5f54c49"
+  }
+}

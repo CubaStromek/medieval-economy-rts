@@ -3,6 +3,9 @@
 Verze výtvarného návrhu: **0.2, 2026-09-09** · technický stav doplněn
 **2026-09-10** · projekt Medieval Economy RTS.
 
+Doplnění uživatelského směru a provozního vzoru: **2026-09-12**.
+Zachycení pozitivní odezvy na pilu v2 a osobního skillu: **2026-09-13**.
+
 ## 1. Rozhodnutí a stav
 
 **Požadavek uživatele z 9. 9. 2026:** nové budovy mají být inspirované grafickým
@@ -37,6 +40,34 @@ Obecnou produkci a integraci vede [společný postup objektů](object-implementa
 - Tato oprava nahrazuje příliš čelní výklad v0.1. Čtvercová mřížka terénu
   neurčuje, že fasáda musí být kreslená bez bočního pohledu. Změna výtvarného
   zadání nemění projekci enginu, mapy, uložené půdorysy ani vstupy.
+
+**Upřesnění uživatele z 12. 9. 2026:** budovy musí být snadno odlišitelné,
+při zachování společného výtvarného jazyka. Rozlišovat už siluetu, skladbu
+střech a uspořádání práce; drobná změna barvy nebo rekvizity nestačí.
+[Pila v1](briefs/sawmill-v1.md) používá širokou nízkou střechu s otevřenou
+dílnou. Domácí odpočinek řemeslníka a denní/noční okno jsou zamýšlené pro
+většinu výrobních budov; [společný provozní vzor](production-building-life-pattern.md)
+odděluje skutečný pobyt, práci a zásoby a vyžaduje vlastní kotvy každé budovy.
+Toto rozšíření pravidel nemění výtvarný směr v0.2 ani samo nepotvrzuje
+přijetí finálního herního vzhledu pily.
+
+**Aktuální odezva a opakovatelný postup, 2026-09-13:** po zobrazení nové
+[pily v2 vedle chaty](qa/sawmill-v2/dynamic-native/full-pair-zoom-2_4.png)
+uživatel uvedl „ok ted uz je ta budovy mnohem lepsi“ a požádal o skill pro
+soudržný design budov, noční kouř z komína a svítící okna. Tato vlastní dvojice
+je nynější pozitivně přijatý pracovní srovnávací podklad. Starší formulace
+o dosud neposouzené pile předcházejí této odezvě; neznamená to uzamčení každého
+detailu ani plošné schválení celého katalogu. Výtvarná verze zůstává v0.2.
+
+Osobní skill [medieval-building-design](/Users/openclaw/.codex/skills/medieval-building-design/SKILL.md)
+spojuje tento manuál se skutečným půdorysem, vlastními referencemi a ověřením
+ve hře. U běžných obytných a výrobních domů se komín a čitelné okenní otvory
+navrhují už v prvním konceptu. Teplé světlo a jemný domácí kouř jsou oddělené
+vrstvy pro noc se skutečným obyvatelem doma podle
+[provozního vzoru](production-building-life-pattern.md). Pracovní kouř pece
+či výhně má samostatný zdroj ve skutečné výrobě. Funkčně odlišná stavba má
+v briefu zdůvodněnou výjimku; samotná grafika nemění její obyvatele či rozvrh.
+Skill nepřidává schvalovací krok a nenahrazuje autoritativní brief konkrétního domu.
 
 Výtvarný cíl jednou větou:
 

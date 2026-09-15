@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-12",
+  "tool": "built-in image_gen",
+  "model": "not reported by tool response",
+  "prompts": [
+    {
+      "id": "left-alpha-attempt",
+      "prompt": "Use case: precise-object-edit. Asset: one registered head-turn variant for an existing small painted medieval RTS resting lumberjack sprite. Input image is the project's own upper-body crop and is the EDIT TARGET. Preserve the entire olive torso, shoulder placement, cream collar, lacing, arms, lighting, pixel placement, painting finish and image framing exactly. Change ONLY the head above the collar: same adult man, same brown beard, hair and orange-brown stitched cap, now turning his head gently to look toward SCREEN LEFT (the left edge of the image). The nose and face direction must visibly point to screen-left in a modest three-quarter view; natural actual head yaw, not moving just eyes, not tilting the head, not mirroring the whole image. Keep the neck rooted at exactly the same collar point; keep cap-to-chin size almost identical; preserve the slightly elevated camera so cap top is visible. Calm watchful expression. NO change to body. Isolated sprite on a genuinely transparent RGBA background including all empty corners. No house, no floor, no cast shadow, no checkerboard, no extra props, no text. Output one image at the same composition, not a sheet.",
+      "result": "Rejected as RGBA: painted checkerboard in RGB file",
+      "raw": "left-rejected-checker.png"
+    },
+    {
+      "id": "left-technical-key",
+      "prompt": "Use case: precise-object-edit. Edit ONLY the background in the supplied own lumberjack head-turn variant. Preserve this man's head, screen-left gaze, cap shape, beard, face, neck, torso, shoulders, clothing and image composition EXACTLY. Replace all gray/white checkerboard with one perfectly flat technical chroma-key RGB magenta #FF00FF, with no grid, no gradient, no texture, no light halo and no magenta reflected onto the character. This is a technical sprite key plate. Foreground edges crisp, all existing artwork unchanged. No new objects or text.",
+      "result": "Selected technical key plate; head only extracted",
+      "raw": "left-key-raw.png"
+    },
+    {
+      "id": "right-technical-key",
+      "prompt": "Use case: precise-object-edit. Asset: one registered head-turn variant for the existing painted medieval RTS resting lumberjack. Input image is the project's own upper-body crop and EDIT TARGET. Preserve the entire olive torso, shoulder placement, cream collar, lacing, arms, lighting, painting finish and framing exactly. Change ONLY the head above the collar: same adult man, brown beard, hair and orange-brown stitched cap, now turning his head just a little farther toward SCREEN RIGHT than in the reference, watching the right edge of the image. Modest natural three-quarter head yaw with nose and face pointing screen-right; do not make a full profile, do not just move eyes, no tilt, no mirrored body. Neck must stay rooted at exactly the same collar point, cap-to-chin size and head height unchanged. Same slightly elevated camera with cap top visible. Calm watchful expression. NO change to body. Background: replace empty transparency with perfectly flat solid technical chroma-key MAGENTA #FF00FF. No checkerboard, texture, gradients, cast shadows, magenta reflection or halo. No house, ground, new objects or text. One image, not a sheet.",
+      "result": "Selected technical key plate; head only extracted",
+      "raw": "right-key-raw.png"
+    }
+  ]
+}

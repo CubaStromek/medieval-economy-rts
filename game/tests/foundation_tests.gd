@@ -2,7 +2,7 @@ extends RefCounted
 
 const World = preload("res://scripts/simulation/simulation_world.gd")
 const Pathfinder = preload("res://scripts/simulation/grid_pathfinder.gd")
-const TEST_COUNT: int = 13
+const TEST_COUNT: int = 12
 const SITE := Vector2i(10, 8)
 
 static func run() -> Array[String]:
@@ -17,7 +17,6 @@ static func run() -> Array[String]:
 		_test_protected_neighbors,
 		_test_steep_and_blocked_ground,
 		_test_flat_and_legacy_sites,
-		_test_night_pauses_and_morning_resumes,
 		_test_two_builders_keep_one_reservation,
 		_test_dynamic_obstruction_waits_and_resumes,
 		_test_future_surface_reservation,
@@ -295,27 +294,6 @@ static func _test_flat_and_legacy_sites(failures: Array[String]) -> void:
 	var authored: Variant = _fixture()["world"]
 	authored.economy_enabled = false
 	_check(not authored.can_place_building("lumber_hut", SITE), "Instant editor/demo placement cannot level ground without a Builder", failures)
-
-
-static func _test_night_pauses_and_morning_resumes(failures: Array[String]) -> void:
-	var world: Variant = _fixture(false)["world"]
-	var site: int = _site(world, failures)
-	if site == 0:
-		return
-	_spawn_builder(world)
-	var begun: bool = _until(world, func() -> bool: return _remaining(world, site) < 64, 800)
-	_check(begun, "Night fixture must first observe actual earthwork", failures)
-	if not begun:
-		return
-	var remaining: int = _remaining(world, site)
-	var heights: PackedInt32Array = _heights(world)
-	world.tick = 3749
-	_advance(world, 80)
-	_check(_remaining(world, site) == remaining and _heights(world) == heights,
-		"20:00 night rest must stop the Builder's soil changes without resetting progress", failures)
-	world.tick = 5999
-	_check(_until(world, func() -> bool: return _remaining(world, site) == 0, 900),
-		"At 05:00 the Builder must travel back and resume the unfinished earthwork", failures)
 
 
 static func _test_two_builders_keep_one_reservation(failures: Array[String]) -> void:

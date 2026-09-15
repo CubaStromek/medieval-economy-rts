@@ -27,7 +27,7 @@ func _ready() -> void:
 		if argument.begins_with("--capture="):
 			output = argument.trim_prefix("--capture=")
 	DirAccess.make_dir_recursive_absolute(output)
-	for source: String in ["res://scripts/view/main_view.gd", "res://scripts/view/lumberjack_presentation.gd", "res://scripts/view/lumberjack_work_placement.gd", "res://scripts/view/lumberjack_animation_library.gd", "res://scripts/view/terrain_renderer.gd", "res://scripts/view/solar_shadows.gd"]:
+	for source: String in ["res://scripts/view/main_view.gd", "res://scripts/view/lumberjack_presentation.gd", "res://scripts/view/lumberjack_work_placement.gd", "res://scripts/view/lumberjack_animation_library.gd", "res://scripts/view/terrain_renderer.gd"]:
 		code_at_start[source] = FileAccess.get_sha256(source)
 	get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
 	get_tree().root.content_scale_size = Vector2i.ZERO
@@ -55,11 +55,6 @@ func _ready() -> void:
 	game.lumberjack_animation.reset()
 	_focus(2.4)
 	await _capture("all8-chop-windup-2_4")
-	_configure("walk_log")
-	game.world.tick = 4500
-	game._update_ui()
-	_focus(2.4)
-	await _capture("all8-walk_log-night-2_4")
 	for clip: String in ["walk_axe", "chop"]:
 		_configure(clip, true)
 		_focus(2.4)
@@ -253,7 +248,7 @@ func _flat_boundary_pixels() -> void:
 			if not (candidate["kind"] == "worker" and int(candidate["id"]) == id):
 				filtered.append(candidate)
 		game._row_entries[row] = filtered
-		game._dynamic_rows[row].queue_redraw()
+	game._layout_object_rows()
 	var reference := Node2D.new()
 	reference.z_index = 4090
 	reference.texture_filter = game.texture_filter

@@ -12,7 +12,7 @@ Buildings are organized as follows:
 
 | Category | Buildings |
 |---|---|
-| Infrastructure | Warehouse, Workers' Cottage, Lumberjack Hut, Forester Hut, Sawmill, School, Marketplace |
+| Infrastructure | Warehouse, Lumberjack Hut, Forester Hut, Sawmill, School, Marketplace |
 | Food | Farm, Mill, Bakery, Vineyard, Fisherman's Hut, Swine Farm, Butcher, Inn |
 | Mining | Quarry, Coal Mine, Iron Mine, Gold Mine, Iron Smithy, Metallurgist |
 | Military | Tannery, Stables, Weapon Workshop, Armour Workshop, Weapon Smithy, Armour Smithy, Barracks, Town Hall, Watchtower |
@@ -23,8 +23,6 @@ Gardeners are an original extension: they act as autonomous foresters and
 plant new trees near their own Forester Hut. They are available through
 **Train Gardener** at a School; a completed vacant hut is required to work.
 The extra hut is project-balanced; see [hut rules](forester-and-fisher-huts.md).
-The project-balanced Workers' Cottage costs 3 planks and 2 stone and houses
-exactly two Carriers or Builders; see [housing rules](worker-housing.md).
 
 ## Fields, trees and finite extraction
 
@@ -150,10 +148,8 @@ without cargo looks for a reachable completed Inn with food. Carriers supply
 Bread, Sausages, Wine and Fish. A visit consumes up to two available food types
 in catalog order, restoring condition up to the configured maximum. A worker
 whose condition reaches zero starves and is removed with reservations released.
-Housing is limited to two beds for Carriers or Builders in each completed,
-enabled Workers' Cottage. They prefer reachable free cottage beds and fall back
-to a completed Warehouse when capacity is unavailable. Household consumption
-and broader residential needs are not simulated.
+Housing and residential needs are not simulated; the Workers' Cottage was
+removed with the day/night cycle on 2026-09-14.
 
 ### Marketplace
 
@@ -202,9 +198,8 @@ Every ware has an original procedural icon. Fields, deposits, scaffolds, special
 building motifs are drawn from authoritative state; visual animation does not
 advance the simulation.
 
-`setup_economy_demo()` creates the authored village with all 30 building types
-represented by 35 instances and 259 occupied building tiles, including six
-Workers' Cottages, plus wheat/vine plots, the five kinds of finite resource
+`setup_economy_demo()` creates the authored village with all 29 building types
+represented by 29 instances and 238 occupied building tiles, plus wheat/vine plots, the five kinds of finite resource
 deposits, starter
 food/material/gold stocks, specialists, carriers, builders, a gardener and a
 recruit. Example equipment and recruitment orders are queued. The older

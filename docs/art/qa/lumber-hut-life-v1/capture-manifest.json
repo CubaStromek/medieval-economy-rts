@@ -1,0 +1,2654 @@
+{
+	"art_sha256": {
+		"finished-mask.png": "f055793a3aed77ee5e530d0bfc1fbcdcb08b42121a68d75018ad8b2219549f8b",
+		"finished.png": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+		"wood-mask.png": "7920ca87e09ce0891e0e70c2a0d1a5ca1ee20489fc9241866a9bf9e7c8a377fd",
+		"wood.png": "ffdaeb73429d0858aadb36ec93217e809f9457f563c1d27add1ecf248fc4658d"
+	},
+	"captured_at": "2026-09-12T13:25:22",
+	"captures": [
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/zoom-0-75-day-away.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "0e36d2db046ed087be447c9031f9e8ff3588a85689f87907788dddec1d7f5d98",
+			"home": false,
+			"id": "day-away",
+			"known": true,
+			"label": "Den · dřevorubec venku",
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 0,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 0.75
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": true,
+			"file": "frames/zoom-0-75-day-home.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "470dbe237f60a741c840b8b7dacc48e7d186b1a2014b04fcf1843549b73b2851",
+			"home": true,
+			"id": "day-home",
+			"known": true,
+			"label": "Den · odpočinek doma",
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"rest": true,
+			"rest_visible": true,
+			"rest_worker_id": 8,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 0.75
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": true,
+			"file": "frames/zoom-0-75-day-delivery.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "546559376e0928e259b06ac612df2c55feb0811fd932cab52b3be8786b2c26ac",
+			"home": true,
+			"id": "day-delivery",
+			"known": true,
+			"label": "Den · odevzdávání klády",
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "deliver_output",
+			"worker_carrying": "log",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 0.75
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/zoom-0-75-night-home.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "ae0d5d943e0b65dd5fe101d2fbb2ea5c61073df41ab6d5215e04fda9adbc86d3",
+			"home": true,
+			"id": "night-home",
+			"known": true,
+			"label": "Noc · obývaná chata",
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 0.75
+		},
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/zoom-0-75-night-away.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "40248f8dd0479e66bdb612e0f11061f473119a0846cb379e827b758ecc4b1d86",
+			"home": false,
+			"id": "night-away",
+			"known": true,
+			"label": "Noc · dřevorubec venku",
+			"light_strength": 0.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 0,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 0.75
+		},
+		{
+			"case": "contact-sheet",
+			"file": "life-zoom-0-75.png"
+		},
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/zoom-1-00-day-away.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "3b375c8949c3811df2643654e7c2bd06930665a8d13f1659a344a75e7d51f071",
+			"home": false,
+			"id": "day-away",
+			"known": true,
+			"label": "Den · dřevorubec venku",
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 0,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 1.0
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": true,
+			"file": "frames/zoom-1-00-day-home.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "7a841a97073a2c8b78cd514e6f2c8a0f662f86782976e47ae43b1d61dfd251f9",
+			"home": true,
+			"id": "day-home",
+			"known": true,
+			"label": "Den · odpočinek doma",
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"rest": true,
+			"rest_visible": true,
+			"rest_worker_id": 8,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 1.0
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": true,
+			"file": "frames/zoom-1-00-day-delivery.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "5f1cd399d7a41111e249075cdddba7160614d146370bddd9881a0f754b091cc3",
+			"home": true,
+			"id": "day-delivery",
+			"known": true,
+			"label": "Den · odevzdávání klády",
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "deliver_output",
+			"worker_carrying": "log",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 1.0
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/zoom-1-00-night-home.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "c4b2646d55a4bc0e7e3d7c9189ce4a7b76849ff7ddfdf841461ff1faf5d96f3c",
+			"home": true,
+			"id": "night-home",
+			"known": true,
+			"label": "Noc · obývaná chata",
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 1.0
+		},
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/zoom-1-00-night-away.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "6a2a479e0be52ad2b704110542b8962e87d369492d7293b28da73c632cd285ad",
+			"home": false,
+			"id": "night-away",
+			"known": true,
+			"label": "Noc · dřevorubec venku",
+			"light_strength": 0.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 0,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 1.0
+		},
+		{
+			"case": "contact-sheet",
+			"file": "life-zoom-1-00.png"
+		},
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/zoom-2-40-day-away.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "f708c5a96688f7246d1c774e6f494aaf92f31fcabe0551fb51d79d8252e3bce6",
+			"home": false,
+			"id": "day-away",
+			"known": true,
+			"label": "Den · dřevorubec venku",
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 0,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": true,
+			"file": "frames/zoom-2-40-day-home.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "6f3da8703dc27e0c32895545de1cccc306d9b7e379afefdeb2d2e88f84daf705",
+			"home": true,
+			"id": "day-home",
+			"known": true,
+			"label": "Den · odpočinek doma",
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"rest": true,
+			"rest_visible": true,
+			"rest_worker_id": 8,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": true,
+			"file": "frames/zoom-2-40-day-delivery.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "9ab858e5afcfc99932301fb9880e45801cd3cfd1d8a0996d952d715786a4803d",
+			"home": true,
+			"id": "day-delivery",
+			"known": true,
+			"label": "Den · odevzdávání klády",
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "deliver_output",
+			"worker_carrying": "log",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/zoom-2-40-night-home.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "2546b46829f08b8cf25386c9c578470922afcfba83ba9387aed94527229fce2d",
+			"home": true,
+			"id": "night-home",
+			"known": true,
+			"label": "Noc · obývaná chata",
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/zoom-2-40-night-away.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "0e5854d1ddc7f2fb3911c83ae307efed6b6a981f8c560b866b640259a115811a",
+			"home": false,
+			"id": "night-away",
+			"known": true,
+			"label": "Noc · dřevorubec venku",
+			"light_strength": 0.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest": false,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 0,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"case": "contact-sheet",
+			"file": "life-zoom-2-40.png"
+		},
+		{
+			"case": "contact-sheet",
+			"file": "showcase.png"
+		},
+		{
+			"at_home": true,
+			"case": "pause",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/smoke-paused-a.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "1f9856ceb2625c29beb85ba8ee2c1558e72582397a442d46353de192a57d0403",
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.037,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "pause",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/smoke-paused-b.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "1f9856ceb2625c29beb85ba8ee2c1558e72582397a442d46353de192a57d0403",
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.037,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-00.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "1f9856ceb2625c29beb85ba8ee2c1558e72582397a442d46353de192a57d0403",
+			"index": 0,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.037,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-01.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "6d7ac6048c65a46851527deb23c50418a38ebb2ad5ec835f7934bdf78478e0dd",
+			"index": 1,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4751,
+			"time_seconds": 475.137,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-02.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "3f29dadfbabe3da6c60c8179ec0902378ce1650628be6283f3daf1cf0657192f",
+			"index": 2,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4752,
+			"time_seconds": 475.237,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-03.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "2e3d0a7af3c67ba1737c60fe92f630774aebad05c39e0015fc74d78b716dfcd5",
+			"index": 3,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4753,
+			"time_seconds": 475.337,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-04.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "00fdf65326a4e9a4556e32f39a70df3840c56b56d20a60b438a36dbf216d5c0e",
+			"index": 4,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4754,
+			"time_seconds": 475.437,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-05.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "65c5fc45b7bc291792c3db3c5339cd1f35e827a65606f28ebc5e099791734cac",
+			"index": 5,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4755,
+			"time_seconds": 475.537,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-06.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "0c25a725d065225fc4e3c1bcc0bed35c3414303d65a9926446ca2a9db1867ea0",
+			"index": 6,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4756,
+			"time_seconds": 475.637,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-07.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "b01552036ef442eb2dc3349d13ebc62171414e72344f834a69e592bc83d3011f",
+			"index": 7,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4757,
+			"time_seconds": 475.737,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-08.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "a8056a8a95ac2be14a6fe919fa2c0d273fe0d4e146808252bbbca3ae5853daa1",
+			"index": 8,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4758,
+			"time_seconds": 475.837,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-09.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "4ea831185b88d62fc13f20cb2cd8b999c136cc5e3b1cab356fa81a50a924853f",
+			"index": 9,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4759,
+			"time_seconds": 475.937,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-10.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "42db19b1a125c7952ec9018ca55d3fc84d6fc19e2416ad4f95a5617e52055cff",
+			"index": 10,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4760,
+			"time_seconds": 476.037,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-11.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "28b4b0e2021c48de49fcbca8edad3db520002a00b2ec6b2f1cb00649a9db0d93",
+			"index": 11,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4761,
+			"time_seconds": 476.137,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-12.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "93d856692f80e94aeb030a8b17e67b48dff64d0e0ef460176b8d476852305f22",
+			"index": 12,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4762,
+			"time_seconds": 476.237,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-13.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "0a6c6ef808a60e83c630064f692b2dc364e63944ed539ffc24c9c3e20d48d080",
+			"index": 13,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4763,
+			"time_seconds": 476.337,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-14.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "2fc878e86ec2e57c6ba1dea39cfffee98b6bc339342bae35c07e4af8b842250e",
+			"index": 14,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4764,
+			"time_seconds": 476.437,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-15.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "8f024440bbd9875480f856f12aa8cd3660498be279b260292101b88c4ef16f53",
+			"index": 15,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4765,
+			"time_seconds": 476.537,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-16.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "8d5bb61d5a553326588614557dbb5b9ba1d146c3e8dd53fa3c75695d60358e77",
+			"index": 16,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4766,
+			"time_seconds": 476.637,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-17.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "36230c3e7b6418a9dc50f9b48f9e76ebf354047dd1be328f7cbebc87fde7bf40",
+			"index": 17,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4767,
+			"time_seconds": 476.737,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-18.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "006bd39400a45582adaf24c9c8ceadf0a8cc78a71c7041ac0e6a37787ca84966",
+			"index": 18,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4768,
+			"time_seconds": 476.837,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-19.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "40ed5ff97d4a086380358b13efbd8c39280dde16880f0a84e959e77e58b01b07",
+			"index": 19,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4769,
+			"time_seconds": 476.937,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-20.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "cd580a402d514ee3b7b764113c7e295c56cb9ca0e2509a41318aa0c1c7bbdf89",
+			"index": 20,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4770,
+			"time_seconds": 477.037,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-21.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "aba5468e0013268373ccbe6a768b6f2bf24beb2d986f31853238cd0ed553967c",
+			"index": 21,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4771,
+			"time_seconds": 477.137,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-22.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "65abc09adecd488a22a378065d815c7860c9a3996f3cf442a46f929acbe101fe",
+			"index": 22,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4772,
+			"time_seconds": 477.237,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-23.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "7f2ca4364b9a278d65144d9493eda5eb9ad44677f5b9372f1a51bb5e37bc1ce7",
+			"index": 23,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4773,
+			"time_seconds": 477.337,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-24.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "e2e7565589d8de40a7f2db054a597b7979a4ce2453fde8237b8064e6acdb7681",
+			"index": 24,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4774,
+			"time_seconds": 477.437,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-25.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "4067a47f06459d8e00feecc2c46e1e2b9ea0f1255fa62596313df2d86d8e95ab",
+			"index": 25,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4775,
+			"time_seconds": 477.537,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-26.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "5dacd26c9a7caaebdae4b7eba0080fb09f8a0d63e911e5f0c88cd72023736754",
+			"index": 26,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4776,
+			"time_seconds": 477.637,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-27.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "4cd555fd2aaa1ebcd8e554bb3b5d659090175e53700063d853039391ce40ad48",
+			"index": 27,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4777,
+			"time_seconds": 477.737,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-28.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "7fd5d6349c260c4cc2fbbb9f2b238d6449c2e41085f7542d473a47a2eb984860",
+			"index": 28,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4778,
+			"time_seconds": 477.837,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"case": "smoke-animation",
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"duration_seconds": 0.1,
+			"file": "frames/smoke-29.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "1b3c5a1f97f5e749eb82f4b5380c4ba9f6ebc594e70bddd676b26f93dc889c86",
+			"index": 29,
+			"known": true,
+			"light_strength": 1.0,
+			"night": true,
+			"painted_terrain": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 1.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4779,
+			"time_seconds": 477.937,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": true,
+			"file": "frames/raised-home.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "80c18f1025c56b36931a3b32d7fe5450ccb55ac57988f884301c627f31737bf4",
+			"id": "raised-home",
+			"known": true,
+			"light_strength": 0.0,
+			"night": false,
+			"painted_terrain": true,
+			"raised": true,
+			"rest_visible": true,
+			"rest_worker_id": 8,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				339.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": true,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": true,
+			"file": "frames/occlusion-home.png",
+			"fog_state": 2,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "396ffc5e361fe0c32d97875871c00f74035a46d55d70c303b9f81afc89d91a9e",
+			"id": "occlusion-home",
+			"known": true,
+			"light_strength": 0.0,
+			"night": false,
+			"occlusion": true,
+			"painted_terrain": true,
+			"rest_visible": true,
+			"rest_worker_id": 9,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 1750,
+			"time_seconds": 175.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/fog-explored-away.png",
+			"fog_state": 1,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "ed59fe997baf306587f89719d9ebcb8ca422df75558b31245565764a2929f337",
+			"known": false,
+			"light_strength": 0.0,
+			"night": true,
+			"painted_terrain": true,
+			"private": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 0,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/fog-explored-home.png",
+			"fog_state": 1,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "ed59fe997baf306587f89719d9ebcb8ca422df75558b31245565764a2929f337",
+			"known": false,
+			"light_strength": 0.0,
+			"night": true,
+			"painted_terrain": true,
+			"private": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/fog-unknown-away.png",
+			"fog_state": 0,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "c1ff5f2ce2a50e0b34e9831aa9be90e9e9947233b644bd3b90df275a4a778a15",
+			"known": false,
+			"light_strength": 0.0,
+			"night": true,
+			"painted_terrain": true,
+			"private": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 0,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"at_home": false,
+			"door_cell": [
+				17,
+				11
+			],
+			"door_open": false,
+			"file": "frames/fog-unknown-home.png",
+			"fog_state": 0,
+			"footprint_version": 2,
+			"foundation_remaining": 0,
+			"frame_sha256": "c1ff5f2ce2a50e0b34e9831aa9be90e9e9947233b644bd3b90df275a4a778a15",
+			"known": false,
+			"light_strength": 0.0,
+			"night": true,
+			"painted_terrain": true,
+			"private": true,
+			"rest_visible": false,
+			"rest_worker_id": 0,
+			"size": [
+				480,
+				420
+			],
+			"smoke_strength": 0.0,
+			"source_to_world": 0.225,
+			"stage": {
+				"finishing_step": 21,
+				"phase": "complete",
+				"progress": 1.0,
+				"step": 33,
+				"wood_step": 12
+			},
+			"tick": 4750,
+			"time_seconds": 475.0,
+			"worker_action": "",
+			"worker_carrying": "",
+			"worker_inside_id": 1,
+			"world_rect": [
+				572.200012207031,
+				387.75,
+				144.0,
+				144.0
+			],
+			"zoom": 2.4
+		}
+	],
+	"engine": "4.7.2-stable (official)",
+	"fixture": "Isolated 32x24 world, hut (14,12), production Main/SubViewport; worker spawned assigned, entered/exited using IndoorWorkers API; explicit actions and ticks",
+	"music": "No game_session/music controller or saved preferences loaded; saves untouched",
+	"native_pixel_checks": [
+		{
+			"changed_pixels": 25,
+			"check": "door-opens-zoom-0-75",
+			"maximum_luminance_increase": 0.060870572924614,
+			"neighborhood": "5x5",
+			"passed": true,
+			"screen_probe": [
+				280,
+				229
+			],
+			"source_probe": [
+				560.0,
+				355.0
+			]
+		},
+		{
+			"changed_pixels": 25,
+			"check": "window-glows-zoom-0-75",
+			"maximum_luminance_increase": 0.63539844751358,
+			"neighborhood": "5x5",
+			"passed": true,
+			"screen_probe": [
+				268,
+				231
+			],
+			"source_probe": [
+				486.0,
+				365.0
+			]
+		},
+		{
+			"changed_pixels": 25,
+			"check": "door-opens-zoom-1-00",
+			"maximum_luminance_increase": 0.0,
+			"neighborhood": "5x5",
+			"passed": true,
+			"screen_probe": [
+				294,
+				236
+			],
+			"source_probe": [
+				560.0,
+				355.0
+			]
+		},
+		{
+			"changed_pixels": 25,
+			"check": "window-glows-zoom-1-00",
+			"maximum_luminance_increase": 0.617154560983181,
+			"neighborhood": "5x5",
+			"passed": true,
+			"screen_probe": [
+				277,
+				238
+			],
+			"source_probe": [
+				486.0,
+				365.0
+			]
+		},
+		{
+			"changed_pixels": 25,
+			"check": "door-opens-zoom-2-40",
+			"maximum_luminance_increase": 0.0,
+			"neighborhood": "5x5",
+			"passed": true,
+			"screen_probe": [
+				370,
+				272
+			],
+			"source_probe": [
+				560.0,
+				355.0
+			]
+		},
+		{
+			"changed_pixels": 25,
+			"check": "window-glows-zoom-2-40",
+			"maximum_luminance_increase": 0.523845508694649,
+			"neighborhood": "5x5",
+			"passed": true,
+			"screen_probe": [
+				330,
+				278
+			],
+			"source_probe": [
+				486.0,
+				365.0
+			]
+		},
+		{
+			"changed_pixels": 0,
+			"check": "pause-freezes-native-frame",
+			"fixed_accumulator": 0.037,
+			"fixed_tick": 4750,
+			"passed": true
+		},
+		{
+			"changed_pixels": 2118,
+			"check": "smoke-phase-positive-control",
+			"first_time_seconds": 475.037,
+			"last_time_seconds": 477.937,
+			"passed": true,
+			"screen_region": [
+				285,
+				13,
+				75,
+				101
+			]
+		},
+		{
+			"changed_pixels": 0,
+			"check": "foreign-explored-invariant",
+			"passed": true
+		},
+		{
+			"changed_pixels": 0,
+			"check": "foreign-unknown-invariant",
+			"passed": true
+		}
+	],
+	"production_sha256": {
+		"res://art/buildings/lumber_hut/v1/life/resting_lumberjack.json": "29a5deba2319fa2fe08d817257a48d129791f7a2034b39d8544cb9faa3b31f50",
+		"res://art/buildings/lumber_hut/v1/life/resting_lumberjack.png": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+		"res://scripts/view/lumber_hut_life.gd": "777c499bc9700301a600c6aee30bd4e3fe7b4db7ab5f4b1445fb6096494fd42a",
+		"res://scripts/view/main_view.gd": "e30af454cef1d8c6722cfb1ebc5309e71c5225d27242edd17f0ea35787a47e97",
+		"res://tools/preview_lumber_hut_life.gd": "dad7352ce37df9d19c5a49dcd5fe47eb4070177a61f8775530535a4f27208500"
+	},
+	"renderer": "Apple M4",
+	"scene": "res://scenes/main.tscn",
+	"simulation": "Process disabled for reproducible snapshots; smoke sequence samples 30 phase times at 0.1 simulation-second spacing; no economic work claimed"
+}

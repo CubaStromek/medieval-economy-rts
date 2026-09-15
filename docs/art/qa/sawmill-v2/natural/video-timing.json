@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-12",
+  "source_frames": 34,
+  "wall_span": 3.498938,
+  "interval_min": 0.088678,
+  "interval_median": 0.101349,
+  "interval_max": 0.283672,
+  "final_hold_seconds": 0.101349,
+  "sim_span": 3.46576633333333,
+  "policy": "Variable frame durations from actual wall timestamps; repeated final frame only closes last duration. No invented intermediate observations.",
+  "encoded_stream": {
+    "width": 1152,
+    "height": 720,
+    "duration": "3.599000",
+    "nb_frames": "35"
+  },
+  "encoded_frame_count": 35,
+  "max_pts_error_seconds": 0.0004979999999998874,
+  "verified_all_six_work_frames": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    0
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "date": "2026-09-12",
+  "source": "docs/art/sources/sawmill-v2/concept-03-key.png",
+  "source_sha256": "5ad88beb53a142a556f15da196cda2f835f47718f0d11dcf560d93850b3f1ccd",
+  "canvas": [
+    1254,
+    1254
+  ],
+  "status": "Source geometry only; final alpha and native game contacts not yet verified",
+  "raw_source_to_world": 0.1195,
+  "uniform_export_canvas": [
+    800,
+    800
+  ],
+  "source_to_world_for_800_canvas": 0.18731624999999996,
+  "navigation_threshold_raw": [
+    400,
+    1030
+  ],
+  "occupied_world_size": [
+    160,
+    80
+  ],
+  "occupied_raw_bounds": [
+    -102.09205020920507,
+    360.5439330543933,
+    1236.8200836820083,
+    1030
+  ],
+  "external_approach_raw_bounds": [
+    232.63598326359832,
+    1030,
+    567.3640167364017,
+    1364.7280334728034
+  ],
+  "manual_visible_ground_contacts": {
+    "left masonry": [
+      35,
+      841
+    ],
+    "south masonry": [
+      259,
+      1029
+    ],
+    "east masonry": [
+      1228,
+      800
+    ],
+    "middle post": [
+      735,
+      937
+    ],
+    "entry step": [
+      391,
+      1007
+    ],
+    "log cradle": [
+      522,
+      909
+    ],
+    "bench left foot": [
+      830,
+      875
+    ],
+    "bench right foot": [
+      981,
+      832
+    ],
+    "board rack foot": [
+      1108,
+      808
+    ]
+  },
+  "manual_contact_uncertainty_raw_px": 5,
+  "manual_contacts_inside": true,
+  "lower_image_non_key_extents": {
+    "20": {
+      "inclusive_bbox": [
+        35,
+        740,
+        1228,
+        1029
+      ],
+      "pixel_count": 204990
+    },
+    "60": {
+      "inclusive_bbox": [
+        34,
+        740,
+        1228,
+        1029
+      ],
+      "pixel_count": 205481
+    },
+    "100": {
+      "inclusive_bbox": [
+        34,
+        740,
+        1229,
+        1029
+      ],
+      "pixel_count": 205869
+    }
+  },
+  "extent_method": "Rows y>=740, classify min(R,B)-G below20/60/100. Diagnostic only; no final alpha created. Bbox maxima are inclusive pixel indices.",
+  "lower_image_south_margin_world_using_pixel_lower_edge": 0.0,
+  "lower_image_east_margin_world_using_pixel_right_edge": 0.8149999999999938,
+  "door_clear_opening_manual_quad": [
+    [
+      332,
+      645
+    ],
+    [
+      403,
+      628
+    ],
+    [
+      403,
+      913
+    ],
+    [
+      332,
+      931
+    ]
+  ],
+  "door_height_raw": [
+    286,
+    285
+  ],
+  "door_height_world": [
+    34.177,
+    34.0575
+  ],
+  "door_clear_width_world": 8.484499999999999,
+  "door_measurement_uncertainty_raw_px": 5,
+  "human_body_height_world": 33,
+  "door_target_note": "Actual opening is taller than33world person but shorter than requested300raw. Native walking/open-door clearance remains to be verified.",
+  "navigation_note": "Nav is23rawpx (~2.75world) south of the manually observed central lower step edge; final actual entry may need a small registration adjustment. Navigation is not registered at the painted door leaf.",
+  "limitations": [
+    "Only visible ground contacts are measured; obscured rear contact is bounded conservatively by the house.",
+    "This does not establish roof contact, slope support, final alpha fringe or animation registration.",
+    "The south margin is less than a world pixel; test actual raised platform before deriving dynamic artwork."
+  ]
+}

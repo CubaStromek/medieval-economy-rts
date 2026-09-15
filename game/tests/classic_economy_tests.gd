@@ -112,7 +112,7 @@ static func _recipe_fixture(recipe_id: String) -> Dictionary:
 static func _test_all_reference_recipes(failures: Array[String]) -> void:
 	var catalog_world = LegacyFixture.create()
 	_check(catalog_world.catalog.recipes.size() == 19, "KaM catalog must cover all 19 processing recipes", failures)
-	_check(catalog_world.catalog.buildings.size() == 30 and catalog_world.catalog.resources.size() == 28, "Catalog must contain 28 reference buildings plus the Forester Hut and Workers' Cottage project extensions, and 28 wares", failures)
+	_check(catalog_world.catalog.buildings.size() == 29 and catalog_world.catalog.resources.size() == 28, "Catalog must contain 28 reference buildings plus the Forester Hut project extension, and 28 wares", failures)
 	_check(catalog_world.catalog.units.has("gardener"), "The expanded economy must retain the gardener/forester profession", failures)
 	for recipe_id: String in EXPECTED_RECIPES:
 		var fixture: Dictionary = _recipe_fixture(recipe_id)

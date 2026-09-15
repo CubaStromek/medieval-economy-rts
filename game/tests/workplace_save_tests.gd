@@ -317,11 +317,11 @@ static func _test_inspector_shows_one_person_slot(failures: Array[String]) -> vo
 	var hud := Hud.new()
 	hud._catalog = world.catalog
 	var vacant: String = hud._selected_production_text(world, world.buildings[hut]["position"])
-	_check(vacant.contains("Lumberjack") and vacant.contains("0/1") and vacant.contains("waiting for worker"),
+	_check(vacant.contains("Dřevorubec") and vacant.contains("0/1") and vacant.contains("čeká na obsazení"),
 		"Empty hut inspector must clearly show its single vacant lumberjack slot", failures)
 	var owner: int = world.spawn_worker(Vector2i(2, 9), "lumberjack", hut, false)
 	var occupied: String = hud._selected_production_text(world, world.buildings[hut]["position"])
-	_check(occupied.contains("Lumberjack #%d" % owner) and occupied.contains("1/1") and not occupied.contains("0/1"),
+	_check(occupied.contains("Dřevorubec #%d" % owner) and occupied.contains("1/1") and not occupied.contains("0/1"),
 		"Staffed hut inspector must identify its persistent owner and one occupied slot", failures)
 	var barracks: String = hud._selected_production_text(world, world.buildings[fixture["barracks"]]["position"])
 	_check(not barracks.contains("0/1") and not barracks.contains("1/1"),

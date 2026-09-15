@@ -1,0 +1,11 @@
+{
+  "source": "docs/art/sources/sawmill-operation-v1/log-rgba-master.png",
+  "operation": "Trim real alpha, rotate -30 degrees to bench direction, resample to 352x88",
+  "draw_rect_house": [
+    429,
+    467,
+    88,
+    22
+  ],
+  "state": "One committed recipe input when process_remaining > 0, independent of stored input quantity"
+}

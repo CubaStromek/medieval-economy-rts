@@ -1,0 +1,276 @@
+{
+  "date": "2026-09-12",
+  "source": {
+    "canvas": [
+      1024,
+      1536
+    ],
+    "counts": {
+      "transparent": 1253844,
+      "partial": 4527,
+      "opaque": 314493
+    },
+    "alpha_bounds_exclusive": {
+      "0": [
+        287,
+        94,
+        712,
+        1375
+      ],
+      "25": [
+        287,
+        94,
+        712,
+        1375
+      ],
+      "127": [
+        287,
+        94,
+        712,
+        1374
+      ]
+    }
+  },
+  "production": {
+    "canvas": [
+      256,
+      256
+    ],
+    "counts": {
+      "transparent": 59615,
+      "partial": 1320,
+      "opaque": 4601
+    },
+    "alpha_bounds_exclusive": {
+      "0": [
+        96,
+        37,
+        156,
+        208
+      ],
+      "25": [
+        99,
+        40,
+        154,
+        206
+      ],
+      "127": [
+        99,
+        40,
+        154,
+        205
+      ]
+    }
+  },
+  "look": {
+    "date": "2026-09-12",
+    "frames": {
+      "left": "left.png",
+      "center": "center.png",
+      "right": "right.png"
+    },
+    "size": [
+      256,
+      256
+    ],
+    "production_ground_contact": [
+      133.02734375,
+      205.1171875
+    ],
+    "production_body_height_px": 165,
+    "source_px_to_world": 0.2,
+    "collar_y": 79,
+    "source_head_polygon_master": [
+      [
+        325,
+        70
+      ],
+      [
+        635,
+        70
+      ],
+      [
+        635,
+        260
+      ],
+      [
+        570,
+        267
+      ],
+      [
+        561,
+        305
+      ],
+      [
+        552,
+        341
+      ],
+      [
+        532,
+        358
+      ],
+      [
+        521,
+        386
+      ],
+      [
+        509,
+        375
+      ],
+      [
+        502,
+        361
+      ],
+      [
+        472,
+        364
+      ],
+      [
+        439,
+        355
+      ],
+      [
+        410,
+        339
+      ],
+      [
+        393,
+        316
+      ],
+      [
+        385,
+        289
+      ],
+      [
+        325,
+        282
+      ]
+    ],
+    "crop_reference": {
+      "left": 280,
+      "top": 48,
+      "width": 480,
+      "height": 448
+    },
+    "original_sha256": "48fe91d86381ac36c115038fac987e4694e39d49e10f98aee468fef64805cc7e",
+    "body_policy": "Center is byte-identical original PNG; left/right preserve every original RGBA pixel outside this carpenter head mask and at y>=79, including all torso, arms and boots.",
+    "measurements": {
+      "left": {
+        "source_sha256": "4415f4f1ba8d9f8ef2f31020b58de824309425b908fd796687a048585b548722",
+        "production_sha256": "da4753003c6099874ff646354150d432b1a2459d6efba797e02fd82ac8640f81",
+        "source_canvas": [
+          1298,
+          1212
+        ],
+        "key_color": [
+          247,
+          4,
+          248
+        ],
+        "transparent_dominance_threshold": 205,
+        "changed_pixels": 906,
+        "changed_bounds_exclusive": [
+          106,
+          37,
+          141,
+          77
+        ],
+        "body_different_pixels_below_collar": 0,
+        "feet_different_pixels": 0,
+        "canvas": [
+          256,
+          256
+        ],
+        "counts": {
+          "transparent": 59647,
+          "partial": 1324,
+          "opaque": 4565
+        },
+        "alpha_bounds_exclusive": {
+          "0": [
+            96,
+            37,
+            156,
+            208
+          ],
+          "25": [
+            99,
+            39,
+            154,
+            206
+          ],
+          "127": [
+            99,
+            40,
+            154,
+            205
+          ]
+        }
+      },
+      "right": {
+        "source_sha256": "efa21908c9ccb476221431f2f1b3d3b93d6c39cbd3a988b6244e818ec079b357",
+        "production_sha256": "865878889eba7059f774e4d5a05f690162b6fe20166462cc3fbd98e911291685",
+        "source_canvas": [
+          1298,
+          1212
+        ],
+        "key_color": [
+          247,
+          4,
+          248
+        ],
+        "transparent_dominance_threshold": 205,
+        "changed_pixels": 945,
+        "changed_bounds_exclusive": [
+          106,
+          37,
+          141,
+          77
+        ],
+        "body_different_pixels_below_collar": 0,
+        "feet_different_pixels": 0,
+        "canvas": [
+          256,
+          256
+        ],
+        "counts": {
+          "transparent": 59606,
+          "partial": 1336,
+          "opaque": 4594
+        },
+        "alpha_bounds_exclusive": {
+          "0": [
+            96,
+            37,
+            156,
+            208
+          ],
+          "25": [
+            99,
+            39,
+            154,
+            206
+          ],
+          "127": [
+            99,
+            40,
+            154,
+            205
+          ]
+        }
+      }
+    }
+  },
+  "rest_sprite": {
+    "texture": "res://art/buildings/sawmill/v1/life/resting_carpenter.png",
+    "body_height_px": 165,
+    "ground_contact": [
+      133.02734375,
+      205.1171875
+    ],
+    "look_textures": {
+      "left": "res://art/buildings/sawmill/v1/life/look/left.png",
+      "right": "res://art/buildings/sawmill/v1/life/look/right.png"
+    }
+  }
+}

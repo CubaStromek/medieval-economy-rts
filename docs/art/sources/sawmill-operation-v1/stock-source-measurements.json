@@ -1,0 +1,153 @@
+{
+  "date": "2026-09-12",
+  "sources": {
+    "log": {
+      "source": "log-key.png",
+      "source_sha256": "439bf3fd3e4a9b2ae5881264f98c62749f6bdfc699520489b3933436fc61b4dd",
+      "master": "log-rgba-master.png",
+      "master_sha256": "ca8930c438b91ea793e8b2ce58f057436330ffcd811ec9fcdb06dfe5a71d164f",
+      "source_canvas": [
+        1536,
+        1024
+      ],
+      "key": [
+        252,
+        2,
+        251
+      ],
+      "empty_top_region": [
+        0,
+        0,
+        1536,
+        150
+      ],
+      "empty_top_dominance": [
+        227,
+        252
+      ],
+      "known_exterior_dominance": [
+        206,
+        252
+      ],
+      "transparent_dominance_threshold": 198,
+      "trim": {
+        "left": 307,
+        "top": 198,
+        "width": 887,
+        "height": 625
+      },
+      "source_to_production": [
+        0.04284103720405862,
+        0.0432
+      ],
+      "source_contact": [
+        1039,
+        820
+      ],
+      "raw_measurements": {
+        "canvas": [
+          1536,
+          1024
+        ],
+        "transparent": 1289097,
+        "partial": 2784,
+        "opaque": 280983,
+        "residual_magenta_pixels": 0,
+        "alpha_bounds_exclusive": {
+          "0": [
+            309,
+            200,
+            1192,
+            821
+          ],
+          "25": [
+            309,
+            200,
+            1192,
+            821
+          ],
+          "127": [
+            309,
+            200,
+            1192,
+            820
+          ]
+        }
+      }
+    },
+    "plank": {
+      "source": "plank-key.png",
+      "source_sha256": "5150868546376dbe2a7479046687dfa30fd8e3ca058fd7c3a591dda22e035167",
+      "master": "plank-rgba-master.png",
+      "master_sha256": "e46bd4a601837c1aaa4e8b14e7a4f1acdedf0f1e7d99fa5323bf6bcac53dcf55",
+      "source_canvas": [
+        1536,
+        1024
+      ],
+      "key": [
+        252,
+        4,
+        250
+      ],
+      "empty_top_region": [
+        0,
+        0,
+        1536,
+        150
+      ],
+      "empty_top_dominance": [
+        224,
+        250
+      ],
+      "known_exterior_dominance": [
+        200,
+        250
+      ],
+      "transparent_dominance_threshold": 192,
+      "trim": {
+        "left": 119,
+        "top": 169,
+        "width": 1299,
+        "height": 694
+      },
+      "source_to_production": [
+        0.05850654349499615,
+        0.059077809798270896
+      ],
+      "source_contact": [
+        1260,
+        860
+      ],
+      "raw_measurements": {
+        "canvas": [
+          1536,
+          1024
+        ],
+        "transparent": 1321834,
+        "partial": 3465,
+        "opaque": 247565,
+        "residual_magenta_pixels": 0,
+        "alpha_bounds_exclusive": {
+          "0": [
+            121,
+            171,
+            1416,
+            861
+          ],
+          "25": [
+            121,
+            171,
+            1416,
+            861
+          ],
+          "127": [
+            121,
+            171,
+            1416,
+            860
+          ]
+        }
+      }
+    }
+  }
+}

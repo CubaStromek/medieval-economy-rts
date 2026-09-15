@@ -17,14 +17,26 @@ const LumberjackWorkPlacementClass = preload("res://scripts/view/lumberjack_work
 const TreeSpriteLibraryClass = preload("res://scripts/view/tree_sprite_library.gd")
 const LumberHutSpriteLibraryClass = preload("res://scripts/view/lumber_hut_sprite_library.gd")
 const LumberHutStockLibraryClass = preload("res://scripts/view/lumber_hut_stock_library.gd")
+const LumberHutLifeClass = preload("res://scripts/view/lumber_hut_life.gd")
+const SawmillSpriteLibraryClass = preload("res://scripts/view/sawmill_sprite_library.gd")
+const ProductionBuildingLifeClass = preload("res://scripts/view/production_building_life.gd")
+const SawmillOperationClass = preload("res://scripts/view/sawmill_operation.gd")
+const SawmillOperationArtClass = preload("res://scripts/view/sawmill_operation_art.gd")
+const WarehouseSpriteLibraryClass = preload("res://scripts/view/warehouse_sprite_library.gd")
+const WarehouseLifeClass = preload("res://scripts/view/warehouse_life.gd")
 const PlacementPreviewRulesClass = preload("res://scripts/view/placement_preview_rules.gd")
-const SolarCycleClass = preload("res://scripts/view/solar_cycle.gd")
-const SolarShadowsClass = preload("res://scripts/view/solar_shadows.gd")
 const BuildingFootprintRendererClass = preload("res://scripts/view/building_footprint_renderer.gd")
 const FogRendererClass = preload("res://scripts/view/fog_renderer.gd")
 
 const FIXED_TICK_SECONDS: float = SimulationWorldClass.TICK_SECONDS
-const MAX_TICKS_PER_FRAME: int = 8
+# Game time follows real time like KaM Remake (TKMGame.UpdateGame): ticks owed
+# after a slow frame are replayed instead of slowing the game. The debt is
+# capped at Remake's MAX_TICKS_PER_GAME_UPDATE, so a stall such as a breakpoint
+# or system sleep does not fast-forward minutes of play.
+const MAX_TICK_BACKLOG: int = 100
+# Real time spent on owed ticks before the next frame is drawn. Ticks left over
+# stay owed for the following frames; one owed tick always runs.
+const CATCH_UP_BUDGET_USEC: int = 100000
 const TERRAIN_STUDY_SAVE_PATH: String = "user://medieval_economy_rts_mountainous_region_save.json"
 const LARGE_MAP_CULL_CELLS: int = 4096
 # Selected frames reach source y=221 below the common y=205 anchor:
@@ -42,6 +54,10 @@ var selected_cell := Vector2i(-1, -1)
 var selected_unit_id: int = 0
 var build_mode: String = ""
 var accumulator: float = 0.0
+var catch_up_budget_usec: int = CATCH_UP_BUDGET_USEC
+# Real time when the game clock was last restarted (start, load, reset), or -1.
+# The next frame credits only time since then, not the loading itself.
+var _clock_restart_usec: int = -1
 var dragging_camera: bool = false
 var simulation_speed: float = 0.5
 var speed_before_pause: float = 0.5
@@ -63,11 +79,25 @@ var lumberjack_work_placement := LumberjackWorkPlacementClass.new()
 var tree_sprites := TreeSpriteLibraryClass.new()
 var lumber_hut_sprites := LumberHutSpriteLibraryClass.new()
 var lumber_hut_stock := LumberHutStockLibraryClass.new()
+var lumber_hut_life := LumberHutLifeClass.new()
+var sawmill_sprites := SawmillSpriteLibraryClass.new()
+var production_building_life := ProductionBuildingLifeClass.new()
+var sawmill_operation := SawmillOperationClass.new()
+var sawmill_operation_art := SawmillOperationArtClass.new()
+var warehouse_sprites := WarehouseSpriteLibraryClass.new()
+var warehouse_life := WarehouseLifeClass.new()
 var fog_renderer := FogRendererClass.new()
 var _dynamic_rows: Dictionary = {}
 var _row_entries: Dictionary = {}
-var _row_shadows: Dictionary = {}
-var solar_state: Dictionary = {}
+# Each object row paints its ground layer, then ordered child layers. Procedural
+# buildings keep their retained drawing until their visual inputs change;
+# bitmap houses, trees, units and fog are still redrawn every frame.
+var _row_segments: Dictionary = {}
+var _segment_entries: Dictionary = {}
+var _segment_fog: Dictionary = {}
+var _building_layers: Dictionary = {}
+var _geometry_cache: Dictionary = {}
+var static_building_redraws: int = 0
 var _draw_canvas: CanvasItem
 var hovered_cell: Vector2i = Vector2i(-1, -1)
 var placement_preview: Dictionary = {}
@@ -115,6 +145,7 @@ func _ready() -> void:
 		_configure_game_window()
 	terrain_renderer.external_painter = true
 	_bind_terrain_graphics()
+	sawmill_operation.observe_tick(world)
 	_set_initial_camera()
 	_build_ui()
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
@@ -124,6 +155,7 @@ func _ready() -> void:
 	_placement_canvas.visible = false
 	_placement_canvas.draw.connect(_draw_placement_preview)
 	add_child(_placement_canvas)
+	_restart_game_clock()
 	_update_ui()
 	queue_redraw()
 
@@ -141,10 +173,10 @@ func _update_window_title() -> void:
 	if get_viewport() != get_tree().root:
 		return
 	var level_titles: Dictionary = {
-		"test": "Test level · Warehouse + School · Construction supplies ready",
-		"relief": "Roads and trees",
-		"economy": "Economy demo + environment",
-		"mountainous-region": "Mountainous Region · starter settlement",
+		"test": "Testovací mapa · sklad a škola · materiál připraven",
+		"relief": "Cesty a stromy",
+		"economy": "Ekonomická ukázka a prostředí",
+		"mountainous-region": "Mountainous Region · počáteční osada",
 	}
 	get_tree().root.title = "Medieval Economy RTS · " + String(level_titles.get(demo_kind, level_titles["test"]))
 	if terrain_renderer != null and terrain_renderer.painted_mode_active():
@@ -166,21 +198,42 @@ func _configure_game_window() -> void:
 
 func _process(delta: float) -> void:
 	_handle_keyboard_camera(delta)
-	accumulator += minf(delta * simulation_speed, FIXED_TICK_SECONDS * float(MAX_TICKS_PER_FRAME))
+	_advance_simulation(delta)
+	_update_ui()
+	_update_placement_preview()
+	queue_redraw()
+
+
+## Plays the ticks owed by the elapsed real time at the selected speed.
+func _advance_simulation(delta: float) -> int:
+	if _clock_restart_usec >= 0:
+		delta = minf(delta, float(Time.get_ticks_usec() - _clock_restart_usec) / 1000000.0)
+		_clock_restart_usec = -1
+	accumulator = minf(accumulator + delta * simulation_speed, FIXED_TICK_SECONDS * float(MAX_TICK_BACKLOG))
+	# Count whole ticks at once; repeated float subtraction could leave one owed.
+	var due: int = floori(accumulator / FIXED_TICK_SECONDS + 0.000001)
+	var started_usec: int = Time.get_ticks_usec()
 	var ticks_run: int = 0
-	while accumulator >= FIXED_TICK_SECONDS and ticks_run < MAX_TICKS_PER_FRAME:
+	while ticks_run < due:
 		world.step_tick()
+		sawmill_operation.observe_tick(world)
 		# Observe every real step even when fast play advances several ticks
 		# between draws. This only updates the unsaved animation history.
 		if lumberjack_sprites.is_ready():
 			for worker: Dictionary in world.workers.values():
 				if String(worker.get("type", "")) == "lumberjack":
 					lumberjack_animation.sample(world, worker, 0.0)
-		accumulator -= FIXED_TICK_SECONDS
 		ticks_run += 1
-	_update_ui()
-	_update_placement_preview()
-	queue_redraw()
+		if Time.get_ticks_usec() - started_usec >= catch_up_budget_usec:
+			break
+	accumulator = maxf(accumulator - float(ticks_run) * FIXED_TICK_SECONDS, 0.0)
+	return ticks_run
+
+
+## Starts counting game time from now, like Remake after a load or restart.
+func _restart_game_clock() -> void:
+	accumulator = 0.0
+	_clock_restart_usec = Time.get_ticks_usec()
 
 
 func _input(event: InputEvent) -> void:
@@ -293,37 +346,18 @@ func _draw() -> void:
 		return
 	world.update_visibility()
 	fog_renderer.sync(world, terrain_renderer)
-	_update_day_lighting()
 	# Terrain owns retained even-Z rows; only these odd-Z object rows redraw
 	# with animation. The same ground order preserves foreground occlusion.
 	_sync_dynamic_rows()
 	_row_entries.clear()
-	_row_shadows.clear()
 	for entry: Dictionary in _world_draw_entries(true):
 		var row: int = clampi(floori(_entry_depth_position(entry).y + 0.5), 0, world.grid.size.y - 1)
 		if not _row_entries.has(row):
 			_row_entries[row] = []
 		_row_entries[row].append(entry)
-		if entry["kind"] == "tree":
-			entry["growth_stage"] = world.tree_growth_stage(entry["state"])
-		# Short survey stakes must not cast the silhouette of a full house.
-		if entry["kind"] == "building" and int((entry["state"] as Dictionary).get("foundation_work_remaining", 0)) > 0:
-			continue
-		if entry["kind"] == "building" and lumber_hut_sprites.supports(entry["state"]):
-			var construction_state: Dictionary = LumberHutSpriteLibraryClass.state_for(entry["state"],
-				world.catalog.building(String((entry["state"] as Dictionary)["type"])))
-			if int(construction_state["step"]) == 0:
-				continue
-		var shadows: Dictionary = SolarShadowsClass.rows_for(terrain_renderer, entry, solar_state)
-		for shadow_row: int in shadows:
-			if not _row_shadows.has(shadow_row):
-				_row_shadows[shadow_row] = []
-			(_row_shadows[shadow_row] as Array).append_array(shadows[shadow_row])
-	for canvas: Node2D in _dynamic_rows.values():
-		canvas.queue_redraw()
+	_layout_object_rows()
 	if _placement_canvas != null and _placement_canvas.visible:
 		_placement_canvas.queue_redraw()
-
 
 
 func _notification(what: int) -> void:
@@ -424,6 +458,13 @@ func _sync_dynamic_rows() -> void:
 	for row: int in _dynamic_rows.keys():
 		if row >= world.grid.size.y:
 			var obsolete: Node2D = _dynamic_rows[row]
+			for layer: Node in (_row_segments.get(row, []) as Array):
+				_segment_entries.erase(layer.get_instance_id())
+				_segment_fog.erase(layer.get_instance_id())
+			_row_segments.erase(row)
+			for id: int in _building_layers.keys():
+				if int(_building_layers[id]["row"]) == row:
+					_building_layers.erase(id)
 			remove_child(obsolete)
 			obsolete.free()
 			_dynamic_rows.erase(row)
@@ -440,20 +481,136 @@ func _sync_dynamic_rows() -> void:
 
 
 func _paint_dynamic_row(canvas: Node2D, row: int) -> void:
+	# The row's ground layer; its ordered child layers draw objects and fog.
 	_draw_canvas = canvas
 	_draw_deposits(row)
 	_draw_fields(row)
-	for shadow: Dictionary in _row_shadows.get(row, []):
-		# Indoor state can change between queuing this row and its draw callback.
-		if not _fog_entry_visible(String(shadow["kind"]), shadow["state"]):
-			continue
-		canvas.draw_set_transform(shadow["draw_origin"])
-		canvas.draw_colored_polygon(shadow["draw_points"], shadow["color"])
-		canvas.draw_set_transform(Vector2.ZERO)
 	_draw_selection(row)
+	_draw_canvas = null
+
+
+func _layout_object_rows() -> void:
+	var visible_buildings: Dictionary = {}
+	for row: int in range(world.grid.size.y):
+		_layout_row(row, visible_buildings)
+	for id: int in _building_layers.keys():
+		if not visible_buildings.has(id):
+			var stale: Node2D = _building_layers[id]["canvas"]
+			if is_instance_valid(stale):
+				# Hide immediately; a queued free would still show one old frame.
+				stale.visible = false
+				stale.queue_free()
+			_building_layers.erase(id)
+
+
+func _layout_row(row: int, visible_buildings: Dictionary) -> void:
+	var row_canvas: Node2D = _dynamic_rows[row]
+	row_canvas.queue_redraw()
+	# Children draw after the ground layer in tree order. Splitting the
+	# depth-sorted entries around each procedural house keeps the exact
+	# painter order of trees, buildings, units and the final fog row.
+	var layers: Array[Node2D] = []
+	var pending: Array = []
+	var segment_count: int = 0
 	for entry: Dictionary in _row_entries.get(row, []):
+		if entry["kind"] == "building" and _is_static_building(entry["state"]):
+			if not pending.is_empty():
+				layers.append(_row_segment(row, segment_count, pending, false))
+				segment_count += 1
+				pending = []
+			layers.append(_static_building_layer(row_canvas, row, entry))
+			visible_buildings[int(entry["id"])] = true
+		else:
+			pending.append(entry)
+	layers.append(_row_segment(row, segment_count, pending, true))
+	segment_count += 1
+	var pool: Array = _row_segments[row]
+	for index: int in range(segment_count, pool.size()):
+		var unused: Node2D = pool[index]
+		if unused.visible:
+			unused.visible = false
+			_segment_entries.erase(unused.get_instance_id())
+			_segment_fog.erase(unused.get_instance_id())
+	for index: int in range(layers.size()):
+		if layers[index].get_index() != index:
+			row_canvas.move_child(layers[index], index)
+
+
+func _row_segment(row: int, index: int, entries: Array, draws_fog: bool) -> Node2D:
+	if not _row_segments.has(row):
+		_row_segments[row] = []
+	var pool: Array = _row_segments[row]
+	if index >= pool.size():
+		var created := Node2D.new()
+		created.name = "ObjectLayer_%d" % index
+		created.draw.connect(_paint_row_segment.bind(created, row))
+		(_dynamic_rows[row] as Node2D).add_child(created)
+		pool.append(created)
+	var canvas: Node2D = pool[index]
+	canvas.visible = true
+	_segment_entries[canvas.get_instance_id()] = entries
+	_segment_fog[canvas.get_instance_id()] = draws_fog
+	canvas.queue_redraw()
+	return canvas
+
+
+func _paint_row_segment(canvas: Node2D, row: int) -> void:
+	_draw_canvas = canvas
+	for entry: Dictionary in _segment_entries.get(canvas.get_instance_id(), []):
 		_draw_world_entry(entry)
-	fog_renderer.draw_row(canvas, row)
+	if bool(_segment_fog.get(canvas.get_instance_id(), false)):
+		fog_renderer.draw_row(canvas, row)
+	_draw_canvas = null
+
+
+# Bitmap houses animate doors, residents and stock; only the code-drawn
+# placeholder buildings are retained between frames.
+func _is_static_building(building: Dictionary) -> bool:
+	return not lumber_hut_sprites.supports(building) and not sawmill_sprites.supports(building) \
+		and not warehouse_sprites.supports(building)
+
+
+func _static_building_layer(row_canvas: Node2D, row: int, entry: Dictionary) -> Node2D:
+	var id: int = int(entry["id"])
+	var layer: Dictionary = _building_layers.get(id, {})
+	if not layer.is_empty() and (int(layer["row"]) != row or not is_instance_valid(layer["canvas"])):
+		if is_instance_valid(layer["canvas"]):
+			(layer["canvas"] as Node2D).visible = false
+			(layer["canvas"] as Node2D).queue_free()
+		layer = {}
+	if layer.is_empty():
+		var canvas := Node2D.new()
+		canvas.name = "Building_%d" % id
+		canvas.draw.connect(_paint_static_building.bind(canvas, id))
+		row_canvas.add_child(canvas)
+		layer = {"canvas": canvas, "row": row, "signature": []}
+		_building_layers[id] = layer
+	layer["entry"] = entry
+	var signature: Array = _static_building_signature(entry["state"])
+	if layer["signature"] != signature:
+		layer["signature"] = signature
+		(layer["canvas"] as Node2D).queue_redraw()
+		static_building_redraws += 1
+	return layer["canvas"]
+
+
+## Everything a procedural building's drawing reads: its saved state, the
+## selection, the mill's tick-driven sails, terrain heights and the bound world.
+func _static_building_signature(building: Dictionary) -> Array:
+	var id: int = int(building["id"])
+	var selected: bool = selected_unit_id == 0 and world.building_id_at(selected_cell) == id
+	var sail_tick: int = world.tick if String(building.get("type", "")) == "mill" \
+		and int(building.get("process_remaining", 0)) > 0 else -1
+	return [building.hash(), selected, sail_tick, world.get_instance_id(), world.grid,
+		world.grid.connectivity_revision, terrain_renderer.grid]
+
+
+func _paint_static_building(canvas: Node2D, id: int) -> void:
+	var layer: Dictionary = _building_layers.get(id, {})
+	if layer.is_empty() or layer["canvas"] != canvas:
+		return
+	_draw_canvas = canvas
+	_draw_world_entry(layer["entry"])
 	_draw_canvas = null
 
 
@@ -558,12 +715,10 @@ func _draw_deposits(row: int) -> void:
 
 func _visible_tree_bounds() -> Rect2:
 	# Culling is presentation-only, and deliberately generous. An offscreen
-	# canopy or caster must remain when its sprite/shadow reaches the viewport,
-	# including a receiver anywhere in the supported 64-unit height range.
-	var shadow_vector: Vector2 = solar_state.get("shadow_vector", Vector2.ZERO) as Vector2
-	var shadow_cells: float = maxf(2.0, shadow_vector.length() * 1.25 + 0.5)
+	# canopy must remain when its sprite or ground shadow reaches the viewport,
+	# including a tree anywhere in the supported 64-unit height range.
 	var margin: float = TreeSpriteLibraryClass.MATURE_SPRUCE_HEIGHT
-	margin += shadow_cells * MapProjectionClass.CELL_SIZE.length()
+	margin += 2.0 * MapProjectionClass.CELL_SIZE.length()
 	margin += float(world.grid.MAX_HEIGHT) * MapProjectionClass.HEIGHT_STEP_PIXELS
 	return (get_global_transform_with_canvas().affine_inverse() * get_viewport_rect()).grow(margin)
 
@@ -601,12 +756,13 @@ func _world_draw_entries(visible_trees_only: bool = false) -> Array[Dictionary]:
 			"state": building,
 		})
 		if int(building.get("footprint_version", 0)) > 0:
-			var shape: Dictionary = building_geometry(building)
-			draw_entries[-1]["shadow_ground_position"] = shape["ground_center"]
-			draw_entries[-1]["shadow_radius"] = (shape["ground_size"] as Vector2) * 0.5
-			if lumber_hut_sprites.supports(building):
-				draw_entries[-1]["visual_ground_position"] = lumber_hut_sprites.visual_ground_position(
-					building, shape["door_cell"], MapProjectionClass.CELL_SIZE.y)
+			# Only painted houses need their measured door as a depth anchor.
+			var sprites: Variant = lumber_hut_sprites if lumber_hut_sprites.supports(building) \
+				else (sawmill_sprites if sawmill_sprites.supports(building) \
+				else (warehouse_sprites if warehouse_sprites.supports(building) else null))
+			if sprites != null:
+				draw_entries[-1]["visual_ground_position"] = sprites.visual_ground_position(
+					building, building_geometry(building)["door_cell"], MapProjectionClass.CELL_SIZE.y)
 	var frame_alpha: float = clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0)
 	for worker_variant: Variant in world.workers.values():
 		var worker: Dictionary = worker_variant as Dictionary
@@ -629,7 +785,6 @@ func _world_draw_entries(visible_trees_only: bool = false) -> Array[Dictionary]:
 		})
 		if String(worker.get("type", "")) == "lumberjack" and lumberjack_sprites.is_ready():
 			draw_entries[-1]["contact_ground_position"] = contact_ground
-			draw_entries[-1]["shadow_ground_position"] = contact_ground
 			draw_entries[-1]["visual_ground_position"] = contact_ground + Vector2(
 				0.0, LUMBERJACK_DEPTH_MARGIN_WORLD_PX / MapProjectionClass.CELL_SIZE.y)
 	draw_entries.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
@@ -734,29 +889,75 @@ func _draw_building(building: Dictionary, center: Vector2) -> void:
 	_draw_canvas.draw_string(ThemeDB.fallback_font, center + Vector2(-30, 22), String(definition.get("display_name", building["type"])), HORIZONTAL_ALIGNMENT_CENTER, 60, 11, Color(0.95, 0.95, 0.86))
 
 
-# Shared footprint geometry remains authoritative for terrain and shadows.
+# Shared footprint geometry remains authoritative for terrain and picking.
 # Bitmap houses expose their painted rectangle and alpha separately below.
+# The result is reused until the building's footprint inputs or terrain
+# heights change; callers must treat it as read-only.
 func building_geometry(building: Dictionary) -> Dictionary:
-	return BuildingFootprintRendererClass.geometry(world, terrain_renderer, building)
+	var id: int = int(building.get("id", 0))
+	var key: Array = [world.get_instance_id(), world.grid, world.grid.connectivity_revision, terrain_renderer.grid,
+		terrain_renderer.grid.connectivity_revision if terrain_renderer.grid != null else -1,
+		building.get("type"), building.get("position"), building.get("entrance"),
+		int(building.get("footprint_version", 0)), int(building.get("foundation_work_remaining", 0)),
+		int(building.get("foundation_work_total", 0))]
+	var cached: Dictionary = _geometry_cache.get(id, {})
+	if not cached.is_empty() and cached["key"] == key:
+		return cached["shape"]
+	var shape: Dictionary = BuildingFootprintRendererClass.geometry(world, terrain_renderer, building)
+	_geometry_cache[id] = {"key": key, "shape": shape}
+	return shape
 
 
 func building_sprite_presentation(building: Dictionary) -> Dictionary:
-	if not lumber_hut_sprites.supports(building):
+	if not lumber_hut_sprites.supports(building) and not sawmill_sprites.supports(building) and not warehouse_sprites.supports(building):
 		return {}
 	var shape: Dictionary = building_geometry(building)
+	if warehouse_sprites.supports(building):
+		return warehouse_sprites.presentation_for(building,
+			world.catalog.building(String(building["type"])), shape["door"], warehouse_life.doors_open(world, building))
+	if sawmill_sprites.supports(building):
+		return sawmill_sprites.presentation_for(building,
+			world.catalog.building(String(building["type"])), shape["door"])
 	return lumber_hut_sprites.presentation_for(building,
 		world.catalog.building(String(building["type"])), shape["door"])
 
 
 func building_stock_presentation(building: Dictionary) -> Dictionary:
+	if String(building.get("type", "")) == "warehouse":
+		return {}
 	return lumber_hut_stock.presentation_for(world, building, building_sprite_presentation(building))
+
+
+func building_life_presentation(building: Dictionary) -> Dictionary:
+	if String(building.get("type", "")) == "warehouse":
+		return warehouse_life.presentation_for(world, building, building_sprite_presentation(building),
+			clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0))
+	if String(building.get("type", "")) == "sawmill":
+		return production_building_life.presentation_for(world, building, building_sprite_presentation(building),
+			clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0))
+	return lumber_hut_life.presentation_for(world, building, building_sprite_presentation(building),
+		clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0))
+
+
+func building_operation_presentation(building: Dictionary) -> Dictionary:
+	return sawmill_operation.presentation_for(world, building, building_life_presentation(building),
+		clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0))
+
+
+func building_operation_art_presentation(building: Dictionary) -> Dictionary:
+	return sawmill_operation_art.presentation_for(building_sprite_presentation(building),
+		building_operation_presentation(building))
 
 
 func _draw_footprint_building(building: Dictionary, definition: Dictionary, base_color: Color) -> void:
 	var shape: Dictionary = building_geometry(building)
 	var sprite: Dictionary = lumber_hut_sprites.presentation_for(building, definition, shape["door"])
+	if sprite.is_empty():
+		sprite = sawmill_sprites.presentation_for(building, definition, shape["door"])
+	if sprite.is_empty():
+		sprite = warehouse_sprites.presentation_for(building, definition, shape["door"], warehouse_life.doors_open(world, building))
 	if not sprite.is_empty():
-		_draw_lumber_hut_sprite(building, definition, shape, sprite)
+		_draw_bitmap_building_sprite(building, definition, shape, sprite)
 		return
 	var construction: bool = int(building.get("construction_remaining", 0)) > 0
 	BuildingFootprintRendererClass.draw_shell(_draw_canvas, shape, base_color, construction)
@@ -770,7 +971,7 @@ func _draw_footprint_building(building: Dictionary, definition: Dictionary, base
 		_draw_canvas.draw_rect(Rect2(label + Vector2(-36, -8), Vector2(72 * progress, 5)), Color(0.88, 0.70, 0.30))
 		label.y += 11
 		if bool(shape["earthwork"]):
-			_draw_canvas.draw_string(ThemeDB.fallback_font, label + Vector2(-85, 0), "Ground preparation %d%%" % int(progress * 100.0), HORIZONTAL_ALIGNMENT_CENTER, 170, 11, Color("#f4c36a"))
+			_draw_canvas.draw_string(ThemeDB.fallback_font, label + Vector2(-85, 0), "Příprava terénu %d %%" % int(progress * 100.0), HORIZONTAL_ALIGNMENT_CENTER, 170, 11, Color("#f4c36a"))
 			label.y += 13
 	else:
 		_draw_building_details(building, shape["detail_center"])
@@ -782,7 +983,7 @@ func _draw_footprint_building(building: Dictionary, definition: Dictionary, base
 	_draw_canvas.draw_string(ThemeDB.fallback_font, label + Vector2(-65, 0), String(definition.get("display_name", building["type"])), HORIZONTAL_ALIGNMENT_CENTER, 130, 11, Color(0.97, 0.95, 0.82))
 
 
-func _draw_lumber_hut_sprite(building: Dictionary, definition: Dictionary, shape: Dictionary, sprite: Dictionary) -> void:
+func _draw_bitmap_building_sprite(building: Dictionary, definition: Dictionary, shape: Dictionary, sprite: Dictionary) -> void:
 	var construction: bool = not world.is_building_complete(building)
 	var sprite_rect: Rect2 = sprite["rect"]
 	# One measured text baseline above the finished roof serves all phases;
@@ -807,10 +1008,22 @@ func _draw_lumber_hut_sprite(building: Dictionary, definition: Dictionary, shape
 		_draw_canvas.draw_texture_rect(texture, sprite_rect, false)
 	# Stock uses the house's existing canvas and painter row. Foreground rack
 	# masks in the overlay preserve its posts; ordinary lighting and fog apply.
-	var stock: Dictionary = lumber_hut_stock.presentation_for(world, building, sprite)
+	var is_warehouse: bool = String(building.get("type", "")) == "warehouse"
+	var stock: Dictionary = {} if is_warehouse else lumber_hut_stock.presentation_for(world, building, sprite)
 	var stock_texture: Texture2D = stock.get("texture") as Texture2D
 	if stock_texture != null:
 		_draw_canvas.draw_texture_rect(stock_texture, stock["rect"], false)
+	var life: Dictionary
+	var fraction: float = clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0)
+	if String(building.get("type", "")) == "sawmill":
+		life = production_building_life.presentation_for(world, building, sprite, fraction)
+		var operation: Dictionary = sawmill_operation.presentation_for(world, building, life, fraction)
+		var operation_art: Dictionary = sawmill_operation_art.presentation_for(sprite, operation)
+		sawmill_operation_art.draw(_draw_canvas, operation_art, sprite)
+		production_building_life.draw(_draw_canvas, life, sprite)
+	elif not is_warehouse:
+		life = lumber_hut_life.presentation_for(world, building, sprite, fraction)
+		lumber_hut_life.draw(_draw_canvas, life, sprite)
 	var stock_label: String = String(stock.get("count_label", ""))
 	if not stock_label.is_empty():
 		_draw_canvas.draw_string(ThemeDB.fallback_font, stock["label_position"], stock_label,
@@ -826,8 +1039,6 @@ func _draw_building_details(building: Dictionary, center: Vector2) -> void:
 	var definition: Dictionary = world.catalog.building(building_type)
 	var base_color: Color = Color.from_string("#" + String(definition.get("color", "888888")), Color.GRAY)
 	match building_type:
-		"workers_house":
-			_draw_workers_house_details(center)
 		"farm":
 			_draw_farm_details(center)
 		"mill":
@@ -857,30 +1068,6 @@ func _draw_building_details(building: Dictionary, center: Vector2) -> void:
 		_:
 			_draw_workshop_details(center, definition)
 
-
-func _draw_workers_house_details(center: Vector2) -> void:
-	# Warm windows, flowers and a chimney keep the residence readable among
-	# similarly sized workshops even at the overview zoom.
-	var timber := Color(0.35, 0.22, 0.12)
-	var window_glow := Color(0.98, 0.73, 0.31)
-	_draw_canvas.draw_rect(Rect2(center + Vector2(13, -54), Vector2(9, 27)), Color(0.43, 0.31, 0.23))
-	_draw_canvas.draw_rect(Rect2(center + Vector2(11, -56), Vector2(13, 4)), Color(0.61, 0.51, 0.39))
-	_draw_canvas.draw_circle(center + Vector2(19, -61), 4.0, Color(0.76, 0.75, 0.68, 0.25))
-	_draw_canvas.draw_circle(center + Vector2(23, -68), 5.0, Color(0.76, 0.75, 0.68, 0.16))
-	for window_x: float in [-17.0, 7.0]:
-		var window := Rect2(center + Vector2(window_x, -22), Vector2(12, 11))
-		_draw_canvas.draw_rect(window, timber)
-		_draw_canvas.draw_rect(window.grow(-2.0), window_glow)
-		_draw_canvas.draw_line(window.position + Vector2(6, 2), window.position + Vector2(6, 9), timber, 1.0)
-		_draw_canvas.draw_line(window.position + Vector2(2, 5.5), window.position + Vector2(10, 5.5), timber, 1.0)
-		_draw_canvas.draw_rect(Rect2(window.position + Vector2(-1, 11), Vector2(14, 3)), Color(0.47, 0.28, 0.13))
-		for flower: int in range(3):
-			_draw_canvas.draw_circle(window.position + Vector2(2.5 + flower * 4.0, 10.5), 1.8,
-				Color(0.82, 0.30, 0.25) if flower % 2 == 0 else Color(0.92, 0.76, 0.28))
-	for log_index: int in range(3):
-		var log_y: float = float(log_index) * 3.5
-		_draw_canvas.draw_line(center + Vector2(-27, -2 - log_y), center + Vector2(-15, -2 - log_y), Color(0.45, 0.28, 0.13), 3.0, true)
-		_draw_canvas.draw_circle(center + Vector2(-27, -2 - log_y), 1.7, Color(0.70, 0.49, 0.25))
 
 func _draw_ellipse_shadow(center: Vector2) -> void:
 	var points := PackedVector2Array()
@@ -1142,13 +1329,27 @@ func _building_contains_visual_point(building: Dictionary, position: Vector2) ->
 	var center: Vector2 = terrain_renderer.cell_center(building["position"] as Vector2i)
 	if int(building.get("footprint_version", 0)) > 0:
 		var shape: Dictionary = building_geometry(building)
-		var sprite: Dictionary = lumber_hut_sprites.presentation_for(building,
-			world.catalog.building(String(building["type"])), shape["door"])
+		var sprite: Dictionary = building_sprite_presentation(building)
 		if not sprite.is_empty():
-			if LumberHutSpriteLibraryClass.contains_point(sprite, position):
-				return true
-			if LumberHutStockLibraryClass.contains_point(lumber_hut_stock.presentation_for(world, building, sprite), position):
-				return true
+			var warehouse: bool = String(building.get("type", "")) == "warehouse"
+			var sawmill: bool = String(building.get("type", "")) == "sawmill"
+			if warehouse:
+				# Window light and smoke are visual effects, never extra targets.
+				if WarehouseSpriteLibraryClass.contains_point(sprite, position):
+					return true
+			else:
+				if SawmillSpriteLibraryClass.contains_point(sprite, position) if sawmill else LumberHutSpriteLibraryClass.contains_point(sprite, position):
+					return true
+				if LumberHutStockLibraryClass.contains_point(lumber_hut_stock.presentation_for(world, building, sprite), position):
+					return true
+				var life: Dictionary = building_life_presentation(building)
+				if production_building_life.contains_point(life, position) if sawmill else LumberHutLifeClass.contains_point(life, position):
+					return true
+				if sawmill:
+					var operation: Dictionary = sawmill_operation.presentation_for(world, building, life,
+						clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0))
+					if sawmill_operation_art.contains_point(sawmill_operation_art.presentation_for(sprite, operation), position):
+						return true
 			# Every genuinely occupied ground cell remains a building target,
 			# including the empty work bay. The common selection path then
 			# normalizes it to the saved anchor. Alpha governs all extensions
@@ -1290,7 +1491,7 @@ func worker_satiety_presentation(worker: Dictionary, foot_position: Vector2) -> 
 		"fill_rect": Rect2(rect.position, Vector2(width * clampf(percent / 100.0, 0.0, 1.0), height)),
 		"color": GameHudClass.satiety_color(String(status["state"])),
 		"percent": percent,
-		"caption": "Satiety %.0f%%" % percent if int(worker["id"]) == selected_unit_id else "",
+		"caption": "Sytost %.0f %%" % percent if int(worker["id"]) == selected_unit_id else "",
 		"caption_scale": 1.0 / zoom_scale,
 		"food_requested": bool(worker.get("food_requested", false)),
 		"request_color": _worker_food_marker_color(worker),
@@ -1367,7 +1568,7 @@ func _request_main_menu() -> void:
 
 func _save_game() -> bool:
 	var saved: bool = SaveSystemClass.save_world(world, _save_game_path(), demo_kind)
-	world._push_event("Game saved." if saved else "Save failed.")
+	world._push_event("Hra uložena." if saved else "Uložení se nezdařilo.")
 	_update_ui()
 	return saved
 
@@ -1398,7 +1599,7 @@ func _set_terrain_rules(enabled: bool) -> void:
 	if hud != null:
 		hud.set_terrain_rules(enabled)
 	if enabled:
-		world._push_event("Terrain: green = level ground; amber = walkable slope; red = blocked. Occupied tiles still apply.")
+		world._push_event("Terén: zelená = rovná zem, jantarová = průchozí svah, červená = neprůchodné. Obsazená pole platí dál.")
 	queue_redraw()
 
 
@@ -1410,7 +1611,7 @@ func _apply_build_mode(cell: Vector2i) -> void:
 	if not world.grid.contains(cell) or build_mode.is_empty():
 		return
 	if bool(PlacementPreviewRulesClass.evaluate(world, build_mode, cell).get("obscured", false)):
-		world._push_event("Explore this area before building here.")
+		world._push_event("Nejdřív tuto oblast prozkoumej, pak zde stav.")
 		return
 	if world.building_id_at(cell) != 0:
 		return
@@ -1425,17 +1626,17 @@ func _apply_build_mode(cell: Vector2i) -> void:
 		success = world.place_building(build_mode, cell) != 0
 	if not success:
 		if world.grid.cell_slope(cell) > world.grid.MAX_WALK_SLOPE:
-			world._push_event("This slope is too steep: use a gentler route or a mountain pass.")
+			world._push_event("Tento svah je příliš strmý: použij mírnější trasu nebo horský průsmyk.")
 		elif build_mode != "road" and world.grid.cell_slope(cell) > world.grid.MAX_BUILD_SLOPE:
-			world._push_event("Buildings and fields need level ground, including on raised plateaus.")
+			world._push_event("Budovy a pole potřebují rovnou zem, i na vyvýšených plošinách.")
 		elif build_mode in ["field", "vine_field"]:
-			world._push_event("Fields need clear grass or dirt: no trees, roads or buildings.")
+			world._push_event("Pole potřebují volnou trávu nebo hlínu: žádné stromy, cesty ani budovy.")
 		elif build_mode == "quarry":
-			world._push_event("Quarry needs clear ground within 3 tiles of rock.")
+			world._push_event("Lom potřebuje volnou zem do 3 polí od skály.")
 		elif world.field_id_at(cell) != 0:
-			world._push_event("This wheat field is reserved for farming.")
+			world._push_event("Toto obilné pole je vyhrazené pro hospodaření.")
 		else:
-			world._push_event("Cannot build there: choose clear, buildable ground.")
+			world._push_event("Sem stavět nelze: vyber volnou zastavitelnou zem.")
 
 
 func _cancel_selected_construction() -> void:
@@ -1451,28 +1652,28 @@ func _cancel_selected_construction() -> void:
 func _queue_selected_unit(unit_type: String) -> void:
 	var building_id: int = _selected_owned_building_id()
 	if building_id == 0 or not world.queue_unit_training(building_id, unit_type):
-		world._push_event("Select a School with room in its training queue.")
+		world._push_event("Vyber Školu s volným místem ve frontě výcviku.")
 	_update_ui()
 
 
 func _queue_selected_production(recipe_id: String) -> void:
 	var building_id: int = _selected_owned_building_id()
 	if building_id == 0 or not bool(world.call("queue_production", building_id, recipe_id)):
-		world._push_event("Select a completed workshop with room for another order.")
+		world._push_event("Vyber dokončenou dílnu s místem pro další objednávku.")
 	_update_ui()
 
 
 func _queue_selected_recruitment(soldier_type: String) -> void:
 	var building_id: int = _selected_owned_building_id()
 	if building_id == 0 or not bool(world.call("queue_recruitment", building_id, soldier_type)):
-		world._push_event("Select completed Barracks or Town Hall with room in its queue.")
+		world._push_event("Vyber dokončená Kasárna nebo Radnici s volným místem ve frontě.")
 	_update_ui()
 
 
 func _queue_selected_trade(give_resource: String, receive_resource: String) -> void:
 	var building_id: int = _selected_owned_building_id()
 	if building_id == 0 or not bool(world.call("queue_trade", building_id, give_resource, receive_resource)):
-		world._push_event("Select a completed Marketplace and two different wares.")
+		world._push_event("Vyber dokončené Tržiště a dvě různá zboží.")
 	_update_ui()
 
 
@@ -1522,28 +1723,13 @@ func _update_ui() -> void:
 		fog_renderer.sync(world, terrain_renderer)
 	if hud != null:
 		hud.refresh(world, selected_cell, build_mode, simulation_speed, FIXED_TICK_SECONDS, selected_unit_id)
-	_update_day_lighting()
-
-
-func _update_day_lighting() -> void:
-	if world == null:
-		return
-	# Fractional simulation time makes the sun glide at any game speed. The
-	# accumulator stays fixed during pause; load/reset supplies a new saved tick.
-	var fraction: float = clampf(accumulator / FIXED_TICK_SECONDS, 0.0, 1.0)
-	solar_state = SolarCycleClass.sample(world.tick, fraction)
-	# Modulate this world's CanvasItems only. The HUD has its own CanvasLayer,
-	# and multiple viewports/worlds can each have an independent time of day.
-	modulate = solar_state["ambient"] as Color
-	if hud != null:
-		hud.update_sky_time(world.tick, fraction)
 
 
 func _request_soldier_food(unit_id: int) -> void:
 	if not world.workers.has(unit_id) or not world.is_local_entity(world.workers[unit_id]):
 		return
 	if world.request_soldier_food(unit_id):
-		world._push_event("Food requested. A carrier will bring one ration to the soldier.")
+		world._push_event("Jídlo vyžádáno. Nosič přinese vojákovi jednu dávku.")
 	else:
 		world._push_event(world.soldier_food_status(unit_id))
 	_update_ui()
@@ -1552,7 +1738,7 @@ func _request_soldier_food(unit_id: int) -> void:
 func _request_army_food() -> void:
 	var requested: int = world.request_army_food()
 	if requested == 0:
-		world._push_event("No soldiers need another food request.")
+		world._push_event("Žádný voják další dávku jídla nepotřebuje.")
 	_update_ui()
 
 
@@ -1580,6 +1766,7 @@ func _set_zoom(value: float) -> void:
 
 
 func _create_demo_world() -> void:
+	sawmill_operation.reset()
 	terrain_load_error = ""
 	if demo_kind == "mountainous-region":
 		var imported: Dictionary = ImportedTerrainClass.load_world(terrain_map_path)
@@ -1590,7 +1777,7 @@ func _create_demo_world() -> void:
 			if MountainousRegionStartClass.is_ready(world):
 				world.enable_fog()
 			return
-		terrain_load_error = String(imported.get("error", "Unknown map error"))
+		terrain_load_error = String(imported.get("error", "Neznámá chyba mapy"))
 		# Never label fallback terrain as a successful replica of the source map.
 		demo_kind = "test"
 	if demo_kind == "economy":
@@ -1604,7 +1791,7 @@ func _create_demo_world() -> void:
 		TestLevelClass.setup(world)
 	world.enable_fog()
 	if not terrain_load_error.is_empty():
-		world._push_event("Mountainous Region could not be loaded: %s. Showing the test level." % terrain_load_error)
+		world._push_event("Mountainous Region se nepodařilo načíst: %s. Zobrazuji testovací mapu." % terrain_load_error)
 
 
 func _reset_demo() -> void:
@@ -1615,7 +1802,7 @@ func _reset_demo() -> void:
 	_update_window_title()
 	_bind_terrain_graphics()
 	_set_initial_camera()
-	accumulator = 0.0
+	_restart_game_clock()
 	selected_cell = Vector2i(-1, -1)
 	selected_unit_id = 0
 	_update_ui()
@@ -1639,16 +1826,17 @@ func _load_game() -> void:
 	if loaded:
 		lumberjack_animation.reset()
 		lumberjack_work_placement.reset()
+		sawmill_operation.reset()
 		_activate_legacy_fog()
 		demo_kind = SaveSystemClass.saved_map_id(path)
 		_update_window_title()
 		selected_unit_id = 0
 		_bind_terrain_graphics()
 		_set_initial_camera()
-		accumulator = 0.0
+		_restart_game_clock()
 		if not world.grid.contains(selected_cell):
 			selected_cell = Vector2i(-1, -1)
-	world._push_event("Game loaded." if loaded else "No valid save found.")
+	world._push_event("Game loaded." if loaded else "Nenalezena platná uložená hra.")
 	_update_ui()
 	queue_redraw()
 

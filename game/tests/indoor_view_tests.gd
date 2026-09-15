@@ -112,12 +112,12 @@ static func _test_indoor_details_keep_citizens(failures: Array[String]) -> void:
 	var visitor_id: int = world.spawn_worker(fixture["entrance"], "carrier")
 	world._enter_worker_building(world.workers[visitor_id], building_id)
 	var details: String = hud._selected_production_text(world, world.buildings[building_id]["position"])
-	_expect(details.contains("Worker: Carpenter #%d • 1/1 • inside" % int(worker["id"]))
-		and details.contains("Inside: 2 citizens"),
+	_expect(details.contains("Pracovník: Truhlář #%d • 1/1 • uvnitř" % int(worker["id"]))
+		and details.contains("Uvnitř: 2 obyvatelé"),
 		"Selected buildings must show their real indoor employee and visiting carrier separately from workplace capacity", failures)
 	hud.refresh(world, world.buildings[building_id]["position"], "", 0.0, MainView.FIXED_TICK_SECONDS)
-	_expect(hud._citizens_label.text == "2 citizens · 0 soldiers" and hud._worker_summary_text(world).contains("Citizens 2")
-		and hud._worker_summary_text(world).contains("Soldiers 0")
+	_expect(hud._citizens_label.text == "2 obyvatelé · 0 vojáků" and hud._worker_summary_text(world).contains("Obyvatelé 2")
+		and hud._worker_summary_text(world).contains("Vojáci 0")
 		and world.resource_stock("log") == stock_before,
 		"Indoor citizens and their carried resources must remain in the settlement totals", failures)
 	hud.free()
@@ -132,7 +132,7 @@ static func _test_indoor_details_keep_citizens(failures: Array[String]) -> void:
 	var home_details: String = hud._selected_production_text(visiting_world, Vector2i(3, 3))
 	var inn_details: String = hud._selected_production_text(visiting_world, Vector2i(9, 3))
 	_expect(home_details.contains("1/1") and not home_details.contains(" • inside")
-		and not home_details.contains("Inside:") and inn_details.contains("Inside: 1 citizen"),
+		and not home_details.contains("Uvnitř:") and inn_details.contains("Uvnitř: 1 obyvatel"),
 		"Indoor labels must identify the actual visited building, not merely the worker's assigned home", failures)
 	hud.free()
 

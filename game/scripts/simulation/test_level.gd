@@ -2,6 +2,7 @@ class_name TestLevel
 extends RefCounted
 
 const ReliefDemoClass = preload("res://scripts/simulation/relief_demo.gd")
+const UiTextClass = preload("res://scripts/ui_text.gd")
 
 const MAP_SIZE: Vector2i = ReliefDemoClass.MAP_SIZE
 const BUILDING_CELLS: Dictionary = {
@@ -50,4 +51,4 @@ static func setup(world: Variant) -> void:
 	world.buildings[int(ids["warehouse"])]["storage"]["stone"] = STARTING_STONE
 	world.buildings[int(ids["school"])]["inputs"]["gold"] = 1
 	world.economy_enabled = true
-	world._push_event("Start: 20 planks + 20 stone for construction; 20 logs need a Sawmill. Train a Carrier, then a Builder at the School. Stone lies at the western foot of the ridge; fish inhabit the southwestern pond.")
+	world._push_event("Start: 20 prken a 20 kamenů na stavbu; 20 klád potřebuje Pilu. Ve Škole vycvič nejdřív Nosiče, pak Stavitele. Kámen leží na západním úpatí hřebene, ryby jsou v jihozápadním rybníku.")

@@ -3,7 +3,7 @@ extends RefCounted
 
 ## Selects authored animation from observed simulation data. The small cache is
 ## local to the view; it never writes worker fields, performs work or enters saves.
-const DayCycle = preload("res://scripts/simulation/day_cycle.gd")
+const TICK_SECONDS: float = 0.1
 const MapProjectionClass = preload("res://scripts/view/map_projection.gd")
 const WALK_STRIDE_WORLD_PX: float = 16.0
 const WALK_CYCLE_SECONDS: float = 0.8
@@ -68,7 +68,7 @@ func sample(world: Variant, worker: Dictionary, frame_alpha: float) -> Dictionar
 		var token := Vector3i(int(worker.get("task_id", 0)), int(worker.get("source_id", 0)), total)
 		var elapsed_ticks: float = _observed_work_ticks(record, token, int(world.tick), completed, alpha)
 		work_progress = elapsed_ticks / float(total)
-		work_cycles = maxi(1, roundi(float(total) * DayCycle.TICK_SECONDS / CHOP_CYCLE_SECONDS))
+		work_cycles = maxi(1, roundi(float(total) * TICK_SECONDS / CHOP_CYCLE_SECONDS))
 		seconds = work_progress * float(work_cycles) * CHOP_CYCLE_SECONDS
 	else:
 		record.erase("work_token")

@@ -6,6 +6,7 @@ const WorkplacesClass = preload("res://scripts/simulation/workplaces.gd")
 const InnFeedingClass = preload("res://scripts/simulation/inn_feeding.gd")
 const Foundations = preload("res://scripts/simulation/building_foundations.gd")
 const NutritionClass = preload("res://scripts/simulation/nutrition.gd")
+const UiTextClass = preload("res://scripts/ui_text.gd")
 const QUEUE_CAPACITY: int = 10
 
 
@@ -123,7 +124,7 @@ static func tick_construction(world: Variant, building: Dictionary) -> void:
 		if complete(building):
 			world.task_board.complete(int(worker["task_id"]), int(worker["id"]))
 			world._reset_worker(worker)
-			world._push_event("Construction completed: %s." % world.catalog.building(building["type"])["display_name"])
+			world._push_event("Stavba dokončena: %s." % UiTextClass.building_name(world.catalog, String(building["type"])))
 		return
 
 
@@ -177,7 +178,7 @@ static func tick_service(world: Variant, building: Dictionary) -> void:
 		building["inputs"][order["give"]] = int(building["inputs"].get(order["give"], 0)) - int(amounts["give"])
 		building["outputs"][order["receive"]] = int(building["outputs"].get(order["receive"], 0)) + int(amounts["receive"])
 		queue.pop_front()
-		world._push_event("Marketplace completed a trade.")
+		world._push_event("Tržiště dokončilo směnu.")
 	elif order["kind"] == "recruit":
 		var definition: Dictionary = world.catalog.soldiers[order["unit"]]
 		if not has_stock(building["inputs"], definition["equipment"]):
@@ -196,7 +197,7 @@ static func tick_service(world: Variant, building: Dictionary) -> void:
 						var exit_path: Array[Vector2i] = []
 						world._begin_worker_move(worker, exit_path, worker["position"])
 					queue.pop_front()
-					world._push_event("Equipped %s." % definition["display_name"])
+					world._push_event("Vystrojen: %s." % UiTextClass.unit_name(world.catalog, String(order["unit"])))
 					return
 		else:
 			var spawn: Vector2i = world._find_unit_spawn_cell(building)
@@ -220,12 +221,9 @@ static func tick_needs(world: Variant) -> void:
 	for id: int in ids:
 		var worker: Dictionary = world.workers[id]
 		if NutritionClass.tick_needs(world, worker):
-			world.task_board.release(int(worker["task_id"]), id)
-			world._release_planting_reservation(worker)
-			world._release_worker_tile(worker)
-			world.workers.erase(id)
-			var advice: String = "Order food supplies for your soldiers." if world.catalog.soldiers.has(String(worker["type"])) else "Keep an inn supplied."
-			world._push_event("A %s starved. %s" % [world.catalog.unit(worker["type"])["display_name"], advice])
+			world.remove_worker(id)
+			var advice: String = "Objednej zásoby jídla pro vojáky." if world.catalog.soldiers.has(String(worker["type"])) else "Udržuj zásobený hostinec."
+			world._push_event("Zemřel hlady: %s. %s" % [UiTextClass.unit_name(world.catalog, String(worker["type"])), advice])
 
 
 static func handle_idle(world: Variant, worker: Dictionary) -> bool:

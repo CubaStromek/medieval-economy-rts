@@ -202,7 +202,7 @@ static func _test_hover_input(host: Node, failures: Array[String]) -> void:
 	# and south; reusing (8,3) would extend its northern row onto the real slope.
 	var plateau_site := Vector2i(7, 4)
 	await _hover_case(host, main, viewport, label, draw_observation, plateau_site,
-		"lumber_hut", true, "level ground", failures)
+		"lumber_hut", true, "rovná zem", failures)
 	_expect(main.terrain_renderer.show_buildability and not main.show_terrain_rules,
 		"Choosing a building must automatically show buildability without changing the player's manual F2 choice", failures)
 	for cell: Vector2i in main.world.placement_cells("lumber_hut", plateau_site):
@@ -212,7 +212,7 @@ static func _test_hover_input(host: Node, failures: Array[String]) -> void:
 	var steep_site := Vector2i(15, 15)
 	main.world.grid.set_vertex_height(Vector2i(16, 15), 3)
 	await _hover_case(host, main, viewport, label, draw_observation, steep_site,
-		"lumber_hut", false, "too uneven", failures)
+		"lumber_hut", false, "nerovné místo", failures)
 	_expect(main.world.grid.is_walkable(steep_site) and main.world.grid.cell_slope(steep_site) > 0,
 		"Rejected building control must be an otherwise walkable slope", failures)
 	var before_rejection: Dictionary = main.world.to_data().duplicate(true)
@@ -231,12 +231,12 @@ static func _test_hover_input(host: Node, failures: Array[String]) -> void:
 	_expect(main.world.grid.cell_slope(rock_cell) == 0,
 		"Blocked-material fixture must be flat so it cannot fail for the slope reason", failures)
 	await _hover_case(host, main, viewport, label, draw_observation, rock_cell,
-		"lumber_hut", false, "blocked", failures)
+		"lumber_hut", false, "neprůchodn", failures)
 	_expect(main.world.grid.base_terrain_at(rock_cell) == "rock",
 		"Blocked-hover control must reach actual impassable mountain material", failures)
 	_key(viewport, KEY_1)
 	await _hover_case(host, main, viewport, label, draw_observation, Demo.RAMP,
-		"road", true, "road can be placed", failures)
+		"road", true, "cestu lze položit", failures)
 	_expect(not main.terrain_renderer.show_buildability,
 		"A road tool must not falsely label walkable slopes as unavailable building sites", failures)
 	# Manual F2 remains independent of automatic placement mode in both orders.
@@ -266,7 +266,7 @@ static func _test_hover_input(host: Node, failures: Array[String]) -> void:
 		_motion(viewport, hud_button.get_global_rect().get_center())
 		await _settle(host)
 		_expect(main.hovered_cell == Vector2i(-1, -1) and main.placement_preview.is_empty()
-			and not overlay.visible and label.text.contains("Move onto the map"),
+			and not overlay.visible and label.text.contains("Najeď na mapu"),
 			"Moving onto actual HUD controls must remove map hover/drawing and restore the generic tool hint", failures)
 		_expect(_world_state(main) == before, "HUD hover must remain presentation-only", failures)
 	_key(viewport, KEY_ESCAPE)

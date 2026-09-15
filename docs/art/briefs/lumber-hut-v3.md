@@ -1,5 +1,9 @@
 # Dřevorubecká chata v3 — vyvýšený předolevý koncept
 
+Aktuální rozšíření **2026-09-12**: [dveře, odpočinek a noční život](lumber-hut-life-v1.md)
+navazují na produkční stavební sadu a půdorys v2. Níže je historický
+konceptový záznam z 9. září, nikoli aktuální stav všech herních vrstev.
+
 Datum: **2026-09-09** · ID: `lumber_hut` · [manuál v0.2](../building-style-guide.md).
 Stav: **koncept k posouzení**, ne herní pilot ani schválený obrazový etalon.
 Uživatel zvolil první realizaci dřevorubce a výslovně opravil čelní pohled

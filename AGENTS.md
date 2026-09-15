@@ -1,5 +1,39 @@
 # Project instructions
 
+## Game time held like KaM Remake — user direction, 2026-09-14
+
+The user asked that game time follow real time like KaM Remake instead of the
+game slowing down under load. `MainView._advance_simulation` replays owed ticks
+(backlog capped at 100, 100 ms of catch-up per frame, the rest stays owed) and
+restarts the clock after start, load and reset. Do not reintroduce a per-frame
+tick cap that drops time.
+
+## Day/night cycle removed — user direction, 2026-09-14
+
+The user removed the complete day/night mechanic: calendar clock and sky
+display, map tinting, night rest and sleeping places, the Workers' Cottage,
+night wolves and moving sun shadows. Cast shadows are not drawn dynamically
+for now. Do not reintroduce night lighting, night chimney smoke or window
+light, sleep or wolves without a new user request. Older art guidance that
+mentions night-time presence effects is historical for those states; chimneys
+and windows remain ordinary architecture. Save v23 migrates older saves.
+
+## Building design skill — user direction, 2026-09-13
+
+For building concepts, artwork revisions, visual reviews and sprite integration,
+use the personal `medieval-building-design` skill at
+`/Users/openclaw/.codex/skills/medieval-building-design/SKILL.md` when available.
+It preserves the common painted language, distinct silhouettes, measured ground
+fit and state-ready architecture. Ordinary inhabited/workshop buildings include
+a chimney and readable windows from the first concept; domestic night smoke
+and warm window light follow actual presence, separately from production effects.
+The skill preserves the requested scope and adds no approval gate.
+
+On 2026-09-13 the user positively received sawmill v2 and requested this reusable
+workflow. Use the own sawmill v2 / lumber hut comparison as the current working
+visual reference, with its dated feedback in `docs/art/building-style-guide.md`.
+This does not freeze every detail or authorize unrelated catalog production.
+
 ## Artwork must fit its footprint — user direction, 2026-09-10
 
 For future generated objects, establish the actual footprint/collision, entrance

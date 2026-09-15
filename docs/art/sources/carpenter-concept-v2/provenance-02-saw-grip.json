@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-13",
+  "asset_id": "carpenter-concept-v2",
+  "revision": 2,
+  "status": "concept; awaiting user feedback",
+  "user_feedback": "Increase saw size and make its grip more natural.",
+  "generation": {
+    "mode": "built-in ImageGen",
+    "tool": "image_gen.imagegen",
+    "operation": "precise-object-edit",
+    "model": "not reported by tool",
+    "original_output": "/Users/openclaw/.codex/generated_images/01a0956f-1307-7fd1-b9e3-00cabcf52ae1/exec-c93b99c9-f5d1-4a7d-8f34-056e8fc90b0c.png",
+    "prompt_file": "prompt-02-saw-grip.txt",
+    "prompt_sha256": "61315212e6b2d44bfe5f54d6313aa93ba342baac7a810e404c9b2cca7d0f58b5"
+  },
+  "input": {
+    "path": "docs/art/sources/carpenter-concept-v2/carpenter-master.png",
+    "role": "Own existing character edit target: preserve identity, camera, body, costume and empty left hand; change right-hand grip and saw.",
+    "sha256": "0db9e01ddd17928be012987d36b906a66b67fafaa6fd0c047bd3513764029bc4"
+  },
+  "output": {
+    "path": "docs/art/sources/carpenter-concept-v2/carpenter-master-02-saw-grip.png",
+    "sha256": "39b339060cbe3d3e7bfd5d7ee9e4b7102cc609d69aad2e3c5e0bbb6ecbca18f7",
+    "width": 1254,
+    "height": 1254,
+    "png_bit_depth": 8,
+    "png_color_type": 2,
+    "background": "warm off-white; no production-alpha claim"
+  },
+  "scope": "One static concept revision. No animations or game integration."
+}

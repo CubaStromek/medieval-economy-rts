@@ -5,8 +5,7 @@ const MainView = preload("res://scripts/view/main_view.gd")
 const MainScene = preload("res://scenes/main.tscn")
 const Preview = preload("res://scripts/view/placement_preview_rules.gd")
 const Renderer = preload("res://scripts/view/building_footprint_renderer.gd")
-const Shadows = preload("res://scripts/view/solar_shadows.gd")
-const TEST_COUNT: int = 7
+const TEST_COUNT: int = 6
 
 
 static func run(host: Node) -> Array[String]:
@@ -38,7 +37,6 @@ static func run(host: Node) -> Array[String]:
 	await _test_hover_preview(host, viewport, main, failures)
 	_test_obstacle_reasons(main, failures)
 	_test_construction_and_legacy(main, failures)
-	_test_shadow_extent(main, ids[0], failures)
 	viewport.free()
 	return failures
 
@@ -154,15 +152,15 @@ static func _test_obstacle_reasons(main: MainView, failures: Array[String]) -> v
 	var blocker := anchor + Vector2i(2, -1)
 	main.world.add_tree(blocker)
 	var result: Dictionary = Preview.evaluate(main.world, "lumber_hut", anchor)
-	_expect(not result["valid"] and String(result["reason"]).to_lower().contains("tree"),
+	_expect(not result["valid"] and String(result["reason"]).to_lower().contains("strom"),
 		"A tree away from the anchor but inside the full footprint must explain rejection", failures)
 	var blocked_approach := Vector2i(18, 16)
 	main.world.add_tree(blocked_approach)
 	result = Preview.evaluate(main.world, "lumber_hut", Vector2i(15, 16))
-	_expect(not result["valid"] and String(result["reason"]).to_lower().contains("entrance"),
+	_expect(not result["valid"] and String(result["reason"]).to_lower().contains("vstup"),
 		"A blocked fixed entrance must be distinguished from clear building ground", failures)
 	result = Preview.evaluate(main.world, "warehouse", Vector2i(31, 1))
-	_expect(not result["valid"] and String(result["reason"]).contains("outside"),
+	_expect(not result["valid"] and String(result["reason"]).contains("mimo mapu"),
 		"An in-map anchor must still explain an out-of-map building footprint", failures)
 
 
@@ -219,31 +217,6 @@ static func _test_construction_and_legacy(main: MainView, failures: Array[String
 		"Legacy roof selection must remain aligned with its original one-cell art", failures)
 	main.world.default_footprint_version = 2
 	main.queue_redraw()
-
-
-static func _test_shadow_extent(main: MainView, id: int, failures: Array[String]) -> void:
-	for entry: Dictionary in main._world_draw_entries():
-		if entry["kind"] != "building" or int(entry["id"]) != id:
-			continue
-		_expect(entry.get("shadow_radius") == Vector2(1.5, 1.5)
-			and entry.get("shadow_ground_position") == Vector2(5, 6),
-			"Building shadow must start at the full foundation center and cover its true width/depth", failures)
-		var rows: Dictionary = Shadows.rows_for(main.terrain_renderer, entry,
-			{"shadow_opacity": 0.3, "shadow_vector": Vector2(2, 1)})
-		var bounds := Rect2()
-		var initialized: bool = false
-		for row: Array in rows.values():
-			for shadow: Dictionary in row:
-				for point: Vector2 in shadow["points"]:
-					if not initialized:
-						bounds = Rect2(point, Vector2.ZERO)
-						initialized = true
-					else:
-						bounds = bounds.expand(point)
-		_expect(initialized and bounds.size.x > 120 and bounds.size.y > 100,
-			"Actual projected warehouse shadow must grow with the three-by-three building", failures)
-		return
-	failures.append("Shadow view test must find a real warehouse draw entry")
 
 
 static func _center_point(main: MainView, viewport: SubViewport, point: Vector2, screen: Vector2) -> void:

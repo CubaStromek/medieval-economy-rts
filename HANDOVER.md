@@ -17,8 +17,10 @@ jeho staré počty testů, save verze a roadmapa nejsou aktuální zadání.
 - **Godot:** ověřen **4.7.2 stable**, OpenGL Compatibility, macOS / Apple M4.
   Importovat `game/project.godot`; hlavní scéna je `game_session.tscn`.
 - **Simulace:** autoritativní fixed-step **10 Hz**, celočíselná herní mřížka.
+  Herní čas drží reálný čas jako KaM Remake: pomalý snímek dožene dlužné ticky
+  (strop 100, rozpočet 100 ms na snímek), hra se nezpomalí.
   Aktuální zobrazovací buňka je **40 × 40 world px**, nikoli historických 48.
-- **Save:** **v21**; zpětná validace/migrace v1–20. Půdorys se verzuje také
+- **Save:** **v23**; zpětná validace/migrace v1–22 (v23 zahazuje spánek, vlky a chalupy dělníků). Půdorys se verzuje také
   samostatně po jednotlivých budovách.
 - **Katalog:** 30 typů budov, 28 surovin, 15 civilních profesí,
   19 výrobních receptů a 14 vojenských náborových definic.
@@ -82,38 +84,43 @@ konečná. Stromy rostou a lesník je sází; pole potřebují skutečnou práci
 Stavby vznikají z materiálu fyzicky přineseného nosiči a práce stavitele.
 Pila vyrábí **2 prkna z 1 klády**. Škola spotřebuje zlato jednou při výcviku.
 Rezervace, vážené osmicestné A*, uhýbání, přeplánování a interpolace pohybu
-zůstávají součástí běžné simulace.
+zůstávají součástí běžné simulace. Od 14. 9. 2026 hledání cest používá
+packed index se stejnými trasami (tick ~5× levnější); viz
+[výkon hledání cest](docs/pathfinding-performance.md). Zástupné budovy mají
+od téhož dne cache geometrie a zachované vykreslení (pixelově shodné snímky);
+viz [výkon vykreslování](docs/render-performance.md).
 
 **Gardener / Forester Hut** je naše vlastní lesnické rozšíření, nikoli
-dřevorubec. **Workers' Cottage** poskytuje přesně dvě lůžka nosičům nebo
-stavitelům, stojí 3 prkna + 2 kameny; sklad je nouzové ubytování.
-Není to obecný rodinný/domácí spotřební systém.
+dřevorubec. Workers' Cottage (ubytování) byla 14. 9. 2026 odstraněna spolu
+s cyklem dne a noci.
 
-### Den, hlad, mlha a pozastavení
+### Hlad, mlha a pozastavení
 
-- Den má 6000 ticků = **10 minut při 1×**, hra začíná v 05:00.
-  Civilisté od 20:00 do 05:00 nepracují a jdou spát; vojáci a stráže zůstávají aktivní.
+- **Cyklus dne a noci je od 14. 9. 2026 zrušen**: žádné hodiny, spánek, noční
+  tónování, vržené stíny, vlci ani chalupy dělníků. Civilisté pracují bez
+  přestávky, tick zůstává 0,1 s.
 - Civilisté se fyzicky stravují v hostinci; vojákovi musí dávku přinést nosič.
   Návštěva hostince má až tři různé chody, ne okamžité doplnění při otočení ve dveřích.
 - Aktuální model odděluje sytost od dlouhodobého nedostatku.
-  **Smrt až po sedmi celých herních dnech úplně bez jídla od plného stavu**,
+  **Smrt až po sedmi bilančních dnech (6000 ticků = 10 minut) úplně bez jídla od plného stavu**,
   tedy 70 minut při 1×. Nové jednotky začínají najedené.
-- Skutečný spánek snižuje úbytek sytosti na polovinu, ale nenatahuje
-  sedmidenní kalendářní rezervu. Nedostatek postupně oslabí produktivní práci
+- Sytost ubývá stálým tempem 390 milli za tick (stejná denní spotřeba jako
+  dřívější průměr bdění a spánku). Nedostatek postupně oslabí produktivní práci
   nejvýše o 20 %; chůzi a nosičské zásobování nezpomalí.
   Jídlo rezervu obnovuje poměrně, drobek ji nevynuluje.
 - Neprozkoumaná mapa je černá, prozkoumaná zem mimo dohled tmavší;
   cizí jednotky se mimo dohled nekreslí a nesmějí prozradit stav přes UI.
 - Detail občana ukazuje **Co si myslím — Teď / Potom** podle jeho skutečného stavu.
   Jednotku a budovu lze pozastavit nezávisle. Pauza práce zachovává náklad
-  i postup, neblokuje jídlo, spánek a bezpečný pohyb. Není to globální pauza.
+  i postup, neblokuje jídlo a bezpečný pohyb. Není to globální pauza.
 - Jednotka skutečně uvnitř budovy nemá venkovní sprite, stín, náklad ani
   venkovní blokování. Zaměstnání a aktuální fyzická přítomnost nejsou totéž.
 
 Autority: [ekonomika](docs/economy-expansion.md),
-[jídlo](docs/food-and-military-supply.md), [den a noc](docs/day-night-analysis.md),
-[mlha](docs/fog-of-war.md), [pauza a myšlenky](docs/unit-thoughts-and-pause.md),
-[bydlení](docs/worker-housing.md).
+[jídlo](docs/food-and-military-supply.md), [mlha](docs/fog-of-war.md),
+[pauza a myšlenky](docs/unit-thoughts-and-pause.md); historické:
+[den a noc](docs/day-night-analysis.md), [bydlení](docs/worker-housing.md),
+[vlci](docs/night-wolves.md).
 
 ## 4. Aktuální grafika: co skutečně používá hra
 
@@ -164,7 +171,7 @@ Dalších 24 vstupních referencí se nepočítá jako animace stání.
   `lumberjack_presentation.gd`; pracovní odstup: `lumberjack_work_placement.gd`.
 - Chůze se řídí uraženou vzdáleností, sekání skutečným postupem práce.
   Nesená kláda se nekreslí podruhé jako generický náklad.
-- Pauza, interiér, mlha, noční tónování, alfa výběr a překrytí korunou
+- Pauza, interiér, mlha, alfa výběr a překrytí korunou
   jsou pokryté regresními testy. Save neukládá rozpracovanou vizuální pózu;
   po load se prezentační historie resetuje.
 - Historický běžný průchod menu → Relief → kácení → předání prokázal pokles

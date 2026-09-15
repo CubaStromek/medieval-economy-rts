@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-12",
+  "final_capture_project": "/Users/openclaw/AI-Projects/medieval-economy-rts/game",
+  "capture_time": "2026-09-12T13:25:22",
+  "native_command": "godot --path game --windowed --log-file /tmp/lumber-hut-life-native.log res://tools/preview_lumber_hut_life.tscn",
+  "exit_code": 0,
+  "native_pixel_controls_passed": 10,
+  "native_pixel_controls_total": 10,
+  "capture_records": 57,
+  "verified_files": {
+    "res://art/buildings/lumber_hut/v1/life/resting_lumberjack.json": {
+      "capture_sha256": "29a5deba2319fa2fe08d817257a48d129791f7a2034b39d8544cb9faa3b31f50",
+      "workspace_sha256": "29a5deba2319fa2fe08d817257a48d129791f7a2034b39d8544cb9faa3b31f50",
+      "matches": true
+    },
+    "res://art/buildings/lumber_hut/v1/life/resting_lumberjack.png": {
+      "capture_sha256": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+      "workspace_sha256": "6322b4512d5025885b18eca4dd90f3994aaa32875a0166433470e3b18eb290e3",
+      "matches": true
+    },
+    "res://scripts/view/lumber_hut_life.gd": {
+      "capture_sha256": "777c499bc9700301a600c6aee30bd4e3fe7b4db7ab5f4b1445fb6096494fd42a",
+      "workspace_sha256": "777c499bc9700301a600c6aee30bd4e3fe7b4db7ab5f4b1445fb6096494fd42a",
+      "matches": true
+    },
+    "res://scripts/view/main_view.gd": {
+      "capture_sha256": "e30af454cef1d8c6722cfb1ebc5309e71c5225d27242edd17f0ea35787a47e97",
+      "workspace_sha256": "e30af454cef1d8c6722cfb1ebc5309e71c5225d27242edd17f0ea35787a47e97",
+      "matches": true
+    },
+    "res://tools/preview_lumber_hut_life.gd": {
+      "capture_sha256": "dad7352ce37df9d19c5a49dcd5fe47eb4070177a61f8775530535a4f27208500",
+      "workspace_sha256": "dad7352ce37df9d19c5a49dcd5fe47eb4070177a61f8775530535a4f27208500",
+      "matches": true
+    }
+  },
+  "smoke_gif": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 480,
+        "height": 420,
+        "duration": "3.000000",
+        "nb_read_frames": "30"
+      }
+    ]
+  },
+  "gif_encoding": "ffmpeg, 30 original captured phase frames, 10 fps, palettegen/paletteuse; no interpolation or newly drawn frames",
+  "initial_isolated_snapshot_reason": "Unrelated in-progress night_wolves.gd parse blockers; final complete run used the repaired actual workspace, not snapshot."
+}

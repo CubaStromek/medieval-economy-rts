@@ -1,0 +1,264 @@
+{
+	"captures": [
+		{
+			"door_world": [
+				620.0,
+				440.0
+			],
+			"entrance": [
+				15,
+				11
+			],
+			"file": "flat-pair-zoom-0_75.png",
+			"guide_overlay": false,
+			"life_layers": 0,
+			"loaded_image": "res://art/buildings/sawmill/v2/finished.png",
+			"occupied_cells": 8,
+			"operation_layers": 0,
+			"sawmill_cell": [
+				14,
+				10
+			],
+			"sha256": "9a2a7e8ed8bec7bc0e1a1be844ed938c55f0b5b5df37d3051d0b9f6756a9c0e0",
+			"size": [
+				1400,
+				720
+			],
+			"terrain_peak_height": 0,
+			"tick": 1750,
+			"verified_loaded_rgba_sha256": "5fbf68bcf3df8c38c9e8f9d1e29494d605b425e4b986ec923ea2b81c3dee2cd1",
+			"worker_body_height_world": 33.0,
+			"worker_foot_world": [
+				620.0,
+				460.0
+			],
+			"zoom": 0.75
+		},
+		{
+			"door_world": [
+				620.0,
+				440.0
+			],
+			"entrance": [
+				15,
+				11
+			],
+			"file": "flat-pair-zoom-1_0.png",
+			"guide_overlay": false,
+			"life_layers": 0,
+			"loaded_image": "res://art/buildings/sawmill/v2/finished.png",
+			"occupied_cells": 8,
+			"operation_layers": 0,
+			"sawmill_cell": [
+				14,
+				10
+			],
+			"sha256": "22f8d733fbb665f8353b9ff250d7c56800f552abe199034f27c03320ddc4cd4e",
+			"size": [
+				1400,
+				720
+			],
+			"terrain_peak_height": 0,
+			"tick": 1750,
+			"verified_loaded_rgba_sha256": "5fbf68bcf3df8c38c9e8f9d1e29494d605b425e4b986ec923ea2b81c3dee2cd1",
+			"worker_body_height_world": 33.0,
+			"worker_foot_world": [
+				620.0,
+				460.0
+			],
+			"zoom": 1.0
+		},
+		{
+			"door_world": [
+				620.0,
+				440.0
+			],
+			"entrance": [
+				15,
+				11
+			],
+			"file": "flat-pair-zoom-2_4.png",
+			"guide_overlay": false,
+			"life_layers": 0,
+			"loaded_image": "res://art/buildings/sawmill/v2/finished.png",
+			"occupied_cells": 8,
+			"operation_layers": 0,
+			"sawmill_cell": [
+				14,
+				10
+			],
+			"sha256": "0d476775daa6299d218199a66de67bf56f506c97089d79e1eb5cac61c34950dc",
+			"size": [
+				1400,
+				720
+			],
+			"terrain_peak_height": 0,
+			"tick": 1750,
+			"verified_loaded_rgba_sha256": "5fbf68bcf3df8c38c9e8f9d1e29494d605b425e4b986ec923ea2b81c3dee2cd1",
+			"worker_body_height_world": 33.0,
+			"worker_foot_world": [
+				620.0,
+				460.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"door_world": [
+				620.0,
+				440.0
+			],
+			"entrance": [
+				15,
+				11
+			],
+			"file": "flat-door-human.png",
+			"guide_overlay": false,
+			"life_layers": 0,
+			"loaded_image": "res://art/buildings/sawmill/v2/finished.png",
+			"occupied_cells": 8,
+			"operation_layers": 0,
+			"sawmill_cell": [
+				14,
+				10
+			],
+			"sha256": "7e6b8ff84835477bb5d5550ce669c9a180cb009b159d08a5886b2f2780c85fcb",
+			"size": [
+				1400,
+				720
+			],
+			"terrain_peak_height": 0,
+			"tick": 1750,
+			"verified_loaded_rgba_sha256": "5fbf68bcf3df8c38c9e8f9d1e29494d605b425e4b986ec923ea2b81c3dee2cd1",
+			"worker_body_height_world": 33.0,
+			"worker_foot_world": [
+				620.0,
+				460.0
+			],
+			"zoom": 3.5
+		},
+		{
+			"door_world": [
+				620.0,
+				392.0
+			],
+			"entrance": [
+				15,
+				11
+			],
+			"file": "raised-footprint.png",
+			"guide_overlay": false,
+			"life_layers": 0,
+			"loaded_image": "res://art/buildings/sawmill/v2/finished.png",
+			"occupied_cells": 8,
+			"operation_layers": 0,
+			"sawmill_cell": [
+				14,
+				10
+			],
+			"sha256": "762308322a5e8f7e7919eb908f18c15cf377338637ffbfc247513d7b99bcec72",
+			"size": [
+				1400,
+				720
+			],
+			"terrain_peak_height": 6,
+			"tick": 1750,
+			"verified_loaded_rgba_sha256": "5fbf68bcf3df8c38c9e8f9d1e29494d605b425e4b986ec923ea2b81c3dee2cd1",
+			"worker_body_height_world": 33.0,
+			"worker_foot_world": [
+				620.0,
+				420.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"door_world": [
+				620.0,
+				392.0
+			],
+			"entrance": [
+				15,
+				11
+			],
+			"file": "raised-footprint-guide.png",
+			"guide_overlay": true,
+			"life_layers": 0,
+			"loaded_image": "res://art/buildings/sawmill/v2/finished.png",
+			"occupied_cells": 8,
+			"operation_layers": 0,
+			"sawmill_cell": [
+				14,
+				10
+			],
+			"sha256": "a7fdf2119737ea3efb316d98bce3bef39ae7597ea7e02b4615e6c2de0a74fd55",
+			"size": [
+				1400,
+				720
+			],
+			"terrain_peak_height": 6,
+			"tick": 1750,
+			"verified_loaded_rgba_sha256": "5fbf68bcf3df8c38c9e8f9d1e29494d605b425e4b986ec923ea2b81c3dee2cd1",
+			"worker_body_height_world": 33.0,
+			"worker_foot_world": [
+				620.0,
+				420.0
+			],
+			"zoom": 2.4
+		},
+		{
+			"door_world": [
+				620.0,
+				392.0
+			],
+			"entrance": [
+				15,
+				11
+			],
+			"file": "raised-door-human.png",
+			"guide_overlay": false,
+			"life_layers": 0,
+			"loaded_image": "res://art/buildings/sawmill/v2/finished.png",
+			"occupied_cells": 8,
+			"operation_layers": 0,
+			"sawmill_cell": [
+				14,
+				10
+			],
+			"sha256": "d7d48cbdc7b620e73258b6dcd7d2ec2e6c8e3fb0dc464cd3cbf95867a1282da7",
+			"size": [
+				1400,
+				720
+			],
+			"terrain_peak_height": 6,
+			"tick": 1750,
+			"verified_loaded_rgba_sha256": "5fbf68bcf3df8c38c9e8f9d1e29494d605b425e4b986ec923ea2b81c3dee2cd1",
+			"worker_body_height_world": 33.0,
+			"worker_foot_world": [
+				620.0,
+				420.0
+			],
+			"zoom": 3.5
+		}
+	],
+	"date": "2026-09-12",
+	"engine": "4.7.2-stable (official)",
+	"fixture": "Staged empty buildings and actual outdoor carpenter; frozen noon tick1750. V2 library injected only in this QA instance. No life or operation layers.",
+	"hashes_after": {
+		"res://art/buildings/lumber_hut/v1/finished.png": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+		"res://art/buildings/lumber_hut/v1/manifest.json": "e475b13ce8a8394b5997231351c3503ced0e667a96634c6c21a2e0b8fef1d1c5",
+		"res://art/buildings/sawmill/v2/finished.png": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+		"res://art/buildings/sawmill/v2/manifest.json": "3600e6b3bdf74c48f6f4ff93ecea04e421c657614c9123a50749312736f077de",
+		"res://art/units/civilians-basic-v1.png": "5978c8124445e7ef1832d30dce780214b173435f8a4f51e675e6bc716947f176"
+	},
+	"hashes_before": {
+		"res://art/buildings/lumber_hut/v1/finished.png": "dd7cfe57dbb6d33060e2698f4f3f751c55149ee89ebb6e8b46230fe1df6f3eca",
+		"res://art/buildings/lumber_hut/v1/manifest.json": "e475b13ce8a8394b5997231351c3503ced0e667a96634c6c21a2e0b8fef1d1c5",
+		"res://art/buildings/sawmill/v2/finished.png": "642c85d997c985c62750bbb0e70270e60fe7bd7834b77729f5a8be3bc140591a",
+		"res://art/buildings/sawmill/v2/manifest.json": "3600e6b3bdf74c48f6f4ff93ecea04e421c657614c9123a50749312736f077de",
+		"res://art/units/civilians-basic-v1.png": "5978c8124445e7ef1832d30dce780214b173435f8a4f51e675e6bc716947f176"
+	},
+	"normal_gameplay_proof": false,
+	"player_save_or_music_access": false,
+	"renderer": "Apple M4",
+	"runtime_default_changed": false,
+	"scene": "res://scenes/main.tscn"
+}
