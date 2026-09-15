@@ -1,5 +1,15 @@
 # Project instructions
 
+## Versioning, changelog and releases — user direction, 2026-09-15
+
+The user asked for the project to be managed like a real project. Versions
+follow `docs/release-process.md`: SemVer `0.y.z`, with `config/version` in
+`game/project.godot`, the `CHANGELOG.md` heading and an annotated `vX.Y.Z` tag
+agreeing. Record every user-visible change under `[Unreleased]` in
+`CHANGELOG.md` in the same change. Commits, tags, pushes and releases still
+happen only on a current user request; follow the release checklist when asked.
+Bulky QA frame sequences stay local; force-add only frames a document references.
+
 ## Game time held like KaM Remake — user direction, 2026-09-14
 
 The user asked that game time follow real time like KaM Remake instead of the

@@ -1,5 +1,27 @@
 # Third-party notices and provenance
 
+## Project-created artwork — release 0.6.0 (2026-09-15)
+
+Release 0.6.0 adds project-created painted artwork:
+
+- the sawmill (v1 and the active v2), with log, plank and workpiece layers
+  and a working and resting carpenter;
+- the warehouse (v1 and the active v2);
+- the lumber hut's presence layer.
+
+Their inputs, prompts and transformations are recorded in the corresponding
+`docs/art/briefs/*-integration.md` files and `docs/art/sources/*/README.md`.
+Those records for the sawmill v2, warehouse v1, the sawmill stock and
+carpenter work poses, and the resting lumberjack state that no original KaM
+image was an image input. The KaM sawmill study in `docs/art/references/` is
+text only.
+
+A SHA-256 comparison of all new files against the local external reference
+assets found no byte-identical copies; see the
+[release verification](docs/release-verification-2026-09-15.md). Bulky QA frame
+sequences from these checks stay local. Only frames referenced by documentation
+are published, together with MP4 captures and reports.
+
 ## Project-created artwork — publication 2026-09-12
 
 The current runtime terrain atlas, lumber hut layers and lumberjack animation

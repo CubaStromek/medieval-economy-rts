@@ -9,42 +9,41 @@ This is not an official Knights and Merchants product. No original game code,
 graphics, audio, maps or campaigns are distributed with the public source.
 Optional, user-selected map data stays in ignored external directories.
 
-## Current handover — 2026-09-12
+## Current release — 0.6.0 (2026-09-15)
 
-Start with [HANDOVER.md](HANDOVER.md) for the current implementation, decisions,
-known limits, artwork acceptance status and next steps. The previous handover
-is preserved as history, not current requirements.
+Start with [HANDOVER.md](HANDOVER.md) for the current implementation,
+decisions, known limits, artwork acceptance status and next steps.
+[CHANGELOG.md](CHANGELOG.md) lists what each release added, changed and
+removed. Versioning and the release checklist are in
+[docs/release-process.md](docs/release-process.md).
 
-This milestone includes painted V1 terrain, fog of war, seven-day nutrition,
-individual work pause and the normal-game PixelLab
-lumberjack (three activities × eight directions, 439 animation frames).
-The lumber hut has 33 construction steps, visible 0–6 stored logs, and a
-new nine-cell footprint; old saved huts retain their old geometry. Current
-save format is **v23**. The 11 September refactor improves HUD aggregation and
-transport availability checks without changing actual destination ranking.
-The 12 September work rebuilt the HUD in Czech. On **14 September** the whole
-day/night cycle was removed, including sleep, the Workers' Cottage, night
-wolves, map tinting and moving sun shadows; see
-[the removal notes](#daynight-cycle-removed--2026-09-14). The same day,
-route searching moved to a packed index with identical routes: simulation
-ticks on the player's save are about 5× cheaper and no longer spike above
-16 ms; see [pathfinding performance](docs/pathfinding-performance.md).
-Placeholder buildings now keep retained drawing and cached geometry, roughly
-halving map frame time in the economy demo with pixel-identical captures; see
-[render performance](docs/render-performance.md#retained-building-layers--2026-09-14).
+Release 0.6.0 adds the painted sawmill, with visible stocks and a working and
+resting carpenter, and the painted warehouse. It also adds lumber hut presence
+states and a Czech HUD that scales with the window.
 
-Fresh Godot 4.7.2 checks after the day/night removal, pathfinding index and
-retained building layers (2026-09-14): **782/782 headless**; the earlier **85/85 native rendering checks** were not rerun. The [publication verification](docs/release-verification-2026-09-12.md)
-is a dated record of the earlier v21 publication pass, so its own counts are
-historical; use it for commands, tool tests and clean-checkout status.
+It removes the whole day/night cycle, including sleep, the Workers' Cottage and
+moving sun shadows; see [the removal notes](#daynight-cycle-removed--2026-09-14).
+
+Simulation ticks are about 5× cheaper with a packed pathfinding index that keeps
+identical routes, and placeholder buildings keep retained drawing. Game time now
+keeps pace with real time like KaM Remake. Save format is **v23**; older saves load.
+
+Release checks with Godot 4.7.2 on 2026-09-15:
+
+- **787/787 headless**, also in a clean copy of the published files;
+- **79 native rendering cases** without failures;
+- all tool tests passed.
+
+See the [release verification](docs/release-verification-2026-09-15.md).
 Historical test counts in the feature sections below describe their original
 milestones.
 
 Runtime assets live in `game/art/`; `docs/art/` also retains original project
 concepts, rejected experiments and QA evidence. They are not all loaded by the
 game or approved as an art-style reference. Original KaM data, API transport
-logs, caches, local ZIP deliveries and a reproducible Blender QA scene remain
-excluded from Git; see [publication scope](HANDOVER.md#8-co-se-publikuje-a-co-zůstává-lokální).
+logs, caches, local ZIP deliveries, a reproducible Blender QA scene and bulky
+QA frame sequences remain excluded from Git; see
+[publication scope](HANDOVER.md#8-co-se-publikuje-a-co-zůstává-lokální).
 
 ## Painted lumber hut construction — 2026-09-10
 

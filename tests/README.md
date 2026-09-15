@@ -4,6 +4,19 @@ Run `./tests/run-headless.sh` from the repository root. The launcher loads
 `game/project.godot` and runs `res://tests/test_runner.tscn`; project verification
 does not use isolated `--script` execution.
 
+## Release 0.6.0 verification — 2026-09-15
+
+Release checks for 0.6.0:
+
+- The complete headless suite passed **787/787**. It passed again in a clean
+  copy created from the staged index after a fresh import.
+- The focused native refactor and rendering runner reported **79 cases,
+  0 failures**.
+- Tool tests: painted-terrain exporter 6/6; terrain importer 17 passed with
+  1 optional real-map test skipped; PixelLab client 16/16 with Pillow.
+
+See the [release verification record](../docs/release-verification-2026-09-15.md).
+
 ## Game time held like KaM Remake — 2026-09-14
 
 `timekeeping_tests.gd` adds **5 cases**. They check that a long frame replays

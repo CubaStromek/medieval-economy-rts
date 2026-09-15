@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Medieval Economy RTS"
+config/version="0.6.0"
 run/main_scene="res://scenes/game_session.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
